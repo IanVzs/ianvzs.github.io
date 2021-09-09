@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>图形化界面 （Python Gui） | Ian&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="python,pyqt,Gui" />
+    
+    <meta name="description" content="author:Ian Python GUI 💽PyQt 官方说明文档：http:&#x2F;&#x2F;pyqt.sourceforge.net&#x2F;Docs&#x2F;PyQt4&#x2F;index.html照例，先贴网址： http:&#x2F;&#x2F;www.qaulau.com&#x2F;books&#x2F;PyQt4_Tutorial&#x2F;index.html 画界面#PyQt4使用designer.exe import os  for root, dirs, f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图形化界面 （Python Gui）">
+<meta property="og:url" content="https://ianvzs.github.io/2017/07/01/notes/noteOfgui/index.html">
+<meta property="og:site_name" content="Ian&#39;s Blog">
+<meta property="og:description" content="author:Ian Python GUI 💽PyQt 官方说明文档：http:&#x2F;&#x2F;pyqt.sourceforge.net&#x2F;Docs&#x2F;PyQt4&#x2F;index.html照例，先贴网址： http:&#x2F;&#x2F;www.qaulau.com&#x2F;books&#x2F;PyQt4_Tutorial&#x2F;index.html 画界面#PyQt4使用designer.exe import os  for root, dirs, f">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tse4-mm.cn.bing.net/th/id/OIP.J4_Nqrcc0x7slHHUFwKLSQHaI6?pid=ImgDet&rs=1">
+<meta property="article:published_time" content="2017-07-01T13:20:00.000Z">
+<meta property="article:modified_time" content="2021-09-09T03:06:08.562Z">
+<meta property="article:author" content="Ian Vzs">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="pyqt">
+<meta property="article:tag" content="Gui">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tse4-mm.cn.bing.net/th/id/OIP.J4_Nqrcc0x7slHHUFwKLSQHaI6?pid=ImgDet&rs=1">
+    
+
+    
+        <link rel="alternate" href="/" title="Ian&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/new-Things/">new Things</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/new-Things/%E6%89%8B%E6%9C%BA/">手机</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/">note</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/Gui/">Gui</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/Something/">Something</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/db/">db</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/docker/">docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/golang/">golang</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/language/">language</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/learning/">learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/linux/">linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/python/">python</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/ue4/">ue4</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/%E7%BD%91%E7%BB%9C-Net/">网络(Net)</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/">tip</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/debug/">debug</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/markdown/">markdown</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/problem/">problem</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/vim/">vim</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/web/">web</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/%E6%8D%A2%E6%BA%90/">换源</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/">web</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/%E5%85%A8%E6%A0%88%E7%AC%94%E8%AE%B0/">全栈笔记</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%9D%82%E8%B0%88/%E6%97%A5%E8%AE%B0/">日记</a></li></ul></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/note/Gui/">Gui</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/note/Gui/learning/">learning</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-notes/noteOfgui" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        图形化界面 （Python Gui）
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2017/07/01/notes/noteOfgui/" class="article-date">
+       <time datetime="2017-07-01T13:20:00.000Z" itemprop="datePublished">2017-07-01</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2017/07/01/notes/noteOfgui/" class="article-date">
+     <time datetime="2021-09-09T03:06:08.562Z" itemprop="dateModified">2021-09-09</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Gui/" rel="tag">Gui</a>, <a class="tag-link-link" href="/tags/pyqt/" rel="tag">pyqt</a>, <a class="tag-link-link" href="/tags/python/" rel="tag">python</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>author:Ian</p>
+<h1 id="Python-GUI-💽"><a href="#Python-GUI-💽" class="headerlink" title="Python GUI 💽"></a>Python GUI 💽</h1><h2 id="PyQt"><a href="#PyQt" class="headerlink" title="PyQt"></a>PyQt</h2><p><img src="https://tse4-mm.cn.bing.net/th/id/OIP.J4_Nqrcc0x7slHHUFwKLSQHaI6?pid=ImgDet&rs=1" alt="qt" title="tmp"></p>
+<p>官方说明文档：<a target="_blank" rel="noopener" href="http://pyqt.sourceforge.net/Docs/PyQt4/index.html">http://pyqt.sourceforge.net/Docs/PyQt4/index.html</a><br>照例，先贴网址： <a target="_blank" rel="noopener" href="http://www.qaulau.com/books/PyQt4_Tutorial/index.html">http://www.qaulau.com/books/PyQt4_Tutorial/index.html</a></p>
+<h2 id="画界面"><a href="#画界面" class="headerlink" title="画界面"></a>画界面</h2><pre><code>#PyQt4使用designer.exe
+import os 
+for root, dirs, files in os.walk(&#39;.&#39;): 
+    for file in files: 
+        if file.endswith(&#39;.ui&#39;): 
+            os.system(&#39;pyuic4 -o ui_%s.py %s&#39; % (file.rsplit(&#39;.&#39;, 1)[0], file))
+        elif file.endswith(&#39;.qrc&#39;): 
+            os.system(&#39;pyrcc4 -o %s_rc.py %s&#39; % (file.rsplit(&#39;.&#39;, 1)[0], file))
+# 注：在Win中调用pyrcc4 可能无法识别该命令，即使添加到环境变量也不行，而是
+#pyrcc.exe才能调用简直……
+</code></pre>
+<h4 id="窗口设置"><a href="#窗口设置" class="headerlink" title="窗口设置"></a>窗口设置</h4><pre><code>resize(8, 8)
+setWindowTitle(u&#39;标题&#39;)
+</code></pre>
+<h4 id="获取图标"><a href="#获取图标" class="headerlink" title="获取图标"></a>获取图标</h4><pre><code>def getIcon(filename):
+&quot;&quot;&quot; 获取图标 &quot;&quot;&quot;
+    fileInfo = Qt.QFileInfo(filename) 
+    fileIcon = Qt.QFileIconProvider() 
+    icon = QtGui.QIcon(fileIcon.icon(fileInfo)) 
+    return icon  
+使用时：
+self.setWindowIcon(getIcon(&#39;../hi/app.ico&#39;))
+</code></pre>
+<hr>
+<h5 id="Dock"><a href="#Dock" class="headerlink" title="Dock"></a>Dock</h5><pre><code>widgetTestM, dockTestM = self.createDock(AllMarketMonitor, vtText.“dock标题”, QtCore.Qt.RightDockWidgetArea)
+# 方向有： `RightDockWidgetArea`,`BottomDockWidgetArea`,`LeftDockWidgetArea`
+# 创建dock窗口
+# 可利用
+self.tabifyDockWidget(dockMarketM, dockAllDataM)
+来合并同一个方向上的dock
+
+# 此下还没看… 
+dockTradeM.raise_()
+dockPositionM.raise_()
+
+# 连接组件之间的信号
+widgetPositionM.itemDoubleClicked.connect(widgetTradingW.closePosition)
+    
+# 保存默认设置
+self.saveWindowSettings(&#39;default&#39;)
+</code></pre>
+<p>其实现函数为：<br>“””创建停靠组件”””</p>
+<pre><code>def createDock(self, widgetClass, widgetName, widgetArea):
+    widget = widgetClass(self.mainEngine, self.eventEngine) 
+    dock = QtGui.QDockWidget(widgetName)
+    dock.setWidget(widget)
+    dock.setObjectName(widgetName)
+    dock.setFeatures(dock.DockWidgetFloatable|dock.DockWidgetMovable)
+    self.addDockWidget(widgetArea, dock)
+    return widget, dock
+</code></pre>
+<blockquote>
+<p>再本质一点的东西为：</p>
+</blockquote>
+<pre><code>widget1 = Ha(self)
+dock = QtGui.QDockWidget(&#39;haha&#39;)
+dock.setObjectName(&#39;ha1&#39;)
+dock.setWidget(widget1)
+dock.setFeatures(dock.DockWidgetFloatable | dock.DockWidgetMovable)
+self.addDockWidget(QtCore.Qt.BottomDockWidgetArea, dock)
+</code></pre>
+<h4 id="动作"><a href="#动作" class="headerlink" title="动作"></a>动作</h4><pre><code>exit = QtGui.QAction(QtGui.QIcon(&#39;hello.ico&#39;), &#39;exit&#39;, self)
+exit.setShortcut(&#39;Ctrl+Q&#39;)
+exit.setStatusTip(&#39;Exit application&#39;)
+# 图标、文字、快捷键、提示信息
+
+menubar = self.menuBar()
+file = menubar.addMenu(&#39;&amp;File&#39;)
+file.addAction(exit)
+# 创建目录和工具栏，将动作添加进去。工具栏同理
+</code></pre>
+<h3 id="定位布局"><a href="#定位布局" class="headerlink" title="定位布局"></a>定位布局</h3><h4 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h4><pre><code>label1 = QtGui.QLabel(u&#39;绝对定位&#39;, self)
+label1.move(15, 60)
+# 创建、移动到显示位置
+</code></pre>
+<h4 id="框布局-及-布局元素平均分布"><a href="#框布局-及-布局元素平均分布" class="headerlink" title="框布局 及 布局元素平均分布"></a>框布局 及 布局元素平均分布</h4><pre><code>okButton = QtGui.QPushButton(&quot;OK&quot;)
+cancelButton = QtGui.QPushButton(&quot;Cancel&quot;)
+# 创建按钮
+
+hbox = QtGui.QHBoxLayout()
+hbox.addStretch(1)
+hbox.addWidget(okButton)        # 增加组件
+hbox.addWidget(cancelButton)
+# 创建水平栏
+hbox.addStretch()   # 平均分布
+
+vbox = QtGui.QVBoxLayout()
+vbox.addStretch(1)
+# 创建竖列
+
+vbox.addLayout(hbox)
+# 将水平栏插入竖列
+self.setLayout(vbox)     
+# 显示最终竖列
+</code></pre>
+<p>注意一下add时选择对类型就好了。</p>
+<h3 id="QTableWidget"><a href="#QTableWidget" class="headerlink" title="QTableWidget"></a>QTableWidget</h3><p><textarea cols="50" rows="15" name="code" class="python">#!/usr/bin/env python
+#coding=utf-8
+from PyQt4.QtGui  import *
+from PyQt4.QtCore import *  
+class MyDialog(QDialog):
+    def __init__(self, parent=None):
+        super(MyDialog, self).__init__(parent)
+        self.MyTable = QTableWidget(4,3)
+        self.MyTable.setHorizontalHeaderLabels(['姓名','身高','体重'])
+        
+<pre><code>    newItem = QTableWidgetItem(&amp;quot;松鼠&amp;quot;)
+    self.MyTable.setItem(0, 0, newItem)
+    
+    newItem = QTableWidgetItem(&amp;quot;10cm&amp;quot;)
+    self.MyTable.setItem(0, 1, newItem)
+    
+    newItem = QTableWidgetItem(&amp;quot;60g&amp;quot;)
+    self.MyTable.setItem(0, 2, newItem) 
+  
+    layout = QHBoxLayout()
+    layout.addWidget(self.MyTable)
+    self.setLayout(layout)    
+    
+    
+</code></pre>
+<p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    import sys<br>    app = QApplication(sys.argv)<br>    myWindow = MyDialog()<br>    myWindow.show()<br>    sys.exit(app.exec_())       </textarea><br> </p></p>
+<p>&nbsp;</p>
+其中：
+<p>self.MyTable = QTableWidget(4,3)&nbsp; 构造了一个QTableWidget的对象，并且设置为4行，3列</p><p>self.MyTable.setHorizontalHeaderLabels(['姓名','身高','体重']) 则设置表格的表头</p><p>newItem = QTableWidgetItem(&quot;松鼠&quot;)&nbsp;&nbsp; 则是生成了一个QTableWidgetItem的对象，并让其名为&ldquo;松鼠&rdquo;</p><p>self.MyTable.setItem(0, 0, newItem)&nbsp;&nbsp;&nbsp; 将刚才生成的Item加载到第0行、0列处
+<p>&nbsp;</p>
+<p>这样一个简单的QTableWidget就构造完成了。</p>
+<p><img src="http://hi.csdn.net/attachment/201103/1/0_1298961912c0mN.gif" alt="" />
+</p>
+
+<p>感谢<a href="view-source:blog.csdn.net/vah101/article/details/6215066">来源</a></p>
+<h3 id="以上。-之后的设置字体，底色，之类用的的时候再说。"><a href="#以上。-之后的设置字体，底色，之类用的的时候再说。" class="headerlink" title="以上。  之后的设置字体，底色，之类用的的时候再说。"></a>以上。  之后的设置字体，底色，之类用的的时候再说。</h3><p>其中： </p>
+<h5 id="合并单元格效果的实现："><a href="#合并单元格效果的实现：" class="headerlink" title="合并单元格效果的实现："></a>合并单元格效果的实现：</h5><pre><code>self.MyTable.setSpan(0, 0, 3, 1) 
+# 其参数为： 要改变单元格的 1行数  2列数     要合并的 3行数  4列数
+</code></pre>
+<h5 id="表格表头的显示与隐藏"><a href="#表格表头的显示与隐藏" class="headerlink" title="表格表头的显示与隐藏"></a>表格表头的显示与隐藏</h5><pre><code>self.MyTable.verticalHeader().setVisible(False)
+self.MyTable.horizontalHeader().setVisible(False)
+# 默认显示 且标号为： 1，2，3…
+</code></pre>
+<h4 id="空位填补"><a href="#空位填补" class="headerlink" title="空位填补"></a>空位填补</h4><pre><code>.addStretch()
+# 不过比较鸡肋，还是下面的调整窗口显示比例比较好玩
+</code></pre>
+<h5 id="调整各部分显示比例"><a href="#调整各部分显示比例" class="headerlink" title="调整各部分显示比例"></a>调整各部分显示比例</h5><pre><code>QVBoxLayout*  layout = new QVBoxLayout;
+QPushButton*      btn = new QPushButton;
+QTableWidget*     tableWidget = new QTableWidget;   
+QHBoxLayout*     h_layout = new QHBoxLayout;
+layout.addWidget(btn);
+layout.addWidget(tableWidget);
+layout.addLayout(h_layout)
+layout-&gt;setStretchFactor(btn, 1);
+layout-&gt;setStretchFactor(tableWidget, 2);
+layout-&gt;setStretchFactor(h_layout, 2);
+</code></pre>
+<p>上面是C++  所以下面的是俺的Python：<br>    hbox1[i].addWidget(self.buttonBox[i])<br>        hbox1[i].addWidget(self.paramMonitor[i])<br>        hbox1[i].addWidget(self.varMonitor[i])<br>        # 设置显示比例<br>        hbox1[i].setStretchFactor(self.buttonBox[i], 3)<br>        hbox1[i].setStretchFactor(self.paramMonitor[i], 3)<br>        hbox1[i].setStretchFactor(self.varMonitor[i], 4)</p>
+<h3 id="列表内添加按钮"><a href="#列表内添加按钮" class="headerlink" title="列表内添加按钮"></a>列表内添加按钮</h3><p>1、定义添加按钮的方法</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080"> 1</span> <span style="color: #008000">#</span><span style="color: #008000"> 列表内添加按钮</span>
+<span style="color: #008080"> 2</span>     <span style="color: #0000ff">def</span><span style="color: #000000"> buttonForRow(self,id):
+</span><span style="color: #008080"> 3</span>         widget=<span style="color: #000000">QWidget()
+</span><span style="color: #008080"> 4</span>         <span style="color: #008000">#</span><span style="color: #008000"> 修改</span>
+<span style="color: #008080"> 5</span>         updateBtn = QPushButton(<span style="color: #800000">'</span><span style="color: #800000">修改</span><span style="color: #800000">'</span><span style="color: #000000">)
+</span><span style="color: #008080"> 6</span>         updateBtn.setStyleSheet(<span style="color: #800000">'''</span><span style="color: #800000"> text-align : center;
+</span><span style="color: #008080"> 7</span> <span style="color: #800000">                                          background-color : NavajoWhite;
+</span><span style="color: #008080"> 8</span> <span style="color: #800000">                                          height : 30px;
+</span><span style="color: #008080"> 9</span> <span style="color: #800000">                                          border-style: outset;
+</span><span style="color: #008080">10</span> <span style="color: #800000">                                          font : 13px  </span><span style="color: #800000">'''</span><span style="color: #000000">)
+</span><span style="color: #008080">11</span> 
+<span style="color: #008080">12</span>         updateBtn.clicked.connect(<span style="color: #0000ff">lambda</span><span style="color: #000000">:self.updateTable(id))
+</span><span style="color: #008080">13</span> 
+<span style="color: #008080">14</span>         <span style="color: #008000">#</span><span style="color: #008000"> 查看</span>
+<span style="color: #008080">15</span>         viewBtn = QPushButton(<span style="color: #800000">'</span><span style="color: #800000">查看</span><span style="color: #800000">'</span><span style="color: #000000">)
+</span><span style="color: #008080">16</span>         viewBtn.setStyleSheet(<span style="color: #800000">'''</span><span style="color: #800000"> text-align : center;
+</span><span style="color: #008080">17</span> <span style="color: #800000">                                  background-color : DarkSeaGreen;
+</span><span style="color: #008080">18</span> <span style="color: #800000">                                  height : 30px;
+</span><span style="color: #008080">19</span> <span style="color: #800000">                                  border-style: outset;
+</span><span style="color: #008080">20</span> <span style="color: #800000">                                  font : 13px; </span><span style="color: #800000">'''</span><span style="color: #000000">)
+</span><span style="color: #008080">21</span> 
+<span style="color: #008080">22</span>         viewBtn.clicked.connect(<span style="color: #0000ff">lambda</span><span style="color: #000000">: self.viewTable(id))
+</span><span style="color: #008080">23</span> 
+<span style="color: #008080">24</span>         <span style="color: #008000">#</span><span style="color: #008000"> 删除</span>
+<span style="color: #008080">25</span>         deleteBtn = QPushButton(<span style="color: #800000">'</span><span style="color: #800000">删除</span><span style="color: #800000">'</span><span style="color: #000000">)
+</span><span style="color: #008080">26</span>         deleteBtn.setStyleSheet(<span style="color: #800000">'''</span><span style="color: #800000"> text-align : center;
+</span><span style="color: #008080">27</span> <span style="color: #800000">                                    background-color : LightCoral;
+</span><span style="color: #008080">28</span> <span style="color: #800000">                                    height : 30px;
+</span><span style="color: #008080">29</span> <span style="color: #800000">                                    border-style: outset;
+</span><span style="color: #008080">30</span> <span style="color: #800000">                                    font : 13px; </span><span style="color: #800000">'''</span><span style="color: #000000">)
+</span><span style="color: #008080">31</span> 
+<span style="color: #008080">32</span> 
+<span style="color: #008080">33</span>         hLayout =<span style="color: #000000"> QHBoxLayout()
+</span><span style="color: #008080">34</span> <span style="color: #000000">        hLayout.addWidget(updateBtn)
+</span><span style="color: #008080">35</span> <span style="color: #000000">        hLayout.addWidget(viewBtn)
+</span><span style="color: #008080">36</span> <span style="color: #000000">        hLayout.addWidget(deleteBtn)
+</span><span style="color: #008080">37</span>         hLayout.setContentsMargins(5,2,5,2<span style="color: #000000">)
+</span><span style="color: #008080">38</span> <span style="color: #000000">        widget.setLayout(hLayout)
+</span><span style="color: #008080">39</span>         <span style="color: #0000ff">return</span> widget</pre>
+</div>
+<p>2、在向tableWidget里添加数据时插入即可</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080">1</span> <span style="color: #0000ff">for</span> row_number, row_data <span style="color: #0000ff">in</span><span style="color: #000000"> enumerate(rsdata):
+</span><span style="color: #008080">2</span> <span style="color: #000000">    self.ui.tableWidget.insertRow(row_number)
+</span><span style="color: #008080">3</span>     <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(len(row_data)+1<span style="color: #000000">):
+</span><span style="color: #008080">4</span>         <span style="color: #0000ff">if</span> i&lt;<span style="color: #000000">len(row_data):
+</span><span style="color: #008080">5</span> <span style="color: #000000">            self.ui.tableWidget.setItem(row_number, i, QtWidgets.QTableWidgetItem(str(row_data[i])))
+</span><span style="color: #008080">6</span>         <span style="color: #008000">#</span><span style="color: #008000"> 添加按钮</span>
+<span style="color: #008080">7</span>         <span style="color: #0000ff">if</span> i==<span style="color: #000000">len(row_data):
+</span><span style="color: #008080">8</span>             <span style="color: #008000">#</span><span style="color: #008000"> 传入当前id</span>
+<span style="color: #008080">9</span>             self.ui.tableWidget.setCellWidget(row_number, i,self.buttonForRow(str(row_data[0])))</pre>
+</div>
+<p>效果图</p>
+<p><img src="http://images2017.cnblogs.com/blog/896442/201709/896442-20170907222902741-300228307.png" alt=""></p>
+
+<p>就像以上显示的那样<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yuanlipu/p/7492260.html">来源</a></p>
+<h4 id="值得注意的是，再排布的时候必须只有一个表格对其进行放置（也就是说指挥它去哪儿的只能有一个人），之前我为了测试，两个hbox-对其进行排版，简直……"><a href="#值得注意的是，再排布的时候必须只有一个表格对其进行放置（也就是说指挥它去哪儿的只能有一个人），之前我为了测试，两个hbox-对其进行排版，简直……" class="headerlink" title="值得注意的是，再排布的时候必须只有一个表格对其进行放置（也就是说指挥它去哪儿的只能有一个人），之前我为了测试，两个hbox 对其进行排版，简直……"></a>值得注意的是，再排布的时候必须只有一个表格对其进行放置（也就是说指挥它去哪儿的只能有一个人），之前我为了测试，两个hbox 对其进行排版，简直……</h4><pre><code>    labelSymbol = QtGui.QLabel(self.CtaEngine.strategyTickDict[self.name])
+    buttonInit[i] = QtGui.QPushButton(u&#39;初始化&#39;)
+    buttonStart[i] = QtGui.QPushButton(u&#39;启动&#39;)
+    buttonStop[i] = QtGui.QPushButton(u&#39;停止&#39;)
+    buttonUpdate[i] = QtGui.QPushButton(u&#39;更新参数&#39;)
+    buttonSave[i] = QtGui.QPushButton(u&#39;保存参数&#39;)
+
+    buttonInit[i].clicked.connect(partial(self.init, i))
+    buttonStart[i].clicked.connect(partial(self.start, i))
+    buttonStop[i].clicked.connect(partial(self.stop, i))
+    buttonUpdate[i].clicked.connect(partial(self.updateParams,i))
+    buttonSave[i].clicked.connect(partial(self.saveParams, i))
+
+hbox1[i] = QtGui.QHBoxLayout()
+    ##参数设置显示
+    hbox2[i] = QtGui.QHBoxLayout()
+        #hbox1[i].addWidget(labelSymbol)
+        #hbox1[i].addWidget(buttonInit[i])
+        #hbox1[i].addWidget(buttonStart[i])
+        #hbox1[i].addWidget(buttonStop[i])
+        #hbox1[i].addWidget(buttonUpdate[i])
+        #hbox1[i].addWidget(buttonSave[i])
+
+    self.buttonBox[i].setCellWidget(0, 0, buttonInit[i])
+    self.buttonBox[i].setCellWidget(0, 1, buttonStart[i])
+    self.buttonBox[i].setCellWidget(0, 2, buttonStop[i])
+</code></pre>
+<hr>
+<hr>
+<hr>
+<h4 id="组件之间连接信号"><a href="#组件之间连接信号" class="headerlink" title="组件之间连接信号"></a>组件之间连接信号</h4><pre><code># classA(QtGui.QTableWidget):
+#   pass
+classA.itemDoubleClicked.connect(classB.actionFunction)
+# 这样单纯调用还是可以的，但是数据传输… 就得继续研究一下了。
+</code></pre>
+<h5 id="关闭事件退出提示"><a href="#关闭事件退出提示" class="headerlink" title="关闭事件退出提示"></a>关闭事件退出提示</h5><pre><code>def closeEvent(self, event):
+    reply = QtGui.QMessageBox.question(self, &#39;Message&#39;,&quot;Are you sure to quit?&quot;,
+
+        QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
+if reply == QtGui.QMessageBox.Yes:
+    event.accept()
+else:
+    event.ignore()
+</code></pre>
+<p>函数放置位置就是主窗口类下就好。</p>
+<h3 id="QTableWidget-清除数据"><a href="#QTableWidget-清除数据" class="headerlink" title="QTableWidget 清除数据"></a>QTableWidget 清除数据</h3><pre><code>def updateData(self, data): #（缩进没问题吧…🙏）
+        &quot;&quot;&quot;将数据更新到表格中&quot;&quot;&quot;
+    
+    if self.name == u&#39;RiskAlarmWidget&#39;:
+        pass
+
+    if self.updateBeginAction:
+        data = self.updateBeginAction(data)
+        if not data:
+           return
+
+    if self.updateAction:
+        self.updateAction(data)
+    else:
+        if isinstance(data, unicode) and self.dataKey:
+            # 删除模式
+            key = data
+            if key in self.dataDict:
+                d = self.dataDict[key]
+                row = d[self.headerList[0]].row()
+                self.removeRow(row)
+                del self.dataDict[key]
+        else:
+            # 如果设置了dataKey，则采用存量更新模式
+            if self.InsertMode:
+                # 如果允许了排序功能，则插入数据前必须关闭，否则插入新的数据会变乱
+                if self._sorting:
+                    self.setSortingEnabled(False)
+
+                newRow = 0 if self.InsertTopRow else self.rowCount()
+                self.insertRow(newRow)
+
+                for n, header in enumerate(self.headerList):
+
+                    content = self.getContents(data, header)
+                    cellType = self.headerDict[header][&#39;cellType&#39;]
+                    cell = cellType(content)
+            
+                    if self.font:
+                        cell.setFont(self.font)
+
+                    if self._saveData:            
+                        cell.data = data                
+
+                    self.setItem(newRow, n, cell)  
+    
+                # 重新打开排序
+                if self._sorting:
+                    self.setSortingEnabled(True)
+      
+            else:            
+                key = data.__getattribute__(self.dataKey)
+                if key in self.dataDict:
+                    # 已存在数据字典中，则更新相关单元格
+                    d = self.dataDict[key]
+                    for header in self.headerList:
+
+                        content = self.getContents(data, header)
+                        cell = d[header]
+                        cell.setContent(content)
+
+                        if self._saveData:            
+            # 如果设置了保存数据对象，则进行对象保存
+                            cell.data = data                    
+                else:
+                    # 如果允许了排序功能，则插入数据前必须关闭，
+        #否则插入新的数据会变乱
+                    if self._sorting:
+                        self.setSortingEnabled(False)
+                    # 不存在数据字典中，插入新行，创建此行单元格
+                    newRow = 0 if self.InsertTopRow else self.rowCount()
+                    self.insertRow(newRow)
+
+                    d = &#123;&#125;
+                    for n, header in enumerate(self.headerList):
+                    
+                        content = self.getContents(data, header)
+                        cellType = self.headerDict[header][&#39;cellType&#39;]
+                        cell = cellType(content)
+                
+                        if self.font:
+                            cell.setFont(self.font)  
+            # 如果设置了特殊字体，则进行单元格设置
+                
+                        if self._saveData:            
+            # 如果设置了保存数据对象，则进行对象保存
+                            cell.data = data
+                    
+                        self.setItem(newRow, n, cell)
+                        d[header] = cell
+                    self.dataDict[key] = d
+    
+                    # 重新打开排序
+                    if self._sorting:
+                        self.setSortingEnabled(True)
+
+    if self.updateAfterAction:
+        self.updateAfterAction(data)            
+</code></pre>
+<p>插入后数据需要清理只需<code>.clearContentsText()</code>，这样是清理数据但保留表格，方便更新内容。<code>.clear()</code>则清理数据以及表格方便<font color=75362109>重新</font>填入新的内容</p>
+<hr>
+<h4 id="调用Windows程序"><a href="#调用Windows程序" class="headerlink" title="调用Windows程序"></a>调用Windows程序</h4><pre><code>import win32api
+    path = &#39;D:/.../dockerTrader/gateway/ctpGateway/CTP_connect.json&#39;
+    win32api.ShellExecute(0, &#39;open&#39;, &#39;notepad.exe&#39;, path, &#39;&#39;, 1)
+# 使用记事本打开此文件
+</code></pre>
+<hr>
+<h4 id="Json"><a href="#Json" class="headerlink" title="Json"></a>Json</h4><pre><code>with open(&#39;D:/.../dockerTrader/gateway/ctpGateway/CTP_connect.json&#39;, &#39;r&#39;) as f:
+setting = json.load(f)
+self.userID = str(setting[&#39;userID&#39;])
+self.password = str(setting[&#39;password&#39;])
+</code></pre>
+<hr>
+<hr>
+<h3 id="信号槽（传输额外参数）"><a href="#信号槽（传输额外参数）" class="headerlink" title="信号槽（传输额外参数）"></a>信号槽（传输额外参数）</h3><p>一般来说，比如一个按钮吧。 在链接点击信号与槽时<code>buttonInit[i].clicked.connect(partial(self.init, i))</code>就完事了。然而，当循环创建按钮，对应同样的槽函数，只是需要执行的变量有区别时，就需要传输额外的参数。<br>这时，方法有二：</p>
+<p>环境：</p>
+<p>python2.7.8</p>
+<p>pyqt 4.11.1</p>
+<h3 id="一：-使用lambda表达式"><a href="#一：-使用lambda表达式" class="headerlink" title="一： 使用lambda表达式"></a>一： 使用lambda表达式</h3><pre class="prettyprint"><code class="language-python hljs "><span class="hljs-keyword">from</span> PyQt4.QtCore <span class="hljs-keyword">import</span> *  
+<span class="hljs-keyword">from</span> PyQt4.QtGui <span class="hljs-keyword">import</span> *  
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyForm</span><span class="hljs-params">(QMainWindow)</span>:</span>  
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, parent=None)</span>:</span>  
+        super(MyForm, self).__init__(parent)  
+        button1 = QPushButton(<span class="hljs-string">'Button 1'</span>)  
+        button2 = QPushButton(<span class="hljs-string">'Button 1'</span>)  
+        button1.clicked.connect(<span class="hljs-keyword">lambda</span>: self.on_button(<span class="hljs-number">1</span>))  
+        button2.clicked.connect(<span class="hljs-keyword">lambda</span>: self.on_button(<span class="hljs-number">2</span>))  
+
+        layout = QHBoxLayout()  
+        layout.addWidget(button1)  
+        layout.addWidget(button2)  
+
+        main_frame = QWidget()  
+        main_frame.setLayout(layout)  
+
+        self.setCentralWidget(main_frame)  
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">on_button</span><span class="hljs-params">(self, n)</span>:</span>  
+        print(<span class="hljs-string">'Button &#123;0&#125; clicked'</span>.format(n))  
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:  
+    <span class="hljs-keyword">import</span> sys  
+    app = QApplication(sys.argv)  
+    form = MyForm()  
+    form.show()  
+    app.exec_()  </code></pre>
+
+<p>解释一下，on_button是怎样处理从两个按钮传来的信号。我们使用lambda传递按钮数字给槽，也可以传递任何其他东西—甚至是按钮组件本身（假如，槽打算把传递信号的按钮修改为不可用）</p>
+
+<h3 id="二：-使用functools里的partial函数"><a href="#二：-使用functools里的partial函数" class="headerlink" title="二： 使用functools里的partial函数"></a>二： 使用functools里的partial函数</h3><pre class="prettyprint"><code class="language-python hljs ">button1.clicked.connect(partial(self.on_button, <span class="hljs-number">1</span>))  
+button2.clicked.connect(partial(self.on_button, <span class="hljs-number">2</span>))  </code></pre>
+
+<p>《Rapid GUI Program with Python and QT》 P143例子。</p>
+
+<pre class="prettyprint"><code class="language-python hljs "><span class="hljs-keyword">from</span> PyQt4.QtCore <span class="hljs-keyword">import</span> *  
+<span class="hljs-keyword">from</span> PyQt4.QtGui <span class="hljs-keyword">import</span> *  
+<span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> partial  
+<span class="hljs-keyword">import</span> sys  
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bu1</span><span class="hljs-params">(QWidget)</span>:</span>  
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, parent=None)</span>:</span>  
+        super(Bu1, self).__init__(parent)  
+        <span class="hljs-comment">#水平盒式布局  </span>
+        layout = QHBoxLayout()  
+        <span class="hljs-comment">#显示  </span>
+        self.lbl = QLabel(<span class="hljs-string">'no button is pressed'</span>)  
+        <span class="hljs-comment">#循环5个按钮  </span>
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):  
+            but = QPushButton(str(i))  
+            layout.addWidget(but)  
+            <span class="hljs-comment">#信号和槽连接  </span>
+            but.clicked.connect(self.cliked)  
+
+        <span class="hljs-comment">#使用封装，lambda  </span>
+        but = QPushButton(<span class="hljs-string">'5'</span>)  
+        layout.addWidget(but)  
+        but.clicked.connect(<span class="hljs-keyword">lambda</span>: self.on_click(<span class="hljs-string">'5'</span>))  
+        <span class="hljs-comment">#使用个who变量，结果不正常，显示 False is pressed  </span>
+        <span class="hljs-comment">#but.clicked.connect(lambda who="5": self.on_click(who))  </span>
+
+        <span class="hljs-comment">#使用封装，partial函数  </span>
+        but = QPushButton(<span class="hljs-string">'6'</span>)  
+        layout.addWidget(but)  
+        but.clicked.connect(partial(self.on_click, <span class="hljs-string">'6'</span>))  
+
+        layout.addWidget(self.lbl)  
+        <span class="hljs-comment">#设置布局  </span>
+        self.setLayout(layout)  
+
+    <span class="hljs-comment">#传递额外参数     </span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cliked</span><span class="hljs-params">(self)</span>:</span>  
+        bu = self.sender()  
+        <span class="hljs-keyword">if</span> isinstance(bu, QPushButton):  
+            self.lbl.setText(<span class="hljs-string">'%s is pressed'</span> % bu.text())  
+        <span class="hljs-keyword">else</span>:  
+            self.lbl.setText(<span class="hljs-string">'no effect'</span>)  
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">on_click</span><span class="hljs-params">(self, n)</span>:</span>  
+        self.lbl.setText(<span class="hljs-string">'%s is pressed'</span> % n)  
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:          
+    app = QApplication(sys.argv)  
+    bu =Bu1()  
+    bu.show()  
+    app.exec_()   </code></pre>
+
+<p>三：感谢<a target="_blank" rel="noopener" href="http://blog.csdn.net/fengyu09/article/details/39498777">来源</a> </p>
+<hr>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h2 id="PyQt-echarts图表"><a href="#PyQt-echarts图表" class="headerlink" title="PyQt + echarts图表"></a>PyQt + echarts图表</h2><pre><code>echarts绘制图标会在本地保存一个`html`文件，所以使用`PyQt`将之作为一个网页页面加载即可：
+from PyQt4.QtWebKit import *
+from PyQt4.QtGui  import *
+from PyQt4.QtCore import * 
+from pyecharts import Kline, Page
+def creat_charts():
+    page = Page()
+    chart_init = &#123;
+            &quot;width&quot;: 1600,
+            &quot;height&quot;: 900,
+        &#125;
+    chart = Kline(&quot;K 线图&quot;, **chart_init)
+    chart.add(&quot;日K&quot;, [&quot;2017/7/&#123;&#125;&quot;.format(i + 1) for i in range(31)], v1)
+    page.add(chart)
+    return page
+creat_charts()_render()     # 生成`render.html`文件
+self.view = QWebView()
+self.create_charts().render()
+url = QUrl(&quot;render.html&quot;)   # 需要加载`QUrl`使用字符串转化
+self.view.load(url)
+</code></pre>
+<h2 id="addWidget"><a href="#addWidget" class="headerlink" title="addWidget"></a>addWidget</h2><p>在窗口布局的时候这玩意至关重要，因为要先创建一个框架，再往里面塞东西。而塞的方法就是<code>addWidget</code>。所以简单记录一下小年这一天经常用到的环套：</p>
+<pre><code>hbox = QtGui.QHBoxLayout()
+    vbox = QtGui.QVBoxLayout()
+可以通过`addWidget`来塞入`QtGui.QWidget`, `QtGui.QGroupBox`, 
+</code></pre>
+<p><code>QtGui.QTableWidget</code>  ,<code>QScrollArea</code>等<br>    还可以<code>addWidget</code>诸如<code>QtGui.QPushButton</code>, <code>QtGui.QLabel</code>,<br><code>QtGui.QComboBox</code>, <code>QtGui.QLineEdit</code>等小部件</p>
+<pre><code>`hbox`和`vbox`可以通过`addLayout`互相添加（这两个是 框架，即页面上的“骨头”。来摆设“肌肉”-&gt;“Widget”、&quot;Box&quot;等的）
+当然最后要显示谁，需要`self.setLayout(hbox)` 而支持`setLayout`少不了有
+</code></pre>
+<p><code>QWidget</code>,<code>QScrollArea</code>, 所以它们好像能够无限互相套下去…</p>
+<h3 id="小部件的方法"><a href="#小部件的方法" class="headerlink" title="小部件的方法"></a>小部件的方法</h3><p>其实哪些方法也不用记…打开<code>QtDesigner</code>直接搜索拖拽，然后看右边的清单就行了，但这几个还是记录下来吧，在网上找太累了~</p>
+<p><code>QtGui.QComboBox</code>: <code>addItems</code>, ‘’’addItem<code>, </code>currentText<code> </code>QtGui.QSpinBox<code>: </code>setValue`, </p>
+<h3 id="QString2String"><a href="#QString2String" class="headerlink" title="QString2String"></a>QString2String</h3><pre><code>def QString2PyString(self, qStr):   
+    #QString，如果内容是中文，则直接使用会有问题，要转换成 python
+    #string
+    return unicode(qStr.toUtf8(), &#39;utf-8&#39;, &#39;ignore&#39;)
+</code></pre>
+<h2 id="QLineEdit"><a href="#QLineEdit" class="headerlink" title="QLineEdit"></a>QLineEdit</h2><p>之所以放这么后面是因为我觉得这东西没什么好说的，也就是一个输入框嘛，但因为出现在后面所以说是现在发现了其中有趣的东西。那就是最近在做输入密码的时候想要限制，但在程序中去判断显然并不是什么有意思的事情。然后想起来输入的时候可以直接限制住啊。于是采用了<code>textChanged</code>去<code>connect</code>一个函数，来动态监测输入。但在调试中打开错了窗口所以以为没有用就找了其他的方法。那就是在初始化的时候直接卡死，结果没有找到设置长度的.set***但找到了现用的<code>setValidator</code>其配合正则表达式的食用方法如下：</p>
+<pre><code>import re
+    a = QtCore.QRegExp(&quot;[A-Za-z]&#123;0,5&#125;[1-9][0-9]&#123;0,5&#125;&quot;)
+    a = QtCore.QRegExp(&quot;[a-zA-Z0-9]&#123;0,12&#125;$&quot;)
+    self.txtPasswd.setValidator(QtGui.QRegExpValidator(a))
+# emm,很显然，把a替换成limitRule就要顺眼一些了。
+</code></pre>
+<p>不过<font color=#ff3bffl9>值得注意的是：</font>如果用<code>setText</code>将其它字符写进这个编辑小框框中的话，那么这个框框的规则就会被打破然后随便写。但要是<code>setText</code>的内容没有超出所规定的形式之外的话，那么规则照旧，依然执行。</p>
+<h1 id="PyQtGraph"><a href="#PyQtGraph" class="headerlink" title="PyQtGraph:"></a>PyQtGraph:</h1><p><a target="_blank" rel="noopener" href="http://www.pyqtgraph.org/">Link</a></p>
+<pre><code>import pyqtgraph.examples  
+pyqtgraph.examples.run()  
+</code></pre>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://ianvzs.github.io/2017/07/01/notes/noteOfgui/" data-id="cktcgu9da005btuq00zzycab5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Ian Vzs"
+        },
+        "headline": "图形化界面 （Python Gui）",
+        "image": "https://ianvzs.github.iohttps://tse4-mm.cn.bing.net/th/id/OIP.J4_Nqrcc0x7slHHUFwKLSQHaI6?pid=ImgDet&rs=1",
+        "keywords": "python pyqt Gui",
+        "genre": "note Gui learning",
+        "datePublished": "2017-07-01",
+        "dateCreated": "2017-07-01",
+        "dateModified": "2021-09-09",
+        "url": "https://ianvzs.github.io/2017/07/01/notes/noteOfgui/",
+        "description": "author:Ian
+Python GUI 💽PyQt
+官方说明文档：http://pyqt.sourceforge.net/Docs/PyQt4/index.html照例，先贴网址： http://www.qaulau.com/books/PyQt4_Tutorial/index.html
+画界面#PyQt4使用designer.exe
+import os 
+for root, dirs, f",
+        "wordCount": 4483
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/IanVzs" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/07/24/notes/noteOfmachineLearning/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            机器学习库
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/07/01/notes/noteOfpython/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Python笔记(notes of Python)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/24/tips/tipsOfgRpc/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://grpc.io/img/logos/grpc-logo.png)" alt="gRpc使用小记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tip/">tip</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/tip/problem/">problem</a></p>
+                            <p class="item-title"><a href="/2021/05/24/tips/tipsOfgRpc/" class="title">gRpc使用小记</a></p>
+                            <p class="item-date"><time datetime="2021-05-24T02:30:41.000Z" itemprop="datePublished">2021-05-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/23/tips/tipsOfProblems/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://tse2-mm.cn.bing.net/th/id/OIP.Z6kn8Zh9FDU2oe4r5ceCgAHaEK?pid=ImgDet&rs=1)" alt="解决问题" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tip/">tip</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/tip/problem/">problem</a></p>
+                            <p class="item-title"><a href="/2021/05/23/tips/tipsOfProblems/" class="title">解决问题</a></p>
+                            <p class="item-date"><time datetime="2021-05-23T02:30:41.000Z" itemprop="datePublished">2021-05-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/19/notes/noteOfgoExp/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://wallpapercave.com/wp/wp7041189.jpg)" alt="Golang笔记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/note/golang/">golang</a></p>
+                            <p class="item-title"><a href="/2021/05/19/notes/noteOfgoExp/" class="title">Golang笔记</a></p>
+                            <p class="item-date"><time datetime="2021-05-19T11:00:00.000Z" itemprop="datePublished">2021-05-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/10/notes/noteOfFmtData/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a></p>
+                            <p class="item-title"><a href="/2021/05/10/notes/noteOfFmtData/" class="title">数据格式笔记</a></p>
+                            <p class="item-date"><time datetime="2021-05-10T09:05:00.000Z" itemprop="datePublished">2021-05-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/10/notes/noteOfUE4/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://cdn2.unrealengine.com/Unreal+Engine%2Fblog%2Fconnect-with-the-unreal-engine-community-online%2FUE_Community_Online_Feed-thumb-desktop-1400x788-a6917dba2f2cc41cc1426a3afdff135521cea738.png)" alt="UE4 笔记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/note/ue4/">ue4</a></p>
+                            <p class="item-title"><a href="/2021/05/10/notes/noteOfUE4/" class="title">UE4 笔记</a></p>
+                            <p class="item-date"><time datetime="2021-05-10T04:13:26.000Z" itemprop="datePublished">2021-05-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/new-Things/">new Things</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/new-Things/%E6%89%8B%E6%9C%BA/">手机</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/Gui/">Gui</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/Gui/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/Something/">Something</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/db/">db</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/db/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/docker/">docker</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/docker/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/">golang</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/expansion/">expansion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/java/">java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/java/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/language/">language</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/language/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/learning/">learning</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/linux/">linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/linux/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/python/learning/">learning</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/ue4/">ue4</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/ue4/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/test/">test</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E7%BD%91%E7%BB%9C-Net/">网络(Net)</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/">tip</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/debug/">debug</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/debug/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/markdown/">markdown</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/markdown/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/problem/">problem</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/problem/gRpc/">gRpc</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/vim/">vim</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/vim/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/web/">web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/web/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/%E6%8D%A2%E6%BA%90/">换源</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/web/%E5%85%A8%E6%A0%88%E7%AC%94%E8%AE%B0/">全栈笔记</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/%E6%97%A5%E8%AE%B0/">日记</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gui/" rel="tag">Gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Japanese/" rel="tag">Japanese</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sony-XZ1-Compact/" rel="tag">Sony XZ1 Compact</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vn-Py/" rel="tag">Vn.Py</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/" rel="tag">ajax</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/" rel="tag">apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debuger/" rel="tag">debuger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expansion/" rel="tag">expansion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/" rel="tag">golang</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/" rel="tag">gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-springboot-mybatis-maven-learning/" rel="tag">java, springboot, mybatis, maven, learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keepalived/" rel="tag">keepalived</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learning/" rel="tag">learning</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/" rel="tag">less</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/missjava/" rel="tag">missjava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ml/" rel="tag">ml</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongo/" rel="tag">mongo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/more/" rel="tag">more</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdb/" rel="tag">pdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyqt/" rel="tag">pyqt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpc/" rel="tag">rpc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ue4/" rel="tag">ue4</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win/" rel="tag">win</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/" rel="tag">数据格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" rel="tag">更新说明</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C%E7%AC%94%E8%AE%B0/" rel="tag">经验笔记</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Gui/" style="font-size: 10px;">Gui</a> <a href="/tags/Japanese/" style="font-size: 10px;">Japanese</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Sony-XZ1-Compact/" style="font-size: 10px;">Sony XZ1 Compact</a> <a href="/tags/Vn-Py/" style="font-size: 10px;">Vn.Py</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/debuger/" style="font-size: 10px;">debuger</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/expansion/" style="font-size: 10px;">expansion</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/golang/" style="font-size: 13.33px;">golang</a> <a href="/tags/gui/" style="font-size: 10px;">gui</a> <a href="/tags/java-springboot-mybatis-maven-learning/" style="font-size: 10px;">java, springboot, mybatis, maven, learning</a> <a href="/tags/keepalived/" style="font-size: 10px;">keepalived</a> <a href="/tags/learning/" style="font-size: 20px;">learning</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/missjava/" style="font-size: 10px;">missjava</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/mongo/" style="font-size: 10px;">mongo</a> <a href="/tags/more/" style="font-size: 10px;">more</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/pyqt/" style="font-size: 10px;">pyqt</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/rpc/" style="font-size: 10px;">rpc</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/ue4/" style="font-size: 10px;">ue4</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/win/" style="font-size: 13.33px;">win</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/" style="font-size: 10px;">数据格式</a> <a href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">更新说明</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 16.67px;">杂谈</a> <a href="/tags/%E7%BB%8F%E9%AA%8C%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">经验笔记</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 Ian Vzs</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://ianvzs.github.io/2017/07/01/notes/noteOfgui/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

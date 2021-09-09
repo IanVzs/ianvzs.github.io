@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Django的建站的(｡･･)ﾉﾞ | Ian&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="django,missjava,vue,apache,ajax" />
+    
+    <meta name="description" content="author: Ian Django 的一些东西 利用nginxfd反向代理解决跨域问题纠结了很久的跨域问题。。。。。。一直配置Django。。。。。问题重重，从配置方面这条路还没找到解决方案，如以后确认无误后就再放在这儿。告慰前面付出的种种艰辛 😓😀 来自(这儿)[https:&#x2F;&#x2F;www.jb51.net&#x2F;article&#x2F;105786.htm] 方法是： 打开nginx默认配置文件&#x2F;etc&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django的建站的(｡･･)ﾉﾞ">
+<meta property="og:url" content="https://ianvzs.github.io/2018/06/07/notes/noteOfwebStation/index.html">
+<meta property="og:site_name" content="Ian&#39;s Blog">
+<meta property="og:description" content="author: Ian Django 的一些东西 利用nginxfd反向代理解决跨域问题纠结了很久的跨域问题。。。。。。一直配置Django。。。。。问题重重，从配置方面这条路还没找到解决方案，如以后确认无误后就再放在这儿。告慰前面付出的种种艰辛 😓😀 来自(这儿)[https:&#x2F;&#x2F;www.jb51.net&#x2F;article&#x2F;105786.htm] 方法是： 打开nginx默认配置文件&#x2F;etc&#x2F;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://lofrev.net/wp-content/photos/2017/04/http_logo_dpwnload.png">
+<meta property="article:published_time" content="2018-06-07T08:30:18.000Z">
+<meta property="article:modified_time" content="2021-09-09T03:06:08.566Z">
+<meta property="article:author" content="Ian Vzs">
+<meta property="article:tag" content="django">
+<meta property="article:tag" content="missjava">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="apache">
+<meta property="article:tag" content="ajax">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://lofrev.net/wp-content/photos/2017/04/http_logo_dpwnload.png">
+    
+
+    
+        <link rel="alternate" href="/" title="Ian&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/new-Things/">new Things</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/new-Things/%E6%89%8B%E6%9C%BA/">手机</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/">note</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/Gui/">Gui</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/Something/">Something</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/db/">db</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/docker/">docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/golang/">golang</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/language/">language</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/learning/">learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/linux/">linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/python/">python</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/ue4/">ue4</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/%E7%BD%91%E7%BB%9C-Net/">网络(Net)</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/">tip</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/debug/">debug</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/markdown/">markdown</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/problem/">problem</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/vim/">vim</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/web/">web</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/%E6%8D%A2%E6%BA%90/">换源</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/">web</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/%E5%85%A8%E6%A0%88%E7%AC%94%E8%AE%B0/">全栈笔记</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%9D%82%E8%B0%88/%E6%97%A5%E8%AE%B0/">日记</a></li></ul></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/web/">web</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/web/%E5%85%A8%E6%A0%88%E7%AC%94%E8%AE%B0/">全栈笔记</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-notes/noteOfwebStation" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Django的建站的(｡･･)ﾉﾞ
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2018/06/07/notes/noteOfwebStation/" class="article-date">
+       <time datetime="2018-06-07T08:30:18.000Z" itemprop="datePublished">2018-06-07</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2018/06/07/notes/noteOfwebStation/" class="article-date">
+     <time datetime="2021-09-09T03:06:08.566Z" itemprop="dateModified">2021-09-09</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/ajax/" rel="tag">ajax</a>, <a class="tag-link-link" href="/tags/apache/" rel="tag">apache</a>, <a class="tag-link-link" href="/tags/django/" rel="tag">django</a>, <a class="tag-link-link" href="/tags/missjava/" rel="tag">missjava</a>, <a class="tag-link-link" href="/tags/vue/" rel="tag">vue</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>author: Ian</p>
+<h1 id="Django-的一些东西"><a href="#Django-的一些东西" class="headerlink" title="Django 的一些东西"></a>Django 的一些东西</h1><p><img src="http://lofrev.net/wp-content/photos/2017/04/http_logo_dpwnload.png" alt="http server/client"></p>
+<h2 id="利用nginxfd反向代理解决跨域问题"><a href="#利用nginxfd反向代理解决跨域问题" class="headerlink" title="利用nginxfd反向代理解决跨域问题"></a>利用nginxfd反向代理解决跨域问题</h2><p>纠结了很久的跨域问题。。。。。。一直配置Django。。。。。问题重重，从配置方面这条路还没找到解决方案，如以后确认无误后就再放在这儿。告慰前面付出的种种艰辛 😓😀</p>
+<p>来自(这儿)[<a target="_blank" rel="noopener" href="https://www.jb51.net/article/105786.htm]">https://www.jb51.net/article/105786.htm]</a></p>
+<p>方法是： 打开<code>nginx</code>默认配置文件<code>/etc/nginx/sites-available/default</code><br>更改如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">## demo listen 5017 proxy 5000 and 5001 ##</span><br><span class="line">server &#123;</span><br><span class="line"> listen 5017; </span><br><span class="line"> server_name a.xxx.com;</span><br><span class="line"> access_log /var/log/nginx/a.access.log;</span><br><span class="line"> error_log /var/log/nginx/a.error.log;</span><br><span class="line"> root html;</span><br><span class="line"> index index.html index.htm index.php;</span><br><span class="line"> ## send request back to flask ##</span><br><span class="line"> location / &#123;</span><br><span class="line">  proxy_pass http://127.0.0.1:5000/ ; </span><br><span class="line"> #Proxy Settings</span><br><span class="line">  proxy_redirect off;</span><br><span class="line">  proxy_set_header Host $host;</span><br><span class="line">  proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">  proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;</span><br><span class="line">  proxy_max_temp_file_size 0;</span><br><span class="line">  proxy_connect_timeout 90;</span><br><span class="line">  proxy_send_timeout 90;</span><br><span class="line">  proxy_read_timeout 90;</span><br><span class="line">  proxy_buffer_size 4k;</span><br><span class="line">  proxy_buffers 4 32k;</span><br><span class="line">  proxy_busy_buffers_size 64k;</span><br><span class="line"> &#125;</span><br><span class="line"> location /proxy &#123;</span><br><span class="line">  rewrite ^.+proxy/?(.*)$ /$1 break;</span><br><span class="line">  proxy_pass http://127.0.0.1:5001/ ; </span><br><span class="line"> #Proxy Settings</span><br><span class="line">  proxy_redirect off;</span><br><span class="line">  proxy_set_header Host $host;</span><br><span class="line">  proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">  proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;</span><br><span class="line">  proxy_max_temp_file_size 0;</span><br><span class="line">  proxy_connect_timeout 90;</span><br><span class="line">  proxy_send_timeout 90;</span><br><span class="line">  proxy_read_timeout 90;</span><br><span class="line">  proxy_buffer_size 4k;</span><br><span class="line">  proxy_buffers 4 32k;</span><br><span class="line">  proxy_busy_buffers_size 64k;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">## End a.xxx.com ##</span><br></pre></td></tr></table></figure>
+<p>很显然，这种解决方法仅仅适用于同服务器，架设两个网站。进行跨域访问。<br>所以这种东西……就很欠缺。  或者<code>nginx</code>也支持多服务器“并联”？ </p>
+<p>但这种解决方案依然不能解决两个“严格无关”的网站通信。 </p>
+<h5 id="摒弃java后的’欢乐’-时光"><a href="#摒弃java后的’欢乐’-时光" class="headerlink" title="摒弃java后的’欢乐’?时光?"></a>摒弃<code>java</code>后的’欢乐’?时光?</h5><h2 id="Django-的前端相关"><a href="#Django-的前端相关" class="headerlink" title="Django 的前端相关"></a>Django 的前端相关</h2><p>[^_^]虽然我前端不用这个吧，但就一记录。届时估计还是回来翻Django官方文档的。<br>摘一个看一个牛逼哄哄的东西：<br>Removing hardcoded URLs in templates<br>Remember, when we wrote the link to a question in the polls/index.html template, the link was partially hardcoded like this</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/polls/&#123;&#123; question.id &#125;&#125;/&quot;</span>&gt;</span>&#123;&#123; question.question_text &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The problem with this hardcoded, tightly-coupled approach is that it becomes challenging to change URLs on projects with a lot of templates. However, since you defined the name argument in the path() functions in the polls.urls module, you can remove a reliance on specific URL paths defined in your url configurations by using the <code>\&#123;\% url \%\&#125;</code> template tag:<br>The problem with this hardcoded, tightly-coupled approach is that it becomes challenging to change URLs on projects with a lot of templates. However, since you defined the name argument in the path() functions in the polls.urls module, you can remove a reliance on specific URL paths defined in your url configurations by using the <code>\&#123;\% url \%\&#125;</code> template tag:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&#123;% url &#x27;detail&#x27; question.id %&#125;&quot;</span>&gt;</span>&#123;&#123; question.question_text &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The way this works is by looking up the URL definition as specified in the polls.urls module. You can see exactly where the URL name of ‘detail’ is defined below:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># the &#x27;name&#x27; value as called by the &#123;% url %&#125; template tag</span><br><span class="line">path(&#x27;<span class="tag">&lt;<span class="name">int:question_id</span>&gt;</span>/&#x27;, views.detail, name=&#x27;detail&#x27;),</span><br></pre></td></tr></table></figure>
+
+<p>If you want to change the URL of the polls detail view to something else, perhaps to something like polls/specifics/12/ instead of doing it in the template (or templates) you would change it in polls/urls.py:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># added the word &#x27;specifics&#x27;</span><br><span class="line">path(&#x27;specifics/<span class="tag">&lt;<span class="name">int:question_id</span>&gt;</span>/&#x27;, views.detail, name=&#x27;detail&#x27;),</span><br></pre></td></tr></table></figure>
+<h5 id="Namespacing-URL-names"><a href="#Namespacing-URL-names" class="headerlink" title="Namespacing URL names"></a>Namespacing URL names</h5><p>The answer is to add namespaces to your URLconf. In the polls/urls.py file, go ahead and add an app_name to set the application namespace:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from django.urls import path</span><br><span class="line"></span><br><span class="line">from . import views</span><br><span class="line"></span><br><span class="line">app_name = &#x27;polls&#x27;</span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(&#x27;&#x27;, views.index, name=&#x27;index&#x27;),</span><br><span class="line">    path(&#x27;<span class="tag">&lt;<span class="name">int:question_id</span>&gt;</span>/&#x27;, views.detail, name=&#x27;detail&#x27;),</span><br><span class="line">    path(&#x27;<span class="tag">&lt;<span class="name">int:question_id</span>&gt;</span>/results/&#x27;, views.results, name=&#x27;results&#x27;),</span><br><span class="line">    path(&#x27;<span class="tag">&lt;<span class="name">int:question_id</span>&gt;</span>/vote/&#x27;, views.vote, name=&#x27;vote&#x27;),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>Change your polls/index.html template from:<br>polls/templates/polls/index.html¶</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&#123;% url &#x27;detail&#x27; question.id %&#125;&quot;</span>&gt;</span>&#123;&#123; question.question_text &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>to point at the namespaced detail view:<br>polls/templates/polls/index.html¶</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&#123;% url &#x27;polls:detail&#x27; question.id %&#125;&quot;</span>&gt;</span>&#123;&#123; question.question_text &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h3><p>其中，很令人头疼的便是版本。 如果遇到什么莫名其妙的错，请查看是否是版本的原因。<br>这里的版本原因并不☞一些人说的库依赖严重，好像开发者版本更迭不考虑兼容——或者说居然勤奋的接口重换那般严重。<br>此处仅仅☞在运行新版本时否个方法时，或许会莫名其妙引发一个早已摒弃的函数错误。这时候就可能是在折腾版本是导致有的不同版本有文件残留。在运行时莫名其妙的被<code>import</code>了然后它有调取其他东西，但是找不到的…  </p>
+<p>这时候轻则<code>pip uninstall</code> 重则环境重建。所以可见虚拟环境还是挺有用的嘛——</p>
+<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p>全名： <code>Model</code> 、<code>View</code>、<code>Controller</code>。模型，视图，控制器这种功能分离的软件设计规范。所以它是通用的…不要和爪哇捆绑，搞得和某个神奇技术一般…   (⊙﹏⊙)</p>
+<hr>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>在安装之后，使用<code>django-admin startproject </code>+名字来初始化一个工程。   对比到<code>python</code>中就是创建好了文档目录，还在文件中写入相关框架代码，以此支持运行。</p>
+<h3 id="试一下"><a href="#试一下" class="headerlink" title="试一下?"></a>试一下?</h3><p><code>python manage.py runserver</code><br>便可开启服务器，这时候访问相应端口，就一个欢迎界面，提示嗯~ o(<em>￣▽￣</em>)o，你能开跑了。</p>
+<h4 id="再试一下？"><a href="#再试一下？" class="headerlink" title="再试一下？"></a>再试一下？</h4><p>在11版本中有<code>\admin</code>地址可以访问，访问之后便是一个登陆界面.<font color=#ef0000>但</font>,并不知道用户名和密码啊~   emm… 不过好处是能看到这个页面至少保证了<code>django</code>在<code>render</code>一个<code>.html</code>页面时是正常的。而之前说的<font color=#9e0000>老版本残留</font>就会导致<code>render</code>时出错。</p>
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>根目录下，’项目名文件’是项目容器😰<br><code>manage.py</code> 命令行工具，emm 类似于<code>python click库</code>的命令行程序，使用参数干不同的事情。<br>进入到项目容器中，其中<code>settings.py</code>顾名思义<br><code>urls.py</code>同上，管理各个<code>url</code>通往哪里<br><code>wsgl.py</code>某个兼容啥，现在不用管…</p>
+<h3 id="得知结构之后"><a href="#得知结构之后" class="headerlink" title="得知结构之后"></a>得知结构之后</h3><p>然后就能</p>
+<ol>
+<li><p>在<code>urls.py</code>里愉快的添加各个功能url。这里面就一个urlpatterns列表，使用<code>djangol.conf.urls.url</code>方法来配置。<br>不过其对应的执行函数都需要一个<code>request</code>来接受请求数据。 <code>return</code>回一个页面~ 现在用到的有<code>django,shortcuts.render 及 render_to_response</code>出来的，以及<code>django.http.HttpResponse</code>出来的东西。</p>
+</li>
+<li><p>嗯…… <code>ulr</code> 链接的执行方法详情就放在新创建的<code>view.py</code>中管理。</p>
+</li>
+<li><p>而在<code>view</code>中需要渲染的html文件则放置在根目录新创建的<code>templates</code>文件夹中。通过在<code>setting.py</code>中的’TEMPLATES’列表中的不知名字典(因为它确实没取名啊😔)de<code>DIRS</code>元素来指路。</p>
+</li>
+</ol>
+<h3 id="这下可以很厉害了"><a href="#这下可以很厉害了" class="headerlink" title="这下可以很厉害了"></a>这下可以很厉害了</h3><p>进而进行数据库配置—— 还在<code>setting.py</code>中的’DATABASES’来指路。<br>但Django规定要使用模型，就要创建一个爱怕怕<code>app</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">django-admin startapp TestModel 🦑</span><br></pre></td></tr></table></figure>
+<p>再将此爱怕怕领到<code>setting.py</code>中<code>NSTALLED_APPS</code>中签一下到。<br>随后在<code>TestModel</code>下的<code>models</code>中创建继承于<code>django.db.models.Model</code>的数据类，然后使用隶属于<code>models</code>下的方法来制定数据类型eg:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name = models.CharField(max_length=<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>毕竟不能直接通过Python的自由类嘛… 然后也肯定不能通过python的制定类型… 毕竟python数据类型和MySQL天差地别。</p>
+</blockquote>
+<p><font color=a00070>最后</font><br>再回到命令行中使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python manage.py migrate        //创建表结构</span><br><span class="line">python manage.py makemigrations //通知更改</span><br><span class="line">python manage.py testModel      // 创建表结构 😲❓</span><br><span class="line">正式拉入编制之后就能用了。</span><br></pre></td></tr></table></figure>
+<p>2019年1月23日</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- Change your models(in *models.py*)</span><br><span class="line">- Run *python manage.py makemigrations* to create migration for those changes</span><br><span class="line">- Run *python manage.py migrate* to apply those changes to the database</span><br></pre></td></tr></table></figure>
+<p>Of courses, If Null Run <em>python manage.py migrate</em> can make a models.py whitch has nothings.</p>
+<h4 id="那么这个数据库怎么操作呢？"><a href="#那么这个数据库怎么操作呢？" class="headerlink" title="那么这个数据库怎么操作呢？"></a>那么这个数据库怎么操作呢？</h4><p>自然是到<code>urls.py</code>中添加🔗链接到方法的路<br>再到容器里面添加t<code>estdb.py</code>来说明方法详细。</p>
+<h5 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">实例化类</span><br><span class="line">直接.save()即保存</span><br><span class="line">未实例化类，<span class="built_in">all</span>标识查找全部</span><br><span class="line">.objects.<span class="built_in">filter</span>(填写删选条件)</span><br><span class="line">.objects.get(获取)</span><br><span class="line">.order_by(排序条件)</span><br><span class="line">更改则是将查出来的东西直接修改.update(修改东西)</span><br><span class="line">再.save保存</span><br><span class="line">删除便是.delete()</span><br><span class="line">``.</span><br><span class="line">差不多了  之后的详细再随情况更新。</span><br><span class="line"></span><br><span class="line"><span class="comment">### 那么数据库表多了怎么一键生成对应类呢？</span></span><br><span class="line">```shell</span><br><span class="line">python manage.py inspectdb  //自动生成models模型文件</span><br><span class="line">python manage.py inspectdb &gt; app/models.py      //假设有了名为<span class="string">&#x27;app&#x27;</span>的爱怕怕</span><br><span class="line">// 老一套</span><br><span class="line">python manage.py makemigrations</span><br><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
+<p>但是会将之前<code>models.py</code>中的东西删掉… 还会把数据库中的表名重命名… 按它的规矩来生成，嗯…其实也🆗的。</p>
+<h2 id="我爱Java-2018年6月24日16点40分的我由衷的写到"><a href="#我爱Java-2018年6月24日16点40分的我由衷的写到" class="headerlink" title="我爱Java 2018年6月24日16点40分的我由衷的写到"></a>我爱Java 2018年6月24日16点40分的我由衷的写到</h2><p>在<code>MySQL</code>中读取<code>blob</code>存储的字段时，使用<code>BinaryField</code>不可使用其逆向生成的模型读取方式。当然，对照表如下</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x27;AutoField&#x27;: &#x27;integer AUTO<span class="emphasis">_INCREMENT&#x27;,</span></span><br><span class="line"><span class="emphasis">&#x27;BigAutoField&#x27;: &#x27;bigint AUTO_</span>INCREMENT&#x27;,</span><br><span class="line">&#x27;BinaryField&#x27;: &#x27;longblob&#x27;,</span><br><span class="line">&#x27;BooleanField&#x27;: &#x27;bool&#x27;,</span><br><span class="line">&#x27;CharField&#x27;: &#x27;varchar(%(max<span class="emphasis">_length)s)&#x27;,</span></span><br><span class="line"><span class="emphasis">&#x27;CommaSeparatedIntegerField&#x27;: &#x27;varchar(%(max_</span>length)s)&#x27;,</span><br><span class="line">&#x27;DateField&#x27;: &#x27;date&#x27;,</span><br><span class="line">&#x27;DateTimeField&#x27;: &#x27;datetime&#x27;,</span><br><span class="line">&#x27;DecimalField&#x27;: &#x27;numeric(%(max<span class="emphasis">_digits)s, %(decimal_</span>places)s)&#x27;,</span><br><span class="line">&#x27;DurationField&#x27;: &#x27;bigint&#x27;,</span><br><span class="line">&#x27;FileField&#x27;: &#x27;varchar(%(max<span class="emphasis">_length)s)&#x27;,</span></span><br><span class="line"><span class="emphasis">&#x27;FilePathField&#x27;: &#x27;varchar(%(max_</span>length)s)&#x27;,</span><br><span class="line">&#x27;FloatField&#x27;: &#x27;double precision&#x27;,</span><br><span class="line">&#x27;IntegerField&#x27;: &#x27;integer&#x27;,</span><br><span class="line">&#x27;BigIntegerField&#x27;: &#x27;bigint&#x27;,</span><br><span class="line">&#x27;IPAddressField&#x27;: &#x27;char(15)&#x27;,</span><br><span class="line">&#x27;GenericIPAddressField&#x27;: &#x27;char(39)&#x27;,</span><br><span class="line">&#x27;NullBooleanField&#x27;: &#x27;bool&#x27;,</span><br><span class="line">&#x27;OneToOneField&#x27;: &#x27;integer&#x27;,</span><br><span class="line">&#x27;PositiveIntegerField&#x27;: &#x27;integer UNSIGNED&#x27;,</span><br><span class="line">&#x27;PositiveSmallIntegerField&#x27;: &#x27;smallint UNSIGNED&#x27;,</span><br><span class="line">&#x27;SlugField&#x27;: &#x27;varchar(%(max<span class="emphasis">_length)s)&#x27;,</span></span><br><span class="line"><span class="emphasis">&#x27;SmallIntegerField&#x27;: &#x27;smallint&#x27;,</span></span><br><span class="line"><span class="emphasis">&#x27;TextField&#x27;: &#x27;longtext&#x27;,</span></span><br><span class="line"><span class="emphasis">&#x27;TimeField&#x27;: &#x27;time&#x27;,</span></span><br><span class="line"><span class="emphasis">&#x27;UUIDField&#x27;: &#x27;char(32)&#x27;,</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
+<p>以上是一部分，具体点<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sun1994/p/8566988.html">这里</a></p>
+<h5 id="模型字段名称"><a href="#模型字段名称" class="headerlink" title="模型字段名称"></a>模型字段名称</h5><p>在逆向生成时，我遇到过一次将数据库名修改的先例，不过后来似乎没有修改过。  然后就是驼峰命名法的字段可能emm也是因为此我才开始写这些信息，就是，驼峰命名法的字段可能在模型字段中为全小写。  还有就是<code>Django</code>莫名其妙的的编码错误，真的是一分钟编程，一小时修改编码…而且调试起来真的…我目前的调试方式极为原始，所以感觉真的<code>不想编程</code>嗯… </p>
+<h4 id="Django-返回文件下载"><a href="#Django-返回文件下载" class="headerlink" title="Django 返回文件下载"></a>Django 返回文件下载</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">readFile</span>(<span class="params">fn, buf_size=<span class="number">262144</span></span>):</span>  <span class="comment"># 大文件下载，设定缓存大小</span></span><br><span class="line">    f = <span class="built_in">open</span>(fn, <span class="string">&quot;rb&quot;</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:  <span class="comment"># 循环读取</span></span><br><span class="line">        c = f.read(buf_size)</span><br><span class="line">        <span class="keyword">if</span> c:</span><br><span class="line">            <span class="keyword">yield</span> c</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    f.close()</span><br><span class="line">response = HttpResponse(readFile(filePath), content_type=<span class="string">&#x27;APPLICATION/OCTET-STREAM&#x27;</span>)  <span class="comment"># 设定文件头，这种设定可以让任意文件都能正确下载，而且已知文本文件不是本地打开</span></span><br><span class="line">fileName = <span class="string">&#x27;haya&#x27;</span></span><br><span class="line">fileType = <span class="string">&#x27;.docx&#x27;</span></span><br><span class="line">response[<span class="string">&#x27;Content-Disposition&#x27;</span>] = <span class="string">&#x27;attachment; filename=&#x27;</span> + fileName.encode(<span class="string">&#x27;utf-8&#x27;</span>) + fileType.encode(<span class="string">&#x27;utf-8&#x27;</span>)  <span class="comment"># 设定传输给客户端的文件名称</span></span><br><span class="line">response[<span class="string">&#x27;Content-Length&#x27;</span>] = os.path.getsize(filePath)  <span class="comment"># 传输给客户端的文件大小</span></span><br><span class="line"><span class="keyword">return</span> response </span><br></pre></td></tr></table></figure>
+
+<h4 id="Python-Docx编辑"><a href="#Python-Docx编辑" class="headerlink" title="Python Docx编辑"></a>Python Docx编辑</h4><h5 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在`.docx`文件中将需要替换的位置 使用变量站位，写法&#123;&#123; placheholdParaName &#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><font color=red>使用文件时，只能写做<code>&#123;&#123;placheholdParaName&#125;&#125;</code>不能有空格…另外<code>docx</code>使用<code>docx</code>中的<code>Document</code>读入即可</font></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tpl = DocxTemplate(self.prjRootPath + <span class="string">&#x27;/word_template/&#x27;</span> + <span class="string">&quot;word_template.docx&quot;</span>)</span><br><span class="line">sub1 = tpl.new_subdoc()</span><br><span class="line">sub1.subdocx = Document(temPath + <span class="string">&#x27;sub1_bond.docx&#x27;</span>)</span><br><span class="line">subContext[<span class="string">&#x27;sub1&#x27;</span>] = sub1</span><br></pre></td></tr></table></figure>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">上述中，只能写作……难道是因为使用&#123;&#123;someThing&#125;&#125;这种写法而隐藏了？！！</span><br><span class="line">那么，今后写彩带注释岂不是不需要使用^<span class="emphasis">_^而直接使用双花括号的写法就能直接隐藏了么(⊙o⊙ ) 　凄い</span></span><br></pre></td></tr></table></figure>
+<p><strong>Py中</strong>：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> docxtpl <span class="keyword">import</span> DocxTemplate, InlineImage</span><br><span class="line"><span class="keyword">from</span> docx.shared <span class="keyword">import</span> Mm, Inches, Pt</span><br><span class="line">doc = DocxTemplate(<span class="string">&quot;my_word_template.docx&quot;</span>)</span><br><span class="line">myimage = InlineImage(doc,</span><br><span class="line"><span class="string">&#x27;C:/Users/GuPengxiang/Pictures/ha.jpg&#x27;</span>,width=Mm(<span class="number">20</span>))</span><br><span class="line">context = &#123; <span class="string">&#x27;fundName&#x27;</span> : <span class="string">u&#x27;这里是基金名称&#x27;</span>, <span class="string">&#x27;stars&#x27;</span>:<span class="string">u&#x27;五星级琉璃六&#x27;</span>, <span class="string">&#x27;</span></span><br><span class="line"><span class="string">bench&#x27;</span>: <span class="string">u&#x27;对比基金&#x27;</span>, <span class="string">&#x27;income&#x27;</span>: <span class="string">u&#x27;12&#x27;</span>, <span class="string">&#x27;bb&#x27;</span>: <span class="string">u&#x27;0.1%&#x27;</span>, <span class="string">&#x27;image0&#x27;</span> : myimage&#125;</span><br><span class="line">doc.render(context)</span><br><span class="line">doc.save(<span class="string">&quot;generated_doc.docx&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="生成echarts图表图片"><a href="#生成echarts图表图片" class="headerlink" title="生成echarts图表图片"></a>生成echarts图表图片</h4><h5 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更新软件列表 &amp; 更新软件</span></span><br><span class="line">sudo apt-get update    </span><br><span class="line">sudo apt-get upgrade</span><br><span class="line"><span class="comment"># 下载包</span></span><br><span class="line">pip install pyecharts-snapshot</span><br><span class="line">wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.5.0-beta-linux-ubuntu-xenial-x86_64.tar.gz</span><br><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar -xzvf phantomjs-2.5.0-beta-linux-ubuntu-xenial-x86_64.tar.gz</span><br><span class="line"><span class="comment"># 进入路径</span></span><br><span class="line"><span class="built_in">cd</span> phantomjs-2.5.0-beta-ubuntu-xenial/bin</span><br><span class="line"><span class="comment"># 赋予权限</span></span><br><span class="line">chmod +x phantomjs</span><br><span class="line"><span class="comment"># 查看版本号</span></span><br><span class="line">phantomjs -v  </span><br><span class="line"><span class="comment"># 若显示版本号，如 2.1.1 则生效</span></span><br></pre></td></tr></table></figure>
+<h5 id="生成图片"><a href="#生成图片" class="headerlink" title="生成图片"></a>生成图片</h5><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyecharts <span class="keyword">import</span> Line, Pie, Grid</span><br><span class="line"><span class="keyword">from</span> pyecharts_snapshot.main <span class="keyword">import</span> make_a_snapshot</span><br><span class="line"></span><br><span class="line">attr = [<span class="string">&quot;衬衫&quot;</span>, <span class="string">&quot;羊毛衫&quot;</span>, <span class="string">&quot;雪纺衫&quot;</span>, <span class="string">&quot;裤子&quot;</span>, <span class="string">&quot;高跟鞋&quot;</span>, <span class="string">&quot;袜子&quot;</span>]</span><br><span class="line">v1 = [<span class="number">5</span>, <span class="number">20</span>, <span class="number">36</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">100</span>]</span><br><span class="line">v2 = [<span class="number">55</span>, <span class="number">60</span>, <span class="number">16</span>, <span class="number">20</span>, <span class="number">15</span>, <span class="number">80</span>]</span><br><span class="line">line = Line(<span class="string">&quot;折线图示例&quot;</span>)</span><br><span class="line">line.add(<span class="string">&quot;商家A&quot;</span>, attr, v1, mark_point=[<span class="string">&quot;average&quot;</span>])</span><br><span class="line">line.add(<span class="string">&quot;商家B&quot;</span>, attr, v2, is_smooth=<span class="literal">True</span>, mark_line=[<span class="string">&quot;max&quot;</span>, <span class="string">&quot;average&quot;</span>])</span><br><span class="line">line.render(<span class="string">&#x27;test.html&#x27;</span>)</span><br><span class="line"></span><br><span class="line">make_a_snapshot(<span class="string">&#x27;test.html&#x27;</span>, <span class="string">&#x27;test.pdf&#x27;</span>)</span><br><span class="line"><span class="comment"># 或者直接生成</span></span><br><span class="line">line.render(<span class="string">&#x27;test.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><font color= #f0aabb>在生成图片时，插件包文件源码中有Log，但却是print出来的，而在部署环境中不允许出现print，所以…… 得在包源码中将之屏蔽</font></p>
+<h5 id="连续生成图片"><a href="#连续生成图片" class="headerlink" title="连续生成图片"></a>连续生成图片</h5><p>用以上方法来生成图片是…很慢的🐢⬅这个速度。但可以通过使用为渲染创建一个默认配置环境来避免多次生成环境配置。所以——  具体来看<code>pyecharts</code>中的<a target="_blank" rel="noopener" href="http://pyecharts.org/#/zh-cn/prepare">高级说明</a>🕶</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyecharts <span class="keyword">import</span> Bar, Line</span><br><span class="line"><span class="keyword">from</span> pyecharts.engine <span class="keyword">import</span> create_default_environment</span><br><span class="line"></span><br><span class="line">bar = Bar(<span class="string">&quot;我的第一个图表&quot;</span>, <span class="string">&quot;这里是副标题&quot;</span>)</span><br><span class="line">bar.add(<span class="string">&quot;服装&quot;</span>, [<span class="string">&quot;衬衫&quot;</span>, <span class="string">&quot;羊毛衫&quot;</span>, <span class="string">&quot;雪纺衫&quot;</span>, <span class="string">&quot;裤子&quot;</span>, <span class="string">&quot;高跟鞋&quot;</span>, <span class="string">&quot;袜子&quot;</span>], [<span class="number">5</span>, <span class="number">20</span>, <span class="number">36</span>, <span class="number">10</span>, <span class="number">75</span>, <span class="number">90</span>])</span><br><span class="line"></span><br><span class="line">line = Line(<span class="string">&quot;我的第一个图表&quot;</span>, <span class="string">&quot;这里是副标题&quot;</span>)</span><br><span class="line">line.add(<span class="string">&quot;服装&quot;</span>, [<span class="string">&quot;衬衫&quot;</span>, <span class="string">&quot;羊毛衫&quot;</span>, <span class="string">&quot;雪纺衫&quot;</span>, <span class="string">&quot;裤子&quot;</span>, <span class="string">&quot;高跟鞋&quot;</span>, <span class="string">&quot;袜子&quot;</span>], [<span class="number">5</span>, <span class="number">20</span>, <span class="number">36</span>, <span class="number">10</span>, <span class="number">75</span>, <span class="number">90</span>])</span><br><span class="line"></span><br><span class="line">env = create_default_environment(<span class="string">&quot;html&quot;</span>)</span><br><span class="line"><span class="comment"># 为渲染创建一个默认配置环境</span></span><br><span class="line"><span class="comment"># create_default_environment(filet_ype)</span></span><br><span class="line"><span class="comment"># file_type: &#x27;html&#x27;, &#x27;svg&#x27;, &#x27;png&#x27;, &#x27;jpeg&#x27;, &#x27;gif&#x27; or &#x27;pdf&#x27;</span></span><br><span class="line"></span><br><span class="line">env.render_chart_to_file(bar, path=<span class="string">&#x27;bar.html&#x27;</span>)</span><br><span class="line">env.render_chart_to_file(line, path=<span class="string">&#x27;line.html&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>(<em>￣▽￣</em>)o   如上</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><pre><code>在生成报表时， 由于采用的是浏览器截图的方式，在使用`phantomjs`时会自动判断图片是否加载完成（echarts在显示图表之前是有一段动画的……）然后再`pyecharts`中并没有关闭动画的接口，而echarts是有的。 但毕竟`echarts`是在做翻译，所以只要在&quot;Chart&quot;基类中，将`animation=False`就可以了。 我改的时候在`chart.py`文件的29行，def __init__中。
+</code></pre>
+<h2 id="SSl加密，https配置"><a href="#SSl加密，https配置" class="headerlink" title="SSl加密，https配置"></a>SSl加密，https配置</h2><p>虽然就配置过之后显得操作很简单，而且也很明显，但就配置之初着实还是费了一些功夫的。或许是因为大而全的东西懒得看，而网上搜索到的粘贴复制之词又太过片面，或许大家写的时候也就当作日记来写的，本就没准备让别人去参考。所以再加上搜索的时候俺表述词不达意，所以总是很曲折（呵，用谷歌搜外文网就不存在这问题，前面就谦虚一下🙃）</p>
+<h3 id="之前写的文档"><a href="#之前写的文档" class="headerlink" title="之前写的文档"></a>之前写的文档</h3><p>1 ssl加密部署步骤说明文档<br>一．申请ssl证书<br>1.生成csr文件，可使用openssl工具生成<br>(1)例:<code>openssl genrsa -des3 -out server.key 1024</code>   生成服务器key文件;<br>(2)例:<code>openssl req -new -key server.key -out server.csr</code>    生成服务器证书请求CSR文件;<br>或使用CSR文件生成工具生成(例<a target="_blank" rel="noopener" href="https://www.chinassl.net/ssltools/generator-csr.html%EF%BC%8C%E5%A1%AB%E5%86%99%E4%BF%A1%E6%81%AF%E5%90%8E%E7%82%B9%E5%87%BB%E7%94%9F%E6%88%90CSR%E6%96%87%E4%BB%B6%E5%8D%B3%E5%8F%AF">https://www.chinassl.net/ssltools/generator-csr.html，填写信息后点击生成CSR文件即可</a>)<br>（CSR文件中包括组织部门、国家地区、算法、以及邮箱和域名等信息）<br>2.申请/购买HTTPS证书， 填写与上述相同的信息，验证类型选择DNS，CSR生成选择提供CSR(即提供第一步生成的CSR文件)（例：在阿里云或腾讯等地，本文档撰写时是通过<a target="_blank" rel="noopener" href="https://freessl.org/">https://freessl.org/</a> 免费申请而来（一年有效期，单域名，））<br>二、验证域名所属关系<br>1.到域名管理控制台中选择云解析DNS, 选择域名，添加“记录”，记录类型选择‘TXT’，主机记录及记录值填写证书申请方提供内容。<br>2.等待1分钟或10分钟后，等待生效<br>3.点击验证<br>三、证书下载<br>验证通过后，下载网站提供证书，含（CA证书、服务器证书、服务器私钥）<br>四、Apache2部署开启SSL加密<br>更改httpd.conf 文件设置：<br>1.Listen {内网IP}:80<br>2.开启models<br>(1)LoadModule ssl_module modules/mod_ssl.so<br>(2)LoadModule socache_shmcb_module modules/mod_socache_shmcb.so<br>(3)LoadModule rewrite_module modules/mod_rewrite.so<br>(4)ServerName {与域名相同}（未测试是否必须相同）<br>3.http跳转到https:<br>(1)RewriteEngine on<br>(2)RewriteCond %{SERVER_PORT} !^443$<br>(3)RewriteRule ^/?(.*)$ https://%{SERVER_NAME}/$1 [L,R]<br>更改extra/httpd-ssl.conf 文件设置<br>1.Listen 443<br>2.ServerName <a target="_blank" rel="noopener" href="http://www.lejinrong.cn/">www.lejinrong.cn</a><br>3.ServerAdmin admin@lejinrong<br>4.SSLCertificateFile “c:/Apache24/conf/ssl/server.crt”<br>5.SSLCertificateKeyFile “c:/Apache24/conf/ssl/server.key”<br>第四步中crt文件指向服务器证书文件， 第五步中.key文件指向私钥文件<br>(其余部署方案或许有所不同，会使用CA证书)</p>
+<p>1.1 注意： 确保服务器中防火墙入站规则中添加了80端口和443端口。</p>
+<p>2 附：<br>2.1.1 本地测试方案：</p>
+<p>环境：wamp Apache 2.4.9<br>前言：wamp安装好后，默认的只有http服务，以下配置启用https服务<br>条件：在Apache安装目录下需要有一下文件<br>         [Apache安装目录]/modules/ mod_ssl.so<br>         [Apache安装目录]/bin/ openssl.exe, libeay32.dll, ssleay32.dll<br>         [Apache安装目录]/conf/ openssl.cnf<br>步骤：<br>一、修改配置文件httpd.conf，去掉下面行首的#（载入ssl模块和其他配置文件）<br>LoadModule socache_shmcb_module modules/mod_socache_shmcb.so<br>LoadModule ssl_module modules/mod_ssl.so<br>Include conf/extra/httpd-ssl.conf<br>二、认证文件生成（生成证书签发请求）<br>进入Apache安装目录的bin目录下，输入cmd，进入DOS窗口，输入以下命令<br>openssl req -new -out server.csr -config ../conf/openssl.cnf<br>回车后提示输入密码和确认密码，本机输入：keypasswd<br>后面会提示输入一系列的参数<br>……<br>Country Name (2 letter code) [AU]: （要求输入国家缩写，只能输入2个字母，这里输入cn）<br>State or Province Name (full name) [Some-State]: （要求输入州名或省名，这里输入hubei）<br>Locality Name (eg, city) []: （要求输入城市名，这里输入wuhan）<br>Organization Name (eg, company) [Internet Widgits Pty Ltd]: （要求输入组织名或公司名，这里输入gg）<br>Organizational Unit Name (eg, section) []: （要求输入部门名，这里输入gg）<br>Common Name (eg, YOUR name) []: （要求输入服务器域名或IP地址）<br>Email Address []: （要求输入邮件地址）<br>A challenge password[]:（要求输入密码）<br>An optional company name[]（要求输入公司别名，这里输入ggs）<br>…..<br>生成私钥，在DOS窗口下的Apache的bin目录下输入命令<br>openssl rsa -in privkey.pem -out server.key<br>然后要求输入之前 privkey.pem 的密码（keypasswd)<br>创建证书，输入命令<br>openssl x509 -in server.csr -out server.crt -req -signkey server.key -days 8000<br>回车后，显示创建成功，有效期为 8000 天<br>将Apache的bin目录下的server.csr、server.crt、server.key拷贝到Apache安装目录下的conf\ssl，若没有ssl文件则创建<br>打开Apache安装目录conf/extra/httpd-ssl.conf文件，设置SSLCertificateFile和SSLCertificateKeyFile<br>SSLCertificateFile “C:/apache2.4.9/conf/ssl/server.crt”<br>SSLCertificateKeyFile “C:/apache2.4.9/conf/ssl/server.key”<br>最后重启Apache服务，HTTPS服务的默认监听端口为443<br> <br>随后在本机中安装<code>server.crt</code>至<code>收信人的根证书颁发机构</code>即可不再提示证书无效<br>注意：在重启Apache时，若Apache服务启动不起来，则在Apache安装目录的bin目录下，输入httpd –t，可以根据提示来修改你的配置文件</p>
+<h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><p>现在是2018年8月25日16点01分 所以上面其实是一个月前写给别人看的文档。<br>在我搜的时候由于先在本地配置，尔后再网上找CA发证书，自我感觉这个步骤没有什么问题。就今天在</p>
+<h4 id="Apache配置双网站-https"><a href="#Apache配置双网站-https" class="headerlink" title="Apache配置双网站/https"></a>Apache配置双网站/https</h4><p>的时候，也是这样，先在本地通过不同端口测试，确定方案之后再在服务器上通过<code>ServerName</code>进行区分。<br>也就是启用<code>httpd-vhosts.conf</code>之后，再</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># Virtual Hosts</span></span><br><span class="line"><span class="section">#</span></span><br><span class="line"><span class="section"># Required modules: mod<span class="emphasis">_log_</span>config</span></span><br><span class="line"></span><br><span class="line"><span class="section"># If you want to maintain multiple domains/hostnames on your</span></span><br><span class="line"><span class="section"># machine you can setup VirtualHost containers for them. Most configurations</span></span><br><span class="line"><span class="section"># use only name-based virtual hosts so the server doesn&#x27;t need to worry about</span></span><br><span class="line"><span class="section"># IP addresses. This is indicated by the asterisks in the directives below.</span></span><br><span class="line"><span class="section">#</span></span><br><span class="line"><span class="section"># Please see the documentation at </span></span><br><span class="line"><span class="section"># <span class="xml">&lt;URL:http://httpd.apache.org/docs/2.4/vhosts/&gt;</span></span></span><br><span class="line"><span class="section"># for further details before you try to setup virtual hosts.</span></span><br><span class="line"><span class="section">#</span></span><br><span class="line"><span class="section"># You may use the command line option &#x27;-S&#x27; to verify your virtual host</span></span><br><span class="line"><span class="section"># configuration.</span></span><br><span class="line"></span><br><span class="line"><span class="section">#</span></span><br><span class="line"><span class="section"># VirtualHost example:</span></span><br><span class="line"><span class="section"># Almost any Apache directive may go into a VirtualHost container.</span></span><br><span class="line"><span class="section"># The first VirtualHost section is used for all requests that do not</span></span><br><span class="line"><span class="section"># match a ServerName or ServerAlias in any <span class="xml"><span class="tag">&lt;<span class="name">VirtualHost</span>&gt;</span></span> block.</span></span><br><span class="line"><span class="section">#</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">VirtualHost</span> <span class="attr">192.168.1.81:80</span>&gt;</span></span></span><br><span class="line"><span class="code">    ServerName www.lejinrong.cn</span></span><br><span class="line"><span class="code">    ServerAlias www.lejinrong.cn</span></span><br><span class="line"><span class="code">    ServerAdmin www.lejinrong.cn</span></span><br><span class="line"><span class="code">    #指定myweb项目的wsgi.py配置文件路径  </span></span><br><span class="line"><span class="code">    WSGIScriptAlias / D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V2/Fund_Evaluation_System/wsgi.py</span></span><br><span class="line"><span class="code">    #配置静态变量路径</span></span><br><span class="line"><span class="code">    Alias /static/ D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V2/static/</span></span><br><span class="line"><span class="code">    &lt;Directory D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V2/static&gt;  </span></span><br><span class="line"><span class="code">        Allow from all</span></span><br><span class="line"><span class="code">    &lt;/Directory&gt;</span></span><br><span class="line"><span class="code">    DocumentRoot &quot;D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V2&quot;</span></span><br><span class="line"><span class="code">    &lt;Directory &quot;D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V2&quot;&gt;  </span></span><br><span class="line"><span class="code">        Options Indexes FollowSymLinks</span></span><br><span class="line"><span class="code">        AllowOverride None</span></span><br><span class="line"><span class="code">    &lt;/Directory&gt;</span></span><br><span class="line"><span class="code">    RewriteEngine on</span></span><br><span class="line"><span class="code">    RewriteCond %&#123;SERVER_PORT&#125; !^400$</span></span><br><span class="line"><span class="code">    RewriteRule ^/?(.*)$ https://%&#123;SERVER_NAME&#125;/$1 [L,R]</span></span><br><span class="line"><span class="code">    ErrorLog &quot;logs/dummy-host.example.com-error.log&quot;</span></span><br><span class="line"><span class="code">    CustomLog &quot;logs/dummy-host.example.com-access.log&quot; common</span></span><br><span class="line"><span class="code">&lt;/VirtualHost&gt;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">VirtualHost</span> <span class="attr">192.168.1.81:8880</span>&gt;</span></span></span><br><span class="line"><span class="code">    ServerName lejinrong.cn</span></span><br><span class="line"><span class="code">    ServerAlias vip.lejinrong.cn</span></span><br><span class="line"><span class="code">    ServerAdmin vip.lejinrong.cn</span></span><br><span class="line"><span class="code">    #指定myweb项目的wsgi.py配置文件路径  </span></span><br><span class="line"><span class="code">    WSGIScriptAlias / D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V3/Fund_Evaluation_System/wsgi.py</span></span><br><span class="line"><span class="code">    #配置静态变量路径</span></span><br><span class="line"><span class="code">    Alias /static/ D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V3/static/</span></span><br><span class="line"><span class="code">    &lt;Directory D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V3/static&gt;</span></span><br><span class="line"><span class="code">        Allow from all</span></span><br><span class="line"><span class="code">    &lt;/Directory&gt;</span></span><br><span class="line"><span class="code">    DocumentRoot &quot;D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V3&quot;</span></span><br><span class="line"><span class="code">    &lt;Directory &quot;D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V3&quot;&gt;  </span></span><br><span class="line"><span class="code">        Options Indexes FollowSymLinks</span></span><br><span class="line"><span class="code">        AllowOverride None</span></span><br><span class="line"><span class="code">    &lt;/Directory&gt;</span></span><br><span class="line"><span class="code">    ErrorLog &quot;logs/dummy-host.example.com-error.log&quot;</span></span><br><span class="line"><span class="code">    CustomLog &quot;logs/dummy-host.example.com-access.log&quot; common</span></span><br><span class="line"><span class="code">    RewriteEngine on</span></span><br><span class="line"><span class="code">    RewriteCond %&#123;SERVER_PORT&#125; !^443$</span></span><br><span class="line"><span class="code">    RewriteRule ^/?(.*)$ https://%&#123;SERVER_NAME&#125;/$1 [L,R]</span></span><br><span class="line"><span class="code">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure>
+<p>同理，在<code>httpd-ssl.conf</code>中也是通过配置不同<code>VirtualHost</code>进行区分</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">#</span></span><br><span class="line"><span class="section"># This is the Apache server configuration file providing SSL support.</span></span><br><span class="line"><span class="section"># It contains the configuration directives to instruct the server how to</span></span><br><span class="line"><span class="section"># serve pages over an https connection. For detailed information about these </span></span><br><span class="line"><span class="section"># directives see <span class="xml">&lt;URL:http://httpd.apache.org/docs/2.4/mod/mod_ssl.html&gt;</span></span></span><br><span class="line"><span class="section"># </span></span><br><span class="line"><span class="section"># Do NOT simply read the instructions in here without understanding</span></span><br><span class="line"><span class="section"># what they do.  They&#x27;re here only as hints or reminders.  If you are unsure</span></span><br><span class="line"><span class="section"># consult the online docs. You have been warned.  </span></span><br><span class="line"><span class="section">#</span></span><br><span class="line"><span class="section"># Required modules: mod<span class="emphasis">_log_</span>config, mod<span class="emphasis">_setenvif, mod_</span>ssl,</span></span><br><span class="line"><span class="section">#          socache<span class="emphasis">_shmcb_</span>module (for default value of SSLSessionCache)</span></span><br><span class="line"></span><br><span class="line"><span class="section">#</span></span><br><span class="line"><span class="section"># Pseudo Random Number Generator (PRNG):</span></span><br><span class="line"><span class="section"># Configure one or more sources to seed the PRNG of the SSL library.</span></span><br><span class="line"><span class="section"># The seed data should be of good random quality.</span></span><br><span class="line"><span class="section"># WARNING! On some platforms /dev/random blocks if not enough entropy</span></span><br><span class="line"><span class="section"># is available. This means you then cannot use the /dev/random device</span></span><br><span class="line"><span class="section"># because it would lead to very long connection times (as long as</span></span><br><span class="line"><span class="section"># it requires to make more entropy available). But usually those</span></span><br><span class="line"><span class="section"># platforms additionally provide a /dev/urandom device which doesn&#x27;t</span></span><br><span class="line"><span class="section"># block. So, if available, use this one instead. Read the mod<span class="emphasis">_ssl User</span></span></span><br><span class="line"><span class="emphasis"><span class="section"># Manual for more details.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLRandomSeed startup file:/dev/random  512</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLRandomSeed startup file:/dev/urandom 512</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLRandomSeed connect file:/dev/random  512</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLRandomSeed connect file:/dev/urandom 512</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#</span></span></span><br><span class="line"><span class="emphasis"><span class="section"># When we also provide SSL we have to listen to the </span></span></span><br><span class="line"><span class="emphasis"><span class="section"># standard HTTP port (see above) and to the HTTPS port</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#</span></span></span><br><span class="line"><span class="emphasis"><span class="section">Listen 443</span></span></span><br><span class="line"><span class="emphasis"><span class="section">Listen 400</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#ServerName www.lejinrong.cn</span></span></span><br><span class="line"><span class="emphasis"><span class="section">##</span></span></span><br><span class="line"><span class="emphasis"><span class="section">##  SSL Global Context</span></span></span><br><span class="line"><span class="emphasis"><span class="section">##</span></span></span><br><span class="line"><span class="emphasis"><span class="section">##  All SSL configuration in this context applies both to</span></span></span><br><span class="line"><span class="emphasis"><span class="section">##  the main server and all SSL-enabled virtual hosts.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">##</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   SSL Cipher Suite:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   List the ciphers that the client is permitted to negotiate,</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   and that httpd will negotiate as the client of a proxied server.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   See the OpenSSL documentation for a complete list of ciphers, and</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   ensure these follow appropriate best practices for this deployment.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   httpd 2.2.30, 2.4.13 and later force-disable aNULL, eNULL and EXP ciphers,</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   while OpenSSL disabled these by default in 0.9.8zf/1.0.0r/1.0.1m/1.0.2a.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">SSLCipherSuite HIGH:MEDIUM:!MD5:!RC4:!3DES</span></span></span><br><span class="line"><span class="emphasis"><span class="section">SSLProxyCipherSuite HIGH:MEDIUM:!MD5:!RC4:!3DES</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#  By the end of 2016, only TLSv1.2 ciphers should remain in use.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#  Older ciphers should be disallowed as soon as possible, while the</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#  kRSA ciphers do not offer forward secrecy.  These changes inhibit</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#  older clients (such as IE6 SP2 or IE8 on Windows XP, or other legacy</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#  non-browser tooling) from successfully connecting.  </span></span></span><br><span class="line"><span class="emphasis"><span class="section">#</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#  To restrict mod_</span>ssl to use only TLSv1.2 ciphers, and disable</span></span><br><span class="line"><span class="section">#  those protocols which do not support forward secrecy, replace</span></span><br><span class="line"><span class="section">#  the SSLCipherSuite and SSLProxyCipherSuite directives above with</span></span><br><span class="line"><span class="section">#  the following two directives, as soon as practical.</span></span><br><span class="line"><span class="section"># SSLCipherSuite HIGH:MEDIUM:!SSLv3:!kRSA</span></span><br><span class="line"><span class="section"># SSLProxyCipherSuite HIGH:MEDIUM:!SSLv3:!kRSA</span></span><br><span class="line"></span><br><span class="line"><span class="section">#   User agents such as web browsers are not configured for the user&#x27;s</span></span><br><span class="line"><span class="section">#   own preference of either security or performance, therefore this</span></span><br><span class="line"><span class="section">#   must be the prerogative of the web server administrator who manages</span></span><br><span class="line"><span class="section">#   cpu load versus confidentiality, so enforce the server&#x27;s cipher order.</span></span><br><span class="line">SSLHonorCipherOrder on </span><br><span class="line"></span><br><span class="line"><span class="section">#   SSL Protocol support:</span></span><br><span class="line"><span class="section">#   List the protocol versions which clients are allowed to connect with.</span></span><br><span class="line"><span class="section">#   Disable SSLv3 by default (cf. RFC 7525 3.1.1).  TLSv1 (1.0) should be</span></span><br><span class="line"><span class="section">#   disabled as quickly as practical.  By the end of 2016, only the TLSv1.2</span></span><br><span class="line"><span class="section">#   protocol or later should remain in use.</span></span><br><span class="line">SSLProtocol all -SSLv3</span><br><span class="line">SSLProxyProtocol all -SSLv3</span><br><span class="line"></span><br><span class="line"><span class="section">#   Pass Phrase Dialog:</span></span><br><span class="line"><span class="section">#   Configure the pass phrase gathering process.</span></span><br><span class="line"><span class="section">#   The filtering dialog program (`builtin&#x27; is an internal</span></span><br><span class="line"><span class="section">#   terminal dialog) has to provide the pass phrase on stdout.</span></span><br><span class="line">SSLPassPhraseDialog  builtin</span><br><span class="line"></span><br><span class="line"><span class="section">#   Inter-Process Session Cache:</span></span><br><span class="line"><span class="section">#   Configure the SSL Session Cache: First the mechanism </span></span><br><span class="line"><span class="section">#   to use and second the expiring timeout (in seconds).</span></span><br><span class="line"><span class="section">#SSLSessionCache         &quot;dbm:c:/Apache24/logs/ssl<span class="emphasis">_scache&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">SSLSessionCache        &quot;shmcb:c:/Apache24/logs/ssl_</span>scache(512000)&quot;</span></span><br><span class="line">SSLSessionCacheTimeout  300</span><br><span class="line"></span><br><span class="line"><span class="section">#   OCSP Stapling (requires OpenSSL 0.9.8h or later)</span></span><br><span class="line"><span class="section">#</span></span><br><span class="line"><span class="section">#   This feature is disabled by default and requires at least</span></span><br><span class="line"><span class="section">#   the two directives SSLUseStapling and SSLStaplingCache.</span></span><br><span class="line"><span class="section">#   Refer to the documentation on OCSP Stapling in the SSL/TLS</span></span><br><span class="line"><span class="section">#   How-To for more information.</span></span><br><span class="line"><span class="section">#</span></span><br><span class="line"><span class="section">#   Enable stapling for all SSL-enabled servers:</span></span><br><span class="line"><span class="section">#SSLUseStapling On</span></span><br><span class="line"></span><br><span class="line"><span class="section">#   Define a relatively small cache for OCSP Stapling using</span></span><br><span class="line"><span class="section">#   the same mechanism that is used for the SSL session cache</span></span><br><span class="line"><span class="section">#   above.  If stapling is used with more than a few certificates,</span></span><br><span class="line"><span class="section">#   the size may need to be increased.  (AH01929 will be logged.)</span></span><br><span class="line"><span class="section">#SSLStaplingCache &quot;shmcb:c:/Apache24/logs/ssl<span class="emphasis">_stapling(32768)&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Seconds before valid OCSP responses are expired from the cache</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLStaplingStandardCacheTimeout 3600</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Seconds before invalid OCSP responses are expired from the cache</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLStaplingErrorCacheTimeout 600</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">##</span></span></span><br><span class="line"><span class="emphasis"><span class="section">## SSL Virtual Host Context</span></span></span><br><span class="line"><span class="emphasis"><span class="section">##</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;<span class="name">VirtualHost</span> <span class="attr">192.168.1.81:400</span>&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   General setup for the virtual host</span></span></span><br><span class="line"><span class="emphasis"><span class="section">DocumentRoot &quot;c:/Apache24/htdocs&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">ServerName www.lejinrong.cn</span></span></span><br><span class="line"><span class="emphasis"><span class="section">ServerAdmin admin@lejinrong.cn</span></span></span><br><span class="line"><span class="emphasis"><span class="section">ErrorLog &quot;c:/Apache24/logs/error.log&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">TransferLog &quot;c:/Apache24/logs/access.log&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   SSL Engine Switch:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Enable/Disable SSL for this virtual host.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">SSLEngine on</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Server Certificate:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Point SSLCertificateFile at a PEM encoded certificate.  If</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   the certificate is encrypted, then you will be prompted for a</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   pass phrase.  Note that a kill -HUP will prompt again.  Keep</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   in mind that if you have both an RSA and a DSA certificate you</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   can configure both in parallel (to also allow the use of DSA</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   ciphers, etc.)</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Some ECC cipher suites (http://www.ietf.org/rfc/rfc4492.txt)</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   require an ECC certificate which can also be configured in</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   parallel.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">SSLCertificateFile &quot;c:/Apache24/conf/ssl/server.crt&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLCertificateFile &quot;c:/Apache24/conf/server-dsa.crt&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLCertificateFile &quot;c:/Apache24/conf/server-ecc.crt&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Server Private Key:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   If the key is not combined with the certificate, use this</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   directive to point at the key file.  Keep in mind that if</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   you&#x27;ve both a RSA and a DSA private key you can configure</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   both in parallel (to also allow the use of DSA ciphers, etc.)</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   ECC keys, when in use, can also be configured in parallel</span></span></span><br><span class="line"><span class="emphasis"><span class="section">SSLCertificateKeyFile &quot;c:/Apache24/conf/ssl/server.key&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLCertificateKeyFile &quot;c:/Apache24/conf/server-dsa.key&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLCertificateKeyFile &quot;c:/Apache24/conf/server-ecc.key&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Server Certificate Chain:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Point SSLCertificateChainFile at a file containing the</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   concatenation of PEM encoded CA certificates which form the</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   certificate chain for the server certificate. Alternatively</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   the referenced file can be the same as SSLCertificateFile</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   when the CA certificates are directly appended to the server</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   certificate for convenience.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLCertificateChainFile &quot;c:/Apache24/conf/server-ca.crt&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Certificate Authority (CA):</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Set the CA certificate verification path where to find CA</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   certificates for client authentication or alternatively one</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   huge file containing all of them (file must be PEM encoded)</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Note: Inside SSLCACertificatePath you need hash symlinks</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#         to point to the certificate files. Use the provided</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#         Makefile to update the hash symlinks after changes.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLCACertificatePath &quot;c:/Apache24/conf/ssl.crt&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLCACertificateFile &quot;c:/Apache24/conf/ssl.crt/ca-bundle.crt&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Certificate Revocation Lists (CRL):</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Set the CA revocation path where to find CA CRLs for client</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   authentication or alternatively one huge file containing all</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   of them (file must be PEM encoded).</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   The CRL checking mode needs to be configured explicitly</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   through SSLCARevocationCheck (defaults to &quot;none&quot; otherwise).</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Note: Inside SSLCARevocationPath you need hash symlinks</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#         to point to the certificate files. Use the provided</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#         Makefile to update the hash symlinks after changes.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLCARevocationPath &quot;c:/Apache24/conf/ssl.crl&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLCARevocationFile &quot;c:/Apache24/conf/ssl.crl/ca-bundle.crl&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLCARevocationCheck chain</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Client Authentication (Type):</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Client certificate verification type and depth.  Types are</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   none, optional, require and optional_</span>no<span class="emphasis">_ca.  Depth is a</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   number which specifies how deeply to verify the certificate</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   issuer chain before deciding the certificate is not valid.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLVerifyClient require</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLVerifyDepth  10</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   TLS-SRP mutual authentication:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Enable TLS-SRP and set the path to the OpenSSL SRP verifier</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   file (containing login information for SRP user accounts). </span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Requires OpenSSL 1.0.1 or newer. See the mod_</span>ssl FAQ for</span></span><br><span class="line"><span class="section">#   detailed instructions on creating this file. Example:</span></span><br><span class="line"><span class="section">#   &quot;openssl srp -srpvfile c:/Apache24/conf/passwd.srpv -add username&quot;</span></span><br><span class="line"><span class="section">#SSLSRPVerifierFile &quot;c:/Apache24/conf/passwd.srpv&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">#   Access Control:</span></span><br><span class="line"><span class="section">#   With SSLRequire you can do per-directory access control based</span></span><br><span class="line"><span class="section">#   on arbitrary complex boolean expressions containing server</span></span><br><span class="line"><span class="section">#   variable checks and other lookup directives.  The syntax is a</span></span><br><span class="line"><span class="section">#   mixture between C and Perl.  See the mod<span class="emphasis">_ssl documentation</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   for more details.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#<span class="xml"><span class="tag">&lt;<span class="name">Location</span> /&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLRequire (    %&#123;SSL_</span>CIPHER&#125; !~ m/^(EXP|NULL)/ \</span></span><br><span class="line"><span class="section">#            and %&#123;SSL<span class="emphasis">_CLIENT_</span>S<span class="emphasis">_DN_</span>O&#125; eq &quot;Snake Oil, Ltd.&quot; \</span></span><br><span class="line"><span class="section">#            and %&#123;SSL<span class="emphasis">_CLIENT_</span>S<span class="emphasis">_DN_</span>OU&#125; in &#123;&quot;Staff&quot;, &quot;CA&quot;, &quot;Dev&quot;&#125; \</span></span><br><span class="line"><span class="section">#            and %&#123;TIME<span class="emphasis">_WDAY&#125; &gt;= 1 and %&#123;TIME_</span>WDAY&#125; &lt;= 5 \</span></span><br><span class="line"><span class="section">#            and %&#123;TIME<span class="emphasis">_HOUR&#125; &gt;= 8 and %&#123;TIME_</span>HOUR&#125; &lt;= 20       ) \</span></span><br><span class="line"><span class="section">#           or %&#123;REMOTE<span class="emphasis">_ADDR&#125; =~ m/^192\.76\.162\.[0-9]+$/</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#<span class="xml"><span class="tag">&lt;/<span class="name">Location</span>&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   SSL Engine Options:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Set various options for the SSL engine.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   o FakeBasicAuth:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     Translate the client X.509 into a Basic Authorisation.  This means that</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     the standard Auth/DBMAuth methods can be used for access control.  The</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     user name is the `one line&#x27; version of the client&#x27;s X.509 certificate.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     Note that no password is obtained from the user. Every entry in the user</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     file needs this password: `xxj31ZMTZzkVA&#x27;.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   o ExportCertData:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     This exports two additional environment variables: SSL_</span>CLIENT<span class="emphasis">_CERT and</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     SSL_</span>SERVER<span class="emphasis">_CERT. These contain the PEM-encoded certificates of the</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     server (always existing) and the client (only existing when client</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     authentication is used). This can be used to import the certificates</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     into CGI scripts.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   o StdEnvVars:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     This exports the standard SSL/TLS related `SSL_</span><span class="emphasis">*&#x27; environment variables.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     Per default this exportation is switched off for performance reasons,</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     because the extraction step is an expensive operation and is usually</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     useless for serving static content. So one usually enables the</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     exportation for CGI and SSI requests only.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   o StrictRequire:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     This denies access when &quot;SSLRequireSSL&quot; or &quot;SSLRequire&quot; applied even</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     under a &quot;Satisfy any&quot; situation, i.e. when it applies access is denied</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     and no other module can change it.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   o OptRenegotiate:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     This enables optimized SSL connection renegotiation handling when SSL</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     directives are used in per-directory context. </span></span></span><br><span class="line"><span class="emphasis"><span class="section">#SSLOptions +FakeBasicAuth +ExportCertData +StrictRequire</span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;<span class="name">FilesMatch</span> &quot;\<span class="attr">.</span>(<span class="attr">cgi</span>|<span class="attr">shtml</span>|<span class="attr">phtml</span>|<span class="attr">php</span>)$&quot;&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section">    SSLOptions +StdEnvVars</span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;/<span class="name">FilesMatch</span>&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;<span class="name">Directory</span> &quot;<span class="attr">c:</span>/<span class="attr">Apache24</span>/<span class="attr">cgi-bin</span>&quot;&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section">    SSLOptions +StdEnvVars</span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;/<span class="name">Directory</span>&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   SSL Protocol Adjustments:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   The safe and default but still SSL/TLS standard compliant shutdown</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   approach is that mod_ssl sends the close notify alert but doesn&#x27;t wait for</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   the close notify alert from client. When you need a different shutdown</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   approach you can use one of the following variables:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   o ssl-unclean-shutdown:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     This forces an unclean shutdown when the connection is closed, i.e. no</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     SSL close notify alert is sent or allowed to be received.  This violates</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     the SSL/TLS standard but is needed for some brain-dead browsers. Use</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     this when you receive I/O errors because of the standard approach where</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     mod_ssl sends the close notify alert.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   o ssl-accurate-shutdown:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     This forces an accurate shutdown when the connection is closed, i.e. a</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     SSL close notify alert is send and mod_ssl waits for the close notify</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     alert of the client. This is 100% SSL/TLS standard compliant, but in</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     practice often causes hanging connections with brain-dead browsers. Use</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     this only for browsers where you know that their SSL implementation</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#     works correctly. </span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Notice: Most problems of broken clients are also related to the HTTP</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   keep-alive facility, so you usually additionally want to disable</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   keep-alive for those clients, too. Use variable &quot;nokeepalive&quot; for this.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Similarly, one has to force some clients to use HTTP/1.0 to workaround</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   their broken HTTP/1.1 implementation. Use variables &quot;downgrade-1.0&quot; and</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   &quot;force-response-1.0&quot; for this.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">BrowserMatch &quot;MSIE [2-5]&quot; \</span></span></span><br><span class="line"><span class="emphasis"><span class="section">         nokeepalive ssl-unclean-shutdown \</span></span></span><br><span class="line"><span class="emphasis"><span class="section">         downgrade-1.0 force-response-1.0</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   Per-Server Logging:</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   The home of a custom SSL log file. Use this when you want a</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#   compact non-error SSL logfile on a virtual host basis.</span></span></span><br><span class="line"><span class="emphasis"><span class="section">CustomLog &quot;c:/Apache24/logs/ssl_request.log&quot; \</span></span></span><br><span class="line"><span class="emphasis"><span class="section">          &quot;%t %h %&#123;SSL_PROTOCOL&#125;x %&#123;SSL_CIPHER&#125;x \&quot;%r\&quot; %b&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#指定myweb项目的wsgi.py配置文件路径  </span></span></span><br><span class="line"><span class="emphasis"><span class="section">WSGIScriptAlias / D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V2/Fund_Evaluation_System/wsgi.py</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#配置静态变量路径</span></span></span><br><span class="line"><span class="emphasis"><span class="section">Alias /static/ D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V2/static/</span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;<span class="name">Directory</span> <span class="attr">D:</span>/<span class="attr">FundEvaluationSystem_svn1</span>/<span class="attr">Fund_Evaluation_System_V2</span>/<span class="attr">static</span>&gt;</span></span>  </span></span></span><br><span class="line"><span class="emphasis"><span class="section">    Allow from all</span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;/<span class="name">Directory</span>&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section">DocumentRoot &quot;D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V2&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;<span class="name">Directory</span> &quot;<span class="attr">D:</span>/<span class="attr">FundEvaluationSystem_svn1</span>/<span class="attr">Fund_Evaluation_System_V2</span>&quot;&gt;</span></span>  </span></span></span><br><span class="line"><span class="emphasis"><span class="section">    Options Indexes FollowSymLinks</span></span></span><br><span class="line"><span class="emphasis"><span class="section">    AllowOverride None</span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;/<span class="name">Directory</span>&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;/<span class="name">VirtualHost</span>&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;<span class="name">VirtualHost</span> <span class="attr">192.168.1.81:443</span>&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section">DocumentRoot &quot;c:/Apache24/htdocs&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">ServerName www.lejinrong.cn</span></span></span><br><span class="line"><span class="emphasis"><span class="section">ServerAdmin admin@lejinrong.cn</span></span></span><br><span class="line"><span class="emphasis"><span class="section">ErrorLog &quot;c:/Apache24/logs/error.log&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">TransferLog &quot;c:/Apache24/logs/access.log&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">SSLEngine on</span></span></span><br><span class="line"><span class="emphasis"><span class="section">SSLCertificateFile &quot;c:/Apache24/conf/ssl/server.crt&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">SSLCertificateKeyFile &quot;c:/Apache24/conf/ssl/server.key&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;<span class="name">FilesMatch</span> &quot;\<span class="attr">.</span>(<span class="attr">cgi</span>|<span class="attr">shtml</span>|<span class="attr">phtml</span>|<span class="attr">php</span>)$&quot;&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section">    SSLOptions +StdEnvVars</span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;/<span class="name">FilesMatch</span>&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;<span class="name">Directory</span> &quot;<span class="attr">c:</span>/<span class="attr">Apache24</span>/<span class="attr">cgi-bin</span>&quot;&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section">    SSLOptions +StdEnvVars</span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;/<span class="name">Directory</span>&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section">BrowserMatch &quot;MSIE [2-5]&quot; \</span></span></span><br><span class="line"><span class="emphasis"><span class="section">         nokeepalive ssl-unclean-shutdown \</span></span></span><br><span class="line"><span class="emphasis"><span class="section">         downgrade-1.0 force-response-1.0</span></span></span><br><span class="line"><span class="emphasis"><span class="section">CustomLog &quot;c:/Apache24/logs/ssl_request.log&quot; \</span></span></span><br><span class="line"><span class="emphasis"><span class="section">          &quot;%t %h %&#123;SSL_PROTOCOL&#125;x %&#123;SSL_CIPHER&#125;x \&quot;%r\&quot; %b&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">WSGIScriptAlias / D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V3/Fund_Evaluation_System/wsgi.py</span></span></span><br><span class="line"><span class="emphasis"><span class="section">Alias /static/ D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V3/static/</span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;<span class="name">Directory</span> <span class="attr">D:</span>/<span class="attr">FundEvaluationSystem_svn1</span>/<span class="attr">Fund_Evaluation_System_V3</span>/<span class="attr">static</span>&gt;</span></span>  </span></span></span><br><span class="line"><span class="emphasis"><span class="section">    Allow from all</span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;/<span class="name">Directory</span>&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section">DocumentRoot &quot;D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V3&quot;</span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;<span class="name">Directory</span> &quot;<span class="attr">D:</span>/<span class="attr">FundEvaluationSystem_svn1</span>/<span class="attr">Fund_Evaluation_System_V3</span>&quot;&gt;</span></span>  </span></span></span><br><span class="line"><span class="emphasis"><span class="section">    Options Indexes FollowSymLinks</span></span></span><br><span class="line"><span class="emphasis"><span class="section">    AllowOverride None</span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;/<span class="name">Directory</span>&gt;</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="section"><span class="xml"><span class="tag">&lt;/<span class="name">VirtualHost</span>&gt;</span></span></span></span></span><br></pre></td></tr></table></figure>
+<p>但其实 都写了跳转，所以在<code>httpd-vhosts.conf</code>文件中的项目以及静态资源路径指定就不用指定了，只不过我懒得删…<br>还有一个坑点就是 原本有一个指定项目路径以及python环境的语句：</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">#WSGIPythonPath &quot;C:/Python27/Lib;C:/Python27/Lib/site-packages;C:/Python27/DLLs&quot;</span></span><br><span class="line"><span class="section">#WSGIPythonPath D:/FundEvaluationSystem<span class="emphasis">_svn1</span></span></span><br><span class="line"><span class="emphasis"><span class="section">#WSGIPythonHome &quot;C:/Python27&quot;</span></span></span><br></pre></td></tr></table></figure>
+<p>我不知道按照上下这两种为什么会出问题，但网上那些人不会。但中间那个是用来指向项目路径的一个取巧的办法。哦因为wsgi或许我已经在别处制订过了。所以只要在<code>wsgi.py</code>中声明<code>sys.path.append(&#39;D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V2&#39;)</code>就可以将项目包括进来，而不需要通过 第二句那个制定<code>python</code>路径的东西。而用那个，会导致资源只有声明的项目1会被加载，而项目2的资源就不会声明，而将那三句话注释，只要分别在’wsgi.py’中声明项目资源，而在<code>.conf</code>文件中指向’wsgi.py’文件就可以如数加载了。</p>
+<p>(⊙﹏⊙)语序  逻辑混乱之后不加班了再整理吧~~😭</p>
+<h1 id="前端-Vue"><a href="#前端-Vue" class="headerlink" title="前端 Vue"></a>前端 Vue</h1><p><code>vue</code>的使用方式可以通过<code>html</code>页面直接引用，也能直接用<code>vue-cil</code>创建项目。 网上人称<code>vue</code>脚手架？晓不大得<br>而我这里自然说的就是 <code>vue-cil</code>即 通过<code>vue init webpack &lt;prjName&gt;</code>来生成的项目喽</p>
+<p>系统的创建以及介绍之后使用再熟一些再写，现在先记一些零散的东西。 [^_^]2018年9月18日 21点36分</p>
+<h3 id="路由配置登陆访问"><a href="#路由配置登陆访问" class="headerlink" title="路由配置登陆访问"></a>路由配置登陆访问</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">在`router/index.js`中：</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  path: &#x27;/&#x27;,</span><br><span class="line">  // 首页</span><br><span class="line">  name: &#x27;Main&#x27;,</span><br><span class="line">  component: Main,</span><br><span class="line">  meta: &#123;</span><br><span class="line">    requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://ianvzs.github.io/2018/06/07/notes/noteOfwebStation/" data-id="cktcgu9dw0060tuq0bzyc1zcl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Ian Vzs"
+        },
+        "headline": "Django的建站的(｡･･)ﾉﾞ",
+        "image": "https://ianvzs.github.iohttp://lofrev.net/wp-content/photos/2017/04/http_logo_dpwnload.png",
+        "keywords": "django missjava vue apache ajax",
+        "genre": "web 全栈笔记",
+        "datePublished": "2018-06-07",
+        "dateCreated": "2018-06-07",
+        "dateModified": "2021-09-09",
+        "url": "https://ianvzs.github.io/2018/06/07/notes/noteOfwebStation/",
+        "description": "author: Ian
+Django 的一些东西
+利用nginxfd反向代理解决跨域问题纠结了很久的跨域问题。。。。。。一直配置Django。。。。。问题重重，从配置方面这条路还没找到解决方案，如以后确认无误后就再放在这儿。告慰前面付出的种种艰辛 😓😀
+来自(这儿)[https://www.jb51.net/article/105786.htm]
+方法是： 打开nginx默认配置文件/etc/",
+        "wordCount": 6188
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/IanVzs" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/01/10/tips/tipsOfdebugers/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            tips Of Debuggers
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/05/24/notes/noteOfjava/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">愉快的Java(happy to learn the fuck java)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/24/tips/tipsOfgRpc/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://grpc.io/img/logos/grpc-logo.png)" alt="gRpc使用小记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tip/">tip</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/tip/problem/">problem</a></p>
+                            <p class="item-title"><a href="/2021/05/24/tips/tipsOfgRpc/" class="title">gRpc使用小记</a></p>
+                            <p class="item-date"><time datetime="2021-05-24T02:30:41.000Z" itemprop="datePublished">2021-05-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/23/tips/tipsOfProblems/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://tse2-mm.cn.bing.net/th/id/OIP.Z6kn8Zh9FDU2oe4r5ceCgAHaEK?pid=ImgDet&rs=1)" alt="解决问题" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tip/">tip</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/tip/problem/">problem</a></p>
+                            <p class="item-title"><a href="/2021/05/23/tips/tipsOfProblems/" class="title">解决问题</a></p>
+                            <p class="item-date"><time datetime="2021-05-23T02:30:41.000Z" itemprop="datePublished">2021-05-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/19/notes/noteOfgoExp/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://wallpapercave.com/wp/wp7041189.jpg)" alt="Golang笔记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/note/golang/">golang</a></p>
+                            <p class="item-title"><a href="/2021/05/19/notes/noteOfgoExp/" class="title">Golang笔记</a></p>
+                            <p class="item-date"><time datetime="2021-05-19T11:00:00.000Z" itemprop="datePublished">2021-05-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/10/notes/noteOfFmtData/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a></p>
+                            <p class="item-title"><a href="/2021/05/10/notes/noteOfFmtData/" class="title">数据格式笔记</a></p>
+                            <p class="item-date"><time datetime="2021-05-10T09:05:00.000Z" itemprop="datePublished">2021-05-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/10/notes/noteOfUE4/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://cdn2.unrealengine.com/Unreal+Engine%2Fblog%2Fconnect-with-the-unreal-engine-community-online%2FUE_Community_Online_Feed-thumb-desktop-1400x788-a6917dba2f2cc41cc1426a3afdff135521cea738.png)" alt="UE4 笔记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/note/ue4/">ue4</a></p>
+                            <p class="item-title"><a href="/2021/05/10/notes/noteOfUE4/" class="title">UE4 笔记</a></p>
+                            <p class="item-date"><time datetime="2021-05-10T04:13:26.000Z" itemprop="datePublished">2021-05-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/new-Things/">new Things</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/new-Things/%E6%89%8B%E6%9C%BA/">手机</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/Gui/">Gui</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/Gui/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/Something/">Something</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/db/">db</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/db/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/docker/">docker</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/docker/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/">golang</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/expansion/">expansion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/java/">java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/java/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/language/">language</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/language/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/learning/">learning</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/linux/">linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/linux/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/python/learning/">learning</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/ue4/">ue4</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/ue4/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/test/">test</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E7%BD%91%E7%BB%9C-Net/">网络(Net)</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/">tip</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/debug/">debug</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/debug/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/markdown/">markdown</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/markdown/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/problem/">problem</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/problem/gRpc/">gRpc</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/vim/">vim</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/vim/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/web/">web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/web/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/%E6%8D%A2%E6%BA%90/">换源</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/web/%E5%85%A8%E6%A0%88%E7%AC%94%E8%AE%B0/">全栈笔记</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/%E6%97%A5%E8%AE%B0/">日记</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gui/" rel="tag">Gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Japanese/" rel="tag">Japanese</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sony-XZ1-Compact/" rel="tag">Sony XZ1 Compact</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vn-Py/" rel="tag">Vn.Py</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/" rel="tag">ajax</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/" rel="tag">apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debuger/" rel="tag">debuger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expansion/" rel="tag">expansion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/" rel="tag">golang</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/" rel="tag">gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-springboot-mybatis-maven-learning/" rel="tag">java, springboot, mybatis, maven, learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keepalived/" rel="tag">keepalived</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learning/" rel="tag">learning</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/" rel="tag">less</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/missjava/" rel="tag">missjava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ml/" rel="tag">ml</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongo/" rel="tag">mongo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/more/" rel="tag">more</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdb/" rel="tag">pdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyqt/" rel="tag">pyqt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpc/" rel="tag">rpc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ue4/" rel="tag">ue4</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win/" rel="tag">win</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/" rel="tag">数据格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" rel="tag">更新说明</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C%E7%AC%94%E8%AE%B0/" rel="tag">经验笔记</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Gui/" style="font-size: 10px;">Gui</a> <a href="/tags/Japanese/" style="font-size: 10px;">Japanese</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Sony-XZ1-Compact/" style="font-size: 10px;">Sony XZ1 Compact</a> <a href="/tags/Vn-Py/" style="font-size: 10px;">Vn.Py</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/debuger/" style="font-size: 10px;">debuger</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/expansion/" style="font-size: 10px;">expansion</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/golang/" style="font-size: 13.33px;">golang</a> <a href="/tags/gui/" style="font-size: 10px;">gui</a> <a href="/tags/java-springboot-mybatis-maven-learning/" style="font-size: 10px;">java, springboot, mybatis, maven, learning</a> <a href="/tags/keepalived/" style="font-size: 10px;">keepalived</a> <a href="/tags/learning/" style="font-size: 20px;">learning</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/missjava/" style="font-size: 10px;">missjava</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/mongo/" style="font-size: 10px;">mongo</a> <a href="/tags/more/" style="font-size: 10px;">more</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/pyqt/" style="font-size: 10px;">pyqt</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/rpc/" style="font-size: 10px;">rpc</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/ue4/" style="font-size: 10px;">ue4</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/win/" style="font-size: 13.33px;">win</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/" style="font-size: 10px;">数据格式</a> <a href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">更新说明</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 16.67px;">杂谈</a> <a href="/tags/%E7%BB%8F%E9%AA%8C%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">经验笔记</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 Ian Vzs</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://ianvzs.github.io/2018/06/07/notes/noteOfwebStation/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

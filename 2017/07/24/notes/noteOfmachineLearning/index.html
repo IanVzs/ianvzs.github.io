@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>机器学习库 | Ian&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="python,ml" />
+    
+    <meta name="description" content="Python 机器学习库 👽Plotly与matplotlib 都是绘图工具，不过效果炫一些，我也没画过，所以只放链接，不放实例了    Plotly Python Library :  https:&#x2F;&#x2F;plot.ly&#x2F;python&#x2F; matplotlibimport matplotlib.pyplot as plt  参数等太多，链接最可靠pyplot参数 还是粘一些常用的：    marke">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习库">
+<meta property="og:url" content="https://ianvzs.github.io/2017/07/24/notes/noteOfmachineLearning/index.html">
+<meta property="og:site_name" content="Ian&#39;s Blog">
+<meta property="og:description" content="Python 机器学习库 👽Plotly与matplotlib 都是绘图工具，不过效果炫一些，我也没画过，所以只放链接，不放实例了    Plotly Python Library :  https:&#x2F;&#x2F;plot.ly&#x2F;python&#x2F; matplotlibimport matplotlib.pyplot as plt  参数等太多，链接最可靠pyplot参数 还是粘一些常用的：    marke">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-07-24T10:40:00.000Z">
+<meta property="article:modified_time" content="2021-09-09T03:06:08.562Z">
+<meta property="article:author" content="Ian Vzs">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="ml">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="Ian&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/new-Things/">new Things</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/new-Things/%E6%89%8B%E6%9C%BA/">手机</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/">note</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/Gui/">Gui</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/Something/">Something</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/db/">db</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/docker/">docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/golang/">golang</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/language/">language</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/learning/">learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/linux/">linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/python/">python</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/ue4/">ue4</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/%E7%BD%91%E7%BB%9C-Net/">网络(Net)</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/">tip</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/debug/">debug</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/markdown/">markdown</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/problem/">problem</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/vim/">vim</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/web/">web</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/%E6%8D%A2%E6%BA%90/">换源</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/">web</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/%E5%85%A8%E6%A0%88%E7%AC%94%E8%AE%B0/">全栈笔记</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%9D%82%E8%B0%88/%E6%97%A5%E8%AE%B0/">日记</a></li></ul></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/note/learning/">learning</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-notes/noteOfmachineLearning" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        机器学习库
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2017/07/24/notes/noteOfmachineLearning/" class="article-date">
+       <time datetime="2017-07-24T10:40:00.000Z" itemprop="datePublished">2017-07-24</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2017/07/24/notes/noteOfmachineLearning/" class="article-date">
+     <time datetime="2021-09-09T03:06:08.562Z" itemprop="dateModified">2021-09-09</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/ml/" rel="tag">ml</a>, <a class="tag-link-link" href="/tags/python/" rel="tag">python</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="Python-机器学习库-👽"><a href="#Python-机器学习库-👽" class="headerlink" title="Python 机器学习库 👽"></a>Python 机器学习库 👽</h1><h3 id="Plotly"><a href="#Plotly" class="headerlink" title="Plotly"></a>Plotly</h3><p>与matplotlib 都是绘图工具，不过效果炫一些，我也没画过，所以只放链接，不放实例了<br>    <a target="_blank" rel="noopener" href="https://plot.ly/python/">Plotly Python Library</a> :  <a target="_blank" rel="noopener" href="https://plot.ly/python/">https://plot.ly/python/</a></p>
+<h2 id="matplotlib"><a href="#matplotlib" class="headerlink" title="matplotlib"></a>matplotlib</h2><pre><code>import matplotlib.pyplot as plt
+</code></pre>
+<h3 id="参数等太多，链接最可靠"><a href="#参数等太多，链接最可靠" class="headerlink" title="参数等太多，链接最可靠"></a>参数等太多，链接最可靠</h3><p><a target="_blank" rel="noopener" href="https://github.com/wizardforcel/matplotlib-user-guide-zh/blob/master/3.1.md">pyplot参数</a></p>
+<p>还是粘一些常用的：<br>    marker 属性（下面写在分号里呦）<br>    o  .  v  ^   &lt;  &gt;  1  2 3 4  8  s  p  *   h  H  +  x  D  d   |   _  之类</p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/pipisorry/article/details/40005163">画出一些“花儿”</a></p>
+<h3 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h3><pre><code>plt.plot(x, y)
+# 在y之后可添加参数，例如常用的label = ‘IamLabel’之类
+# 线的样式、颜色 ：b: blue  g: green    r: red  c: cyan m: magenta
+y: yellow   k: black    w: white
+&#39;-&#39; : solid , &#39;--&#39; : dashed, &#39;-.&#39; : dashdot &#39;:&#39; : dotted    &#39;   &#39;&#39;, &#39; &#39;   &#39;: None
+# 粗细 lw=3 更改数字
+# 数值折点显示样式 marker = ‘o’   
+
+plot.show()
+</code></pre>
+<h3 id="绘制图表"><a href="#绘制图表" class="headerlink" title="绘制图表"></a>绘制图表</h3><h4 id="1"><a href="#1" class="headerlink" title="1"></a>1</h4><pre><code>plt.figure(1)
+绘图
+plt.figure(2)
+绘图
+</code></pre>
+<h4 id="2（未测试）"><a href="#2（未测试）" class="headerlink" title="2（未测试）"></a>2（未测试）</h4><pre><code>plt.figure(1)   # 创建图表1
+plt.figure(2)   # 创建图表2
+hi1 = plt.subplot(211)  # 在图表2中创建子图1
+hi2 = plt.subplot(212)  # 在图表2中创建子图2
+</code></pre>
+<h3 id="一表多图"><a href="#一表多图" class="headerlink" title="一表多图"></a>一表多图</h3><pre><code>pCapital = plt.subplot(4, 1, 1)
+    pCapital.set_ylabel(&quot;capital&quot;)
+    pCapital.plot(d[&#39;capitalList&#39;], color=&#39;r&#39;, lw=0.8)
+plt.show()
+</code></pre>
+<h3 id="标注点"><a href="#标注点" class="headerlink" title="标注点"></a>标注点</h3><h4 id="eg1"><a href="#eg1" class="headerlink" title="eg1"></a>eg1</h4><pre><code>for w, m in enumerate(self.lowestPrice):
+        if w % 120*10 == 0:
+            plt.plot([w, w], [m, self.highestPrice[w]], linestyle = &#39;--&#39;)
+        #plt.scatter(self.dealPoints,color = &#39;c&#39;)
+for i in self.dealPoints:           
+    plt.scatter([i[0]], [i[1]], color = &#39;c&#39;)    
+    for ii in self.ydealPoints:
+    plt.scatter([ii[0]], [ii[1]], color = &#39;m&#39;)
+    
+plt.title(&#39;Tick &amp; TradePoint&#39;)
+plt.legend()
+plt.show()
+</code></pre>
+<p><b>plt.legend()</b><br>    # show() 之前不加这句是不会显示出标注的呦</p>
+<h4 id="eg2-还不晓得咋回事儿"><a href="#eg2-还不晓得咋回事儿" class="headerlink" title="eg2(还不晓得咋回事儿)"></a>eg2(还不晓得咋回事儿)</h4><pre><code>import numpy as np
+t = 2 * np.pi / 3
+plt.plot([t, t], [0, np.cos(t)], color=&#39;blue&#39;, linewidth=2.5, linestyle=&quot;--&quot;)
+plt.scatter([t, ], [np.cos(t), ], 50, color=&#39;blue&#39;)
+
+plt.annotate(r&#39;$sin(\frac&#123;2\pi&#125;&#123;3&#125;)=\frac&#123;\sqrt&#123;3&#125;&#125;&#123;2&#125;$&#39;,
+    xy=(t, np.sin(t)), xycoords=&#39;data&#39;,
+    xytext=(+10, +30), textcoords=&#39;offset points&#39;, fontsize=16,
+    arrowprops=dict(arrowstyle=&quot;-&gt;&quot;, connectionstyle=&quot;arc3,rad=.2&quot;))
+
+plt.plot([t, t],[0, np.sin(t)], color=&#39;red&#39;, linewidth=2.5, linestyle=&quot;--&quot;)
+plt.scatter([t, ],[np.sin(t), ], 50, color=&#39;red&#39;)
+
+plt.annotate(r&#39;$cos(\frac&#123;2\pi&#125;&#123;3&#125;)=-\frac&#123;1&#125;&#123;2&#125;$&#39;,
+    xy=(t, np.cos(t)), xycoords=&#39;data&#39;,
+    xytext=(-90, -50), textcoords=&#39;offset points&#39;, fontsize=16,
+arrowprops=dict(arrowstyle=&quot;-&gt;&quot;, connectionstyle=&quot;arc3,rad=.2&quot;))
+</code></pre>
+<h3 id="坐标标签显示方案"><a href="#坐标标签显示方案" class="headerlink" title="坐标标签显示方案"></a>坐标标签显示方案</h3><pre><code>plt.setp(plt.gca().get_xticklabels(), rotation=20, horizontalalignment=&#39;right&#39;)
+# 貌似除了角度和right，没有了修改内容
+</code></pre>
+<h3 id="来画一个动态图吧（感觉没啥作用所以就小标题了）"><a href="#来画一个动态图吧（感觉没啥作用所以就小标题了）" class="headerlink" title="来画一个动态图吧（感觉没啥作用所以就小标题了）"></a>来画一个动态图吧（感觉没啥作用所以就小标题了）</h3><pre><code>import matplotlib.pyplot as plt
+from matplotlib.patches import Circle
+import numpy as np
+import math
+
+plt.close()  #clf() # 清图  cla() # 清坐标轴 close() # 关窗口
+fig=plt.figure()
+ax=fig.add_subplot(1,1,1)
+ax.axis(&quot;equal&quot;) #设置图像显示的时候XY轴比例
+plt.grid(True) #添加网格
+plt.ion()   #interactive mode on打开交互模式 而不是plt.show()
+IniObsX=0000
+IniObsY=4000
+IniObsAngle=135
+IniObsSpeed=10*math.sqrt(2)   #米/秒
+print(&#39;开始仿真&#39;)
+try:
+    for t in range(180):
+            #障碍物船只轨迹             
+        obsX=IniObsX+IniObsSpeed*math.sin(IniObsAngle/180*math.pi)*t
+        obsY=IniObsY+IniObsSpeed*math.cos(IniObsAngle/180*math.pi)*t
+        ax.scatter(obsX,obsY,c=&#39;b&#39;,marker=&#39;.&#39;)  
+        #散点图
+        #ax.lines.pop(1)  删除轨迹
+        #下面的图,两船的距离
+        plt.pause(0.1)
+except Exception as err:
+    print(err)
+</code></pre>
+<h2 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h2><h3 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h3><pre><code>import pandas as pd
+import numpy as np
+a = &#123;&#39;a&#39;:[&#39;A&#39;,&#39;B&#39;,&#39;C&#39;], &#39;b&#39;:[1,2,3], &#39;c&#39;:[&#39;lo&#39;, &#39;hel&#39;, &#39;hi&#39;], &#39;d&#39;:[7,8,9]&#125;
+
+df = pd.DataFrame(a)
+# 字典转换为dataFrame（每一个Key 和 Value构成一列，key为列标）
+df = df.set_index(&#39;a&#39;)
+# 将‘a‘列设置为行标
+sr = pd.Series(a)
+sr2 = df[&#39;b&#39;]
+
+df[[&#39;b&#39;,&#39;c&#39;]].to_records()[1][&#39;b&#39;]
+df[[&#39;b&#39;,&#39;c&#39;]]
+</code></pre>
+<h4 id="columns-index"><a href="#columns-index" class="headerlink" title="columns  index"></a>columns  index</h4><pre><code>列，参数(行)
+</code></pre>
+<h4 id="取用方法"><a href="#取用方法" class="headerlink" title="取用方法"></a>取用方法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dfValue.loc[indexKey][colKey]</span><br></pre></td></tr></table></figure>
+
+<h4 id="一个将DataFrame字符串化之后重新解析的程序😓"><a href="#一个将DataFrame字符串化之后重新解析的程序😓" class="headerlink" title="一个将DataFrame字符串化之后重新解析的程序😓"></a>一个将<code>DataFrame</code>字符串化之后重新解析的程序😓</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parseSTR</span>(<span class="params">self, _str, indexKey, colKey, setIndexNum=<span class="number">0</span>, setColNum=<span class="number">0</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    通过setIndexNum来确定第几列数据为行标题， setColNum确定使用第几行数据作为列标题</span></span><br><span class="line"><span class="string">    返回通过indexKey行标题 与 colKey列标题 确定的结果</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    rows = _<span class="built_in">str</span>.split(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    columns = rows[<span class="number">0</span>].split(<span class="string">&#x27;,&#x27;</span>)[<span class="number">1</span>:]</span><br><span class="line">    tempRow = []</span><br><span class="line">    index = []</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> rows[<span class="number">1</span>:]:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(row):</span><br><span class="line">            index.append(row.split(<span class="string">&#x27;,&#x27;</span>)[setIndexNum])</span><br><span class="line">            tempRow.append(row.split(<span class="string">&#x27;,&#x27;</span>)[<span class="number">1</span>:])</span><br><span class="line">    dfValue = pd.DataFrame(tempRow, index=index, columns=columns)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">return</span> dfValue.loc[indexKey][colKey]</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">u&#x27;【error:】信息不全&#x27;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+<p>Emm,有点儿…  嗯…   嗯…<br>[^_^]:<br>    2018年6月21日17点17分</p>
+<h2 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h2><h3 id="random"><a href="#random" class="headerlink" title="random"></a>random</h3><pre><code>random.seed(int类型) 
+# 理解可以为设定开始随机的开始，也就是说每次设定之后再开始取值就会得到相同的随机数()
+</code></pre>
+<p>即<br>    np.random.seed(1)<br>    np.random.random(1)  </p>
+<pre><code>np.random.seed(1)   
+np.random.random(1)
+</code></pre>
+<blockquote>
+<p>array([ 0.417022])</p>
+</blockquote>
+<blockquote>
+<p>array([ 0.417022])</p>
+</blockquote>
+<h4 id="标准差"><a href="#标准差" class="headerlink" title="标准差"></a>标准差</h4><pre><code>a = np.arange(10)
+np.std(a)
+a.std()
+</code></pre>
+<h5 id="样本标准差"><a href="#样本标准差" class="headerlink" title="样本标准差"></a>样本标准差</h5><pre><code>a.std(ddof = 1)
+np.std(a, ddof = 1)
+</code></pre>
+<p>以上 a.std 只有当a为&lt;type ‘numpy.ndarray’&gt;  即用numpy生成的矩阵，array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])才可有，如果是python的列表list 则只能用np.std 来算</p>
+<h2 id="scikit-learn"><a href="#scikit-learn" class="headerlink" title="scikit-learn"></a>scikit-learn</h2><h2 id="OpenCV"><a href="#OpenCV" class="headerlink" title="OpenCV"></a>OpenCV</h2><h3 id="Insatll"><a href="#Insatll" class="headerlink" title="Insatll"></a>Insatll</h3><p>caffe：</p>
+<pre><code>sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
+sudo apt-get install --no-install-recommends libboost-all-dev
+
+sudo apt-get install libatlas-base-dev
+
+sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev
+</code></pre>
+<h2 id="PIL"><a href="#PIL" class="headerlink" title="PIL"></a>PIL</h2><pre><code>his = im.histogram()
+</code></pre>
+<p>values = {}</p>
+<p>for i in range(256):<br>    values[i] = his[i]</p>
+<p>for j,k in sorted(values.items(),key=lambda x:x[1],reverse = True)[:10]:<br>    print j,k</p>
+<h1 id="爬虫"><a href="#爬虫" class="headerlink" title="爬虫"></a>爬虫</h1><p> 先<a target="_blank" rel="noopener" href="https://edu.hellobi.com/course/156/reviews">链接</a> 为实例视频教程，貌似不错，还没看。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>虽然, 以前已经积累了一些东西, 知道</p>
+<ul>
+<li>headers</li>
+<li>cookie<br>啥的, 但今天突然碰到了这个报错:<blockquote>
+<p>Caused by SSLError(SSLError(“bad handshake: Error([(‘SSL routines’, ‘tls_process_server_certificate’, ‘certificate verify failed’)])</p>
+</blockquote>
+</li>
+</ul>
+<p>没见过, 之后碰到其余, 统一汇总在此.</p>
+<h3 id="SSLError-HTTPS"><a href="#SSLError-HTTPS" class="headerlink" title="SSLError HTTPS"></a>SSLError HTTPS</h3><p>有人指点到: 因用<code>https</code>的缘故, 其中报 <code>verify failed</code> 所以可以通过</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requests.get(url, verify=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p>将<code>verify</code>关闭可通过.</p>
+<h2 id="Selenium"><a href="#Selenium" class="headerlink" title="Selenium"></a>Selenium</h2><h4 id="从网页粘来的，下方有作者以及来源链接，格式就保留原有不改了…"><a href="#从网页粘来的，下方有作者以及来源链接，格式就保留原有不改了…" class="headerlink" title="从网页粘来的，下方有作者以及来源链接，格式就保留原有不改了…"></a>从网页粘来的，下方有作者以及来源链接，格式就保留原有不改了…</h4><h2>1、基本使用</h2><div class="highlight"><pre><code class="language-text"><span></span>from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
+<p>browser = webdriver.Chrome()<br>browser.get(‘<a target="_blank" rel="noopener" href="https://www.taobao.com/&#39;">https://www.taobao.com/&#39;</a>)</p>
+<h4 id="显示等待10s"><a href="#显示等待10s" class="headerlink" title="显示等待10s"></a>显示等待10s</h4><p>wait = WebDriverWait(browser, 10)</p>
+<h4 id="等待直到元素加载出"><a href="#等待直到元素加载出" class="headerlink" title="等待直到元素加载出"></a>等待直到元素加载出</h4><p>input = wait.until(EC.presence_of_element_located((By.ID, ‘q’)))</p>
+<h4 id="等待直到元素可点击"><a href="#等待直到元素可点击" class="headerlink" title="等待直到元素可点击"></a>等待直到元素可点击</h4><p>button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ‘.btn-search’)))<br>print(input, button)<br>from selenium import webdriver<br>from selenium.webdriver.common.by import By<br>from selenium.webdriver.common.keys import Keys<br>from selenium.webdriver.support import expected_conditions as EC<br>from selenium.webdriver.support.wait import WebDriverWait</p>
+<h4 id="创建一个浏览器对象"><a href="#创建一个浏览器对象" class="headerlink" title="创建一个浏览器对象"></a>创建一个浏览器对象</h4><p>browser = webdriver.Chrome()<br>try:<br>    # 开启一个浏览器并访问<a target="_blank" rel="noopener" href="https://www.baidu.com/">https://www.baidu.com</a><br>    browser.get(‘<a target="_blank" rel="noopener" href="https://www.baidu.com&/#39;">https://www.baidu.com&#39;</a>)<br>    # 在打开的网页响应中根据id查找元素   获取到查询框<br>    input = browser.find_element_by_id(‘kw’)<br>    # 向查询框中输入Python<br>    input.send_keys(‘Python’)<br>    # 模拟回车<br>    input.send_keys(Keys.ENTER)<br>    # 显示等待， 等待10秒<br>    wait = WebDriverWait(browser, 10)<br>    # 显式等待指定某个条件，然后设置最长等待时间。如果在这个时间还没有找到元素，那么便会抛出异常<br>    wait.until(EC.presence_of_element_located((By.ID,’content_left’)))<br>    # 输出当前的url<br>    print(browser.current_url)<br>    # 输出Cookies<br>    print(browser.get_cookies())<br>    # 输出页面响应内容<br>    print(browser.page_source)<br>finally:<br>    pass<br>    # 关闭浏览器<br>    browser.close()<br></code></pre></div><p><br></p><h2>2、Selenium声明浏览器对象</h2><div class="highlight"><pre><code class="language-text"><span></span>from selenium import webdriver</p>
+<p>browser = webdriver.Chrome()<br>browser = webdriver.Firefox()<br>browser = webdriver.Edge()<br>browser = webdriver.PhantomJS()<br>browser = webdriver.Safari()<br></code></pre></div><p><br></p><h2>3、查找元素</h2><h2>3.1、查找单个元素</h2><div class="highlight"><pre><code class="language-text"><span></span>from selenium import webdriver</p>
+<h4 id="申明一个浏览器对象"><a href="#申明一个浏览器对象" class="headerlink" title="申明一个浏览器对象"></a>申明一个浏览器对象</h4><p>browser = webdriver.Chrome()</p>
+<h4 id="使用浏览器访问淘宝"><a href="#使用浏览器访问淘宝" class="headerlink" title="使用浏览器访问淘宝"></a>使用浏览器访问淘宝</h4><p>browser.get(‘<a target="_blank" rel="noopener" href="https://www.taobao.com&/#39;">https://www.taobao.com&#39;</a>)</p>
+<h4 id="在响应结果中通过id查找元素"><a href="#在响应结果中通过id查找元素" class="headerlink" title="在响应结果中通过id查找元素"></a>在响应结果中通过id查找元素</h4><p>input_first = browser.find_element_by_id(‘q’)</p>
+<h4 id="在响应结果中通过css选择器查找元素"><a href="#在响应结果中通过css选择器查找元素" class="headerlink" title="在响应结果中通过css选择器查找元素"></a>在响应结果中通过css选择器查找元素</h4><p>input_second = browser.find_element_by_css_selector(‘#q’)</p>
+<h4 id="在响应结果中通过xpath查找元素"><a href="#在响应结果中通过xpath查找元素" class="headerlink" title="在响应结果中通过xpath查找元素"></a>在响应结果中通过xpath查找元素</h4><p>input_third = browser.find_element_by_xpath(‘//*[@id=”q”]’)<br>print(input_first)<br>print(input_second)<br>print(input_third)<br>browser.close()<br></code></pre></div><ul><li>find_element_by_name   通过name查找</li><li>find_element_by_xpath  通过xpath查找</li><li>find_element_by_link_text   通过链接查找</li><li>find_element_by_partial_link_text    通过部分链接查找</li><li>find_element_by_tag_name   通过标签名称查找</li><li>find_element_by_class_name   通过类名查找</li><li>find_element_by_css_selector  通过css选择武器查找</li></ul><p><br></p><div class="highlight"><pre><code class="language-text"><span></span>from selenium import webdriver<br>from selenium.webdriver.common.by import By</p>
+<h4 id="申明一个浏览器对象-1"><a href="#申明一个浏览器对象-1" class="headerlink" title="申明一个浏览器对象"></a>申明一个浏览器对象</h4><p>browser = webdriver.Chrome()</p>
+<h4 id="使用浏览器访问淘宝-1"><a href="#使用浏览器访问淘宝-1" class="headerlink" title="使用浏览器访问淘宝"></a>使用浏览器访问淘宝</h4><p>browser.get(‘<a target="_blank" rel="noopener" href="https://www.taobao.com&/#39;">https://www.taobao.com&#39;</a>)</p>
+<h4 id="第二种方式，通过使用By-xxx指定查找方式"><a href="#第二种方式，通过使用By-xxx指定查找方式" class="headerlink" title="第二种方式，通过使用By.xxx指定查找方式"></a>第二种方式，通过使用By.xxx指定查找方式</h4><p>input = browser.find_element(By.ID,’q’)<br>print(input)<br>browser.close()<br></code></pre></div><h2>3.2、多个元素</h2><div class="highlight"><pre><code class="language-text"><span></span>from selenium import webdriver<br>from selenium.webdriver.common.by import By</p>
+<h4 id="申明一个浏览器对象-2"><a href="#申明一个浏览器对象-2" class="headerlink" title="申明一个浏览器对象"></a>申明一个浏览器对象</h4><p>browser = webdriver.Chrome()</p>
+<h4 id="使用浏览器访问淘宝-2"><a href="#使用浏览器访问淘宝-2" class="headerlink" title="使用浏览器访问淘宝"></a>使用浏览器访问淘宝</h4><p>browser.get(‘<a target="_blank" rel="noopener" href="https://www.taobao.com&/#39;">https://www.taobao.com&#39;</a>)</p>
+<h4 id="根据选择查找多个元素"><a href="#根据选择查找多个元素" class="headerlink" title="根据选择查找多个元素"></a>根据选择查找多个元素</h4><p>input_first = browser.find_elements_by_css_selector(‘.service-bd li’)<br>input_second = browser.find_elements(By.CSS_SELECTOR,’.service-bd li’)<br>print(input_first)<br>print(input_second)<br>browser.close()<br></code></pre></div><ul><li>find_elements_by_name</li><li>find_elements_by_xpath</li><li>find_elements_by_link_text</li><li>find_elements_by_partial_link_text</li><li>find_elements_by_tag_name</li><li>find_elements_by_class_name</li><li>find_elements_by_css_selector</li></ul><p><br></p><p><br></p><h2>4、元素交互操作</h2><blockquote>对获取的元素调用交互方法 </blockquote><div class="highlight"><pre><code class="language-text"><span></span>import time<br>from selenium import webdriver<br>from selenium.webdriver.common.by import By</p>
+<h4 id="申明一个浏览器对象-3"><a href="#申明一个浏览器对象-3" class="headerlink" title="申明一个浏览器对象"></a>申明一个浏览器对象</h4><p>browser = webdriver.Chrome()</p>
+<h4 id="使用浏览器访问淘宝-3"><a href="#使用浏览器访问淘宝-3" class="headerlink" title="使用浏览器访问淘宝"></a>使用浏览器访问淘宝</h4><p>browser.get(‘<a target="_blank" rel="noopener" href="https://www.taobao.com&/#39;">https://www.taobao.com&#39;</a>)</p>
+<h4 id="根据ID查找元素"><a href="#根据ID查找元素" class="headerlink" title="根据ID查找元素"></a>根据ID查找元素</h4><p>input_search = browser.find_element(By.ID,’q’)</p>
+<h4 id="模拟输入PSV到输入框"><a href="#模拟输入PSV到输入框" class="headerlink" title="模拟输入PSV到输入框"></a>模拟输入PSV到输入框</h4><p>input_search.send_keys(‘PSV’)<br>time.sleep(2)</p>
+<h4 id="清空输入"><a href="#清空输入" class="headerlink" title="清空输入"></a>清空输入</h4><p>input_search.clear()<br>input_search.send_keys(‘3DS’)<br>button = browser.find_element(By.CLASS_NAME,’btn-search’)</p>
+<h4 id="模拟点击"><a href="#模拟点击" class="headerlink" title="模拟点击"></a>模拟点击</h4><p>button.click()<br></code></pre></div><blockquote>更多的操作 <br><a href="http://link.zhihu.com/?target=http%3A//selenium-python.readthedocs.io/api.html%23module-selenium.webdriver.remote.webelement" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">selenium-python.readthedocs.io</span><span class="invisible">/api.html#module-selenium.webdriver.remote.webelement</span><span class="ellipsis"></span><i class="icon-external"></i></a></blockquote><p><br></p><h2>5、交互动作</h2><div class="highlight"><pre><code class="language-text"><span></span>from selenium import webdriver<br>from selenium.webdriver import ActionChains</p>
+<p>browser = webdriver.Chrome()<br>url = ‘<a target="_blank" rel="noopener" href="http://www.runoob.com/try/try.php?filename=jqueryui-api-droppable&#39;">http://www.runoob.com/try/try.php?filename=jqueryui-api-droppable&#39;</a><br>browser.get(url)</p>
+<h4 id="切换id为iframeResult的frame"><a href="#切换id为iframeResult的frame" class="headerlink" title="切换id为iframeResult的frame"></a>切换id为iframeResult的frame</h4><p>browser.switch_to.frame(‘iframeResult’)<br>source = browser.find_element_by_css_selector(‘#draggable’)<br>target = browser.find_element_by_css_selector(‘#droppable’)<br>actions = ActionChains(browser)<br>actions.drag_and_drop(source, target)<br>actions.perform()<br></code></pre></div><blockquote>更多操作<br><br><a href="http://link.zhihu.com/?target=http%3A//selenium-python.readthedocs.io/api.html%23module-selenium.webdriver.common.action_chains" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">selenium-python.readthedocs.io</span><span class="invisible">/api.html#module-selenium.webdriver.common.action_chains</span><span class="ellipsis"></span><i class="icon-external"></i></a></blockquote><p><br></p><h2>6、执行JavaScript</h2><div class="highlight"><pre><code class="language-text"><span></span>from selenium import webdriver</p>
+<h4 id="申明一个浏览器对象-4"><a href="#申明一个浏览器对象-4" class="headerlink" title="申明一个浏览器对象"></a>申明一个浏览器对象</h4><p>browser = webdriver.Chrome()<br>browser.get(‘<a target="_blank" rel="noopener" href="https://www.zhihu.com/explore&#39;">https://www.zhihu.com/explore&#39;</a>)</p>
+<h4 id="执行JavaScript脚本"><a href="#执行JavaScript脚本" class="headerlink" title="执行JavaScript脚本"></a>执行JavaScript脚本</h4><p>browser.execute_script(‘window.scrollTo(0, document.body.scrollHeight)’)<br>browser.execute_script(‘alert(“To Bottom”)’)<br></code></pre></div><h2>7、获取元素信息</h2><h2>7.1、获取属性</h2><div class="highlight"><pre><code class="language-text"><span></span>from selenium import webdriver<br>from selenium.webdriver.common.by import By</p>
+<h4 id="申明一个浏览器对象-5"><a href="#申明一个浏览器对象-5" class="headerlink" title="申明一个浏览器对象"></a>申明一个浏览器对象</h4><p>browser = webdriver.Chrome()<br>browser.get(‘<a target="_blank" rel="noopener" href="https://www.zhihu.com/explore&#39;">https://www.zhihu.com/explore&#39;</a>)<br>logo = browser.find_element(By.ID,’zh-top-link-logo’)</p>
+<h4 id="获取属性"><a href="#获取属性" class="headerlink" title="获取属性"></a>获取属性</h4><p>print(logo.get_attribute(‘class’))<br>print(logo)<br>browser.close()<br></code></pre></div><h2>7.2、获取文本值</h2><div class="highlight"><pre><code class="language-text"><span></span>from selenium import webdriver<br>from selenium.webdriver.common.by import By</p>
+<h4 id="申明一个浏览器对象-6"><a href="#申明一个浏览器对象-6" class="headerlink" title="申明一个浏览器对象"></a>申明一个浏览器对象</h4><p>browser = webdriver.Chrome()<br>browser.get(‘<a target="_blank" rel="noopener" href="https://www.zhihu.com/explore&#39;">https://www.zhihu.com/explore&#39;</a>)<br>submit = browser.find_element(By.ID,’zu-top-add-question’)</p>
+<h4 id="获取文本值"><a href="#获取文本值" class="headerlink" title="获取文本值"></a>获取文本值</h4><p>print(submit.text)<br>print(submit)<br>browser.close()<br></code></pre></div><h2>7.3、获取ID、位置、标签名、大小</h2><div class="highlight"><pre><code class="language-text"><span></span>from selenium import webdriver<br>from selenium.webdriver.common.by import By</p>
+<h4 id="申明一个浏览器对象-7"><a href="#申明一个浏览器对象-7" class="headerlink" title="申明一个浏览器对象"></a>申明一个浏览器对象</h4><p>browser = webdriver.Chrome()<br>browser.get(‘<a target="_blank" rel="noopener" href="https://www.zhihu.com/explore&#39;">https://www.zhihu.com/explore&#39;</a>)<br>submit = browser.find_element(By.ID,’zu-top-add-question’)</p>
+<h4 id="获取id-0-04584255991652042-1"><a href="#获取id-0-04584255991652042-1" class="headerlink" title="获取id   0.04584255991652042-1"></a>获取id   0.04584255991652042-1</h4><p>print(submit.id)</p>
+<h4 id="获取位置-‘y’-7-‘x’-675"><a href="#获取位置-‘y’-7-‘x’-675" class="headerlink" title="获取位置  &#123;‘y’: 7, ‘x’: 675&#125;"></a>获取位置  &#123;‘y’: 7, ‘x’: 675&#125;</h4><p>print(submit.location)</p>
+<h4 id="获取标签名称-button"><a href="#获取标签名称-button" class="headerlink" title="获取标签名称    button"></a>获取标签名称    button</h4><p>print(submit.tag_name)</p>
+<h4 id="获取大小-‘width’-66-‘height’-32"><a href="#获取大小-‘width’-66-‘height’-32" class="headerlink" title="获取大小  &#123;‘width’: 66, ‘height’: 32&#125;"></a>获取大小  &#123;‘width’: 66, ‘height’: 32&#125;</h4><p>print(submit.size)<br>browser.close()<br></code></pre></div><h2>8、Frame</h2><div class="highlight"><pre><code class="language-text"><span></span>from selenium import webdriver<br>from selenium.common.exceptions import NoSuchElementException</p>
+<p>browser = webdriver.Chrome()<br>url = ‘<a target="_blank" rel="noopener" href="http://www.runoob.com/try/try.php?filename=jqueryui-api-droppable&#39;">http://www.runoob.com/try/try.php?filename=jqueryui-api-droppable&#39;</a><br>browser.get(url)</p>
+<h4 id="将操作的响应数据换成iframeResult"><a href="#将操作的响应数据换成iframeResult" class="headerlink" title="将操作的响应数据换成iframeResult"></a>将操作的响应数据换成iframeResult</h4><p>browser.switch_to.frame(‘iframeResult’)<br>source = browser.find_element_by_css_selector(‘#draggable’)<br>print(source)<br>try:<br>    logo = browser.find_element_by_class_name(‘logo’)<br>except NoSuchElementException:<br>    print(‘NO LOGO’)</p>
+<h4 id="切换成父元素"><a href="#切换成父元素" class="headerlink" title="切换成父元素"></a>切换成父元素</h4><p>browser.switch_to.parent_frame()<br>logo = browser.find_element_by_class_name(‘logo’)<br>print(logo)<br>print(logo.text)<br></code></pre></div><p><br></p><h2>9、等待</h2><h2>9.1、隐式等待</h2><blockquote>当使用了隐式等待执行测试的时候，如果 WebDriver没有在 DOM中找到元素，将继续等待，超出设定时间后则抛出找不到元素的异常, 换句话说，当查找元素或元素并没有立即出现的时候，隐式等待将等待一段时间再查找 DOM，默认的时间是0</blockquote><div class="highlight"><pre><code class="language-text"><span></span>from selenium import webdriver</p>
+<p>browser = webdriver.Chrome()</p>
+<h4 id="等待10秒"><a href="#等待10秒" class="headerlink" title="等待10秒"></a>等待10秒</h4><p>browser.implicitly_wait(10)<br>browser.get(‘<a target="_blank" rel="noopener" href="https://www.zhihu.com/explore&#39;">https://www.zhihu.com/explore&#39;</a>)<br>input = browser.find_element_by_class_name(‘zu-top-add-question’)<br>print(input)<br></code></pre></div><h2>9.2、显示等待</h2><blockquote>显式等待指定某个条件，然后设置最长等待时间。如果在这个时间还没有找到元素，那么便会抛出异常了。 </blockquote><div class="highlight"><pre><code class="language-text"><span></span>from selenium import webdriver<br>from selenium.webdriver.common.by import By<br>from selenium.webdriver.support import expected_conditions as EC<br>from selenium.webdriver.support.wait import WebDriverWait</p>
+<p>browser = webdriver.Chrome()<br>browser.get(‘<a target="_blank" rel="noopener" href="https://www.taobao.com/&#39;">https://www.taobao.com/&#39;</a>)</p>
+<h4 id="显示等待10s-1"><a href="#显示等待10s-1" class="headerlink" title="显示等待10s"></a>显示等待10s</h4><p>wait = WebDriverWait(browser, 10)</p>
+<h4 id="等待直到元素加载出-1"><a href="#等待直到元素加载出-1" class="headerlink" title="等待直到元素加载出"></a>等待直到元素加载出</h4><p>input = wait.until(EC.presence_of_element_located((By.ID, ‘q’)))</p>
+<h4 id="等待直到元素可点击-1"><a href="#等待直到元素可点击-1" class="headerlink" title="等待直到元素可点击"></a>等待直到元素可点击</h4><p>button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ‘.btn-search’)))<br>print(input, button)<br></code></pre></div><ul><li>title_is 标题是某内容</li><li>title_contains 标题包含某内容</li><li>presence_of_element_located 元素加载出，传入定位元组，如(By.ID, ‘p’)</li><li>visibility_of_element_located 元素可见，传入定位元组</li><li>visibility_of 可见，传入元素对象</li><li>presence_of_all_elements_located 所有元素加载出</li><li>text_to_be_present_in_element 某个元素文本包含某文字</li><li>text_to_be_present_in_element_value 某个元素值包含某文字</li><li>frame_to_be_available_and_switch_to_it frame加载并切换</li><li>invisibility_of_element_located 元素不可见</li><li>element_to_be_clickable 元素可点击</li><li>staleness_of 判断一个元素是否仍在DOM，可判断页面是否已经刷新</li><li>element_to_be_selected 元素可选择，传元素对象</li><li>element_located_to_be_selected 元素可选择，传入定位元组</li><li>element_selection_state_to_be 传入元素对象以及状态，相等返回True，否则返回False</li><li>element_located_selection_state_to_be 传入定位元组以及状态，相等返回True，否则返回False</li><li>alert_is_present 是否出现Alert</li></ul><p>更多操作</p><blockquote><a href="http://link.zhihu.com/?target=http%3A//selenium-python.readthedocs.io/api.html%23module-selenium.webdriver.support.expected_conditions" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">selenium-python.readthedocs.io</span><span class="invisible">/api.html#module-selenium.webdriver.support.expected_conditions</span><span class="ellipsis"></span><i class="icon-external"></i></a></blockquote><p><br></p><h2>10、前进后退</h2><div class="highlight"><pre><code class="language-text"><span></span>import time<br>from selenium import webdriver</p>
+<p>browser = webdriver.Chrome()<br>browser.get(‘<a target="_blank" rel="noopener" href="https://www.baidu.com/&#39;">https://www.baidu.com/&#39;</a>)<br>browser.get(‘<a target="_blank" rel="noopener" href="https://www.taobao.com/&#39;">https://www.taobao.com/&#39;</a>)<br>browser.get(‘<a target="_blank" rel="noopener" href="https://www.python.org/&#39;">https://www.python.org/&#39;</a>)<br>browser.back()<br>time.sleep(1)<br>browser.forward()<br>browser.close()<br></code></pre></div><p><br></p><h2>11、Cookies</h2><div class="highlight"><pre><code class="language-text"><span></span>from selenium import webdriver</p>
+<p>browser = webdriver.Chrome()<br>browser.get(‘<a target="_blank" rel="noopener" href="https://www.zhihu.com/explore&#39;">https://www.zhihu.com/explore&#39;</a>)</p>
+<h4 id="获得cookies"><a href="#获得cookies" class="headerlink" title="获得cookies"></a>获得cookies</h4><p>print(browser.get_cookies())</p>
+<h4 id="添加cookie"><a href="#添加cookie" class="headerlink" title="添加cookie"></a>添加cookie</h4><p>browser.add_cookie(&#123;‘name’: ‘name’, ‘domain’: ‘<a target="_blank" rel="noopener" href="http://www.zhihu.com&/#39;">www.zhihu.com&#39;</a>, ‘value’: ‘germey’&#125;)<br>print(browser.get_cookies())</p>
+<h4 id="删除所有cookies"><a href="#删除所有cookies" class="headerlink" title="删除所有cookies"></a>删除所有cookies</h4><p>browser.delete_all_cookies()<br>print(browser.get_cookies())<br></code></pre></div><p><br></p><h2>12、选项卡管理</h2><div class="highlight"><pre><code class="language-text"><span></span>import time<br>from selenium import webdriver</p>
+<p>browser = webdriver.Chrome()<br>browser.get(‘<a target="_blank" rel="noopener" href="https://www.baidu.com&/#39;">https://www.baidu.com&#39;</a>)</p>
+<h4 id="打开一个选项卡"><a href="#打开一个选项卡" class="headerlink" title="打开一个选项卡"></a>打开一个选项卡</h4><p>browser.execute_script(‘window.open()’)<br>print(browser.window_handles)</p>
+<h4 id="选择第二个选项卡"><a href="#选择第二个选项卡" class="headerlink" title="选择第二个选项卡"></a>选择第二个选项卡</h4><p>browser.switch_to_window(browser.window_handles[1])<br>browser.get(‘<a target="_blank" rel="noopener" href="https://www.taobao.com&/#39;">https://www.taobao.com&#39;</a>)<br>time.sleep(1)<br>browser.switch_to_window(browser.window_handles[0])<br>browser.get(‘<a target="_blank" rel="noopener" href="https://python.org&/#39;">https://python.org&#39;</a>)<br></code></pre></div><p><br></p><h2>13、异常处理</h2><div class="highlight"><pre><code class="language-text"><span></span>from selenium import webdriver<br>from selenium.common.exceptions import TimeoutException, NoSuchElementException</p>
+<p>browser = webdriver.Chrome()<br>try:<br>    browser.get(‘<a target="_blank" rel="noopener" href="https://www.baidu.com&/#39;">https://www.baidu.com&#39;</a>)<br>except TimeoutException:<br>    print(‘Time Out’)<br>try:<br>    browser.find_element_by_id(‘hello’)<br>except NoSuchElementException:<br>    print(‘No Element’)<br>finally:<br>    browser.close()<br></code></pre></div><p><br></p><blockquote>作者：蒋蜀黍  Python爱好者社区专栏作者   授权原创发布，请勿转载，谢谢。<br>出处：<a href="http://link.zhihu.com/?target=http%3A//mp.weixin.qq.com/s/hYBdkE5IEYNZo4vwoyfT4Q" class=" wrap external" target="_blank" rel="nofollow noreferrer">Selenium 库学习笔记<i class="icon-external"></i></a></p>
+<h2 id="TensorFlow"><a href="#TensorFlow" class="headerlink" title="TensorFlow"></a>TensorFlow</h2><h4 id="Variable"><a href="#Variable" class="headerlink" title="Variable"></a>Variable</h4><p>必须用到:<br>    ```init = tf.initialize_all_variables() #初始化全部变量 </p>
+<p>随后即可:<br>    ```sess.run(init)</p>
+<h2 id="Tensorflow-笔记"><a href="#Tensorflow-笔记" class="headerlink" title="Tensorflow 笔记"></a>Tensorflow 笔记</h2><p>這是在對照官網學習時的前期入門筆記，其實和官網基本沒有區別，好吧，真的沒有區別。因爲官網真的寫的太好了。<br>至於我爲什麼要寫出來，是因爲我之前寫在了紙上，對於邏輯的把握很給力，所以在寫一邊。</p>
+<p>不過TensorFlow 變動真的很大，版本更迭也很快，所以，下方只是理清邏輯，具體的東西還是去官網比較好。只不過我這兒網謎之很難等上去… </p>
+<p> 總而言之一句話，先搭好架子再選擇填充材料。就是它的核心邏輯了。而改進也是在架子基礎上去優化優化器。嗯…現在理解就是這樣。</p>
+<h3 id="1-1"><a href="#1-1" class="headerlink" title="1"></a>1</h3><h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><pre><code>import tensorflow as tf
+</code></pre>
+<p>步骤：①构建计算图          ②运行计算图</p>
+<hr>
+<h4 id="2"><a href="#2" class="headerlink" title="2"></a>2</h4><h5 id="Build-a-simple-computational-Graph"><a href="#Build-a-simple-computational-Graph" class="headerlink" title="Build a simple computational Graph"></a>Build a simple computational Graph</h5><pre><code>node1 = tf.contant(3.0, dtype = tf.float32)
+node2 = tf.contant(4.0) #also tf.float32 impicitly
+print (node1, node2)
+</code></pre>
+<h6 id="输出为："><a href="#输出为：" class="headerlink" title="输出为："></a>输出为：</h6><pre><code>Tensor (&quot;Cast: 0&quot;, shape = (), dtype = float)
+Tensor (&quot;Cast_1: 0&quot;, shape = (), dtype = float)
+</code></pre>
+<p>打印并不输出值3.0，4.0，而在评估时分别产生3.0和4.0节点。欲实际评估节点，We must run the computational graph within a session. A seesion encapsulation the control and state of the tensorflow runtime.</p>
+<hr>
+<h4 id="3"><a href="#3" class="headerlink" title="3"></a>3</h4><h5 id="Creates-a-session-object-然后调用run方法运行足够的computational-graph-to-envlute-node1-and-node2"><a href="#Creates-a-session-object-然后调用run方法运行足够的computational-graph-to-envlute-node1-and-node2" class="headerlink" title="Creates a session object , 然后调用run方法运行足够的computational graph to envlute node1 and node2"></a>Creates a session object , 然后调用<code>run</code>方法运行足够的computational graph to envlute node1 and node2</h5><pre><code>sess = tf.Session()
+print (sess.run([node1, node2]))
+</code></pre>
+<h6 id="输出为：-1"><a href="#输出为：-1" class="headerlink" title="输出为："></a>输出为：</h6><pre><code>[3.0,   4.0]        #可见预期值
+</code></pre>
+<hr>
+<h4 id="4"><a href="#4" class="headerlink" title="4"></a>4</h4><h5 id="We-can-build-more-complicated-computations-by-combining-Tensor-nodes-with-operations"><a href="#We-can-build-more-complicated-computations-by-combining-Tensor-nodes-with-operations" class="headerlink" title="We can build more complicated computations by combining Tensor nodes with operations"></a>We can build more complicated computations by combining Tensor nodes with operations</h5><pre><code>node3 = tf.add(node1, node2)
+print (&quot;node3: &quot;, node3)
+print (&quot;sess.run(node3):&quot;, sess.run(node3))
+</code></pre>
+<h6 id="输出为：-2"><a href="#输出为：-2" class="headerlink" title="输出为："></a>输出为：</h6><pre><code>node3:  Tensor(&quot;Add:0&quot;, shape = (1,dtype = float32))
+sess.run(node3): 7.0
+</code></pre>
+<hr>
+<h4 id="5"><a href="#5" class="headerlink" title="5"></a>5</h4><h5 id="更进一步的，A-graph-can-be-parameterized-To-accept-external-input-称为placeholders"><a href="#更进一步的，A-graph-can-be-parameterized-To-accept-external-input-称为placeholders" class="headerlink" title="更进一步的，A graph can be parameterized. To accept external input , 称为placeholders"></a>更进一步的，A graph can be parameterized. To accept external input , 称为<code>placeholders</code></h5><pre><code>a = tf.placeholder(tf.float32)
+b = tf.placeholder(tf.float32)
+adder_note = a + b      #provide a shortcut for tf.add(a, b) and can with multiple input by using
+print (sess.run(add_note, &#123;a:3, b:4.5&#125;))
+print (sess.run(add_note, &#123;a:[1, 3],  b:[2, 4]&#125;))
+</code></pre>
+<h6 id="输出为：-3"><a href="#输出为：-3" class="headerlink" title="输出为："></a>输出为：</h6><pre><code>7.5
+[3.  7.]
+</code></pre>
+<h5 id="5-1"><a href="#5-1" class="headerlink" title="5.1"></a>5.1</h5><h5 id="more-complex-by-adding-anther-aperation-for-example"><a href="#more-complex-by-adding-anther-aperation-for-example" class="headerlink" title="more complex by adding anther aperation. for example:"></a>more complex by adding anther aperation. for example:</h5><pre><code>add_and_triple = adder_note * 3
+print (sess.run(add_and_triple, &#123;a:3, b:4.5&#125;))
+</code></pre>
+<h6 id="输出为：-4"><a href="#输出为：-4" class="headerlink" title="输出为："></a>输出为：</h6><pre><code>22.5
+</code></pre>
+<p>In <code>TensorBoard</code>(Tensorflow圖形化界面): 图片.jpg        是下面<code>a+b```` 然后连接到</code>adder_node<code>  ,随后再连接到</code>y(add_and_triple)```</p>
+<h5 id="5-2"><a href="#5-2" class="headerlink" title="5.2"></a>5.2</h5><h5 id="That-a-model-that-can-take-arbitary-inputs-To-mode-the-modeel-trainable-need-to-modify-the-graph-to-get-new-a-outputs-with-the-some-input-Variables-allow-us"><a href="#That-a-model-that-can-take-arbitary-inputs-To-mode-the-modeel-trainable-need-to-modify-the-graph-to-get-new-a-outputs-with-the-some-input-Variables-allow-us" class="headerlink" title="That a model that can take arbitary inputs:To mode the modeel trainable,need to modify the graph to get new a outputs with the some input : Variables allow us:"></a>That a model that can take arbitary inputs:To mode the modeel trainable,need to modify the graph to get new a outputs with the some input : <code>Variables</code> allow us:</h5><pre><code>w = tf.Variables([  .3], dtype = tf.float32)
+b = tf.Variables([ -  .3], dtype = tf.float32)
+x = tf.placeholder(tf.float32)
+linear_model = w * x + b        #线性模型
+</code></pre>
+<hr>
+<h4 id="6"><a href="#6" class="headerlink" title="6"></a>6</h4><h5 id="使用tf-constant-调用、初始化常数-用tf-Vaiables-變量不被初始化，調用欲初始化所有變量，必須calll-a-special-operation"><a href="#使用tf-constant-调用、初始化常数-用tf-Vaiables-變量不被初始化，調用欲初始化所有變量，必須calll-a-special-operation" class="headerlink" title="使用tf.constant :调用、初始化常数  用tf.Vaiables :變量不被初始化，調用欲初始化所有變量，必須calll a special operation:"></a>使用<code>tf.constant</code> :调用、初始化常数  用<code>tf.Vaiables</code> :變量不被初始化，調用欲初始化所有變量，必須calll a special operation:</h5><pre><code>init = tf.global_variables_initializer()
+sess.run(init)
+</code></pre>
+<hr>
+<h4 id="7"><a href="#7" class="headerlink" title="7"></a>7</h4><h5 id="x-is-a-placeholder-we-can-evaluate-lnear-model-for-several-values-of-x-simultaneausly-as-follow"><a href="#x-is-a-placeholder-we-can-evaluate-lnear-model-for-several-values-of-x-simultaneausly-as-follow" class="headerlink" title="x is a placeholder, we can evaluate lnear_model for several values of x simultaneausly as follow:"></a>x is a placeholder, we can evaluate <code>lnear_model</code> for several values of x simultaneausly as follow:</h5><pre><code>print (sess.run(linear_model, &#123;x:[1,2,3,4]&#125;))
+</code></pre>
+<h6 id="輸出爲："><a href="#輸出爲：" class="headerlink" title="輸出爲："></a>輸出爲：</h6><pre><code>[0.        0.30000001   0.60000002  0.90000004]
+</code></pre>
+<hr>
+<h4 id="8"><a href="#8" class="headerlink" title="8"></a>8</h4><h5 id="有以上結果並不知好壞，因此編寫損失函數："><a href="#有以上結果並不知好壞，因此編寫損失函數：" class="headerlink" title="有以上結果並不知好壞，因此編寫損失函數："></a>有以上結果並不知好壞，因此編寫損失函數：</h5><pre><code>y = tf.placeholder(tf.float32)
+squared_deltas = tf.square(linear_model - y)        #平方（下方差和）
+loss = tf.reduce_sum(squred_deltas)     #差和（上方平方）
+print (sess.run)loss, &#123;x:[1, 2, 3, 4], y:[0, -1, -2, -3]&#125;)
+</code></pre>
+<h6 id="輸出爲：-1"><a href="#輸出爲：-1" class="headerlink" title="輸出爲："></a>輸出爲：</h6><pre><code>23.66       #損失值：差平方和
+</code></pre>
+<h5 id="8-1"><a href="#8-1" class="headerlink" title="8.1"></a>8.1</h5><h5 id="We-could-improve-this-manually-W-b-to-perfact-values-of-1-and-1-A-variable-is-initializef-to-the-value-provided-to-tf-Variable-but-can-be-charged-using-operation-like-tf-assign"><a href="#We-could-improve-this-manually-W-b-to-perfact-values-of-1-and-1-A-variable-is-initializef-to-the-value-provided-to-tf-Variable-but-can-be-charged-using-operation-like-tf-assign" class="headerlink" title="We could improve this manually W,b to perfact values of -1 and 1. A variable is initializef to the value provided to tf.Variable but can be charged using operation like tf.assign"></a>We could improve this manually W,b to perfact values of -1 and 1. A variable is initializef to the value provided to <code>tf.Variable</code> but can be charged using operation like <code>tf.assign</code></h5><h5 id="W-1-and-b-1-are-optimal-parameters-最優參數"><a href="#W-1-and-b-1-are-optimal-parameters-最優參數" class="headerlink" title="W = -1 and b = 1 are optimal parameters:(最優參數)"></a>W = -1 and b = 1 are optimal parameters:(最優參數)</h5><pre><code>fixW = tf.assign(W, [-1.  ])
+fixb = tf.assign(b,[1.  ])
+sess.run(fixW, fixb)
+print(sess.run(loss, &#123;x:[1, 2, 3, 4],  y:[0, -1, -2, -3]&#125;))
+</code></pre>
+<h6 id="輸出爲：-2"><a href="#輸出爲：-2" class="headerlink" title="輸出爲："></a>輸出爲：</h6><pre><code>0, 0  # The final print shows the loss now is zero !
+</code></pre>
+<hr>
+<h4 id="9"><a href="#9" class="headerlink" title="9"></a>9</h4><h5 id="模型保存与加载："><a href="#模型保存与加载：" class="headerlink" title="模型保存与加载："></a>模型保存与加载：</h5><h6 id="保存："><a href="#保存：" class="headerlink" title="保存："></a>保存：</h6><pre><code>saver = tf.train.Saver()    # 生成saver
+with tf.Session() as sess:
+sess.run(tf.global_variables_initializer()) # 先对模型初始化
+
+# 然后将数据丢入模型进行训练blablabla
+
+# 训练完以后，使用saver.save 来保存
+saver.save(sess, &quot;save_path/file_name&quot;) #file_name如果不存在的话，会自动创建
+</code></pre>
+<h6 id="加载："><a href="#加载：" class="headerlink" title="加载："></a>加载：</h6><pre><code>saver = tf.train.Saver()
+with tf.Session() as sess:  #参数可以进行初始化，也可不进行初始化。即使初始化了，初始化的值也会被restore的值给覆盖
+sess.run(tf.global_variables_initializer())
+saver.restore(sess, &quot;save_path/file_name&quot;)  #会将已经保存的变量值resotre到 变量中。
+</code></pre>
+<hr>
+<h4 id="10"><a href="#10" class="headerlink" title="10"></a>10</h4><h5 id="图形化操作："><a href="#图形化操作：" class="headerlink" title="图形化操作："></a>图形化操作：</h5><pre><code>&gt;http://blog.csdn.net/u014595019/article/details/53912710
+</code></pre>
+<p>这篇写的还不错，等之后用过之后再写。</p>
+<hr>
+<hr>
+<h4 id="Variable-1"><a href="#Variable-1" class="headerlink" title="Variable"></a>Variable</h4><p>必须用到:<br>    ```init = tf.initialize_all_variables()    #初始化全部变量 </p>
+<p>随后即可:<br>    ```sess.run(init)</p>
+<h2 id="Tensorflow-笔记-1"><a href="#Tensorflow-笔记-1" class="headerlink" title="Tensorflow 笔记"></a>Tensorflow 笔记</h2><p>這是在對照官網學習時的前期入門筆記，其實和官網基本沒有區別，好吧，真的沒有區別。因爲官網真的寫的太好了。<br>至於我爲什麼要寫出來，是因爲我之前寫在了紙上，對於邏輯的把握很給力，所以在寫一邊。</p>
+<p>不過TensorFlow 變動真的很大，版本更迭也很快，所以，下方只是理清邏輯，具體的東西還是去官網比較好。只不過我這兒網謎之很難等上去… </p>
+<p> 總而言之一句話，先搭好架子再選擇填充材料。就是它的核心邏輯了。而改進也是在架子基礎上去優化優化器。嗯…現在理解就是這樣。</p>
+<h3 id="1-2"><a href="#1-2" class="headerlink" title="1"></a>1</h3><h4 id="导入-1"><a href="#导入-1" class="headerlink" title="导入"></a>导入</h4><pre><code>import tensorflow as tf
+</code></pre>
+<p>步骤：①构建计算图              ②运行计算图</p>
+<hr>
+<h4 id="2-1"><a href="#2-1" class="headerlink" title="2"></a>2</h4><h5 id="Build-a-simple-computational-Graph-1"><a href="#Build-a-simple-computational-Graph-1" class="headerlink" title="Build a simple computational Graph"></a>Build a simple computational Graph</h5><pre><code>node1 = tf.contant(3.0, dtype = tf.float32)
+node2 = tf.contant(4.0)    #also tf.float32 impicitly
+print (node1, node2)
+</code></pre>
+<h6 id="输出为：-5"><a href="#输出为：-5" class="headerlink" title="输出为："></a>输出为：</h6><pre><code>Tensor (&quot;Cast: 0&quot;, shape = (), dtype = float)
+Tensor (&quot;Cast_1: 0&quot;, shape = (), dtype = float)
+</code></pre>
+<p>打印并不输出值3.0，4.0，而在评估时分别产生3.0和4.0节点。欲实际评估节点，We must run the computational graph within a session. A seesion encapsulation the control and state of the tensorflow runtime.</p>
+<hr>
+<h4 id="3-1"><a href="#3-1" class="headerlink" title="3"></a>3</h4><h5 id="Creates-a-session-object-然后调用run方法运行足够的computational-graph-to-envlute-node1-and-node2-1"><a href="#Creates-a-session-object-然后调用run方法运行足够的computational-graph-to-envlute-node1-and-node2-1" class="headerlink" title="Creates a session object , 然后调用run方法运行足够的computational graph to envlute node1 and node2"></a>Creates a session object , 然后调用<code>run</code>方法运行足够的computational graph to envlute node1 and node2</h5><pre><code>sess = tf.Session()
+print (sess.run([node1, node2]))
+</code></pre>
+<h6 id="输出为：-6"><a href="#输出为：-6" class="headerlink" title="输出为："></a>输出为：</h6><pre><code>[3.0,   4.0]        #可见预期值
+</code></pre>
+<hr>
+<h4 id="4-1"><a href="#4-1" class="headerlink" title="4"></a>4</h4><h5 id="We-can-build-more-complicated-computations-by-combining-Tensor-nodes-with-operations-1"><a href="#We-can-build-more-complicated-computations-by-combining-Tensor-nodes-with-operations-1" class="headerlink" title="We can build more complicated computations by combining Tensor nodes with operations"></a>We can build more complicated computations by combining Tensor nodes with operations</h5><pre><code>node3 = tf.add(node1, node2)
+print (&quot;node3: &quot;, node3)
+print (&quot;sess.run(node3):&quot;, sess.run(node3))
+</code></pre>
+<h6 id="输出为：-7"><a href="#输出为：-7" class="headerlink" title="输出为："></a>输出为：</h6><pre><code>node3:  Tensor(&quot;Add:0&quot;, shape = (1,dtype = float32))
+sess.run(node3): 7.0
+</code></pre>
+<hr>
+<h4 id="5-1"><a href="#5-1" class="headerlink" title="5"></a>5</h4><h5 id="更进一步的，A-graph-can-be-parameterized-To-accept-external-input-称为placeholders-1"><a href="#更进一步的，A-graph-can-be-parameterized-To-accept-external-input-称为placeholders-1" class="headerlink" title="更进一步的，A graph can be parameterized. To accept external input , 称为placeholders"></a>更进一步的，A graph can be parameterized. To accept external input , 称为<code>placeholders</code></h5><pre><code>a = tf.placeholder(tf.float32)
+b = tf.placeholder(tf.float32)
+adder_note = a + b        #provide a shortcut for tf.add(a, b) and can with multiple input by using
+print (sess.run(add_note, &#123;a:3, b:4.5&#125;))
+print (sess.run(add_note, &#123;a:[1, 3],  b:[2, 4]&#125;))
+</code></pre>
+<h6 id="输出为：-8"><a href="#输出为：-8" class="headerlink" title="输出为："></a>输出为：</h6><pre><code>7.5
+[3.  7.]
+</code></pre>
+<h5 id="5-1-1"><a href="#5-1-1" class="headerlink" title="5.1"></a>5.1</h5><h5 id="more-complex-by-adding-anther-aperation-for-example-1"><a href="#more-complex-by-adding-anther-aperation-for-example-1" class="headerlink" title="more complex by adding anther aperation. for example:"></a>more complex by adding anther aperation. for example:</h5><pre><code>add_and_triple = adder_note * 3
+print (sess.run(add_and_triple, &#123;a:3, b:4.5&#125;))
+</code></pre>
+<h6 id="输出为：-9"><a href="#输出为：-9" class="headerlink" title="输出为："></a>输出为：</h6><pre><code>22.5
+</code></pre>
+<p>In <code>TensorBoard</code>(Tensorflow圖形化界面): 图片.jpg        是下面<code>a+b```` 然后连接到</code>adder_node<code>  ,随后再连接到</code>y(add_and_triple)```</p>
+<h5 id="5-2-1"><a href="#5-2-1" class="headerlink" title="5.2"></a>5.2</h5><h5 id="That-a-model-that-can-take-arbitary-inputs-To-mode-the-modeel-trainable-need-to-modify-the-graph-to-get-new-a-outputs-with-the-some-input-Variables-allow-us-1"><a href="#That-a-model-that-can-take-arbitary-inputs-To-mode-the-modeel-trainable-need-to-modify-the-graph-to-get-new-a-outputs-with-the-some-input-Variables-allow-us-1" class="headerlink" title="That a model that can take arbitary inputs:To mode the modeel trainable,need to modify the graph to get new a outputs with the some input : Variables allow us:"></a>That a model that can take arbitary inputs:To mode the modeel trainable,need to modify the graph to get new a outputs with the some input : <code>Variables</code> allow us:</h5><pre><code>w = tf.Variables([  .3], dtype = tf.float32)
+b = tf.Variables([ -  .3], dtype = tf.float32)
+x = tf.placeholder(tf.float32)
+linear_model = w * x + b        #线性模型
+</code></pre>
+<hr>
+<h4 id="6-1"><a href="#6-1" class="headerlink" title="6"></a>6</h4><h5 id="使用tf-constant-调用、初始化常数-用tf-Vaiables-變量不被初始化，調用欲初始化所有變量，必須calll-a-special-operation-1"><a href="#使用tf-constant-调用、初始化常数-用tf-Vaiables-變量不被初始化，調用欲初始化所有變量，必須calll-a-special-operation-1" class="headerlink" title="使用tf.constant :调用、初始化常数  用tf.Vaiables :變量不被初始化，調用欲初始化所有變量，必須calll a special operation:"></a>使用<code>tf.constant</code> :调用、初始化常数  用<code>tf.Vaiables</code> :變量不被初始化，調用欲初始化所有變量，必須calll a special operation:</h5><pre><code>init = tf.global_variables_initializer()
+sess.run(init)
+</code></pre>
+<hr>
+<h4 id="7-1"><a href="#7-1" class="headerlink" title="7"></a>7</h4><h5 id="x-is-a-placeholder-we-can-evaluate-lnear-model-for-several-values-of-x-simultaneausly-as-follow-1"><a href="#x-is-a-placeholder-we-can-evaluate-lnear-model-for-several-values-of-x-simultaneausly-as-follow-1" class="headerlink" title="x is a placeholder, we can evaluate lnear_model for several values of x simultaneausly as follow:"></a>x is a placeholder, we can evaluate <code>lnear_model</code> for several values of x simultaneausly as follow:</h5><pre><code>print (sess.run(linear_model, &#123;x:[1,2,3,4]&#125;))
+</code></pre>
+<h6 id="輸出爲：-3"><a href="#輸出爲：-3" class="headerlink" title="輸出爲："></a>輸出爲：</h6><pre><code>[0.        0.30000001   0.60000002  0.90000004]
+</code></pre>
+<hr>
+<h4 id="8-1"><a href="#8-1" class="headerlink" title="8"></a>8</h4><h5 id="有以上結果並不知好壞，因此編寫損失函數：-1"><a href="#有以上結果並不知好壞，因此編寫損失函數：-1" class="headerlink" title="有以上結果並不知好壞，因此編寫損失函數："></a>有以上結果並不知好壞，因此編寫損失函數：</h5><pre><code>y = tf.placeholder(tf.float32)
+squared_deltas = tf.square(linear_model - y)        #平方（下方差和）
+loss = tf.reduce_sum(squred_deltas)        #差和（上方平方）
+print (sess.run)loss, &#123;x:[1, 2, 3, 4], y:[0, -1, -2, -3]&#125;)
+</code></pre>
+<h6 id="輸出爲：-4"><a href="#輸出爲：-4" class="headerlink" title="輸出爲："></a>輸出爲：</h6><pre><code>23.66        #損失值：差平方和
+</code></pre>
+<h5 id="8-1-1"><a href="#8-1-1" class="headerlink" title="8.1"></a>8.1</h5><h5 id="We-could-improve-this-manually-W-b-to-perfact-values-of-1-and-1-A-variable-is-initializef-to-the-value-provided-to-tf-Variable-but-can-be-charged-using-operation-like-tf-assign-1"><a href="#We-could-improve-this-manually-W-b-to-perfact-values-of-1-and-1-A-variable-is-initializef-to-the-value-provided-to-tf-Variable-but-can-be-charged-using-operation-like-tf-assign-1" class="headerlink" title="We could improve this manually W,b to perfact values of -1 and 1. A variable is initializef to the value provided to tf.Variable but can be charged using operation like tf.assign"></a>We could improve this manually W,b to perfact values of -1 and 1. A variable is initializef to the value provided to <code>tf.Variable</code> but can be charged using operation like <code>tf.assign</code></h5><h5 id="W-1-and-b-1-are-optimal-parameters-最優參數-1"><a href="#W-1-and-b-1-are-optimal-parameters-最優參數-1" class="headerlink" title="W = -1 and b = 1 are optimal parameters:(最優參數)"></a>W = -1 and b = 1 are optimal parameters:(最優參數)</h5><pre><code>fixW = tf.assign(W, [-1.  ])
+fixb = tf.assign(b,[1.  ])
+sess.run(fixW, fixb)
+print(sess.run(loss, &#123;x:[1, 2, 3, 4],  y:[0, -1, -2, -3]&#125;))
+</code></pre>
+<h6 id="輸出爲：-5"><a href="#輸出爲：-5" class="headerlink" title="輸出爲："></a>輸出爲：</h6><pre><code>0, 0  # The final print shows the loss now is zero !
+</code></pre>
+<hr>
+<h4 id="9-1"><a href="#9-1" class="headerlink" title="9"></a>9</h4><h5 id="模型保存与加载：-1"><a href="#模型保存与加载：-1" class="headerlink" title="模型保存与加载："></a>模型保存与加载：</h5><h6 id="保存：-1"><a href="#保存：-1" class="headerlink" title="保存："></a>保存：</h6><pre><code>saver = tf.train.Saver()    # 生成saver
+with tf.Session() as sess:
+sess.run(tf.global_variables_initializer())    # 先对模型初始化
+
+# 然后将数据丢入模型进行训练blablabla
+
+# 训练完以后，使用saver.save 来保存
+saver.save(sess, &quot;save_path/file_name&quot;)    #file_name如果不存在的话，会自动创建
+</code></pre>
+<h6 id="加载：-1"><a href="#加载：-1" class="headerlink" title="加载："></a>加载：</h6><pre><code>saver = tf.train.Saver()
+with tf.Session() as sess:    #参数可以进行初始化，也可不进行初始化。即使初始化了，初始化的值也会被restore的值给覆盖
+sess.run(tf.global_variables_initializer())
+saver.restore(sess, &quot;save_path/file_name&quot;)    #会将已经保存的变量值resotre到 变量中。
+</code></pre>
+<hr>
+<h4 id="10-1"><a href="#10-1" class="headerlink" title="10"></a>10</h4><h5 id="图形化操作：-1"><a href="#图形化操作：-1" class="headerlink" title="图形化操作："></a>图形化操作：</h5><pre><code>&lt;http://blog.csdn.net/u014595019/article/details/53912710&gt;
+</code></pre>
+<p>这篇写的还不错，等之后用过之后再写。</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://ianvzs.github.io/2017/07/24/notes/noteOfmachineLearning/" data-id="cktcgu9dv005xtuq0hos391fb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Ian Vzs"
+        },
+        "headline": "机器学习库",
+        "image": "https://ianvzs.github.io",
+        "keywords": "python ml",
+        "genre": "note learning",
+        "datePublished": "2017-07-24",
+        "dateCreated": "2017-07-24",
+        "dateModified": "2021-09-09",
+        "url": "https://ianvzs.github.io/2017/07/24/notes/noteOfmachineLearning/",
+        "description": "Python 机器学习库 👽Plotly与matplotlib 都是绘图工具，不过效果炫一些，我也没画过，所以只放链接，不放实例了    Plotly Python Library :  https://plot.ly/python/
+matplotlibimport matplotlib.pyplot as plt
+
+参数等太多，链接最可靠pyplot参数
+还是粘一些常用的：    marke",
+        "wordCount": 3191
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/IanVzs" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/08/15/newThings/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            new Things
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/07/01/notes/noteOfgui/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">图形化界面 （Python Gui）</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/24/tips/tipsOfgRpc/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://grpc.io/img/logos/grpc-logo.png)" alt="gRpc使用小记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tip/">tip</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/tip/problem/">problem</a></p>
+                            <p class="item-title"><a href="/2021/05/24/tips/tipsOfgRpc/" class="title">gRpc使用小记</a></p>
+                            <p class="item-date"><time datetime="2021-05-24T02:30:41.000Z" itemprop="datePublished">2021-05-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/23/tips/tipsOfProblems/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://tse2-mm.cn.bing.net/th/id/OIP.Z6kn8Zh9FDU2oe4r5ceCgAHaEK?pid=ImgDet&rs=1)" alt="解决问题" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tip/">tip</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/tip/problem/">problem</a></p>
+                            <p class="item-title"><a href="/2021/05/23/tips/tipsOfProblems/" class="title">解决问题</a></p>
+                            <p class="item-date"><time datetime="2021-05-23T02:30:41.000Z" itemprop="datePublished">2021-05-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/19/notes/noteOfgoExp/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://wallpapercave.com/wp/wp7041189.jpg)" alt="Golang笔记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/note/golang/">golang</a></p>
+                            <p class="item-title"><a href="/2021/05/19/notes/noteOfgoExp/" class="title">Golang笔记</a></p>
+                            <p class="item-date"><time datetime="2021-05-19T11:00:00.000Z" itemprop="datePublished">2021-05-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/10/notes/noteOfFmtData/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a></p>
+                            <p class="item-title"><a href="/2021/05/10/notes/noteOfFmtData/" class="title">数据格式笔记</a></p>
+                            <p class="item-date"><time datetime="2021-05-10T09:05:00.000Z" itemprop="datePublished">2021-05-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/10/notes/noteOfUE4/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://cdn2.unrealengine.com/Unreal+Engine%2Fblog%2Fconnect-with-the-unreal-engine-community-online%2FUE_Community_Online_Feed-thumb-desktop-1400x788-a6917dba2f2cc41cc1426a3afdff135521cea738.png)" alt="UE4 笔记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/note/ue4/">ue4</a></p>
+                            <p class="item-title"><a href="/2021/05/10/notes/noteOfUE4/" class="title">UE4 笔记</a></p>
+                            <p class="item-date"><time datetime="2021-05-10T04:13:26.000Z" itemprop="datePublished">2021-05-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/new-Things/">new Things</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/new-Things/%E6%89%8B%E6%9C%BA/">手机</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/Gui/">Gui</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/Gui/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/Something/">Something</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/db/">db</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/db/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/docker/">docker</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/docker/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/">golang</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/expansion/">expansion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/java/">java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/java/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/language/">language</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/language/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/learning/">learning</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/linux/">linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/linux/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/python/learning/">learning</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/ue4/">ue4</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/ue4/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/test/">test</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E7%BD%91%E7%BB%9C-Net/">网络(Net)</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/">tip</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/debug/">debug</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/debug/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/markdown/">markdown</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/markdown/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/problem/">problem</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/problem/gRpc/">gRpc</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/vim/">vim</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/vim/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/web/">web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/web/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/%E6%8D%A2%E6%BA%90/">换源</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/web/%E5%85%A8%E6%A0%88%E7%AC%94%E8%AE%B0/">全栈笔记</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/%E6%97%A5%E8%AE%B0/">日记</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gui/" rel="tag">Gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Japanese/" rel="tag">Japanese</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sony-XZ1-Compact/" rel="tag">Sony XZ1 Compact</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vn-Py/" rel="tag">Vn.Py</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/" rel="tag">ajax</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/" rel="tag">apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debuger/" rel="tag">debuger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expansion/" rel="tag">expansion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/" rel="tag">golang</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/" rel="tag">gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-springboot-mybatis-maven-learning/" rel="tag">java, springboot, mybatis, maven, learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keepalived/" rel="tag">keepalived</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learning/" rel="tag">learning</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/" rel="tag">less</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/missjava/" rel="tag">missjava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ml/" rel="tag">ml</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongo/" rel="tag">mongo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/more/" rel="tag">more</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdb/" rel="tag">pdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyqt/" rel="tag">pyqt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpc/" rel="tag">rpc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ue4/" rel="tag">ue4</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win/" rel="tag">win</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/" rel="tag">数据格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" rel="tag">更新说明</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C%E7%AC%94%E8%AE%B0/" rel="tag">经验笔记</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Gui/" style="font-size: 10px;">Gui</a> <a href="/tags/Japanese/" style="font-size: 10px;">Japanese</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Sony-XZ1-Compact/" style="font-size: 10px;">Sony XZ1 Compact</a> <a href="/tags/Vn-Py/" style="font-size: 10px;">Vn.Py</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/debuger/" style="font-size: 10px;">debuger</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/expansion/" style="font-size: 10px;">expansion</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/golang/" style="font-size: 13.33px;">golang</a> <a href="/tags/gui/" style="font-size: 10px;">gui</a> <a href="/tags/java-springboot-mybatis-maven-learning/" style="font-size: 10px;">java, springboot, mybatis, maven, learning</a> <a href="/tags/keepalived/" style="font-size: 10px;">keepalived</a> <a href="/tags/learning/" style="font-size: 20px;">learning</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/missjava/" style="font-size: 10px;">missjava</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/mongo/" style="font-size: 10px;">mongo</a> <a href="/tags/more/" style="font-size: 10px;">more</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/pyqt/" style="font-size: 10px;">pyqt</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/rpc/" style="font-size: 10px;">rpc</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/ue4/" style="font-size: 10px;">ue4</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/win/" style="font-size: 13.33px;">win</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/" style="font-size: 10px;">数据格式</a> <a href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">更新说明</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 16.67px;">杂谈</a> <a href="/tags/%E7%BB%8F%E9%AA%8C%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">经验笔记</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 Ian Vzs</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://ianvzs.github.io/2017/07/24/notes/noteOfmachineLearning/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

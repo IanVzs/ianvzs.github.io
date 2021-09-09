@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>db数据库 | Ian&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="learning,mongo,mysql" />
+    
+    <meta name="description" content="DB数据库 🖥 📊🖥 MongoDB笔记学习网站：http:&#x2F;&#x2F;www.runoob.com&#x2F;mongodb&#x2F;mongodb-tutorial.html    (其学习教程还挺可观，很多，不过还不清楚好不好) 注意事项Mongo 数据库锁mongo只提供库级粒度锁，所以一个写操作锁定时，其他读写操作都等待…   所以这个导致了Mongo多线程写操作反而没有一个线程写来的快？ 前台建立索引时，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="db数据库">
+<meta property="og:url" content="https://ianvzs.github.io/2018/05/15/notes/noteOfdbData/index.html">
+<meta property="og:site_name" content="Ian&#39;s Blog">
+<meta property="og:description" content="DB数据库 🖥 📊🖥 MongoDB笔记学习网站：http:&#x2F;&#x2F;www.runoob.com&#x2F;mongodb&#x2F;mongodb-tutorial.html    (其学习教程还挺可观，很多，不过还不清楚好不好) 注意事项Mongo 数据库锁mongo只提供库级粒度锁，所以一个写操作锁定时，其他读写操作都等待…   所以这个导致了Mongo多线程写操作反而没有一个线程写来的快？ 前台建立索引时，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://webassets.mongodb.com/_com_assets/cms/kmxrodmee9int5s1v-HP_Highlight%202.svg">
+<meta property="article:published_time" content="2018-05-15T01:51:09.000Z">
+<meta property="article:modified_time" content="2021-09-09T03:06:08.562Z">
+<meta property="article:author" content="Ian Vzs">
+<meta property="article:tag" content="learning">
+<meta property="article:tag" content="mongo">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://webassets.mongodb.com/_com_assets/cms/kmxrodmee9int5s1v-HP_Highlight%202.svg">
+    
+
+    
+        <link rel="alternate" href="/" title="Ian&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/new-Things/">new Things</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/new-Things/%E6%89%8B%E6%9C%BA/">手机</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/">note</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/Gui/">Gui</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/Something/">Something</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/db/">db</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/docker/">docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/golang/">golang</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/language/">language</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/learning/">learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/linux/">linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/python/">python</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/ue4/">ue4</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/%E7%BD%91%E7%BB%9C-Net/">网络(Net)</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/">tip</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/debug/">debug</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/markdown/">markdown</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/problem/">problem</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/vim/">vim</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/web/">web</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/%E6%8D%A2%E6%BA%90/">换源</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/">web</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/%E5%85%A8%E6%A0%88%E7%AC%94%E8%AE%B0/">全栈笔记</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%9D%82%E8%B0%88/%E6%97%A5%E8%AE%B0/">日记</a></li></ul></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/note/db/">db</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/note/db/learning/">learning</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-notes/noteOfdbData" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        db数据库
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2018/05/15/notes/noteOfdbData/" class="article-date">
+       <time datetime="2018-05-15T01:51:09.000Z" itemprop="datePublished">2018-05-15</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2018/05/15/notes/noteOfdbData/" class="article-date">
+     <time datetime="2021-09-09T03:06:08.562Z" itemprop="dateModified">2021-09-09</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/learning/" rel="tag">learning</a>, <a class="tag-link-link" href="/tags/mongo/" rel="tag">mongo</a>, <a class="tag-link-link" href="/tags/mysql/" rel="tag">mysql</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="DB数据库-🖥-📊🖥"><a href="#DB数据库-🖥-📊🖥" class="headerlink" title="DB数据库 🖥 📊🖥"></a>DB数据库 🖥 📊🖥</h1><p><img src="https://webassets.mongodb.com/_com_assets/cms/kmxrodmee9int5s1v-HP_Highlight%202.svg" alt="db"></p>
+<h2 id="MongoDB笔记"><a href="#MongoDB笔记" class="headerlink" title="MongoDB笔记"></a>MongoDB笔记</h2><p>学习网站：<a target="_blank" rel="noopener" href="http://www.runoob.com/mongodb/mongodb-tutorial.html">http://www.runoob.com/mongodb/mongodb-tutorial.html</a><br>    (其学习教程还挺可观，很多，不过还不清楚好不好)</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><font color=#ff5000>注意事项</font></h3><h4 id="Mongo-数据库锁"><a href="#Mongo-数据库锁" class="headerlink" title="Mongo 数据库锁"></a>Mongo 数据库锁</h4><p>mongo只提供库级粒度锁，所以一个写操作锁定时，其他读写操作都等待…   <font color=#d0a010>所以这个导致了Mongo多线程写操作反而没有一个线程写来的快？</font></p>
+<p><font color=#d0a010>前台建立索引时</font>，<code>Mongo</code>需占用一个写锁（且不同上述、不会临时放弃）   <font color=#10d0a0>为避免此问题</font>需采用<code>background</code>方式</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.posts.ensureIndex(&#123;<span class="symbol">user_id:</span> <span class="number">1</span>&#125;)  <span class="comment">#此方式将引起全面战争</span></span><br><span class="line"></span><br><span class="line">db.posts.ensureIndex(&#123;<span class="symbol">user_id:</span> <span class="number">1</span>&#125;， &#123;<span class="symbol">background:</span> <span class="number">1</span>&#125;) <span class="comment"># 这个就比较和平</span></span><br></pre></td></tr></table></figure>
+<h3 id="操作命令简单记录"><a href="#操作命令简单记录" class="headerlink" title="操作命令简单记录"></a>操作命令简单记录</h3><h4 id="创建、插入"><a href="#创建、插入" class="headerlink" title="创建、插入"></a>创建、插入</h4><pre><code>use DATABASE_NAME   #如果数据库不存在，则创建数据库，否则切换到指定数据库。
+show dbs        #查看所有数据库“name    size”
+</code></pre>
+<p>刚创建的数据库，如没有内容则不现实在其中</p>
+<pre><code>db.runoob.insert(&#123;&quot;name&quot;:&quot;教程&quot;&#125;)       #插入数据
+</code></pre>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><pre><code>db.dropDatabase()       #删除当前数据库，如未选择则删除test
+db.collection.drop()        #删除集合
+db.site.drop()          #：如删除site集合
+</code></pre>
+<h5 id="删除重复数据"><a href="#删除重复数据" class="headerlink" title="删除重复数据"></a>删除重复数据</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">delete from alarm_calendar where id not in (SELECT maxid from (SELECT MAX(id) as maxid, </span><br><span class="line">CONCAT(user_id,time,generic_name) as nameAndCode from alarm_calendar GROUP BY nameAndCode) t);</span><br></pre></td></tr></table></figure>
+<p>根据<code>user_id</code>, <code>time</code>, <code>generic_name</code>来打包重复，将重复数据删掉, 留下<code>max</code>，在自增里面即：最新数据</p>
+<h4 id="插入文档"><a href="#插入文档" class="headerlink" title="插入文档"></a>插入文档</h4><pre><code>db.COLLECTION_NAME.insert(document)
+</code></pre>
+<hr>
+<pre><code>db.col.insert(&#123;title: &#39;MongoDB 教程&#39;, 
+    description: &#39;MongoDB 是一个 Nosql 数据库&#39;,
+    by: &#39;菜鸟教程&#39;,     
+    url: &#39;http://www.runoob.com&#39;,       
+    tags: [&#39;mongodb&#39;, &#39;database&#39;, &#39;NoSQL&#39;], 
+    likes: 100
+    &#125;)      #例如这样
+</code></pre>
+<p>db.col.find()       #查看已插入文档</p>
+<p>也可以将document=括号里要插入内容，然后插入document变量，效果一样。</p>
+<h5 id="3-2版本新加"><a href="#3-2版本新加" class="headerlink" title="3.2版本新加"></a>3.2版本新加</h5><pre><code>db.collection.insertOne()       #向指定集合中插入一条文档数据
+db.collection.insertMany()  #向指定集合中插入多条文档数据
+</code></pre>
+<hr>
+<pre><code>插入单条数据
+var document = db.collection.insertOne(&#123;&quot;a&quot;: 3&#125;)
+</code></pre>
+<blockquote>
+<p>document<br>{<br>        “acknowledged” : true,<br>        “insertedId” : ObjectId(“571a218011a82a1d94c02333”)<br>}</p>
+</blockquote>
+<pre><code>插入多条数据    
+var res = db.collection.insertMany([&#123;&quot;b&quot;: 3&#125;, &#123;&#39;c&#39;: 4&#125;])
+</code></pre>
+<blockquote>
+<p>res<br>{<br>        “acknowledged” : true,<br>        “insertedIds” : [<br>                ObjectId(“571a22a911a82a1d94c02337”),<br>                ObjectId(“571a22a911a82a1d94c02338”)<br>        ]<br>}</p>
+</blockquote>
+<h3 id="更新、添加文档"><a href="#更新、添加文档" class="headerlink" title="更新、添加文档"></a>更新、添加文档</h3><pre><code>db.col.update(&#123;&#39;title&#39;:&#39;MongoDB 教程&#39;&#125;,&#123;$set:&#123;&#39;title&#39;:&#39;MongoDB&#39;&#125;&#125;)      
+#更新标题
+
+db.collection.save(     
+#通过传入的文档来替换已有文档
+&lt;document&gt;,
+&#123;
+writeConcern: &lt;document&gt;
+&#125;)
+</code></pre>
+<blockquote>
+<p>参数说明：<br>document :  文档数据。<br>writeConcern :  可选，抛出异常的级别。</p>
+</blockquote>
+<p><font color=greeen>eg：</font>      实例中替换了 _id 为 56064f89ade2f21f36b03136 的文档数据：</p>
+<pre><code>db.col.save(&#123;
+&quot;_id&quot; : ObjectId(&quot;56064f89ade2f21f36b03136&quot;),
+&quot;title&quot; : &quot;MongoDB&quot;,
+&quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;,
+&quot;by&quot; : &quot;Runoob&quot;,
+&quot;url&quot; : &quot;http://www.runoob.com&quot;,
+&quot;tags&quot; : [
+    &quot;mongodb&quot;,
+    &quot;NoSQL&quot;
+],
+&quot;likes&quot; : 110
+</code></pre>
+<p>})</p>
+<h3 id="导入csv文件"><a href="#导入csv文件" class="headerlink" title="导入csv文件"></a>导入csv文件</h3><pre><code>mongoimport --db Trader_1Min_Db --collection Au(T+D) --type csv --file 
+D:\\IFData\\md_Au(T+D)_20170101_20170531\\md_Au(T+D)_2017010301.csv 
+--headerline --upsert --ignoreBlanks
+</code></pre>
+<blockquote>
+<p>注意需要另开一个命令行，在其中运行。<br>2017-10-25T08:43:40.917+0800 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:16 否则就是这个错误</p>
+</blockquote>
+<pre><code>-d    指定把数据导入到哪一个数据库中
+-c    指定把数据导入到哪一个集合中
+--type    指定导入的数据类型   csv/tsv  逗号或者tab分割值
+--file       指定从哪一个文件中导入数据
+--headerline    仅适用于导入csv,tsv格式的数据，表示文件中的第一行作为数据头
+--upsert  以新增或者更新的方式来导入数据
+--f  导入字段名
+--ignoreBlanks 忽略空白符
+</code></pre>
+<h3 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h3><pre><code>mongoexport -d test -c students -o students.dat 
+connected to: 127.0.0.1 exported 9 records
+# 指明导出格式为csv
+mongoexport -d test -c students --csv -f classid,name,age -o students_csv.dat 
+connected to: 127.0.0.1 exported 9 records   
+</code></pre>
+<h4 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h4><pre><code>db.collectionName.update(&#123;&#125;, &#123;$set:&#123;&#39;key&#39; : value&#125;&#125;, false, true);
+</code></pre>
+<h2 id="改"><a href="#改" class="headerlink" title="改"></a>改</h2><pre><code>.update
+</code></pre>
+<h4 id="更改字段名称"><a href="#更改字段名称" class="headerlink" title="更改字段名称"></a>更改字段名称</h4><pre><code>db.CollectionName.update(&#123;&#125;, &#123;$rename : &#123;&quot;OldName&quot; : &quot;NewName&quot;&#125;&#125;, false, true)
+# false为如不存在update记录，是否插入新的纪录  
+# ture位置为更新全部数据，如设定false 则为只更新第一条
+# 另外 没有输入名称时没有输全，也会显示查找，但不会执行更改
+</code></pre>
+<h4 id="统配"><a href="#统配" class="headerlink" title="统配"></a>统配</h4><pre><code>db.CollectionName.update(&lt;query&gt;, &lt;update&gt;,&#123;upsert : &lt;boolean&gt;, multi : &lt;boolean&gt;, 
+writeConcern : &lt;document&gt;&#125;)
+# query : update 查找条件，类似sql update查询内where后面的
+# update : update的对象和一些更新的操作符（如$,$inc...）等，也可以理解为sql update查
+#&gt;询内set后面的
+# upsert : 可选，这个参数的意思是，如果不存在update的记录，是否插入objNew,true为插
+#&gt;入，默认是false，不插入。
+# multi : 可选，mongodb 默认是false,只更新找到的第一条记录，如果这个参数为true,就把
+#&gt;按条件查出来多条记录全部更新。
+# writeConcern :可选，抛出异常的级别。
+</code></pre>
+<h5 id="eg"><a href="#eg" class="headerlink" title="eg"></a>eg</h5><pre><code>db.col.update(&#123;&#39;title&#39;:&#39;MongoDB&#39;&#125;,&#123;$set:&#123;&#39;title&#39;:&#39;IamNewTitle&#39;&#125;&#125;)
+</code></pre>
+<h4 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h4><p>remove()函数是用来移除集合中的数据。</p>
+<pre><code>db.collection.remove(
+&lt;query&gt;,
+&lt;justOne&gt;
+)
+</code></pre>
+<h5 id="2-6版以后"><a href="#2-6版以后" class="headerlink" title="2.6版以后"></a>2.6版以后</h5><pre><code>db.collection.remove(
+&lt;query&gt;,
+&#123;
+justOne: &lt;boolean&gt;,
+writeConcern: &lt;document&gt;
+&#125;)
+</code></pre>
+<blockquote>
+<p>参数说明：<br>query :（可选）删除的文档的条件。<br>justOne : （可选）如果设为 true 或 1，则只删除一个文档。<br>writeConcern :（可选）抛出异常的级别。</p>
+</blockquote>
+<pre><code>db.col.remove(&#123;&#125;)   #删除所有 (就很恐怖)
+</code></pre>
+<h4 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h4><table>
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="center">格式</th>
+<th align="center">范例</th>
+<th align="right">RDBMS中的类似语句</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">等于</td>
+<td align="center">{<code>&lt;key&gt;:&lt;value&gt;</code>}</td>
+<td align="center"><code>db.col.find(&#123;&quot;by&quot;:&quot;教程&quot;&#125;).pretty()    </code></td>
+<td align="right"><code>where by = &#39;教程&#39;</code></td>
+</tr>
+<tr>
+<td align="left">小于</td>
+<td align="center">{<code>&lt;key&gt;:&#123;$lt:&lt;value&gt;</code>}}</td>
+<td align="center"><code>db.col.find(&#123;&quot;likes&quot;:&#123;$lt:50&#125;&#125;).pretty()</code></td>
+<td align="right"><code>where likes &lt; 50   </code></td>
+</tr>
+<tr>
+<td align="left">小于或等于</td>
+<td align="center">{<code>&lt;key&gt;:&#123;$lte:&lt;value&gt;</code>}}</td>
+<td align="center"><code>db.col.find(&#123;&quot;likes&quot;:&#123;$lte:50&#125;&#125;).pretty()</code></td>
+<td align="right">…</td>
+</tr>
+<tr>
+<td align="left">大于</td>
+<td align="center">{<code>&lt;key&gt;:&#123;$gt:&lt;value&gt;</code>}}</td>
+<td align="center"><code>db.col.find(&#123;&quot;likes&quot;:&#123;$gt:50&#125;&#125;).pretty()</code></td>
+<td align="right">…</td>
+</tr>
+<tr>
+<td align="left">大于或等于</td>
+<td align="center">{<code>&lt;key&gt;:&#123;$gte:&lt;value&gt;</code>}}</td>
+<td align="center"><code>db.col.find(&#123;&quot;likes&quot;:&#123;$gte:50&#125;&#125;).pretty()</code></td>
+<td align="right">…</td>
+</tr>
+<tr>
+<td align="left">不等于</td>
+<td align="center">{<code>&lt;key&gt;:&#123;$ne:&lt;value&gt;</code>}}</td>
+<td align="center"><code>db.col.find(&#123;&quot;likes&quot;:&#123;$ne:50&#125;&#125;).pretty()</code></td>
+<td align="right"><code>where likes != 50</code></td>
+</tr>
+</tbody></table>
+<h5 id="And"><a href="#And" class="headerlink" title="And"></a>And</h5><p>find可以传入多个键(key),逗号隔开：</p>
+<pre><code>db.col.find(&#123;key1:value1, key2:value2&#125;).pretty()
+db.col.find(&#123;&quot;by&quot;:&quot;教程&quot;, &quot;title&quot;:&quot;MongoDB &quot;&#125;).pretty()
+#类似于
+WHERE by=&#39;教程&#39; AND title=&#39;MongoDB &#39;
+</code></pre>
+<h5 id="Or"><a href="#Or" class="headerlink" title="Or"></a>Or</h5><pre><code>db.test.find(&#123;$[&#123;key1:value1&#125;,(key2:value2)]&#125;).pretty()     #注意小中大括号😰
+db.col.find(&#123;&quot;likes&quot;: &#123;$gt:50&#125;, $or: [&#123;&quot;by&quot;: &quot;教程&quot;&#125;,&#123;&quot;title&quot;: &quot;MongoDB &quot;&#125;]&#125;)
+</code></pre>
+<h5 id="And-与-Or"><a href="#And-与-Or" class="headerlink" title="And 与 Or"></a>And 与 Or</h5><pre><code>db.col.find(&#123;&quot;likes&quot;: &#123;$gt:50&#125;, $or: [&#123;&quot;by&quot;: &quot;教程&quot;&#125;,&#123;&quot;title&quot;: &quot;MongoDB &quot;&#125;]&#125;)
+#类似于（其中pretty()是显示样式）
+where likes&gt;50 AND (by = &#39;教程&#39; OR title = &#39;MongoDB ‘
+</code></pre>
+<h4 id="简写说明"><a href="#简写说明" class="headerlink" title="简写说明"></a>简写说明</h4><table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="right"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$gt</td>
+<td align="center">——–</td>
+<td align="center">greater than</td>
+<td align="right">&gt;</td>
+</tr>
+<tr>
+<td align="left">$gte</td>
+<td align="center">———</td>
+<td align="center">gt equal</td>
+<td align="right">&gt;=</td>
+</tr>
+<tr>
+<td align="left">$lt</td>
+<td align="center">——–</td>
+<td align="center">less than</td>
+<td align="right">&lt;</td>
+</tr>
+<tr>
+<td align="left">$lte</td>
+<td align="center">———</td>
+<td align="center">lt equal</td>
+<td align="right">&lt;=</td>
+</tr>
+<tr>
+<td align="left">$ne</td>
+<td align="center">———–</td>
+<td align="center">not equal</td>
+<td align="right">!=</td>
+</tr>
+<tr>
+<td align="left">$eq</td>
+<td align="center">——–</td>
+<td align="center">equal</td>
+<td align="right">=</td>
+</tr>
+</tbody></table>
+<h5 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h5><pre><code>db.col.find(&#123;&quot;title&quot; : &#123;$type : 2&#125;&#125;)    #获取“col”集合中title为String的数据
+</code></pre>
+<p><strong>对照表：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="center">数字</th>
+<th align="right">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Double</td>
+<td align="center">1</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">String</td>
+<td align="center">2</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">Object</td>
+<td align="center">3</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">Array</td>
+<td align="center">4</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">Binary data</td>
+<td align="center">5</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">Undefined</td>
+<td align="center">6</td>
+<td align="right">已废弃。</td>
+</tr>
+<tr>
+<td align="left">Object id</td>
+<td align="center">7</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">Boolean</td>
+<td align="center">8</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">Date</td>
+<td align="center">9</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">Null</td>
+<td align="center">10</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">Regular Expression</td>
+<td align="center">11</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">JavaScript</td>
+<td align="center">13</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">Symbol</td>
+<td align="center">14</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">JavaScript (with scope)</td>
+<td align="center">15</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">32-bit integer</td>
+<td align="center">16</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">Timestamp</td>
+<td align="center">17</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">64-bit integer</td>
+<td align="center">18</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">Min key</td>
+<td align="center">255</td>
+<td align="right">Query with -1.</td>
+</tr>
+<tr>
+<td align="left">Max key</td>
+<td align="center">127</td>
+<td align="right"></td>
+</tr>
+</tbody></table>
+<h5 id="Limit-Skip-方法"><a href="#Limit-Skip-方法" class="headerlink" title="Limit() Skip()方法"></a>Limit() Skip()方法</h5><pre><code>db.col.find(&#123;&#125;,&#123;&quot;title&quot;:1,_id:0&#125;).limit(2)
+</code></pre>
+<blockquote>
+<p>参数说明：<br>    “title”后1为判断语句，表示是否只查询“title”内容0为否，显示这条的全部信息。_id的0亦为判断表示是否显示“_id”内容。limit为限制搜索信息条数。</p>
+</blockquote>
+<pre><code>db.col.find(&#123;&#125;,&#123;&quot;title&quot;:1,_id:0&#125;).limit(1).skip(1)
+skip(NUMBER)        #NUMBER为阶跃，即每隔几条数据来搜索
+</code></pre>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><pre><code>db.COLLECTION_NAME.find().sort(&#123;KEY:1&#125;)     #KEY后数字可为1OR-1，升序OR降序
+db.col.find(&#123;&#125;,&#123;&quot;title&quot;:1,_id:0&#125;).sort(&#123;&quot;likes&quot;:-1&#125;     #按“likes”降序排序
+</code></pre>
+<hr>
+<hr>
+<h3 id="MongoDB-索引-（建立索引干嘛……）"><a href="#MongoDB-索引-（建立索引干嘛……）" class="headerlink" title="MongoDB 索引        （建立索引干嘛……）"></a>MongoDB 索引        （<font color=crimson>建立索引干嘛……</font>）</h3><h4 id="ensureIndex-方法"><a href="#ensureIndex-方法" class="headerlink" title="ensureIndex() 方法"></a>ensureIndex() 方法</h4><pre><code>db.COLLECTION_NAME.ensureIndex(&#123;KEY:1&#125;)
+# Key 值为要创建的索引字段，1为指定按升序创建索引，降序-1
+</code></pre>
+<h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h3><h4 id="aggregate-方法"><a href="#aggregate-方法" class="headerlink" title="aggregate()方法"></a>aggregate()方法</h4><pre><code>db.COLLECTION_NAME.aggregate(AGGREGATE_OPERATION)
+db.mycol.aggregate([&#123;$group : &#123;_id : &quot;$by_user&quot;, num_tutorial : &#123;$sum : 1&#125;&#125;&#125;])
+#类似于
+select by_user, count(*) from mycol group by by_user
+</code></pre>
+<blockquote>
+<p>输出结果：<br>{ “_id” : “Neo4j”, “num_tutorial” : 1 }<br>{ “_id” : “runoob.com”, “num_tutorial” : 2 }<br>{ “_id” : null, “num_tutorial” : 1 }</p>
+</blockquote>
+<blockquote>
+<p>参数说明：“$by_user” 即为分类依据，并打印出来（如上）。<br>num_tutorial 仅为显示提示，可以更改为任意提示甚至汉字。<br>$sum : 1 其中1为每次计数值，即重复一次加几。1+1+1+1…… ：重复一次加1；0.1+0.1+0.1……重复一次加0.1。这个意思</p>
+</blockquote>
+<h5 id="计算符："><a href="#计算符：" class="headerlink" title="计算符："></a>计算符：</h5><table>
+<thead>
+<tr>
+<th align="left">表达式</th>
+<th align="center">描述</th>
+<th align="center">实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$sum</td>
+<td align="center">计算总和。</td>
+<td align="center"><code>db.mycol.aggregate([&#123;$group : &#123;_id : &quot;$by_user&quot;, num_tutorial : &#123;$sum : &quot;$likes&quot;&#125;&#125;&#125;])</code></td>
+</tr>
+<tr>
+<td align="left">$avg</td>
+<td align="center">计算平均值</td>
+<td align="center"><code>db.mycol.aggregate([&#123;$group : &#123;_id : &quot;$by_user&quot;, num_tutorial : &#123;$avg : &quot;$likes&quot;&#125;&#125;&#125;])</code></td>
+</tr>
+<tr>
+<td align="left">$min</td>
+<td align="center">获取集合中所有文档对应值得最小值。</td>
+<td align="center"><code>db.mycol.aggregate([&#123;$group : &#123;_id : &quot;$by_user&quot;, num_tutorial : &#123;$min : &quot;$likes&quot;&#125;&#125;&#125;])</code></td>
+</tr>
+<tr>
+<td align="left">$max</td>
+<td align="center">获取集合中所有文档对应值得最大值。</td>
+<td align="center"><code>db.mycol.aggregate([&#123;$group : &#123;_id : &quot;$by_user&quot;, num_tutorial : &#123;$max : &quot;$likes&quot;&#125;&#125;&#125;])</code></td>
+</tr>
+<tr>
+<td align="left">$push</td>
+<td align="center">在结果文档中插入值到一个数组中。</td>
+<td align="center"><code>db.mycol.aggregate([&#123;$group : &#123;_id : &quot;$by_user&quot;, url : &#123;$push: &quot;$url&quot;&#125;&#125;&#125;])</code></td>
+</tr>
+<tr>
+<td align="left">$addToSet</td>
+<td align="center">在结果文档中插入值到一个数组中，但不创建副本。</td>
+<td align="center"><code>db.mycol.aggregate([&#123;$group : &#123;_id : &quot;$by_user&quot;, url : &#123;$addToSet : &quot;$url&quot;&#125;&#125;&#125;])</code></td>
+</tr>
+<tr>
+<td align="left">$first</td>
+<td align="center">根据资源文档的排序获取第一个文档数据。</td>
+<td align="center"><code>db.mycol.aggregate([&#123;$group : &#123;_id : &quot;$by_user&quot;, first_url : &#123;$first : &quot;$url&quot;&#125;&#125;&#125;])</code></td>
+</tr>
+<tr>
+<td align="left">$last</td>
+<td align="center">根据资源文档的排序获取最后一个文档数据</td>
+<td align="center"><code>db.mycol.aggregate([&#123;$group : &#123;_id : &quot;$by_user&quot;, last_url : &#123;$last : &quot;$url&quot;&#125;&#125;&#125;])</code></td>
+</tr>
+</tbody></table>
+<h3 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h3><pre><code>$gt     大于
+$lt     小于
+$gte        大于等于
+$lte        小于等于
+</code></pre>
+<h4 id="eg："><a href="#eg：" class="headerlink" title="eg："></a>eg：</h4><pre><code>db.col.find(&#123;likes : &#123;$gte : 100&#125;&#125;)
+# 查询“col”集合中&quot;likes&quot;大于100的数据
+# 比较与 `SQL       Select * from col where likes &gt;=100;`
+</code></pre>
+<h4 id="取前n条数据"><a href="#取前n条数据" class="headerlink" title="取前n条数据"></a>取前n条数据</h4><pre><code>.find().limit(n)
+</code></pre>
+<h3 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h3><pre><code>skip(), limilt(), sort()三个放在一起执行的时候，执行的顺序是先 sort(), 
+然后是 skip()，最后是显示的 limit()。
+</code></pre>
+<h2 id="数据导出"><a href="#数据导出" class="headerlink" title="数据导出"></a>数据导出</h2><pre><code>mongoexport -d *** -c *** -o ***
+# -d 后为 dbName
+   -c 后为 collectionName
+   -o 后为 outputFileName 导出文件名
+</code></pre>
+<p>名字都不用加引号，直接上的~，  然后导出格式都是json 那样，不管后缀是什么用文本打开都是一个样子——骗鬼👻</p>
+<h2 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h2><pre><code> mongoimport -h 127.0.0.1 -p 27017 -d Trader_1Min_Db -c ag1806 --file 
+/home/ian/Downloads/ag1806.json
+</code></pre>
+<h3 id="Linux-下使用Robo3T错误"><a href="#Linux-下使用Robo3T错误" class="headerlink" title="Linux 下使用Robo3T错误"></a>Linux 下使用Robo3T错误</h3><p>错误最后字段为：已放弃 (核心已转储)</p>
+<pre><code>mkdir ~/robo-backup
+mv robo3t-1.1.1-linux-x86_64-*/lib/libstdc++* 
+</code></pre>
+<p>~/robo-backup/robo3t-1.1.1-linux-x86_64-*/bin/robo3t<br>    移动备份之后即可运行</p>
+<h1 id="For-Python"><a href="#For-Python" class="headerlink" title="For Python"></a>For Python</h1><h2 id="PyMongo"><a href="#PyMongo" class="headerlink" title="PyMongo"></a>PyMongo</h2><pre><code>from pymongo import MongoClient
+client = MongoClient(&quot;localhost&quot;, 27017)
+client.server_info()    
+# 查看信息，检测是否成功连接
+db = client[&quot;someData&quot;]
+collection = db.zn1801_30Min
+# 两种命名方式，一种是直接.     一种是使用“”
+</code></pre>
+<p>乖乖的用<font color = red>双引号</font>，因为，在这里的单双引号是区分的… 我现在也懒得去管它是字符字符串的什么鬼。┏┛墓┗┓…(((m -__-)m</p>
+<h4 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h4><pre><code>collection.insert( &#123;&quot;name&quot;:&quot;text&quot; &#125; )
+</code></pre>
+<h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><pre><code>d = &#123;u&#39;Volume&#39;:&#123;&#39;$gte&#39;:50353,&#39;$lte&#39;:50355&#125;&#125;
+a = collection.find(d)
+</code></pre>
+<p>最小与最大，另外，find出来的东西是数据库指针，需要用<code>for...in...</code>来循环取出内容来</p>
+<h2 id="查询库名"><a href="#查询库名" class="headerlink" title="查询库名"></a>查询库名</h2><pre><code>from pymongo import MongoClient
+client = MongoClient(&#39;localhost&#39;, 27017)
+client.database_names()
+</code></pre>
+<blockquote>
+<p>[u’Trader_1Min_Db’, u’Trader_30Min_Db’, u’Trader_Tick_Db’, u’VnTrader_Log_Db’, u’VnTrader_Position_Db’, u’admin’, u’local’, u’someData’, u’test’]</p>
+</blockquote>
+<h3 id="查询集合名"><a href="#查询集合名" class="headerlink" title="查询集合名"></a>查询集合名</h3><pre><code>collectionNames = client[dbName].collection_names()
+print collectionNames
+</code></pre>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>其读写速度还是可以的…  二十万条数据查询的话不到一秒，然而…   频繁多量的读取，再加上不断地往其中写入就出问题了…… 卡的极慢…简直恐怖（数个小时的延迟 怕不怕）。（当然以上情况是完全没有做任何优化的情况（直接<code>insert</code> 、<code>find</code>），不知道优化之后会怎样）  另外不知道不增加条数，去增加内容会怎样…… emm  果然还是缓存比较好用…在高速多量<font color = red>多频次</font>的情况下还是用内存里面不去手动做任何保存比较好。 等积攒够量之后再去保存，就好比文件压缩不去一个个小文件传输一个道理。</p>
+<hr>
+<hr>
+<hr>
+<hr>
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="MySQL-8-0"><a href="#MySQL-8-0" class="headerlink" title="MySQL 8.0"></a>MySQL 8.0</h3><p>因为在更新8.0 之后更改了用户密码加密形式所以在使用客户端连接的时候会出现错误，所以需要</p>
+<pre><code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39; 
+    PASSWORD EXPIRE NEVER; #修改加密规则  
+ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH 
+    mysql_native_password BY &#39;password&#39;;  #更新用户的密码  
+FLUSH PRIVILEGES; #刷新权限
+</code></pre>
+<p>经此步骤，就可以将密码加密形式改为图形化客户端支持的加密形式，也或者更待客户端跟着服务端同步更新。</p>
+<p>另外，配置之初，windows 中配置步骤如下：</p>
+<ol>
+<li> 添加系统环境变量path    为MySQL/bin</li>
+<li>初始化 <code>mysqld --initialize --user=mysql --console</code></li>
+<li>根据初始化随机生成密码登陆</li>
+<li>修改密码   emm 这里说的是在外部，当然也可以在修改加密形式的时候一并修改 😄 <code>mysqladmin -u root -p password</code></li>
+<li>添加系统服务 <code>mysqld -install</code></li>
+<li>启动服务 <code>net start mysql</code></li>
+</ol>
+<p>另外在图像化里面注意密码格式呦，还有使用navicat的话需要最新版本，否则无法设置加密格式，还得用命令行去修改……果然还是命令行永远最好用</p>
+<h3 id="update"><a href="#update" class="headerlink" title="update"></a>update</h3><p><code>MySQL</code>的<code>update</code>在被更新数值和更新传入数值相同时，执行速度相当的快，据说是mysql并<font color=#f05710>不会执行更新动作</font>但是它<font color=#f05710>晓得</font>更新动作的发生</p>
+<h2 id="MySQL-中文乱码"><a href="#MySQL-中文乱码" class="headerlink" title="MySQL 中文乱码"></a>MySQL 中文乱码</h2><p>需要在连接时就指定✱charset✲    而不该一味纠结于在程序在存储时的数据准备<br>此处使用的是 </p>
+<pre><code>charset=&#39;gb2312&#39;
+</code></pre>
+<p>另外，干脆就在数据库中设置存为 blob 格式</p>
+<h2 id="连接远程-win-数据库"><a href="#连接远程-win-数据库" class="headerlink" title="连接远程 win 数据库"></a>连接远程 win 数据库</h2><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">开启某端口的示例：</span><br><span class="line"></span><br><span class="line">添加防火墙例外端口</span><br><span class="line"></span><br><span class="line"><span class="section">## 导出表记录</span></span><br><span class="line">[^<span class="emphasis">_^]</span></span><br><span class="line"><span class="emphasis">    2021-04-22 看了上面,深表惭愧...</span></span><br><span class="line"><span class="emphasis">```bash</span></span><br><span class="line"><span class="emphasis">mysql -uuser -ppasswd -hhost -e &quot;use db_</span>name; select <span class="emphasis">* from table_name where chat_id in (...);&quot; &gt;&gt; hello2.csv</span></span><br></pre></td></tr></table></figure>
+<p>在<code>bash</code>中直接执行<code>sql</code>语句，重定向保存</p>
+<h3 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h3><p>可以规避 <code>into outfile</code> 的权限问题，导出的东西用csv也是可以看的，分隔符得以保留，csv可以正常阅览</p>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><p>只不过有<code>,</code>时分隔符可能有些问题，全文替换了就好</p>
+<h5 id="入站规则设置"><a href="#入站规则设置" class="headerlink" title="入站规则设置"></a>入站规则设置</h5><p>第一步 选择 入站规则 然后 新建规则，选择 端口，然后下一步 <br>第二步 选择TCP 选择特定端口 然后输入端口，如有多个端口需要用逗号隔开了 例如: 3306<br>第三步 选择允许连接<br>第四步 选择配置文件 <br>第五步 输入规则名称 mysqlport</p>
+<h5 id="出站规则设置"><a href="#出站规则设置" class="headerlink" title="出站规则设置"></a>出站规则设置</h5><p>第一步 选择出站规则 然后 新建规则，选择 端口，然后下一步 <br>第二步 选择TCP 选择特定端口 然后输入端口，如有多个端口需要用逗号隔开了 例如: 3306<br>第三步 选择允许连接<br>第四步 选择配置文件 <br>第五步 输入规则名称 mysqlport（或者无特殊要求下直接关闭防火墙）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"># 数据迁移</span><br><span class="line">因为已有从数据库中读取数据进行返回的函数，所以没有必要再去写读取数据库的步骤（也没法写，因为数据库设计混乱，分不清哪儿是哪儿只有通过其对外函数才能取对相应数据）</span><br><span class="line">但对外其是将一段时间内数据全部读取并且打包为`json`返回，所以一次性的话将是极大的一个文件，所以解决方法有：</span><br><span class="line"></span><br><span class="line">- 阅读其中源码，返回相应数据库指针，以此取出一个迁移一个</span><br><span class="line">- 编写分段读取函数，保证每次取出的数据不多，一段一段的迁移</span><br><span class="line"></span><br><span class="line">反正我是采用`一段一段`了，毕竟源码太…   另外，一段一段的话打好日志，出现问题后可以分段纠正，也能间歇运行，另外下载好再迁也保证了数据emm，考虑如上</span><br><span class="line"></span><br><span class="line">## 简单总结</span><br><span class="line">- 数据迁移程序</span><br><span class="line">- 数据检验补差程序</span><br><span class="line">- 断点运行机制</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```md</span><br><span class="line"># 初始化</span><br><span class="line">1. 读取配置文件（其中保存</span><br><span class="line">* 数据迁移顺序——列表（内元素为字典key为* value为相应数据库、表名，</span><br><span class="line">    时间起止，一次插入的时间跨度） ）</span><br><span class="line"></span><br><span class="line">2. 根据移植顺序读取目标数据库中相应数据的最新数据日期（</span><br><span class="line">* 若为空开始则开始插入）</span><br><span class="line">* 删除此日期的所有数据，</span><br><span class="line">* 根据一次插入的时间跨度以及终点生成时间区间</span><br><span class="line">* 根据时间区间去移植数据</span><br><span class="line"></span><br><span class="line">3. 当此类型数据移植完毕之后删除配置文件中列表的相应元素</span><br><span class="line"># 执行动作</span><br><span class="line">是</span><br><span class="line"></span><br><span class="line">## 日志</span><br><span class="line">将每一步的重要信息都打印~</span><br></pre></td></tr></table></figure>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://ianvzs.github.io/2018/05/15/notes/noteOfdbData/" data-id="cktcgu9d9005atuq07cb43exe" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Ian Vzs"
+        },
+        "headline": "db数据库",
+        "image": "https://ianvzs.github.iohttps://webassets.mongodb.com/_com_assets/cms/kmxrodmee9int5s1v-HP_Highlight%202.svg",
+        "keywords": "learning mongo mysql",
+        "genre": "note db learning",
+        "datePublished": "2018-05-15",
+        "dateCreated": "2018-05-15",
+        "dateModified": "2021-09-09",
+        "url": "https://ianvzs.github.io/2018/05/15/notes/noteOfdbData/",
+        "description": "DB数据库 🖥 📊🖥
+MongoDB笔记学习网站：http://www.runoob.com/mongodb/mongodb-tutorial.html    (其学习教程还挺可观，很多，不过还不清楚好不好)
+注意事项Mongo 数据库锁mongo只提供库级粒度锁，所以一个写操作锁定时，其他读写操作都等待…   所以这个导致了Mongo多线程写操作反而没有一个线程写来的快？
+前台建立索引时，",
+        "wordCount": 1537
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/IanVzs" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/05/15/tips/tipsOfvim/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            tip Of vim
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/08/15/newThings/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">new Things</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/24/tips/tipsOfgRpc/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://grpc.io/img/logos/grpc-logo.png)" alt="gRpc使用小记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tip/">tip</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/tip/problem/">problem</a></p>
+                            <p class="item-title"><a href="/2021/05/24/tips/tipsOfgRpc/" class="title">gRpc使用小记</a></p>
+                            <p class="item-date"><time datetime="2021-05-24T02:30:41.000Z" itemprop="datePublished">2021-05-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/23/tips/tipsOfProblems/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://tse2-mm.cn.bing.net/th/id/OIP.Z6kn8Zh9FDU2oe4r5ceCgAHaEK?pid=ImgDet&rs=1)" alt="解决问题" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tip/">tip</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/tip/problem/">problem</a></p>
+                            <p class="item-title"><a href="/2021/05/23/tips/tipsOfProblems/" class="title">解决问题</a></p>
+                            <p class="item-date"><time datetime="2021-05-23T02:30:41.000Z" itemprop="datePublished">2021-05-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/19/notes/noteOfgoExp/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://wallpapercave.com/wp/wp7041189.jpg)" alt="Golang笔记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/note/golang/">golang</a></p>
+                            <p class="item-title"><a href="/2021/05/19/notes/noteOfgoExp/" class="title">Golang笔记</a></p>
+                            <p class="item-date"><time datetime="2021-05-19T11:00:00.000Z" itemprop="datePublished">2021-05-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/10/notes/noteOfFmtData/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a></p>
+                            <p class="item-title"><a href="/2021/05/10/notes/noteOfFmtData/" class="title">数据格式笔记</a></p>
+                            <p class="item-date"><time datetime="2021-05-10T09:05:00.000Z" itemprop="datePublished">2021-05-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/10/notes/noteOfUE4/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://cdn2.unrealengine.com/Unreal+Engine%2Fblog%2Fconnect-with-the-unreal-engine-community-online%2FUE_Community_Online_Feed-thumb-desktop-1400x788-a6917dba2f2cc41cc1426a3afdff135521cea738.png)" alt="UE4 笔记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/note/ue4/">ue4</a></p>
+                            <p class="item-title"><a href="/2021/05/10/notes/noteOfUE4/" class="title">UE4 笔记</a></p>
+                            <p class="item-date"><time datetime="2021-05-10T04:13:26.000Z" itemprop="datePublished">2021-05-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/new-Things/">new Things</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/new-Things/%E6%89%8B%E6%9C%BA/">手机</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/Gui/">Gui</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/Gui/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/Something/">Something</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/db/">db</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/db/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/docker/">docker</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/docker/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/">golang</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/expansion/">expansion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/java/">java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/java/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/language/">language</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/language/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/learning/">learning</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/linux/">linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/linux/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/python/learning/">learning</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/ue4/">ue4</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/ue4/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/test/">test</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E7%BD%91%E7%BB%9C-Net/">网络(Net)</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/">tip</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/debug/">debug</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/debug/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/markdown/">markdown</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/markdown/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/problem/">problem</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/problem/gRpc/">gRpc</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/vim/">vim</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/vim/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/web/">web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/web/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/%E6%8D%A2%E6%BA%90/">换源</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/web/%E5%85%A8%E6%A0%88%E7%AC%94%E8%AE%B0/">全栈笔记</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/%E6%97%A5%E8%AE%B0/">日记</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gui/" rel="tag">Gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Japanese/" rel="tag">Japanese</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sony-XZ1-Compact/" rel="tag">Sony XZ1 Compact</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vn-Py/" rel="tag">Vn.Py</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/" rel="tag">ajax</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/" rel="tag">apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debuger/" rel="tag">debuger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expansion/" rel="tag">expansion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/" rel="tag">golang</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/" rel="tag">gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-springboot-mybatis-maven-learning/" rel="tag">java, springboot, mybatis, maven, learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keepalived/" rel="tag">keepalived</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learning/" rel="tag">learning</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/" rel="tag">less</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/missjava/" rel="tag">missjava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ml/" rel="tag">ml</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongo/" rel="tag">mongo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/more/" rel="tag">more</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdb/" rel="tag">pdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyqt/" rel="tag">pyqt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpc/" rel="tag">rpc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ue4/" rel="tag">ue4</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win/" rel="tag">win</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/" rel="tag">数据格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" rel="tag">更新说明</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C%E7%AC%94%E8%AE%B0/" rel="tag">经验笔记</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Gui/" style="font-size: 10px;">Gui</a> <a href="/tags/Japanese/" style="font-size: 10px;">Japanese</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Sony-XZ1-Compact/" style="font-size: 10px;">Sony XZ1 Compact</a> <a href="/tags/Vn-Py/" style="font-size: 10px;">Vn.Py</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/debuger/" style="font-size: 10px;">debuger</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/expansion/" style="font-size: 10px;">expansion</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/golang/" style="font-size: 13.33px;">golang</a> <a href="/tags/gui/" style="font-size: 10px;">gui</a> <a href="/tags/java-springboot-mybatis-maven-learning/" style="font-size: 10px;">java, springboot, mybatis, maven, learning</a> <a href="/tags/keepalived/" style="font-size: 10px;">keepalived</a> <a href="/tags/learning/" style="font-size: 20px;">learning</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/missjava/" style="font-size: 10px;">missjava</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/mongo/" style="font-size: 10px;">mongo</a> <a href="/tags/more/" style="font-size: 10px;">more</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/pyqt/" style="font-size: 10px;">pyqt</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/rpc/" style="font-size: 10px;">rpc</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/ue4/" style="font-size: 10px;">ue4</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/win/" style="font-size: 13.33px;">win</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/" style="font-size: 10px;">数据格式</a> <a href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">更新说明</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 16.67px;">杂谈</a> <a href="/tags/%E7%BB%8F%E9%AA%8C%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">经验笔记</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 Ian Vzs</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://ianvzs.github.io/2018/05/15/notes/noteOfdbData/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
