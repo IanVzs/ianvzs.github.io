@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>愉快的Java(happy to learn the fuck java) | Ian&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="java, springboot, mybatis, maven, learning" />
+    
+    <meta name="description" content="author: Ian happy to the fuck java 😅&lt;微人事&gt; 笔记 -&gt;    ψ(._. )&gt;先贴官方文档 哦 还有官方项目地址 爪哇方法定义:1234567891011121314151617修饰符  返回值类型  方法名(参数类型  参数名)&amp;#123;    方法体;	return 返回值;&amp;#125;# 示个例public boolean">
+<meta property="og:type" content="article">
+<meta property="og:title" content="愉快的Java(happy to learn the fuck java)">
+<meta property="og:url" content="https://ianvzs.github.io/2018/05/24/notes/noteOfjava/index.html">
+<meta property="og:site_name" content="Ian&#39;s Blog">
+<meta property="og:description" content="author: Ian happy to the fuck java 😅&lt;微人事&gt; 笔记 -&gt;    ψ(._. )&gt;先贴官方文档 哦 还有官方项目地址 爪哇方法定义:1234567891011121314151617修饰符  返回值类型  方法名(参数类型  参数名)&amp;#123;    方法体;	return 返回值;&amp;#125;# 示个例public boolean">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-05-24T01:52:00.000Z">
+<meta property="article:modified_time" content="2022-03-26T13:53:01.595Z">
+<meta property="article:author" content="Ian Vzs">
+<meta property="article:tag" content="java, springboot, mybatis, maven, learning">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="Ian&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Dgraph/">Dgraph</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Dgraph/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/">图数据库</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/demo-test/">demo_test</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/demo-test/code/">code</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/new-Things/">new Things</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/new-Things/%E6%89%8B%E6%9C%BA/">手机</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/">note</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/Gui/">Gui</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/Something/">Something</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/db/">db</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/docker/">docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/golang/">golang</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/language/">language</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/learning/">learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/linux/">linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/pyinstaller/">pyinstaller</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/python/">python</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/ue4/">ue4</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/%E7%BD%91%E7%BB%9C-Net/">网络(Net)</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/">tip</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/debug/">debug</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/install/">install</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/markdown/">markdown</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/problem/">problem</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/qt/">qt</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/vim/">vim</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/web/">web</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/%E6%8D%A2%E6%BA%90/">换源</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/">web</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/%E5%85%A8%E6%A0%88%E7%AC%94%E8%AE%B0/">全栈笔记</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%9D%82%E8%B0%88/%E6%97%A5%E8%AE%B0/">日记</a></li></ul></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/note/java/">java</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/note/java/learning/">learning</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-notes/noteOfjava" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        愉快的Java(happy to learn the fuck java)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2018/05/24/notes/noteOfjava/" class="article-date">
+       <time datetime="2018-05-24T01:52:00.000Z" itemprop="datePublished">2018-05-24</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2018/05/24/notes/noteOfjava/" class="article-date">
+     <time datetime="2022-03-26T13:53:01.595Z" itemprop="dateModified">2022-03-26</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/java-springboot-mybatis-maven-learning/" rel="tag">java, springboot, mybatis, maven, learning</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>author: Ian</p>
+<h1 id="happy-to-the-fuck-java-😅"><a href="#happy-to-the-fuck-java-😅" class="headerlink" title="happy to the fuck java 😅"></a>happy to the fuck java 😅</h1><h2 id="lt-微人事-gt-笔记-gt-ψ-gt"><a href="#lt-微人事-gt-笔记-gt-ψ-gt" class="headerlink" title="&lt;微人事&gt; 笔记 -&gt;    ψ(._. )&gt;"></a>&lt;微人事&gt; 笔记 -&gt;    ψ(._. )&gt;</h2><p>先贴<a target="_blank" rel="noopener" href="https://github.com/lenve/vhr/wiki/1.%E6%9D%83%E9%99%90%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1">官方文档</a> 哦 还有<a target="_blank" rel="noopener" href="https://github.com/lenve/vhr">官方项目地址</a></p>
+<h4 id="爪哇方法定义"><a href="#爪哇方法定义" class="headerlink" title="爪哇方法定义:"></a>爪哇方法定义:</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">修饰符  返回值类型  方法名(参数类型  参数名)&#123;</span><br><span class="line">    方法体;</span><br><span class="line">	<span class="keyword">return</span> 返回值;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 示个例</span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">NiHou</span><span class="params">(<span class="type">int</span> num)</span>&#123;</span><br><span class="line">	<span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> num;</span><br><span class="line">	<span class="keyword">return</span> turn;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// `boolean` 处 可为</span></span><br><span class="line"><span class="keyword">public</span> Collection&lt;? <span class="keyword">extends</span> <span class="title class_">GrantedAuthority</span>&gt; getAuthorities()&#123;</span><br><span class="line">	List&lt;GrantedAuthority&gt; authorities = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">	<span class="keyword">return</span> authorities;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 表泛型中可以是的`GrantedAuthority`所有子类</span></span><br></pre></td></tr></table></figure>
+<h4 id="爪哇抽象方法-即Python父类中直接pass的函数…"><a href="#爪哇抽象方法-即Python父类中直接pass的函数…" class="headerlink" title="爪哇抽象方法(即Python父类中直接pass的函数…)"></a>爪哇抽象方法(即Python父类中直接<code>pass</code>的函数…)</h4><p><font color=#ff0000><code>abstract</code></font></p>
+<ol>
+<li>包含抽象方法必须得是抽象类</li>
+<li>任何子类必须重写父类抽象方法，或者声明自身为抽象类<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Employee</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">private</span> String name;</span><br><span class="line">   <span class="keyword">private</span> <span class="type">int</span> number;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="type">double</span> <span class="title function_">computePay</span><span class="params">()</span>;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">//其余</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="爪哇接口"><a href="#爪哇接口" class="headerlink" title="爪哇接口"></a>爪哇接口</h4><p><font color=#ff0000><code>interface</code></font>, <font color=#0000ff><code>implements</code></font></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[可见度] interface 接口名称 [extends 其他的类名] &#123;</span><br><span class="line">    <span class="comment">// 声明变量</span></span><br><span class="line">    <span class="comment">// 抽象方法</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 示个例</span><br><span class="line"><span class="comment">/* 文件名 : NameOfInterface.java */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">NameOfInterface</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">//任何类型 final, static 字段</span></span><br><span class="line">   <span class="comment">//抽象方法</span></span><br><span class="line">&#125;</span><br><span class="line">Interface关键字用来声明一个接口。</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="爪哇抽象类"><a href="#爪哇抽象类" class="headerlink" title="爪哇抽象类"></a>爪哇抽象类</h4><p><font color=#ff0000><code>abstract class</code></font><font color=#0000ff><code>extends</code></font></p>
+<ol>
+<li>不能直接实例化</li>
+<li>只能被继承后实例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Employee</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">private</span> String name;</span><br><span class="line">   <span class="keyword">private</span> String address;</span><br><span class="line">   <span class="keyword">private</span> <span class="type">int</span> number;</span><br><span class="line">   <span class="keyword">public</span> <span class="title function_">Employee</span><span class="params">(String name, String address, <span class="type">int</span> number)</span></span><br><span class="line">   &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Constructing an Employee&quot;</span>);</span><br><span class="line">      <span class="built_in">this</span>.name = name;</span><br><span class="line">      <span class="built_in">this</span>.address = address;</span><br><span class="line">      <span class="built_in">this</span>.number = number;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">//…… 等方法</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getNumber</span><span class="params">()</span></span><br><span class="line">   &#123;</span><br><span class="line">     <span class="keyword">return</span> number;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 文件名 : Salary.java */</span>    </span><br><span class="line"><span class="comment">// 用于继承上述东西</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Salary</span> <span class="keyword">extends</span> <span class="title class_">Employee</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="type">double</span> salary; <span class="comment">//Annual salary</span></span><br><span class="line">   <span class="keyword">public</span> <span class="title function_">Salary</span><span class="params">(String name, String address, <span class="type">int</span> number, <span class="type">double</span></span></span><br><span class="line"><span class="params">      salary)</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="built_in">super</span>(name, address, number);</span><br><span class="line">       setSalary(salary);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">mailCheck</span><span class="params">()</span></span><br><span class="line">   &#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;Within mailCheck of Salary class &quot;</span>);</span><br><span class="line">       System.out.println(<span class="string">&quot;Mailing check to &quot;</span> + getName()</span><br><span class="line">       + <span class="string">&quot; with salary &quot;</span> + salary);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getSalary</span><span class="params">()</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">return</span> salary;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSalary</span><span class="params">(<span class="type">double</span> newSalary)</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">if</span>(newSalary &gt;= <span class="number">0.0</span>)</span><br><span class="line">       &#123;</span><br><span class="line">          salary = newSalary;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">computePay</span><span class="params">()</span></span><br><span class="line">   &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Computing salary pay for &quot;</span> + getName());</span><br><span class="line">      <span class="keyword">return</span> salary/<span class="number">52</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 文件名 : AbstractDemo.java */</span></span><br><span class="line"><span class="comment">// 用于实现继承类   </span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AbstractDemo</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String [] args)</span></span><br><span class="line">   &#123;</span><br><span class="line">      <span class="type">Salary</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Salary</span>(<span class="string">&quot;Mohd Mohtashim&quot;</span>, <span class="string">&quot;Ambehta, UP&quot;</span>, <span class="number">3</span>, <span class="number">3600.00</span>);</span><br><span class="line">      <span class="type">Employee</span> <span class="variable">e</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Salary</span>(<span class="string">&quot;John Adams&quot;</span>, <span class="string">&quot;Boston, MA&quot;</span>, <span class="number">2</span>, <span class="number">2400.00</span>);</span><br><span class="line"> </span><br><span class="line">      System.out.println(<span class="string">&quot;Call mailCheck using Salary reference --&quot;</span>);</span><br><span class="line">      s.mailCheck();</span><br><span class="line"> </span><br><span class="line">      System.out.println(<span class="string">&quot;\n Call mailCheck using Employee reference--&quot;</span>);</span><br><span class="line">      e.mailCheck();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="爪哇类"><a href="#爪哇类" class="headerlink" title="爪哇类"></a>爪哇类</h4><font color=#ff0000><code>class</code></font>, <font color=#0000ff><code>extends</code></font><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<hr>
+<h1 id="Maven-项目标准目录结构"><a href="#Maven-项目标准目录结构" class="headerlink" title="Maven 项目标准目录结构"></a>Maven 项目标准目录结构</h1><p>str<br>|    main<br>    |    bin    脚本库<br>    |    java Java源代码文件<br>    |    resources 资源库，会自动复制到classes目录中<br>    |    filters 资源过滤文件<br>    |    assembly 组建的描述配置（如何打包）<br>    |    config 配置文件<br>    |    webapp web应用的目录。WEB-INF、css、js等<br>|    test<br>    |    java 单元测试Java源代码文件<br>    |    resorces 测试需要用到的资源库<br>    |    filters 测试资源过滤库<br>    |    site Site（一些文档）<br>|    target<br>    LICENSE.txt Project’s license<br>    README.txt Project’s readme</p>
+<p>工程根目录下就只有src和target两个目录<br>target是有存放项目构建后的文件和目录，jar包、war包、编译的class文件等。<br>target里的所有内容都是maven构建的时候生成的</p>
+<p>顶级目录工程的描述文件<code>pom.xml</code></p>
+<p>摘自: <a target="_blank" rel="noopener" href="https://blog.csdn.net/lengyue_wy/article/details/6718637">https://blog.csdn.net/lengyue_wy/article/details/6718637</a></p>
+<h2 id="src"><a href="#src" class="headerlink" title="src"></a>src</h2><h3 id="java"><a href="#java" class="headerlink" title="java"></a>java</h3><p><em><strong>Bean</strong></em>: 扮演应用程序素材的角色（其中放置了各种自定义类 如：Hr、Role、Employee、menu等数据类型）（作为<code>service</code>的<font color=#00cfaf>模型库</font>）<br><em><strong>common</strong></em>: 常用方法 （如字符串转换、邮件、几个查询）<br><em><strong>config</strong></em>: 看不懂的设置<br><em><strong>controller</strong></em>: 动作执行，即受到什么请求执行什么动作。 但是我打了断点鲜有进来的。所以具体实现过程还是不清楚。 另外其url地址与网页真正输入地址有全拼简写的区别，哪里有指定也没找到还。（并且寥寥草草一个就处理完了，所以肯定是简写了💩）<br><em><strong>exception</strong></em>: 异常处理<br><em><strong>mapper</strong></em>: 虽不觉然明厉的东西集合_20180525_其中定义了诸多做实事的接口，在<code>.java</code>文件中画饼，在<code>.xml</code>中实现，另外昨天在查资料时，还了解到有人要将<code>.java</code>与<code>.xml</code>分开来存放，解决方法是将<code>.xml</code>放在<code>resources</code>文件夹中，仿照在<code>java</code>文件夹中的路径，依瓢葫芦画😄的建立相同路径，如此一来在coding阶段看起来是分开的，但在building阶段编译器就是看作在同一目录下了——由此引发了虽然拆开了他们的人，却没有拆散他们的心的哲学论题😰(作为<code>service</code>的<font color=#bf00cf>方法库</font>)<br><em><strong>service</strong></em>: 动作逻辑服务，和controller中类似，不过详细不少（作为）</p>
+<hr>
+<h3 id="resources"><a href="#resources" class="headerlink" title="resources"></a>resources</h3><p><em><strong>ftl</strong></em>: emm……<br><em><strong>static</strong></em>: 静态资源<br><em><strong>js</strong></em>: emm…<br><em><strong>application.properties</strong></em>: 各项配置<br><em><strong>mybatis-config.xml</strong></em>: MySQL数据库配置</p>
+<h3 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h3><h5 id="头"><a href="#头" class="headerlink" title="头"></a>头</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;  </span><br><span class="line">&lt;!DOCTYPE configuration PUBLIC <span class="string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span>  </span><br><span class="line"><span class="string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;  </span><br><span class="line">&lt;configuration&gt;  </span><br><span class="line">  </span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="configuration中的配置信息"><a href="#configuration中的配置信息" class="headerlink" title="configuration中的配置信息"></a>configuration中的配置信息</h5><p>详解： <a target="_blank" rel="noopener" href="https://blog.csdn.net/yqynsmile/article/details/52807815">https://blog.csdn.net/yqynsmile/article/details/52807815</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 别名，假名，代称</span></span><br><span class="line">&lt;typeAliases&gt;  </span><br><span class="line">&lt;typeAlias alias=<span class="string">&quot;Student&quot;</span> type=<span class="string">&quot;com.mybatis3.domain.Student&quot;</span> /&gt;  </span><br><span class="line">&lt;/typeAliases&gt;  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明环境变量</span></span><br><span class="line">&lt;environments <span class="keyword">default</span>=<span class="string">&quot;development&quot;</span>&gt;  </span><br><span class="line">&lt;environment id=<span class="string">&quot;development&quot;</span>&gt;  </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 声明数据源，数据源的类型有NOPOOLED ，POOLED ，还有JIDN.</span></span><br><span class="line"><span class="comment"> 在数据量少的话用ONPOOLED，测试和开发过程一般用POOLED，实际运行使用JIDN */</span></span><br><span class="line">&lt;dataSource type=<span class="string">&quot;POOLED&quot;</span>&gt;  </span><br><span class="line"></span><br><span class="line"><span class="comment">// &lt;mappers&gt;：声明我们定义的一个个Mapper类，或者说是关联</span></span><br><span class="line">&lt;mapper resource=<span class="string">&quot;com/mybatis3/mappers/StudentMapper.xml&quot;</span> /&gt; </span><br><span class="line"></span><br><span class="line"><span class="comment">// &lt;property&gt;：jdbc连接的一些属性</span></span><br><span class="line">&lt;property name=<span class="string">&quot;driver&quot;</span> value=<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span> /&gt;  </span><br><span class="line">&lt;property name=<span class="string">&quot;url&quot;</span> value=<span class="string">&quot;jdbc:mysql://localhost:3306/test&quot;</span> /&gt;  </span><br><span class="line">&lt;property name=<span class="string">&quot;username&quot;</span> value=<span class="string">&quot;root&quot;</span> /&gt;  </span><br><span class="line">&lt;property name=<span class="string">&quot;password&quot;</span> value=<span class="string">&quot;admin&quot;</span> /&gt;  </span><br><span class="line"><span class="comment">/* 这些东西貌似也可以写在其他地方：application中</span></span><br><span class="line"><span class="comment"> &lt;property name=&quot;url&quot;&gt;  </span></span><br><span class="line"><span class="comment">         &lt;value&gt;jdbc:mysql://localhost:3306/springmybaitis?useUnicode=true&amp;amp;characterEncoding=UTF-8&lt;/value&gt;  </span></span><br><span class="line"><span class="comment">        &lt;!--springmybaitis是我的数据库  --&gt;</span></span><br><span class="line"><span class="comment">     &lt;/property&gt;  或 spring.datasource.url=jdbc:mysql://127.0.0.1:3306/vhr?useUnicode=true&amp;characterEncoding=UTF-8    两种写法而已 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &lt;mapper&gt;：声明Mapper的路径</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认setting配置</span></span><br><span class="line">&lt;setting name=<span class="string">&quot;cacheEnabled&quot;</span> value=<span class="string">&quot;true&quot;</span> /&gt;<span class="comment">//是否使用缓存  </span></span><br><span class="line">&lt;setting name=<span class="string">&quot;lazyLoadingEnabled&quot;</span> value=<span class="string">&quot;true&quot;</span> /&gt;<span class="comment">//是否是懒记载  </span></span><br><span class="line">&lt;setting name=<span class="string">&quot;multipleResultSetsEnabled&quot;</span> value=<span class="string">&quot;true&quot;</span> /&gt;  </span><br><span class="line">&lt;setting name=<span class="string">&quot;useColumnLabel&quot;</span> value=<span class="string">&quot;true&quot;</span> /&gt;  </span><br><span class="line">&lt;setting name=<span class="string">&quot;useGeneratedKeys&quot;</span> value=<span class="string">&quot;false&quot;</span> /&gt;  </span><br><span class="line">&lt;setting name=<span class="string">&quot;autoMappingBehavior&quot;</span> value=<span class="string">&quot;PARTIAL&quot;</span> /&gt;  </span><br><span class="line">&lt;setting name=<span class="string">&quot;defaultExecutorType&quot;</span> value=<span class="string">&quot;SIMPLE&quot;</span> /&gt;  </span><br><span class="line">&lt;setting name=<span class="string">&quot;defaultStatementTimeout&quot;</span> value=<span class="string">&quot;25000&quot;</span> /&gt;  </span><br><span class="line">&lt;setting name=<span class="string">&quot;safeRowBoundsEnabled&quot;</span> value=<span class="string">&quot;false&quot;</span> /&gt;  </span><br><span class="line">&lt;setting name=<span class="string">&quot;mapUnderscoreToCamelCase&quot;</span> value=<span class="string">&quot;false&quot;</span> /&gt;  </span><br><span class="line">&lt;setting name=<span class="string">&quot;localCacheScope&quot;</span> value=<span class="string">&quot;SESSION&quot;</span> /&gt;  </span><br><span class="line">&lt;setting name=<span class="string">&quot;jdbcTypeForNull&quot;</span> value=<span class="string">&quot;OTHER&quot;</span> /&gt;  </span><br><span class="line">&lt;setting name=<span class="string">&quot;lazyLoadTriggerMethods&quot;</span> value=<span class="string">&quot;equals,clone,hashCode ,toString&quot;</span> /&gt;  </span><br></pre></td></tr></table></figure>
+<p>还有 <code>&lt;Settings&gt;</code>:声明一些全局变量、<code>&lt;typeHandlers&gt;</code>: 自定义我们的传入参数类型处理器、<code>&lt;properties&gt;</code>: 声明属性文件的key和value，但使用.properties文件将会被覆盖。</p>
+<p><em><strong>注</strong></em>: 在要使用指定日志工具时，需要在<code>&lt;Settings&gt;</code>里指定<code>&lt;setting name=&quot;logImpl&quot; value=&quot;LOG4J&quot;/&gt;</code></p>
+<h4 id="equals-与"><a href="#equals-与" class="headerlink" title="equals 与 =="></a>equals 与 ==</h4><p><code>equals</code> 对比两者是否类型一致，内容一致<br><code>==</code>    则会由于 不同对象而<code>False</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String str1=<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">String str2=<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line"></span><br><span class="line">str1==str2   输出：<span class="literal">false</span>,因为不同对象</span><br><span class="line">int1.equals(int2)   输出：TRUE</span><br><span class="line"></span><br><span class="line"><span class="comment">// 无论 整形 or 字符串等</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="爪洼调用Python"><a href="#爪洼调用Python" class="headerlink" title="爪洼调用Python"></a>爪洼调用Python</h2><p>爪哇语有个通用调用方式，就是通过<code>Runtime</code>，也就是通过命令行执行，然后通过<code>BufferedReader</code>捕获命令行（内存）中的信息。但数据传输只能通过字符串，另外，python回传数据也只能通过<code>print</code>来回传，所以……基本没啥用.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://ianvzs.github.io/2018/05/24/notes/noteOfjava/" data-id="cl1d1lhb2000zu2tygbam864n" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Ian Vzs"
+        },
+        "headline": "愉快的Java(happy to learn the fuck java)",
+        "image": "https://ianvzs.github.io",
+        "keywords": "java, springboot, mybatis, maven, learning",
+        "genre": "note java learning",
+        "datePublished": "2018-05-24",
+        "dateCreated": "2018-05-24",
+        "dateModified": "2022-03-26",
+        "url": "https://ianvzs.github.io/2018/05/24/notes/noteOfjava/",
+        "description": "author: Ian
+happy to the fuck java 😅&lt;微人事&gt; 笔记 -&gt;    ψ(._. )&gt;先贴官方文档 哦 还有官方项目地址
+爪哇方法定义:1234567891011121314151617修饰符  返回值类型  方法名(参数类型  参数名)&#123;    方法体;	return 返回值;&#125;# 示个例public boolean ",
+        "wordCount": 1526
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="book" href="/book_architecture" target="_blank" rel="noopener">
+                        <i class="icon fa fa-book"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/IanVzs" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/06/07/notes/noteOfwebStation/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Django的建站的(｡･･)ﾉﾞ
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/05/15/notes/noteOfgolang/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Golang不确定笔记</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/03/18/notes/pyinstaller/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/note/pyinstaller/">pyinstaller</a></p>
+                            <p class="item-title"><a href="/2022/03/18/notes/pyinstaller/" class="title">python打包</a></p>
+                            <p class="item-date"><time datetime="2022-03-18T10:15:14.000Z" itemprop="datePublished">2022-03-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/02/10/notes/demo_test_some/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://avatars.githubusercontent.com/u/17629611?s=96&v=4)" alt="Demo Test项目中的一些东西" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/demo-test/">demo_test</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/demo-test/code/">code</a></p>
+                            <p class="item-title"><a href="/2022/02/10/notes/demo_test_some/" class="title">Demo Test项目中的一些东西</a></p>
+                            <p class="item-date"><time datetime="2022-02-10T09:45:00.000Z" itemprop="datePublished">2022-02-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/01/18/tips/qt/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://qt-wiki-uploads.s3.amazonaws.com/images/3/33/Py-128.png)" alt="Qt/PySide" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tip/">tip</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/tip/qt/">qt</a></p>
+                            <p class="item-title"><a href="/2022/01/18/tips/qt/" class="title">Qt/PySide</a></p>
+                            <p class="item-date"><time datetime="2022-01-18T06:15:23.000Z" itemprop="datePublished">2022-01-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/01/15/tips/install_some/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tip/">tip</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/tip/install/">install</a></p>
+                            <p class="item-title"><a href="/2022/01/15/tips/install_some/" class="title">安装问题</a></p>
+                            <p class="item-date"><time datetime="2022-01-15T08:24:41.000Z" itemprop="datePublished">2022-01-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/01/10/notes/dgraph/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://dgraph.io/docs//images/dgraph.svg)" alt="Dgraph使用小记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Dgraph/">Dgraph</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Dgraph/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/">图数据库</a></p>
+                            <p class="item-title"><a href="/2022/01/10/notes/dgraph/" class="title">Dgraph使用小记</a></p>
+                            <p class="item-date"><time datetime="2022-01-10T09:00:00.000Z" itemprop="datePublished">2022-01-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Dgraph/">Dgraph</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dgraph/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/">图数据库</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/demo-test/">demo_test</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/demo-test/code/">code</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/new-Things/">new Things</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/new-Things/%E6%89%8B%E6%9C%BA/">手机</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/Gui/">Gui</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/Gui/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/Something/">Something</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/db/">db</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/db/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/docker/">docker</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/docker/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/">golang</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/expansion/">expansion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/java/">java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/java/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/language/">language</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/language/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/learning/">learning</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/linux/">linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/linux/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/pyinstaller/">pyinstaller</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/pyinstaller/%E6%89%93%E5%8C%85/">打包</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/python/learning/">learning</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/ue4/">ue4</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/ue4/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/test/">test</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E7%BD%91%E7%BB%9C-Net/">网络(Net)</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/">tip</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/debug/">debug</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/debug/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/install/">install</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/markdown/">markdown</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/markdown/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/problem/">problem</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/problem/gRpc/">gRpc</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/qt/">qt</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/qt/pyside/">pyside</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/vim/">vim</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/vim/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/web/">web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/web/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/%E6%8D%A2%E6%BA%90/">换源</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/web/%E5%85%A8%E6%A0%88%E7%AC%94%E8%AE%B0/">全栈笔记</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/%E6%97%A5%E8%AE%B0/">日记</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gui/" rel="tag">Gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Japanese/" rel="tag">Japanese</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sony-XZ1-Compact/" rel="tag">Sony XZ1 Compact</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vn-Py/" rel="tag">Vn.Py</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/" rel="tag">ajax</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/" rel="tag">apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debuger/" rel="tag">debuger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/demo-test/" rel="tag">demo_test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expansion/" rel="tag">expansion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/" rel="tag">golang</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/" rel="tag">gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/" rel="tag">install</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-springboot-mybatis-maven-learning/" rel="tag">java, springboot, mybatis, maven, learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keepalived/" rel="tag">keepalived</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learning/" rel="tag">learning</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/" rel="tag">less</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/missjava/" rel="tag">missjava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ml/" rel="tag">ml</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongo/" rel="tag">mongo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/more/" rel="tag">more</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdb/" rel="tag">pdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyqt/" rel="tag">pyqt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpc/" rel="tag">rpc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ue4/" rel="tag">ue4</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win/" rel="tag">win</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/" rel="tag">数据格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" rel="tag">更新说明</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C%E7%AC%94%E8%AE%B0/" rel="tag">经验笔记</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Gui/" style="font-size: 10px;">Gui</a> <a href="/tags/Japanese/" style="font-size: 10px;">Japanese</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Sony-XZ1-Compact/" style="font-size: 10px;">Sony XZ1 Compact</a> <a href="/tags/Vn-Py/" style="font-size: 10px;">Vn.Py</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/debuger/" style="font-size: 10px;">debuger</a> <a href="/tags/demo-test/" style="font-size: 10px;">demo_test</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/expansion/" style="font-size: 10px;">expansion</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/golang/" style="font-size: 13.33px;">golang</a> <a href="/tags/gui/" style="font-size: 10px;">gui</a> <a href="/tags/install/" style="font-size: 10px;">install</a> <a href="/tags/java-springboot-mybatis-maven-learning/" style="font-size: 10px;">java, springboot, mybatis, maven, learning</a> <a href="/tags/keepalived/" style="font-size: 10px;">keepalived</a> <a href="/tags/learning/" style="font-size: 20px;">learning</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/missjava/" style="font-size: 10px;">missjava</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/mongo/" style="font-size: 10px;">mongo</a> <a href="/tags/more/" style="font-size: 10px;">more</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/pyqt/" style="font-size: 10px;">pyqt</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/rpc/" style="font-size: 10px;">rpc</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/ue4/" style="font-size: 10px;">ue4</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/win/" style="font-size: 13.33px;">win</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/" style="font-size: 10px;">数据格式</a> <a href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">更新说明</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 16.67px;">杂谈</a> <a href="/tags/%E7%BB%8F%E9%AA%8C%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">经验笔记</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 Ian Vzs</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://ianvzs.github.io/2018/05/24/notes/noteOfjava/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

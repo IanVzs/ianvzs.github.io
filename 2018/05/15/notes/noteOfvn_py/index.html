@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Vn.Py学习笔记（Python交易平台框架） | Ian&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="learning,Vn.Py,gui,socket" />
+    
+    <meta name="description" content="author: Ian Vn.Py笔记 ✏📔一个开源Python交易软件，主使用CTP协议。当然，还有其他协议了其源项目在http:&#x2F;&#x2F;www.vnpy.org&#x2F;     初期笔记报单交易过程中，  CTP使用BrokerID 从业务层面完全隔离不同经纪公司的交易、风控及结算用户的接入。 BrokerID具体取值咨询开户的经纪公司。  CTP中 UserID为操作员代码，InversterID为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vn.Py学习笔记（Python交易平台框架）">
+<meta property="og:url" content="https://ianvzs.github.io/2018/05/15/notes/noteOfvn_py/index.html">
+<meta property="og:site_name" content="Ian&#39;s Blog">
+<meta property="og:description" content="author: Ian Vn.Py笔记 ✏📔一个开源Python交易软件，主使用CTP协议。当然，还有其他协议了其源项目在http:&#x2F;&#x2F;www.vnpy.org&#x2F;     初期笔记报单交易过程中，  CTP使用BrokerID 从业务层面完全隔离不同经纪公司的交易、风控及结算用户的接入。 BrokerID具体取值咨询开户的经纪公司。  CTP中 UserID为操作员代码，InversterID为">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://static.vnpy.com/static/img/index/2019-5-27/mainwindow.PNG">
+<meta property="article:published_time" content="2018-05-15T02:13:48.000Z">
+<meta property="article:modified_time" content="2022-03-26T13:53:01.595Z">
+<meta property="article:author" content="Ian Vzs">
+<meta property="article:tag" content="learning">
+<meta property="article:tag" content="Vn.Py">
+<meta property="article:tag" content="gui">
+<meta property="article:tag" content="socket">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static.vnpy.com/static/img/index/2019-5-27/mainwindow.PNG">
+    
+
+    
+        <link rel="alternate" href="/" title="Ian&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Dgraph/">Dgraph</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Dgraph/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/">图数据库</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/demo-test/">demo_test</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/demo-test/code/">code</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/new-Things/">new Things</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/new-Things/%E6%89%8B%E6%9C%BA/">手机</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/">note</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/Gui/">Gui</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/Something/">Something</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/db/">db</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/docker/">docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/golang/">golang</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/language/">language</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/learning/">learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/linux/">linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/pyinstaller/">pyinstaller</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/python/">python</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/ue4/">ue4</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/%E7%BD%91%E7%BB%9C-Net/">网络(Net)</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/">tip</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/debug/">debug</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/install/">install</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/markdown/">markdown</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/problem/">problem</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/qt/">qt</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/vim/">vim</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/web/">web</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/%E6%8D%A2%E6%BA%90/">换源</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/">web</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/%E5%85%A8%E6%A0%88%E7%AC%94%E8%AE%B0/">全栈笔记</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%9D%82%E8%B0%88/%E6%97%A5%E8%AE%B0/">日记</a></li></ul></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/note/python/">python</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/note/python/learning/">learning</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-notes/noteOfvn_py" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Vn.Py学习笔记（Python交易平台框架）
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2018/05/15/notes/noteOfvn_py/" class="article-date">
+       <time datetime="2018-05-15T02:13:48.000Z" itemprop="datePublished">2018-05-15</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2018/05/15/notes/noteOfvn_py/" class="article-date">
+     <time datetime="2022-03-26T13:53:01.595Z" itemprop="dateModified">2022-03-26</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Vn-Py/" rel="tag">Vn.Py</a>, <a class="tag-link-link" href="/tags/gui/" rel="tag">gui</a>, <a class="tag-link-link" href="/tags/learning/" rel="tag">learning</a>, <a class="tag-link-link" href="/tags/socket/" rel="tag">socket</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>author: Ian</p>
+<h1 id="Vn-Py笔记-✏📔"><a href="#Vn-Py笔记-✏📔" class="headerlink" title="Vn.Py笔记 ✏📔"></a>Vn.Py笔记 ✏📔</h1><h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://static.vnpy.com/static/img/index/2019-5-27/mainwindow.PNG" alt="vn.py"></h2><p><font color=green>一个开源Python交易软件，主使用CTP协议。当然，还有其他协议了其源项目在<a target="_blank" rel="noopener" href="http://www.vnpy.org/">http://www.vnpy.org/</a> </font></p>
+<hr>
+<hr>
+<hr>
+<h2 id="初期笔记"><a href="#初期笔记" class="headerlink" title="初期笔记"></a>初期笔记</h2><pre><code>报单交易过程中，
+
+CTP使用BrokerID 从业务层面完全隔离不同经纪公司的交易、风控及结算用户的接入。
+BrokerID具体取值咨询开户的经纪公司。
+</code></pre>
+<p>CTP中 UserID为操作员代码，InversterID为投资者代码； 投资者自己下单两者同为投资者代码</p>
+<pre><code>CTP-API中，OrderRef和OrderAction    前者为CTP后台提供给客户端标识一笔报
+单的字段，从客户端可通过（FrontID、SessionID、OrderRef）唯一确定一笔报
+单；；；后者与OrderRef功能相似，提供给客户端来标识一笔撤单。
+前者的数据类型为字符数组，必须为阿拉伯数字字符。
+OrderRef（OrderActionRef）取值必须保证在同一会话内发送的报单
+OrderRef（OrderActionRef）值大于之前的最大值，开发多线程客户端尤为需要  
+注意。
+</code></pre>
+<p>CTP-API库：</p>
+<pre><code>error.dtd\error.xml 错误定义文件    ----   ThostFrfcMdApi.h 
+交易接口类定义文件  
+———   ThostFtfcUserApiDataType.h 类型定义文件  ------    
+thostmduserapi.lib,thostmduserpi.dll 行情接口库文件     -----   
+thosttraderapi.lib,thosttraderapi.dll交易接口库文件   ----- 
+
+交易和行情接口类定义文件都包含API 和 SPI类定义，客户端使用API向CTP后台
+发送请求，CTP后台则使用SPI向客户端回传响应及回报
+
+行情Demo开发：
+    1.将API文件复制到工程目录；并将所有的头文件和静态、动态库连链接库
+并将文件导入到项目工程中。
+    先继承行情接口类CThostFtdcMdspi，并实现需要实现的虚函数。  
+OnFrontConnectde、OnFrontDisconnected、OnPspUserLogin、
+OnRspSubMarketDAta
+</code></pre>
+<p>/<strong><strong><strong><strong><strong>API工作流程</strong></strong></strong></strong></strong>***/</p>
+<p>API压缩包——API含常量对应字符、类型定义、操作系统编译定义、回调函数（MdSpi）（柜台向用户端发送信息后被系统自动调用的函数）、主动函数（MdApi）（向柜台发送各种请求和指令）</p>
+<p>API工作流程：<br>    创建MdSpi对象（回掉函数），调用MdApi类，以Create开头的静态方法，创建MdApi对象（主动函数），注册MdSpi对象指针，行情柜台前置机地址，调用MdApi对象Init方法初始化连接前置机，连接成功会通过OnFrontConnected回调通知用户，用户获得连接成功通知后，调MdApi的ReqUserLogin登陆，登陆后MdSpi的OnRsqUserLogin通知用户<br>———————-到此登陆完成———————</p>
+<pre><code>MdApi：（行情相关）
+    使用MdApi对象的SubscribeMarketData方法，传入参数为想要订阅的“合约
+代码”，订阅成功当合约有新行情通过MdApi的OnRtnDepthMarketData回调通知   
+用户
+</code></pre>
+<p>———————-至此订阅完成———————<br>        当用户的某次请求发生错误时，会通过OnRspError通知用户        MdApi也含有退订合约、登出功能。      而一般退出程序则直接杀进程（不太安全便是）</p>
+<pre><code>TraderApi：（交易相关）
+    不同于以上的有 注册TraderSpi对象的指针后需要调用TraderApi对象的
+SubscribePrivateTopic和SubscribePublicTopic方法去选择公开和私有数据流的重
+传方法
+    对于期货柜台，每一日第一次登陆需要先查询前一日的结算单，等待查询
+结果返回，确认，才可进行后续操作（CTP、恒生UFT），证券（LTS）无此要求
+    上一步完成后，用户可以调用ReqQryInstrument的方法查询柜台上所有可
+以交易的合约信息（包括代码、中文名、涨跌停、最小价位变动、合约乘数等大
+量细节），一般是在这里获得合约信息列表后，再去MdApi中订阅合约；经常有
+人问为什么在MdApi中找不到查询可供订阅的合约代码的函数，这里尤其要注
+意，必须通过TraderApi来获取
+    当用户报单、成交状态发生变化时，TraderApi会自动通过OnRtnOrder、
+OnRtnTrade通知，无需额外订阅
+</code></pre>
+<p>/<strong><strong><strong><strong><strong><strong>封装API</strong></strong></strong></strong></strong></strong>****/<br>    封装后API的动作：<br>        主动函数：  调用封装API主动函数，传入Python变量作为参数—&gt;封装API将Python变量转换成C++变量—&gt;API调用原生API主动函数传入C++变量作为参数<br>        回掉函数：  交易柜台通过原生API传入参数为C++变量-&gt;封装API将C++变量转换为Python变量-&gt;封装API调用封装后的回调函数想Python程序中推送数</p>
+<pre><code>封装处理：
+    将回调函数Spi类和主动函数Api类封装为一个类，使用中更加方便
+    在API中包含一个缓冲队列，当回调函数收到新的数据信息时只是简单存入
+并立即返回，而数据信息的处理和向Python中的推送则由另一个工作线程执行
+    鉴于Python中dict字典内的键和值的类型可以不同，所以利用此来代替
+C++的结构体
+
+
+处理示例：
+    getChar()： d(Python字典对象) key(d中想要提取的数据键名) 
+if(d.has_key(key)) 判断是否存在这个键；
+    object o = d[key]; 提取对应值   
+    extract&lt;string&gt; x(o); 生成提取
+std::string类的提取器
+    if (x.check())  检测能否提取出数据  string s = x();  执行解包器，提取
+string对象
+    const char *buffer = s.c_str();  从s中获取字符串指针bufffer     
+strcpy_s(value, strlen(buffer) + 1, buffer);  
+将字符串指针指向的字符串数组复制到结构体成员的指针上    对字符串指针赋值
+必须使用strcpy_s, vs2013使用strcpy
+编译通不过+1应该是因为C++字符串的结尾符号？不是特别确定，不加这个
+1会出错
+        
+</code></pre>
+<p>/<strong><strong><strong><strong><strong><strong><strong>事件驱动</strong></strong></strong></strong></strong></strong></strong>***/</p>
+<p>时间驱动： 定时调用<br>事件驱动： 新事件被推送时（如新行情、成交）则调用<br>    初始化：    事件队列、引擎开关（标志）、事件线程、定时器、一个事件和处理函数对应字典（__handlers）<br>    引擎运行：  循环检查引擎开关 若开则一直尝试获取事件（阻塞开，时间1s），处理事件； 若出错则pass<br>    处理事件：  检测是否有对当前事件监听的处理函数，若有则循环调用相应处理函数对事件进行处理<br>    计时器事件：    创建计时器事件，推入计时器事件<br>    引擎启动：  打开引擎开关、启动事件处理线程、启动定时器（事件默认间隔1s）<br>    停止引擎：  关闭。。。。、停止计时器、等待事件处理线程退出<br>    注册事件处理：  尝试获取对应处理此类型函数列表（对应字典），若无则创建。<br>    注销函数监听：  。。。。。。。。。。。。。。。。。。。。。，若无则pass，若函数存在于列表则将之移除，若函数列表为空，则引擎中移除该事件类型<br>    put：       向事件队列中存入事件</p>
+<p>底层接口对接：<br>    交易程序架构分：底层接口、中层引擎、顶层GUI，<br>    为将某API对接到程序中需：1.将API的回调函数收到的数据—&gt;中层引擎 等待处理 2.将API的主动函数进行一定的简化封装，便于中层引擎调用</p>
+<p>中层引擎设计：<br>    进一步封装底层接口所暴露出的API函数，使得其更容易被上层的GUI和策略组件调用。<br>    构造函数：<br>        以主引擎成员变量形式创建事件驱动引擎ee，行情接口md和交易接口td的对象。<br>        随后立即启动，当用户调用接口连接、登陆等功能、收到事件推送，ee可以立即推送到监听这些事件的组件进行处理。<br>        LTS和CTP接口的持仓情况和账户情况不通过推送，需手动查询。Demo选择循环查询模式，不断更新。可选择不进行查询，降低占用网络带宽。<br>        登陆成功后，查询柜台所有可交易信息，保存到dictInstrument字典中，方便后续查询<br>    优化了一些函数方法的调用方式，将经纪商一起提供的接口登陆封装在一个函数中，减少了重复书写的次数。</p>
+<hr>
+<hr>
+<hr>
+<hr>
+<h2 id="引擎之间执行过程"><a href="#引擎之间执行过程" class="headerlink" title="引擎之间执行过程"></a>引擎之间执行过程</h2><h3 id="发单为例："><a href="#发单为例：" class="headerlink" title="发单为例："></a>发单为例：</h3><p>设置发单按钮 -&gt; 将点按动作关联sendOrder发单实现函数（从输入框获取合约代码-&gt;获取合约信息对象（见下） -&gt; <em>如果成功获取</em> -&gt; 再获取方向价格等信息 -&gt; 调用主引擎下发单实现 -&gt; 主引擎转到TdApi下发单函数执行（请求编号（API管理） -&gt; 将传入信息数据存入字典（合约代码、方向价格等） -&gt; 报单编号（API管理） -&gt; 用户id、单子属性（投机、立即发单、今日有效）等信息存入字典） -&gt; self.reqOrderInsert(req（信息字典）, self.__reqid（请求编号）) -&gt; 返回订单号（报单编号））</p>
+<hr>
+<h4 id="主引擎：（负责对API的调度）"><a href="#主引擎：（负责对API的调度）" class="headerlink" title="主引擎：（负责对API的调度）"></a>主引擎：（负责对API的调度）</h4><p><strong>init</strong>()初始化中的动作：<br>    创建事件驱动引擎、创建API接口、启动事件驱动引擎、循环查询持仓和账户相关（之后学习）、创建合约存储空字典，注册插入合约对象执行函数事件类型和其处理函数。<br>其中包含几乎所有的功能函数，包含了每个功能函数的实现方法</p>
+<h4 id="事件驱动引擎："><a href="#事件驱动引擎：" class="headerlink" title="事件驱动引擎："></a>事件驱动引擎：</h4><p><strong>init</strong>()初始化中的动作：<br>    创建事件队列、创建设置事件引擎开关（关）、创建事件处理线程(目标为引擎运行)、创建计时器（将超时动作连接到__onTimer函数）、创建__handlers空字典（存储对应事件调用关系）<br>统筹管理事件的执行，在其中建立起事件执行队列管理向队列中插入事件，分配事件对象类型（据此注册其执行函数）和具体事件数据（时间及日志），拥有注册事件处理监听及注销监听。最终使得整个程序有序的进行。</p>
+<hr>
+<h3 id="调用关系"><a href="#调用关系" class="headerlink" title="调用关系"></a>调用关系</h3><p>主引擎在初始化时即启动事件驱动引擎（调用启动函数start()（将引擎开关设为启动、启动事件处理线程、启动计时器）） -&gt; 事件处理线程运行目标__run()（若开关开则将从<strong>事件队列</strong>中get()到事件，放到处理函数__process()中执行） -&gt; __process()处理事件函数（检查事件类型，在__handlers字典中是否有对此监听处理函数，若存在则调用字典中处理函数）</p>
+<pre><code>事件启动引擎start()中启动定时器 -&gt; 创建计时器事件 -&gt; 向队列存入计时器事件
+</code></pre>
+<hr>
+<h4 id="获取合约信息对象："><a href="#获取合约信息对象：" class="headerlink" title="获取合约信息对象："></a>获取合约信息对象：</h4><p>从合约字典中读取合约信息对象有则继续执行原本程序操作（获取名称、发单撤单），无则None</p>
+<h5 id="以初始化查询为例："><a href="#以初始化查询为例：" class="headerlink" title="以初始化查询为例："></a>以初始化查询为例：</h5><p>主引擎初始化中注册<code>self.ee.register(EVENT_TDLOGIN, self.initGet)</code>,<code>EVENT_TDLOGIN</code>为交易服务器登陆成功事件。即此事件为登录成功后开始初始化查询。<br>步骤：打开设定文件<code>setting.vn</code>，尝试读取设定字典。载入后，设定事件类型、将事件推入事件队列、查询投资者、循环查询账户和持仓。（若不存在or合约数据非今天，则发出获取合约请求。）-&gt; 获取合约 -&gt; 定义事件类型 -&gt; 推入事件队列 -&gt; API查询合约</p>
+<hr>
+<hr>
+<h2 id="ctpGateway-接入方法"><a href="#ctpGateway-接入方法" class="headerlink" title="ctpGateway 接入方法"></a>ctpGateway 接入方法</h2><p><font color=orange>考虑到现阶段大部分CTP中的ExchangeID字段返回的都是空值<br>vtSymbol直接使用symbol</font></p>
+<hr>
+<p>创建CTP价格方向交易所持仓产品等类型映射，方便调用  <strong>然后</strong>  <code>class CtpGateway(VtGateway):</code>CTP接口中初始化动作（继承VtGateway实例化事件引擎、设定网关名称为’CTP‘、实例化ctpMdApi，ctpTdApi、初始化行情交易连接状态，循环查询允许）</p>
+<p><strong>连接过程</strong><br>初始化账号密码等、连接服务器、注册服务器地址、登陆<br>订阅合约里有个设计为：尚未登陆就调用了订阅则保存订阅信号，则在成功登陆之后的登陆回报函数中重新订阅</p>
+<hr>
+<h2 id="数据记录器"><a href="#数据记录器" class="headerlink" title="数据记录器"></a>数据记录器</h2><h4 id="drBase-py中（定义数据类型）：（数据记录器和CTA两模块共同使用）"><a href="#drBase-py中（定义数据类型）：（数据记录器和CTA两模块共同使用）" class="headerlink" title="drBase.py中（定义数据类型）：（数据记录器和CTA两模块共同使用）"></a>drBase.py中（定义数据类型）：（<font color=orange>数据记录器和CTA两模块共同使用</font>）</h4><pre><code>K线数据
+    构造函数（定义数据类型）：vt系统代码、合约代码、交易所代码、开高低
+关、bar开始时间、时间、成交量持仓量
+Tick数据
+    构造函数（定义数据类型）：vt系统代码、合约代码、交易所代码、成交数
+据、tick时间、五档行情
+</code></pre>
+<hr>
+<h4 id="DrEngine数据记录引擎"><a href="#DrEngine数据记录引擎" class="headerlink" title="DrEngine数据记录引擎"></a><font color=red>DrEngine数据记录引擎</font></h4><p>获取当前文件绝对路径</p>
+<pre><code>settingFileName = &#39;DR_setting.json&#39;
+path = os.path.abspath(os.path.dirname(__file__))       
+settingFileName = os.path.join(path, settingFileName)
+</code></pre>
+<p>初始化中动作：实例化设置主引擎、事件引擎、获取当前日期、创建主力合约代码映射字典、Tick对象字典、K线对象字典、初始化数据库插入单独线程、载入设置，订阅行情 </p>
+<h5 id="载入设置、订阅行情"><a href="#载入设置、订阅行情" class="headerlink" title="载入设置、订阅行情"></a>载入设置、订阅行情</h5><p>打开<code>DR_setting.json</code>文件，以json载入，其中<code>’working‘</code>决定是否启动行情记录功能。随后从json文件中循环获取合约代码订阅tick和bar</p>
+<p>启动数据插入线程（<code>run</code>函数（向MongoDB中插入数据））、注册事件监听（<code>procecssTickEvent</code>处理行情推送（<font color=green>下详</font>））</p>
+<h5 id="处理行情推送"><a href="#处理行情推送" class="headerlink" title="处理行情推送"></a>处理行情推送</h5><p>从事件字典中取出保存的具体事件数据、<code>vtSymbol</code>为tick识别信号（合约代码）、转化Tick格式、更新TIck数据（并发出日志）、更新分钟线数据</p>
+<hr>
+<h2 id="风控模块"><a href="#风控模块" class="headerlink" title="风控模块"></a>风控模块</h2><p>从配置json文件中读取设定信息  操作运作：1.检测风控设定值变化 2.每笔交易发单时使用风控模块决定该次发单是否允许   （其中流控计数在每次调用风控检测时计数、成交合约量在更新成交数据中加交易数值）</p>
+<hr>
+<hr>
+<hr>
+<h2 id="CTA策略"><a href="#CTA策略" class="headerlink" title="CTA策略"></a>CTA策略</h2><p>直接来到改版之后：</p>
+<hr>
+<hr>
+<hr>
+<h2 id="CTP交易托管API"><a href="#CTP交易托管API" class="headerlink" title="CTP交易托管API"></a>CTP交易托管API</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>基于C++的类库，通过使用提供接口实现相关交易功能，含：报单与报价录入、的撤销、的挂起、的激活、的修改、的查询、成交单查询、投资者查询、 投资者持仓查询、合约查询、交易日获取等</p>
+<p>含文件：交易接口、API所需数据类型、业务相关数据结构i、的头文件、动态链接库、导入库</p>
+<h3 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h3><p>建立在TCP协议之上FTD协议与交易托管系统进行通讯<br><strong>FTD通讯模式：</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="right"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">对话通讯模式</td>
+<td align="right">- 会员端请求、接收处理、响应</td>
+</tr>
+<tr>
+<td align="left">私有通讯模式</td>
+<td align="right">- 交易所主动向特定会员发出</td>
+</tr>
+<tr>
+<td align="left">广播通讯模式</td>
+<td align="right">- 交易所主动、全员发送</td>
+</tr>
+</tbody></table>
+<h3 id="接口模式"><a href="#接口模式" class="headerlink" title="接口模式"></a>接口模式</h3><p><code>CThostFtdeTraderApi</code>和<code>CThostFtdeTraderSpi</code>，前者发送请求，后者回调响应。旗下函数方法前者以Req开头后者以OnRsp开头。请求接口第一个参数为请求的内容，不能为空。第二个参数为请求号。</p>
+<p>如果接收到的响应数据不止一个，则回调函数会被多次调用。第一个参数为响应的具体数据，第二个参数为处理结果，第三个参数为请求号，第四个参数为响应结束标志，表明是否是本次响应的最后一次回调。</p>
+<h3 id="运行模式"><a href="#运行模式" class="headerlink" title="运行模式"></a>运行模式</h3><p>至少两个线程，一个为应用程序主线程，一个为交易员API工作线程，其间通讯由API工作线程驱动。</p>
+<h3 id="撤单-发单"><a href="#撤单-发单" class="headerlink" title="撤单 发单"></a>撤单 发单</h3><h4 id="发单为例：-1"><a href="#发单为例：-1" class="headerlink" title="发单为例："></a>发单为例：</h4><p>在用户点击发单之后，程序从“交易”栏的<code>text()</code>获取合约代码，随后从详细合约保存字典中读取其他信息，将之保存到一个字典中之后，调用主引擎对特定接口发单。</p>
+<p>发单完成之后，马上会收到报单响应 OnRspOrderInsert，说明交易系统已经收到报单。报单进入交易系统后，如果报单的交易状态发生变化，就会收到报单回报 OnRtnOrder。如果报单被撮(部分)成交，就会收到成交回报 OnRtnTrade。通过更新</p>
+<h4 id="撤单时："><a href="#撤单时：" class="headerlink" title="撤单时："></a>撤单时：</h4><p>程序从单元格中获取exchange、frontID、orderID、sessionID、symbol、gatewayName等信息，调用主引擎对特定接口撤单。撤单时调用Api函数为reqOrderAction其内容包括撤销、挂起、激活、修改，故还需一个Flag参数</p>
+<p>ps：如果报单还停留在 Thost，Thost 可以用 Front 、SessionID、OrderRef 来定位<br>如果报单停留在交易所，Thost 可以用 ExchangID、OrderSysID 来定位，然后向交易<br>所转发撤单指令。</p>
+<h3 id="TraderApi所有方法功能"><a href="#TraderApi所有方法功能" class="headerlink" title="TraderApi所有方法功能"></a>TraderApi所有方法功能</h3><pre><code>OnFrontConnected/Disconnected       
+# 客户端与交易托管系统建立起通信连接时
+OnHeartBeatWarning      
+# 当长时间未收到报文时
+OnRspUserLogin/Logout       
+# 登陆注销响应
+OnRspUserPasswordUpdate     
+# 改密响应
+OnRspTradingAccountPasswordUpdate       
+# 当客户端发出资金账户口令更新指令后，交易托管系统返回响应时
+OnRspError      
+# 请求出错时
+OnRspOrderInsert        
+# 报单录入
+OnRspOrderAction        
+# 报单操作包括报单的撤销、报单的挂起、报单的激活、报单的修改。当客户端
+    发出过报单操作指令后，交易托管系统返回响应时
+OnRspQueryMaxOrderVolume        
+# 查询最大报单
+OnRspSettlementInfoConfirm      
+# 当客户端发出投资者结算结果确认指令后，交易托管系统返回响应时
+
+等……  lol 统计无力
+</code></pre>
+<p>？</p>
+<hr>
+<hr>
+<hr>
+<h2 id="CTA-策略引擎"><a href="#CTA-策略引擎" class="headerlink" title="CTA 策略引擎"></a>CTA 策略引擎</h2><h5 id="init-的工作："><a href="#init-的工作：" class="headerlink" title="_init_()的工作："></a>_<em>init</em>_()的工作：</h5><ul>
+<li>加载主引擎、事件引擎；获取当前日期</li>
+<li>设定是否在回测</li>
+<li>保存策略实例的字典strategyDict(key为策略名称，value为策略实例)、</li>
+<li>保存vtSymbol和策略实例映射的字典(用于推送tick数据，可能多个策略交易同一个vtSymbol因此key为vtSymbol.value为包含所有相关策略对象的list)、</li>
+<li>保存vtOrderID和strategy对象映射的字典(用于推送order和trade数据key为vtOrderID，value为strategy对象）、</li>
+<li>本地停止单编号计数、本地停止单字典(key为stopOrderID，value为stopOrder对象)、</li>
+<li>持仓缓存字典(key为vtSymbol，value为PositionBuffer对象)、</li>
+<li>成交号集合、</li>
+<li>设置引擎类型为实盘、</li>
+<li>注册事件监听</li>
+</ul>
+<h4 id="初始化策略"><a href="#初始化策略" class="headerlink" title="初始化策略"></a>初始化策略</h4><p>从数据库中读取3天的历史TICK数据、行情更新。。。。。有的话待续</p>
+<h4 id="启动策略"><a href="#启动策略" class="headerlink" title="启动策略"></a>启动策略</h4><p>从策略实例字典中取出策略实例，调用策略函数（已经初始化，没有在进行策略交易），开启进行交易标志位。</p>
+<h4 id="停止策略"><a href="#停止策略" class="headerlink" title="停止策略"></a>停止策略</h4><p>从策略实例字典中取出策略实例，调用策略函数（            在进行策略交易），关闭策略交易标志位 -&gt; 对该策略发出的所有限价单进行撤单 -&gt; 发出的所有本地停止单撤单 -&gt; </p>
+<h4 id="保存、读取策略配置"><a href="#保存、读取策略配置" class="headerlink" title="保存、读取策略配置"></a>保存、读取策略配置</h4><p>触发策略状态变化事件（通常用于通知GUI更新）<br>获取策略的参数字典<br>获取策略当前的变量字典</p>
+<h3 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h3><p>报单更新、成交更新都是先检测是否有对此监听的策略<br>限价单成交处理：成交回报、报单回报、记录成交到列表、删除该限价单</p>
+<h4 id="基础功能的策略调用"><a href="#基础功能的策略调用" class="headerlink" title="基础功能的策略调用"></a>基础功能的策略调用</h4><p>策略中发单时，需要在设置参数时考虑设置。    另获取持仓缓存数据，做平昨平今的选择。<br>策略中发单时，检查报单是否有效，赋参，撤单。<br>发停止单，编号，赋参，保存至字典<br>撤停止单，从工作停止单字典中移除</p>
+<hr>
+<h4 id="Ta-Lib"><a href="#Ta-Lib" class="headerlink" title="Ta-Lib"></a>Ta-Lib</h4><p>趋势策略分为以下部分：</p>
+<ul>
+<li>趋势信号（通常是基于某几个参数计算出来的指标值超过某个阈值）、</li>
+<li>信号过滤（和趋势信号类似）、</li>
+<li>出场方案（固定点数/百分比的止盈和止损，移动止损）。<br>所以，Ta-lib是策略实现工具罢了。</li>
+</ul>
+<p>此库中提供了多种技术分析的函数，有多种指标：ADX、MACD、RSI、布林轨道等<br>；K线形态识别，如“黄昏之星”、“锤形线”等。</p>
+<p>依靠此库对数据的分析，来下达发单撤单的动作即为策略。</p>
+<h6 id="策略示例："><a href="#策略示例：" class="headerlink" title="策略示例："></a>策略示例：</h6><pre><code>基于Talib模块的双指数均线策略`class TalibDoubleSmaDemo(CtaTemplate):`
+</code></pre>
+<p><font color=green>就是两个指标的数据来判断当前局势罢了</font></p>
+<ol>
+<li>设定策略参数</li>
+<li>策略变量</li>
+<li>参数列表（保存参数名称）</li>
+<li>变量列表（保存变量名称）</li>
+</ol>
+<h6 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h6><p>初始化策略（加载Bar数据）、启动策略、停止策略、收到行情Tick推送（计算K线）、收到Bar推送（缓存最新收盘价到列表 -&gt; 数量足够后转化为Numpy数组后传入talib函数SMA中计算 -&gt; 读取当前K线和上一根K线数值，用于判断均线交叉 -&gt; 检测持仓状态，做出相应交易动作）</p>
+<hr>
+<h3 id="CTA回测"><a href="#CTA回测" class="headerlink" title="CTA回测"></a>CTA回测</h3><h5 id="init-的工作"><a href="#init-的工作" class="headerlink" title="_init_()的工作"></a>_<em>init</em>_()的工作</h5><ul>
+<li>本地停止单编号计数    <code>self.stopOrderCount</code></li>
+<li>本地停止单字典    <code>self.stopOrderDict</code> And <code>self.workingStopOrderDict</code></li>
+<li>设引擎类型为回测</li>
+<li>回测相关变量定义</li>
+<li>当前最新数据，用于模拟成交使用</li>
+</ul>
+<h4 id="运行回测"><a href="#运行回测" class="headerlink" title="运行回测"></a>运行回测</h4><ol>
+<li><p>载入历史数据</p>
+</li>
+<li><p>根据回测模式确定要使用数据类</p>
+</li>
+<li><p>初始化策略</p>
+</li>
+<li><p>启动策略</p>
+</li>
+<li><p>回放数据（从数据库中取得推到newBar或者newTick）</p>
+</li>
+<li><p>策略获得新数据，执行相应操作</p>
+</li>
+</ol>
+<h5 id="基于最新数据撮合限价单"><a href="#基于最新数据撮合限价单" class="headerlink" title="基于最新数据撮合限价单"></a>基于最新数据撮合限价单</h5><p>先确定会撮合成交的价格 -&gt; 遍历限价单字典中所有限价单 -&gt; 判断是否会成交 -&gt; 发生成交推送成交数据（买入 -&gt; 增加持仓 推送委托数据、从字典中删除该限价单）</p>
+<h4 id="计算原理"><a href="#计算原理" class="headerlink" title="计算原理"></a>计算原理</h4><hr>
+<hr>
+<hr>
+<h1 id="改版之后程序架构"><a href="#改版之后程序架构" class="headerlink" title="改版之后程序架构"></a>改版之后程序架构</h1><table>
+<thead>
+<tr>
+<th align="left"></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th align="right"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"></td>
+<td>APIs</td>
+<td></td>
+<td>***</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Trader</td>
+<td></td>
+<td></td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left"><code>CTP</code></td>
+<td></td>
+<td><code>KSGold</code></td>
+<td>***</td>
+<td><code>Common</code></td>
+<td><code>Condig</code></td>
+<td><code>Core</code></td>
+<td><code>Gateway</code></td>
+<td><code>Setting</code></td>
+<td><code>Strategy</code></td>
+<td><code>UI</code></td>
+<td align="right"><code>main</code></td>
+</tr>
+<tr>
+<td align="left">CtpMdApi、CtpTdApi</td>
+<td>…………</td>
+<td>…………</td>
+<td>Md、Td</td>
+<td>………………</td>
+<td>………………</td>
+<td>CTA、HTA、引擎、事件管理</td>
+<td>………………</td>
+<td>配置文件</td>
+<td>………………</td>
+<td>………………</td>
+<td align="right">………………</td>
+</tr>
+</tbody></table>
+<h2 id="事件引擎"><a href="#事件引擎" class="headerlink" title="事件引擎"></a>事件引擎</h2><p>两版都一样，作为一个程序运行最外层的生成的实例，来进行各个实例之间的数据传输。因为每个实例都将数据在事件引擎中保存，调用事件引擎中的事件队列来对进行事件运行安排。</p>
+<p>Like This：</p>
+<pre><code>class A(object):
+&quot;&quot;&quot;docstring for A&quot;&quot;&quot;
+    def __init__(self, name):
+        super(A, self).__init__()
+        self.name = name
+        self.a = 0
+    def da(self):
+        print self.name
+        print self.a    
+a = A(&#39;I am A&#39;)
+a.da()
+
+
+
+
+class B(object):
+&quot;&quot;&quot;docstring for B&quot;&quot;&quot;
+    def __init__(self, aclass):
+        super(B, self).__init__()
+        self.aclass = aclass
+        self.aclass.a += 1
+    def dada(self):
+        self.aclass.da()
+b = B(a)
+b.dada()
+
+class C(object):
+&quot;&quot;&quot;docstring for B&quot;&quot;&quot;
+    def __init__(self, aclass):
+        super(C, self).__init__()
+        self.aclass = aclass
+        self.aclass.a += 1
+    def dada(self):
+        self.aclass.da()
+c = C(a)
+c.dada()
+</code></pre>
+<blockquote>
+<p>I am A</p>
+</blockquote>
+<blockquote>
+<p>0</p>
+</blockquote>
+<blockquote>
+<p>I am A</p>
+</blockquote>
+<blockquote>
+<p>1</p>
+</blockquote>
+<blockquote>
+<p>I am A</p>
+</blockquote>
+<blockquote>
+<p>2</p>
+</blockquote>
+<p>B与C分别在去改变读取在A中定义的数值。  嗯，没错，这么看的画确实时Python基础……所以没有这个基础的我看起来前期还挺费劲。当然，理解很好理解，就是在实现方法上不知原理的话就很难过。最主要的是，知道了原理在自己编写的时候可以的心用手，信手拈来。嗯~ o(<em>￣▽￣</em>)o就是这么写意和惬意。<font color=indigo>Indigo</font>色在纯黑背景下不好辨识哈哈，还是换少女粉吧</p>
+<hr>
+<hr>
+<hr>
+<h1 id="Vn-Py-界面"><a href="#Vn-Py-界面" class="headerlink" title="Vn.Py 界面"></a>Vn.Py 界面</h1><p>Icon 图标下载网:    <a target="_blank" rel="noopener" href="http://www.easyicon.net/">http://www.easyicon.net/</a></p>
+<h2 id="界面设计文档"><a href="#界面设计文档" class="headerlink" title="界面设计文档"></a>界面设计文档</h2><h3 id="功能要求"><a href="#功能要求" class="headerlink" title="功能要求"></a>功能要求</h3><p>连接、登陆，订阅，发撤单，持仓、账户信息、成交（下单时间、成交时间、备注（下单动作者））、保留交易模块、跟随鼠标点击更新交易模块中单子内容</p>
+<h3 id="文档编写步骤"><a href="#文档编写步骤" class="headerlink" title="文档编写步骤"></a>文档编写步骤</h3><p>由需求确定功能，划分模块，模块关系，下分框架，框架实现</p>
+<hr>
+<hr>
+<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><p>工具栏、行情显示、策略池、账户持仓、消息栏</p>
+<h4 id="工具栏"><a href="#工具栏" class="headerlink" title="工具栏"></a>工具栏</h4><p>连接（含各个端口） 风控、帮助、登陆状态显示</p>
+<h5 id="工具功能"><a href="#工具功能" class="headerlink" title="工具功能"></a>工具功能</h5><table>
+<thead>
+<tr>
+<th align="left">工具名称</th>
+<th align="center">说明</th>
+<th align="right">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">连接</td>
+<td align="center">弹出端口列表</td>
+<td align="right">通过复选框选中对应端口</td>
+</tr>
+<tr>
+<td align="left">风控</td>
+<td align="center">弹出设定列表</td>
+<td align="right">通过文本框输入设定数值</td>
+</tr>
+<tr>
+<td align="left">帮助</td>
+<td align="center">弹出帮助窗口</td>
+<td align="right"></td>
+</tr>
+</tbody></table>
+<h4 id="策略池"><a href="#策略池" class="headerlink" title="策略池"></a>策略池</h4><table>
+<thead>
+<tr>
+<th align="left">操作位置</th>
+<th align="center">热点操作</th>
+<th align="right"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">策略名称单元格</td>
+<td align="center">鼠标指针悬停</td>
+<td align="right">展开操作界面</td>
+</tr>
+<tr>
+<td align="left">动作按钮</td>
+<td align="center">鼠标单击</td>
+<td align="right">执行选中</td>
+</tr>
+<tr>
+<td align="left">动作按钮</td>
+<td align="center">鼠标右击</td>
+<td align="right">展开操作界面</td>
+</tr>
+</tbody></table>
+<h4 id="消息栏"><a href="#消息栏" class="headerlink" title="消息栏"></a>消息栏</h4><p>分“成交”、“错误”、“日志”三个模块，选择相应模块显示对应内容</p>
+<table>
+<thead>
+<tr>
+<th align="left">日志</th>
+<th align="center">错误</th>
+<th align="center">成交</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">时间、内容、接口</td>
+<td align="center">时间、错误代码、错误信息、接口</td>
+<td align="center">成交编号、委托编号、合约代码、名称、方向、开平、价格、成交量、成交时间、接口</td>
+</tr>
+<tr>
+<td align="left">显示操作日志</td>
+<td align="center">显示当前操作错误信息</td>
+<td align="center">显示成交单信息</td>
+</tr>
+</tbody></table>
+<h4 id="账户持仓信息"><a href="#账户持仓信息" class="headerlink" title="账户持仓信息"></a>账户持仓信息</h4><p>账户显示账户信息，并具备切换账户功能<br>当前选中账户 显示在旁label中。</p>
+<h3 id="界面切换"><a href="#界面切换" class="headerlink" title="界面切换"></a>界面切换</h3><h1 id="记录笔记"><a href="#记录笔记" class="headerlink" title="记录笔记"></a>记录笔记</h1><p>照例，先贴网址： <a target="_blank" rel="noopener" href="http://www.qaulau.com/books/PyQt4_Tutorial/index.html">http://www.qaulau.com/books/PyQt4_Tutorial/index.html</a></p>
+<h4 id="窗口设置"><a href="#窗口设置" class="headerlink" title="窗口设置"></a>窗口设置</h4><pre><code>resize(8, 8)
+setWindowTitle(u&#39;标题&#39;)
+</code></pre>
+<h4 id="获取图标"><a href="#获取图标" class="headerlink" title="获取图标"></a>获取图标</h4><pre><code>def getIcon(filename):
+&quot;&quot;&quot; 获取图标 &quot;&quot;&quot;
+    fileInfo = Qt.QFileInfo(filename) 
+    fileIcon = Qt.QFileIconProvider() 
+    icon = QtGui.QIcon(fileIcon.icon(fileInfo)) 
+    return icon  
+使用时：
+self.setWindowIcon(getIcon(&#39;../hi/app.ico&#39;))
+</code></pre>
+<hr>
+<h5 id="Dock"><a href="#Dock" class="headerlink" title="Dock"></a>Dock</h5><pre><code>widgetTestM, dockTestM = self.createDock(AllMarketMonitor, vtText.“dock
+标题”, QtCore.Qt.RightDockWidgetArea)
+# 方向有：  
+RightDockWidgetArea,BottomDockWidgetArea,LeftDockWidgetArea
+# 创建dock窗口
+# 可利用
+self.tabifyDockWidget(dockMarketM, dockAllDataM)
+来合并同一个方向上的dock
+
+# 此下还没看… 
+dockTradeM.raise_()
+dockPositionM.raise_()
+
+# 连接组件之间的信号
+widgetPositionM.itemDoubleClicked.connect(widgetTradingW.closePosition)
+    
+# 保存默认设置
+self.saveWindowSettings(&#39;default&#39;)
+</code></pre>
+<p>其实现函数为：<br>“””创建停靠组件”””</p>
+<pre><code>def createDock(self, widgetClass, widgetName, widgetArea):
+    widget = widgetClass(self.mainEngine, self.eventEngine) 
+    dock = QtGui.QDockWidget(widgetName)
+    dock.setWidget(widget)
+    dock.setObjectName(widgetName)
+    dock.setFeatures(dock.DockWidgetFloatable|dock.DockWidgetMovable)
+    self.addDockWidget(widgetArea, dock)
+    return widget, dock
+</code></pre>
+<blockquote>
+<p>再本质一点的东西为：</p>
+</blockquote>
+<pre><code>widget1 = Ha(self)
+dock = QtGui.QDockWidget(&#39;haha&#39;)
+dock.setObjectName(&#39;ha1&#39;)
+dock.setWidget(widget1)
+dock.setFeatures(dock.DockWidgetFloatable | dock.DockWidgetMovable)
+self.addDockWidget(QtCore.Qt.BottomDockWidgetArea, dock)
+</code></pre>
+<h4 id="动作"><a href="#动作" class="headerlink" title="动作"></a>动作</h4><pre><code>exit = QtGui.QAction(QtGui.QIcon(&#39;hello.ico&#39;), &#39;exit&#39;, self)
+exit.setShortcut(&#39;Ctrl+Q&#39;)
+exit.setStatusTip(&#39;Exit application&#39;)
+# 图标、文字、快捷键、提示信息
+
+menubar = self.menuBar()
+file = menubar.addMenu(&#39;&amp;File&#39;)
+file.addAction(exit)
+# 创建目录和工具栏，将动作添加进去。工具栏同理
+</code></pre>
+<h3 id="定位布局"><a href="#定位布局" class="headerlink" title="定位布局"></a>定位布局</h3><h4 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h4><pre><code>label1 = QtGui.QLabel(u&#39;绝对定位&#39;, self)
+label1.move(15, 60)
+# 创建、移动到显示位置
+</code></pre>
+<h4 id="框布局-及-布局元素平均分布"><a href="#框布局-及-布局元素平均分布" class="headerlink" title="框布局 及 布局元素平均分布"></a>框布局 及 布局元素平均分布</h4><pre><code>okButton = QtGui.QPushButton(&quot;OK&quot;)
+cancelButton = QtGui.QPushButton(&quot;Cancel&quot;)
+# 创建按钮
+
+hbox = QtGui.QHBoxLayout()
+hbox.addStretch(1)
+hbox.addWidget(okButton)        # 增加组件
+hbox.addWidget(cancelButton)
+# 创建水平栏
+hbox.addStretch()   # 平均分布
+
+vbox = QtGui.QVBoxLayout()
+vbox.addStretch(1)
+# 创建竖列
+
+vbox.addLayout(hbox)
+# 将水平栏插入竖列
+self.setLayout(vbox)     
+# 显示最终竖列
+</code></pre>
+<p>注意一下add时选择对类型就好了。</p>
+<h4 id="组件之间连接信号"><a href="#组件之间连接信号" class="headerlink" title="组件之间连接信号"></a>组件之间连接信号</h4><pre><code># classA(QtGui.QTableWidget):
+#   pass
+classA.itemDoubleClicked.connect(classB.actionFunction)
+# 这样单纯调用还是可以的，但是数据传输… 就得继续研究一下了。
+</code></pre>
+<h4 id="调用Windows程序"><a href="#调用Windows程序" class="headerlink" title="调用Windows程序"></a>调用Windows程序</h4><pre><code>import win32api
+    path = &#39;D:/vnpy-    \
+    master/docker/dockerTrader/gateway/ctpGateway/CTP_connect.json&#39;
+    win32api.ShellExecute(0, &#39;open&#39;, &#39;notepad.exe&#39;, path, &#39;&#39;, 1)
+# 使用记事本打开此文件
+</code></pre>
+<h4 id="Json"><a href="#Json" class="headerlink" title="Json"></a>Json</h4><pre><code>with open(&#39;D:/vnpy- \
+    master/docker/dockerTrader/gateway/ctpGateway/CTP_connect.json&#39;,
+&#39;r&#39;) as f:
+setting = json.load(f)
+self.userID = str(setting[&#39;userID&#39;])
+self.password = str(setting[&#39;password&#39;])
+</code></pre>
+<h5 id="关闭事件退出提示"><a href="#关闭事件退出提示" class="headerlink" title="关闭事件退出提示"></a>关闭事件退出提示</h5><pre><code>def closeEvent(self, event):
+    reply = QtGui.QMessageBox.question(self, &#39;Message&#39;,&quot;Are you 
+sure to quit?&quot;, QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
+if reply == QtGui.QMessageBox.Yes:
+    event.accept()
+else:
+    event.ignore()
+</code></pre>
+<p>函数放置位置就是主窗口类下就好。</p>
+<h5 id="VS2015-快捷键"><a href="#VS2015-快捷键" class="headerlink" title="VS2015 快捷键"></a>VS2015 快捷键</h5><pre><code>Ctrl + k    Ctrl + c        # 多行注释
+Ctrl + k    Ctrl + u        # 多行取消注释
+</code></pre>
+<h5 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h5><p>press<br>move<br>release<br>doubleClick<br>clicked()<br>enterEvent 鼠标移入<br>leaveEvent 鼠标移出<br>回去看看具体函数</p>
+<h2 id="信号槽（传输额外参数）"><a href="#信号槽（传输额外参数）" class="headerlink" title="信号槽（传输额外参数）"></a>信号槽（传输额外参数）</h2><p>一般来说，比如一个按钮吧。 在链接点击信号与槽时<code>buttonInit[i].clicked.connect(partial(self.init, i))</code>就完事了。然而，当循环创建按钮，对应同样的槽函数，只是需要执行的变量有区别时，就需要传输额外的参数。<br>这时，方法有二：</p>
+<p>环境：</p>
+<p>python2.7.8</p>
+<p>pyqt 4.11.1</p>
+<h3 id="一：-使用lambda表达式"><a href="#一：-使用lambda表达式" class="headerlink" title="一： 使用lambda表达式"></a>一： 使用lambda表达式</h3><pre class="prettyprint"><code class="language-python hljs "><span class="hljs-keyword">from</span> PyQt4.QtCore <span class="hljs-keyword">import</span> *  
+<span class="hljs-keyword">from</span> PyQt4.QtGui <span class="hljs-keyword">import</span> *  
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyForm</span><span class="hljs-params">(QMainWindow)</span>:</span>  
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, parent=None)</span>:</span>  
+        super(MyForm, self).__init__(parent)  
+        button1 = QPushButton(<span class="hljs-string">'Button 1'</span>)  
+        button2 = QPushButton(<span class="hljs-string">'Button 1'</span>)  
+        button1.clicked.connect(<span class="hljs-keyword">lambda</span>: self.on_button(<span class="hljs-number">1</span>))  
+        button2.clicked.connect(<span class="hljs-keyword">lambda</span>: self.on_button(<span class="hljs-number">2</span>))  
+
+        layout = QHBoxLayout()  
+        layout.addWidget(button1)  
+        layout.addWidget(button2)  
+
+        main_frame = QWidget()  
+        main_frame.setLayout(layout)  
+
+        self.setCentralWidget(main_frame)  
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">on_button</span><span class="hljs-params">(self, n)</span>:</span>  
+        print(<span class="hljs-string">'Button &#123;0&#125; clicked'</span>.format(n))  
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:  
+    <span class="hljs-keyword">import</span> sys  
+    app = QApplication(sys.argv)  
+    form = MyForm()  
+    form.show()  
+    app.exec_()  </code></pre>
+
+<p>解释一下，on_button是怎样处理从两个按钮传来的信号。我们使用lambda传递按钮数字给槽，也可以传递任何其他东西—甚至是按钮组件本身（假如，槽打算把传递信号的按钮修改为不可用）</p>
+
+<h3 id="二：-使用functools里的partial函数"><a href="#二：-使用functools里的partial函数" class="headerlink" title="二： 使用functools里的partial函数"></a>二： 使用functools里的partial函数</h3><pre class="prettyprint"><code class="language-python hljs ">button1.clicked.connect(partial(self.on_button, <span class="hljs-number">1</span>))  
+button2.clicked.connect(partial(self.on_button, <span class="hljs-number">2</span>))  </code></pre>
+
+<p>《Rapid GUI Program with Python and QT》 P143例子。</p>
+
+<pre class="prettyprint"><code class="language-python hljs "><span class="hljs-keyword">from</span> PyQt4.QtCore <span class="hljs-keyword">import</span> *  
+<span class="hljs-keyword">from</span> PyQt4.QtGui <span class="hljs-keyword">import</span> *  
+<span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> partial  
+<span class="hljs-keyword">import</span> sys  
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bu1</span><span class="hljs-params">(QWidget)</span>:</span>  
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, parent=None)</span>:</span>  
+        super(Bu1, self).__init__(parent)  
+        <span class="hljs-comment">#水平盒式布局  </span>
+        layout = QHBoxLayout()  
+        <span class="hljs-comment">#显示  </span>
+        self.lbl = QLabel(<span class="hljs-string">'no button is pressed'</span>)  
+        <span class="hljs-comment">#循环5个按钮  </span>
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):  
+            but = QPushButton(str(i))  
+            layout.addWidget(but)  
+            <span class="hljs-comment">#信号和槽连接  </span>
+            but.clicked.connect(self.cliked)  
+
+        <span class="hljs-comment">#使用封装，lambda  </span>
+        but = QPushButton(<span class="hljs-string">'5'</span>)  
+        layout.addWidget(but)  
+        but.clicked.connect(<span class="hljs-keyword">lambda</span>: self.on_click(<span class="hljs-string">'5'</span>))  
+        <span class="hljs-comment">#使用个who变量，结果不正常，显示 False is pressed  </span>
+        <span class="hljs-comment">#but.clicked.connect(lambda who="5": self.on_click(who))  </span>
+
+        <span class="hljs-comment">#使用封装，partial函数  </span>
+        but = QPushButton(<span class="hljs-string">'6'</span>)  
+        layout.addWidget(but)  
+        but.clicked.connect(partial(self.on_click, <span class="hljs-string">'6'</span>))  
+
+        layout.addWidget(self.lbl)  
+        <span class="hljs-comment">#设置布局  </span>
+        self.setLayout(layout)  
+
+    <span class="hljs-comment">#传递额外参数     </span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cliked</span><span class="hljs-params">(self)</span>:</span>  
+        bu = self.sender()  
+        <span class="hljs-keyword">if</span> isinstance(bu, QPushButton):  
+            self.lbl.setText(<span class="hljs-string">'%s is pressed'</span> % bu.text())  
+        <span class="hljs-keyword">else</span>:  
+            self.lbl.setText(<span class="hljs-string">'no effect'</span>)  
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">on_click</span><span class="hljs-params">(self, n)</span>:</span>  
+        self.lbl.setText(<span class="hljs-string">'%s is pressed'</span> % n)  
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:          
+    app = QApplication(sys.argv)  
+    bu =Bu1()  
+    bu.show()  
+    app.exec_()   </code></pre>
+
+<p>三：感谢<a target="_blank" rel="noopener" href="http://blog.csdn.net/fengyu09/article/details/39498777">来源</a> </p>
+<hr>
+<hr>
+<hr>
+<h1 id="策略管理"><a href="#策略管理" class="headerlink" title="策略管理"></a>策略管理</h1><p>策略类，引擎，报单管理&amp;&amp;仓位管理</p>
+<h2 id="引擎"><a href="#引擎" class="headerlink" title="引擎"></a>引擎</h2><p>引擎中将策略事件有序添加到事件引擎和主引擎中。 读取setting.json 文件对策略参数以及是否启用进行配置。设定日期。<br>使用策略实例字典保存策略名与实例关系——<br>并将此字典在推送字典中与tick数据ID对应（ID对多实例。）<br>再有orderID与策略对应字典，用以推送order和trade数据<br>计数本地停止单 、 持仓缓存字典</p>
+<h2 id="报单管理"><a href="#报单管理" class="headerlink" title="报单管理"></a>报单管理</h2><h3 id="成交推送处理"><a href="#成交推送处理" class="headerlink" title="成交推送处理"></a>成交推送处理</h3><p>成交回调 - &gt; 订单ID和策略对应字典 -&gt; 计算策略持仓（根据策略方向，持仓增加交易笔数）-&gt; 更新持仓缓存数据 </p>
+<h3 id="报单者类"><a href="#报单者类" class="headerlink" title="报单者类"></a>报单者类</h3><p>单一合约订单缓存类——初始化buffer 存储字典_log策略日志存储</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://ianvzs.github.io/2018/05/15/notes/noteOfvn_py/" data-id="cl1d1lhb50018u2ty3x5l2va6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Ian Vzs"
+        },
+        "headline": "Vn.Py学习笔记（Python交易平台框架）",
+        "image": "https://ianvzs.github.iohttps://static.vnpy.com/static/img/index/2019-5-27/mainwindow.PNG",
+        "keywords": "learning Vn.Py gui socket",
+        "genre": "note python learning",
+        "datePublished": "2018-05-15",
+        "dateCreated": "2018-05-15",
+        "dateModified": "2022-03-26",
+        "url": "https://ianvzs.github.io/2018/05/15/notes/noteOfvn_py/",
+        "description": "author: Ian
+Vn.Py笔记 ✏📔一个开源Python交易软件，主使用CTP协议。当然，还有其他协议了其源项目在http://www.vnpy.org/ 
+
+
+
+初期笔记报单交易过程中，
+
+CTP使用BrokerID 从业务层面完全隔离不同经纪公司的交易、风控及结算用户的接入。
+BrokerID具体取值咨询开户的经纪公司。
+
+CTP中 UserID为操作员代码，InversterID为",
+        "wordCount": 2183
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="book" href="/book_architecture" target="_blank" rel="noopener">
+                        <i class="icon fa fa-book"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/IanVzs" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/05/15/notes/noteOfgolang/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Golang不确定笔记
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/05/15/tips/tipsOfmarkdown/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">tips Of markdown</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/03/18/notes/pyinstaller/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/note/pyinstaller/">pyinstaller</a></p>
+                            <p class="item-title"><a href="/2022/03/18/notes/pyinstaller/" class="title">python打包</a></p>
+                            <p class="item-date"><time datetime="2022-03-18T10:15:14.000Z" itemprop="datePublished">2022-03-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/02/10/notes/demo_test_some/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://avatars.githubusercontent.com/u/17629611?s=96&v=4)" alt="Demo Test项目中的一些东西" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/demo-test/">demo_test</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/demo-test/code/">code</a></p>
+                            <p class="item-title"><a href="/2022/02/10/notes/demo_test_some/" class="title">Demo Test项目中的一些东西</a></p>
+                            <p class="item-date"><time datetime="2022-02-10T09:45:00.000Z" itemprop="datePublished">2022-02-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/01/18/tips/qt/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://qt-wiki-uploads.s3.amazonaws.com/images/3/33/Py-128.png)" alt="Qt/PySide" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tip/">tip</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/tip/qt/">qt</a></p>
+                            <p class="item-title"><a href="/2022/01/18/tips/qt/" class="title">Qt/PySide</a></p>
+                            <p class="item-date"><time datetime="2022-01-18T06:15:23.000Z" itemprop="datePublished">2022-01-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/01/15/tips/install_some/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tip/">tip</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/tip/install/">install</a></p>
+                            <p class="item-title"><a href="/2022/01/15/tips/install_some/" class="title">安装问题</a></p>
+                            <p class="item-date"><time datetime="2022-01-15T08:24:41.000Z" itemprop="datePublished">2022-01-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/01/10/notes/dgraph/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://dgraph.io/docs//images/dgraph.svg)" alt="Dgraph使用小记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Dgraph/">Dgraph</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Dgraph/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/">图数据库</a></p>
+                            <p class="item-title"><a href="/2022/01/10/notes/dgraph/" class="title">Dgraph使用小记</a></p>
+                            <p class="item-date"><time datetime="2022-01-10T09:00:00.000Z" itemprop="datePublished">2022-01-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Dgraph/">Dgraph</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dgraph/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/">图数据库</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/demo-test/">demo_test</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/demo-test/code/">code</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/new-Things/">new Things</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/new-Things/%E6%89%8B%E6%9C%BA/">手机</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/Gui/">Gui</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/Gui/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/Something/">Something</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/db/">db</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/db/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/docker/">docker</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/docker/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/">golang</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/expansion/">expansion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/java/">java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/java/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/language/">language</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/language/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/learning/">learning</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/linux/">linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/linux/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/pyinstaller/">pyinstaller</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/pyinstaller/%E6%89%93%E5%8C%85/">打包</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/python/learning/">learning</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/ue4/">ue4</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/ue4/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/test/">test</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E7%BD%91%E7%BB%9C-Net/">网络(Net)</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/">tip</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/debug/">debug</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/debug/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/install/">install</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/markdown/">markdown</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/markdown/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/problem/">problem</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/problem/gRpc/">gRpc</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/qt/">qt</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/qt/pyside/">pyside</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/vim/">vim</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/vim/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/web/">web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/web/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/%E6%8D%A2%E6%BA%90/">换源</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/web/%E5%85%A8%E6%A0%88%E7%AC%94%E8%AE%B0/">全栈笔记</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/%E6%97%A5%E8%AE%B0/">日记</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gui/" rel="tag">Gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Japanese/" rel="tag">Japanese</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sony-XZ1-Compact/" rel="tag">Sony XZ1 Compact</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vn-Py/" rel="tag">Vn.Py</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/" rel="tag">ajax</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/" rel="tag">apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debuger/" rel="tag">debuger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/demo-test/" rel="tag">demo_test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expansion/" rel="tag">expansion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/" rel="tag">golang</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/" rel="tag">gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/" rel="tag">install</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-springboot-mybatis-maven-learning/" rel="tag">java, springboot, mybatis, maven, learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keepalived/" rel="tag">keepalived</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learning/" rel="tag">learning</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/" rel="tag">less</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/missjava/" rel="tag">missjava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ml/" rel="tag">ml</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongo/" rel="tag">mongo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/more/" rel="tag">more</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdb/" rel="tag">pdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyqt/" rel="tag">pyqt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpc/" rel="tag">rpc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ue4/" rel="tag">ue4</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win/" rel="tag">win</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/" rel="tag">数据格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" rel="tag">更新说明</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C%E7%AC%94%E8%AE%B0/" rel="tag">经验笔记</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Gui/" style="font-size: 10px;">Gui</a> <a href="/tags/Japanese/" style="font-size: 10px;">Japanese</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Sony-XZ1-Compact/" style="font-size: 10px;">Sony XZ1 Compact</a> <a href="/tags/Vn-Py/" style="font-size: 10px;">Vn.Py</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/debuger/" style="font-size: 10px;">debuger</a> <a href="/tags/demo-test/" style="font-size: 10px;">demo_test</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/expansion/" style="font-size: 10px;">expansion</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/golang/" style="font-size: 13.33px;">golang</a> <a href="/tags/gui/" style="font-size: 10px;">gui</a> <a href="/tags/install/" style="font-size: 10px;">install</a> <a href="/tags/java-springboot-mybatis-maven-learning/" style="font-size: 10px;">java, springboot, mybatis, maven, learning</a> <a href="/tags/keepalived/" style="font-size: 10px;">keepalived</a> <a href="/tags/learning/" style="font-size: 20px;">learning</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/missjava/" style="font-size: 10px;">missjava</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/mongo/" style="font-size: 10px;">mongo</a> <a href="/tags/more/" style="font-size: 10px;">more</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/pyqt/" style="font-size: 10px;">pyqt</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/rpc/" style="font-size: 10px;">rpc</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/ue4/" style="font-size: 10px;">ue4</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/win/" style="font-size: 13.33px;">win</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/" style="font-size: 10px;">数据格式</a> <a href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">更新说明</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 16.67px;">杂谈</a> <a href="/tags/%E7%BB%8F%E9%AA%8C%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">经验笔记</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 Ian Vzs</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://ianvzs.github.io/2018/05/15/notes/noteOfvn_py/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

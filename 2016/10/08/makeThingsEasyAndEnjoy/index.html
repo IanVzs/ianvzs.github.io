@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Make things easy and enjoy | Ian&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="杂谈" />
+    
+    <meta name="description" content="命令行的简便生活 💦🤣 Github Personal access tokensgithub 干掉了https账号密码pull push 之后https pull push 专用url 4k码字更改语言1234export LC_ALL&#x3D;C# 改了确实大多数成英文了，不过树莓派汉化太狠了，console-setup里还有若干是中文就很蠢...unset LC_ALL# 改回原始 更改tty1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Make things easy and enjoy">
+<meta property="og:url" content="https://ianvzs.github.io/2016/10/08/makeThingsEasyAndEnjoy/index.html">
+<meta property="og:site_name" content="Ian&#39;s Blog">
+<meta property="og:description" content="命令行的简便生活 💦🤣 Github Personal access tokensgithub 干掉了https账号密码pull push 之后https pull push 专用url 4k码字更改语言1234export LC_ALL&#x3D;C# 改了确实大多数成英文了，不过树莓派汉化太狠了，console-setup里还有若干是中文就很蠢...unset LC_ALL# 改回原始 更改tty1">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2016-10-08T08:58:56.000Z">
+<meta property="article:modified_time" content="2022-03-26T14:02:11.790Z">
+<meta property="article:author" content="Ian Vzs">
+<meta property="article:tag" content="杂谈">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="Ian&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Dgraph/">Dgraph</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Dgraph/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/">图数据库</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/demo-test/">demo_test</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/demo-test/code/">code</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/new-Things/">new Things</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/new-Things/%E6%89%8B%E6%9C%BA/">手机</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/">note</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/Gui/">Gui</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/Something/">Something</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/db/">db</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/docker/">docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/golang/">golang</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/language/">language</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/learning/">learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/linux/">linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/pyinstaller/">pyinstaller</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/python/">python</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/ue4/">ue4</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/note/%E7%BD%91%E7%BB%9C-Net/">网络(Net)</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/">tip</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/debug/">debug</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/install/">install</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/markdown/">markdown</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/problem/">problem</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/qt/">qt</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/vim/">vim</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/web/">web</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/tip/%E6%8D%A2%E6%BA%90/">换源</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/">web</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/%E5%85%A8%E6%A0%88%E7%AC%94%E8%AE%B0/">全栈笔记</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%9D%82%E8%B0%88/%E6%97%A5%E8%AE%B0/">日记</a></li></ul></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-makeThingsEasyAndEnjoy" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Make things easy and enjoy
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2016/10/08/makeThingsEasyAndEnjoy/" class="article-date">
+       <time datetime="2016-10-08T08:58:56.000Z" itemprop="datePublished">2016-10-08</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2016/10/08/makeThingsEasyAndEnjoy/" class="article-date">
+     <time datetime="2022-03-26T14:02:11.790Z" itemprop="dateModified">2022-03-26</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="命令行的简便生活-💦🤣"><a href="#命令行的简便生活-💦🤣" class="headerlink" title="命令行的简便生活 💦🤣"></a>命令行的简便生活 💦🤣</h1><hr>
+<h2 id="Github-Personal-access-tokens"><a href="#Github-Personal-access-tokens" class="headerlink" title="Github Personal access tokens"></a>Github Personal access tokens</h2><p>github 干掉了https账号密码pull push 之后<br>https pull push 专用<br><a target="_blank" rel="noopener" href="https://github.com/settings/tokens">url</a></p>
+<h2 id="4k码字"><a href="#4k码字" class="headerlink" title="4k码字"></a>4k码字</h2><h3 id="更改语言"><a href="#更改语言" class="headerlink" title="更改语言"></a>更改语言</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> LC_ALL=C</span><br><span class="line"><span class="comment"># 改了确实大多数成英文了，不过树莓派汉化太狠了，console-setup里还有若干是中文就很蠢...</span></span><br><span class="line"><span class="built_in">unset</span> LC_ALL</span><br><span class="line"><span class="comment"># 改回原始</span></span><br></pre></td></tr></table></figure>
+<h3 id="更改tty1字体大小"><a href="#更改tty1字体大小" class="headerlink" title="更改tty1字体大小"></a>更改tty1字体大小</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg-reconfigure console-setup</span><br></pre></td></tr></table></figure>
+<h2 id="操作粘贴板"><a href="#操作粘贴板" class="headerlink" title="操作粘贴板"></a>操作粘贴板</h2><p><code>xsel</code></p>
+<h3 id="将输出存储到粘贴板"><a href="#将输出存储到粘贴板" class="headerlink" title="将输出存储到粘贴板"></a>将输出存储到粘贴板</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;ashsaihs&quot; | xsel -i -b</span><br></pre></td></tr></table></figure>
+<h3 id="输出粘贴板信息"><a href="#输出粘贴板信息" class="headerlink" title="输出粘贴板信息"></a>输出粘贴板信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xsel -o -b</span><br></pre></td></tr></table></figure>
+<p>由<code>xsel --help</code>可得<code>-i -o</code>分别代表标准输入输出(input output)<br><code>-b</code>代表:<br>    -b, –clipboard       Operate on the CLIPBOARD selection</p>
+<h2 id="美化"><a href="#美化" class="headerlink" title="美化"></a>美化</h2><h3 id="themes"><a href="#themes" class="headerlink" title="themes"></a>themes</h3><p><a target="_blank" rel="noopener" href="https://github.com/vinceliuice/Orchis-theme">Orchis</a><br><a target="_blank" rel="noopener" href="https://github.com/anmoljagetia/Flatabulous">Flatabulous</a><br><a target="_blank" rel="noopener" href="https://github.com/imccausl/osXFCE">XFCE Flatabulous</a></p>
+<h3 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:numix/ppa</span><br><span class="line">sudo apt install numix-icon-theme-circle</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件编码格式嗅探"><a href="#文件编码格式嗅探" class="headerlink" title="文件编码格式嗅探"></a>文件编码格式嗅探</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install chardet</span><br><span class="line">python</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;file.path&quot;</span>, <span class="string">&quot;rb&quot;</span>)</span><br><span class="line">bdata = f.read()</span><br><span class="line">f.close()</span><br><span class="line">result = chardet.detect(bdata)</span><br></pre></td></tr></table></figure>
+<h2 id="debian增加docker用户组-优化每次sudo问题"><a href="#debian增加docker用户组-优化每次sudo问题" class="headerlink" title="debian增加docker用户组,优化每次sudo问题"></a>debian增加docker用户组,优化每次sudo问题</h2><p>摘抄自<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1354e0506753">这里</a></p>
+<ol>
+<li>检查是否已有docker用户组<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/group | grep docker</span><br></pre></td></tr></table></figure></li>
+<li><code>1</code>无则创建<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd docker</span><br></pre></td></tr></table></figure></li>
+<li>添加指定用户到docker用户组<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker &#123;用户名&#125;</span><br></pre></td></tr></table></figure></li>
+<li>使用1检查2是否成功</li>
+<li>重启docker<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure></li>
+<li>给.sock添加权限<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod a+rw /var/run/docker.sock</span><br></pre></td></tr></table></figure></li>
+<li>检查是否成功<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su &#123;用户名&#125;</span><br><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<h2 id="使用各种跳板之后的远程文件传输"><a href="#使用各种跳板之后的远程文件传输" class="headerlink" title="使用各种跳板之后的远程文件传输"></a>使用各种跳板之后的远程文件传输</h2><h3 id="sz-amp-amp-rz"><a href="#sz-amp-amp-rz" class="headerlink" title="sz &amp;&amp; rz"></a>sz &amp;&amp; rz</h3><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#mac安装</span><br><span class="line">brew install zssh</span><br><span class="line">#linux安装</span><br><span class="line">sudo apt-get install zssh</span><br></pre></td></tr></table></figure>
+<h3 id="取代ssh连接"><a href="#取代ssh连接" class="headerlink" title="取代ssh连接"></a>取代ssh连接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zssh username@xxx.xxx.x.x</span><br></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cd destination_dir  #进入到目的地目录</span><br><span class="line">输入crtl+@组合键(mac是command+@)切换到zssh</span><br><span class="line">cd orgin_dir #进入源目录</span><br><span class="line">sz example.txt  #上传文件</span><br><span class="line">exit  #退出zssh</span><br><span class="line"></span><br><span class="line">sz 在服务器上准备要下载文件</span><br><span class="line">sz abcde.py</span><br><span class="line">输入crtl+@组合键(mac是command+@)切换到zssh</span><br><span class="line">cd  destination_dir #进入到下载目录</span><br><span class="line">rz #接收下载文件</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>在执行上传下载过程，开始时在界面上体现不太明显，需要耐心等待一下</p>
+<h2 id="诗句"><a href="#诗句" class="headerlink" title="诗句"></a>诗句</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install fortunes-zh</span><br><span class="line"># 显示</span><br><span class="line">fortune</span><br></pre></td></tr></table></figure>
+<h2 id="代码量统计"><a href="#代码量统计" class="headerlink" title="代码量统计"></a>代码量统计</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">$ cloc .</span><br><span class="line">    6605 text files.</span><br><span class="line">    5869 unique files.                                          </span><br><span class="line">    1049 files ignored.</span><br><span class="line"></span><br><span class="line">github.com/AlDanial/cloc v 1.86  T=6.47 s (862.2 files/s, 137709.8 lines/s)</span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line">Language                      files          blank        comment           code</span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line">JavaScript                     4200          69941          83775         452071</span><br><span class="line">HTML                            169          42890            164          69664</span><br><span class="line">JSON                            306             62              0          51362</span><br><span class="line">Markdown                        363          17792              0          49232</span><br><span class="line">CSS                             135           1670            901          14540</span><br><span class="line">Stylus                          131           1401           1112           6947</span><br><span class="line">XML                               8           3004           1289           5010</span><br><span class="line">TypeScript                       92            881           2953           4684</span><br><span class="line">SVG                               6              0              1           4299</span><br><span class="line">EJS                             105             49             15           1921</span><br><span class="line">YAML                             55             71            117           1564</span><br><span class="line">Bourne Shell                      1            163            112            791</span><br><span class="line">DTD                               1            179            177            514</span><br><span class="line">make                              5             42              8            114</span><br><span class="line">Nix                               1              1              0             19</span><br><span class="line">Bourne Again Shell                1              5             13              7</span><br><span class="line">zsh                               1              4             13              7</span><br><span class="line">DOS Batch                         1              0              0              5</span><br><span class="line">CoffeeScript                      1              1              0              0</span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line">SUM:                           5582         138156          90650         662751</span><br><span class="line">--------------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
+<h2 id="xfce添加屏幕分辨率"><a href="#xfce添加屏幕分辨率" class="headerlink" title="xfce添加屏幕分辨率"></a>xfce添加屏幕分辨率</h2><p>Virtual1: 使用vmware虚拟出来的显示器名称 具体执行时替换之</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xrandr  --newmode  <span class="string">&quot;1920x1080_60.00&quot;</span>  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</span><br><span class="line">xrandr --addmode Virtual1 <span class="string">&quot;1920x1080_60.00&quot;</span></span><br><span class="line">xrandr --output Virtual1 --mode <span class="string">&quot;1920x1080_60.00&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="给用户添加sudo权限"><a href="#给用户添加sudo权限" class="headerlink" title="给用户添加sudo权限"></a>给用户添加sudo权限</h2><p>echo: 使用vim添加这行比较保险</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+w /etc/sudoers</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;&#123;username&#125; ALL=(ALL) ALL&#x27;</span> &gt; /etc/sudoers</span><br><span class="line"><span class="built_in">chmod</span> u-w /etc/sudoers</span><br><span class="line">=======</span><br><span class="line"><span class="comment">## 查看端口占用</span></span><br><span class="line">```bash</span><br><span class="line">netstat -ntulp | grep 80</span><br></pre></td></tr></table></figure>
+
+<h2 id="find-文件查找"><a href="#find-文件查找" class="headerlink" title="find 文件查找"></a>find 文件查找</h2><p>今天(2018年12月12日，17点08分)在众多文件里找一个文件的时候… 想到<code>find</code>命令。不过之前没有怎么了解过，所以…<br>我居然用了<code>tree | grep filename.filetype</code>来找东西。 结果路径太深——就最多确认了此文件的存在性。<br>随后，才知道<code>find</code>要加<code>-name</code>参数。 emm…不过对于<code>find</code>多功能来说也说得过去。  随后便有了以下这个命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;cifar.py&quot; -exec vim &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<p>没错~，查找之后并编辑——😄<br>除此之外，当然可能用于 <code>rm</code>、<code>grep</code>等去替换<code>vim</code>进行操作。<br>其中，<code>&#123;&#125;</code>自然时代表匹配文件的路径。 如果不止一个那么…就： vim为例，会关闭一个窗口再打开另一个😓<br>另外，配合<code>grep</code>查找文本内容的时候，需要在最后面加<code>-print</code>否则只有匹配文本，不显示文件路径。</p>
+<h1 id="Windows-转换磁盘分区格式"><a href="#Windows-转换磁盘分区格式" class="headerlink" title="Windows 转换磁盘分区格式"></a>Windows 转换磁盘分区格式</h1><h2 id="方法-步骤"><a href="#方法-步骤" class="headerlink" title="方法/步骤"></a>方法/步骤</h2><p>1<br>1.U盘引导，进入PE系统</p>
+<p>2<br> 用pe进去，找到运行输入cmd   </p>
+<p>3<br>输入”Diskpart”(不用输入引号，下同)，并按回车，进入操作界面</p>
+<p>4<br>输入：”list disk”，查看磁盘信息。一般会出现两个选项，一个是你的硬盘，一个是U盘，要注意区分。</p>
+<p>5<br>输入：”select disk 0”，选择disk 0为当前操作的磁盘（也就是电脑的 硬盘）</p>
+<p>6<br>输入：”Clean”，清空当前磁盘分区</p>
+<p>7<br>输入：”convert mbr”，转换为MBR分区。</p>
+<p>8<br>OK，搞定，可以安装WIN7了</p>
+<h3 id="Windows远程桌面"><a href="#Windows远程桌面" class="headerlink" title="Windows远程桌面"></a>Windows远程桌面</h3><pre><code>mstsc
+# WIn自带应用，不过用的时候得关闭防火墙就很伤
+</code></pre>
+<h3 id="Windows-输入法故障"><a href="#Windows-输入法故障" class="headerlink" title="Windows 输入法故障"></a>Windows 输入法故障</h3><pre><code>ctfmon.exe     win+R 执行此，重启输入法
+</code></pre>
+<h3 id="Win-安装Ubuntu"><a href="#Win-安装Ubuntu" class="headerlink" title="Win 安装Ubuntu"></a>Win 安装Ubuntu</h3><pre><code>#在powerShell中管理员运行
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-
+</code></pre>
+<p>Windows-Subsystem-Linux</p>
+<h4 id="Windows-自启动项目录"><a href="#Windows-自启动项目录" class="headerlink" title="Windows 自启动项目录"></a>Windows 自启动项目录</h4><p><code>C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</code></p>
+<p>在此目录下添加入快捷方式则在系统启动之后自动加载，但会有一些延时，不同于直接定义的自启动项，算是<font color=#ffff00>优先级最落后</font>的项目吧</p>
+<h4 id="Windows-查看电池使用情况"><a href="#Windows-查看电池使用情况" class="headerlink" title="Windows 查看电池使用情况"></a>Windows 查看电池使用情况</h4><pre><code>powercfg /BatteryReport
+# 适用于Win8+
+</code></pre>
+<h2 id="Python-Pip"><a href="#Python-Pip" class="headerlink" title="Python Pip"></a>Python Pip</h2><pre><code>pip install -r *.txt
+# 从*.txt 文件读取需要安装的插件列表
+</code></pre>
+<hr>
+<hr>
+<h1 id="win-Ubuntu-时间不一致"><a href="#win-Ubuntu-时间不一致" class="headerlink" title="win Ubuntu 时间不一致"></a>win Ubuntu 时间不一致</h1><pre><code>timedatectl set-local-rtc true 
+#采用本地时间          推荐
+</code></pre>
+<hr>
+<hr>
+<h3 id="Ubuntu-升级系统"><a href="#Ubuntu-升级系统" class="headerlink" title="Ubuntu  升级系统"></a>Ubuntu  升级系统</h3><pre><code>sudo update-manager -c -d
+#会检测是否有系统更新，
+#如果都更新完毕，
+#则提醒有新版本系统是否更新
+</code></pre>
+<h3 id="Windows-更新系统错误"><a href="#Windows-更新系统错误" class="headerlink" title="Windows 更新系统错误"></a>Windows 更新系统错误</h3><p><font color=#ff00ff>dism++ 你值得拥有</font></p>
+<p>另外：<br><font color=#800008>无法连接到更新服务。我们将稍后再试，你也可以立即进行检查。如果问题仍然存在，请确保你已连接到 Internet。</font><br>可能是<br><font color=#808808>本地组策略中的windows更新的“指定Intranet Microsoft更新服务位置”被更改过</font></p>
+<p>解决办法为</p>
+<ul>
+<li><ol>
+<li>gpedit.msc</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>打开“本地组策略编辑器”展开“计算机配置”—“管理模版”—“Windows组件”—“Windows 更新”（专业版称为Windows Update）</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>“指定Intranet Microsoft更新服务位置”，点击“未配置”</li>
+</ol>
+</li>
+</ul>
+<h3 id="Ubuntu-桌面显示问题"><a href="#Ubuntu-桌面显示问题" class="headerlink" title="Ubuntu 桌面显示问题"></a>Ubuntu 桌面显示问题</h3><p>卸载 ibus 输入法，会出现桌面显示不完全的情况，任务栏显示，启动栏消失，键盘快捷键无法使用。解决办法是重新安装 Unity 之后启动Unity 就会重新打开桌面环境…其实是又重新安装了 ibus  嗯………</p>
+<h3 id="Vim-设置Tab空格数"><a href="#Vim-设置Tab空格数" class="headerlink" title="Vim 设置Tab空格数"></a>Vim 设置Tab空格数</h3><pre><code>:set tabstop=4
+#添加至用户vim配置文件： .vimrc 下即可
+</code></pre>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><p>作为短小精悍的东西嘞，今天在限制密码类型和长度的时候尝尽了甜头。但在分类时…不好分，应该单独写一个笔记的，但短小精悍嘛，所以就放在命令行这里了。</p>
+<pre><code>import re    # 好吧，其实无所谓的，因为下面并没有用到Python正则模块
+    a = QtCore.QRegExp(&quot;[A-Za-z]&#123;0,5&#125;[1-9][0-9]&#123;0,5&#125;&quot;)
+    a = QtCore.QRegExp(&quot;[a-zA-Z0-9]&#123;0,12&#125;$&quot;)
+    a = QtCore.QRegExp(&quot;[a-zA-Z0-9]+$&quot;)
+a = QtCore.QRegExp(&quot;[a-zA-Z0-9\,\.\\\!\?\#\$\%\^\&amp;\*\(\)\)_\_\=\`\+]+$&quot;)
+</code></pre>
+<p>这里的<code>[]</code>中内容是输入范围，<code>&#123;&#125;</code>中的则是长度限制，而<code>+</code>就是不限长度 与<code>*</code>类似。 <code>$ </code>是结尾标志。 over。</p>
+<h2 id="闲的没事找事记："><a href="#闲的没事找事记：" class="headerlink" title="闲的没事找事记："></a>闲的没事找事记：</h2><pre><code>安装了一个美国版的windows 10 pro N 结果字体缺失，系统默认编码方式是Ascii不是utf……导致程序中的输出中文都出现问题。结果在这些不构成生产力的份儿上浪费时间，真是闲的没事找事…
+    
+</code></pre>
+<h2 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h2><pre><code>查看编码格式 `:set fenc`   
+设置文件格式`:set fileformat=unix`或者`:set fileformat=dos` 
+    ——针对于换行符
+</code></pre>
+<p><code>set tabstop=4</code>、<code>set expandtab</code>前者是一个<code>tab</code>的长度，后者是tab换为空格…</p>
+<h1 id="GoodApps"><a href="#GoodApps" class="headerlink" title="GoodApps"></a>GoodApps</h1><h4 id="Nitrux、Flatabulous-master："><a href="#Nitrux、Flatabulous-master：" class="headerlink" title="Nitrux、Flatabulous-master："></a>Nitrux、Flatabulous-master：</h4><p>主题，图标 用来美化很漂亮，图例样式可以参看这两者的Github。</p>
+<hr>
+<h4 id="GoldenDict："><a href="#GoldenDict：" class="headerlink" title="GoldenDict："></a>GoldenDict：</h4><p>一款词典，其可以添加网络翻译源，还可以自行下载本地翻译文件，本地内容我下载的含有：日汉、汉日、英牛津，朗道，还有本本草纲目……没错，确实还有科普类的翻译源。各种奇异翻译本都有。</p>
+<hr>
+<h4 id="Xware："><a href="#Xware：" class="headerlink" title="Xware："></a>Xware：</h4><p>一款迅雷的替代，网络远程下载，完全能当一个没有广告的迅雷来使。 只不过需要账户密码，还有，在安装完毕之后，需要预先设置一番，将Xware托管改为用户态upstar，或者简单的自动启动。否则会显示ETM 没有链接，不能使用。另外将挂载，实际作用是下载保存位置，也设置一下。这么长时间了，英文路径应该养成习惯……</p>
+<hr>
+<h4 id="MyPaint："><a href="#MyPaint：" class="headerlink" title="MyPaint："></a>MyPaint：</h4><p>画图工具，很好使。</p>
+<hr>
+<h4 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome:"></a>Chrome:</h4><p>这个浏览器不用说，这里介绍的是关于它修改hosts文件之后可能仍然无法使用谷歌搜索的问题。</p>
+<p>1.因为，默认的是http，故显示已被重定向啊，啥的。只要在地址栏前输入https就可以正常访问了。<br>2.当然，这样的话无法使用网页里的按钮“使用谷歌搜索”，所以需要修改其默认。可以在Chrome://net-internals/ 中，找见HSTS选项卡，Domain中输入想要默认强制使用https的网址。（PS：因为我的使用google自动跳转谷歌香港，所以这里用google.com还是不行的，得加上.hk的后缀。）<br>3.以上修改方法应该只能设置一个默认网址呢，不过一个google搜索就够了…… 嗯，我要求比较低。 至于其他浏览器，大概是默认https的，因为可以直接访问嘛。<br>自然还有很好的别的稍微专业的工具，这个会在之后持续更新出来，用学习笔记的形式（而且，等我学会在文章里添加链接啊，图片啊之后）。以上入门级、常用级的也会持续更新的～ 下载链接我以及之后都不会贴出来，嗯，毕竟没有永远保存的，链接经常失效。自行搜索总是好的，还能顺便了解一下这块软件的使用方法，以及类似替代软件的出现。</p>
+<hr>
+<h4 id="Nethack："><a href="#Nethack：" class="headerlink" title="Nethack："></a>Nethack：</h4><p>終端運行的一款地牢遊戲，相當高的自由度和隨機程度，除卻一切怪物和地圖都是用符號來代替，戰鬥過程就是用文字信息來描述，在創造和思索方面簡直一流。以後有空閒肯定要玩一玩～</p>
+<hr>
+<h4 id="Virbox-："><a href="#Virbox-：" class="headerlink" title="Virbox ："></a>Virbox ：</h4><pre><code>sudo mount /dev/cdrom // ^^^目標地^^^ //掛載光盤 
+sudo mount -t vboxsf //^^Name^^ ^^^目標地^^^ //掛載虛擬機共享文件
+</code></pre>
+<hr>
+<h3 id="下面是其他软件的学习笔记：（等待更新——）"><a href="#下面是其他软件的学习笔记：（等待更新——）" class="headerlink" title="下面是其他软件的学习笔记：（等待更新——）"></a>下面是其他软件的学习笔记：（等待更新——）</h3><hr>
+<h4 id="Linux："><a href="#Linux：" class="headerlink" title="Linux："></a>Linux：</h4><p>嗯，这是个软件…详见《Linuxのノート》</p>
+<hr>
+<h4 id="Pelican"><a href="#Pelican" class="headerlink" title="Pelican :"></a>Pelican :</h4><p>静态网页编辑生成工具。 keywords：Python、markdown</p>
+<hr>
+<h4 id="Blender："><a href="#Blender：" class="headerlink" title="Blender："></a>Blender：</h4><p>開源建模，動畫軟件。 </p>
+<h6 id="快捷鍵記錄："><a href="#快捷鍵記錄：" class="headerlink" title="快捷鍵記錄："></a>快捷鍵記錄：</h6><pre><code>N、T    //編輯欄呼出、隱藏 
+T    //側重物體，N側重編輯窗口 
+B    //選擇 
+Tab    //模式切換
+Ctrl+U    //用戶界面保存 
+Z    //物體顯示樣式切換 線框、透視 
+H    //刪除 
+G    //移動 
+</code></pre>
+<h4 id="musicbox："><a href="#musicbox：" class="headerlink" title="musicbox："></a>musicbox：</h4><p>Linux 命令行下的 網易雲音樂 。夠精簡夠豐富，實爲經驗驚豔。</p>
+<h5 id="基於Python："><a href="#基於Python：" class="headerlink" title="基於Python："></a>基於Python：</h5><pre><code>&gt;https://github.com/darknessomi/musicbox
+</code></pre>
+<hr>
+<h4 id="xSwipe："><a href="#xSwipe：" class="headerlink" title="xSwipe："></a>xSwipe：</h4><p>多指触控软件。通过将触控板手势映射成快捷键，可以支持甚至五指操作，还有侧边功能。在github中搜索<code>xSwipe</code>即可，其中有详细安装说明。之后可以在.conf文件中查看和修改映射快捷键。另最后如果不能运行，可能需要注销重启电脑方可。<br>运行 <code>perl xSwipe.pl</code>即可执行。</p>
+<hr>
+<h4 id="OpenCV："><a href="#OpenCV：" class="headerlink" title="OpenCV："></a>OpenCV：</h4><p>开源计算机视觉库。  简单记录一下编译过程：(其實沒啥用的，自己爬官網找安裝教程去，基本沒用。)</p>
+<h5 id="1-解决依赖，编译工具"><a href="#1-解决依赖，编译工具" class="headerlink" title="1. 解决依赖，编译工具"></a>1. 解决依赖，编译工具</h5><pre><code>sudo apt-get install build-essential
+sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev`
+</code></pre>
+<h5 id="2-github-下载源程序"><a href="#2-github-下载源程序" class="headerlink" title="2. github 下载源程序"></a>2. github 下载源程序</h5><pre><code>git clone https://github.com/opencv/opencv.git
+</code></pre>
+<h5 id="3-Building-OpenCV-from-Source-Using-CMake-Using-the-Command-Line"><a href="#3-Building-OpenCV-from-Source-Using-CMake-Using-the-Command-Line" class="headerlink" title="3. Building OpenCV from Source Using CMake, Using the Command Line"></a>3. Building OpenCV from Source Using CMake, Using the Command Line</h5><pre><code>cd ~/opencv
+mkdir release
+cd release
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
+</code></pre>
+<h5 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h5><pre><code>make
+sudo make install
+all from &gt;http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html
+// (或許安裝過程就這句有用 23333)
+
+Thanks for your teaching.
+</code></pre>
+<hr>
+<h4 id="Simplenote"><a href="#Simplenote" class="headerlink" title="Simplenote:"></a>Simplenote:</h4><pre><code>一款笔记软件，支持markdown编辑，很轻量、只能记录文字有点儿伤。不过有Linux版就很爽。而且同步速度、启动速度都很迅速。界面简单到不行。手机一次不幸刷机之后，有道云笔记懒得装，之后就用此软件吧…
+</code></pre>
+<h4 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h4><p><code>server copy</code>? 这个简写不晓得，不过确实是适用于远程连接传输文件的…  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp ian@123.123.41.3(😀):/home/ian/nihou.txt ./files</span><br><span class="line">scp ./files ian@123.123.41.3(😀):/home/ian/nihou.txt </span><br></pre></td></tr></table></figure>
+<h4 id="删除Win系统服务"><a href="#删除Win系统服务" class="headerlink" title="删除Win系统服务"></a>删除Win系统服务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc delete serverName</span><br></pre></td></tr></table></figure>
+
+<h3 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h3><p>丰富纯文字终端窗口，可以创建终端副本(反正也是我取得名字)—–类似于<code>win</code>的多桌面。也可以分割终端(界面类似vim分割)l–这便是类似于<code>win</code>的多窗口了。 (官方翻译: ‘窗格’？)</p>
+<ul>
+<li>进入: <code>tmux</code></li>
+<li>退出: <code>exit</code></li>
+<li>类似于<code>vim</code>命令模式： <code>ctrl+b</code>以下简写为<code>CL_B</code>。</li>
+<li>创建多桌面: CL_B + c</li>
+<li>查看全部窗口，类似<code>win+Tab</code>: CL_B + s    使用窗口号切换桌面: CL_B + NUM    </li>
+<li>关闭当前窗口: CL_B + &amp;,emm直接<code>exit</code>…</li>
+<li>创建多窗口: CL_B + “ (垂直上下)、CL_B + % (水平左右)   调整窗口位置、大小 CL_B + space (默认布局轮换)</li>
+<li>显示窗口编号: CL_B + q    暂时最大化当前窗格: CL_B + z   切换到下一个窗格: CL_B + o</li>
+<li>对换窗格位置: CL_B + CL_O(ctrl + o)</li>
+</ul>
+<h3 id="Termux"><a href="#Termux" class="headerlink" title="Termux"></a>Termux</h3><p>类似于<code>WIN</code>端的<code>Subsystem</code>——其实更像Ubuntu下的虚拟终端。 不过这东西功能强大，除了将安卓里的Linux发挥出来。还有<code>Termux API</code>来调用手机的底层接口。</p>
+<h4 id="ssh与手机连接"><a href="#ssh与手机连接" class="headerlink" title="ssh与手机连接"></a>ssh与手机连接</h4><p>其实应该放在<code>ssh</code>的操作里面？ emm，还是就这儿吧。</p>
+<h5 id="pc"><a href="#pc" class="headerlink" title="*pc"></a>*pc</h5><p>**电脑生成密匙,无视密码设置全部回车</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>**电脑开启sshd服务,用于手机的ssh连接到电脑拷贝id_rsa.pub内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start sshd</span><br></pre></td></tr></table></figure>
+<p>然而我用的是win子系统所以：sshd re-exec requires execution with an absolute path</p>
+<h5 id="phone"><a href="#phone" class="headerlink" title="phone"></a>phone</h5><p>**手机连接拷贝</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$HOME</span>/.ssh/authorized_keys -&gt; 不管用什么复制，然后放到这个路径就好。</span><br></pre></td></tr></table></figure>
+<p>**查看手机的用户名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">whoami</span></span><br></pre></td></tr></table></figure>
+<p>**开启服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshd -p 9000</span><br></pre></td></tr></table></figure>
+
+<h5 id="pc-1"><a href="#pc-1" class="headerlink" title="*pc"></a>*pc</h5><p>连接到手机</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh u0_222@192.168.1.14 -p 9000</span><br></pre></td></tr></table></figure>
+
+<p>Over, 其余问题查看文件权限？  不过还是自建文件<code>.ssh</code>出错率为0吧。</p>
+<p>2018年12月4日11点27分,当我反过来操作的时候…  嗯，果然在权限这里出问题了…<br>另外，电脑端开启<code>sshd</code>的时候用的绝对地址… 因为是Syb？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 700 ~/.ssh</span><br><span class="line"><span class="built_in">chmod</span> 600 ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<pre><code>😓
+</code></pre>
+<h4 id="快捷键-有用的音量键？"><a href="#快捷键-有用的音量键？" class="headerlink" title="快捷键(有用的音量键？)"></a>快捷键(有用的音量键？)</h4><p>显示扩展功能按键</p>
+<p>方法一:</p>
+<ul>
+<li>从左向右滑动,显示隐藏式导航栏,长按左下角的KEYBOARD.</li>
+</ul>
+<p>方法二:</p>
+<ul>
+<li>使用Termux快捷键:音量++Q键</li>
+</ul>
+<p>常用快捷键</p>
+<ul>
+<li>Ctrl键是终端用户常用的按键 – 但大多数触摸键盘都没有这个按键。为此，Termux使用音量减小按钮来模拟Ctrl键。在触摸键盘上按音量减小+ L发送与在硬件键盘上按Ctrl + L相同的输入。</li>
+<li>Ctrl+A -&gt; 将光标移动到行首</li>
+<li>Ctrl+C -&gt; 中止当前进程</li>
+<li>Ctrl+D -&gt; 注销终端会话</li>
+<li>Ctrl+E -&gt; 将光标移动到行尾</li>
+<li>Ctrl+K -&gt; 从光标删除到行尾</li>
+<li>Ctrl+L -&gt; 清除终端</li>
+<li>Ctrl+Z -&gt; 挂起（发送SIGTSTP到）当前进程</li>
+</ul>
+<p>音量加键也可以作为产生特定输入的特殊键.</p>
+<ul>
+<li>音量加+E -&gt; Esc键</li>
+<li>音量加+T -&gt; Tab键</li>
+<li>音量加+1 -&gt; F1（和音量增加+ 2→F2等）</li>
+<li>音量加+0 -&gt; F10</li>
+<li>音量加+B -&gt; Alt + B，使用readline时返回一个单词</li>
+<li>音量加+F -&gt; Alt + F，使用readline时转发一个单词</li>
+<li>音量加+X -&gt; Alt+X</li>
+<li>音量加+W -&gt; 向上箭头键</li>
+<li>音量加+A -&gt; 向左箭头键</li>
+<li>音量加+S -&gt; 向下箭头键</li>
+<li>音量加+D -&gt; 向右箭头键</li>
+<li>音量加+L -&gt; | （管道字符）</li>
+<li>音量加+H -&gt; 〜（波浪号字符）</li>
+<li>音量加+U -&gt; _ (下划线字符)</li>
+<li>音量加+P -&gt; 上一页</li>
+<li>音量加+N -&gt; 下一页</li>
+<li>音量加+. -&gt; Ctrl + \（SIGQUIT）</li>
+<li>音量加+V -&gt; 显示音量控制</li>
+<li>音量加+Q -&gt; 显示额外的按键视图</li>
+</ul>
+<h2 id="Rdfind"><a href="#Rdfind" class="headerlink" title="Rdfind"></a>Rdfind</h2><h3 id="替代方案"><a href="#替代方案" class="headerlink" title="替代方案"></a>替代方案</h3><p><code>Rdfind</code>是命令行的, <code>DuplicatePhotoFinder1.6.3</code>是有UI的, 可以展示出内容, 不过很傻, 不能多选一次删除, 只能一个一个删除…..<br>所以我做了一个托管鼠标点击器. 如下</p>
+<p>使用<code>Rdfind</code> 进行重复文件查询, 然后删了, 节省磁盘空间.</p>
+<blockquote>
+<p>不过我准备自己做一个, 更方便删减图片, 所以以后应该会用自己做的, 这个就留下参考吧.<br>[^_^]:<br>    2021-04-22</p>
+</blockquote>
+<h3 id="查询重复"><a href="#查询重复" class="headerlink" title="查询重复"></a>查询重复</h3><p><code>drfind /Image/`, 结果报表存于当前目录`results.txt</code></p>
+<h3 id="终端输出"><a href="#终端输出" class="headerlink" title="终端输出"></a>终端输出</h3><p><code>rdfind -dryrun true /Image</code></p>
+<h3 id="删除空文件和重复文件"><a href="#删除空文件和重复文件" class="headerlink" title="删除空文件和重复文件"></a>删除空文件和重复文件</h3><p><code>rdfind -deleteduplicates true -ignoreempty false /Image</code></p>
+<h3 id="删除重复文件"><a href="#删除重复文件" class="headerlink" title="删除重复文件"></a>删除重复文件</h3><p><code>rdfind -deleteduplicates true /Image</code></p>
+<h2 id="鼠标自动点击"><a href="#鼠标自动点击" class="headerlink" title="鼠标自动点击"></a>鼠标自动点击</h2><p>选择点, 不到1s一点, 终端无法立即实时中断, 估计要用上<code>Listener</code>不过现在这样也可以啦.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> date, datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pynput <span class="keyword">import</span> mouse</span><br><span class="line"><span class="keyword">from</span> pynput.mouse <span class="keyword">import</span> Button, Controller</span><br><span class="line"></span><br><span class="line">mouse = Controller()</span><br><span class="line"></span><br><span class="line">sign_start = <span class="literal">False</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;请将鼠标移动到指定位置, 输入`r`开始.&quot;</span>)</span><br><span class="line"></span><br><span class="line">str_input = <span class="literal">None</span></span><br><span class="line">position_loop = <span class="literal">None</span></span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">    str_input = str_input <span class="keyword">or</span> <span class="built_in">input</span>()</span><br><span class="line">    <span class="keyword">if</span> str_input == <span class="string">&#x27;r&#x27;</span>:</span><br><span class="line">        position_loop = position_loop <span class="keyword">or</span> mouse.position</span><br><span class="line">        mouse.position = position_loop</span><br><span class="line">        <span class="comment"># mouse.move(position_loop[0], position_loop[-1])</span></span><br><span class="line">        mouse.press(Button.left)</span><br><span class="line">        time.sleep(<span class="number">0.2</span>)</span><br><span class="line">        mouse.release(Button.left)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;datetime.now()&#125;</span> - clicked - <span class="subst">&#123;position_loop&#125;</span>.&quot;</span>)</span><br><span class="line">        time.sleep(<span class="number">0.4</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;输入错误, 程序结束.&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://ianvzs.github.io/2016/10/08/makeThingsEasyAndEnjoy/" data-id="cl1d1lham0005u2ty1tavhipm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Ian Vzs"
+        },
+        "headline": "Make things easy and enjoy",
+        "image": "https://ianvzs.github.io",
+        "keywords": "杂谈",
+        "genre": "杂谈",
+        "datePublished": "2016-10-08",
+        "dateCreated": "2016-10-08",
+        "dateModified": "2022-03-26",
+        "url": "https://ianvzs.github.io/2016/10/08/makeThingsEasyAndEnjoy/",
+        "description": "命令行的简便生活 💦🤣
+Github Personal access tokensgithub 干掉了https账号密码pull push 之后https pull push 专用url
+4k码字更改语言1234export LC_ALL=C# 改了确实大多数成英文了，不过树莓派汉化太狠了，console-setup里还有若干是中文就很蠢...unset LC_ALL# 改回原始
+更改tty1",
+        "wordCount": 2903
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="book" href="/book_architecture" target="_blank" rel="noopener">
+                        <i class="icon fa fa-book"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/IanVzs" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/10/29/notes/note/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            杂笔记(Note)
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2016/07/14/dailynotes/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">daily Notes</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/03/18/notes/pyinstaller/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/note/">note</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/note/pyinstaller/">pyinstaller</a></p>
+                            <p class="item-title"><a href="/2022/03/18/notes/pyinstaller/" class="title">python打包</a></p>
+                            <p class="item-date"><time datetime="2022-03-18T10:15:14.000Z" itemprop="datePublished">2022-03-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/02/10/notes/demo_test_some/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://avatars.githubusercontent.com/u/17629611?s=96&v=4)" alt="Demo Test项目中的一些东西" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/demo-test/">demo_test</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/demo-test/code/">code</a></p>
+                            <p class="item-title"><a href="/2022/02/10/notes/demo_test_some/" class="title">Demo Test项目中的一些东西</a></p>
+                            <p class="item-date"><time datetime="2022-02-10T09:45:00.000Z" itemprop="datePublished">2022-02-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/01/18/tips/qt/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://qt-wiki-uploads.s3.amazonaws.com/images/3/33/Py-128.png)" alt="Qt/PySide" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tip/">tip</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/tip/qt/">qt</a></p>
+                            <p class="item-title"><a href="/2022/01/18/tips/qt/" class="title">Qt/PySide</a></p>
+                            <p class="item-date"><time datetime="2022-01-18T06:15:23.000Z" itemprop="datePublished">2022-01-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/01/15/tips/install_some/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tip/">tip</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/tip/install/">install</a></p>
+                            <p class="item-title"><a href="/2022/01/15/tips/install_some/" class="title">安装问题</a></p>
+                            <p class="item-date"><time datetime="2022-01-15T08:24:41.000Z" itemprop="datePublished">2022-01-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/01/10/notes/dgraph/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://dgraph.io/docs//images/dgraph.svg)" alt="Dgraph使用小记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Dgraph/">Dgraph</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Dgraph/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/">图数据库</a></p>
+                            <p class="item-title"><a href="/2022/01/10/notes/dgraph/" class="title">Dgraph使用小记</a></p>
+                            <p class="item-date"><time datetime="2022-01-10T09:00:00.000Z" itemprop="datePublished">2022-01-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Dgraph/">Dgraph</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dgraph/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/">图数据库</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/demo-test/">demo_test</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/demo-test/code/">code</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/new-Things/">new Things</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/new-Things/%E6%89%8B%E6%9C%BA/">手机</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/Gui/">Gui</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/Gui/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/Something/">Something</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/db/">db</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/db/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/docker/">docker</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/docker/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/">golang</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/expansion/">expansion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/golang/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/java/">java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/java/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/language/">language</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/language/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/learning/">learning</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/linux/">linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/linux/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/pyinstaller/">pyinstaller</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/pyinstaller/%E6%89%93%E5%8C%85/">打包</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/python/learning/">learning</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/ue4/">ue4</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/ue4/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">数据格式</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/test/">test</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/%E7%BD%91%E7%BB%9C-Net/">网络(Net)</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/">tip</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/debug/">debug</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/debug/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/install/">install</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/markdown/">markdown</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/markdown/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/problem/">problem</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/problem/gRpc/">gRpc</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/qt/">qt</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/qt/pyside/">pyside</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/vim/">vim</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/vim/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/web/">web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tip/web/learning/">learning</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tip/%E6%8D%A2%E6%BA%90/">换源</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/web/%E5%85%A8%E6%A0%88%E7%AC%94%E8%AE%B0/">全栈笔记</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/%E6%97%A5%E8%AE%B0/">日记</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gui/" rel="tag">Gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Japanese/" rel="tag">Japanese</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sony-XZ1-Compact/" rel="tag">Sony XZ1 Compact</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vn-Py/" rel="tag">Vn.Py</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/" rel="tag">ajax</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/" rel="tag">apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debuger/" rel="tag">debuger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/demo-test/" rel="tag">demo_test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expansion/" rel="tag">expansion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/" rel="tag">golang</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/" rel="tag">gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/" rel="tag">install</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-springboot-mybatis-maven-learning/" rel="tag">java, springboot, mybatis, maven, learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keepalived/" rel="tag">keepalived</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learning/" rel="tag">learning</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/" rel="tag">less</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/missjava/" rel="tag">missjava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ml/" rel="tag">ml</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongo/" rel="tag">mongo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/more/" rel="tag">more</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdb/" rel="tag">pdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyqt/" rel="tag">pyqt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpc/" rel="tag">rpc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ue4/" rel="tag">ue4</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win/" rel="tag">win</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/" rel="tag">数据格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" rel="tag">更新说明</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C%E7%AC%94%E8%AE%B0/" rel="tag">经验笔记</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Gui/" style="font-size: 10px;">Gui</a> <a href="/tags/Japanese/" style="font-size: 10px;">Japanese</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Sony-XZ1-Compact/" style="font-size: 10px;">Sony XZ1 Compact</a> <a href="/tags/Vn-Py/" style="font-size: 10px;">Vn.Py</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/debuger/" style="font-size: 10px;">debuger</a> <a href="/tags/demo-test/" style="font-size: 10px;">demo_test</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/expansion/" style="font-size: 10px;">expansion</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/golang/" style="font-size: 13.33px;">golang</a> <a href="/tags/gui/" style="font-size: 10px;">gui</a> <a href="/tags/install/" style="font-size: 10px;">install</a> <a href="/tags/java-springboot-mybatis-maven-learning/" style="font-size: 10px;">java, springboot, mybatis, maven, learning</a> <a href="/tags/keepalived/" style="font-size: 10px;">keepalived</a> <a href="/tags/learning/" style="font-size: 20px;">learning</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/missjava/" style="font-size: 10px;">missjava</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/mongo/" style="font-size: 10px;">mongo</a> <a href="/tags/more/" style="font-size: 10px;">more</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/pyqt/" style="font-size: 10px;">pyqt</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/rpc/" style="font-size: 10px;">rpc</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/ue4/" style="font-size: 10px;">ue4</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/win/" style="font-size: 13.33px;">win</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/" style="font-size: 10px;">数据格式</a> <a href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">更新说明</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 16.67px;">杂谈</a> <a href="/tags/%E7%BB%8F%E9%AA%8C%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">经验笔记</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 Ian Vzs</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://ianvzs.github.io/2016/10/08/makeThingsEasyAndEnjoy/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
