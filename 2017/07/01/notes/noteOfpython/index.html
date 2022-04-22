@@ -12,16 +12,16 @@
     
     <meta name="keywords" content="learning,python" />
     
-    <meta name="description" content="author:Ian  列表表达式 二维数组边一维 取字典内变一维123knowninfo &#x3D; &amp;#123;&amp;#x27;axie_id3&amp;#x27;: &amp;#123;&amp;#x27;init_cards&amp;#x27;: [&amp;#x27;Sunder Claw&amp;#x27;, &amp;#x27;October Treat&amp;#x27;, &amp;#x27;Gas Unleash&amp;#x27;, &amp;#x27;Disguise&amp;#">
+    <meta name="description" content="author:Ian  多个类属性一次赋值No: 12self.a &#x3D; aself.b &#x3D; b Yes: 1self.__dict__.update(&amp;#123;&quot;a&quot;: a, &quot;b&quot;: b&amp;#125;) 列表表达式 二维数组边一维 取字典内变一维123knowninfo &#x3D; &amp;#123;&amp;#x27;axie_id3&amp;#x27;: &amp;#123;&amp;#x27;i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python笔记(notes of Python)">
-<meta property="og:url" content="https://ianvzs.gitee.io/2017/07/01/notes/noteOfpython/index.html">
+<meta property="og:url" content="https://ianvzs.github.io/2017/07/01/notes/noteOfpython/index.html">
 <meta property="og:site_name" content="Ian&#39;s Blog">
-<meta property="og:description" content="author:Ian  列表表达式 二维数组边一维 取字典内变一维123knowninfo &#x3D; &amp;#123;&amp;#x27;axie_id3&amp;#x27;: &amp;#123;&amp;#x27;init_cards&amp;#x27;: [&amp;#x27;Sunder Claw&amp;#x27;, &amp;#x27;October Treat&amp;#x27;, &amp;#x27;Gas Unleash&amp;#x27;, &amp;#x27;Disguise&amp;#">
+<meta property="og:description" content="author:Ian  多个类属性一次赋值No: 12self.a &#x3D; aself.b &#x3D; b Yes: 1self.__dict__.update(&amp;#123;&quot;a&quot;: a, &quot;b&quot;: b&amp;#125;) 列表表达式 二维数组边一维 取字典内变一维123knowninfo &#x3D; &amp;#123;&amp;#x27;axie_id3&amp;#x27;: &amp;#123;&amp;#x27;i">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.python.org/static/img/python-logo@2x.png">
 <meta property="article:published_time" content="2017-07-01T13:20:00.000Z">
-<meta property="article:modified_time" content="2022-03-26T14:02:11.790Z">
+<meta property="article:modified_time" content="2022-04-22T14:11:52.915Z">
 <meta property="article:author" content="Ian Vzs">
 <meta property="article:tag" content="learning">
 <meta property="article:tag" content="python">
@@ -185,7 +185,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2017/07/01/notes/noteOfpython/" class="article-date">
-     <time datetime="2022-03-26T14:02:11.790Z" itemprop="dateModified">2022-03-26</time>
+     <time datetime="2022-04-22T14:11:52.915Z" itemprop="dateModified">2022-04-22</time>
   </a>
 </div>
 
@@ -214,6 +214,10 @@
 
             <p>author:Ian</p>
 <p><img src="https://www.python.org/static/img/python-logo@2x.png" alt="python"></p>
+<h2 id="多个类属性一次赋值"><a href="#多个类属性一次赋值" class="headerlink" title="多个类属性一次赋值"></a>多个类属性一次赋值</h2><p>No:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self.a = a</span><br><span class="line">self.b = b</span><br></pre></td></tr></table></figure>
+<p>Yes:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.__dict__.update(&#123;&quot;a&quot;: a, &quot;b&quot;: b&#125;)</span><br></pre></td></tr></table></figure>
 <h2 id="列表表达式-二维数组边一维-取字典内变一维"><a href="#列表表达式-二维数组边一维-取字典内变一维" class="headerlink" title="列表表达式 二维数组边一维 取字典内变一维"></a>列表表达式 二维数组边一维 取字典内变一维</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">knowninfo = &#123;&#x27;axie_id3&#x27;: &#123;&#x27;init_cards&#x27;: [&#x27;Sunder Claw&#x27;, &#x27;October Treat&#x27;, &#x27;Gas Unleash&#x27;, &#x27;Disguise&#x27;], &#x27;sort&#x27;: 4&#125;&#125;</span><br><span class="line">[vv for _,v in knowninfo.items() for vv in v[&quot;init_cards&quot;]]</span><br><span class="line"># [&#x27;Sunder Claw&#x27;, &#x27;October Treat&#x27;, &#x27;Gas Unleash&#x27;, &#x27;Disguise&#x27;]</span><br></pre></td></tr></table></figure>
 <h2 id="PiP-Not-Found-Issue"><a href="#PiP-Not-Found-Issue" class="headerlink" title="PiP Not Found Issue"></a>PiP Not Found Issue</h2><p>使用<code>pip</code>安装某包时， 提示让更新， 按提示操作更新没效果没反应再用就提示<code>ModuleNotFoundError: No module named &#39;pip&#39;</code> (ˉ▽ˉ；)…</p>
 <h2 id="ModuleNotFoundError-No-module-named-‘pip’"><a href="#ModuleNotFoundError-No-module-named-‘pip’" class="headerlink" title="ModuleNotFoundError: No module named ‘pip’"></a>ModuleNotFoundError: No module named ‘pip’</h2><h3 id="升级PiP时出现问题可由下方命令修复"><a href="#升级PiP时出现问题可由下方命令修复" class="headerlink" title="升级PiP时出现问题可由下方命令修复"></a>升级<code>PiP</code>时出现问题可由下方命令修复</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -m ensurepip</span><br><span class="line">python -m pip install --upgrade pip</span><br></pre></td></tr></table></figure>
@@ -1487,7 +1491,7 @@ s = .join(itertools.chain(kwargs.keys()))
 
 
 
-    <a data-url="https://ianvzs.gitee.io/2017/07/01/notes/noteOfpython/" data-id="cl1ugwxcb001sertyb39ubxl4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://ianvzs.github.io/2017/07/01/notes/noteOfpython/" data-id="cl2aimlu10026bzty557s8leu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -1558,17 +1562,21 @@ s = .join(itertools.chain(kwargs.keys()))
             "name": "Ian Vzs"
         },
         "headline": "Python笔记(notes of Python)",
-        "image": "https://ianvzs.gitee.iohttps://www.python.org/static/img/python-logo@2x.png",
+        "image": "https://ianvzs.github.iohttps://www.python.org/static/img/python-logo@2x.png",
         "keywords": "learning python",
         "genre": "note python learning",
         "datePublished": "2017-07-01",
         "dateCreated": "2017-07-01",
-        "dateModified": "2022-03-26",
-        "url": "https://ianvzs.gitee.io/2017/07/01/notes/noteOfpython/",
+        "dateModified": "2022-04-22",
+        "url": "https://ianvzs.github.io/2017/07/01/notes/noteOfpython/",
         "description": "author:Ian
 
-列表表达式 二维数组边一维 取字典内变一维123knowninfo = &#123;&#x27;axie_id3&#x27;: &#123;&#x27;init_cards&#x27;: [&#x27;Sunder Claw&#x27;, &#x27;October Treat&#x27;, &#x27;Gas Unleash&#x27;, &#x27;Disguise&#",
-        "wordCount": 11477
+多个类属性一次赋值No:
+12self.a = aself.b = b
+Yes:
+1self.__dict__.update(&#123;&quot;a&quot;: a, &quot;b&quot;: b&#125;)
+列表表达式 二维数组边一维 取字典内变一维123knowninfo = &#123;&#x27;axie_id3&#x27;: &#123;&#x27;i",
+        "wordCount": 11502
     }
 </script>
 
@@ -1879,7 +1887,7 @@ s = .join(itertools.chain(kwargs.keys()))
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'https://ianvzs.gitee.io/2017/07/01/notes/noteOfpython/';
+    var disqus_url = 'https://ianvzs.github.io/2017/07/01/notes/noteOfpython/';
     
     (function() {
     var dsq = document.createElement('script');
