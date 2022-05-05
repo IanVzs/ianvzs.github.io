@@ -313,10 +313,14 @@ java8 (ue4.26.2, 之前4.25也是, 反正就找个稳定版java一直使吧, 这
     
 
         <p class="article-excerpt">
-            GDB
-First and foremost, you will need to compile your program with the flag “-g” (for debug) to run it via GDB. From there the syntax to start debugging is:
-1$ gdb -tui [executable&#x27;s name]
-placin
+            Clang &amp;&amp; lldb听说clang+lldb &gt;= gcc + gdb, 所以一试:
+lldb基本命令与GDB相同
+
+break (b) - 设置断点，也就是程序暂停的地方
+run (r) - 启动目标程序，如果遇到断点则暂停
+step (s) - 进入下一条指令中的函数内部
+backtrace (bt) - 显示当前的有效函数
+frame (f) - 默认显示当前栈的
         </p>
     </div>
 </article>
@@ -656,11 +660,13 @@ MongoDB笔记学习网站：http://www.runoob.com/mongodb/mongodb-tutorial.html 
         <p class="article-excerpt">
             author:Ian
 
-多个类属性一次赋值No:
-12self.a = aself.b = b
-Yes:
-1self.__dict__.update(&#123;&quot;a&quot;: a, &quot;b&quot;: b&#125;)
-列表表达式 二维数组边一维 取字典内变一维123knowninfo = &#123;&#x27;axie_id3&#x27;: &#123;&#x27;i
+彻底摆脱to_dict和from_dict使用 pydanticBaseModel类型支持:
+
+b = BattleAxiePositionInfo.parse_obj(DICT_DATA)
+b.json()
+b.dict()
+parse_file
+parse_raw12345678910111213141516from pydantic import BaseModelc
         </p>
     </div>
 </article>
@@ -719,16 +725,18 @@ Yes:
 
         <p class="article-excerpt">
             
+dpkg .debInstallsudo dpkg -i file.deb
+c l r P L s
+-c列出内容
+-l提取包信息
+-r移除一个已安装的包
+-P完全清除一个已安装包
+-L列出安装所有文件清单
+-s显示已安装包信息
+
 WSLwsl问题因为后面不太喜欢这种东西了,还是上了物理机. 所以就不粘贴过来了.
 sudo apt upgrade
-E: Sub-process /usr/bin/dpkg returned an error code (1)
-
-解决sudu下
-
-备份/var/lib/dpkg/info
-新建/var/lib/dpkg/info
-重新执行更新
-合并/var/lib/dpkg/info 和 备份
+E: Sub-process /usr/bin/d
         </p>
     </div>
 </article>

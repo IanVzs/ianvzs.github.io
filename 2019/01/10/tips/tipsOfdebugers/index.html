@@ -10,23 +10,23 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="debuger,pdb,gdb,learning" />
+    <meta name="keywords" content="learning,debuger,pdb,gdb" />
     
-    <meta name="description" content="GDB First and foremost, you will need to compile your program with the flag “-g” (for debug) to run it via GDB. From there the syntax to start debugging is: 1$ gdb -tui [executable&amp;#x27;s name] placin">
+    <meta name="description" content="Clang &amp;&amp; lldb听说clang+lldb &gt;&#x3D; gcc + gdb, 所以一试: lldb基本命令与GDB相同  break (b) - 设置断点，也就是程序暂停的地方 run (r) - 启动目标程序，如果遇到断点则暂停 step (s) - 进入下一条指令中的函数内部 backtrace (bt) - 显示当前的有效函数 frame (f) - 默认显示当前栈的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tips Of Debuggers">
 <meta property="og:url" content="https://ianvzs.github.io/2019/01/10/tips/tipsOfdebugers/index.html">
 <meta property="og:site_name" content="Ian&#39;s Blog">
-<meta property="og:description" content="GDB First and foremost, you will need to compile your program with the flag “-g” (for debug) to run it via GDB. From there the syntax to start debugging is: 1$ gdb -tui [executable&amp;#x27;s name] placin">
+<meta property="og:description" content="Clang &amp;&amp; lldb听说clang+lldb &gt;&#x3D; gcc + gdb, 所以一试: lldb基本命令与GDB相同  break (b) - 设置断点，也就是程序暂停的地方 run (r) - 启动目标程序，如果遇到断点则暂停 step (s) - 进入下一条指令中的函数内部 backtrace (bt) - 显示当前的有效函数 frame (f) - 默认显示当前栈的">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.linuxprobe.com/wp-content/uploads/2017/02/175653ff8gl0f5flw4f518.jpg">
 <meta property="article:published_time" content="2019-01-10T04:21:12.000Z">
-<meta property="article:modified_time" content="2022-03-26T13:53:01.595Z">
+<meta property="article:modified_time" content="2022-05-05T02:33:57.118Z">
 <meta property="article:author" content="Ian Vzs">
+<meta property="article:tag" content="learning">
 <meta property="article:tag" content="debuger">
 <meta property="article:tag" content="pdb">
 <meta property="article:tag" content="gdb">
-<meta property="article:tag" content="learning">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://www.linuxprobe.com/wp-content/uploads/2017/02/175653ff8gl0f5flw4f518.jpg">
     
@@ -187,7 +187,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2019/01/10/tips/tipsOfdebugers/" class="article-date">
-     <time datetime="2022-03-26T13:53:01.595Z" itemprop="dateModified">2022-03-26</time>
+     <time datetime="2022-05-05T02:33:57.118Z" itemprop="dateModified">2022-05-05</time>
   </a>
 </div>
 
@@ -214,7 +214,21 @@
 
             
 
-            <h3 id="GDB"><a href="#GDB" class="headerlink" title="GDB"></a>GDB</h3><p><img src="https://www.linuxprobe.com/wp-content/uploads/2017/02/175653ff8gl0f5flw4f518.jpg" alt="gdb" title="tmp"></p>
+            <h1 id="Clang-amp-amp-lldb"><a href="#Clang-amp-amp-lldb" class="headerlink" title="Clang &amp;&amp; lldb"></a>Clang &amp;&amp; lldb</h1><p>听说<code>clang</code>+<code>lldb</code> &gt;= <code>gcc</code> + <code>gdb</code>, 所以一试:</p>
+<h2 id="lldb基本命令"><a href="#lldb基本命令" class="headerlink" title="lldb基本命令"></a>lldb基本命令</h2><p>与GDB相同</p>
+<ul>
+<li>break (b) - 设置断点，也就是程序暂停的地方</li>
+<li>run (r) - 启动目标程序，如果遇到断点则暂停</li>
+<li>step (s) - 进入下一条指令中的函数内部</li>
+<li>backtrace (bt) - 显示当前的有效函数</li>
+<li>frame (f) - 默认显示当前栈的内容，可以通过 <code>frame arg</code> 进入特定的 frame（用作输出本地变量）</li>
+<li>next (n) - 运行当前箭头指向行</li>
+<li>continue (c) - 继续运行程序直到遇到断点。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clang hello.c -g -o hello</span><br><span class="line">lldb hello</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># lldb</span><br><span class="line">b main</span><br><span class="line">run</span><br><span class="line">n</span><br><span class="line">p str</span><br></pre></td></tr></table></figure>
+<p>还有颜色 😂 可视效果确实提高了不少<br>而且这四个工具可以混用,也蛮好.</p>
+<h2 id="GDB"><a href="#GDB" class="headerlink" title="GDB"></a>GDB</h2><p><img src="https://www.linuxprobe.com/wp-content/uploads/2017/02/175653ff8gl0f5flw4f518.jpg" alt="gdb" title="tmp"></p>
 <p>First and foremost, you will need to compile your program with the flag “-g” (for debug) to run it via GDB. From there the syntax to start debugging is:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">gdb -tui [executable<span class="string">&#x27;s name]</span></span></span><br></pre></td></tr></table></figure>
 <p>placing breakpoints</p>
@@ -243,7 +257,7 @@
 
 
 
-    <a data-url="https://ianvzs.github.io/2019/01/10/tips/tipsOfdebugers/" data-id="cl2aimltj000tbztydhgx9sa6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://ianvzs.github.io/2019/01/10/tips/tipsOfdebugers/" data-id="cl2svssyf00281ftydaxzgmr5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -315,17 +329,21 @@
         },
         "headline": "tips Of Debuggers",
         "image": "https://ianvzs.github.iohttps://www.linuxprobe.com/wp-content/uploads/2017/02/175653ff8gl0f5flw4f518.jpg",
-        "keywords": "debuger pdb gdb learning",
+        "keywords": "learning debuger pdb gdb",
         "genre": "tip debug learning",
         "datePublished": "2019-01-10",
         "dateCreated": "2019-01-10",
-        "dateModified": "2022-03-26",
+        "dateModified": "2022-05-05",
         "url": "https://ianvzs.github.io/2019/01/10/tips/tipsOfdebugers/",
-        "description": "GDB
-First and foremost, you will need to compile your program with the flag “-g” (for debug) to run it via GDB. From there the syntax to start debugging is:
-1$ gdb -tui [executable&#x27;s name]
-placin",
-        "wordCount": 248
+        "description": "Clang &amp;&amp; lldb听说clang+lldb &gt;= gcc + gdb, 所以一试:
+lldb基本命令与GDB相同
+
+break (b) - 设置断点，也就是程序暂停的地方
+run (r) - 启动目标程序，如果遇到断点则暂停
+step (s) - 进入下一条指令中的函数内部
+backtrace (bt) - 显示当前的有效函数
+frame (f) - 默认显示当前栈的",
+        "wordCount": 322
     }
 </script>
 

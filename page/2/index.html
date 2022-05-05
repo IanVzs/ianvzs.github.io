@@ -628,10 +628,14 @@ else =&g
     
 
         <p class="article-excerpt">
-            GDB
-First and foremost, you will need to compile your program with the flag “-g” (for debug) to run it via GDB. From there the syntax to start debugging is:
-1$ gdb -tui [executable&#x27;s name]
-placin
+            Clang &amp;&amp; lldb听说clang+lldb &gt;= gcc + gdb, 所以一试:
+lldb基本命令与GDB相同
+
+break (b) - 设置断点，也就是程序暂停的地方
+run (r) - 启动目标程序，如果遇到断点则暂停
+step (s) - 进入下一条指令中的函数内部
+backtrace (bt) - 显示当前的有效函数
+frame (f) - 默认显示当前栈的
         </p>
     </div>
 </article>

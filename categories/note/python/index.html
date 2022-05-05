@@ -270,11 +270,13 @@ CTP中 UserID为操作员代码，InversterID为
         <p class="article-excerpt">
             author:Ian
 
-多个类属性一次赋值No:
-12self.a = aself.b = b
-Yes:
-1self.__dict__.update(&#123;&quot;a&quot;: a, &quot;b&quot;: b&#125;)
-列表表达式 二维数组边一维 取字典内变一维123knowninfo = &#123;&#x27;axie_id3&#x27;: &#123;&#x27;i
+彻底摆脱to_dict和from_dict使用 pydanticBaseModel类型支持:
+
+b = BattleAxiePositionInfo.parse_obj(DICT_DATA)
+b.json()
+b.dict()
+parse_file
+parse_raw12345678910111213141516from pydantic import BaseModelc
         </p>
     </div>
 </article>

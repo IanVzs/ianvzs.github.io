@@ -12,16 +12,16 @@
     
     <meta name="keywords" content="learning,python" />
     
-    <meta name="description" content="author:Ian  多个类属性一次赋值No: 12self.a &#x3D; aself.b &#x3D; b Yes: 1self.__dict__.update(&amp;#123;&quot;a&quot;: a, &quot;b&quot;: b&amp;#125;) 列表表达式 二维数组边一维 取字典内变一维123knowninfo &#x3D; &amp;#123;&amp;#x27;axie_id3&amp;#x27;: &amp;#123;&amp;#x27;i">
+    <meta name="description" content="author:Ian  彻底摆脱to_dict和from_dict使用 pydanticBaseModel类型支持:  b &#x3D; BattleAxiePositionInfo.parse_obj(DICT_DATA) b.json() b.dict() parse_file parse_raw12345678910111213141516from pydantic import BaseModelc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python笔记(notes of Python)">
 <meta property="og:url" content="https://ianvzs.github.io/2017/07/01/notes/noteOfpython/index.html">
 <meta property="og:site_name" content="Ian&#39;s Blog">
-<meta property="og:description" content="author:Ian  多个类属性一次赋值No: 12self.a &#x3D; aself.b &#x3D; b Yes: 1self.__dict__.update(&amp;#123;&quot;a&quot;: a, &quot;b&quot;: b&amp;#125;) 列表表达式 二维数组边一维 取字典内变一维123knowninfo &#x3D; &amp;#123;&amp;#x27;axie_id3&amp;#x27;: &amp;#123;&amp;#x27;i">
+<meta property="og:description" content="author:Ian  彻底摆脱to_dict和from_dict使用 pydanticBaseModel类型支持:  b &#x3D; BattleAxiePositionInfo.parse_obj(DICT_DATA) b.json() b.dict() parse_file parse_raw12345678910111213141516from pydantic import BaseModelc">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.python.org/static/img/python-logo@2x.png">
 <meta property="article:published_time" content="2017-07-01T13:20:00.000Z">
-<meta property="article:modified_time" content="2022-04-22T14:11:52.915Z">
+<meta property="article:modified_time" content="2022-05-05T02:33:57.118Z">
 <meta property="article:author" content="Ian Vzs">
 <meta property="article:tag" content="learning">
 <meta property="article:tag" content="python">
@@ -185,7 +185,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2017/07/01/notes/noteOfpython/" class="article-date">
-     <time datetime="2022-04-22T14:11:52.915Z" itemprop="dateModified">2022-04-22</time>
+     <time datetime="2022-05-05T02:33:57.118Z" itemprop="dateModified">2022-05-05</time>
   </a>
 </div>
 
@@ -214,6 +214,21 @@
 
             <p>author:Ian</p>
 <p><img src="https://www.python.org/static/img/python-logo@2x.png" alt="python"></p>
+<h2 id="彻底摆脱to-dict和from-dict"><a href="#彻底摆脱to-dict和from-dict" class="headerlink" title="彻底摆脱to_dict和from_dict"></a>彻底摆脱<code>to_dict</code>和<code>from_dict</code></h2><h3 id="使用-pydantic"><a href="#使用-pydantic" class="headerlink" title="使用 pydantic"></a>使用 <code>pydantic</code></h3><p><code>BaseModel</code>类型支持:</p>
+<ul>
+<li>b = BattleAxiePositionInfo.parse_obj(DICT_DATA)</li>
+<li>b.json()</li>
+<li>b.dict()</li>
+<li>parse_file</li>
+<li>parse_raw<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PositionInfo</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    error: <span class="built_in">int</span> = -<span class="number">1</span> <span class="comment"># 收集错误</span></span><br><span class="line">    none: <span class="built_in">int</span> = <span class="number">0</span> <span class="comment"># 还没开始</span></span><br><span class="line">    clicked: <span class="built_in">int</span> = <span class="number">1</span> <span class="comment"># 在client 赋此值</span></span><br><span class="line">    done: <span class="built_in">int</span> = <span class="number">2</span> <span class="comment"># 在server 赋此值</span></span><br><span class="line">    xy: <span class="type">List</span>[<span class="built_in">int</span>] = [<span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">    status: <span class="built_in">int</span> = <span class="number">0</span> <span class="comment"># clicked or done or none or error</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BattleAxiePositionInfo</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    our: <span class="type">List</span>[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()]</span><br><span class="line">    enemy: <span class="type">List</span>[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()]</span><br><span class="line"></span><br><span class="line">pp = BattleAxiePositionInfo()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;pp json: <span class="subst">&#123;pp.json()&#125;</span>&quot;</span>)</span><br><span class="line">dict_pp = pp.<span class="built_in">dict</span>()</span><br><span class="line">pp = BattleAxiePositionInfo.parse_obj(dict_pp)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>pp json: {“our”: [{“error”: -1, “none”: 0, “clicked”: 1, “done”: 2, “xy”: [0, 0], “status”: 0}, {“error”: -1, “none”: 0, “clicked”: 1, “done”: 2, “xy”: [0, 0], “status”: 0}, {“error”: -1, “none”: 0, “clicked”: 1, “done”: 2, “xy”: [0, 0], “status”: 0}, {“error”: -1, “none”: 0, “clicked”: 1, “done”: 2, “xy”: [0, 0], “status”: 0}, {“error”: -1, “none”: 0, “clicked”: 1, “done”: 2, “xy”: [0, 0], “status”: 0}, {“error”: -1, “none”: 0, “clicked”: 1, “done”: 2, “xy”: [0, 0], “status”: 0}], “enemy”: [{“error”: -1, “none”: 0, “clicked”: 1, “done”: 2, “xy”: [0, 0], “status”: 0}, {“error”: -1, “none”: 0, “clicked”: 1, “done”: 2, “xy”: [0, 0], “status”: 0}, {“error”: -1, “none”: 0, “clicked”: 1, “done”: 2, “xy”: [0, 0], “status”: 0}, {“error”: -1, “none”: 0, “clicked”: 1, “done”: 2, “xy”: [0, 0], “status”: 0}, {“error”: -1, “none”: 0, “clicked”: 1, “done”: 2, “xy”: [0, 0], “status”: 0}, {“error”: -1, “none”: 0, “clicked”: 1, “done”: 2, “xy”: [0, 0], “status”: 0}]}</p>
+</blockquote>
+</blockquote>
+</blockquote>
 <h2 id="多个类属性一次赋值"><a href="#多个类属性一次赋值" class="headerlink" title="多个类属性一次赋值"></a>多个类属性一次赋值</h2><p>No:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self.a = a</span><br><span class="line">self.b = b</span><br></pre></td></tr></table></figure>
 <p>Yes:</p>
@@ -1491,7 +1506,7 @@ s = .join(itertools.chain(kwargs.keys()))
 
 
 
-    <a data-url="https://ianvzs.github.io/2017/07/01/notes/noteOfpython/" data-id="cl2aimlu10026bzty557s8leu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://ianvzs.github.io/2017/07/01/notes/noteOfpython/" data-id="cl2svssy9001d1ftyc7e7h9vb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -1567,16 +1582,18 @@ s = .join(itertools.chain(kwargs.keys()))
         "genre": "note python learning",
         "datePublished": "2017-07-01",
         "dateCreated": "2017-07-01",
-        "dateModified": "2022-04-22",
+        "dateModified": "2022-05-05",
         "url": "https://ianvzs.github.io/2017/07/01/notes/noteOfpython/",
         "description": "author:Ian
 
-多个类属性一次赋值No:
-12self.a = aself.b = b
-Yes:
-1self.__dict__.update(&#123;&quot;a&quot;: a, &quot;b&quot;: b&#125;)
-列表表达式 二维数组边一维 取字典内变一维123knowninfo = &#123;&#x27;axie_id3&#x27;: &#123;&#x27;i",
-        "wordCount": 11502
+彻底摆脱to_dict和from_dict使用 pydanticBaseModel类型支持:
+
+b = BattleAxiePositionInfo.parse_obj(DICT_DATA)
+b.json()
+b.dict()
+parse_file
+parse_raw12345678910111213141516from pydantic import BaseModelc",
+        "wordCount": 11846
     }
 </script>
 

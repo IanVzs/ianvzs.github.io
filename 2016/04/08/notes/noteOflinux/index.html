@@ -12,16 +12,16 @@
     
     <meta name="keywords" content="learning,Linux" />
     
-    <meta name="description" content="WSLwsl问题因为后面不太喜欢这种东西了,还是上了物理机. 所以就不粘贴过来了. sudo apt upgrade E: Sub-process &#x2F;usr&#x2F;bin&#x2F;dpkg returned an error code (1)  解决sudu下  备份&#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;info 新建&#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;info 重新执行更新 合并&#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;info 和 备份">
+    <meta name="description" content="dpkg .debInstallsudo dpkg -i file.deb c l r P L s -c列出内容 -l提取包信息 -r移除一个已安装的包 -P完全清除一个已安装包 -L列出安装所有文件清单 -s显示已安装包信息  WSLwsl问题因为后面不太喜欢这种东西了,还是上了物理机. 所以就不粘贴过来了. sudo apt upgrade E: Sub-process &#x2F;usr&#x2F;bin&#x2F;d">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux">
 <meta property="og:url" content="https://ianvzs.github.io/2016/04/08/notes/noteOflinux/index.html">
 <meta property="og:site_name" content="Ian&#39;s Blog">
-<meta property="og:description" content="WSLwsl问题因为后面不太喜欢这种东西了,还是上了物理机. 所以就不粘贴过来了. sudo apt upgrade E: Sub-process &#x2F;usr&#x2F;bin&#x2F;dpkg returned an error code (1)  解决sudu下  备份&#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;info 新建&#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;info 重新执行更新 合并&#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;info 和 备份">
+<meta property="og:description" content="dpkg .debInstallsudo dpkg -i file.deb c l r P L s -c列出内容 -l提取包信息 -r移除一个已安装的包 -P完全清除一个已安装包 -L列出安装所有文件清单 -s显示已安装包信息  WSLwsl问题因为后面不太喜欢这种东西了,还是上了物理机. 所以就不粘贴过来了. sudo apt upgrade E: Sub-process &#x2F;usr&#x2F;bin&#x2F;d">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://static1.makeuseofimages.com/wp-content/uploads/2015/01/best-linux-distros.jpg">
 <meta property="article:published_time" content="2016-04-08T08:58:56.000Z">
-<meta property="article:modified_time" content="2022-03-26T13:53:01.595Z">
+<meta property="article:modified_time" content="2022-05-05T10:43:57.560Z">
 <meta property="article:author" content="Ian Vzs">
 <meta property="article:tag" content="learning">
 <meta property="article:tag" content="Linux">
@@ -185,7 +185,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2016/04/08/notes/noteOflinux/" class="article-date">
-     <time datetime="2022-03-26T13:53:01.595Z" itemprop="dateModified">2022-03-26</time>
+     <time datetime="2022-05-05T10:43:57.560Z" itemprop="dateModified">2022-05-05</time>
   </a>
 </div>
 
@@ -213,6 +213,15 @@
             
 
             <p><img src="https://static1.makeuseofimages.com/wp-content/uploads/2015/01/best-linux-distros.jpg" alt="linux"></p>
+<h2 id="dpkg-deb"><a href="#dpkg-deb" class="headerlink" title="dpkg .deb"></a>dpkg .deb</h2><h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><p><code>sudo dpkg -i file.deb</code></p>
+<h3 id="c-l-r-P-L-s"><a href="#c-l-r-P-L-s" class="headerlink" title="c l r P L s"></a>c l r P L s</h3><ul>
+<li><code>-c</code>列出内容</li>
+<li><code>-l</code>提取包信息</li>
+<li><code>-r</code>移除一个已安装的包</li>
+<li><code>-P</code>完全清除一个已安装包</li>
+<li><code>-L</code>列出安装所有文件清单</li>
+<li><code>-s</code>显示已安装包信息</li>
+</ul>
 <h2 id="WSL"><a href="#WSL" class="headerlink" title="WSL"></a>WSL</h2><p><a target="_blank" rel="noopener" href="https://github.com/IanVzs/ianvzs.github.io/issues/7">wsl问题</a><br>因为后面不太喜欢这种东西了,还是上了物理机. 所以就不粘贴过来了.</p>
 <h2 id="sudo-apt-upgrade"><a href="#sudo-apt-upgrade" class="headerlink" title="sudo apt upgrade"></a>sudo apt upgrade</h2><blockquote>
 <p>E: Sub-process /usr/bin/dpkg returned an error code (1)</p>
@@ -283,7 +292,7 @@
 
 
 
-    <a data-url="https://ianvzs.github.io/2016/04/08/notes/noteOflinux/" data-id="cl2aimltz001ybzty68f8be0d" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://ianvzs.github.io/2016/04/08/notes/noteOflinux/" data-id="cl2svssy600141fty4kwias8t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -359,20 +368,22 @@
         "genre": "note linux learning",
         "datePublished": "2016-04-08",
         "dateCreated": "2016-04-08",
-        "dateModified": "2022-03-26",
+        "dateModified": "2022-05-05",
         "url": "https://ianvzs.github.io/2016/04/08/notes/noteOflinux/",
         "description": "
+dpkg .debInstallsudo dpkg -i file.deb
+c l r P L s
+-c列出内容
+-l提取包信息
+-r移除一个已安装的包
+-P完全清除一个已安装包
+-L列出安装所有文件清单
+-s显示已安装包信息
+
 WSLwsl问题因为后面不太喜欢这种东西了,还是上了物理机. 所以就不粘贴过来了.
 sudo apt upgrade
-E: Sub-process /usr/bin/dpkg returned an error code (1)
-
-解决sudu下
-
-备份/var/lib/dpkg/info
-新建/var/lib/dpkg/info
-重新执行更新
-合并/var/lib/dpkg/info 和 备份",
-        "wordCount": 410
+E: Sub-process /usr/bin/d",
+        "wordCount": 437
     }
 </script>
 
