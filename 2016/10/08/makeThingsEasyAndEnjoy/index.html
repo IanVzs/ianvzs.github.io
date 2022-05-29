@@ -12,15 +12,15 @@
     
     <meta name="keywords" content="杂谈" />
     
-    <meta name="description" content="命令行的简便生活 💦🤣 切换用户默认终端程序 赢在起跑线: useradd -s &#x2F;bin&#x2F;bash ian 力挽狂澜: usermod -s &#x2F;bin&#x2F;bash ian 奋起反抗: chsh + 按提示操作  Github Personal access tokensgithub 干掉了https账号密码pull push 之后https pull push 专用url 4k码字更改语言12">
+    <meta name="description" content="命令行的简便生活 💦🤣 4K显示器软件不适配导致的字太小问题在路径: &#x2F;usr&#x2F;share&#x2F;applications下将对应的.desktop文件使用文本编辑器打开,将Exec修改为: 1Exec&#x3D;env QT_DEVICE_PIXEL_RATIO&#x3D;2 &#x2F;opt&#x2F;resolve&#x2F;bin&#x2F;resolve 主要是增加env QT_DEVICE_PIXEL_RATIO&#x3D;2, 上述例中所示为达芬奇的配">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Make things easy and enjoy">
 <meta property="og:url" content="https://ianvzs.github.io/2016/10/08/makeThingsEasyAndEnjoy/index.html">
 <meta property="og:site_name" content="Ian&#39;s Blog">
-<meta property="og:description" content="命令行的简便生活 💦🤣 切换用户默认终端程序 赢在起跑线: useradd -s &#x2F;bin&#x2F;bash ian 力挽狂澜: usermod -s &#x2F;bin&#x2F;bash ian 奋起反抗: chsh + 按提示操作  Github Personal access tokensgithub 干掉了https账号密码pull push 之后https pull push 专用url 4k码字更改语言12">
+<meta property="og:description" content="命令行的简便生活 💦🤣 4K显示器软件不适配导致的字太小问题在路径: &#x2F;usr&#x2F;share&#x2F;applications下将对应的.desktop文件使用文本编辑器打开,将Exec修改为: 1Exec&#x3D;env QT_DEVICE_PIXEL_RATIO&#x3D;2 &#x2F;opt&#x2F;resolve&#x2F;bin&#x2F;resolve 主要是增加env QT_DEVICE_PIXEL_RATIO&#x3D;2, 上述例中所示为达芬奇的配">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2016-10-08T08:58:56.000Z">
-<meta property="article:modified_time" content="2022-04-11T06:52:34.034Z">
+<meta property="article:modified_time" content="2022-05-29T09:29:02.619Z">
 <meta property="article:author" content="Ian Vzs">
 <meta property="article:tag" content="杂谈">
 <meta name="twitter:card" content="summary">
@@ -182,7 +182,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2016/10/08/makeThingsEasyAndEnjoy/" class="article-date">
-     <time datetime="2022-04-11T06:52:34.034Z" itemprop="dateModified">2022-04-11</time>
+     <time datetime="2022-05-29T09:29:02.619Z" itemprop="dateModified">2022-05-29</time>
   </a>
 </div>
 
@@ -210,6 +210,9 @@
             
 
             <h1 id="命令行的简便生活-💦🤣"><a href="#命令行的简便生活-💦🤣" class="headerlink" title="命令行的简便生活 💦🤣"></a>命令行的简便生活 💦🤣</h1><hr>
+<h2 id="4K显示器软件不适配导致的字太小问题"><a href="#4K显示器软件不适配导致的字太小问题" class="headerlink" title="4K显示器软件不适配导致的字太小问题"></a>4K显示器软件不适配导致的字太小问题</h2><p>在路径: <code>/usr/share/applications</code>下<br>将对应的<code>.desktop</code>文件使用文本编辑器打开,将<code>Exec</code>修改为:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Exec=env QT_DEVICE_PIXEL_RATIO=2 /opt/resolve/bin/resolve</span><br></pre></td></tr></table></figure>
+<p>主要是增加<code>env QT_DEVICE_PIXEL_RATIO=2</code>, 上述例中所示为达芬奇的配置. (不过很可惜它并不能和我的<code>AMD 5700g</code>+<code>Ubuntu22.04</code>+<code>不知哪儿来的驱动</code>一起工作. 虽然确实变好了.)</p>
 <h2 id="切换用户默认终端程序"><a href="#切换用户默认终端程序" class="headerlink" title="切换用户默认终端程序"></a>切换用户默认终端程序</h2><ul>
 <li>赢在起跑线: <code>useradd -s /bin/bash ian</code></li>
 <li>力挽狂澜: <code>usermod -s /bin/bash ian</code></li>
@@ -498,7 +501,7 @@ Thanks for your teaching.
 
 
 
-    <a data-url="https://ianvzs.github.io/2016/10/08/makeThingsEasyAndEnjoy/" data-id="cl2svssxw000a1ftydhsbf0sk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://ianvzs.github.io/2016/10/08/makeThingsEasyAndEnjoy/" data-id="cl3r3pc0200061ftybk9z257g" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -574,17 +577,13 @@ Thanks for your teaching.
         "genre": "杂谈",
         "datePublished": "2016-10-08",
         "dateCreated": "2016-10-08",
-        "dateModified": "2022-04-11",
+        "dateModified": "2022-05-29",
         "url": "https://ianvzs.github.io/2016/10/08/makeThingsEasyAndEnjoy/",
         "description": "命令行的简便生活 💦🤣
-切换用户默认终端程序
-赢在起跑线: useradd -s /bin/bash ian
-力挽狂澜: usermod -s /bin/bash ian
-奋起反抗: chsh + 按提示操作
-
-Github Personal access tokensgithub 干掉了https账号密码pull push 之后https pull push 专用url
-4k码字更改语言12",
-        "wordCount": 2952
+4K显示器软件不适配导致的字太小问题在路径: /usr/share/applications下将对应的.desktop文件使用文本编辑器打开,将Exec修改为:
+1Exec=env QT_DEVICE_PIXEL_RATIO=2 /opt/resolve/bin/resolve
+主要是增加env QT_DEVICE_PIXEL_RATIO=2, 上述例中所示为达芬奇的配",
+        "wordCount": 2970
     }
 </script>
 
