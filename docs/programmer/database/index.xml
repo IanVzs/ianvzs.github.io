@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ian&#39;s Blog</title>
+    <link>http://example.org/docs/programmer/database/</link>
+    <description>Recent content on Ian&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 Jan 2022 17:00:00 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/database/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dgraph使用小记</title>
+      <link>http://example.org/docs/programmer/database/dgraph/</link>
+      <pubDate>Mon, 10 Jan 2022 17:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/database/dgraph/</guid>
+      <description>概念 # 以下参考自: 这里 Console # Mutate: 突变, 结构/数据变化的时候用 Query: 查询, Emmmm查询的时候用 所以看来没有getset了???? Schema # 管理字段(Predicate, Type, list,lang,index等)
+突变 # set # 内容较多, 下面单独罗列
+delete # 根据UID 删除指定predicate_name
+{ delete { &amp;lt;UID&amp;gt; &amp;lt;predicate_name&amp;gt; * . } } set # 创建 # 直接json给出结构和数据,即可完成创建.只不过如果有用到@lang时就需要去Schema里更新一下字段 - 类型 ???? (Schema-Type)的支持项
+{ &amp;#34;set&amp;#34;: [ { &amp;#34;food_name&amp;#34;: &amp;#34;Sushi&amp;#34;, &amp;#34;review&amp;#34;: [ { &amp;#34;comment&amp;#34;: &amp;#34;Tastes very good&amp;#34;, &amp;#34;comment@jp&amp;#34;: &amp;#34;とても美味しい&amp;#34;, &amp;#34;comment@ru&amp;#34;: &amp;#34;очень вкусно&amp;#34; } ], &amp;#34;origin&amp;#34;: [ { &amp;#34;country&amp;#34;: &amp;#34;Japan&amp;#34; } ] } ] } 更新 # 使用和创建差不多,不过目前我已知的更新只能用UID否则都会直接创建一个相同内容的新数据出来</description>
+    </item>
+    
+    <item>
+      <title>notes Of docker</title>
+      <link>http://example.org/docs/programmer/database/noteofdocker/</link>
+      <pubDate>Thu, 16 Dec 2021 16:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/database/noteofdocker/</guid>
+      <description>Docker # 教程手册 # 好用的使用教程
+Install # 略过~ 😁
+常见问题和模板 # 用户sudo问题 # debian增加docker用户组,优化每次sudo问题 或
+sudo groupadd docker # 安装完docker.io之后一般都会自动创建所以这一步其实没啥用 sudo gpasswd -a $USERNAME docker newgrp docker # 更新 Docker Mysql编码 # version: &amp;#34;2.2&amp;#34; services: redis: image: &amp;#34;redis&amp;#34; # ports: # - 6379:6379 command: redis-server --appendonly yes #一个容器启动时要运行的命令 restart: always # 自动重启 myserver: image: mainName/myserver restart: always # 自动重启 mainServer: image: mainName/mainServer # container_name: mainServerv1.0.0 depends_on: - redis ports: - 9001:9001 restart: always volumes: - &amp;#34;.</description>
+    </item>
+    
+    <item>
+      <title>db数据库</title>
+      <link>http://example.org/docs/programmer/database/noteofdbdata/</link>
+      <pubDate>Tue, 15 May 2018 09:51:09 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/database/noteofdbdata/</guid>
+      <description>DB数据库 🖥 📊🖥 # MongoDB笔记 # 学习网站：http://www.runoob.com/mongodb/mongodb-tutorial.html (其学习教程还挺可观，很多，不过还不清楚好不好)
+注意事项 # Mongo 数据库锁 # mongo只提供库级粒度锁，所以一个写操作锁定时，其他读写操作都等待… 所以这个导致了Mongo多线程写操作反而没有一个线程写来的快？
+前台建立索引时，Mongo需占用一个写锁（且不同上述、不会临时放弃） 为避免此问题需采用background方式
+db.posts.ensureIndex({user_id: 1}) #此方式将引起全面战争 db.posts.ensureIndex({user_id: 1}， {background: 1}) # 这个就比较和平 操作命令简单记录 # 创建、插入 # use DATABASE_NAME #如果数据库不存在，则创建数据库，否则切换到指定数据库。 show dbs #查看所有数据库“name size” 刚创建的数据库，如没有内容则不现实在其中
+db.runoob.insert({&amp;quot;name&amp;quot;:&amp;quot;教程&amp;quot;}) #插入数据 删除 # db.dropDatabase() #删除当前数据库，如未选择则删除test db.collection.drop() #删除集合 db.site.drop() #：如删除site集合 删除重复数据 # delete from alarm_calendar where id not in (SELECT maxid from (SELECT MAX(id) as maxid, CONCAT(user_id,time,generic_name) as nameAndCode from alarm_calendar GROUP BY nameAndCode) t); 根据user_id, time, generic_name来打包重复，将重复数据删掉, 留下max，在自增里面即：最新数据</description>
+    </item>
+    
+  </channel>
+</rss>

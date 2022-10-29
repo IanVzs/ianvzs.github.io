@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Golang笔记 # 先贴一个客观的教程文档网站http://www.runoob.com/go/go-slice.html
+并发 Channel # 使用关键字go开启goroutine 轻量级线程
+go fun_name(paras_list) # eg: go f(x, y, z) 代码
+package main import ( &#34;fmt&#34; &#34;time&#34; ) func say(s string) { for i := 0; i &lt; 5; i&#43;&#43; { time.Sleep(100 * time.Millisecond) fmt.Println(s) } } func main() { go say(&#34;world&#34;) say(&#34;hello&#34;) } Channel # 用于传递数据的数据结构 可用于两个goroutine之间传递指定类型值，同步和通讯 &lt;- 指定通道方向(发送or接受)，未指定则双向通道
+声明通道 # 使用chan关键字, 在使用之前，需先创建.
+ch := make(chan int) 示例
+package main import &#34;fmt&#34; func sum(s []int, c chan int) { sum := 0 for _, v := range s { sum &#43;= v } c &lt;- sum // 把 sum 发送到通道 c } func main() { s := []int{7, 2, 8, -9, 4, 0} c := make(chan int) go sum(s[:len(s)/2], c) go sum(s[len(s)/2:], c) x, y := &lt;-c, &lt;-c // 从通道 c 中接收 fmt.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Golang笔记" />
+<meta property="og:description" content="Golang笔记 # 先贴一个客观的教程文档网站http://www.runoob.com/go/go-slice.html
+并发 Channel # 使用关键字go开启goroutine 轻量级线程
+go fun_name(paras_list) # eg: go f(x, y, z) 代码
+package main import ( &#34;fmt&#34; &#34;time&#34; ) func say(s string) { for i := 0; i &lt; 5; i&#43;&#43; { time.Sleep(100 * time.Millisecond) fmt.Println(s) } } func main() { go say(&#34;world&#34;) say(&#34;hello&#34;) } Channel # 用于传递数据的数据结构 可用于两个goroutine之间传递指定类型值，同步和通讯 &lt;- 指定通道方向(发送or接受)，未指定则双向通道
+声明通道 # 使用chan关键字, 在使用之前，需先创建.
+ch := make(chan int) 示例
+package main import &#34;fmt&#34; func sum(s []int, c chan int) { sum := 0 for _, v := range s { sum &#43;= v } c &lt;- sum // 把 sum 发送到通道 c } func main() { s := []int{7, 2, 8, -9, 4, 0} c := make(chan int) go sum(s[:len(s)/2], c) go sum(s[len(s)/2:], c) x, y := &lt;-c, &lt;-c // 从通道 c 中接收 fmt." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/docs/programmer/langs/noteofgolang/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2018-05-15T10:18:26+00:00" />
+<meta property="article:modified_time" content="2018-05-15T10:18:26+00:00" />
+
+<title>Golang笔记 | Ian&#39;s Blog</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.2f641214a44ca02c7ff7242d62be8f0bab1ce4f2b0fea0be2eb6f3a4d94533d2.js" integrity="sha256-L2QSFKRMoCx/9yQtYr6PC6sc5PKw/qC&#43;LrbzpNlFM9I=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Ian&#39;s Blog</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/programmer/" class="">程序员笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52f633cba5cf47818d8ec01e928396f2" class="toggle"  />
+    <label for="section-52f633cba5cf47818d8ec01e928396f2" class="flex justify-between">
+      <a role="button" class="">Base</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/pypi/" class="">PyPi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tipsofweb/" class="">Nginx高可用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/for_china/" class="">各个软件换源</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tipsofdebugers/" class="">tips Of Debuggers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/notesdjango/" class="">Django的建站的(｡･･)ﾉﾞ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tipsofvim/" class="">tip Of vim</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/editer/" class="">编辑器使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/noteoflinux/" class="">Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tip_dgraph/" class="">Dgraph</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/noteoffmtdata/" class="">数据格式笔记</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd029da01a5cf373a5379dc078a74f2c" class="toggle"  />
+    <label for="section-cd029da01a5cf373a5379dc078a74f2c" class="flex justify-between">
+      <a role="button" class="">Game and Simulation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/game_and_simulation/blender/" class="">Blender</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/game_and_simulation/noteofue4/" class="">UE4 笔记</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-883e27361d38e16afb68faff3435ac0b" class="toggle"  />
+    <label for="section-883e27361d38e16afb68faff3435ac0b" class="flex justify-between">
+      <a role="button" class="">Ml</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/tensorflow/" class="">Tensorflow</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/opencv/" class="">OpenCV</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/paddle/" class="">Paddle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/noteofmachinelearning/" class="">机器学习库</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e5360c5e7954906b897ed79085884b6" class="toggle"  />
+    <label for="section-7e5360c5e7954906b897ed79085884b6" class="flex justify-between">
+      <a href="/docs/programmer/gui/" class="">Gui</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/pyinstaller/" class="">python打包</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/qt/" class="">Qt/PySide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/noteofvn_py/" class="">Vn.Py学习笔记（Python交易平台框架）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/notespython/" class="">图形化界面 （Python Gui）</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4446dd07527142b855f26d7cc8f0e617" class="toggle"  />
+    <label for="section-4446dd07527142b855f26d7cc8f0e617" class="flex justify-between">
+      <a role="button" class="">Database</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/database/dgraph/" class="">Dgraph使用小记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/database/noteofdocker/" class="">notes Of docker</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/database/noteofdbdata/" class="">db数据库</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-de7bfad1d124522974cdf8addfbb23f2" class="toggle"  />
+    <label for="section-de7bfad1d124522974cdf8addfbb23f2" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/net/tipsofgrpc/" class="">gRpc使用小记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/net/net/" class="">网络(Computer Network)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bf4e0d6f0b81f7b3ec08ed1fc66b874d" class="toggle" checked />
+    <label for="section-bf4e0d6f0b81f7b3ec08ed1fc66b874d" class="flex justify-between">
+      <a role="button" class="">Langs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/noteofgoexp/" class="">Golang进阶笔记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/noteofgolang/" class="active">Golang笔记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/tipsofmarkdown/" class="">tips Of markdown</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/notespython/" class="">Python笔记(notes of Python)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/notesjava/" class="">愉快的Java(happy to learn the fuck java)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d325c59fc6513e1b1e05a60b192d4973" class="toggle"  />
+    <label for="section-d325c59fc6513e1b1e05a60b192d4973" class="flex justify-between">
+      <a href="/docs/programmer/hardware/" class="">Hardware</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/android/" class="">Android</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/raspberrypi/" class="">Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/readme/" class="">Readme</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/screen/" class="">Screen</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-40d35e91afa620ff2e7bf6291cfb3e1d" class="toggle"  />
+    <label for="section-40d35e91afa620ff2e7bf6291cfb3e1d" class="flex justify-between">
+      <a href="/docs/programmer/software/" class="">Software</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/bash/" class="">Bash</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/freebsd/" class="">Freebsd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/gitbook/" class="">Gitbook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/markdown/" class="">Markdown</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/npm/" class="">Npm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/readme/" class="">Readme</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/vim/" class="">Vim</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/install_some/" class="">安装问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/demo_test_some/" class="">Demo Test项目中的一些东西</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/tipsofproblems/" class="">解决问题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/example/" class="">Example Site</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/table-of-contents/" class="">Table of Contents</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/table-of-contents/with-toc/" class="">With ToC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/table-of-contents/without-toc/" class="">Without ToC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Shortcodes</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/buttons/" class="">Buttons</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/columns/" class="">Columns</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/details/" class="">Details</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/expand/" class="">Expand</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/hints/" class="">Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d3fc1bf6d66cd84b896a0af9f40cb1d5" class="toggle"  />
+    <label for="section-d3fc1bf6d66cd84b896a0af9f40cb1d5" class="flex justify-between">
+      <a href="/docs/shortcodes/section/" class="">Section</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/section/first-page/" class="">First Page</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/section/second-page/" class="">Second Page</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/tabs/" class="">Tabs</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Golang笔记</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#并发-channel">并发 Channel</a>
+      <ul>
+        <li><a href="#channel">Channel</a></li>
+      </ul>
+    </li>
+    <li><a href="#vim-高亮">Vim 高亮</a>
+      <ul>
+        <li><a href="#函数定义">函数定义</a></li>
+        <li><a href="#接口">接口</a></li>
+        <li><a href="#错误">错误</a></li>
+      </ul>
+    </li>
+    <li><a href="#以上总结">以上总结</a></li>
+    <li><a href="#go的循环">go的循环</a></li>
+    <li><a href="#go的switch">go的switch</a></li>
+    <li><a href="#go的指针">go的指针</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="golang笔记">
+  Golang笔记
+  <a class="anchor" href="#golang%e7%ac%94%e8%ae%b0">#</a>
+</h1>
+<p><img src="https://wallpapercave.com/wp/wp7041189.jpg" alt="golang" title="tmp"/></p>
+<p>先贴一个客观的教程文档网站<a href="http://www.runoob.com/go/go-slice.html">http://www.runoob.com/go/go-slice.html</a></p>
+<h2 id="并发-channel">
+  并发 Channel
+  <a class="anchor" href="#%e5%b9%b6%e5%8f%91-channel">#</a>
+</h2>
+<p>使用关键字<code>go</code>开启<code>goroutine</code>
+轻量级线程</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">go</span> <span style="color:#a6e22e">fun_name</span>(<span style="color:#a6e22e">paras_list</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">eg</span>: <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">f</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">z</span>)
+</span></span></code></pre></div><p><a href="https://www.runoob.com/go/go-concurrent.html">代码</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">say</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">100</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Millisecond</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">s</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">say</span>(<span style="color:#e6db74">&#34;world&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">say</span>(<span style="color:#e6db74">&#34;hello&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="channel">
+  Channel
+  <a class="anchor" href="#channel">#</a>
+</h3>
+<p>用于传递数据的数据结构
+可用于两个<code>goroutine</code>之间传递指定类型值，同步和通讯
+<code>&lt;-</code> 指定通道方向(发送or接受)，未指定则双向通道</p>
+<h4 id="声明通道">
+  声明通道
+  <a class="anchor" href="#%e5%a3%b0%e6%98%8e%e9%80%9a%e9%81%93">#</a>
+</h4>
+<p>使用<code>chan</code>关键字, 在使用之前，需先创建.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">ch</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+</span></span></code></pre></div><p>示例</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">s</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">c</span> <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">v</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">c</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">sum</span> <span style="color:#75715e">// 把 sum 发送到通道 c
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">8</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">0</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">s</span>[:len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>], <span style="color:#a6e22e">c</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">s</span>[len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>:], <span style="color:#a6e22e">c</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">c</span>, <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">c</span> <span style="color:#75715e">// 从通道 c 中接收
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">x</span><span style="color:#f92672">+</span><span style="color:#a6e22e">y</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="cache">
+  Cache
+  <a class="anchor" href="#cache">#</a>
+</h4>
+<p>在创建通道时可创建缓冲区，做压入存储</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">ch</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">100</span>)   <span style="color:#75715e">// cache size
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 这里我们定义了一个可以存储整数类型的带缓冲通道
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 缓冲区大小为2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">ch</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 因为 ch 是带缓冲的通道，我们可以同时发送两个数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 而不用立刻需要去同步读取数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">ch</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ch</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取这两个数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">ch</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">ch</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="vim-高亮">
+  Vim 高亮
+  <a class="anchor" href="#vim-%e9%ab%98%e4%ba%ae">#</a>
+</h2>
+<p>emmmm，偶尔会有不支持Go高亮的情况
+所以，步骤如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd ~
+</span></span><span style="display:flex;"><span>mkdir .vim
+</span></span><span style="display:flex;"><span>cd .vim
+</span></span><span style="display:flex;"><span>mkdir autoload  plugged
+</span></span><span style="display:flex;"><span>cd plugged
+</span></span><span style="display:flex;"><span>git clone https://github.com/fatih/vim-go vim-go
+</span></span><span style="display:flex;"><span>cd autoload
+</span></span><span style="display:flex;"><span>wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+</span></span></code></pre></div><p>配置 <code>.vimrc</code></p>
+<pre tabindex="0"><code>cat ~/.vimrc
+</code></pre><p>set shiftwidth=4 softtabstop=4 expandtab
+call plug#begin()
+Plug &lsquo;fatih/vim-go&rsquo;, { &lsquo;do&rsquo;: &lsquo;:GoInstallBinaries&rsquo; }
+call plug#end()
+let g:go_version_warning = 0
+over~!</p>
+<h3 id="函数定义">
+  函数定义
+  <a class="anchor" href="#%e5%87%bd%e6%95%b0%e5%ae%9a%e4%b9%89">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">function_name</span>([<span style="color:#a6e22e">参数列表</span>])[<span style="color:#a6e22e">返回类型</span>]{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">balabala</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Divide</span>(<span style="color:#a6e22e">varDividee</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">varDivider</span> <span style="color:#66d9ef">int</span>) (<span style="color:#a6e22e">result</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">errorMsg</span> <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">varDivider</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">dData</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">DivideError</span>{
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">dividee</span>: <span style="color:#a6e22e">varDividee</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">divider</span>: <span style="color:#a6e22e">varDivider</span>,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">errorMsg</span> = <span style="color:#a6e22e">dData</span>.<span style="color:#a6e22e">Error</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">varDividee</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">varDivider</span>, <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="接口">
+  接口
+  <a class="anchor" href="#%e6%8e%a5%e5%8f%a3">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">或者</span> <span style="color:#a6e22e">直接</span> <span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Phone</span> <span style="color:#66d9ef">interface</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">call</span>()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">NokiaPhone</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">nokiaPhone</span> <span style="color:#a6e22e">NokiaPhone</span>) <span style="color:#a6e22e">call</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;I am Nokia, I can call you!&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">IPhone</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">iPhone</span> <span style="color:#a6e22e">IPhone</span>) <span style="color:#a6e22e">call</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;I am iPhone, I can call you!&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">phone</span> <span style="color:#a6e22e">Phone</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">phone</span> = new(<span style="color:#a6e22e">NokiaPhone</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">phone</span>.<span style="color:#a6e22e">call</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">phone</span> = new(<span style="color:#a6e22e">IPhone</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">phone</span>.<span style="color:#a6e22e">call</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="错误">
+  错误
+  <a class="anchor" href="#%e9%94%99%e8%af%af">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义一个 DivideError 结构
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">DivideError</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dividee</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">divider</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 实现     `error` 接口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">de</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">DivideError</span>) <span style="color:#a6e22e">Error</span>() <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 以上函数中，取结构体地址是（等同于面向对象实例化对象吧，然后下方可以
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//  de.使用.的方式去调取结构体中定义的某变量）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//错误Error()是调用接口中的函数，制定返回类型为string
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">strFormat</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Cannot proceed, the divider is zero.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    dividee: %d
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    divider: 0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#a6e22e">strFormat</span>, <span style="color:#a6e22e">de</span>.<span style="color:#a6e22e">dividee</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义 `int` 类型除法运算的函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Divide</span>(<span style="color:#a6e22e">varDividee</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">varDivider</span> <span style="color:#66d9ef">int</span>) (<span style="color:#a6e22e">result</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">errorMsg</span> <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">varDivider</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">dData</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">DivideError</span>{
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">dividee</span>: <span style="color:#a6e22e">varDividee</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">divider</span>: <span style="color:#a6e22e">varDivider</span>,
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">errorMsg</span> = <span style="color:#a6e22e">dData</span>.<span style="color:#a6e22e">Error</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">varDividee</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">varDivider</span>, <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 正常情况
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">result</span>, <span style="color:#a6e22e">errorMsg</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Divide</span>(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">10</span>); <span style="color:#a6e22e">errorMsg</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;100/10 = &#34;</span>, <span style="color:#a6e22e">result</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 当被除数为零的时候会返回错误信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">errorMsg</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Divide</span>(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">0</span>); <span style="color:#a6e22e">errorMsg</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;&#34;</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;errorMsg is: &#34;</span>, <span style="color:#a6e22e">errorMsg</span>)  
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="以上总结">
+  以上总结
+  <a class="anchor" href="#%e4%bb%a5%e4%b8%8a%e6%80%bb%e7%bb%93">#</a>
+</h2>
+<p>函数定义真是…   也或许刚开始接触太多。也不知道这么设计的目的
+其中 功能重写见d.Data.Error。先是将d.Data定义为结构体，然后再去调用结构体下的Error，分明结构体里并没有定义，所以下面的那个函数定然是将Error,与DicideError连接的函数。</p>
+<p>所以Go并没有类与对象一说吧…</p>
+<p>生动点来说那个函数（<code>func (de *DivideError) Error() string {...}</code>）的定义就好像是在强行给这个地址的<!-- raw HTML omitted -->结构体<!-- raw HTML omitted -->中<!-- raw HTML omitted -->塞进去一个执行函数<!-- raw HTML omitted -->。 一个言简意骇的<!-- raw HTML omitted -->对象<!-- raw HTML omitted -->实现方法</p>
+<h2 id="go的循环">
+  go的循环
+  <a class="anchor" href="#go%e7%9a%84%e5%be%aa%e7%8e%af">#</a>
+</h2>
+<ul>
+<li>golang 只有for  while==for</li>
+<li>golang 中没有小括号包裹, 只需要用{}分隔作用域就可以</li>
+</ul>
+<p>for 可以有</p>
+<ol>
+<li>for A;B;C {}</li>
+<li>for ;B; {}</li>
+<li>for {}</li>
+</ol>
+<h2 id="go的switch">
+  go的switch
+  <a class="anchor" href="#go%e7%9a%84switch">#</a>
+</h2>
+<ul>
+<li>每个case自动break</li>
+<li>fallthrough 显式声明可以继续执行下一个case</li>
+<li>case 无需常量</li>
+<li><code>switch {case}</code> 可做 if-else 用</li>
+</ul>
+<h2 id="go的指针">
+  go的指针
+  <a class="anchor" href="#go%e7%9a%84%e6%8c%87%e9%92%88">#</a>
+</h2>
+<p>go的指针 没有<code>指针运算</code>.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#并发-channel">并发 Channel</a>
+      <ul>
+        <li><a href="#channel">Channel</a></li>
+      </ul>
+    </li>
+    <li><a href="#vim-高亮">Vim 高亮</a>
+      <ul>
+        <li><a href="#函数定义">函数定义</a></li>
+        <li><a href="#接口">接口</a></li>
+        <li><a href="#错误">错误</a></li>
+      </ul>
+    </li>
+    <li><a href="#以上总结">以上总结</a></li>
+    <li><a href="#go的循环">go的循环</a></li>
+    <li><a href="#go的switch">go的switch</a></li>
+    <li><a href="#go的指针">go的指针</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Golang进阶笔记 # 路径问题 # test_test.go # package main import &#34;testing&#34; func TestHelloWorld(t *testing.T) { // t.Fatal(&#34;not implemented&#34;) path := getCurrentPath() t.Log(&#34;getCurrentPath: &#34;, path) } test.go # package main import ( &#34;fmt&#34; &#34;log&#34; &#34;os&#34; &#34;path&#34; &#34;path/filepath&#34; &#34;runtime&#34; &#34;strings&#34; ) func main() { fmt.Println(&#34;getTmpDir（当前系统临时目录） = &#34;, getTmpDir()) fmt.Println(&#34;getCurrentAbPathByExecutable（仅支持go build） = &#34;, getCurrentAbPathByExecutable()) fmt.Println(&#34;getCurrentAbPathByCaller（仅支持go run） = &#34;, getCurrentAbPathByCaller()) fmt.Println(&#34;getCurrentAbPath（最终方案-全兼容） = &#34;, getCurrentAbPath()) fmt.Println(&#34;getCurrentPath（runtime.Caller1） = &#34;, getCurrentPath()) } // 最终方案-全兼容 func getCurrentAbPath() string { dir := getCurrentAbPathByExecutable() if strings.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Golang进阶笔记" />
+<meta property="og:description" content="Golang进阶笔记 # 路径问题 # test_test.go # package main import &#34;testing&#34; func TestHelloWorld(t *testing.T) { // t.Fatal(&#34;not implemented&#34;) path := getCurrentPath() t.Log(&#34;getCurrentPath: &#34;, path) } test.go # package main import ( &#34;fmt&#34; &#34;log&#34; &#34;os&#34; &#34;path&#34; &#34;path/filepath&#34; &#34;runtime&#34; &#34;strings&#34; ) func main() { fmt.Println(&#34;getTmpDir（当前系统临时目录） = &#34;, getTmpDir()) fmt.Println(&#34;getCurrentAbPathByExecutable（仅支持go build） = &#34;, getCurrentAbPathByExecutable()) fmt.Println(&#34;getCurrentAbPathByCaller（仅支持go run） = &#34;, getCurrentAbPathByCaller()) fmt.Println(&#34;getCurrentAbPath（最终方案-全兼容） = &#34;, getCurrentAbPath()) fmt.Println(&#34;getCurrentPath（runtime.Caller1） = &#34;, getCurrentPath()) } // 最终方案-全兼容 func getCurrentAbPath() string { dir := getCurrentAbPathByExecutable() if strings." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/docs/programmer/langs/noteofgoexp/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-05-19T19:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-29T11:03:59+00:00" />
+
+<title>Golang进阶笔记 | Ian&#39;s Blog</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.2f641214a44ca02c7ff7242d62be8f0bab1ce4f2b0fea0be2eb6f3a4d94533d2.js" integrity="sha256-L2QSFKRMoCx/9yQtYr6PC6sc5PKw/qC&#43;LrbzpNlFM9I=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Ian&#39;s Blog</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/programmer/" class="">程序员笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52f633cba5cf47818d8ec01e928396f2" class="toggle"  />
+    <label for="section-52f633cba5cf47818d8ec01e928396f2" class="flex justify-between">
+      <a role="button" class="">Base</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/pypi/" class="">PyPi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tipsofweb/" class="">Nginx高可用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/for_china/" class="">各个软件换源</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tipsofdebugers/" class="">tips Of Debuggers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/notesdjango/" class="">Django的建站的(｡･･)ﾉﾞ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tipsofvim/" class="">tip Of vim</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/editer/" class="">编辑器使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/noteoflinux/" class="">Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tip_dgraph/" class="">Dgraph</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/noteoffmtdata/" class="">数据格式笔记</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd029da01a5cf373a5379dc078a74f2c" class="toggle"  />
+    <label for="section-cd029da01a5cf373a5379dc078a74f2c" class="flex justify-between">
+      <a role="button" class="">Game and Simulation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/game_and_simulation/blender/" class="">Blender</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/game_and_simulation/noteofue4/" class="">UE4 笔记</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-883e27361d38e16afb68faff3435ac0b" class="toggle"  />
+    <label for="section-883e27361d38e16afb68faff3435ac0b" class="flex justify-between">
+      <a role="button" class="">Ml</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/tensorflow/" class="">Tensorflow</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/opencv/" class="">OpenCV</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/paddle/" class="">Paddle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/noteofmachinelearning/" class="">机器学习库</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e5360c5e7954906b897ed79085884b6" class="toggle"  />
+    <label for="section-7e5360c5e7954906b897ed79085884b6" class="flex justify-between">
+      <a href="/docs/programmer/gui/" class="">Gui</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/pyinstaller/" class="">python打包</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/qt/" class="">Qt/PySide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/noteofvn_py/" class="">Vn.Py学习笔记（Python交易平台框架）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/notespython/" class="">图形化界面 （Python Gui）</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4446dd07527142b855f26d7cc8f0e617" class="toggle"  />
+    <label for="section-4446dd07527142b855f26d7cc8f0e617" class="flex justify-between">
+      <a role="button" class="">Database</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/database/dgraph/" class="">Dgraph使用小记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/database/noteofdocker/" class="">notes Of docker</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/database/noteofdbdata/" class="">db数据库</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-de7bfad1d124522974cdf8addfbb23f2" class="toggle"  />
+    <label for="section-de7bfad1d124522974cdf8addfbb23f2" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/net/tipsofgrpc/" class="">gRpc使用小记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/net/net/" class="">网络(Computer Network)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bf4e0d6f0b81f7b3ec08ed1fc66b874d" class="toggle" checked />
+    <label for="section-bf4e0d6f0b81f7b3ec08ed1fc66b874d" class="flex justify-between">
+      <a role="button" class="">Langs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/noteofgoexp/" class="active">Golang进阶笔记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/noteofgolang/" class="">Golang笔记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/tipsofmarkdown/" class="">tips Of markdown</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/notespython/" class="">Python笔记(notes of Python)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/notesjava/" class="">愉快的Java(happy to learn the fuck java)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d325c59fc6513e1b1e05a60b192d4973" class="toggle"  />
+    <label for="section-d325c59fc6513e1b1e05a60b192d4973" class="flex justify-between">
+      <a href="/docs/programmer/hardware/" class="">Hardware</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/android/" class="">Android</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/raspberrypi/" class="">Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/readme/" class="">Readme</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/screen/" class="">Screen</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-40d35e91afa620ff2e7bf6291cfb3e1d" class="toggle"  />
+    <label for="section-40d35e91afa620ff2e7bf6291cfb3e1d" class="flex justify-between">
+      <a href="/docs/programmer/software/" class="">Software</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/bash/" class="">Bash</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/freebsd/" class="">Freebsd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/gitbook/" class="">Gitbook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/markdown/" class="">Markdown</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/npm/" class="">Npm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/readme/" class="">Readme</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/vim/" class="">Vim</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/install_some/" class="">安装问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/demo_test_some/" class="">Demo Test项目中的一些东西</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/tipsofproblems/" class="">解决问题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/example/" class="">Example Site</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/table-of-contents/" class="">Table of Contents</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/table-of-contents/with-toc/" class="">With ToC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/table-of-contents/without-toc/" class="">Without ToC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Shortcodes</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/buttons/" class="">Buttons</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/columns/" class="">Columns</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/details/" class="">Details</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/expand/" class="">Expand</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/hints/" class="">Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d3fc1bf6d66cd84b896a0af9f40cb1d5" class="toggle"  />
+    <label for="section-d3fc1bf6d66cd84b896a0af9f40cb1d5" class="flex justify-between">
+      <a href="/docs/shortcodes/section/" class="">Section</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/section/first-page/" class="">First Page</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/section/second-page/" class="">Second Page</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/tabs/" class="">Tabs</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Golang进阶笔记</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#路径问题">路径问题</a>
+      <ul>
+        <li><a href="#test_testgo">test_test.go</a></li>
+        <li><a href="#testgo">test.go</a></li>
+        <li><a href="#输出">输出</a></li>
+      </ul>
+    </li>
+    <li><a href="#docker问题">Docker问题</a>
+      <ul>
+        <li><a href="#docker-mysql编码">Docker Mysql编码</a></li>
+        <li><a href="#时间修改">时间修改</a></li>
+      </ul>
+    </li>
+    <li><a href="#golang-私有仓库">Golang 私有仓库</a>
+      <ul>
+        <li><a href="#-和_不同的分隔符引发的包导入错误"><code>-</code>和<code>_</code>不同的分隔符引发的包导入错误</a></li>
+      </ul>
+    </li>
+    <li><a href="#非硬性结束服务">非硬性结束服务</a>
+      <ul>
+        <li><a href="#httpservershutdown">http.Server.Shutdown</a></li>
+        <li><a href="#signalnotify">signal.Notify</a></li>
+        <li><a href="#综上">综上</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="golang进阶笔记">
+  Golang进阶笔记
+  <a class="anchor" href="#golang%e8%bf%9b%e9%98%b6%e7%ac%94%e8%ae%b0">#</a>
+</h1>
+<p><img src="https://wallpapercave.com/wp/wp7041189.jpg" alt="golang" title="power"/></p>
+<h2 id="路径问题">
+  路径问题
+  <a class="anchor" href="#%e8%b7%af%e5%be%84%e9%97%ae%e9%a2%98">#</a>
+</h2>
+<h3 id="test_testgo">
+  test_test.go
+  <a class="anchor" href="#test_testgo">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;testing&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestHelloWorld</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// t.Fatal(&#34;not implemented&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">path</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">getCurrentPath</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Log</span>(<span style="color:#e6db74">&#34;getCurrentPath: &#34;</span>, <span style="color:#a6e22e">path</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="testgo">
+  test.go
+  <a class="anchor" href="#testgo">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;log&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;path&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;path/filepath&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;runtime&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;strings&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;getTmpDir（当前系统临时目录） = &#34;</span>, <span style="color:#a6e22e">getTmpDir</span>())
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;getCurrentAbPathByExecutable（仅支持go build） = &#34;</span>, <span style="color:#a6e22e">getCurrentAbPathByExecutable</span>())
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;getCurrentAbPathByCaller（仅支持go run） = &#34;</span>, <span style="color:#a6e22e">getCurrentAbPathByCaller</span>())
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;getCurrentAbPath（最终方案-全兼容） = &#34;</span>, <span style="color:#a6e22e">getCurrentAbPath</span>())
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;getCurrentPath（runtime.Caller1） = &#34;</span>, <span style="color:#a6e22e">getCurrentPath</span>())
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 最终方案-全兼容
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getCurrentAbPath</span>() <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">dir</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">getCurrentAbPathByExecutable</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Contains</span>(<span style="color:#a6e22e">dir</span>, <span style="color:#a6e22e">getTmpDir</span>()) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">getCurrentAbPathByCaller</span>()
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">dir</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getCurrentPath</span>() <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">filename</span>, <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">Caller</span>(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">Dir</span>(<span style="color:#a6e22e">filename</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 获取系统临时目录，兼容go run
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getTmpDir</span>() <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">dir</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Getenv</span>(<span style="color:#e6db74">&#34;TEMP&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">dir</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">dir</span> = <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Getenv</span>(<span style="color:#e6db74">&#34;TMP&#34;</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">filepath</span>.<span style="color:#a6e22e">EvalSymlinks</span>(<span style="color:#a6e22e">dir</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 获取当前执行文件绝对路径
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getCurrentAbPathByExecutable</span>() <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">exePath</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Executable</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">filepath</span>.<span style="color:#a6e22e">EvalSymlinks</span>(<span style="color:#a6e22e">filepath</span>.<span style="color:#a6e22e">Dir</span>(<span style="color:#a6e22e">exePath</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 获取当前执行文件绝对路径（go run）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getCurrentAbPathByCaller</span>() <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">abPath</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">filename</span>, <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">Caller</span>(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">ok</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">abPath</span> = <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">Dir</span>(<span style="color:#a6e22e">filename</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">abPath</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="输出">
+  输出
+  <a class="anchor" href="#%e8%be%93%e5%87%ba">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ian@ianDebian:~$ ./test
+</span></span><span style="display:flex;"><span>getTmpDir（当前系统临时目录） <span style="color:#f92672">=</span>  .
+</span></span><span style="display:flex;"><span>getCurrentAbPathByExecutable（仅支持go build） <span style="color:#f92672">=</span>  /home/ian
+</span></span><span style="display:flex;"><span>getCurrentAbPathByCaller（仅支持go run） <span style="color:#f92672">=</span>  /home/ian
+</span></span><span style="display:flex;"><span>getCurrentAbPath（最终方案-全兼容） <span style="color:#f92672">=</span>  /home/ian
+</span></span><span style="display:flex;"><span>getCurrentPath（runtime.Caller1） <span style="color:#f92672">=</span>  /home/ian
+</span></span><span style="display:flex;"><span>ian@ianDebian:~$
+</span></span><span style="display:flex;"><span>ian@ianDebian:~$ go run test.go
+</span></span><span style="display:flex;"><span>getTmpDir（当前系统临时目录） <span style="color:#f92672">=</span>  .
+</span></span><span style="display:flex;"><span>getCurrentAbPathByExecutable（仅支持go build） <span style="color:#f92672">=</span>  /tmp/go-build3048077768/b001/exe
+</span></span><span style="display:flex;"><span>getCurrentAbPathByCaller（仅支持go run） <span style="color:#f92672">=</span>  /home/ian
+</span></span><span style="display:flex;"><span>getCurrentAbPath（最终方案-全兼容） <span style="color:#f92672">=</span>  /tmp/go-build3048077768/b001/exe
+</span></span><span style="display:flex;"><span>getCurrentPath（runtime.Caller1） <span style="color:#f92672">=</span>  /home/ian
+</span></span><span style="display:flex;"><span>ian@ianDebian:~$
+</span></span><span style="display:flex;"><span>ian@ianDebian:~$ go test test_test.go test.go -v
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===</span> RUN   TestHelloWorld
+</span></span><span style="display:flex;"><span>    test_test.go:8: getCurrentPath:  /home/ian
+</span></span><span style="display:flex;"><span>--- PASS: TestHelloWorld <span style="color:#f92672">(</span>0.00s<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>PASS
+</span></span><span style="display:flex;"><span>ok  	command-line-arguments	0.002s
+</span></span></code></pre></div><h2 id="docker问题">
+  Docker问题
+  <a class="anchor" href="#docker%e9%97%ae%e9%a2%98">#</a>
+</h2>
+<h3 id="docker-mysql编码">
+  Docker Mysql编码
+  <a class="anchor" href="#docker-mysql%e7%bc%96%e7%a0%81">#</a>
+</h3>
+<pre tabindex="0"><code class="language-docker-compose" data-lang="docker-compose">version: &#34;2.2&#34;
+services:
+  redis:
+    image: &#34;redis&#34;
+    # ports:
+    #  - 6379:6379
+    command: redis-server --appendonly yes #一个容器启动时要运行的命令
+    restart: always # 自动重启
+  myserver:
+    image: mainName/myserver
+    restart: always # 自动重启
+  mainServer:
+    image: mainName/mainServer
+    #    container_name: mainServerv1.0.0
+    depends_on:
+      - redis
+    ports:
+      - 9001:9001
+    restart: always
+    volumes:
+      - &#34;./logs:/src/build/logs&#34;
+    links:
+      - redis
+      - myserver
+</code></pre><p><strong>mysql 编码问题|单条</strong>: <code>docker run --name predix_mysql -e MYSQL_ROOT_PASSWORD=predix123predix -p 33061:3306  -e LANG=C.UTF-8 -d mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci</code></p>
+<h3 id="时间修改">
+  时间修改
+  <a class="anchor" href="#%e6%97%b6%e9%97%b4%e4%bf%ae%e6%94%b9">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> alpine:3.14</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apk add -U tzdata <span style="color:#f92672">&amp;&amp;</span> cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime <span style="color:#f92672">&amp;&amp;</span>  echo <span style="color:#e6db74">&#34;Asia/Shanghai&#34;</span> &gt; /etc/timezone<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> TZ<span style="color:#f92672">=</span>Asia/Shanghai <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    GO111MODULE<span style="color:#f92672">=</span>on <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    GOOS<span style="color:#f92672">=</span>linux <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    GOARCH<span style="color:#f92672">=</span>amd64 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    PROGRAM_ENV<span style="color:#f92672">=</span>pro<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /src/build</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 复制构建应用程序所需的代码</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./build .<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 8088</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;./main&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h2 id="golang-私有仓库">
+  Golang 私有仓库
+  <a class="anchor" href="#golang-%e7%a7%81%e6%9c%89%e4%bb%93%e5%ba%93">#</a>
+</h2>
+<p><code>xxx</code>替换为具体地址</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export GOPRIVATE<span style="color:#f92672">=</span>github.com/xxx/xxx
+</span></span></code></pre></div><p>修改<code>~/.gitconfig</code>让<code>go get</code>始终通过<code>ssh</code>而非<code>http</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-.gitconfig" data-lang=".gitconfig"><span style="display:flex;"><span><span style="color:#66d9ef">[url &#34;git@github.com:&#34;]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">insteadOf</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">https://github.com/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[url &#34;git@gitlab.com:&#34;]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">insteadOf</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">https://gitlab.com/</span>
+</span></span></code></pre></div><h3 id="-和_不同的分隔符引发的包导入错误">
+  <code>-</code>和<code>_</code>不同的分隔符引发的包导入错误
+  <a class="anchor" href="#-%e5%92%8c_%e4%b8%8d%e5%90%8c%e7%9a%84%e5%88%86%e9%9a%94%e7%ac%a6%e5%bc%95%e5%8f%91%e7%9a%84%e5%8c%85%e5%af%bc%e5%85%a5%e9%94%99%e8%af%af">#</a>
+</h3>
+<p>适用于<code>Github</code>仓库名为<code>xxxxx-xxxxx</code>但包名为<code>xxxxx_xxxxx</code>, 因为go mod 不支持<code>-</code>分隔.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">module</span> <span style="color:#a6e22e">example</span>.<span style="color:#a6e22e">com</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">go</span> <span style="color:#ae81ff">1.16</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">xxx</span><span style="color:#f92672">-</span><span style="color:#a6e22e">xx</span><span style="color:#f92672">/</span><span style="color:#a6e22e">xxxxx_xxxxx</span> =&gt; <span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">xxx</span><span style="color:#f92672">-</span><span style="color:#a6e22e">xx</span><span style="color:#f92672">/</span><span style="color:#a6e22e">xxxxx</span><span style="color:#f92672">-</span><span style="color:#a6e22e">xxxxx</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.0.1</span> <span style="color:#75715e">// indirect
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">require</span> <span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">xxx</span><span style="color:#f92672">-</span><span style="color:#a6e22e">xx</span><span style="color:#f92672">/</span><span style="color:#a6e22e">xxxxx_xxxxx</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.0.1</span>
+</span></span></code></pre></div><h2 id="非硬性结束服务">
+  非硬性结束服务
+  <a class="anchor" href="#%e9%9d%9e%e7%a1%ac%e6%80%a7%e7%bb%93%e6%9d%9f%e6%9c%8d%e5%8a%a1">#</a>
+</h2>
+<h3 id="httpservershutdown">
+  http.Server.Shutdown
+  <a class="anchor" href="#httpservershutdown">#</a>
+</h3>
+<p><code>http.Server</code>结构体有一个终止服务的方法<code>Shutdown</code></p>
+<ol>
+<li>首先关闭所有开启的监听器</li>
+<li>关闭所有闲置连接</li>
+<li>等待活跃的连接均闲置了才终止服务</li>
+</ol>
+<h4 id="长链接">
+  长链接
+  <a class="anchor" href="#%e9%95%bf%e9%93%be%e6%8e%a5">#</a>
+</h4>
+<p>对诸如WebSocket等的长连接，Shutdown不会尝试关闭也不会等待这些连接。若需要，需调用者分开额外处理（诸如通知诸长连接或等待它们关闭，使用RegisterOnShutdown注册终止通知函数）</p>
+<h3 id="signalnotify">
+  signal.Notify
+  <a class="anchor" href="#signalnotify">#</a>
+</h3>
+<p>可指定信号类型/<code>all incoming signals will be relayed to c</code></p>
+<h3 id="综上">
+  综上
+  <a class="anchor" href="#%e7%bb%bc%e4%b8%8a">#</a>
+</h3>
+<h4 id="demo1">
+  Demo1
+  <a class="anchor" href="#demo1">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>    <span style="color:#a6e22e">srv</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Server</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Addr</span>:    <span style="color:#f92672">*</span><span style="color:#a6e22e">addr</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Handler</span>: <span style="color:#a6e22e">handler</span>,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// make sure idle connections returned
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">processed</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">struct</span>{})
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Signal</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">signal</span>.<span style="color:#a6e22e">Notify</span>(<span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Interrupt</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">c</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">cancel</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">WithTimeout</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>(), <span style="color:#ae81ff">3</span><span style="color:#f92672">*</span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">cancel</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">srv</span>.<span style="color:#a6e22e">Shutdown</span>(<span style="color:#a6e22e">ctx</span>); <span style="color:#66d9ef">nil</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">err</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatalf</span>(<span style="color:#e6db74">&#34;server shutdown failed, err: %v\n&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;server gracefully shutdown&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        close(<span style="color:#a6e22e">processed</span>)
+</span></span><span style="display:flex;"><span>    }()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// serve
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">srv</span>.<span style="color:#a6e22e">ListenAndServe</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ErrServerClosed</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">err</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatalf</span>(<span style="color:#e6db74">&#34;server not gracefully shutdown, err :%v\n&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// waiting for goroutine above processed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">processed</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="demo2">
+  Demo2
+  <a class="anchor" href="#demo2">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Signal</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 监听信号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">signal</span>.<span style="color:#a6e22e">Notify</span>(<span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">syscall</span>.<span style="color:#a6e22e">SIGHUP</span>, <span style="color:#a6e22e">syscall</span>.<span style="color:#a6e22e">SIGINT</span>, <span style="color:#a6e22e">syscall</span>.<span style="color:#a6e22e">SIGTERM</span>, <span style="color:#a6e22e">syscall</span>.<span style="color:#a6e22e">SIGQUIT</span>, <span style="color:#a6e22e">syscall</span>.<span style="color:#a6e22e">SIGUSR1</span>, <span style="color:#a6e22e">syscall</span>.<span style="color:#a6e22e">SIGUSR2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">c</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">s</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">syscall</span>.<span style="color:#a6e22e">SIGHUP</span>, <span style="color:#a6e22e">syscall</span>.<span style="color:#a6e22e">SIGINT</span>, <span style="color:#a6e22e">syscall</span>.<span style="color:#a6e22e">SIGTERM</span>:
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;退出:&#34;</span>, <span style="color:#a6e22e">s</span>)
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">ExitFunc</span>()
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">syscall</span>.<span style="color:#a6e22e">SIGUSR1</span>:
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;usr1&#34;</span>, <span style="color:#a6e22e">s</span>)
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">syscall</span>.<span style="color:#a6e22e">SIGUSR2</span>:
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;usr2&#34;</span>, <span style="color:#a6e22e">s</span>)
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">default</span>:
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;其他信号:&#34;</span>, <span style="color:#a6e22e">s</span>)
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;启动了程序&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">sum</span><span style="color:#f92672">++</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;休眠了:&#34;</span>, <span style="color:#a6e22e">sum</span>, <span style="color:#e6db74">&#34;秒&#34;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">ExitFunc</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;开始退出...&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;执行清理...&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;结束退出...&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Exit</span>(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="demo3">
+  Demo3
+  <a class="anchor" href="#demo3">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;log&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;io&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;net/http&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">startHttpServer</span>() <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Server</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">srv</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Server</span>{<span style="color:#a6e22e">Addr</span>: <span style="color:#e6db74">&#34;:8080&#34;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">HandleFunc</span>(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ResponseWriter</span>, <span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">WriteString</span>(<span style="color:#a6e22e">w</span>, <span style="color:#e6db74">&#34;hello world\n&#34;</span>)
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">srv</span>.<span style="color:#a6e22e">ListenAndServe</span>(); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// cannot panic, because this probably is an intentional close
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Httpserver: ListenAndServe() error: %s&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// returning reference so caller can call Shutdown()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">srv</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;main: starting HTTP server&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">srv</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">startHttpServer</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;main: serving for 10 seconds&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">10</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;main: stopping HTTP server&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// now close the server gracefully (&#34;shutdown&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// timeout could be given instead of nil as a https://golang.org/pkg/context/
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">srv</span>.<span style="color:#a6e22e">Shutdown</span>(<span style="color:#66d9ef">nil</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        panic(<span style="color:#a6e22e">err</span>) <span style="color:#75715e">// failure/timeout shutting down the server gracefully
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;main: done. exiting&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#路径问题">路径问题</a>
+      <ul>
+        <li><a href="#test_testgo">test_test.go</a></li>
+        <li><a href="#testgo">test.go</a></li>
+        <li><a href="#输出">输出</a></li>
+      </ul>
+    </li>
+    <li><a href="#docker问题">Docker问题</a>
+      <ul>
+        <li><a href="#docker-mysql编码">Docker Mysql编码</a></li>
+        <li><a href="#时间修改">时间修改</a></li>
+      </ul>
+    </li>
+    <li><a href="#golang-私有仓库">Golang 私有仓库</a>
+      <ul>
+        <li><a href="#-和_不同的分隔符引发的包导入错误"><code>-</code>和<code>_</code>不同的分隔符引发的包导入错误</a></li>
+      </ul>
+    </li>
+    <li><a href="#非硬性结束服务">非硬性结束服务</a>
+      <ul>
+        <li><a href="#httpservershutdown">http.Server.Shutdown</a></li>
+        <li><a href="#signalnotify">signal.Notify</a></li>
+        <li><a href="#综上">综上</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="title: Paddle date: 2022-06-08 18:58:56 modified: 2022-06-08 18:58:56 category: [note, 机器学习] tags: [Paddle] slug: # Paddle的坑 # 资源占用 # 命令示例(yml中修改了train,test样本地址,使用--gpus这里只用了一个GPU,可方便修改为多卡0,1,2,3)
+python -m paddle.distributed.launch --gpus &#39;1&#39; tools/train.py -c configs/rec/PP-OCRv3/en_PP-OCRv3_rec.yml -o Global.pretrained_model=./pretrain_models/en_PP-OCRv3_rec_train/best_accuracy.pdparams en_PP-OCRv3_rec默认性能配置在, 单卡V100上: &#43;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&#43;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&#43;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&#43; | 1 Tesla V100-SXM2&hellip; On | 00000000:00:09.0 Off | 0 | | N/A 53C P0 223W / 300W | 23065MiB / 32510MiB | 100% Default | | | | N/A | &#43;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&#43;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&#43;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&#43;
+Paddle 多卡训练 # You may need to install &rsquo;nccl2&rsquo; from NVIDIA official website">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
+<meta property="og:description" content="title: Paddle date: 2022-06-08 18:58:56 modified: 2022-06-08 18:58:56 category: [note, 机器学习] tags: [Paddle] slug: # Paddle的坑 # 资源占用 # 命令示例(yml中修改了train,test样本地址,使用--gpus这里只用了一个GPU,可方便修改为多卡0,1,2,3)
+python -m paddle.distributed.launch --gpus &#39;1&#39; tools/train.py -c configs/rec/PP-OCRv3/en_PP-OCRv3_rec.yml -o Global.pretrained_model=./pretrain_models/en_PP-OCRv3_rec_train/best_accuracy.pdparams en_PP-OCRv3_rec默认性能配置在, 单卡V100上: &#43;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&#43;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&#43;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&#43; | 1 Tesla V100-SXM2&hellip; On | 00000000:00:09.0 Off | 0 | | N/A 53C P0 223W / 300W | 23065MiB / 32510MiB | 100% Default | | | | N/A | &#43;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&#43;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&#43;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&#43;
+Paddle 多卡训练 # You may need to install &rsquo;nccl2&rsquo; from NVIDIA official website" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/docs/programmer/ml/paddle/" /><meta property="article:section" content="docs" />
+
+
+
+<title>Paddle | Ian&#39;s Blog</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.2f641214a44ca02c7ff7242d62be8f0bab1ce4f2b0fea0be2eb6f3a4d94533d2.js" integrity="sha256-L2QSFKRMoCx/9yQtYr6PC6sc5PKw/qC&#43;LrbzpNlFM9I=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Ian&#39;s Blog</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/programmer/" class="">程序员笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52f633cba5cf47818d8ec01e928396f2" class="toggle"  />
+    <label for="section-52f633cba5cf47818d8ec01e928396f2" class="flex justify-between">
+      <a role="button" class="">Base</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/pypi/" class="">PyPi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tipsofweb/" class="">Nginx高可用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/for_china/" class="">各个软件换源</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tipsofdebugers/" class="">tips Of Debuggers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/notesdjango/" class="">Django的建站的(｡･･)ﾉﾞ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tipsofvim/" class="">tip Of vim</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/editer/" class="">编辑器使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/noteoflinux/" class="">Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tip_dgraph/" class="">Dgraph</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/noteoffmtdata/" class="">数据格式笔记</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd029da01a5cf373a5379dc078a74f2c" class="toggle"  />
+    <label for="section-cd029da01a5cf373a5379dc078a74f2c" class="flex justify-between">
+      <a role="button" class="">Game and Simulation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/game_and_simulation/blender/" class="">Blender</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/game_and_simulation/noteofue4/" class="">UE4 笔记</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-883e27361d38e16afb68faff3435ac0b" class="toggle" checked />
+    <label for="section-883e27361d38e16afb68faff3435ac0b" class="flex justify-between">
+      <a role="button" class="">Ml</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/tensorflow/" class="">Tensorflow</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/opencv/" class="">OpenCV</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/paddle/" class="active">Paddle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/noteofmachinelearning/" class="">机器学习库</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e5360c5e7954906b897ed79085884b6" class="toggle"  />
+    <label for="section-7e5360c5e7954906b897ed79085884b6" class="flex justify-between">
+      <a href="/docs/programmer/gui/" class="">Gui</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/pyinstaller/" class="">python打包</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/qt/" class="">Qt/PySide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/noteofvn_py/" class="">Vn.Py学习笔记（Python交易平台框架）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/notespython/" class="">图形化界面 （Python Gui）</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4446dd07527142b855f26d7cc8f0e617" class="toggle"  />
+    <label for="section-4446dd07527142b855f26d7cc8f0e617" class="flex justify-between">
+      <a role="button" class="">Database</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/database/dgraph/" class="">Dgraph使用小记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/database/noteofdocker/" class="">notes Of docker</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/database/noteofdbdata/" class="">db数据库</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-de7bfad1d124522974cdf8addfbb23f2" class="toggle"  />
+    <label for="section-de7bfad1d124522974cdf8addfbb23f2" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/net/tipsofgrpc/" class="">gRpc使用小记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/net/net/" class="">网络(Computer Network)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bf4e0d6f0b81f7b3ec08ed1fc66b874d" class="toggle"  />
+    <label for="section-bf4e0d6f0b81f7b3ec08ed1fc66b874d" class="flex justify-between">
+      <a role="button" class="">Langs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/noteofgoexp/" class="">Golang进阶笔记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/noteofgolang/" class="">Golang笔记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/tipsofmarkdown/" class="">tips Of markdown</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/notespython/" class="">Python笔记(notes of Python)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/notesjava/" class="">愉快的Java(happy to learn the fuck java)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d325c59fc6513e1b1e05a60b192d4973" class="toggle"  />
+    <label for="section-d325c59fc6513e1b1e05a60b192d4973" class="flex justify-between">
+      <a href="/docs/programmer/hardware/" class="">Hardware</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/android/" class="">Android</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/raspberrypi/" class="">Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/readme/" class="">Readme</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/screen/" class="">Screen</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-40d35e91afa620ff2e7bf6291cfb3e1d" class="toggle"  />
+    <label for="section-40d35e91afa620ff2e7bf6291cfb3e1d" class="flex justify-between">
+      <a href="/docs/programmer/software/" class="">Software</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/bash/" class="">Bash</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/freebsd/" class="">Freebsd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/gitbook/" class="">Gitbook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/markdown/" class="">Markdown</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/npm/" class="">Npm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/readme/" class="">Readme</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/vim/" class="">Vim</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/install_some/" class="">安装问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/demo_test_some/" class="">Demo Test项目中的一些东西</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/tipsofproblems/" class="">解决问题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/example/" class="">Example Site</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/table-of-contents/" class="">Table of Contents</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/table-of-contents/with-toc/" class="">With ToC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/table-of-contents/without-toc/" class="">Without ToC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Shortcodes</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/buttons/" class="">Buttons</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/columns/" class="">Columns</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/details/" class="">Details</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/expand/" class="">Expand</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/hints/" class="">Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d3fc1bf6d66cd84b896a0af9f40cb1d5" class="toggle"  />
+    <label for="section-d3fc1bf6d66cd84b896a0af9f40cb1d5" class="flex justify-between">
+      <a href="/docs/shortcodes/section/" class="">Section</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/section/first-page/" class="">First Page</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/section/second-page/" class="">Second Page</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/tabs/" class="">Tabs</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Paddle</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#slug">title: Paddle
+date: 2022-06-08 18:58:56
+modified: 2022-06-08 18:58:56
+category: [note, 机器学习]
+tags: [Paddle]
+slug:</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#资源占用">资源占用</a></li>
+    <li><a href="#paddle-多卡训练">Paddle 多卡训练</a></li>
+    <li><a href="#写在坑前头">写在坑前头</a></li>
+    <li><a href="#paddleocr-预训练模型">PaddleOCR 预训练模型</a>
+      <ul>
+        <li><a href="#但是">但是</a></li>
+      </ul>
+    </li>
+    <li><a href="#使用训练结果检测单张图片">使用训练结果检测单张图片</a></li>
+    <li><a href="#多卡和断点续传">多卡和断点续传</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h2 id="slug">
+  title: Paddle
+date: 2022-06-08 18:58:56
+modified: 2022-06-08 18:58:56
+category: [note, 机器学习]
+tags: [Paddle]
+slug:
+  <a class="anchor" href="#slug">#</a>
+</h2>
+<p><img src="https://th.bing.com/th/id/R.51a92409a6ab153b1ef0a45bc252c001?rik=8zti23A8ZlF6TA&amp;riu=http%3a%2f%2f5b0988e595225.cdn.sohucs.com%2fimages%2f20180125%2f3195f903a92843f8b39058abb2982c9e.jpeg&amp;ehk=7KSd71aeS7%2fSjkkVHUVubARN75%2f7e5CWFhARxbWe0kY%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0&amp;sres=1&amp;sresct=1" alt="天坑" /></p>
+<h1 id="paddle的坑">
+  Paddle的坑
+  <a class="anchor" href="#paddle%e7%9a%84%e5%9d%91">#</a>
+</h1>
+<h2 id="资源占用">
+  资源占用
+  <a class="anchor" href="#%e8%b5%84%e6%ba%90%e5%8d%a0%e7%94%a8">#</a>
+</h2>
+<p>命令示例(yml中修改了<code>train,test</code>样本地址,使用<code>--gpus</code>这里只用了一个GPU,可方便修改为多卡<code>0,1,2,3</code>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -m paddle.distributed.launch --gpus <span style="color:#e6db74">&#39;1&#39;</span>  tools/train.py -c configs/rec/PP-OCRv3/en_PP-OCRv3_rec.yml -o Global.pretrained_model<span style="color:#f92672">=</span>./pretrain_models/en_PP-OCRv3_rec_train/best_accuracy.pdparams
+</span></span></code></pre></div><p><code>en_PP-OCRv3_rec</code>默认性能配置在, 单卡V100上:
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+
+|   1  Tesla V100-SXM2&hellip;  On   | 00000000:00:09.0 Off |                    0 |
+| N/A   53C    P0   223W / 300W |  23065MiB / 32510MiB |    100%      Default |
+|                               |                      |                  N/A |
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+</p>
+<h2 id="paddle-多卡训练">
+  Paddle 多卡训练
+  <a class="anchor" href="#paddle-%e5%a4%9a%e5%8d%a1%e8%ae%ad%e7%bb%83">#</a>
+</h2>
+<p>You may need to install &rsquo;nccl2&rsquo; from NVIDIA official website</p>
+<p>Traceback: 这种问题可以参看<a href="https://github.com/PaddlePaddle/PaddleOCR/issues/3327">Github Issues</a></p>
+<h2 id="写在坑前头">
+  写在坑前头
+  <a class="anchor" href="#%e5%86%99%e5%9c%a8%e5%9d%91%e5%89%8d%e5%a4%b4">#</a>
+</h2>
+<p>经测试，下面预训练模型下载地址和检测训练效果的脚本之所以报错是因为<code>PaddleOCR</code>项目主页的<code>readme</code>中链接的子<code>readme</code>是<code>develop</code>分支的。且这个分支是落后于当前<code>release/2.5</code>的，所以出现了以下不匹配的情况.
+切换了分支之后, 匹配度还可以接受.</p>
+<h2 id="paddleocr-预训练模型">
+  PaddleOCR 预训练模型
+  <a class="anchor" href="#paddleocr-%e9%a2%84%e8%ae%ad%e7%bb%83%e6%a8%a1%e5%9e%8b">#</a>
+</h2>
+<ul>
+<li>百度写文档的积极性是真的低，看来这东西用的人是真的少&hellip;</li>
+</ul>
+<p>这是官方说明文档:</p>
+<pre tabindex="0"><code>cd PaddleOCR/
+# 下载MobileNetV3的预训练模型
+wget -P ./pretrain_models/ https://paddle-imagenet-models-name.bj.bcebos.com/MobileNetV3_large_x0_5_pretrained.tar
+# 或，下载ResNet18_vd的预训练模型
+wget -P ./pretrain_models/ https://paddle-imagenet-models-name.bj.bcebos.com/ResNet18_vd_pretrained.tar
+# 或，下载ResNet50_vd的预训练模型
+wget -P ./pretrain_models/ https://paddle-imagenet-models-name.bj.bcebos.com/ResNet50_vd_ssld_pretrained.tar
+
+# 解压预训练模型文件，以MobileNetV3为例
+tar -xf ./pretrain_models/MobileNetV3_large_x0_5_pretrained.tar ./pretrain_models/
+
+# 注：正确解压backbone预训练权重文件后，文件夹下包含众多以网络层命名的权重文件，格式如下：
+./pretrain_models/MobileNetV3_large_x0_5_pretrained/
+  └─ conv_last_bn_mean
+  └─ conv_last_bn_offset
+  └─ conv_last_bn_scale
+  └─ conv_last_bn_variance
+  └─ ......
+</code></pre><h3 id="但是">
+  但是
+  <a class="anchor" href="#%e4%bd%86%e6%98%af">#</a>
+</h3>
+<ul>
+<li>Paddle 在1.8版本后已经不用这种格式的预训练模型了！</li>
+<li>2022-06-07 现在已经更新到<code>2.3.0</code> 所以下载下来压根不能使用</li>
+</ul>
+<pre tabindex="0"><code>wget -P ./pretrain_models/ https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/ResNet18_vd_pretrained.pdparams
+</code></pre><ul>
+<li>增加<code>dygraph</code></li>
+<li>后缀修改为<code>pdparams</code></li>
+</ul>
+<h2 id="使用训练结果检测单张图片">
+  使用训练结果检测单张图片
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8%e8%ae%ad%e7%bb%83%e7%bb%93%e6%9e%9c%e6%a3%80%e6%b5%8b%e5%8d%95%e5%bc%a0%e5%9b%be%e7%89%87">#</a>
+</h2>
+<p>应使用:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python tools/infer_det.py --config<span style="color:#f92672">=</span>configs/det/det_res18_db_v2.0.yml -o Global.infer_img<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./train_data/icdar2015/ch4_test_images/img_4.jpg&#34;</span> Global.checkpoints<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./output/ch_db_res18/latest.pdparams&#34;</span> Global.use_gpu<span style="color:#f92672">=</span>false
+</span></span></code></pre></div><p>而非官网所示的:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python3 tools/infer_det.py -c configs/det/det_mv3_db_v1.1.yml -o Global.infer_img<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./doc/imgs_en/img_10.jpg&#34;</span> Global.checkpoints<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./output/det_db/best_accuracy&#34;</span>
+</span></span></code></pre></div><p>否则会报错:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Traceback <span style="color:#f92672">(</span>most recent call last<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;... /PaddleOCR/tools/infer_det.py&#34;</span>, line 133, in &lt;module&gt;
+</span></span><span style="display:flex;"><span>    config, device, logger, vdl_writer <span style="color:#f92672">=</span> program.preprocess<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;... /PaddleOCR/tools/program.py&#34;</span>, line 535, in preprocess
+</span></span><span style="display:flex;"><span>    FLAGS <span style="color:#f92672">=</span> ArgsParser<span style="color:#f92672">()</span>.parse_args<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;... /PaddleOCR/tools/program.py&#34;</span>, line 57, in parse_args
+</span></span><span style="display:flex;"><span>    assert args.config is not None, <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>AssertionError: Please specify --config<span style="color:#f92672">=</span>configure_file_path.
+</span></span></code></pre></div><h2 id="多卡和断点续传">
+  多卡和断点续传
+  <a class="anchor" href="#%e5%a4%9a%e5%8d%a1%e5%92%8c%e6%96%ad%e7%82%b9%e7%bb%ad%e4%bc%a0">#</a>
+</h2>
+<p>断点可能怕是不行了。。。</p>
+<p>多卡使用:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -m paddle.distributed.launch --gpus <span style="color:#e6db74">&#39;1,2&#39;</span> tools/train.py -c configs/det/det_res18_db_v2.0.yml -o Global.use_gpu<span style="color:#f92672">=</span>true Global.checkpoints<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./output/ch_db_res18/latest.pdparams&#34;</span>  | tee train_det.log
+</span></span></code></pre></div><p>会出现:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>2022/06/08 18:36:48<span style="color:#f92672">]</span> ppocr INFO:         num_workers : <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>2022/06/08 18:36:48<span style="color:#f92672">]</span> ppocr INFO:         shuffle : True
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>2022/06/08 18:36:48<span style="color:#f92672">]</span> ppocr INFO: profiler_options : None
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>2022/06/08 18:36:48<span style="color:#f92672">]</span> ppocr INFO: train with paddle 2.3.0 and device Place<span style="color:#f92672">(</span>gpu:1<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>server not ready, wait <span style="color:#ae81ff">3</span> sec to retry...
+</span></span><span style="display:flex;"><span>not ready endpoints:<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;127.0.0.1:36939&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>W0608 18:36:51.403939 <span style="color:#ae81ff">745832</span> dynamic_loader.cc:276<span style="color:#f92672">]</span> You may need to install <span style="color:#e6db74">&#39;nccl2&#39;</span> from NVIDIA official website: https://developer.nvidia.com/nccl/nccl-downloadbefore install PaddlePaddle.
+</span></span><span style="display:flex;"><span>Traceback <span style="color:#f92672">(</span>most recent call last<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;tools/train.py&#34;</span>, line 191, in &lt;module&gt;
+</span></span><span style="display:flex;"><span>    main<span style="color:#f92672">(</span>config, device, logger, vdl_writer<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;tools/train.py&#34;</span>, line 47, in main
+</span></span><span style="display:flex;"><span>    dist.init_parallel_env<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;/data/anaconda3/lib/python3.8/site-packages/paddle/distributed/parallel.py&#34;</span>, line 315, in init_parallel_env
+</span></span><span style="display:flex;"><span>    parallel_helper._init_parallel_ctx<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;/data/anaconda3/lib/python3.8/site-packages/paddle/fluid/dygraph/parallel_helper.py&#34;</span>, line 42, in _init_parallel_ctx
+</span></span><span style="display:flex;"><span>    __parallel_ctx__clz__.init<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>RuntimeError: <span style="color:#f92672">(</span>PreconditionNotMet<span style="color:#f92672">)</span> The third-party dynamic library <span style="color:#f92672">(</span>libnccl.so<span style="color:#f92672">)</span> that Paddle depends on is not configured correctly. <span style="color:#f92672">(</span>error code is libnccl.so: cannot open shared object file: No such file or directory<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  Suggestions:
+</span></span><span style="display:flex;"><span>  1. Check <span style="color:#66d9ef">if</span> the third-party dynamic library <span style="color:#f92672">(</span>e.g. CUDA, CUDNN<span style="color:#f92672">)</span> is installed correctly and its version is matched with paddlepaddle you installed.
+</span></span><span style="display:flex;"><span>  2. Configure third-party dynamic library environment variables as follows:
+</span></span><span style="display:flex;"><span>  - Linux: set LD_LIBRARY_PATH by <span style="color:#e6db74">`</span>export LD_LIBRARY_PATH<span style="color:#f92672">=</span>...<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>  - Windows: set PATH by <span style="color:#e6db74">`</span>set PATH<span style="color:#f92672">=</span>XXX; <span style="color:#f92672">(</span>at /paddle/paddle/phi/backends/dynload/dynamic_loader.cc:303<span style="color:#f92672">)</span>
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#slug">title: Paddle
+date: 2022-06-08 18:58:56
+modified: 2022-06-08 18:58:56
+category: [note, 机器学习]
+tags: [Paddle]
+slug:</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#资源占用">资源占用</a></li>
+    <li><a href="#paddle-多卡训练">Paddle 多卡训练</a></li>
+    <li><a href="#写在坑前头">写在坑前头</a></li>
+    <li><a href="#paddleocr-预训练模型">PaddleOCR 预训练模型</a>
+      <ul>
+        <li><a href="#但是">但是</a></li>
+      </ul>
+    </li>
+    <li><a href="#使用训练结果检测单张图片">使用训练结果检测单张图片</a></li>
+    <li><a href="#多卡和断点续传">多卡和断点续传</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

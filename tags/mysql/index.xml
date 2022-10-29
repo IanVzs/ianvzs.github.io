@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql on Ian&#39;s Blog</title>
+    <link>http://example.org/tags/mysql/</link>
+    <description>Recent content in mysql on Ian&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 May 2018 09:51:09 +0000</lastBuildDate><atom:link href="http://example.org/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>db数据库</title>
+      <link>http://example.org/docs/programmer/database/noteofdbdata/</link>
+      <pubDate>Tue, 15 May 2018 09:51:09 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/database/noteofdbdata/</guid>
+      <description>DB数据库 🖥 📊🖥 # MongoDB笔记 # 学习网站：http://www.runoob.com/mongodb/mongodb-tutorial.html (其学习教程还挺可观，很多，不过还不清楚好不好)
+注意事项 # Mongo 数据库锁 # mongo只提供库级粒度锁，所以一个写操作锁定时，其他读写操作都等待… 所以这个导致了Mongo多线程写操作反而没有一个线程写来的快？
+前台建立索引时，Mongo需占用一个写锁（且不同上述、不会临时放弃） 为避免此问题需采用background方式
+db.posts.ensureIndex({user_id: 1}) #此方式将引起全面战争 db.posts.ensureIndex({user_id: 1}， {background: 1}) # 这个就比较和平 操作命令简单记录 # 创建、插入 # use DATABASE_NAME #如果数据库不存在，则创建数据库，否则切换到指定数据库。 show dbs #查看所有数据库“name size” 刚创建的数据库，如没有内容则不现实在其中
+db.runoob.insert({&amp;quot;name&amp;quot;:&amp;quot;教程&amp;quot;}) #插入数据 删除 # db.dropDatabase() #删除当前数据库，如未选择则删除test db.collection.drop() #删除集合 db.site.drop() #：如删除site集合 删除重复数据 # delete from alarm_calendar where id not in (SELECT maxid from (SELECT MAX(id) as maxid, CONCAT(user_id,time,generic_name) as nameAndCode from alarm_calendar GROUP BY nameAndCode) t); 根据user_id, time, generic_name来打包重复，将重复数据删掉, 留下max，在自增里面即：最新数据</description>
+    </item>
+    
+  </channel>
+</rss>

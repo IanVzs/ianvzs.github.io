@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Swift： # [Swift教程] # &gt;https://github.com/ipader/SwiftGuide; Swift 开源项目精选: # &gt;https://github.com/ipader/SwiftGuide/blob/master/Featured.md SwiftGuide: # &gt;https://github.com/ipader/SwiftGuide/blob/master/Featured-Articles.md Swift，以上。
+Pelican： # 高亮显示Markdown: # void main() { printf(&quot;高亮？&quot;); // 另起一行 首行缩进，书写即可 } 标题： # 在编辑文字的时候，在前面加上“#”号，可以将之后一行文字作为标题大字体显示，编辑中瞎按，手误敲出来的字符，结果却很有用呢。或许其他字符也有作用，不过这已经满足日常编辑所需，不做过多探究了。充实内容，往往是首要的。
+利用Disqus添加评论系统： # 在此网站注册一个帐号，在设置中找见shortname，应该为自己设置。 然后在Pelicanconf.py这个配置文件中添加
+:::iidentifier
+DISQUS_SITENAME = “yours shortname”
+贴图片： # 在国内找了一个Z4A图床，感觉不错。 注册完毕，上传好图片应用链接自动生成，直接诶复制粘贴即可。HTML、BBCode、Markdown的，另外分为完整图片，中等图片，缩略图三种不同尺寸的链接。感觉良心。另外，点击图片后跳转图床，可以查看原图片文件，更是舒心赏心悦目～ 免费使用，极力推荐。只不过图片不能加入缩进后的“代码栏”。
+数学公式： $ $e^{i\pi} &#43; 1 = 0$ $ $之间无空格
+$$e^{i\pi} &#43; 1 = 0$$
+失败……插入插件失败。之后有需要时再查找原因。 (不过这个图床已经废了。……默哀)
+Linux 嵌入式C編程 # Git 协助开发提交代码之类 参考流程（复制于 &gt;https://github.com/numbbbbb/the-swift-programming-language-in-chinese） 有些朋友可能不太清楚如何帮忙翻译，我这里写一个简单的流程，大家可以参考一下： 首先fork我的项目 把fork过去的项目也就是你的项目clone到你的本地 在命令行运行git branch develop来创建一个新分支 运行git checkout develop来切换到新分支 运行git remote add upstream https://github.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="杂笔记" />
+<meta property="og:description" content="Swift： # [Swift教程] # &gt;https://github.com/ipader/SwiftGuide; Swift 开源项目精选: # &gt;https://github.com/ipader/SwiftGuide/blob/master/Featured.md SwiftGuide: # &gt;https://github.com/ipader/SwiftGuide/blob/master/Featured-Articles.md Swift，以上。
+Pelican： # 高亮显示Markdown: # void main() { printf(&quot;高亮？&quot;); // 另起一行 首行缩进，书写即可 } 标题： # 在编辑文字的时候，在前面加上“#”号，可以将之后一行文字作为标题大字体显示，编辑中瞎按，手误敲出来的字符，结果却很有用呢。或许其他字符也有作用，不过这已经满足日常编辑所需，不做过多探究了。充实内容，往往是首要的。
+利用Disqus添加评论系统： # 在此网站注册一个帐号，在设置中找见shortname，应该为自己设置。 然后在Pelicanconf.py这个配置文件中添加
+:::iidentifier
+DISQUS_SITENAME = “yours shortname”
+贴图片： # 在国内找了一个Z4A图床，感觉不错。 注册完毕，上传好图片应用链接自动生成，直接诶复制粘贴即可。HTML、BBCode、Markdown的，另外分为完整图片，中等图片，缩略图三种不同尺寸的链接。感觉良心。另外，点击图片后跳转图床，可以查看原图片文件，更是舒心赏心悦目～ 免费使用，极力推荐。只不过图片不能加入缩进后的“代码栏”。
+数学公式： $ $e^{i\pi} &#43; 1 = 0$ $ $之间无空格
+$$e^{i\pi} &#43; 1 = 0$$
+失败……插入插件失败。之后有需要时再查找原因。 (不过这个图床已经废了。……默哀)
+Linux 嵌入式C編程 # Git 协助开发提交代码之类 参考流程（复制于 &gt;https://github.com/numbbbbb/the-swift-programming-language-in-chinese） 有些朋友可能不太清楚如何帮忙翻译，我这里写一个简单的流程，大家可以参考一下： 首先fork我的项目 把fork过去的项目也就是你的项目clone到你的本地 在命令行运行git branch develop来创建一个新分支 运行git checkout develop来切换到新分支 运行git remote add upstream https://github." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/somenotes/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-10-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-10-29T00:00:00+00:00" />
+
+<title>Make things easy and enjoy | Ian&#39;s Blog</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.2f641214a44ca02c7ff7242d62be8f0bab1ce4f2b0fea0be2eb6f3a4d94533d2.js" integrity="sha256-L2QSFKRMoCx/9yQtYr6PC6sc5PKw/qC&#43;LrbzpNlFM9I=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Ian&#39;s Blog</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/programmer/" class="">程序员笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52f633cba5cf47818d8ec01e928396f2" class="toggle"  />
+    <label for="section-52f633cba5cf47818d8ec01e928396f2" class="flex justify-between">
+      <a role="button" class="">Base</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/pypi/" class="">PyPi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tipsofweb/" class="">Nginx高可用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/for_china/" class="">各个软件换源</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tipsofdebugers/" class="">tips Of Debuggers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/notesdjango/" class="">Django的建站的(｡･･)ﾉﾞ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tipsofvim/" class="">tip Of vim</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/editer/" class="">编辑器使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/noteoflinux/" class="">Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tip_dgraph/" class="">Dgraph</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/noteoffmtdata/" class="">数据格式笔记</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd029da01a5cf373a5379dc078a74f2c" class="toggle"  />
+    <label for="section-cd029da01a5cf373a5379dc078a74f2c" class="flex justify-between">
+      <a role="button" class="">Game and Simulation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/game_and_simulation/blender/" class="">Blender</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/game_and_simulation/noteofue4/" class="">UE4 笔记</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-883e27361d38e16afb68faff3435ac0b" class="toggle"  />
+    <label for="section-883e27361d38e16afb68faff3435ac0b" class="flex justify-between">
+      <a role="button" class="">Ml</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/tensorflow/" class="">Tensorflow</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/opencv/" class="">OpenCV</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/paddle/" class="">Paddle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/noteofmachinelearning/" class="">机器学习库</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e5360c5e7954906b897ed79085884b6" class="toggle"  />
+    <label for="section-7e5360c5e7954906b897ed79085884b6" class="flex justify-between">
+      <a href="/docs/programmer/gui/" class="">Gui</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/pyinstaller/" class="">python打包</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/qt/" class="">Qt/PySide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/noteofvn_py/" class="">Vn.Py学习笔记（Python交易平台框架）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/notespython/" class="">图形化界面 （Python Gui）</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4446dd07527142b855f26d7cc8f0e617" class="toggle"  />
+    <label for="section-4446dd07527142b855f26d7cc8f0e617" class="flex justify-between">
+      <a role="button" class="">Database</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/database/dgraph/" class="">Dgraph使用小记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/database/noteofdocker/" class="">notes Of docker</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/database/noteofdbdata/" class="">db数据库</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-de7bfad1d124522974cdf8addfbb23f2" class="toggle"  />
+    <label for="section-de7bfad1d124522974cdf8addfbb23f2" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/net/tipsofgrpc/" class="">gRpc使用小记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/net/net/" class="">网络(Computer Network)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bf4e0d6f0b81f7b3ec08ed1fc66b874d" class="toggle"  />
+    <label for="section-bf4e0d6f0b81f7b3ec08ed1fc66b874d" class="flex justify-between">
+      <a role="button" class="">Langs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/noteofgoexp/" class="">Golang进阶笔记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/noteofgolang/" class="">Golang笔记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/tipsofmarkdown/" class="">tips Of markdown</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/notespython/" class="">Python笔记(notes of Python)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/notesjava/" class="">愉快的Java(happy to learn the fuck java)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d325c59fc6513e1b1e05a60b192d4973" class="toggle"  />
+    <label for="section-d325c59fc6513e1b1e05a60b192d4973" class="flex justify-between">
+      <a href="/docs/programmer/hardware/" class="">Hardware</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/android/" class="">Android</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/raspberrypi/" class="">Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/readme/" class="">Readme</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/screen/" class="">Screen</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-40d35e91afa620ff2e7bf6291cfb3e1d" class="toggle"  />
+    <label for="section-40d35e91afa620ff2e7bf6291cfb3e1d" class="flex justify-between">
+      <a href="/docs/programmer/software/" class="">Software</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/bash/" class="">Bash</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/freebsd/" class="">Freebsd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/gitbook/" class="">Gitbook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/markdown/" class="">Markdown</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/npm/" class="">Npm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/readme/" class="">Readme</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/vim/" class="">Vim</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/install_some/" class="">安装问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/demo_test_some/" class="">Demo Test项目中的一些东西</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/tipsofproblems/" class="">解决问题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/example/" class="">Example Site</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/table-of-contents/" class="">Table of Contents</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/table-of-contents/with-toc/" class="">With ToC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/table-of-contents/without-toc/" class="">Without ToC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Shortcodes</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/buttons/" class="">Buttons</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/columns/" class="">Columns</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/details/" class="">Details</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/expand/" class="">Expand</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/hints/" class="">Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d3fc1bf6d66cd84b896a0af9f40cb1d5" class="toggle"  />
+    <label for="section-d3fc1bf6d66cd84b896a0af9f40cb1d5" class="flex justify-between">
+      <a href="/docs/shortcodes/section/" class="">Section</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/section/first-page/" class="">First Page</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/section/second-page/" class="">Second Page</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/tabs/" class="">Tabs</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Make things easy and enjoy</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#blog">Blog</a>
+      <ul>
+        <li><a href="#pelican-1">Pelican</a></li>
+        <li><a href="#hexo">hexo</a></li>
+        <li><a href="#quick-start">Quick Start</a></li>
+        <li><a href="#themes">themes</a></li>
+      </ul>
+    </li>
+    <li><a href="#git">Git</a>
+      <ul>
+        <li><a href="#git-版本切换">git 版本切换</a></li>
+      </ul>
+    </li>
+    <li><a href="#部署到服务器">部署到服务器</a></li>
+    <li><a href="#2021-04-21">2021-04-21</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/somenotes/">Make things easy and enjoy</a>
+  </h1>
+  
+  <h5>October 29, 2016</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
+  </div>
+  
+
+
+
+<h4 id="swift">
+  Swift：
+  <a class="anchor" href="#swift">#</a>
+</h4>
+<h6 id="swift教程">
+  [Swift教程]
+  <a class="anchor" href="#swift%e6%95%99%e7%a8%8b">#</a>
+</h6>
+<pre><code>&gt;https://github.com/ipader/SwiftGuide;
+</code></pre>
+<h6 id="swift-开源项目精选">
+  Swift 开源项目精选:
+  <a class="anchor" href="#swift-%e5%bc%80%e6%ba%90%e9%a1%b9%e7%9b%ae%e7%b2%be%e9%80%89">#</a>
+</h6>
+<pre><code>&gt;https://github.com/ipader/SwiftGuide/blob/master/Featured.md
+</code></pre>
+<h6 id="swiftguide">
+  SwiftGuide:
+  <a class="anchor" href="#swiftguide">#</a>
+</h6>
+<pre><code>&gt;https://github.com/ipader/SwiftGuide/blob/master/Featured-Articles.md
+</code></pre>
+<p>Swift，以上。</p>
+<h4 id="pelican">
+  Pelican：
+  <a class="anchor" href="#pelican">#</a>
+</h4>
+<h5 id="高亮显示markdown">
+  高亮显示Markdown:
+  <a class="anchor" href="#%e9%ab%98%e4%ba%ae%e6%98%be%e7%a4%bamarkdown">#</a>
+</h5>
+<pre><code>void main()
+
+{
+	printf(&quot;高亮？&quot;);      // 另起一行 首行缩进，书写即可
+
+}
+</code></pre>
+<h4 id="标题">
+  标题：
+  <a class="anchor" href="#%e6%a0%87%e9%a2%98">#</a>
+</h4>
+<p>在编辑文字的时候，在前面加上“#”号，可以将之后一行文字作为标题大字体显示，编辑中瞎按，手误敲出来的字符，结果却很有用呢。或许其他字符也有作用，不过这已经满足日常编辑所需，不做过多探究了。充实内容，往往是首要的。</p>
+<h5 id="利用disqus添加评论系统">
+  利用Disqus添加评论系统：
+  <a class="anchor" href="#%e5%88%a9%e7%94%a8disqus%e6%b7%bb%e5%8a%a0%e8%af%84%e8%ae%ba%e7%b3%bb%e7%bb%9f">#</a>
+</h5>
+<p>在此网站注册一个帐号，在设置中找见shortname，应该为自己设置。   然后在Pelicanconf.py这个配置文件中添加</p>
+<p>:::iidentifier</p>
+<p>DISQUS_SITENAME = “yours shortname”</p>
+<h4 id="贴图片">
+  贴图片：
+  <a class="anchor" href="#%e8%b4%b4%e5%9b%be%e7%89%87">#</a>
+</h4>
+<p>在国内找了一个Z4A图床，感觉不错。 注册完毕，上传好图片应用链接自动生成，直接诶复制粘贴即可。HTML、BBCode、Markdown的，另外分为完整图片，中等图片，缩略图三种不同尺寸的链接。感觉良心。另外，点击图片后跳转图床，可以查看原图片文件，更是舒心赏心悦目～  免费使用，极力推荐。只不过图片不能加入缩进后的“代码栏”。</p>
+<p><a href="http://z4a.net/image/7o4n9"><img src="http://z4a.net/images/2016/07/19/text.md.png" alt="text.md.png" /></a></p>
+<p>数学公式： $ $e^{i\pi} + 1 = 0$ $ $之间无空格</p>
+<p>$$e^{i\pi} + 1 = 0$$</p>
+<p>失败……插入插件失败。之后有需要时再查找原因。
+(不过这个图床已经废了。……默哀)</p>
+<h4 id="linux-嵌入式c編程">
+  Linux 嵌入式C編程
+  <a class="anchor" href="#linux-%e5%b5%8c%e5%85%a5%e5%bc%8fc%e7%b7%a8%e7%a8%8b">#</a>
+</h4>
+<p>Git 协助开发提交代码之类
+参考流程（复制于 &gt;https://github.com/numbbbbb/the-swift-programming-language-in-chinese）
+有些朋友可能不太清楚如何帮忙翻译，我这里写一个简单的流程，大家可以参考一下：
+首先<code>fork</code>我的项目
+把<code>fork</code>过去的项目也就是你的项目<code>clone</code>到你的本地
+在命令行运行<code>git branch develop</code>来创建一个新分支
+运行<code>git checkout develop</code>来切换到新分支
+运行<code>git remote add upstream https://github.com/numbbbbb/the-swift-programming-language-in-chinese.git 把我的库添加为远端库 运行</code>git remote update<code>更新 运行</code>git fetch upstream gh-pages<code>拉取我的库的更新到本地 运行</code>git rebase upstream/gh-pages<code>将我的更新合并到你的分支 这是一个初始化流程，只需要做一遍就行，之后请一直在develop分支进行修改。 如果修改过程中我的库有了更新，请重复6、7、8步。 修改之后，首先</code>push<code>到你的库，然后登录GitHub，在你的库的首页可以看到一个</code>pull request```按钮，点击它，填写一些说明信息，然后提交即可。</p>
+<h5 id="关于pelican这个文章写的完完全全了">
+  关于<code>Pelican</code>这个文章写的完完全全了：
+  <a class="anchor" href="#%e5%85%b3%e4%ba%8epelican%e8%bf%99%e4%b8%aa%e6%96%87%e7%ab%a0%e5%86%99%e7%9a%84%e5%ae%8c%e5%ae%8c%e5%85%a8%e5%85%a8%e4%ba%86">#</a>
+</h5>
+<pre><code>&gt;http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html
+</code></pre>
+<h4 id="vim">
+  Vim
+  <a class="anchor" href="#vim">#</a>
+</h4>
+<h5 id="vim中添加多行注释or删除">
+  Vim中添加多行注释or删除：
+  <a class="anchor" href="#vim%e4%b8%ad%e6%b7%bb%e5%8a%a0%e5%a4%9a%e8%a1%8c%e6%b3%a8%e9%87%8aor%e5%88%a0%e9%99%a4">#</a>
+</h5>
+<p>使用<code>Ctrl+v</code>进入VISUAL BLOCK状态 然后上下移动光标选择行数，输入<code>I</code>，改为INSERT(paste)状态，键入内容按下Esc结束，即可。  删除则为选中之后直接按删除功能键如：d、c皆可，即可删除所选一列</p>
+<h2 id="blog">
+  Blog
+  <a class="anchor" href="#blog">#</a>
+</h2>
+<h3 id="pelican-1">
+  Pelican
+  <a class="anchor" href="#pelican-1">#</a>
+</h3>
+<p>Pelican Static Site Generator, Powered by Python：Pelican是python语言写的静态网站生成器。因为之前一直弄不好Jekyll 犯不着掉在这一颗树上，所以搜到了此同类软件。</p>
+<p>网上的那些教程不知道为什么鲜有一次效仿成功的，都是各种问题。真心他们没有遇见过吗？因此我也不自己贴这个教程了，除非那一天弄懂了那些问题所在，否则不过张贴一些网上现有的示例而已，而且还是不能保证完全正确的示例，没有任何价值。</p>
+<pre tabindex="0"><code>Date: 2016-06-18 Title:The 2st Blog Tags: 2st,pelicanのはじて初体験 Slug: test2
+</code></pre><p>就像这样</p>
+<p>接下来将本地的更到Gite: 2016-06-18tHub，至此就算告一段落。未能解决的问题还有很多，换言之其实就是问题们还没着手去解决。</p>
+<p>例如，回车符怎么敲现在都不知道，一篇文章只能这么一条龙一直打下去。真是囧…。另外没法添加链接，旁边那个邮件的地址都还是别人的——这个主题的开发者。如果搞清这两处，估计就能不再去研究别的功能了，毕竟只是一个博客，能更看的过去就好。哈。</p>
+<p>另外，将用到的命令在此备份 make html———— make serve————</p>
+<p>output文件夹内： git init———— git add .———— git commit -m &lsquo;first commit&rsquo; ———— git remote add origin <a href="mailto:git@github.com">git@github.com</a>:IanVzs/IanVzs.github.io.git———— git push -u origin master</p>
+<p>此外刚刚发现编辑时首行空格开始则将此段红色高亮显示 就像这样 就像这样并不会… 只不过在刚开始。 不过应该是汉字缩进，并且上一行没有内容，会有高亮显示。貌似是为了方便写程序？或许程序可以用这样的方式来插入，而不需要用那个专用的高亮语句:::*er什么的。</p>
+<p>然而事实并不像以上那么顺利……上传依然错误频出 所以接下来是成功代码依次再排列 git init</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git add -A
+</span></span><span style="display:flex;"><span>git remote remove origin
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/IanVzs/IanVzs.github.io.git
+</span></span><span style="display:flex;"><span>git add -A
+</span></span><span style="display:flex;"><span>git push --set-upstream origin master -f
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git add -A
+</span></span><span style="display:flex;"><span>git remote remove origin
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/IanVzs/IanVzs.github.io.git
+</span></span><span style="display:flex;"><span>git add -A
+</span></span><span style="display:flex;"><span>git push --set-upstream origin master -f
+</span></span></code></pre></div><p>并且之前写在此处的更新文章也一直没法更新出来，所以将第二篇拆分了，分两个文件来上传，否则只看那个成功update 实在有不信任感觉，现在如果这篇文章还是无法更新，那真的是…… 如果能的话，看来一篇文章还有字数限制？ 应该没 按理，更新后的文件也不是一个文件了，我也换了文件名都不能更新其内容是在令人不解。</p>
+<p>现在呢，就感觉顺手多了，只需要 git init git add . git git commit -m “hia” git push &ndash;set-upstream -f 即可。</p>
+<p>现在，创建完新的 之后，官网有了详细的说明：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;# ianvzs.github.io&#34;</span> &gt;&gt; README.md
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git add README.md
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;first commit&#34;</span>
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/IanVzs/ianvzs.github.io.git
+</span></span><span style="display:flex;"><span>git push -u origin master
+</span></span></code></pre></div><p>简单明了。</p>
+<h3 id="hexo">
+  hexo
+  <a class="anchor" href="#hexo">#</a>
+</h3>
+<p>而之后因为其主题我选的不好，然后又觊觎<code>nodejs</code>，所以将<code>blog</code>使用<code>hexo</code>来写了。以下是使用教程了——
+title: Hello World</p>
+<hr>
+<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h3 id="quick-start">
+  Quick Start
+  <a class="anchor" href="#quick-start">#</a>
+</h3>
+<h4 id="create-a-new-post">
+  Create a new post
+  <a class="anchor" href="#create-a-new-post">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hexo new <span style="color:#e6db74">&#34;My New Post&#34;</span>
+</span></span></code></pre></div><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h4 id="run-server">
+  Run server
+  <a class="anchor" href="#run-server">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hexo server
+</span></span></code></pre></div><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h4 id="generate-static-files">
+  Generate static files
+  <a class="anchor" href="#generate-static-files">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hexo generate
+</span></span></code></pre></div><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h4 id="deploy-to-remote-sites">
+  Deploy to remote sites
+  <a class="anchor" href="#deploy-to-remote-sites">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hexo deploy
+</span></span></code></pre></div><p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+<h4 id="修改配置">
+  修改配置
+  <a class="anchor" href="#%e4%bf%ae%e6%94%b9%e9%85%8d%e7%bd%ae">#</a>
+</h4>
+<p>blog根目录下<code>_config.yml</code>, 以及themes下<code>_config.yml</code></p>
+<h5 id="连接github">
+  连接github:
+  <a class="anchor" href="#%e8%bf%9e%e6%8e%a5github">#</a>
+</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">git</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/*******/**.git</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branch</span>: <span style="color:#ae81ff">master</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install hexo-deploy-git --save
+</span></span></code></pre></div><h3 id="themes">
+  themes
+  <a class="anchor" href="#themes">#</a>
+</h3>
+<ul>
+<li>hueman主题的图片配置地址为: <code>/themes/hueman/source/css/images</code></li>
+<li>可在<code>themes/hueman/_config.yml</code>中进行修改各项图片配置</li>
+</ul>
+<h2 id="git">
+  Git
+  <a class="anchor" href="#git">#</a>
+</h2>
+<h3 id="git-版本切换">
+  git 版本切换
+  <a class="anchor" href="#git-%e7%89%88%e6%9c%ac%e5%88%87%e6%8d%a2">#</a>
+</h3>
+<p>将项目克隆之后，可通过</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ git tag   // 查看tag
+</span></span><span style="display:flex;"><span>&gt; v1
+</span></span><span style="display:flex;"><span>&gt; v2
+</span></span><span style="display:flex;"><span>&gt; v3
+</span></span><span style="display:flex;"><span>$ git show v1       //根据tag 查看版本号
+</span></span><span style="display:flex;"><span>&gt; tag v1
+</span></span><span style="display:flex;"><span>&gt; Tagger: user
+</span></span><span style="display:flex;"><span>&gt; Data: Fri May <span style="color:#ae81ff">23</span> 17:47:00 <span style="color:#ae81ff">2018</span> +0800
+</span></span><span style="display:flex;"><span>&gt;  <span style="color:#e6db74">&#39;为了部落&#39;</span>
+</span></span><span style="display:flex;"><span>&gt; commit 5b123b31h4bvb31
+</span></span><span style="display:flex;"><span>&gt; Aurhor user
+</span></span><span style="display:flex;"><span>&gt; 等
+</span></span><span style="display:flex;"><span>$ git reset --hard 5b123b31h4bvb31  // 根据版本号回退版本
+</span></span></code></pre></div><h2 id="部署到服务器">
+  部署到服务器
+  <a class="anchor" href="#%e9%83%a8%e7%bd%b2%e5%88%b0%e6%9c%8d%e5%8a%a1%e5%99%a8">#</a>
+</h2>
+<p>在部署到服务器的时候，发现有<code>‘node’: No such file or directory</code>的错误，解决办法是创建软连接：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ln -s /usr/bin/nodejs /usr/bin/node
+</span></span></code></pre></div><p>另外，直接拷过去的<code>blog</code>项目没法用<code>hexo</code>直接运行…
+解决办法是：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>// 并没有解决啊！！！！
+</span></span></code></pre></div><p>(⊙﹏⊙)，╮(╯-╰)╭其实是<code>npm</code>在服务器<code>apt</code>安装的版本太低了… 在官网下了最新版，然后再次通过新版<code>npm</code>安装<code>hexo</code>就可以直接用了。</p>
+<h2 id="2021-04-21">
+  2021-04-21
+  <a class="anchor" href="#2021-04-21">#</a>
+</h2>
+<p>emmmmm如今重新再次翻看，觉得o(∩∩)o&hellip;哈哈。
+这次找了个不错的模板，比之前用的没有分页强多了，而且还有了搜索功能。简直完美符合平时查阅的需求。</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#blog">Blog</a>
+      <ul>
+        <li><a href="#pelican-1">Pelican</a></li>
+        <li><a href="#hexo">hexo</a></li>
+        <li><a href="#quick-start">Quick Start</a></li>
+        <li><a href="#themes">themes</a></li>
+      </ul>
+    </li>
+    <li><a href="#git">Git</a>
+      <ul>
+        <li><a href="#git-版本切换">git 版本切换</a></li>
+      </ul>
+    </li>
+    <li><a href="#部署到服务器">部署到服务器</a></li>
+    <li><a href="#2021-04-21">2021-04-21</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

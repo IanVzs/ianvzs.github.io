@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="author:Ian
+Python GUI 💽 # PyQt # 官方说明文档：http://pyqt.sourceforge.net/Docs/PyQt4/index.html 照例，先贴网址： http://www.qaulau.com/books/PyQt4_Tutorial/index.html
+画界面 # #PyQt4使用designer.exe import os for root, dirs, files in os.walk(&#39;.&#39;): for file in files: if file.endswith(&#39;.ui&#39;): os.system(&#39;pyuic4 -o ui_%s.py %s&#39; % (file.rsplit(&#39;.&#39;, 1)[0], file)) elif file.endswith(&#39;.qrc&#39;): os.system(&#39;pyrcc4 -o %s_rc.py %s&#39; % (file.rsplit(&#39;.&#39;, 1)[0], file)) # 注：在Win中调用pyrcc4 可能无法识别该命令，即使添加到环境变量也不行，而是 #pyrcc.exe才能调用简直…… 窗口设置 # resize(8, 8) setWindowTitle(u&#39;标题&#39;) 获取图标 # def getIcon(filename): &quot;&quot;&quot; 获取图标 &quot;&quot;&quot; fileInfo = Qt.QFileInfo(filename) fileIcon = Qt.QFileIconProvider() icon = QtGui.QIcon(fileIcon.icon(fileInfo)) return icon 使用时： self.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="图形化界面 （Python Gui）" />
+<meta property="og:description" content="author:Ian
+Python GUI 💽 # PyQt # 官方说明文档：http://pyqt.sourceforge.net/Docs/PyQt4/index.html 照例，先贴网址： http://www.qaulau.com/books/PyQt4_Tutorial/index.html
+画界面 # #PyQt4使用designer.exe import os for root, dirs, files in os.walk(&#39;.&#39;): for file in files: if file.endswith(&#39;.ui&#39;): os.system(&#39;pyuic4 -o ui_%s.py %s&#39; % (file.rsplit(&#39;.&#39;, 1)[0], file)) elif file.endswith(&#39;.qrc&#39;): os.system(&#39;pyrcc4 -o %s_rc.py %s&#39; % (file.rsplit(&#39;.&#39;, 1)[0], file)) # 注：在Win中调用pyrcc4 可能无法识别该命令，即使添加到环境变量也不行，而是 #pyrcc.exe才能调用简直…… 窗口设置 # resize(8, 8) setWindowTitle(u&#39;标题&#39;) 获取图标 # def getIcon(filename): &quot;&quot;&quot; 获取图标 &quot;&quot;&quot; fileInfo = Qt.QFileInfo(filename) fileIcon = Qt.QFileIconProvider() icon = QtGui.QIcon(fileIcon.icon(fileInfo)) return icon 使用时： self." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/docs/programmer/gui/notespython/" /><meta property="article:section" content="docs" />
+
+
+
+<title>图形化界面 （Python Gui） | Ian&#39;s Blog</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.2f641214a44ca02c7ff7242d62be8f0bab1ce4f2b0fea0be2eb6f3a4d94533d2.js" integrity="sha256-L2QSFKRMoCx/9yQtYr6PC6sc5PKw/qC&#43;LrbzpNlFM9I=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Ian&#39;s Blog</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/programmer/" class="">程序员笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52f633cba5cf47818d8ec01e928396f2" class="toggle"  />
+    <label for="section-52f633cba5cf47818d8ec01e928396f2" class="flex justify-between">
+      <a role="button" class="">Base</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/pypi/" class="">PyPi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tipsofweb/" class="">Nginx高可用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/for_china/" class="">各个软件换源</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tipsofdebugers/" class="">tips Of Debuggers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/notesdjango/" class="">Django的建站的(｡･･)ﾉﾞ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tipsofvim/" class="">tip Of vim</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/editer/" class="">编辑器使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/noteoflinux/" class="">Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/tip_dgraph/" class="">Dgraph</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/noteoffmtdata/" class="">数据格式笔记</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd029da01a5cf373a5379dc078a74f2c" class="toggle"  />
+    <label for="section-cd029da01a5cf373a5379dc078a74f2c" class="flex justify-between">
+      <a role="button" class="">Game and Simulation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/game_and_simulation/blender/" class="">Blender</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/game_and_simulation/noteofue4/" class="">UE4 笔记</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-883e27361d38e16afb68faff3435ac0b" class="toggle"  />
+    <label for="section-883e27361d38e16afb68faff3435ac0b" class="flex justify-between">
+      <a role="button" class="">Ml</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/tensorflow/" class="">Tensorflow</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/opencv/" class="">OpenCV</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/paddle/" class="">Paddle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/ml/noteofmachinelearning/" class="">机器学习库</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e5360c5e7954906b897ed79085884b6" class="toggle" checked />
+    <label for="section-7e5360c5e7954906b897ed79085884b6" class="flex justify-between">
+      <a href="/docs/programmer/gui/" class="">Gui</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/pyinstaller/" class="">python打包</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/qt/" class="">Qt/PySide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/noteofvn_py/" class="">Vn.Py学习笔记（Python交易平台框架）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/gui/notespython/" class="active">图形化界面 （Python Gui）</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4446dd07527142b855f26d7cc8f0e617" class="toggle"  />
+    <label for="section-4446dd07527142b855f26d7cc8f0e617" class="flex justify-between">
+      <a role="button" class="">Database</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/database/dgraph/" class="">Dgraph使用小记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/database/noteofdocker/" class="">notes Of docker</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/database/noteofdbdata/" class="">db数据库</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-de7bfad1d124522974cdf8addfbb23f2" class="toggle"  />
+    <label for="section-de7bfad1d124522974cdf8addfbb23f2" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/net/tipsofgrpc/" class="">gRpc使用小记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/net/net/" class="">网络(Computer Network)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bf4e0d6f0b81f7b3ec08ed1fc66b874d" class="toggle"  />
+    <label for="section-bf4e0d6f0b81f7b3ec08ed1fc66b874d" class="flex justify-between">
+      <a role="button" class="">Langs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/noteofgoexp/" class="">Golang进阶笔记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/noteofgolang/" class="">Golang笔记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/tipsofmarkdown/" class="">tips Of markdown</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/notespython/" class="">Python笔记(notes of Python)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/notesjava/" class="">愉快的Java(happy to learn the fuck java)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d325c59fc6513e1b1e05a60b192d4973" class="toggle"  />
+    <label for="section-d325c59fc6513e1b1e05a60b192d4973" class="flex justify-between">
+      <a href="/docs/programmer/hardware/" class="">Hardware</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/android/" class="">Android</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/raspberrypi/" class="">Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/readme/" class="">Readme</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/hardware/screen/" class="">Screen</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-40d35e91afa620ff2e7bf6291cfb3e1d" class="toggle"  />
+    <label for="section-40d35e91afa620ff2e7bf6291cfb3e1d" class="flex justify-between">
+      <a href="/docs/programmer/software/" class="">Software</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/bash/" class="">Bash</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/freebsd/" class="">Freebsd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/gitbook/" class="">Gitbook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/markdown/" class="">Markdown</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/npm/" class="">Npm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/readme/" class="">Readme</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/software/vim/" class="">Vim</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/install_some/" class="">安装问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/demo_test_some/" class="">Demo Test项目中的一些东西</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/tipsofproblems/" class="">解决问题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/example/" class="">Example Site</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/table-of-contents/" class="">Table of Contents</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/table-of-contents/with-toc/" class="">With ToC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/table-of-contents/without-toc/" class="">Without ToC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Shortcodes</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/buttons/" class="">Buttons</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/columns/" class="">Columns</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/details/" class="">Details</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/expand/" class="">Expand</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/hints/" class="">Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d3fc1bf6d66cd84b896a0af9f40cb1d5" class="toggle"  />
+    <label for="section-d3fc1bf6d66cd84b896a0af9f40cb1d5" class="flex justify-between">
+      <a href="/docs/shortcodes/section/" class="">Section</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/section/first-page/" class="">First Page</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/section/second-page/" class="">Second Page</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcodes/tabs/" class="">Tabs</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>图形化界面 （Python Gui）</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#pyqt">PyQt</a></li>
+    <li><a href="#画界面">画界面</a>
+      <ul>
+        <li></li>
+        <li><a href="#定位布局">定位布局</a></li>
+        <li><a href="#qtablewidget">QTableWidget</a></li>
+        <li><a href="#以上--之后的设置字体底色之类用的的时候再说">以上。  之后的设置字体，底色，之类用的的时候再说。</a></li>
+        <li><a href="#列表内添加按钮">列表内添加按钮</a></li>
+        <li><a href="#qtablewidget-清除数据">QTableWidget 清除数据</a></li>
+        <li><a href="#信号槽传输额外参数">信号槽（传输额外参数）</a></li>
+        <li><a href="#一-使用lambda表达式">一： 使用lambda表达式</a></li>
+        <li><a href="#二-使用functools里的partial函数">二： 使用functools里的partial函数</a></li>
+        <li><a href="#heading"></a></li>
+      </ul>
+    </li>
+    <li><a href="#pyqt--echarts图表">PyQt + echarts图表</a></li>
+    <li><a href="#addwidget">addWidget</a>
+      <ul>
+        <li><a href="#小部件的方法">小部件的方法</a></li>
+        <li><a href="#qstring2string">QString2String</a></li>
+      </ul>
+    </li>
+    <li><a href="#qlineedit">QLineEdit</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><p>author:Ian</p>
+<h1 id="python-gui-">
+  Python GUI 💽
+  <a class="anchor" href="#python-gui-">#</a>
+</h1>
+<h2 id="pyqt">
+  PyQt
+  <a class="anchor" href="#pyqt">#</a>
+</h2>
+<p><img src="https://tse4-mm.cn.bing.net/th/id/OIP.J4_Nqrcc0x7slHHUFwKLSQHaI6?pid=ImgDet&amp;rs=1" alt="qt" title="tmp"/></p>
+<p>官方说明文档：<a href="http://pyqt.sourceforge.net/Docs/PyQt4/index.html">http://pyqt.sourceforge.net/Docs/PyQt4/index.html</a>
+照例，先贴网址： <a href="http://www.qaulau.com/books/PyQt4_Tutorial/index.html">http://www.qaulau.com/books/PyQt4_Tutorial/index.html</a></p>
+<h2 id="画界面">
+  画界面
+  <a class="anchor" href="#%e7%94%bb%e7%95%8c%e9%9d%a2">#</a>
+</h2>
+<pre><code>#PyQt4使用designer.exe
+import os 
+for root, dirs, files in os.walk('.'): 
+    for file in files: 
+        if file.endswith('.ui'): 
+            os.system('pyuic4 -o ui_%s.py %s' % (file.rsplit('.', 1)[0], file))
+        elif file.endswith('.qrc'): 
+            os.system('pyrcc4 -o %s_rc.py %s' % (file.rsplit('.', 1)[0], file))
+# 注：在Win中调用pyrcc4 可能无法识别该命令，即使添加到环境变量也不行，而是
+#pyrcc.exe才能调用简直……
+</code></pre>
+<h4 id="窗口设置">
+  窗口设置
+  <a class="anchor" href="#%e7%aa%97%e5%8f%a3%e8%ae%be%e7%bd%ae">#</a>
+</h4>
+<pre><code>resize(8, 8)
+setWindowTitle(u'标题')
+</code></pre>
+<h4 id="获取图标">
+  获取图标
+  <a class="anchor" href="#%e8%8e%b7%e5%8f%96%e5%9b%be%e6%a0%87">#</a>
+</h4>
+<pre><code>def getIcon(filename):
+&quot;&quot;&quot; 获取图标 &quot;&quot;&quot;
+    fileInfo = Qt.QFileInfo(filename) 
+    fileIcon = Qt.QFileIconProvider() 
+    icon = QtGui.QIcon(fileIcon.icon(fileInfo)) 
+    return icon  
+使用时：
+self.setWindowIcon(getIcon('../hi/app.ico'))
+</code></pre>
+<hr>
+<h5 id="dock">
+  Dock
+  <a class="anchor" href="#dock">#</a>
+</h5>
+<pre><code>widgetTestM, dockTestM = self.createDock(AllMarketMonitor, vtText.“dock标题”, QtCore.Qt.RightDockWidgetArea)
+# 方向有： `RightDockWidgetArea`,`BottomDockWidgetArea`,`LeftDockWidgetArea`
+# 创建dock窗口
+# 可利用
+self.tabifyDockWidget(dockMarketM, dockAllDataM)
+来合并同一个方向上的dock
+
+# 此下还没看… 
+dockTradeM.raise_()
+dockPositionM.raise_()
+
+# 连接组件之间的信号
+widgetPositionM.itemDoubleClicked.connect(widgetTradingW.closePosition)
+    
+# 保存默认设置
+self.saveWindowSettings('default')
+</code></pre>
+<p>其实现函数为：
+&ldquo;&ldquo;&ldquo;创建停靠组件&rdquo;&rdquo;&rdquo;</p>
+<pre><code>def createDock(self, widgetClass, widgetName, widgetArea):
+    widget = widgetClass(self.mainEngine, self.eventEngine) 
+    dock = QtGui.QDockWidget(widgetName)
+    dock.setWidget(widget)
+    dock.setObjectName(widgetName)
+    dock.setFeatures(dock.DockWidgetFloatable|dock.DockWidgetMovable)
+    self.addDockWidget(widgetArea, dock)
+    return widget, dock
+</code></pre>
+<blockquote>
+<p>再本质一点的东西为：</p>
+</blockquote>
+<pre><code>widget1 = Ha(self)
+dock = QtGui.QDockWidget('haha')
+dock.setObjectName('ha1')
+dock.setWidget(widget1)
+dock.setFeatures(dock.DockWidgetFloatable | dock.DockWidgetMovable)
+self.addDockWidget(QtCore.Qt.BottomDockWidgetArea, dock)
+</code></pre>
+<h4 id="动作">
+  动作
+  <a class="anchor" href="#%e5%8a%a8%e4%bd%9c">#</a>
+</h4>
+<pre><code>exit = QtGui.QAction(QtGui.QIcon('hello.ico'), 'exit', self)
+exit.setShortcut('Ctrl+Q')
+exit.setStatusTip('Exit application')
+# 图标、文字、快捷键、提示信息
+
+menubar = self.menuBar()
+file = menubar.addMenu('&amp;File')
+file.addAction(exit)
+# 创建目录和工具栏，将动作添加进去。工具栏同理
+</code></pre>
+<h3 id="定位布局">
+  定位布局
+  <a class="anchor" href="#%e5%ae%9a%e4%bd%8d%e5%b8%83%e5%b1%80">#</a>
+</h3>
+<h4 id="绝对定位">
+  绝对定位
+  <a class="anchor" href="#%e7%bb%9d%e5%af%b9%e5%ae%9a%e4%bd%8d">#</a>
+</h4>
+<pre><code>label1 = QtGui.QLabel(u'绝对定位', self)
+label1.move(15, 60)
+# 创建、移动到显示位置
+</code></pre>
+<h4 id="框布局-及-布局元素平均分布">
+  框布局 及 布局元素平均分布
+  <a class="anchor" href="#%e6%a1%86%e5%b8%83%e5%b1%80-%e5%8f%8a-%e5%b8%83%e5%b1%80%e5%85%83%e7%b4%a0%e5%b9%b3%e5%9d%87%e5%88%86%e5%b8%83">#</a>
+</h4>
+<pre><code>okButton = QtGui.QPushButton(&quot;OK&quot;)
+cancelButton = QtGui.QPushButton(&quot;Cancel&quot;)
+# 创建按钮
+
+hbox = QtGui.QHBoxLayout()
+hbox.addStretch(1)
+hbox.addWidget(okButton)        # 增加组件
+hbox.addWidget(cancelButton)
+# 创建水平栏
+hbox.addStretch()   # 平均分布
+
+vbox = QtGui.QVBoxLayout()
+vbox.addStretch(1)
+# 创建竖列
+
+vbox.addLayout(hbox)
+# 将水平栏插入竖列
+self.setLayout(vbox)     
+# 显示最终竖列
+</code></pre>
+<p>注意一下add时选择对类型就好了。</p>
+<h3 id="qtablewidget">
+  QTableWidget
+  <a class="anchor" href="#qtablewidget">#</a>
+</h3>
+<!-- raw HTML omitted -->
+<pre><code>    newItem = QTableWidgetItem(&amp;quot;松鼠&amp;quot;)
+    self.MyTable.setItem(0, 0, newItem)
+    
+    newItem = QTableWidgetItem(&amp;quot;10cm&amp;quot;)
+    self.MyTable.setItem(0, 1, newItem)
+    
+    newItem = QTableWidgetItem(&amp;quot;60g&amp;quot;)
+    self.MyTable.setItem(0, 2, newItem) 
+  
+    layout = QHBoxLayout()
+    layout.addWidget(self.MyTable)
+    self.setLayout(layout)    
+</code></pre>
+<p>if <strong>name</strong> == &lsquo;<strong>main</strong>&rsquo;:
+import sys
+app = QApplication(sys.argv)
+myWindow = MyDialog()
+myWindow.show()
+sys.exit(app.exec_())       <!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p>感谢<a href="view-source:blog.csdn.net/vah101/article/details/6215066">来源</a></p>
+<h3 id="以上--之后的设置字体底色之类用的的时候再说">
+  以上。  之后的设置字体，底色，之类用的的时候再说。
+  <a class="anchor" href="#%e4%bb%a5%e4%b8%8a--%e4%b9%8b%e5%90%8e%e7%9a%84%e8%ae%be%e7%bd%ae%e5%ad%97%e4%bd%93%e5%ba%95%e8%89%b2%e4%b9%8b%e7%b1%bb%e7%94%a8%e7%9a%84%e7%9a%84%e6%97%b6%e5%80%99%e5%86%8d%e8%af%b4">#</a>
+</h3>
+<p>其中：</p>
+<h5 id="合并单元格效果的实现">
+  合并单元格效果的实现：
+  <a class="anchor" href="#%e5%90%88%e5%b9%b6%e5%8d%95%e5%85%83%e6%a0%bc%e6%95%88%e6%9e%9c%e7%9a%84%e5%ae%9e%e7%8e%b0">#</a>
+</h5>
+<pre><code>self.MyTable.setSpan(0, 0, 3, 1) 
+# 其参数为： 要改变单元格的 1行数  2列数     要合并的 3行数  4列数
+</code></pre>
+<h5 id="表格表头的显示与隐藏">
+  表格表头的显示与隐藏
+  <a class="anchor" href="#%e8%a1%a8%e6%a0%bc%e8%a1%a8%e5%a4%b4%e7%9a%84%e6%98%be%e7%a4%ba%e4%b8%8e%e9%9a%90%e8%97%8f">#</a>
+</h5>
+<pre><code>self.MyTable.verticalHeader().setVisible(False)
+self.MyTable.horizontalHeader().setVisible(False)
+# 默认显示 且标号为： 1，2，3…
+</code></pre>
+<h4 id="空位填补">
+  空位填补
+  <a class="anchor" href="#%e7%a9%ba%e4%bd%8d%e5%a1%ab%e8%a1%a5">#</a>
+</h4>
+<pre><code>.addStretch()
+# 不过比较鸡肋，还是下面的调整窗口显示比例比较好玩
+</code></pre>
+<h5 id="调整各部分显示比例">
+  调整各部分显示比例
+  <a class="anchor" href="#%e8%b0%83%e6%95%b4%e5%90%84%e9%83%a8%e5%88%86%e6%98%be%e7%a4%ba%e6%af%94%e4%be%8b">#</a>
+</h5>
+<pre><code>QVBoxLayout*  layout = new QVBoxLayout;
+QPushButton*      btn = new QPushButton;
+QTableWidget*     tableWidget = new QTableWidget;   
+QHBoxLayout*     h_layout = new QHBoxLayout;
+layout.addWidget(btn);
+layout.addWidget(tableWidget);
+layout.addLayout(h_layout)
+layout-&gt;setStretchFactor(btn, 1);
+layout-&gt;setStretchFactor(tableWidget, 2);
+layout-&gt;setStretchFactor(h_layout, 2);
+</code></pre>
+<p>上面是C++  所以下面的是俺的Python：
+hbox1[i].addWidget(self.buttonBox[i])
+hbox1[i].addWidget(self.paramMonitor[i])<br>
+hbox1[i].addWidget(self.varMonitor[i])
+# 设置显示比例
+hbox1[i].setStretchFactor(self.buttonBox[i], 3)
+hbox1[i].setStretchFactor(self.paramMonitor[i], 3)
+hbox1[i].setStretchFactor(self.varMonitor[i], 4)</p>
+<h3 id="列表内添加按钮">
+  列表内添加按钮
+  <a class="anchor" href="#%e5%88%97%e8%a1%a8%e5%86%85%e6%b7%bb%e5%8a%a0%e6%8c%89%e9%92%ae">#</a>
+</h3>
+<!-- raw HTML omitted -->
+<p>就像以上显示的那样<a href="https://www.cnblogs.com/yuanlipu/p/7492260.html">来源</a></p>
+<h4 id="值得注意的是再排布的时候必须只有一个表格对其进行放置也就是说指挥它去哪儿的只能有一个人之前我为了测试两个hbox-对其进行排版简直">
+  值得注意的是，再排布的时候必须只有一个表格对其进行放置（也就是说指挥它去哪儿的只能有一个人），之前我为了测试，两个hbox 对其进行排版，简直……
+  <a class="anchor" href="#%e5%80%bc%e5%be%97%e6%b3%a8%e6%84%8f%e7%9a%84%e6%98%af%e5%86%8d%e6%8e%92%e5%b8%83%e7%9a%84%e6%97%b6%e5%80%99%e5%bf%85%e9%a1%bb%e5%8f%aa%e6%9c%89%e4%b8%80%e4%b8%aa%e8%a1%a8%e6%a0%bc%e5%af%b9%e5%85%b6%e8%bf%9b%e8%a1%8c%e6%94%be%e7%bd%ae%e4%b9%9f%e5%b0%b1%e6%98%af%e8%af%b4%e6%8c%87%e6%8c%a5%e5%ae%83%e5%8e%bb%e5%93%aa%e5%84%bf%e7%9a%84%e5%8f%aa%e8%83%bd%e6%9c%89%e4%b8%80%e4%b8%aa%e4%ba%ba%e4%b9%8b%e5%89%8d%e6%88%91%e4%b8%ba%e4%ba%86%e6%b5%8b%e8%af%95%e4%b8%a4%e4%b8%aahbox-%e5%af%b9%e5%85%b6%e8%bf%9b%e8%a1%8c%e6%8e%92%e7%89%88%e7%ae%80%e7%9b%b4">#</a>
+</h4>
+<pre><code>    labelSymbol = QtGui.QLabel(self.CtaEngine.strategyTickDict[self.name])
+    buttonInit[i] = QtGui.QPushButton(u'初始化')
+    buttonStart[i] = QtGui.QPushButton(u'启动')
+    buttonStop[i] = QtGui.QPushButton(u'停止')
+    buttonUpdate[i] = QtGui.QPushButton(u'更新参数')
+    buttonSave[i] = QtGui.QPushButton(u'保存参数')
+
+    buttonInit[i].clicked.connect(partial(self.init, i))
+    buttonStart[i].clicked.connect(partial(self.start, i))
+    buttonStop[i].clicked.connect(partial(self.stop, i))
+    buttonUpdate[i].clicked.connect(partial(self.updateParams,i))
+    buttonSave[i].clicked.connect(partial(self.saveParams, i))
+
+hbox1[i] = QtGui.QHBoxLayout()
+    ##参数设置显示
+    hbox2[i] = QtGui.QHBoxLayout()
+        #hbox1[i].addWidget(labelSymbol)
+        #hbox1[i].addWidget(buttonInit[i])
+        #hbox1[i].addWidget(buttonStart[i])
+        #hbox1[i].addWidget(buttonStop[i])
+        #hbox1[i].addWidget(buttonUpdate[i])
+        #hbox1[i].addWidget(buttonSave[i])
+
+    self.buttonBox[i].setCellWidget(0, 0, buttonInit[i])
+    self.buttonBox[i].setCellWidget(0, 1, buttonStart[i])
+    self.buttonBox[i].setCellWidget(0, 2, buttonStop[i])
+</code></pre>
+<hr>
+<hr>
+<hr>
+<h4 id="组件之间连接信号">
+  组件之间连接信号
+  <a class="anchor" href="#%e7%bb%84%e4%bb%b6%e4%b9%8b%e9%97%b4%e8%bf%9e%e6%8e%a5%e4%bf%a1%e5%8f%b7">#</a>
+</h4>
+<pre><code># classA(QtGui.QTableWidget):
+#   pass
+classA.itemDoubleClicked.connect(classB.actionFunction)
+# 这样单纯调用还是可以的，但是数据传输… 就得继续研究一下了。
+</code></pre>
+<h5 id="关闭事件退出提示">
+  关闭事件退出提示
+  <a class="anchor" href="#%e5%85%b3%e9%97%ad%e4%ba%8b%e4%bb%b6%e9%80%80%e5%87%ba%e6%8f%90%e7%a4%ba">#</a>
+</h5>
+<pre><code>def closeEvent(self, event):
+    reply = QtGui.QMessageBox.question(self, 'Message',&quot;Are you sure to quit?&quot;,
+
+        QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
+if reply == QtGui.QMessageBox.Yes:
+    event.accept()
+else:
+    event.ignore()
+</code></pre>
+<p>函数放置位置就是主窗口类下就好。</p>
+<h3 id="qtablewidget-清除数据">
+  QTableWidget 清除数据
+  <a class="anchor" href="#qtablewidget-%e6%b8%85%e9%99%a4%e6%95%b0%e6%8d%ae">#</a>
+</h3>
+<pre><code>def updateData(self, data): #（缩进没问题吧…🙏）
+        &quot;&quot;&quot;将数据更新到表格中&quot;&quot;&quot;
+    
+    if self.name == u'RiskAlarmWidget':
+        pass
+
+    if self.updateBeginAction:
+        data = self.updateBeginAction(data)
+        if not data:
+           return
+
+    if self.updateAction:
+        self.updateAction(data)
+    else:
+        if isinstance(data, unicode) and self.dataKey:
+            # 删除模式
+            key = data
+            if key in self.dataDict:
+                d = self.dataDict[key]
+                row = d[self.headerList[0]].row()
+                self.removeRow(row)
+                del self.dataDict[key]
+        else:
+            # 如果设置了dataKey，则采用存量更新模式
+            if self.InsertMode:
+                # 如果允许了排序功能，则插入数据前必须关闭，否则插入新的数据会变乱
+                if self._sorting:
+                    self.setSortingEnabled(False)
+
+                newRow = 0 if self.InsertTopRow else self.rowCount()
+                self.insertRow(newRow)
+
+                for n, header in enumerate(self.headerList):
+
+                    content = self.getContents(data, header)
+                    cellType = self.headerDict[header]['cellType']
+                    cell = cellType(content)
+            
+                    if self.font:
+                        cell.setFont(self.font)
+
+                    if self._saveData:            
+                        cell.data = data                
+
+                    self.setItem(newRow, n, cell)  
+    
+                # 重新打开排序
+                if self._sorting:
+                    self.setSortingEnabled(True)
+      
+            else:            
+                key = data.__getattribute__(self.dataKey)
+                if key in self.dataDict:
+                    # 已存在数据字典中，则更新相关单元格
+                    d = self.dataDict[key]
+                    for header in self.headerList:
+
+                        content = self.getContents(data, header)
+                        cell = d[header]
+                        cell.setContent(content)
+
+                        if self._saveData:            
+            # 如果设置了保存数据对象，则进行对象保存
+                            cell.data = data                    
+                else:
+                    # 如果允许了排序功能，则插入数据前必须关闭，
+        #否则插入新的数据会变乱
+                    if self._sorting:
+                        self.setSortingEnabled(False)
+                    # 不存在数据字典中，插入新行，创建此行单元格
+                    newRow = 0 if self.InsertTopRow else self.rowCount()
+                    self.insertRow(newRow)
+
+                    d = {}
+                    for n, header in enumerate(self.headerList):
+                    
+                        content = self.getContents(data, header)
+                        cellType = self.headerDict[header]['cellType']
+                        cell = cellType(content)
+                
+                        if self.font:
+                            cell.setFont(self.font)  
+            # 如果设置了特殊字体，则进行单元格设置
+                
+                        if self._saveData:            
+            # 如果设置了保存数据对象，则进行对象保存
+                            cell.data = data
+                    
+                        self.setItem(newRow, n, cell)
+                        d[header] = cell
+                    self.dataDict[key] = d
+    
+                    # 重新打开排序
+                    if self._sorting:
+                        self.setSortingEnabled(True)
+
+    if self.updateAfterAction:
+        self.updateAfterAction(data)            
+</code></pre>
+<p>插入后数据需要清理只需<code>.clearContentsText()</code>，这样是清理数据但保留表格，方便更新内容。<code>.clear()</code>则清理数据以及表格方便<!-- raw HTML omitted -->重新<!-- raw HTML omitted -->填入新的内容</p>
+<hr>
+<h4 id="调用windows程序">
+  调用Windows程序
+  <a class="anchor" href="#%e8%b0%83%e7%94%a8windows%e7%a8%8b%e5%ba%8f">#</a>
+</h4>
+<pre><code>import win32api
+    path = 'D:/.../dockerTrader/gateway/ctpGateway/CTP_connect.json'
+    win32api.ShellExecute(0, 'open', 'notepad.exe', path, '', 1)
+# 使用记事本打开此文件
+</code></pre>
+<hr>
+<h4 id="json">
+  Json
+  <a class="anchor" href="#json">#</a>
+</h4>
+<pre><code>with open('D:/.../dockerTrader/gateway/ctpGateway/CTP_connect.json', 'r') as f:
+setting = json.load(f)
+self.userID = str(setting['userID'])
+self.password = str(setting['password'])
+</code></pre>
+<hr>
+<hr>
+<h3 id="信号槽传输额外参数">
+  信号槽（传输额外参数）
+  <a class="anchor" href="#%e4%bf%a1%e5%8f%b7%e6%a7%bd%e4%bc%a0%e8%be%93%e9%a2%9d%e5%a4%96%e5%8f%82%e6%95%b0">#</a>
+</h3>
+<p>一般来说，比如一个按钮吧。 在链接点击信号与槽时<code>buttonInit[i].clicked.connect(partial(self.init, i))</code>就完事了。然而，当循环创建按钮，对应同样的槽函数，只是需要执行的变量有区别时，就需要传输额外的参数。
+这时，方法有二：</p>
+<p>环境：</p>
+<p>python2.7.8</p>
+<p>pyqt 4.11.1</p>
+<h3 id="一-使用lambda表达式">
+  一： 使用lambda表达式
+  <a class="anchor" href="#%e4%b8%80-%e4%bd%bf%e7%94%a8lambda%e8%a1%a8%e8%be%be%e5%bc%8f">#</a>
+</h3>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h3 id="二-使用functools里的partial函数">
+  二： 使用functools里的partial函数
+  <a class="anchor" href="#%e4%ba%8c-%e4%bd%bf%e7%94%a8functools%e9%87%8c%e7%9a%84partial%e5%87%bd%e6%95%b0">#</a>
+</h3>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>三：感谢<a href="http://blog.csdn.net/fengyu09/article/details/39498777">来源</a></p>
+<hr>
+<h3 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h3>
+<h2 id="pyqt--echarts图表">
+  PyQt + echarts图表
+  <a class="anchor" href="#pyqt--echarts%e5%9b%be%e8%a1%a8">#</a>
+</h2>
+<pre><code>echarts绘制图标会在本地保存一个`html`文件，所以使用`PyQt`将之作为一个网页页面加载即可：
+from PyQt4.QtWebKit import *
+from PyQt4.QtGui  import *
+from PyQt4.QtCore import * 
+from pyecharts import Kline, Page
+def creat_charts():
+    page = Page()
+    chart_init = {
+            &quot;width&quot;: 1600,
+            &quot;height&quot;: 900,
+        }
+    chart = Kline(&quot;K 线图&quot;, **chart_init)
+    chart.add(&quot;日K&quot;, [&quot;2017/7/{}&quot;.format(i + 1) for i in range(31)], v1)
+    page.add(chart)
+    return page
+creat_charts()_render()     # 生成`render.html`文件
+self.view = QWebView()
+self.create_charts().render()
+url = QUrl(&quot;render.html&quot;)   # 需要加载`QUrl`使用字符串转化
+self.view.load(url)
+</code></pre>
+<h2 id="addwidget">
+  addWidget
+  <a class="anchor" href="#addwidget">#</a>
+</h2>
+<p>在窗口布局的时候这玩意至关重要，因为要先创建一个框架，再往里面塞东西。而塞的方法就是<code>addWidget</code>。所以简单记录一下小年这一天经常用到的环套：</p>
+<pre><code>hbox = QtGui.QHBoxLayout()
+    vbox = QtGui.QVBoxLayout()
+可以通过`addWidget`来塞入`QtGui.QWidget`, `QtGui.QGroupBox`, 
+</code></pre>
+<p><code>QtGui.QTableWidget</code>  ,<code>QScrollArea</code>等
+还可以<code>addWidget</code>诸如<code>QtGui.QPushButton</code>, <code>QtGui.QLabel</code>,
+<code>QtGui.QComboBox</code>, <code>QtGui.QLineEdit</code>等小部件</p>
+<pre><code>`hbox`和`vbox`可以通过`addLayout`互相添加（这两个是 框架，即页面上的“骨头”。来摆设“肌肉”-&gt;“Widget”、&quot;Box&quot;等的）
+当然最后要显示谁，需要`self.setLayout(hbox)` 而支持`setLayout`少不了有
+</code></pre>
+<p><code>QWidget</code>,<code>QScrollArea</code>, 所以它们好像能够无限互相套下去…</p>
+<h3 id="小部件的方法">
+  小部件的方法
+  <a class="anchor" href="#%e5%b0%8f%e9%83%a8%e4%bb%b6%e7%9a%84%e6%96%b9%e6%b3%95">#</a>
+</h3>
+<p>其实哪些方法也不用记…打开<code>QtDesigner</code>直接搜索拖拽，然后看右边的清单就行了，但这几个还是记录下来吧，在网上找太累了~</p>
+<p><code>QtGui.QComboBox</code>: <code>addItems</code>, &lsquo;&lsquo;&lsquo;addItem<code>, </code>currentText<code> </code>QtGui.QSpinBox<code>: </code>setValue`,</p>
+<h3 id="qstring2string">
+  QString2String
+  <a class="anchor" href="#qstring2string">#</a>
+</h3>
+<pre><code>def QString2PyString(self, qStr):   
+    #QString，如果内容是中文，则直接使用会有问题，要转换成 python
+    #string
+    return unicode(qStr.toUtf8(), 'utf-8', 'ignore')
+</code></pre>
+<h2 id="qlineedit">
+  QLineEdit
+  <a class="anchor" href="#qlineedit">#</a>
+</h2>
+<p>之所以放这么后面是因为我觉得这东西没什么好说的，也就是一个输入框嘛，但因为出现在后面所以说是现在发现了其中有趣的东西。那就是最近在做输入密码的时候想要限制，但在程序中去判断显然并不是什么有意思的事情。然后想起来输入的时候可以直接限制住啊。于是采用了<code>textChanged</code>去<code>connect</code>一个函数，来动态监测输入。但在调试中打开错了窗口所以以为没有用就找了其他的方法。那就是在初始化的时候直接卡死，结果没有找到设置长度的.set***但找到了现用的<code>setValidator</code>其配合正则表达式的食用方法如下：</p>
+<pre><code>import re
+    a = QtCore.QRegExp(&quot;[A-Za-z]{0,5}[1-9][0-9]{0,5}&quot;)
+    a = QtCore.QRegExp(&quot;[a-zA-Z0-9]{0,12}$&quot;)
+    self.txtPasswd.setValidator(QtGui.QRegExpValidator(a))
+# emm,很显然，把a替换成limitRule就要顺眼一些了。
+</code></pre>
+<p>不过<!-- raw HTML omitted -->值得注意的是：<!-- raw HTML omitted -->如果用<code>setText</code>将其它字符写进这个编辑小框框中的话，那么这个框框的规则就会被打破然后随便写。但要是<code>setText</code>的内容没有超出所规定的形式之外的话，那么规则照旧，依然执行。</p>
+<h1 id="pyqtgraph">
+  PyQtGraph:
+  <a class="anchor" href="#pyqtgraph">#</a>
+</h1>
+<p><a href="http://www.pyqtgraph.org/">Link</a></p>
+<pre><code>import pyqtgraph.examples  
+pyqtgraph.examples.run()  
+</code></pre>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#pyqt">PyQt</a></li>
+    <li><a href="#画界面">画界面</a>
+      <ul>
+        <li></li>
+        <li><a href="#定位布局">定位布局</a></li>
+        <li><a href="#qtablewidget">QTableWidget</a></li>
+        <li><a href="#以上--之后的设置字体底色之类用的的时候再说">以上。  之后的设置字体，底色，之类用的的时候再说。</a></li>
+        <li><a href="#列表内添加按钮">列表内添加按钮</a></li>
+        <li><a href="#qtablewidget-清除数据">QTableWidget 清除数据</a></li>
+        <li><a href="#信号槽传输额外参数">信号槽（传输额外参数）</a></li>
+        <li><a href="#一-使用lambda表达式">一： 使用lambda表达式</a></li>
+        <li><a href="#二-使用functools里的partial函数">二： 使用functools里的partial函数</a></li>
+        <li><a href="#heading"></a></li>
+      </ul>
+    </li>
+    <li><a href="#pyqt--echarts图表">PyQt + echarts图表</a></li>
+    <li><a href="#addwidget">addWidget</a>
+      <ul>
+        <li><a href="#小部件的方法">小部件的方法</a></li>
+        <li><a href="#qstring2string">QString2String</a></li>
+      </ul>
+    </li>
+    <li><a href="#qlineedit">QLineEdit</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

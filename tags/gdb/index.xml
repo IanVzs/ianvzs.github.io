@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gdb on Ian&#39;s Blog</title>
+    <link>http://example.org/tags/gdb/</link>
+    <description>Recent content in gdb on Ian&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 10 Jan 2019 12:21:12 +0000</lastBuildDate><atom:link href="http://example.org/tags/gdb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tips Of Debuggers</title>
+      <link>http://example.org/docs/programmer/base/tipsofdebugers/</link>
+      <pubDate>Thu, 10 Jan 2019 12:21:12 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/base/tipsofdebugers/</guid>
+      <description>Clang &amp;amp;&amp;amp; lldb # 听说clang+lldb &amp;gt;= gcc + gdb, 所以一试:
+lldb基本命令 # 与GDB相同
+break (b) - 设置断点，也就是程序暂停的地方 run (r) - 启动目标程序，如果遇到断点则暂停 step (s) - 进入下一条指令中的函数内部 backtrace (bt) - 显示当前的有效函数 frame (f) - 默认显示当前栈的内容，可以通过 frame arg 进入特定的 frame（用作输出本地变量） next (n) - 运行当前箭头指向行 continue (c) - 继续运行程序直到遇到断点。 clang hello.c -g -o hello lldb hello # lldb b main run n p str 还有颜色 😂 可视效果确实提高了不少 而且这四个工具可以混用,也蛮好.
+GDB # First and foremost, you will need to compile your program with the flag &amp;ldquo;-g&amp;rdquo; (for debug) to run it via GDB.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ian&#39;s Blog</title>
+    <link>http://example.org/docs/programmer/software/</link>
+    <description>Recent content on Ian&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://example.org/docs/programmer/software/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://example.org/docs/programmer/software/bash/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/software/bash/</guid>
+      <description> Bash # Auther: Ian
+自动补全 # linux中使用bash_completion工具进行自动不全，在某些发行版或者版本中make或者git没有Tab自动补全，这时在Github上找一个bash_completion文件放在相应位置就可以了。
+sudo cp bash_completion /usr/share/bash-completion/bash_completion source /usr/share/bash-completion/bash_completion </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/docs/programmer/software/freebsd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/software/freebsd/</guid>
+      <description>FreeBSD # 桌面 # 换源 pkg install xorg xfce echo &amp;lsquo;dbus_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf echo &amp;ldquo;/usr/local/etc/xdg/xfce4/xinitrc&amp;rdquo; &amp;gt; ~/.xinitrc startx 登录界面 # pkg install slim slim-themes echo &amp;lsquo;slim_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf vbox(没测试) # pkg install virtualbox-ose-additions 向/etc/rc.conf写入 vboxguest_enable=&amp;#34;YES&amp;#34; vboxservice_enable=&amp;#34;YES&amp;#34; 仅供参考看这里 因为vbox显卡太弱安装了vmware后就一直没用回过vbox,我还没测试过
+vmware # pkg install open-vm-tools xf86-video-vmware xf86-input-vmmouse 继续向/etc/rc.conf中写入 hald_enable=&amp;#34;YES&amp;#34; moused_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmblock_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmhgfs_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmmemctl_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmxnet_enable=&amp;#34;YES&amp;#34; # vmware_guest_enable=&amp;#34;YES&amp;#34; 下面注释掉的是因为在测试中如果打开的话会有各种问题&amp;hellip;.尤其鼠标 其他可见这里参考 =&amp;gt; 该Blog仅供参考, 这里面的东西很多都是有问题的.
+换源 # mkdir -p /usr/local/etc/pkg/repos vim /usr/local/etc/pkg/repos/bjtu.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/docs/programmer/software/gitbook/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/software/gitbook/</guid>
+      <description>Gitbook # Author: Ian
+安装 # 官方文档 Github Gitbook 打造的 Gitbook 说明文档 使用npm进行安装, 安装npm (v4.0.0 and above is recommended) npm install gitbook-cli -g 需要sudo权限 实际在执行gitbook -V后才算是安装完成 问题 # TypeError: cb.apply is not a function # npm 安装软件不出点儿问题貌似都不是很合适, 该问题代码级问题是因为在适配某些可能本机上并没有安装的npm版本时写了bug，导致执行出错.
+所以注释掉相关代码即可，或者直接删除。删除的好处是不会因为编辑器的原因触发npm的某些缩进问题。
+62. // fs.stat = statFix(fs.stat) 63. // fs.fstat = statFix(fs.fstat) 64. // fs.lstat = statFix(fs.lstat) 固然可以通过安装相匹配版本进行适配，不过&amp;hellip;Ian怕导致本机上的hexo再出现版本不兼容的问题。 使用 # 功能 示例 个人使用习惯(Ian) 新建book gitbook init gitbook init gitbooks/Architecture 编译和运行服务 gitbook serve 编译 gitbook serve pdf # 参考自 码谱</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/docs/programmer/software/markdown/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/software/markdown/</guid>
+      <description> Markdown # 文本字体速查表 # 参考自: csdn 王大雄
+高亮 # 1. 使用&amp;#34;`&amp;#34;双引, eg: `{要高亮的文本}`; 2. 使用&amp;#34;```&amp;#34; 跨行, eg:```\n{要高亮的文本}\n```; 3. HTML &amp;lt;mark&amp;gt;双引, eg: &amp;lt;mark&amp;gt;{要高亮的文本}&amp;lt;mark&amp;gt; 要高亮的文本 见下 要高亮的文本 要高亮的文本 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/docs/programmer/software/npm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/software/npm/</guid>
+      <description>npm # 树莓派 # 官网下载 树莓派4b 选择ARMv8之前的树莓派型号选择ARMv7 配置PATH 向/usr/local/bin/下建立node软链 export PATH=&amp;#34;~/node-v16.14.0-linux-arm64/bin:$PATH&amp;#34; #sudo ln -s ~/node-v16.14.0-linux-arm64/bin/node /usr/bin/node Windows下wsl2 安装 npm &amp;amp;&amp;amp; nodejs # 摘抄自微软说明文档
+安装nvm (Node 版本管理器) 国内网可能有问题, 下载下保存直接bash install.sh就可安装. curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash command -v nvm验证是否安装成功,它会自行添加.bashrc需重启bash nvm ls查看Node版本 nvm install --lts即可安装lts版, nvm install node安装最新版 会安装这么多东西 -&amp;gt; v16.13.2 default -&amp;gt; lts/* (-&amp;gt; v16.13.2) iojs -&amp;gt; N/A (default) unstable -&amp;gt; N/A (default) node -&amp;gt; stable (-&amp;gt; v16.13.2) (default) stable -&amp;gt; 16.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/docs/programmer/software/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/software/readme/</guid>
+      <description>软件篇 # 主要记录一些工具、软件的Initialization，或者实用插件的安装等问题</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/docs/programmer/software/vim/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/software/vim/</guid>
+      <description>&lt;h1 id=&#34;vim-使用&#34;&gt;
+  Vim 使用
+  &lt;a class=&#34;anchor&#34; href=&#34;#vim-%e4%bd%bf%e7%94%a8&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Auther: Ian&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.vim.org/images/vim_header.gif&#34; alt=&#34;vim&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;注释&#34;&gt;
+  注释
+  &lt;a class=&#34;anchor&#34; href=&#34;#%e6%b3%a8%e9%87%8a&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    # &lt;span style=&#34;color:#a6e22e&#34;&gt;注释&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;， &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;s&lt;span style=&#34;color:#e6db74&#34;&gt;/^/&lt;/span&gt;#/&lt;span style=&#34;color:#a6e22e&#34;&gt;g&lt;/span&gt;   &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    ---&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    # &lt;span style=&#34;color:#a6e22e&#34;&gt;取消注释&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;， &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;s&lt;span style=&#34;color:#e6db74&#34;&gt;/^#/&lt;/span&gt;/&lt;span style=&#34;color:#a6e22e&#34;&gt;g&lt;/span&gt;     &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其实 是&lt;code&gt;vim&lt;/code&gt;中的 &lt;code&gt;:s&lt;/code&gt;替换命令… 下方解释&lt;/p&gt;
+&lt;p&gt;或者，使用列编辑的模式:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;v、选择区域、ctrl q置行首、I插入#、Esc应用到全列
+ctrl v、I、#、Esc
+因为有的ctrl q或者ctrl v 不能用……
+
+取消，即使用上述方法选中行首，删除第一个字节即可了
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;替换&#34;&gt;
+  替换
+  &lt;a class=&#34;anchor&#34; href=&#34;#%e6%9b%bf%e6%8d%a2&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    :&lt;span style=&#34;color:#a6e22e&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/oldWords/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;newWords&lt;/span&gt;/&lt;span style=&#34;color:#a6e22e&#34;&gt;g&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;g : 代表当前光标所在行。&lt;/p&gt;
+&lt;h3 id=&#34;由此可知&#34;&gt;
+  由此可知:
+  &lt;a class=&#34;anchor&#34; href=&#34;#%e7%94%b1%e6%ad%a4%e5%8f%af%e7%9f%a5&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;^&lt;/code&gt;表行首标识符。 &lt;code&gt;/^/&lt;/code&gt;表示行首的空字符。   而取消注释中的&lt;code&gt;/^#/&lt;/code&gt;即表示行首的&lt;code&gt;#&lt;/code&gt;，被&lt;code&gt;//&lt;/code&gt;空字符所替换。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;查找高亮&#34;&gt;
+  查找高亮
+  &lt;a class=&#34;anchor&#34; href=&#34;#%e6%9f%a5%e6%89%be%e9%ab%98%e4%ba%ae&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;hlsearch&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;nohlsearch&lt;/span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;分屏&#34;&gt;
+  分屏
+  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%88%86%e5%b1%8f&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;实现&#34;&gt;
+  实现
+  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%ae%9e%e7%8e%b0&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;在外部使用&lt;code&gt;-o&lt;/code&gt; or &lt;code&gt;-O&lt;/code&gt;参数&lt;/li&gt;
+&lt;li&gt;内部&lt;code&gt;split&lt;/code&gt; or &lt;code&gt;vsplit&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;操作&#34;&gt;
+  操作
+  &lt;a class=&#34;anchor&#34; href=&#34;#%e6%93%8d%e4%bd%9c&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;移动光标 &lt;code&gt;Ctrl + w&lt;/code&gt; hjkl&lt;/li&gt;
+&lt;li&gt;移动分区&lt;code&gt;Ctrl + w&lt;/code&gt; HJKL&lt;/li&gt;
+&lt;li&gt;统一高度&lt;code&gt;Ctrl + w&lt;/code&gt;  =&lt;/li&gt;
+&lt;li&gt;改变高度&lt;code&gt;Ctrl + w&lt;/code&gt;  +-&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;heading&#34;&gt;
+  
+  &lt;a class=&#34;anchor&#34; href=&#34;#heading&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

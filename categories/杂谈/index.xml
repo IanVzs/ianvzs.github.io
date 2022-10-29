@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>杂谈 on Ian&#39;s Blog</title>
+    <link>http://example.org/categories/%E6%9D%82%E8%B0%88/</link>
+    <description>Recent content in 杂谈 on Ian&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Oct 2016 16:58:56 +0000</lastBuildDate><atom:link href="http://example.org/categories/%E6%9D%82%E8%B0%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>编辑器使用</title>
+      <link>http://example.org/docs/programmer/base/editer/</link>
+      <pubDate>Sat, 29 Oct 2016 16:58:56 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/base/editer/</guid>
+      <description>Vim # vim 查看日志中文乱码(2021) # .bash_profile # export LC_ALL=en_US.utf-8 .vimrc # set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 set termencoding=utf-8 set encoding=utf-8 双管齐下, 一个解决系统配置, 一个解决vim配置
+中文乱码问题(2018) # 在.bash_profile中增加
+export LANG=zh_CN.utf8 export LC_ALL=zh_CN.utf8 即可增加中文支持。 不过，还是
+export LANG=en_US.utf8 export LC_ALL=en_US.utf8 比较香，因为中文字体很难看… ^_^: 2019年5月5日19点46分
+vscode vs code # venv # Python # Command Palette...(Ctrl+Shift+p)
+&amp;gt;Python: Select Interpreter 然后选择就好了.
+当然不会那么安逸(.vscode/launch.json) 2022-01-18 11：34
+.vscode/launch.json配置(图形化都是骗人的) # { // Use IntelliSense to learn about possible attributes. // Hover to view descriptions of existing attributes.</description>
+    </item>
+    
+  </channel>
+</rss>

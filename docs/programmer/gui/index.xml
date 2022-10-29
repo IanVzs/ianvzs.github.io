@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ian&#39;s Blog</title>
+    <link>http://example.org/docs/programmer/gui/</link>
+    <description>Recent content on Ian&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 18 Mar 2022 18:15:14 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/gui/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python打包</title>
+      <link>http://example.org/docs/programmer/gui/pyinstaller/</link>
+      <pubDate>Fri, 18 Mar 2022 18:15:14 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/gui/pyinstaller/</guid>
+      <description> 打包 # pyinstaller
+pip install pyinstaller pyinstaller /path/to/yourscript.py pyinstaller -key yourpasswd -F /path/to/yourscript.py 解包 # 解包工具 # pyinstxtractor.py
+hex编辑器 # 010Editor 下载地址
+步骤 # 将pyinstxtractor.py与exe放置在一个文件夹内，打开cmd，输入下列指令生成一个文件夹
+python pyinstxtractor.py xxx.exe 使用010Editor打开文件夹中的main和struct，将struct中E3前面的字节复制粘贴到010Editor的E3前 修改main文件后缀为main.pyc 使用在线工具https://tool.lu/pyc/ 将main.pyc反编译为py文件
+应对增加key之后的解包 # 暂无
+安装程序 # 先将程序打包exe(以多文件模式, 但文件运行起来每次都需要解压再运行很慢，大文件的话多次运行还会挤压C盘空间) 将打包好的目录压缩打包zip 编写本质为mv lnk的脚本 把脚本打包成exe 执行脚本exe 具体代码可以看这里 </description>
+    </item>
+    
+    <item>
+      <title>Qt/PySide</title>
+      <link>http://example.org/docs/programmer/gui/qt/</link>
+      <pubDate>Tue, 18 Jan 2022 14:15:23 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/gui/qt/</guid>
+      <description>绘制界面和使用 # 安装Qt本体后可以使用Design绘制图形化界面.而后保存为xxx.ui文件.
+转换为py # 注意版本 pyside6-uic xxx.ui -o ui_xxx.py 不过信号槽就不要在Design中去标了, 放在py中手动创建和管理目前看来更为直观方便.</description>
+    </item>
+    
+    <item>
+      <title>Vn.Py学习笔记（Python交易平台框架）</title>
+      <link>http://example.org/docs/programmer/gui/noteofvn_py/</link>
+      <pubDate>Tue, 15 May 2018 10:13:48 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/gui/noteofvn_py/</guid>
+      <description>author: Ian
+Vn.Py笔记 ✏📔 # # 一个开源Python交易软件，主使用CTP协议。当然，还有其他协议了其源项目在http://www.vnpy.org/ 初期笔记 # 报单交易过程中， CTP使用BrokerID 从业务层面完全隔离不同经纪公司的交易、风控及结算用户的接入。 BrokerID具体取值咨询开户的经纪公司。 CTP中 UserID为操作员代码，InversterID为投资者代码； 投资者自己下单两者同为投资者代码
+CTP-API中，OrderRef和OrderAction 前者为CTP后台提供给客户端标识一笔报 单的字段，从客户端可通过（FrontID、SessionID、OrderRef）唯一确定一笔报 单；；；后者与OrderRef功能相似，提供给客户端来标识一笔撤单。 前者的数据类型为字符数组，必须为阿拉伯数字字符。 OrderRef（OrderActionRef）取值必须保证在同一会话内发送的报单 OrderRef（OrderActionRef）值大于之前的最大值，开发多线程客户端尤为需要 注意。 CTP-API库：
+error.dtd\error.xml 错误定义文件 ---- ThostFrfcMdApi.h 交易接口类定义文件 ——— ThostFtfcUserApiDataType.h 类型定义文件 ------ thostmduserapi.lib,thostmduserpi.dll 行情接口库文件 ----- thosttraderapi.lib,thosttraderapi.dll交易接口库文件 ----- 交易和行情接口类定义文件都包含API 和 SPI类定义，客户端使用API向CTP后台 发送请求，CTP后台则使用SPI向客户端回传响应及回报 行情Demo开发： 1.将API文件复制到工程目录；并将所有的头文件和静态、动态库连链接库 并将文件导入到项目工程中。 先继承行情接口类CThostFtdcMdspi，并实现需要实现的虚函数。 OnFrontConnectde、OnFrontDisconnected、OnPspUserLogin、 OnRspSubMarketDAta /API工作流程***/
+API压缩包——API含常量对应字符、类型定义、操作系统编译定义、回调函数（MdSpi）（柜台向用户端发送信息后被系统自动调用的函数）、主动函数（MdApi）（向柜台发送各种请求和指令）
+API工作流程： 创建MdSpi对象（回掉函数），调用MdApi类，以Create开头的静态方法，创建MdApi对象（主动函数），注册MdSpi对象指针，行情柜台前置机地址，调用MdApi对象Init方法初始化连接前置机，连接成功会通过OnFrontConnected回调通知用户，用户获得连接成功通知后，调MdApi的ReqUserLogin登陆，登陆后MdSpi的OnRsqUserLogin通知用户 &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-到此登陆完成&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;
+MdApi：（行情相关） 使用MdApi对象的SubscribeMarketData方法，传入参数为想要订阅的“合约 代码”，订阅成功当合约有新行情通过MdApi的OnRtnDepthMarketData回调通知 用户 &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-至此订阅完成&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash; 当用户的某次请求发生错误时，会通过OnRspError通知用户 MdApi也含有退订合约、登出功能。 而一般退出程序则直接杀进程（不太安全便是）
+TraderApi：（交易相关） 不同于以上的有 注册TraderSpi对象的指针后需要调用TraderApi对象的 SubscribePrivateTopic和SubscribePublicTopic方法去选择公开和私有数据流的重 传方法 对于期货柜台，每一日第一次登陆需要先查询前一日的结算单，等待查询 结果返回，确认，才可进行后续操作（CTP、恒生UFT），证券（LTS）无此要求 上一步完成后，用户可以调用ReqQryInstrument的方法查询柜台上所有可 以交易的合约信息（包括代码、中文名、涨跌停、最小价位变动、合约乘数等大 量细节），一般是在这里获得合约信息列表后，再去MdApi中订阅合约；经常有 人问为什么在MdApi中找不到查询可供订阅的合约代码的函数，这里尤其要注 意，必须通过TraderApi来获取 当用户报单、成交状态发生变化时，TraderApi会自动通过OnRtnOrder、 OnRtnTrade通知，无需额外订阅 /封装API****/ 封装后API的动作： 主动函数： 调用封装API主动函数，传入Python变量作为参数—&amp;gt;封装API将Python变量转换成C++变量—&amp;gt;API调用原生API主动函数传入C++变量作为参数 回掉函数： 交易柜台通过原生API传入参数为C++变量-&amp;gt;封装API将C++变量转换为Python变量-&amp;gt;封装API调用封装后的回调函数想Python程序中推送数</description>
+    </item>
+    
+    <item>
+      <title>图形化界面 （Python Gui）</title>
+      <link>http://example.org/docs/programmer/gui/notespython/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/gui/notespython/</guid>
+      <description>author:Ian
+Python GUI 💽 # PyQt # 官方说明文档：http://pyqt.sourceforge.net/Docs/PyQt4/index.html 照例，先贴网址： http://www.qaulau.com/books/PyQt4_Tutorial/index.html
+画界面 # #PyQt4使用designer.exe import os for root, dirs, files in os.walk(&#39;.&#39;): for file in files: if file.endswith(&#39;.ui&#39;): os.system(&#39;pyuic4 -o ui_%s.py %s&#39; % (file.rsplit(&#39;.&#39;, 1)[0], file)) elif file.endswith(&#39;.qrc&#39;): os.system(&#39;pyrcc4 -o %s_rc.py %s&#39; % (file.rsplit(&#39;.&#39;, 1)[0], file)) # 注：在Win中调用pyrcc4 可能无法识别该命令，即使添加到环境变量也不行，而是 #pyrcc.exe才能调用简直…… 窗口设置 # resize(8, 8) setWindowTitle(u&#39;标题&#39;) 获取图标 # def getIcon(filename): &amp;quot;&amp;quot;&amp;quot; 获取图标 &amp;quot;&amp;quot;&amp;quot; fileInfo = Qt.QFileInfo(filename) fileIcon = Qt.QFileIconProvider() icon = QtGui.QIcon(fileIcon.icon(fileInfo)) return icon 使用时： self.</description>
+    </item>
+    
+  </channel>
+</rss>

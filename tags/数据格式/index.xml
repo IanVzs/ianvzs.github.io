@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据格式 on Ian&#39;s Blog</title>
+    <link>http://example.org/tags/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/</link>
+    <description>Recent content in 数据格式 on Ian&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://example.org/tags/%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据格式笔记</title>
+      <link>http://example.org/docs/programmer/base/noteoffmtdata/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/base/noteoffmtdata/</guid>
+      <description>单向链表实现和反转 # # 单向链表实现和反转 &amp;#34;&amp;#34;&amp;#34; # 当前值, 下一个值 # 循环 # 将当前值赋值为下一个的值, 下一个节点值为当前节点值 # 当前节点next赋 &amp;#34;&amp;#34;&amp;#34; class A: def __init__(self, v): self.v = v self.next = None class LA: def __init__(self): self.head = None def add(self, v): node = A(v) node.next = self.head self.head = node def print(self): cur = self.head while cur and cur.v != None: print(f&amp;#34;linkdata node v: {cur.v}&amp;#34;) cur = cur.next def revert(self, node: A=None, head=None): if not head: cache = self.</description>
+    </item>
+    
+  </channel>
+</rss>
