@@ -402,14 +402,11 @@ db.runoob.insert({&amp;quot;name&amp;quot;:&amp;quot;教程&amp;quot;}) #插入�
       <pubDate>Sat, 29 Oct 2016 16:58:56 +0000</pubDate>
       
       <guid>http://example.org/docs/programmer/base/editer/</guid>
-      <description>Vim # vim 查看日志中文乱码(2021) # .bash_profile # export LC_ALL=en_US.utf-8 .vimrc # set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 set termencoding=utf-8 set encoding=utf-8 双管齐下, 一个解决系统配置, 一个解决vim配置
+      <description>Jupyter-Note # 局域网访问 # 方法1: 使用jupyter notebook --generate-config生成配置文件 修改配置文件中c.NotebookApp.allow_root(因为安卓用的Termux跑的,所以伪root),c.NotebookApp.ip这样就能通过局域网和Token访问了 如果想要使用密码(长期使用局域网的话),可以使用from notebook.auth import passwd;passwd()生成加密密码,配置到c.NotebookApp.password 方法2: 如果只是临时的,那传入运行命令肯定最好了,如下可以使用如下格式: jupyter-notebook --allow-root --ip=0.0.0.0 自动补全 # 安装插件: pip install jupyter_contrib_nbextensions -i https://pypi.tuna.tsinghua.edu.cn/simple(此命令包含代理) 到Nbextensions中将Disable改为Enable 开始 Vim # vim 查看日志中文乱码(2021) # .bash_profile # export LC_ALL=en_US.utf-8 .vimrc # set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 set termencoding=utf-8 set encoding=utf-8 双管齐下, 一个解决系统配置, 一个解决vim配置
 中文乱码问题(2018) # 在.bash_profile中增加
 export LANG=zh_CN.utf8 export LC_ALL=zh_CN.utf8 即可增加中文支持。 不过，还是
 export LANG=en_US.utf8 export LC_ALL=en_US.utf8 比较香，因为中文字体很难看… ^_^: 2019年5月5日19点46分
-vscode vs code # venv # Python # Command Palette...(Ctrl+Shift+p)
-&amp;gt;Python: Select Interpreter 然后选择就好了.
-当然不会那么安逸(.vscode/launch.json) 2022-01-18 11：34
-.vscode/launch.json配置(图形化都是骗人的) # { // Use IntelliSense to learn about possible attributes. // Hover to view descriptions of existing attributes.</description>
+vscode vs code # venv # Python # Command Palette.</description>
     </item>
     
     <item>
