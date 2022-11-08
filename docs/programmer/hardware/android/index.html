@@ -4,13 +4,19 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="将安卓手机用于开发 # Termux # 类似于WIN端的Subsystem——其实更像Ubuntu下的虚拟终端。 不过这东西功能强大，除了将安卓里的Linux发挥出来。还有Termux API来调用手机的底层接口。
-现在各个版本概览 # python - 3.10 clang - 14.0.5 opencv - 4.5.5 NumPy # # pip3 install numpy 不能安装 MATHLIB=&#34;m&#34; pip3 install numpy # numpy 1.22.4 C&#43;&#43; &amp; OpenCV # 现在安装opencv-python还有问题,可能问题出现在安装numpy上,但后来经过努力安装好了,但版本或者其他问题导致还是不能正常运行.但C&#43;&#43;还是很好呀.
-pkg install opencv opcv.cpp # #include &lt;opencv2/opencv.hpp&gt; #include &lt;iostream&gt; using namespace cv; using namespace std; int main() { Mat src = imread(&#34;logo-red.png&#34;, IMREAD_GRAYSCALE); if (src.empty()) { printf(&#34;could not find the image\n&#34;); return -1; } imwrite(&#34;grayscale.">
+XFCE4 # 步骤：
+安装Termux 执行pkg update 执行pkg install git &amp;&amp; git clone https://github.com/Yisus7u7/termux-desktop-xfce.git 执行cd termux-desktop-xfce &amp;&amp; bash boostrap.sh 当然，3&amp;4步可以合并为一句curl -sLf https://raw.githubusercontent.com/Yisus7u7/termux-desktop-xfce/main/boostrap.sh | bash
+VNC # 默认VNC只能通过localhost:1来连接，局域网不能访问。想用大屏来看就不是很方便。
+# 先执行`vncserver`使用本机的`VNC Viewer`看看效果，主要是需要先设置一下密码 vncserver # 现在还无法通过局域网连接 # 去设置 cd ~/.vnc/ vim config # 打开最后一行注释 # 重新运行 vncserver -kill :1 vncserver 配置文件一览 # 将config文件最后一行的注释打开，即可
+## Supported server options to pass to vncserver upon invocation can be listed ## in this file.">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
 <meta property="og:description" content="将安卓手机用于开发 # Termux # 类似于WIN端的Subsystem——其实更像Ubuntu下的虚拟终端。 不过这东西功能强大，除了将安卓里的Linux发挥出来。还有Termux API来调用手机的底层接口。
-现在各个版本概览 # python - 3.10 clang - 14.0.5 opencv - 4.5.5 NumPy # # pip3 install numpy 不能安装 MATHLIB=&#34;m&#34; pip3 install numpy # numpy 1.22.4 C&#43;&#43; &amp; OpenCV # 现在安装opencv-python还有问题,可能问题出现在安装numpy上,但后来经过努力安装好了,但版本或者其他问题导致还是不能正常运行.但C&#43;&#43;还是很好呀.
-pkg install opencv opcv.cpp # #include &lt;opencv2/opencv.hpp&gt; #include &lt;iostream&gt; using namespace cv; using namespace std; int main() { Mat src = imread(&#34;logo-red.png&#34;, IMREAD_GRAYSCALE); if (src.empty()) { printf(&#34;could not find the image\n&#34;); return -1; } imwrite(&#34;grayscale." />
+XFCE4 # 步骤：
+安装Termux 执行pkg update 执行pkg install git &amp;&amp; git clone https://github.com/Yisus7u7/termux-desktop-xfce.git 执行cd termux-desktop-xfce &amp;&amp; bash boostrap.sh 当然，3&amp;4步可以合并为一句curl -sLf https://raw.githubusercontent.com/Yisus7u7/termux-desktop-xfce/main/boostrap.sh | bash
+VNC # 默认VNC只能通过localhost:1来连接，局域网不能访问。想用大屏来看就不是很方便。
+# 先执行`vncserver`使用本机的`VNC Viewer`看看效果，主要是需要先设置一下密码 vncserver # 现在还无法通过局域网连接 # 去设置 cd ~/.vnc/ vim config # 打开最后一行注释 # 重新运行 vncserver -kill :1 vncserver 配置文件一览 # 将config文件最后一行的注释打开，即可
+## Supported server options to pass to vncserver upon invocation can be listed ## in this file." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://example.org/docs/programmer/hardware/android/" /><meta property="article:section" content="docs" />
 
@@ -21,7 +27,7 @@ pkg install opencv opcv.cpp # #include &lt;opencv2/opencv.hpp&gt; #include &lt;i
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.9ae35478f3bf5e3f0cd85d7e9b0c8a47ef769bf6fdce08d3200810e49be94b51.js" integrity="sha256-muNUePO/Xj8M2F1&#43;mwyKR&#43;92m/b9zgjTIAgQ5JvpS1E=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.f932d6872c6348e538c887e23beda2307aefc5f602d98aba32c6b30498b56529.js" integrity="sha256-&#43;TLWhyxjSOU4yIfiO&#43;2iMHrvxfYC2Yq6MsazBJi1ZSk=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1116,6 +1122,8 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#termux">Termux</a>
       <ul>
+        <li><a href="#xfce4">XFCE4</a></li>
+        <li><a href="#vnc">VNC</a></li>
         <li><a href="#现在各个版本概览">现在各个版本概览</a></li>
         <li><a href="#numpy">NumPy</a></li>
         <li><a href="#c--opencv">C++ &amp; OpenCV</a></li>
@@ -1144,7 +1152,48 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#termux">#</a>
 </h2>
 <p>类似于WIN端的Subsystem——其实更像Ubuntu下的虚拟终端。 不过这东西功能强大，除了将安卓里的Linux发挥出来。还有Termux API来调用手机的底层接口。</p>
-<h3 id="现在各个版本概览">
+<h3 id="xfce4">
+  XFCE4
+  <a class="anchor" href="#xfce4">#</a>
+</h3>
+<p><strong>步骤</strong>：</p>
+<ol>
+<li>安装<code>Termux</code></li>
+<li>执行<code>pkg update</code></li>
+<li>执行<code>pkg install git &amp;&amp; git clone https://github.com/Yisus7u7/termux-desktop-xfce.git</code></li>
+<li>执行<code>cd termux-desktop-xfce &amp;&amp; bash boostrap.sh</code></li>
+</ol>
+<p>当然，3&amp;4步可以合并为一句<code>curl -sLf https://raw.githubusercontent.com/Yisus7u7/termux-desktop-xfce/main/boostrap.sh | bash</code></p>
+<h3 id="vnc">
+  VNC
+  <a class="anchor" href="#vnc">#</a>
+</h3>
+<p>默认VNC只能通过<code>localhost:1</code>来连接，局域网不能访问。想用大屏来看就不是很方便。</p>
+<pre tabindex="0"><code># 先执行`vncserver`使用本机的`VNC Viewer`看看效果，主要是需要先设置一下密码
+vncserver
+# 现在还无法通过局域网连接
+# 去设置
+cd ~/.vnc/
+vim config # 打开最后一行注释
+# 重新运行
+vncserver -kill :1
+vncserver
+</code></pre><h4 id="配置文件一览">
+  配置文件一览
+  <a class="anchor" href="#%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e4%b8%80%e8%a7%88">#</a>
+</h4>
+<p>将<code>config</code>文件最后一行的注释打开，即可</p>
+<pre tabindex="0"><code>## Supported server options to pass to vncserver upon invocation can be listed
+## in this file. See the following manpages for more: vncserver(1) Xvnc(1).
+## Several common ones are shown below. Uncomment and modify to your liking.
+##
+# securitytypes=vncauth,tlsvnc
+# desktop=sandbox
+geometry=1280x720
+# localhost
+# alwaysshared 将这行注释取消注释
+alwaysshared # 修改成这样
+</code></pre><h3 id="现在各个版本概览">
   现在各个版本概览
   <a class="anchor" href="#%e7%8e%b0%e5%9c%a8%e5%90%84%e4%b8%aa%e7%89%88%e6%9c%ac%e6%a6%82%e8%a7%88">#</a>
 </h3>
@@ -1341,6 +1390,8 @@ chmod 600 ~/.ssh/authorized_keys
   <ul>
     <li><a href="#termux">Termux</a>
       <ul>
+        <li><a href="#xfce4">XFCE4</a></li>
+        <li><a href="#vnc">VNC</a></li>
         <li><a href="#现在各个版本概览">现在各个版本概览</a></li>
         <li><a href="#numpy">NumPy</a></li>
         <li><a href="#c--opencv">C++ &amp; OpenCV</a></li>
