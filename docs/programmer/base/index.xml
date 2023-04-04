@@ -6,7 +6,17 @@
     <description>Recent content on Ian&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 31 Mar 2022 15:15:14 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/base/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Mar 2023 10:58:56 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/base/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>k8s</title>
+      <link>http://example.org/docs/programmer/base/k8s/</link>
+      <pubDate>Mon, 27 Mar 2023 10:58:56 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/base/k8s/</guid>
+      <description>k8s学习 # 常用命令 # kubectl apply -f rcm_log_monut_k8s_pod.yaml kubectl get pod -A kubectl get pod -all-namespaces kubectl get node kubectl get deploy 持久卷 - PersistentVolume kubectl get persistentvolume kubectl describe persistentvolume example-pv kubectl **delete** persistentvolume example-pv 从kubectl cp -n &amp;lt;命名空间&amp;gt; -c :xxx.json xxx.json 常用字段 # 下面是一些 Kubernetes 中常用的配置字段：
+apiVersion： Kubernetes API 的版本，用于定义资源的 API 版本号。 kind： 资源的类型，比如 Pod、Deployment、Service 等。 metadata： 元数据字段，用于存储 Kubernetes 对象的名称、命名空间、标签等信息。 spec： 对象的规格，用于定义对象的期望状态，如 Pod 的容器、Service 的端口等。 status： 对象的状态，用于记录对象的实际状态，如 Pod 的运行状态、Service 的访问地址等。 另外还有一些常用的子字段，如：</description>
+    </item>
+    
     <item>
       <title>PyPi</title>
       <link>http://example.org/docs/programmer/base/pypi/</link>
@@ -39,11 +49,12 @@
       
       <guid>http://example.org/docs/programmer/base/for_china/</guid>
       <description>在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.
+Qt # 使用Maintain管理kit时，可以在Settings中设置Repositories，设置地址可从Qt Downloads页面查询.
 apt # 可解决版本升级时的问题,即使用了国内源,最后一个文件不知道为什么还是从国外拉取&amp;hellip;
 # sudo touch /etc/apt/apt.conf sudo vim /etc/apt/apt.conf -&amp;gt; Acquire::http::Proxy &amp;ldquo;http://127.0.0.1:8001&amp;rdquo;;
 FreeBSD # mkdir -p /usr/local/etc/pkg/repos vim /usr/local/etc/pkg/repos/bjtu.conf
 bjtu: { url: &amp;#34;pkg+http://mirror.bjtu.edu.cn/reverse/freebsd-pkg/${ABI}/quarterly&amp;#34;, mirror_type: &amp;#34;srv&amp;#34;, signature_type: &amp;#34;none&amp;#34;, fingerprints: &amp;#34;/usr/share/keys/pkg&amp;#34;, enabled: yes } FreeBSD: { enabled: no } pkg update
-Qt # 源 # 中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/ 清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/ 北京理工大学：http://mirror.bit.edu.cn/qtproject/ 中国互联网络信息中心：https://mirrors.cnnic.cn/qt/ Python Pip # pip install --index https://pypi.mirrors.ustc.edu.cn/simple/ dlib(numpy等包名) 源 # 阿里云 http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣(douban) http://pypi.douban.com/simple/ 清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/ 中国科学技术大学 http://pypi.</description>
+Qt # 源 # 中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/ 清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/ 北京理工大学：http://mirror.bit.edu.cn/qtproject/ 中国互联网络信息中心：https://mirrors.cnnic.cn/qt/ Python Pip # pip install --index https://pypi.mirrors.ustc.edu.cn/simple/ dlib(numpy等包名) 源 # 阿里云 http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣(douban) http://pypi.</description>
     </item>
     
     <item>

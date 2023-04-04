@@ -6,7 +6,17 @@
     <description>Recent content in Linux on Ian&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 08 Apr 2016 16:58:56 +0000</lastBuildDate><atom:link href="http://example.org/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Mar 2023 10:58:56 +0000</lastBuildDate><atom:link href="http://example.org/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>k8s</title>
+      <link>http://example.org/docs/programmer/base/k8s/</link>
+      <pubDate>Mon, 27 Mar 2023 10:58:56 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/base/k8s/</guid>
+      <description>k8s学习 # 常用命令 # kubectl apply -f rcm_log_monut_k8s_pod.yaml kubectl get pod -A kubectl get pod -all-namespaces kubectl get node kubectl get deploy 持久卷 - PersistentVolume kubectl get persistentvolume kubectl describe persistentvolume example-pv kubectl **delete** persistentvolume example-pv 从kubectl cp -n &amp;lt;命名空间&amp;gt; -c :xxx.json xxx.json 常用字段 # 下面是一些 Kubernetes 中常用的配置字段：
+apiVersion： Kubernetes API 的版本，用于定义资源的 API 版本号。 kind： 资源的类型，比如 Pod、Deployment、Service 等。 metadata： 元数据字段，用于存储 Kubernetes 对象的名称、命名空间、标签等信息。 spec： 对象的规格，用于定义对象的期望状态，如 Pod 的容器、Service 的端口等。 status： 对象的状态，用于记录对象的实际状态，如 Pod 的运行状态、Service 的访问地址等。 另外还有一些常用的子字段，如：</description>
+    </item>
+    
     <item>
       <title>Linux</title>
       <link>http://example.org/docs/programmer/base/noteoflinux/</link>

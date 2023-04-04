@@ -3,31 +3,26 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Markdown Notes 📪 # ##Test 二级标题
-Now I will test the Markdown&rsquo;s hobiy 二级 # Maybe is a nice way to impove my blog. 三级 # 原来标题 要# 与正文隔开一个空格… ···print “hello Markdown”··· 欸？ 怎么回事？上面的文字 莫非是用Tab能将其放到一个容器里？
-新的区块 # 你好，这是我新创建的容器。 ———好吧，只有直接在标题之下的Tab才能创建 no~，在空行下面也是可以的。 address@example.com
-Markdown 字体颜色、流程图 # 斜体 # *文字*：前后星号斜体 就像这样？
-流程图 # st=&gt;start: Start e=&gt;end: End opl=&gt;operation: My Operation sub1=&gt;subroutine: My subroutine cond=&gt;condition: Yes or No? io=&gt;inputoutput: catch something
-呃 流程图我不清楚，不过">
+<meta name="description" content="Markdown Notes 📪 # HTML锚点 - 页面内点击跳转 # 可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。 具体实现方法如下：
+首先，在需要跳转到的标题前插入一个 HTML 锚点，例如： ### &lt;a name=&#34;section1&#34;&gt;Section 1&lt;/a&gt; 这个锚点的名称为 &#34;section1&#34;，可以根据需要自定义。 在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如： [跳转到 Section 1](#section1) 这样，点击这个链接就会跳转到页面中的 &#34;Section 1&#34; 标题处。 注意事项： # 锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。 如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。
+## Test 二级标题
+Now I will test the Markdown&rsquo;s hobiy 二级 # Maybe is a nice way to impove my blog. 三级 # 原来标题 要# 与正文隔开一个空格… ···print “hello Markdown”··· 欸？ 怎么回事？上面的文字 莫非是用Tab能将其放到一个容器里？">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="tips Of markdown" />
-<meta property="og:description" content="Markdown Notes 📪 # ##Test 二级标题
-Now I will test the Markdown&rsquo;s hobiy 二级 # Maybe is a nice way to impove my blog. 三级 # 原来标题 要# 与正文隔开一个空格… ···print “hello Markdown”··· 欸？ 怎么回事？上面的文字 莫非是用Tab能将其放到一个容器里？
-新的区块 # 你好，这是我新创建的容器。 ———好吧，只有直接在标题之下的Tab才能创建 no~，在空行下面也是可以的。 address@example.com
-Markdown 字体颜色、流程图 # 斜体 # *文字*：前后星号斜体 就像这样？
-流程图 # st=&gt;start: Start e=&gt;end: End opl=&gt;operation: My Operation sub1=&gt;subroutine: My subroutine cond=&gt;condition: Yes or No? io=&gt;inputoutput: catch something
-呃 流程图我不清楚，不过" />
+<meta property="og:description" content="Markdown Notes 📪 # HTML锚点 - 页面内点击跳转 # 可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。 具体实现方法如下：
+首先，在需要跳转到的标题前插入一个 HTML 锚点，例如： ### &lt;a name=&#34;section1&#34;&gt;Section 1&lt;/a&gt; 这个锚点的名称为 &#34;section1&#34;，可以根据需要自定义。 在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如： [跳转到 Section 1](#section1) 这样，点击这个链接就会跳转到页面中的 &#34;Section 1&#34; 标题处。 注意事项： # 锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。 如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。
+## Test 二级标题
+Now I will test the Markdown&rsquo;s hobiy 二级 # Maybe is a nice way to impove my blog. 三级 # 原来标题 要# 与正文隔开一个空格… ···print “hello Markdown”··· 欸？ 怎么回事？上面的文字 莫非是用Tab能将其放到一个容器里？" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://example.org/docs/programmer/langs/tipsofmarkdown/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2018-05-15T10:00:47+00:00" />
 <meta property="article:modified_time" content="2018-05-15T10:00:47+00:00" />
-
 <title>tips Of markdown | Ian&#39;s Blog</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.f932d6872c6348e538c887e23beda2307aefc5f602d98aba32c6b30498b56529.js" integrity="sha256-&#43;TLWhyxjSOU4yIfiO&#43;2iMHrvxfYC2Yq6MsazBJi1ZSk=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.21c7d5ec1a58dbd7dfb3bb14808b0caf48331f6576df77ab09d0db9f6def8b7a.js" integrity="sha256-IcfV7BpY29ffs7sUgIsMr0gzH2V233erCdDbn23vi3o=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -100,6 +95,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/base/k8s/" class="">k8s</a>
+  
+
+        </li>
+      
     
       
         <li>
@@ -226,6 +234,105 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/programmer/base/noteoffmtdata/" class="">数据格式笔记</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bf4e0d6f0b81f7b3ec08ed1fc66b874d" class="toggle" checked />
+    <label for="section-bf4e0d6f0b81f7b3ec08ed1fc66b874d" class="flex justify-between">
+      <a role="button" class="">Langs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/cmake/" class="">CMake 使用Tips</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/noteofgoexp/" class="">Golang进阶笔记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/noteofgolang/" class="">Golang笔记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/tipsofmarkdown/" class="active">tips Of markdown</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/notespython/" class="">Python笔记(notes of Python)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programmer/langs/notesjava/" class="">愉快的Java(happy to learn the fuck java)</a>
   
 
         </li>
@@ -526,92 +633,6 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/programmer/net/net/" class="">网络(Computer Network)</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-bf4e0d6f0b81f7b3ec08ed1fc66b874d" class="toggle" checked />
-    <label for="section-bf4e0d6f0b81f7b3ec08ed1fc66b874d" class="flex justify-between">
-      <a role="button" class="">Langs</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programmer/langs/noteofgoexp/" class="">Golang进阶笔记</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programmer/langs/noteofgolang/" class="">Golang笔记</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programmer/langs/tipsofmarkdown/" class="active">tips Of markdown</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programmer/langs/notespython/" class="">Python笔记(notes of Python)</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programmer/langs/notesjava/" class="">愉快的Java(happy to learn the fuck java)</a>
   
 
         </li>
@@ -1120,6 +1141,11 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
+    <li><a href="#html锚点---页面内点击跳转">HTML锚点 - 页面内点击跳转</a>
+      <ul>
+        <li><a href="#注意事项">注意事项：</a></li>
+      </ul>
+    </li>
     <li><a href="#now-i-will-test-the-markdowns-hobiy-二级">Now I will test the Markdown&rsquo;s hobiy 二级</a>
       <ul>
         <li><a href="#maybe-is-a-nice-way-to-impove-my-blog-三级">Maybe is a nice way to impove my blog. 三级</a></li>
@@ -1156,7 +1182,29 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#markdown-notes-">#</a>
 </h1>
 <p><img src="https://justyy.com/wp-content/uploads/2016/01/markdown-syntax-language.png" alt="markdown" /></p>
-<p>##Test 二级标题</p>
+<h2 id="html锚点---页面内点击跳转">
+  HTML锚点 - 页面内点击跳转
+  <a class="anchor" href="#html%e9%94%9a%e7%82%b9---%e9%a1%b5%e9%9d%a2%e5%86%85%e7%82%b9%e5%87%bb%e8%b7%b3%e8%bd%ac">#</a>
+</h2>
+<blockquote>
+<p>可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。
+具体实现方法如下：</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>首先，在需要跳转到的标题前插入一个 HTML 锚点，例如：
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### &lt;a name=&#34;section1&#34;&gt;Section 1&lt;/a&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>这个锚点的名称为 &#34;section1&#34;，可以根据需要自定义。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如：
+</span></span><span style="display:flex;"><span>[<span style="color:#f92672">跳转到 Section 1</span>](<span style="color:#a6e22e">#section1</span>)
+</span></span><span style="display:flex;"><span>这样，点击这个链接就会跳转到页面中的 &#34;Section 1&#34; 标题处。
+</span></span></code></pre></div><h3 id="注意事项">
+  注意事项：
+  <a class="anchor" href="#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9">#</a>
+</h3>
+<p>锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。
+如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。</p>
+<hr>
+<p><code>## Test 二级标题</code></p>
 <h2 id="now-i-will-test-the-markdowns-hobiy-二级">
   Now I will test the Markdown&rsquo;s hobiy 二级
   <a class="anchor" href="#now-i-will-test-the-markdowns-hobiy-%e4%ba%8c%e7%ba%a7">#</a>
@@ -1351,6 +1399,11 @@ io=&gt;inputoutput: catch something</p>
   
 <nav id="TableOfContents">
   <ul>
+    <li><a href="#html锚点---页面内点击跳转">HTML锚点 - 页面内点击跳转</a>
+      <ul>
+        <li><a href="#注意事项">注意事项：</a></li>
+      </ul>
+    </li>
     <li><a href="#now-i-will-test-the-markdowns-hobiy-二级">Now I will test the Markdown&rsquo;s hobiy 二级</a>
       <ul>
         <li><a href="#maybe-is-a-nice-way-to-impove-my-blog-三级">Maybe is a nice way to impove my blog. 三级</a></li>

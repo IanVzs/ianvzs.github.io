@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://example.org/docs/programmer/</loc>
-    <lastmod>2022-03-31T15:15:14+00:00</lastmod>
+    <lastmod>2023-03-27T10:58:56+00:00</lastmod>
   </url><url>
     <loc>http://example.org/docs/example/</loc>
   </url><url>
@@ -32,7 +32,10 @@
     <loc>http://example.org/docs/example/table-of-contents/</loc>
   </url><url>
     <loc>http://example.org/docs/programmer/base/</loc>
-    <lastmod>2022-03-31T15:15:14+00:00</lastmod>
+    <lastmod>2023-03-27T10:58:56+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/docs/programmer/langs/</loc>
+    <lastmod>2022-08-30T12:00:56+00:00</lastmod>
   </url><url>
     <loc>http://example.org/docs/programmer/game_and_simulation/</loc>
     <lastmod>2022-03-31T15:15:14+00:00</lastmod>
@@ -49,21 +52,42 @@
     <loc>http://example.org/docs/programmer/net/</loc>
     <lastmod>2021-05-24T10:30:41+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/docs/programmer/langs/</loc>
-    <lastmod>2021-10-29T11:03:59+00:00</lastmod>
-  </url><url>
     <loc>http://example.org/docs/programmer/hardware/</loc>
   </url><url>
     <loc>http://example.org/docs/programmer/software/</loc>
   </url><url>
-    <loc>http://example.org/posts/</loc>
-    <lastmod>2022-10-24T01:47:22+00:00</lastmod>
+    <loc>http://example.org/docs/</loc>
+    <lastmod>2023-03-27T10:58:56+00:00</lastmod>
   </url><url>
     <loc>http://example.org/</loc>
+    <lastmod>2023-03-27T10:58:56+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/docs/programmer/base/k8s/</loc>
+    <lastmod>2023-03-27T10:58:56+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tags/linux/</loc>
+    <lastmod>2023-03-27T10:58:56+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tags/</loc>
+    <lastmod>2023-03-27T10:58:56+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/posts/</loc>
     <lastmod>2022-10-24T01:47:22+00:00</lastmod>
   </url><url>
     <loc>http://example.org/posts/my-first-post/</loc>
     <lastmod>2022-10-24T01:47:22+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tags/c&#43;&#43;/</loc>
+    <lastmod>2022-08-30T12:00:56+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tags/cmake/</loc>
+    <lastmod>2022-08-30T12:00:56+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/docs/programmer/langs/cmake/</loc>
+    <lastmod>2022-08-30T12:00:56+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tags/cpp/</loc>
+    <lastmod>2022-08-30T12:00:56+00:00</lastmod>
   </url><url>
     <loc>http://example.org/tags/3d-model-creator/</loc>
     <lastmod>2022-03-31T15:15:14+00:00</lastmod>
@@ -71,13 +95,7 @@
     <loc>http://example.org/docs/programmer/game_and_simulation/blender/</loc>
     <lastmod>2022-03-31T15:15:14+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/docs/</loc>
-    <lastmod>2022-03-31T15:15:14+00:00</lastmod>
-  </url><url>
     <loc>http://example.org/docs/programmer/base/pypi/</loc>
-    <lastmod>2022-03-31T15:15:14+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/tags/</loc>
     <lastmod>2022-03-31T15:15:14+00:00</lastmod>
   </url><url>
     <loc>http://example.org/categories/</loc>
@@ -304,9 +322,6 @@
   </url><url>
     <loc>http://example.org/docs/programmer/base/editer/</loc>
     <lastmod>2022-01-18T11:34:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/tags/linux/</loc>
-    <lastmod>2016-04-08T16:58:56+00:00</lastmod>
   </url><url>
     <loc>http://example.org/docs/programmer/base/noteoflinux/</loc>
     <lastmod>2016-04-08T16:58:56+00:00</lastmod>
