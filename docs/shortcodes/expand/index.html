@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Expand # Expand shortcode can help to decrease clutter on screen by hiding part of text. Expand content by clicking on it.
-Example # Default # {{&lt; expand &gt;}} ## Markdown content Lorem markdownum insigne... {{&lt; /expand &gt;}} Expand ↕ Markdown content # Lorem markdownum insigne&hellip; With Custom Label # {{&lt; expand &#34;Custom Label&#34; &#34;...&#34; &gt;}} ## Markdown content Lorem markdownum insigne... {{&lt; /expand &gt;}} Custom Label ... Markdown content # Lorem markdownum insigne.">
+<meta name="description" content=" Expand # Expand shortcode can help to decrease clutter on screen by hiding part of text. Expand content by clicking on it.
+Example # Default # &lt;details&gt; &lt;summary&gt;Click here to see the answer&lt;/summary&gt; The answer is 42. &lt;/details&gt; With Custom Label # &lt;details&gt; &lt;summary&gt;Click here to see the answer&lt;/summary&gt; The answer is 42. &lt;/details&gt; ">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
-<meta property="og:description" content="Expand # Expand shortcode can help to decrease clutter on screen by hiding part of text. Expand content by clicking on it.
-Example # Default # {{&lt; expand &gt;}} ## Markdown content Lorem markdownum insigne... {{&lt; /expand &gt;}} Expand ↕ Markdown content # Lorem markdownum insigne&hellip; With Custom Label # {{&lt; expand &#34;Custom Label&#34; &#34;...&#34; &gt;}} ## Markdown content Lorem markdownum insigne... {{&lt; /expand &gt;}} Custom Label ... Markdown content # Lorem markdownum insigne." />
+<meta property="og:description" content=" Expand # Expand shortcode can help to decrease clutter on screen by hiding part of text. Expand content by clicking on it.
+Example # Default # &lt;details&gt; &lt;summary&gt;Click here to see the answer&lt;/summary&gt; The answer is 42. &lt;/details&gt; With Custom Label # &lt;details&gt; &lt;summary&gt;Click here to see the answer&lt;/summary&gt; The answer is 42. &lt;/details&gt; " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://example.org/docs/shortcodes/expand/" /><meta property="article:section" content="docs" />
 
@@ -1168,57 +1168,24 @@ https://github.com/alex-shpak/hugo-book
   Default
   <a class="anchor" href="#default">#</a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span><span style="color:#75715e">{{</span><span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">expand</span> <span style="color:#f92672">&gt;</span><span style="color:#75715e">}}</span>
-</span></span><span style="display:flex;"><span>## Markdown content
-</span></span><span style="display:flex;"><span>Lorem markdownum insigne...
-</span></span><span style="display:flex;"><span><span style="color:#75715e">{{</span><span style="color:#f92672">&lt;</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">expand</span> <span style="color:#f92672">&gt;</span><span style="color:#75715e">}}</span>
-</span></span></code></pre></div>
-<div class="book-expand">
-  <label>
-    <div class="book-expand-head flex justify-between">
-      <span>Expand</span>
-      <span>↕</span>
-    </div>
-    <input type="checkbox" class="hidden" />
-    <div class="book-expand-content markdown-inner">
-      <h2 id="markdown-content">
-  Markdown content
-  <a class="anchor" href="#markdown-content">#</a>
-</h2>
-<p>Lorem markdownum insigne&hellip;
-    </div>
-  </label>
-</div>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>&lt;details&gt;
+</span></span><span style="display:flex;"><span>&lt;summary&gt;Click here to see the answer&lt;/summary&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>The answer is 42.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/details&gt;
+</span></span></code></pre></div><!-- raw HTML omitted -->
 <h3 id="with-custom-label">
   With Custom Label
   <a class="anchor" href="#with-custom-label">#</a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span><span style="color:#75715e">{{</span><span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">expand</span> <span style="color:#e6db74">&#34;Custom Label&#34;</span> <span style="color:#e6db74">&#34;...&#34;</span> <span style="color:#f92672">&gt;</span><span style="color:#75715e">}}</span>
-</span></span><span style="display:flex;"><span>## Markdown content
-</span></span><span style="display:flex;"><span>Lorem markdownum insigne...
-</span></span><span style="display:flex;"><span><span style="color:#75715e">{{</span><span style="color:#f92672">&lt;</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">expand</span> <span style="color:#f92672">&gt;</span><span style="color:#75715e">}}</span>
-</span></span></code></pre></div>
-<div class="book-expand">
-  <label>
-    <div class="book-expand-head flex justify-between">
-      <span>Custom Label</span>
-      <span>...</span>
-    </div>
-    <input type="checkbox" class="hidden" />
-    <div class="book-expand-content markdown-inner">
-      <h2 id="markdown-content">
-  Markdown content
-  <a class="anchor" href="#markdown-content">#</a>
-</h2>
-<p>Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
-protulit, sed sed aere valvis inhaesuro Pallas animam: qui <em>quid</em>, ignes.
-Miseratus fonte Ditis conubia.
-    </div>
-  </label>
-</div>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>&lt;details&gt;
+</span></span><span style="display:flex;"><span>&lt;summary&gt;Click here to see the answer&lt;/summary&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>The answer is 42.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/details&gt;
+</span></span></code></pre></div><!-- raw HTML omitted -->
 </article>
  
       

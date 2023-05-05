@@ -42,8 +42,8 @@ Example # {{&amp;lt; details &amp;#34;Title&amp;#34; [open] &amp;gt;}} ## Markdo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://example.org/docs/shortcodes/expand/</guid>
-      <description>Expand # Expand shortcode can help to decrease clutter on screen by hiding part of text. Expand content by clicking on it.
-Example # Default # {{&amp;lt; expand &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /expand &amp;gt;}} Expand ↕ Markdown content # Lorem markdownum insigne&amp;hellip; With Custom Label # {{&amp;lt; expand &amp;#34;Custom Label&amp;#34; &amp;#34;...&amp;#34; &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /expand &amp;gt;}} Custom Label ... Markdown content # Lorem markdownum insigne.</description>
+      <description> Expand # Expand shortcode can help to decrease clutter on screen by hiding part of text. Expand content by clicking on it.
+Example # Default # &amp;lt;details&amp;gt; &amp;lt;summary&amp;gt;Click here to see the answer&amp;lt;/summary&amp;gt; The answer is 42. &amp;lt;/details&amp;gt; With Custom Label # &amp;lt;details&amp;gt; &amp;lt;summary&amp;gt;Click here to see the answer&amp;lt;/summary&amp;gt; The answer is 42. &amp;lt;/details&amp;gt; </description>
     </item>
     
     <item>
