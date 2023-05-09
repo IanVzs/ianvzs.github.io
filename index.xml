@@ -1,168 +1,9 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Introduction on Ian's Blog</title><link>http://example.org/</link><description>Recent content in Introduction on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 27 Mar 2023 10:58:56 +0000</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml"/><item><title>With ToC</title><link>http://example.org/docs/example/table-of-contents/with-toc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/example/table-of-contents/with-toc/</guid><description>Caput vino delphine in tamen vias # Cognita laeva illo fracta # Lorem markdownum pavent auras, surgit nunc cingentibus libet Laomedonque que est. Pastor An arbor filia foedat, ne fugit aliter, per. Helicona illas et callida neptem est Oresitrophos caput, dentibus est venit. Tenet reddite famuli praesentem fortibus, quaeque vis foret si frondes gelidos gravidae circumtulit inpulit armenta nativum.
 Te at cruciabere vides rubentis manebo Maturuit in praetemptat ruborem ignara postquam habitasse Subitarum supplevit quoque fontesque venabula spretis modo Montis tot est mali quasque gravis Quinquennem domus arsit ipse Pellem turis pugnabant locavit Natus quaerere # Pectora et sine mulcere, coniuge dum tincta incurvae.</description></item><item><title>Without ToC</title><link>http://example.org/docs/example/table-of-contents/without-toc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/example/table-of-contents/without-toc/</guid><description>At me ipso nepotibus nunc celebratior genus # Tanto oblite # Lorem markdownum pectora novis patenti igne sua opus aurae feras materiaque illic demersit imago et aristas questaque posset. Vomit quoque suo inhaesuro clara. Esse cumque, per referri triste. Ut exponit solisque communis in tendens vincetis agisque iamque huic bene ante vetat omina Thebae rates. Aeacus servat admonitu concidit, ad resimas vultus et rugas vultu dignamque Siphnon.
 Quam iugulum regia simulacra, plus meruit humo pecorumque haesit, ab discedunt dixit: ritu pharetramque.</description></item><item><title>k8s</title><link>http://example.org/docs/programmer/base/k8s/</link><pubDate>Mon, 27 Mar 2023 10:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/base/k8s/</guid><description>k8s学习 # 常用命令 # kubectl apply -f rcm_log_monut_k8s_pod.yaml kubectl get pod -A kubectl get pod -all-namespaces kubectl get node kubectl get deploy 持久卷 - PersistentVolume kubectl get persistentvolume kubectl describe persistentvolume example-pv kubectl **delete** persistentvolume example-pv 从kubectl cp -n &amp;lt;命名空间&amp;gt; -c :xxx.json xxx.json 常用字段 # 下面是一些 Kubernetes 中常用的配置字段：
 apiVersion： Kubernetes API 的版本，用于定义资源的 API 版本号。 kind： 资源的类型，比如 Pod、Deployment、Service 等。 metadata： 元数据字段，用于存储 Kubernetes 对象的名称、命名空间、标签等信息。 spec： 对象的规格，用于定义对象的期望状态，如 Pod 的容器、Service 的端口等。 status： 对象的状态，用于记录对象的实际状态，如 Pod 的运行状态、Service 的访问地址等。 另外还有一些常用的子字段，如：</description></item><item><title>CMake 使用Tips</title><link>http://example.org/docs/programmer/langs/cmake/</link><pubDate>Tue, 30 Aug 2022 12:00:56 +0000</pubDate><guid>http://example.org/docs/programmer/langs/cmake/</guid><description> 在编译时将编译产物放在build # 据网友所知，cmake文档中没有记录，仅出于兼容性原因或内部使用而保留：
 -B和-H标志 # cmake -Hpath/to/source -Bpath/to/build 甚至从源目录 -B # 重要：-B后没有空格
 该命令会自动创建build目录 之后cd到build下去make即可 cmake . -Bbuild 样例记录 # OpenCV # CMakeLists.txt 文件tree -L 1 |-- CMakeLists.txt |-- DisplayImage.cpp |-- DisplayImage.out |-- cmake_install.cmake |-- CMakeCache.txt |-- CMakeFiles |-- Makefile cmake_minimum_required(VERSION 2.8) project( DisplayImageExample ) find_package( OpenCV REQUIRED ) include_directories( ${OpenCV_INCLUDE_DIRS} ) add_executable( DisplayImage.out DisplayImage.cpp ) target_link_libraries( DisplayImage.out ${OpenCV_LIBS} ) Qt #</description></item><item><title>Blender</title><link>http://example.org/docs/programmer/game_and_simulation/blender/</link><pubDate>Thu, 31 Mar 2022 15:15:14 +0000</pubDate><guid>http://example.org/docs/programmer/game_and_simulation/blender/</guid><description> 快捷键 # 切换为四视图 | Ctrl+Alt+q 复制并移动(进入Grab模式) ｜ Shift+d(+x|y|x 选择移动轴) 线/面挤出 ｜ e(+x|y|x 选择挤出方向轴) 上一步的操作应用到当前选择 ｜ Shift+r 打开模型右侧的小工具栏(位置插件功能等调整) ｜ n 填充(两点连成线,线圈填成面) ｜ n 备忘 # 合并物体时,谁被最后选择&amp;ndash;是Active状态,将作为母体合并</description></item><item><title>PyPi</title><link>http://example.org/docs/programmer/base/pypi/</link><pubDate>Thu, 31 Mar 2022 15:15:14 +0000</pubDate><guid>http://example.org/docs/programmer/base/pypi/</guid><description>示例项目 # py-muti-scrcpy
-=======
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Introduction on Ian&#39;s Blog</title>
-    <link>http://example.org/</link>
-    <description>Recent content in Introduction on Ian&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 27 Mar 2023 10:58:56 +0000</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>With ToC</title>
-      <link>http://example.org/docs/example/table-of-contents/with-toc/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/example/table-of-contents/with-toc/</guid>
-      <description>Caput vino delphine in tamen vias # Cognita laeva illo fracta # Lorem markdownum pavent auras, surgit nunc cingentibus libet Laomedonque que est. Pastor An arbor filia foedat, ne fugit aliter, per. Helicona illas et callida neptem est Oresitrophos caput, dentibus est venit. Tenet reddite famuli praesentem fortibus, quaeque vis foret si frondes gelidos gravidae circumtulit inpulit armenta nativum.
-Te at cruciabere vides rubentis manebo Maturuit in praetemptat ruborem ignara postquam habitasse Subitarum supplevit quoque fontesque venabula spretis modo Montis tot est mali quasque gravis Quinquennem domus arsit ipse Pellem turis pugnabant locavit Natus quaerere # Pectora et sine mulcere, coniuge dum tincta incurvae.</description>
-    </item>
-    
-    <item>
-      <title>Without ToC</title>
-      <link>http://example.org/docs/example/table-of-contents/without-toc/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/example/table-of-contents/without-toc/</guid>
-      <description>At me ipso nepotibus nunc celebratior genus # Tanto oblite # Lorem markdownum pectora novis patenti igne sua opus aurae feras materiaque illic demersit imago et aristas questaque posset. Vomit quoque suo inhaesuro clara. Esse cumque, per referri triste. Ut exponit solisque communis in tendens vincetis agisque iamque huic bene ante vetat omina Thebae rates. Aeacus servat admonitu concidit, ad resimas vultus et rugas vultu dignamque Siphnon.
-Quam iugulum regia simulacra, plus meruit humo pecorumque haesit, ab discedunt dixit: ritu pharetramque.</description>
-    </item>
-    
-    <item>
-      <title>Japanese Learning</title>
-      <link>http://example.org/posts/japaneselearning/</link>
-      <pubDate>Tue, 08 Nov 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/posts/japaneselearning/</guid>
-      <description>より、ほど # 2月は　1月より　ずっど　寒いです。 1がつは　2月ほど　さむくないです（寒くない）。 ーーーー比较 前，肯定，后否定。 1月より　2月ほうが　寒いです。 家族で誰が　一番歌が上手ですか。 ーーーより被比者　ほが选定者、更加者 ーーーで：划分范围　いちばん：最高 1月と　2月と　とどちらが　寒いですか。 ...2月のほうが寒いです。 ーー二选一句型。...と..と　答句：のほうがーー更～冷。 ほうが　いいです　一类形/二类形 ほうが　いいです いる：犬がいる　有狗 N-&amp;gt;N 窗那儿有的人 # 变化 # いー＞く　+なる（なります)　だー＞に　+する（します） 成为…变成… 使成/变为… # 前者，无主观后者有主观要变 二类形/名 に　なります　&amp;hellip;に　します 变成某种N ーーー性质状态发生变化 后者因主语意志、动作引起　電気を消し（けし）で、暗（くら）くします。　もう春になったから、暖かくなる。　（あたたかい）　夜（よる）に　なりました。部屋が暗くなりました。　名词に　します。要什么 息子は　医者に　なります。　話を　簡単（かんたん）に　します。 今年（ことし）七歳に　なりました。 欲しい　なりました</description>
-    </item>
-    
-    <item>
-      <title>杂笔记</title>
-      <link>http://example.org/posts/somenotes/</link>
-      <pubDate>Sat, 29 Oct 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/posts/somenotes/</guid>
-      <description>Swift： # [Swift教程] # &amp;gt;https://github.com/ipader/SwiftGuide; Swift 开源项目精选: # &amp;gt;https://github.com/ipader/SwiftGuide/blob/master/Featured.md SwiftGuide: # &amp;gt;https://github.com/ipader/SwiftGuide/blob/master/Featured-Articles.md Swift，以上。
-Pelican： # 高亮显示Markdown: # void main() { printf(&amp;quot;高亮？&amp;quot;); // 另起一行 首行缩进，书写即可 } 标题： # 在编辑文字的时候，在前面加上“#”号，可以将之后一行文字作为标题大字体显示，编辑中瞎按，手误敲出来的字符，结果却很有用呢。或许其他字符也有作用，不过这已经满足日常编辑所需，不做过多探究了。充实内容，往往是首要的。
-利用Disqus添加评论系统： # 在此网站注册一个帐号，在设置中找见shortname，应该为自己设置。 然后在Pelicanconf.py这个配置文件中添加
-:::iidentifier
-DISQUS_SITENAME = “yours shortname”
-贴图片： # 在国内找了一个Z4A图床，感觉不错。 注册完毕，上传好图片应用链接自动生成，直接诶复制粘贴即可。HTML、BBCode、Markdown的，另外分为完整图片，中等图片，缩略图三种不同尺寸的链接。感觉良心。另外，点击图片后跳转图床，可以查看原图片文件，更是舒心赏心悦目～ 免费使用，极力推荐。只不过图片不能加入缩进后的“代码栏”。
-数学公式： $ $e^{i\pi} + 1 = 0$ $ $之间无空格
-$$e^{i\pi} + 1 = 0$$
-失败……插入插件失败。之后有需要时再查找原因。 (不过这个图床已经废了。……默哀)
-Linux 嵌入式C編程 # Git 协助开发提交代码之类 参考流程（复制于 &amp;gt;https://github.com/numbbbbb/the-swift-programming-language-in-chinese） 有些朋友可能不太清楚如何帮忙翻译，我这里写一个简单的流程，大家可以参考一下： 首先fork我的项目 把fork过去的项目也就是你的项目clone到你的本地 在命令行运行git branch develop来创建一个新分支 运行git checkout develop来切换到新分支 运行git remote add upstream https://github.</description>
-    </item>
-    
-    <item>
-      <title>Make things easy and enjoy</title>
-      <link>http://example.org/posts/makethingseasyandenjoy/</link>
-      <pubDate>Sat, 08 Oct 2016 16:58:56 +0000</pubDate>
-      
-      <guid>http://example.org/posts/makethingseasyandenjoy/</guid>
-      <description>命令行的简便生活 💦🤣 # Delete Git Submodule # 逆初始化模块，其中{MOD_NAME}为模块目录，执行后可发现模块目录被清空 git submodule deinit {MOD_NAME} 删除.gitmodules中记录的模块信息（&amp;ndash;cached选项清除.git/modules中的缓存） git rm --cached {MOD_NAME} apt 安装前查看库里版本 # sudo apt-cache madison kdenlive 4K显示器软件不适配导致的字太小问题 # 在路径: /usr/share/applications下 将对应的.desktop文件使用文本编辑器打开,将Exec修改为:
-Exec=env QT_DEVICE_PIXEL_RATIO=2 /opt/resolve/bin/resolve 主要是增加env QT_DEVICE_PIXEL_RATIO=2, 上述例中所示为达芬奇的配置. (不过很可惜它并不能和我的AMD 5700g+Ubuntu22.04+不知哪儿来的驱动一起工作. 虽然确实变好了.)
-切换用户默认终端程序 # 赢在起跑线: useradd -s /bin/bash ian 力挽狂澜: usermod -s /bin/bash ian 奋起反抗: chsh + 按提示操作 Github Personal access tokens # github 干掉了https账号密码pull push 之后 https pull push 专用 url
-4k码字 # 更改语言 # export LC_ALL=C # 改了确实大多数成英文了，不过树莓派汉化太狠了，console-setup里还有若干是中文就很蠢.</description>
-    </item>
-    
-    <item>
-      <title>Daily Notes</title>
-      <link>http://example.org/posts/dailynotes/</link>
-      <pubDate>Thu, 14 Jul 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/posts/dailynotes/</guid>
-      <description>2021年09月26日 测试一下是不是能挂视频呢：
-2021年09月09日 今天重新弄了blog,增加了Makefile可以更加无闹化的操作了 真是个好东西 不过hexo deploy放在里面一直出问题，重新执行一遍又好了不清楚啥原因。。。分不同的make子项试试
-同时也换了背景，一会儿打个release去.
-缅怀
-2018年12月12日 今儿开始，以后信笔记就写在上面了——本来笔记就没顺序，而考虑翻看的时候总是翻页太麻烦，emm 虽说越来越习惯grep但 …有时候还是要看网页的嘛。而新笔记的翻看率总是高过旧笔记，所以就用这个顺序~😄
-Eeont size=4&amp;gt;原因：
-今天决定每天都写每日的学习总结，以此来激励。否则每天下来总觉得毫无收获，颇有空虚寂寞冷的感觉，也有当天学习的不真实感。此文章做做总概，目录的作用，详细的学习笔记就写在详细的文章下面。
-因为，暑假要学习日语，所以日常生活中能用日记就尽量用了。对于培养日语语感和结构的记忆及习惯，很有作用。 日语
-16-07-14 用于比较的句型：より　ほど 变化、使变化的句式。 16-07-16 昨天用的Winodos所以没发写了。 重新记了初上的18课内容。 16-07-18 B站上的每晚一句感觉不错。因为是长句嘛，能够更加详细了解句子逻辑和词语使用规律 16-07-19 復習 Pelican
-16-07-14 换了一个更加清明的主题，能够能好的搜索，并且显示格式也很顺眼。而且能够自动形成Tags等的文章链接。基本上满足我的写作还有以后用来搜索的需求了。而且也很简约漂亮。 明天再学习一些嵌入式以及Linux的内容～ 16-07-19 插入图片：图床 评论系统：Disqus 数学公式：latex
-Linux
-16-07-16 SSH rsync VNC 等命令的学习和使用。为此，倒是专门安装了一个Ubuntu的Servery版本的虚拟机。 16-07-17 disk LVM 16-07-18 复习了一些网络部分。 16-07-18 Vi &amp;amp;&amp;amp; Vim 果然在了解了一些按鍵的作用之後感覺無愧‘於編輯器之神’的稱號。輸入法不小心點成繁體了，懶得改回簡體————或許有‘懶’的比賽我能進三甲。 16-07-26 這兩三天看了看 嵌入式的ARM系列板開發，當然主要看了看Linux 移植一類。只不過說是教程也不過是流程吧。通篇下來基本上用的最多的語句即使 把這個這樣，那個這樣一下。具體爲什麼全然わかりませんね！ 不過也沒關係，留下來自己回頭再看看就行了。後面再看一下Qt程序的移植就可以完美收官了，在嵌入式的領域。 16-08-03 看完了——只不過很可惜沒有實驗板，所以不能進行實驗。開學之後在學校吧。當然，學習斷線了一些時候，嗯嗯…… 16-08-11 musicbox Nethack ————A Game
-還沒玩，或者說還沒看說明手冊先瞎玩一氣。雖說有一塌糊塗，不過我有預感，這確實是一款很好的自由地牢遊戲。 Blender ーー建模 動畫軟件</description>
-    </item>
-    
-    <item>
-      <title>Creating a New Theme</title>
-      <link>http://example.org/posts/creating-a-new-theme/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/posts/creating-a-new-theme/</guid>
-      <description>Introduction # This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
-We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
-    </item>
-    
-    <item>
-      <title>Migrate to Hugo from Jekyll</title>
-      <link>http://example.org/posts/migrate-from-jekyll/</link>
-      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/posts/migrate-from-jekyll/</guid>
-      <description>Move static content to static # Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
-▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png should become
-▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
-    </item>
-    
-    <item>
-      <title>k8s</title>
-      <link>http://example.org/docs/programmer/base/k8s/</link>
-      <pubDate>Mon, 27 Mar 2023 10:58:56 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/k8s/</guid>
-      <description>k8s学习 # 常用命令 # kubectl apply -f rcm_log_monut_k8s_pod.yaml kubectl get pod -A kubectl get pod -all-namespaces kubectl get node kubectl get deploy 持久卷 - PersistentVolume kubectl get persistentvolume kubectl describe persistentvolume example-pv kubectl **delete** persistentvolume example-pv 从kubectl cp -n &amp;lt;命名空间&amp;gt; -c :xxx.json xxx.json 常用字段 # 下面是一些 Kubernetes 中常用的配置字段：
-apiVersion： Kubernetes API 的版本，用于定义资源的 API 版本号。 kind： 资源的类型，比如 Pod、Deployment、Service 等。 metadata： 元数据字段，用于存储 Kubernetes 对象的名称、命名空间、标签等信息。 spec： 对象的规格，用于定义对象的期望状态，如 Pod 的容器、Service 的端口等。 status： 对象的状态，用于记录对象的实际状态，如 Pod 的运行状态、Service 的访问地址等。 另外还有一些常用的子字段，如：</description>
-    </item>
-    
-    <item>
-      <title>My First Post</title>
-      <link>http://example.org/posts/my-first-post/</link>
-      <pubDate>Mon, 24 Oct 2022 01:47:22 +0000</pubDate>
-      
-      <guid>http://example.org/posts/my-first-post/</guid>
-      <description>Hello World # Hello, World</description>
-    </item>
-    
-    <item>
-      <title>CMake 使用Tips</title>
-      <link>http://example.org/docs/programmer/langs/cmake/</link>
-      <pubDate>Tue, 30 Aug 2022 12:00:56 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/langs/cmake/</guid>
-      <description> 在编译时将编译产物放在build # 据网友所知，cmake文档中没有记录，仅出于兼容性原因或内部使用而保留：
--B和-H标志 # cmake -Hpath/to/source -Bpath/to/build 甚至从源目录 -B # 重要：-B后没有空格
-该命令会自动创建build目录 之后cd到build下去make即可 cmake . -Bbuild 样例记录 # OpenCV # CMakeLists.txt 文件tree -L 1 |-- CMakeLists.txt |-- DisplayImage.cpp |-- DisplayImage.out |-- cmake_install.cmake |-- CMakeCache.txt |-- CMakeFiles |-- Makefile cmake_minimum_required(VERSION 2.8) project( DisplayImageExample ) find_package( OpenCV REQUIRED ) include_directories( ${OpenCV_INCLUDE_DIRS} ) add_executable( DisplayImage.out DisplayImage.cpp ) target_link_libraries( DisplayImage.out ${OpenCV_LIBS} ) Qt # </description>
-    </item>
-    
-    <item>
-      <title>Blender</title>
-      <link>http://example.org/docs/programmer/game_and_simulation/blender/</link>
-      <pubDate>Thu, 31 Mar 2022 15:15:14 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/game_and_simulation/blender/</guid>
-      <description> 快捷键 # 切换为四视图 | Ctrl+Alt+q 复制并移动(进入Grab模式) ｜ Shift+d(+x|y|x 选择移动轴) 线/面挤出 ｜ e(+x|y|x 选择挤出方向轴) 上一步的操作应用到当前选择 ｜ Shift+r 打开模型右侧的小工具栏(位置插件功能等调整) ｜ n 填充(两点连成线,线圈填成面) ｜ n 备忘 # 合并物体时,谁被最后选择&amp;ndash;是Active状态,将作为母体合并 </description>
-    </item>
-    
-    <item>
-      <title>PyPi</title>
-      <link>http://example.org/docs/programmer/base/pypi/</link>
-      <pubDate>Thu, 31 Mar 2022 15:15:14 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/pypi/</guid>
-      <description>示例项目 # py-muti-scrcpy
->>>>>>> e8a20db89ff8b55c86dad1077c2fa4173600ca74
 配置文件 # pyproject
 工具介绍 # poetry
 增加安装包 # 直接修改pyproject.toml文件并不能生效, 因为还依赖于poetry.lock
@@ -201,39 +42,13 @@ State Machine - State1-(rule)-State2&amp;hellip;StateN State - (Params-Blend-Res
 寻找依赖库 $ apt-file search libSM.so.6
 libsm6: /usr/lib/x86_64-linux-gnu/libSM.so.6 libsm6: /usr/lib/x86_64-linux-gnu/libSM.so.6.0.1
 根据提示，安装合适的依赖库 $ apt-get install libsm6
-<<<<<<< HEAD
 其余文件缺失类似, 即可解决问题。</description></item><item><title>各个软件换源</title><link>http://example.org/docs/programmer/base/for_china/</link><pubDate>Thu, 22 Apr 2021 17:04:15 +0000</pubDate><guid>http://example.org/docs/programmer/base/for_china/</guid><description>在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.
-=======
-其余文件缺失类似, 即可解决问题。 </description>
-    </item>
-    
-    <item>
-      <title>各个软件换源</title>
-      <link>http://example.org/docs/programmer/base/for_china/</link>
-      <pubDate>Thu, 22 Apr 2021 17:04:15 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/for_china/</guid>
-      <description>在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.
->>>>>>> e8a20db89ff8b55c86dad1077c2fa4173600ca74
 Qt # 使用Maintain管理kit时，可以在Settings中设置Repositories，设置地址可从Qt Downloads页面查询.
 apt # 可解决版本升级时的问题,即使用了国内源,最后一个文件不知道为什么还是从国外拉取&amp;hellip;
 # sudo touch /etc/apt/apt.conf sudo vim /etc/apt/apt.conf -&amp;gt; Acquire::http::Proxy &amp;ldquo;http://127.0.0.1:8001&amp;rdquo;;
 FreeBSD # mkdir -p /usr/local/etc/pkg/repos vim /usr/local/etc/pkg/repos/bjtu.conf
 bjtu: { url: &amp;#34;pkg+http://mirror.bjtu.edu.cn/reverse/freebsd-pkg/${ABI}/quarterly&amp;#34;, mirror_type: &amp;#34;srv&amp;#34;, signature_type: &amp;#34;none&amp;#34;, fingerprints: &amp;#34;/usr/share/keys/pkg&amp;#34;, enabled: yes } FreeBSD: { enabled: no } pkg update
-<<<<<<< HEAD
 Qt # 源 # 中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/ 清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/ 北京理工大学：http://mirror.bit.edu.cn/qtproject/ 中国互联网络信息中心：https://mirrors.cnnic.cn/qt/ Python Pip # pip install --index https://pypi.mirrors.ustc.edu.cn/simple/ dlib(numpy等包名) 源 # 阿里云 http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣(douban) http://pypi.</description></item><item><title>网络(Computer Network)</title><link>http://example.org/docs/programmer/net/net/</link><pubDate>Thu, 22 Apr 2021 15:15:14 +0000</pubDate><guid>http://example.org/docs/programmer/net/net/</guid><description>C++ &amp;amp; Epoll # 代码可见这里
-=======
-Qt # 源 # 中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/ 清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/ 北京理工大学：http://mirror.bit.edu.cn/qtproject/ 中国互联网络信息中心：https://mirrors.cnnic.cn/qt/ Python Pip # pip install --index https://pypi.mirrors.ustc.edu.cn/simple/ dlib(numpy等包名) 源 # 阿里云 http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣(douban) http://pypi.</description>
-    </item>
-    
-    <item>
-      <title>网络(Computer Network)</title>
-      <link>http://example.org/docs/programmer/net/net/</link>
-      <pubDate>Thu, 22 Apr 2021 15:15:14 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/net/net/</guid>
-      <description>C++ &amp;amp; Epoll # 代码可见这里
->>>>>>> e8a20db89ff8b55c86dad1077c2fa4173600ca74
 也没啥高级就是:
 create_socket epoll_create1 epoll_ctl(1. &amp;amp; 2.) struct epoll_event events[MAX_EPOLL_EVENTS] = {0}; while1: epoll_wait(2, &amp;amp; 4.) eventfd == sockfd accept else =&amp;gt; connfd read 所以就是:
 epoll_event -&amp;gt; 内核空间 epitem -&amp;gt; 红黑 设备事件就绪 - callback (epitem -&amp;gt; rdlist链表) emmmm&amp;hellip;有需要再继续整理吧 和select-poll区别为: 一个遍历, 一个触发式的.</description></item><item><title>tips Of Debuggers</title><link>http://example.org/docs/programmer/base/tipsofdebugers/</link><pubDate>Thu, 10 Jan 2019 12:21:12 +0000</pubDate><guid>http://example.org/docs/programmer/base/tipsofdebugers/</guid><description>Clang &amp;amp;&amp;amp; lldb # 听说clang+lldb &amp;gt;= gcc + gdb, 所以一试:
@@ -256,35 +71,10 @@ error.dtd\error.xml 错误定义文件 ---- ThostFrfcMdApi.h 交易接口类定�
 API压缩包——API含常量对应字符、类型定义、操作系统编译定义、回调函数（MdSpi）（柜台向用户端发送信息后被系统自动调用的函数）、主动函数（MdApi）（向柜台发送各种请求和指令）
 API工作流程： 创建MdSpi对象（回掉函数），调用MdApi类，以Create开头的静态方法，创建MdApi对象（主动函数），注册MdSpi对象指针，行情柜台前置机地址，调用MdApi对象Init方法初始化连接前置机，连接成功会通过OnFrontConnected回调通知用户，用户获得连接成功通知后，调MdApi的ReqUserLogin登陆，登陆后MdSpi的OnRsqUserLogin通知用户 &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-到此登陆完成&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;
 MdApi：（行情相关） 使用MdApi对象的SubscribeMarketData方法，传入参数为想要订阅的“合约 代码”，订阅成功当合约有新行情通过MdApi的OnRtnDepthMarketData回调通知 用户 &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-至此订阅完成&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash; 当用户的某次请求发生错误时，会通过OnRspError通知用户 MdApi也含有退订合约、登出功能。 而一般退出程序则直接杀进程（不太安全便是）
-<<<<<<< HEAD
 TraderApi：（交易相关） 不同于以上的有 注册TraderSpi对象的指针后需要调用TraderApi对象的 SubscribePrivateTopic和SubscribePublicTopic方法去选择公开和私有数据流的重 传方法 对于期货柜台，每一日第一次登陆需要先查询前一日的结算单，等待查询 结果返回，确认，才可进行后续操作（CTP、恒生UFT），证券（LTS）无此要求 上一步完成后，用户可以调用ReqQryInstrument的方法查询柜台上所有可 以交易的合约信息（包括代码、中文名、涨跌停、最小价位变动、合约乘数等大 量细节），一般是在这里获得合约信息列表后，再去MdApi中订阅合约；经常有 人问为什么在MdApi中找不到查询可供订阅的合约代码的函数，这里尤其要注 意，必须通过TraderApi来获取 当用户报单、成交状态发生变化时，TraderApi会自动通过OnRtnOrder、 OnRtnTrade通知，无需额外订阅 /封装API****/ 封装后API的动作： 主动函数： 调用封装API主动函数，传入Python变量作为参数—&amp;gt;封装API将Python变量转换成C++变量—&amp;gt;API调用原生API主动函数传入C++变量作为参数 回掉函数： 交易柜台通过原生API传入参数为C++变量-&amp;gt;封装API将C++变量转换为Python变量-&amp;gt;封装API调用封装后的回调函数想Python程序中推送数</description></item><item><title>tips Of markdown</title><link>http://example.org/docs/programmer/langs/tipsofmarkdown/</link><pubDate>Tue, 15 May 2018 10:00:47 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tipsofmarkdown/</guid><description>Markdown Notes 📪 # HTML锚点 - 页面内点击跳转 # 可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。 具体实现方法如下：
 首先，在需要跳转到的标题前插入一个 HTML 锚点，例如： ### &amp;lt;a name=&amp;#34;section1&amp;#34;&amp;gt;Section 1&amp;lt;/a&amp;gt; 这个锚点的名称为 &amp;#34;section1&amp;#34;，可以根据需要自定义。 在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如： [跳转到 Section 1](#section1) 这样，点击这个链接就会跳转到页面中的 &amp;#34;Section 1&amp;#34; 标题处。 注意事项： # 锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。 如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。
 ## Test 二级标题
 Now I will test the Markdown&amp;rsquo;s hobiy 二级 # Maybe is a nice way to impove my blog. 三级 # 原来标题 要# 与正文隔开一个空格… ···print “hello Markdown”··· 欸？ 怎么回事？上面的文字 莫非是用Tab能将其放到一个容器里？</description></item><item><title>tip Of vim</title><link>http://example.org/docs/programmer/base/tipsofvim/</link><pubDate>Tue, 15 May 2018 09:56:41 +0000</pubDate><guid>http://example.org/docs/programmer/base/tipsofvim/</guid><description>Vim 使用 # 除去“简便生活”里的几条配置，在纠结是否添加到别的地方，果然还是单独给vim一个使用手册比较好……
-=======
-TraderApi：（交易相关） 不同于以上的有 注册TraderSpi对象的指针后需要调用TraderApi对象的 SubscribePrivateTopic和SubscribePublicTopic方法去选择公开和私有数据流的重 传方法 对于期货柜台，每一日第一次登陆需要先查询前一日的结算单，等待查询 结果返回，确认，才可进行后续操作（CTP、恒生UFT），证券（LTS）无此要求 上一步完成后，用户可以调用ReqQryInstrument的方法查询柜台上所有可 以交易的合约信息（包括代码、中文名、涨跌停、最小价位变动、合约乘数等大 量细节），一般是在这里获得合约信息列表后，再去MdApi中订阅合约；经常有 人问为什么在MdApi中找不到查询可供订阅的合约代码的函数，这里尤其要注 意，必须通过TraderApi来获取 当用户报单、成交状态发生变化时，TraderApi会自动通过OnRtnOrder、 OnRtnTrade通知，无需额外订阅 /封装API****/ 封装后API的动作： 主动函数： 调用封装API主动函数，传入Python变量作为参数—&amp;gt;封装API将Python变量转换成C++变量—&amp;gt;API调用原生API主动函数传入C++变量作为参数 回掉函数： 交易柜台通过原生API传入参数为C++变量-&amp;gt;封装API将C++变量转换为Python变量-&amp;gt;封装API调用封装后的回调函数想Python程序中推送数</description>
-    </item>
-    
-    <item>
-      <title>tips Of markdown</title>
-      <link>http://example.org/docs/programmer/langs/tipsofmarkdown/</link>
-      <pubDate>Tue, 15 May 2018 10:00:47 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/langs/tipsofmarkdown/</guid>
-      <description>Markdown Notes 📪 # HTML锚点 - 页面内点击跳转 # 可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。 具体实现方法如下：
-首先，在需要跳转到的标题前插入一个 HTML 锚点，例如： ### &amp;lt;a name=&amp;#34;section1&amp;#34;&amp;gt;Section 1&amp;lt;/a&amp;gt; 这个锚点的名称为 &amp;#34;section1&amp;#34;，可以根据需要自定义。 在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如： [跳转到 Section 1](#section1) 这样，点击这个链接就会跳转到页面中的 &amp;#34;Section 1&amp;#34; 标题处。 注意事项： # 锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。 如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。
-## Test 二级标题
-Now I will test the Markdown&amp;rsquo;s hobiy 二级 # Maybe is a nice way to impove my blog. 三级 # 原来标题 要# 与正文隔开一个空格… ···print “hello Markdown”··· 欸？ 怎么回事？上面的文字 莫非是用Tab能将其放到一个容器里？</description>
-    </item>
-    
-    <item>
-      <title>tip Of vim</title>
-      <link>http://example.org/docs/programmer/base/tipsofvim/</link>
-      <pubDate>Tue, 15 May 2018 09:56:41 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/tipsofvim/</guid>
-      <description>Vim 使用 # 除去“简便生活”里的几条配置，在纠结是否添加到别的地方，果然还是单独给vim一个使用手册比较好……
->>>>>>> e8a20db89ff8b55c86dad1077c2fa4173600ca74
 注释 # # 注释 1， 12s/^/#/g --- # 取消注释 1， 12s/^#//g 其实 是vim中的 :s替换命令… 下方解释
 或者，使用列编辑的模式:
 v、选择区域、ctrl q置行首、I插入#、Esc应用到全列 ctrl v、I、#、Esc 因为有的ctrl q或者ctrl v 不能用…… 取消，即使用上述方法选中行首，删除第一个字节即可了 替换 # :s/oldWords/newWords/g g : 代表当前光标所在行。
@@ -319,7 +109,6 @@ vmware # pkg install open-vm-tools xf86-video-vmware xf86-input-vmmouse 继续�
 换源 # mkdir -p /usr/local/etc/pkg/repos vim /usr/local/etc/pkg/repos/bjtu.</description></item><item><title/><link>http://example.org/docs/programmer/software/gitbook/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/software/gitbook/</guid><description>Gitbook # Author: Ian
 安装 # 官方文档 Github Gitbook 打造的 Gitbook 说明文档 使用npm进行安装, 安装npm (v4.0.0 and above is recommended) npm install gitbook-cli -g 需要sudo权限 实际在执行gitbook -V后才算是安装完成 问题 # TypeError: cb.apply is not a function # npm 安装软件不出点儿问题貌似都不是很合适, 该问题代码级问题是因为在适配某些可能本机上并没有安装的npm版本时写了bug，导致执行出错.
 所以注释掉相关代码即可，或者直接删除。删除的好处是不会因为编辑器的原因触发npm的某些缩进问题。
-<<<<<<< HEAD
 62. // fs.stat = statFix(fs.stat) 63. // fs.fstat = statFix(fs.fstat) 64. // fs.lstat = statFix(fs.lstat) 固然可以通过安装相匹配版本进行适配，不过&amp;hellip;Ian怕导致本机上的hexo再出现版本不兼容的问题。 使用 # 功能 示例 个人使用习惯(Ian) 新建book gitbook init gitbook init gitbooks/Architecture 编译和运行服务 gitbook serve 编译 gitbook serve pdf # 参考自 码谱</description></item><item><title/><link>http://example.org/docs/programmer/software/markdown/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/software/markdown/</guid><description> Markdown # 文本字体速查表 # 参考自: csdn 王大雄
 高亮 # 1. 使用&amp;#34;`&amp;#34;双引, eg: `{要高亮的文本}`; 2. 使用&amp;#34;```&amp;#34; 跨行, eg:```\n{要高亮的文本}\n```; 3. HTML &amp;lt;mark&amp;gt;双引, eg: &amp;lt;mark&amp;gt;{要高亮的文本}&amp;lt;mark&amp;gt; 要高亮的文本 见下 要高亮的文本 要高亮的文本</description></item><item><title/><link>http://example.org/docs/programmer/software/npm/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/software/npm/</guid><description>npm # 树莓派 # 官网下载 树莓派4b 选择ARMv8之前的树莓派型号选择ARMv7 配置PATH 向/usr/local/bin/下建立node软链 export PATH=&amp;#34;~/node-v16.14.0-linux-arm64/bin:$PATH&amp;#34; #sudo ln -s ~/node-v16.14.0-linux-arm64/bin/node /usr/bin/node Windows下wsl2 安装 npm &amp;amp;&amp;amp; nodejs # 摘抄自微软说明文档
 安装nvm (Node 版本管理器) 国内网可能有问题, 下载下保存直接bash install.sh就可安装. curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash command -v nvm验证是否安装成功,它会自行添加.bashrc需重启bash nvm ls查看Node版本 nvm install --lts即可安装lts版, nvm install node安装最新版 会安装这么多东西 -&amp;gt; v16.13.2 default -&amp;gt; lts/* (-&amp;gt; v16.13.2) iojs -&amp;gt; N/A (default) unstable -&amp;gt; N/A (default) node -&amp;gt; stable (-&amp;gt; v16.13.2) (default) stable -&amp;gt; 16.</description></item><item><title/><link>http://example.org/docs/programmer/software/readme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/software/readme/</guid><description>软件篇 # 主要记录一些工具、软件的Initialization，或者实用插件的安装等问题</description></item><item><title/><link>http://example.org/docs/programmer/software/vim/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/software/vim/</guid><description>&lt;h1 id="vim-使用">
@@ -340,68 +129,9 @@ Vim 使用
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>其实 是&lt;code>vim&lt;/code>中的 &lt;code>:s&lt;/code>替换命令… 下方解释&lt;/p>
 &lt;p>或者，使用列编辑的模式:&lt;/p>
 &lt;pre>&lt;code>v、选择区域、ctrl q置行首、I插入#、Esc应用到全列
-=======
-62. // fs.stat = statFix(fs.stat) 63. // fs.fstat = statFix(fs.fstat) 64. // fs.lstat = statFix(fs.lstat) 固然可以通过安装相匹配版本进行适配，不过&amp;hellip;Ian怕导致本机上的hexo再出现版本不兼容的问题。 使用 # 功能 示例 个人使用习惯(Ian) 新建book gitbook init gitbook init gitbooks/Architecture 编译和运行服务 gitbook serve 编译 gitbook serve pdf # 参考自 码谱</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://example.org/docs/programmer/software/markdown/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/software/markdown/</guid>
-      <description> Markdown # 文本字体速查表 # 参考自: csdn 王大雄
-高亮 # 1. 使用&amp;#34;`&amp;#34;双引, eg: `{要高亮的文本}`; 2. 使用&amp;#34;```&amp;#34; 跨行, eg:```\n{要高亮的文本}\n```; 3. HTML &amp;lt;mark&amp;gt;双引, eg: &amp;lt;mark&amp;gt;{要高亮的文本}&amp;lt;mark&amp;gt; 要高亮的文本 见下 要高亮的文本 要高亮的文本 </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://example.org/docs/programmer/software/npm/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/software/npm/</guid>
-      <description>npm # 树莓派 # 官网下载 树莓派4b 选择ARMv8之前的树莓派型号选择ARMv7 配置PATH 向/usr/local/bin/下建立node软链 export PATH=&amp;#34;~/node-v16.14.0-linux-arm64/bin:$PATH&amp;#34; #sudo ln -s ~/node-v16.14.0-linux-arm64/bin/node /usr/bin/node Windows下wsl2 安装 npm &amp;amp;&amp;amp; nodejs # 摘抄自微软说明文档
-安装nvm (Node 版本管理器) 国内网可能有问题, 下载下保存直接bash install.sh就可安装. curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash command -v nvm验证是否安装成功,它会自行添加.bashrc需重启bash nvm ls查看Node版本 nvm install --lts即可安装lts版, nvm install node安装最新版 会安装这么多东西 -&amp;gt; v16.13.2 default -&amp;gt; lts/* (-&amp;gt; v16.13.2) iojs -&amp;gt; N/A (default) unstable -&amp;gt; N/A (default) node -&amp;gt; stable (-&amp;gt; v16.13.2) (default) stable -&amp;gt; 16.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://example.org/docs/programmer/software/readme/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/software/readme/</guid>
-      <description>软件篇 # 主要记录一些工具、软件的Initialization，或者实用插件的安装等问题</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://example.org/docs/programmer/software/vim/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/software/vim/</guid>
-      <description>&lt;h1 id=&#34;vim-使用&#34;&gt;
-  Vim 使用
-  &lt;a class=&#34;anchor&#34; href=&#34;#vim-%e4%bd%bf%e7%94%a8&#34;&gt;#&lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;Auther: Ian&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.vim.org/images/vim_header.gif&#34; alt=&#34;vim&#34; /&gt;&lt;/p&gt;
-&lt;h2 id=&#34;注释&#34;&gt;
-  注释
-  &lt;a class=&#34;anchor&#34; href=&#34;#%e6%b3%a8%e9%87%8a&#34;&gt;#&lt;/a&gt;
-&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    # 注释&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;， &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;s&lt;span style=&#34;color:#e6db74&#34;&gt;/^/&lt;/span&gt;#/&lt;span style=&#34;color:#a6e22e&#34;&gt;g&lt;/span&gt;   &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    ---&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    # 取消注释&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;， &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;s&lt;span style=&#34;color:#e6db74&#34;&gt;/^#/&lt;/span&gt;/&lt;span style=&#34;color:#a6e22e&#34;&gt;g&lt;/span&gt;     &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其实 是&lt;code&gt;vim&lt;/code&gt;中的 &lt;code&gt;:s&lt;/code&gt;替换命令… 下方解释&lt;/p&gt;
-&lt;p&gt;或者，使用列编辑的模式:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;v、选择区域、ctrl q置行首、I插入#、Esc应用到全列
->>>>>>> e8a20db89ff8b55c86dad1077c2fa4173600ca74
 ctrl v、I、#、Esc
 因为有的ctrl q或者ctrl v 不能用……
 取消，即使用上述方法选中行首，删除第一个字节即可了
-<<<<<<< HEAD
 &lt;/code>&lt;/pre>
 &lt;h2 id="替换">
 替换
@@ -450,102 +180,6 @@ Example # {{&amp;lt; button relref=&amp;#34;/&amp;#34; [class=&amp;#34;...&amp;#
 {{&amp;lt; columns &amp;gt;}} &amp;lt;!-- begin columns block --&amp;gt; # Left Content Lorem markdownum insigne... &amp;lt;---&amp;gt; &amp;lt;!-- magic separator, between columns --&amp;gt; # Mid Content Lorem markdownum insigne... &amp;lt;---&amp;gt; &amp;lt;!-- magic separator, between columns --&amp;gt; # Right Content Lorem markdownum insigne... {{&amp;lt; /columns &amp;gt;}} Example # Left Content # Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter!</description></item><item><title/><link>http://example.org/docs/shortcodes/details/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/shortcodes/details/</guid><description> Details # Details shortcode is a helper for details html5 element. It is going to replace expand shortcode.
 Example # {{&amp;lt; details &amp;#34;Title&amp;#34; [open] &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /details &amp;gt;}} {{&amp;lt; details title=&amp;#34;Title&amp;#34; open=true &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /details &amp;gt;}} Title Markdown content # Lorem markdownum insigne&amp;hellip;</description></item><item><title/><link>http://example.org/docs/shortcodes/expand/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/shortcodes/expand/</guid><description>Expand # Expand shortcode can help to decrease clutter on screen by hiding part of text. Expand content by clicking on it.
 Example # Default # {{&amp;lt; expand &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /expand &amp;gt;}} Expand ↕ Markdown content # Lorem markdownum insigne&amp;hellip; With Custom Label # {{&amp;lt; expand &amp;#34;Custom Label&amp;#34; &amp;#34;...&amp;#34; &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /expand &amp;gt;}} Custom Label ... Markdown content # Lorem markdownum insigne.</description></item><item><title/><link>http://example.org/docs/shortcodes/hints/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/shortcodes/hints/</guid><description>Hints # Hint shortcode can be used as hint/alerts/notification block.
-=======
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;替换&#34;&gt;
-  替换
-  &lt;a class=&#34;anchor&#34; href=&#34;#%e6%9b%bf%e6%8d%a2&#34;&gt;#&lt;/a&gt;
-&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    :&lt;span style=&#34;color:#a6e22e&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/oldWords/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;newWords&lt;/span&gt;/&lt;span style=&#34;color:#a6e22e&#34;&gt;g&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;g : 代表当前光标所在行。&lt;/p&gt;
-&lt;h3 id=&#34;由此可知&#34;&gt;
-  由此可知:
-  &lt;a class=&#34;anchor&#34; href=&#34;#%e7%94%b1%e6%ad%a4%e5%8f%af%e7%9f%a5&#34;&gt;#&lt;/a&gt;
-&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;^&lt;/code&gt;表行首标识符。 &lt;code&gt;/^/&lt;/code&gt;表示行首的空字符。   而取消注释中的&lt;code&gt;/^#/&lt;/code&gt;即表示行首的&lt;code&gt;#&lt;/code&gt;，被&lt;code&gt;//&lt;/code&gt;空字符所替换。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;查找高亮&#34;&gt;
-  查找高亮
-  &lt;a class=&#34;anchor&#34; href=&#34;#%e6%9f%a5%e6%89%be%e9%ab%98%e4%ba%ae&#34;&gt;#&lt;/a&gt;
-&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;hlsearch&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;nohlsearch&lt;/span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;分屏&#34;&gt;
-  分屏
-  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%88%86%e5%b1%8f&#34;&gt;#&lt;/a&gt;
-&lt;/h2&gt;
-&lt;h3 id=&#34;实现&#34;&gt;
-  实现
-  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%ae%9e%e7%8e%b0&#34;&gt;#&lt;/a&gt;
-&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;在外部使用&lt;code&gt;-o&lt;/code&gt; or &lt;code&gt;-O&lt;/code&gt;参数&lt;/li&gt;
-&lt;li&gt;内部&lt;code&gt;split&lt;/code&gt; or &lt;code&gt;vsplit&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;操作&#34;&gt;
-  操作
-  &lt;a class=&#34;anchor&#34; href=&#34;#%e6%93%8d%e4%bd%9c&#34;&gt;#&lt;/a&gt;
-&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;移动光标 &lt;code&gt;Ctrl + w&lt;/code&gt; hjkl&lt;/li&gt;
-&lt;li&gt;移动分区&lt;code&gt;Ctrl + w&lt;/code&gt; HJKL&lt;/li&gt;
-&lt;li&gt;统一高度&lt;code&gt;Ctrl + w&lt;/code&gt;  =&lt;/li&gt;
-&lt;li&gt;改变高度&lt;code&gt;Ctrl + w&lt;/code&gt;  +-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;heading&#34;&gt;
-  
-  &lt;a class=&#34;anchor&#34; href=&#34;#heading&#34;&gt;#&lt;/a&gt;
-&lt;/h1&gt;</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://example.org/docs/shortcodes/buttons/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/shortcodes/buttons/</guid>
-      <description> Buttons # Buttons are styled links that can lead to local page or external link.
-Example # {{&amp;lt; button relref=&amp;#34;/&amp;#34; [class=&amp;#34;...&amp;#34;] &amp;gt;}}Get Home{{&amp;lt; /button &amp;gt;}} {{&amp;lt; button href=&amp;#34;https://github.com/alex-shpak/hugo-book&amp;#34; &amp;gt;}}Contribute{{&amp;lt; /button &amp;gt;}} Get Home Contribute </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://example.org/docs/shortcodes/columns/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/shortcodes/columns/</guid>
-      <description>Columns # Columns help organize shorter pieces of content horizontally for readability.
-{{&amp;lt; columns &amp;gt;}} &amp;lt;!-- begin columns block --&amp;gt; # Left Content Lorem markdownum insigne... &amp;lt;---&amp;gt; &amp;lt;!-- magic separator, between columns --&amp;gt; # Mid Content Lorem markdownum insigne... &amp;lt;---&amp;gt; &amp;lt;!-- magic separator, between columns --&amp;gt; # Right Content Lorem markdownum insigne... {{&amp;lt; /columns &amp;gt;}} Example # Left Content # Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter!</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://example.org/docs/shortcodes/details/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/shortcodes/details/</guid>
-      <description> Details # Details shortcode is a helper for details html5 element. It is going to replace expand shortcode.
-Example # {{&amp;lt; details &amp;#34;Title&amp;#34; [open] &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /details &amp;gt;}} {{&amp;lt; details title=&amp;#34;Title&amp;#34; open=true &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /details &amp;gt;}} Title Markdown content # Lorem markdownum insigne&amp;hellip; </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://example.org/docs/shortcodes/expand/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/shortcodes/expand/</guid>
-      <description> Expand # Expand shortcode can help to decrease clutter on screen by hiding part of text. Expand content by clicking on it.
-Example # Default # &amp;lt;details&amp;gt; &amp;lt;summary&amp;gt;Click here to see the answer&amp;lt;/summary&amp;gt; The answer is 42. &amp;lt;/details&amp;gt; With Custom Label # &amp;lt;details&amp;gt; &amp;lt;summary&amp;gt;Click here to see the answer&amp;lt;/summary&amp;gt; The answer is 42. &amp;lt;/details&amp;gt; </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://example.org/docs/shortcodes/hints/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/shortcodes/hints/</guid>
-      <description>Hints # Hint shortcode can be used as hint/alerts/notification block.
->>>>>>> e8a20db89ff8b55c86dad1077c2fa4173600ca74
 There are 3 colors to choose: info, warning and danger.
 {{&amp;lt; hint [info|warning|danger] &amp;gt;}} **Markdown content** Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa {{&amp;lt; /hint &amp;gt;}} Example # Markdown content
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa Markdown content</description></item><item><title/><link>http://example.org/docs/shortcodes/section/first-page/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/shortcodes/section/first-page/</guid><description>First page # Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -558,37 +192,11 @@ Lorem markdownum insigne. Olympo signis Delphis!</description></item><item><titl
 结果换了dgraph/standalone:v20.11.3好了诶.
 sudo docker run --rm -it -p &amp;#34;8080:8080&amp;#34; -p &amp;#34;9080:9080&amp;#34; -p &amp;#34;8000:8000&amp;#34; -v ~/dgraph:/dgraph &amp;#34;dgraph/standalone:v20.11.3&amp;#34; http://127.0.0.1:8000</description></item><item><title>Python笔记(notes of Python)</title><link>http://example.org/docs/programmer/langs/notespython/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/notespython/</guid><description>author:Ian
 彻底摆脱to_dict和from_dict # 使用 pydantic # BaseModel类型支持:
-<<<<<<< HEAD
 b = BattleAxiePositionInfo.parse_obj(DICT_DATA) b.json() b.dict() parse_file parse_raw from pydantic import BaseModel class PositionInfo(BaseModel): error: int = -1 # 收集错误 none: int = 0 # 还没开始 clicked: int = 1 # 在client 赋此值 done: int = 2 # 在server 赋此值 xy: List[int] = [0, 0] status: int = 0 # clicked or done or none or error class BattleAxiePositionInfo(BaseModel): our: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] enemy: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] pp = BattleAxiePositionInfo() print(f&amp;#34;pp json: {pp.</description></item><item><title>图形化界面 （Python Gui）</title><link>http://example.org/docs/programmer/gui/notespython/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/gui/notespython/</guid><description>author:Ian
 Python GUI 💽 # pynput # 在 pynput 模块中，Win键被称为“特殊键”（Special keys），需要使用特殊的名称来表示。
 以下是可以使用的特殊键名称列表：
 https://pynput.readthedocs.io/en/latest/keyboard.html?highlight=%3Ccmd%3E#controlling-the-keyboard 因此，如果你想要在热键设置中使用 Win键+空格 这个热键，可以将它们分别替换为 cmd 和 space，如下所示：
 from pynput import keyboard def on_activate(): print(&amp;#39;Hotkey activated&amp;#39;) def on_exit(): print(&amp;#39;Hotkey exited&amp;#39;) return False with keyboard.GlobalHotKeys({&amp;#39;&amp;lt;cmd&amp;gt;+&amp;lt;space&amp;gt;&amp;#39;: on_activate}) as h: h.join(on_exit)``` 在这个例子中，我们使用 &amp;lt;cmd&amp;gt;+&amp;lt;space&amp;gt; 来表示 Win键+空格 热键，因为在Mac中，Command键（cmd）可以起到类似于Win键的作用。 ## PyQt ![qt](https://tse4-mm.cn.bing.net/th/id/OIP.J4_Nqrcc0x7slHHUFwKLSQHaI6?pid=ImgDet&amp;amp;rs=1 &amp;#34;tmp&amp;#34;) 官方说明文档：&amp;lt;http://pyqt.sourceforge.net/Docs/PyQt4/index.html&amp;gt; 照例，先贴网址： &amp;lt;http://www.qaulau.com/books/PyQt4_Tutorial/index.html&amp;gt; ## 画界面 #PyQt4使用designer.exe import os for root, dirs, files in os.walk(&amp;#39;.&amp;#39;): for file in files: if file.endswith(&amp;#39;.ui&amp;#39;): os.system(&amp;#39;pyuic4 -o ui_%s.</description></item><item><title>愉快的Java(happy to learn the fuck java)</title><link>http://example.org/docs/programmer/langs/notesjava/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/notesjava/</guid><description>author: Ian
-=======
-b = BattleAxiePositionInfo.parse_obj(DICT_DATA) b.json() b.dict() parse_file parse_raw from pydantic import BaseModel class PositionInfo(BaseModel): error: int = -1 # 收集错误 none: int = 0 # 还没开始 clicked: int = 1 # 在client 赋此值 done: int = 2 # 在server 赋此值 xy: List[int] = [0, 0] status: int = 0 # clicked or done or none or error class BattleAxiePositionInfo(BaseModel): our: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] enemy: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] pp = BattleAxiePositionInfo() print(f&amp;#34;pp json: {pp.</description>
-    </item>
-    
-    <item>
-      <title>图形化界面 （Python Gui）</title>
-      <link>http://example.org/docs/programmer/gui/notespython/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/gui/notespython/</guid>
-      <description>author:Ian
-Python GUI 💽 # pynput # 在 pynput 模块中，Win键被称为“特殊键”（Special keys），需要使用特殊的名称来表示。
-以下是可以使用的特殊键名称列表：
-https://pynput.readthedocs.io/en/latest/keyboard.html?highlight=%3Ccmd%3E#controlling-the-keyboard 因此，如果你想要在热键设置中使用 Win键+空格 这个热键，可以将它们分别替换为 cmd 和 space，如下所示：
-from pynput import keyboard def on_activate(): print(&amp;#39;Hotkey activated&amp;#39;) def on_exit(): print(&amp;#39;Hotkey exited&amp;#39;) return False with keyboard.GlobalHotKeys({&amp;#39;&amp;lt;cmd&amp;gt;+&amp;lt;space&amp;gt;&amp;#39;: on_activate}) as h: h.join(on_exit)``` 在这个例子中，我们使用 &amp;lt;cmd&amp;gt;+&amp;lt;space&amp;gt; 来表示 Win键+空格 热键，因为在Mac中，Command键（cmd）可以起到类似于Win键的作用。 ## PyQt ![qt](https://tse4-mm.cn.bing.net/th/id/OIP.J4_Nqrcc0x7slHHUFwKLSQHaI6?pid=ImgDet&amp;amp;rs=1 &amp;#34;tmp&amp;#34;) 官方说明文档：&amp;lt;http://pyqt.sourceforge.net/Docs/PyQt4/index.html&amp;gt; 照例，先贴网址： &amp;lt;http://www.qaulau.com/books/PyQt4_Tutorial/index.html&amp;gt; ## 画界面 #PyQt4使用designer.exe import os for root, dirs, files in os.walk(&amp;#39;.&amp;#39;): for file in files: if file.endswith(&amp;#39;.ui&amp;#39;): os.system(&amp;#39;pyuic4 -o ui_%s.</description>
-    </item>
-    
-    <item>
-      <title>愉快的Java(happy to learn the fuck java)</title>
-      <link>http://example.org/docs/programmer/langs/notesjava/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/langs/notesjava/</guid>
-      <description>author: Ian
->>>>>>> e8a20db89ff8b55c86dad1077c2fa4173600ca74
 happy to the fuck java 😅 # &amp;lt;微人事&amp;gt; 笔记 -&amp;gt; ψ(._. )&amp;gt; # 先贴官方文档 哦 还有官方项目地址
 爪哇方法定义: # 修饰符 返回值类型 方法名(参数类型 参数名){ 方法体; return 返回值; } # 示个例 public boolean NiHou(int num){ int a = num; return turn; } // `boolean` 处 可为 public Collection&amp;lt;? extends GrantedAuthority&amp;gt; getAuthorities(){ List&amp;lt;GrantedAuthority&amp;gt; authorities = new ArrayList&amp;lt;&amp;gt;(); return authorities; } // 表泛型中可以是的`GrantedAuthority`所有子类 爪哇抽象方法(即Python父类中直接pass的函数…) # abstract
 包含抽象方法必须得是抽象类 任何子类必须重写父类抽象方法，或者声明自身为抽象类 public abstract class Employee { private String name; private int number; public abstract double computePay(); //其余 } 爪哇接口 # interface, implements</description></item><item><title>数据格式笔记</title><link>http://example.org/docs/programmer/base/noteoffmtdata/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/base/noteoffmtdata/</guid><description>单向链表实现和反转 # # 单向链表实现和反转 &amp;#34;&amp;#34;&amp;#34; # 当前值, 下一个值 # 循环 # 将当前值赋值为下一个的值, 下一个节点值为当前节点值 # 当前节点next赋 &amp;#34;&amp;#34;&amp;#34; class A: def __init__(self, v): self.v = v self.next = None class LA: def __init__(self): self.head = None def add(self, v): node = A(v) node.next = self.head self.head = node def print(self): cur = self.head while cur and cur.v != None: print(f&amp;#34;linkdata node v: {cur.v}&amp;#34;) cur = cur.next def revert(self, node: A=None, head=None): if not head: cache = self.</description></item><item><title>机器学习库</title><link>http://example.org/docs/programmer/ml/noteofmachinelearning/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/noteofmachinelearning/</guid><description>Python 机器学习库 👽 # Plotly # 与matplotlib 都是绘图工具，不过效果炫一些，我也没画过，所以只放链接，不放实例了 Plotly Python Library : https://plot.ly/python/

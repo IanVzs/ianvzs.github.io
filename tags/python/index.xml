@@ -1,36 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>python on Ian's Blog</title><link>http://example.org/tags/python/</link><description>Recent content in python on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="http://example.org/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Python笔记(notes of Python)</title><link>http://example.org/docs/programmer/langs/notespython/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/notespython/</guid><description>author:Ian
 彻底摆脱to_dict和from_dict # 使用 pydantic # BaseModel类型支持:
-<<<<<<< HEAD
 b = BattleAxiePositionInfo.parse_obj(DICT_DATA) b.json() b.dict() parse_file parse_raw from pydantic import BaseModel class PositionInfo(BaseModel): error: int = -1 # 收集错误 none: int = 0 # 还没开始 clicked: int = 1 # 在client 赋此值 done: int = 2 # 在server 赋此值 xy: List[int] = [0, 0] status: int = 0 # clicked or done or none or error class BattleAxiePositionInfo(BaseModel): our: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] enemy: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] pp = BattleAxiePositionInfo() print(f&amp;#34;pp json: {pp.</description></item><item><title>图形化界面 （Python Gui）</title><link>http://example.org/docs/programmer/gui/notespython/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/gui/notespython/</guid><description>author:Ian
 Python GUI 💽 # pynput # 在 pynput 模块中，Win键被称为“特殊键”（Special keys），需要使用特殊的名称来表示。
 以下是可以使用的特殊键名称列表：
 https://pynput.readthedocs.io/en/latest/keyboard.html?highlight=%3Ccmd%3E#controlling-the-keyboard 因此，如果你想要在热键设置中使用 Win键+空格 这个热键，可以将它们分别替换为 cmd 和 space，如下所示：
 from pynput import keyboard def on_activate(): print(&amp;#39;Hotkey activated&amp;#39;) def on_exit(): print(&amp;#39;Hotkey exited&amp;#39;) return False with keyboard.GlobalHotKeys({&amp;#39;&amp;lt;cmd&amp;gt;+&amp;lt;space&amp;gt;&amp;#39;: on_activate}) as h: h.join(on_exit)``` 在这个例子中，我们使用 &amp;lt;cmd&amp;gt;+&amp;lt;space&amp;gt; 来表示 Win键+空格 热键，因为在Mac中，Command键（cmd）可以起到类似于Win键的作用。 ## PyQt ![qt](https://tse4-mm.cn.bing.net/th/id/OIP.J4_Nqrcc0x7slHHUFwKLSQHaI6?pid=ImgDet&amp;amp;rs=1 &amp;#34;tmp&amp;#34;) 官方说明文档：&amp;lt;http://pyqt.sourceforge.net/Docs/PyQt4/index.html&amp;gt; 照例，先贴网址： &amp;lt;http://www.qaulau.com/books/PyQt4_Tutorial/index.html&amp;gt; ## 画界面 #PyQt4使用designer.exe import os for root, dirs, files in os.walk(&amp;#39;.&amp;#39;): for file in files: if file.endswith(&amp;#39;.ui&amp;#39;): os.system(&amp;#39;pyuic4 -o ui_%s.</description></item><item><title>机器学习库</title><link>http://example.org/docs/programmer/ml/noteofmachinelearning/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/noteofmachinelearning/</guid><description>Python 机器学习库 👽 # Plotly # 与matplotlib 都是绘图工具，不过效果炫一些，我也没画过，所以只放链接，不放实例了 Plotly Python Library : https://plot.ly/python/
-=======
-b = BattleAxiePositionInfo.parse_obj(DICT_DATA) b.json() b.dict() parse_file parse_raw from pydantic import BaseModel class PositionInfo(BaseModel): error: int = -1 # 收集错误 none: int = 0 # 还没开始 clicked: int = 1 # 在client 赋此值 done: int = 2 # 在server 赋此值 xy: List[int] = [0, 0] status: int = 0 # clicked or done or none or error class BattleAxiePositionInfo(BaseModel): our: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] enemy: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] pp = BattleAxiePositionInfo() print(f&amp;#34;pp json: {pp.</description>
-    </item>
-    
-    <item>
-      <title>图形化界面 （Python Gui）</title>
-      <link>http://example.org/docs/programmer/gui/notespython/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/gui/notespython/</guid>
-      <description>author:Ian
-Python GUI 💽 # pynput # 在 pynput 模块中，Win键被称为“特殊键”（Special keys），需要使用特殊的名称来表示。
-以下是可以使用的特殊键名称列表：
-https://pynput.readthedocs.io/en/latest/keyboard.html?highlight=%3Ccmd%3E#controlling-the-keyboard 因此，如果你想要在热键设置中使用 Win键+空格 这个热键，可以将它们分别替换为 cmd 和 space，如下所示：
-from pynput import keyboard def on_activate(): print(&amp;#39;Hotkey activated&amp;#39;) def on_exit(): print(&amp;#39;Hotkey exited&amp;#39;) return False with keyboard.GlobalHotKeys({&amp;#39;&amp;lt;cmd&amp;gt;+&amp;lt;space&amp;gt;&amp;#39;: on_activate}) as h: h.join(on_exit)``` 在这个例子中，我们使用 &amp;lt;cmd&amp;gt;+&amp;lt;space&amp;gt; 来表示 Win键+空格 热键，因为在Mac中，Command键（cmd）可以起到类似于Win键的作用。 ## PyQt ![qt](https://tse4-mm.cn.bing.net/th/id/OIP.J4_Nqrcc0x7slHHUFwKLSQHaI6?pid=ImgDet&amp;amp;rs=1 &amp;#34;tmp&amp;#34;) 官方说明文档：&amp;lt;http://pyqt.sourceforge.net/Docs/PyQt4/index.html&amp;gt; 照例，先贴网址： &amp;lt;http://www.qaulau.com/books/PyQt4_Tutorial/index.html&amp;gt; ## 画界面 #PyQt4使用designer.exe import os for root, dirs, files in os.walk(&amp;#39;.&amp;#39;): for file in files: if file.endswith(&amp;#39;.ui&amp;#39;): os.system(&amp;#39;pyuic4 -o ui_%s.</description>
-    </item>
-    
-    <item>
-      <title>机器学习库</title>
-      <link>http://example.org/docs/programmer/ml/noteofmachinelearning/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/ml/noteofmachinelearning/</guid>
-      <description>Python 机器学习库 👽 # Plotly # 与matplotlib 都是绘图工具，不过效果炫一些，我也没画过，所以只放链接，不放实例了 Plotly Python Library : https://plot.ly/python/
->>>>>>> e8a20db89ff8b55c86dad1077c2fa4173600ca74
 matplotlib # import matplotlib.pyplot as plt 参数等太多，链接最可靠 # pyplot参数
 还是粘一些常用的： marker 属性（下面写在分号里呦） o . v ^ &amp;lt; &amp;gt; 1 2 3 4 8 s p * h H + x D d | _ 之类
 画出一些“花儿”

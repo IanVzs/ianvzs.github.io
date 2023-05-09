@@ -1,73 +1,18 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ian's Blog</title><link>http://example.org/docs/programmer/base/</link><description>Recent content on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 27 Mar 2023 10:58:56 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/base/index.xml" rel="self" type="application/rss+xml"/><item><title>k8s</title><link>http://example.org/docs/programmer/base/k8s/</link><pubDate>Mon, 27 Mar 2023 10:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/base/k8s/</guid><description>k8s学习 # 常用命令 # kubectl apply -f rcm_log_monut_k8s_pod.yaml kubectl get pod -A kubectl get pod -all-namespaces kubectl get node kubectl get deploy 持久卷 - PersistentVolume kubectl get persistentvolume kubectl describe persistentvolume example-pv kubectl **delete** persistentvolume example-pv 从kubectl cp -n &amp;lt;命名空间&amp;gt; -c :xxx.json xxx.json 常用字段 # 下面是一些 Kubernetes 中常用的配置字段：
 apiVersion： Kubernetes API 的版本，用于定义资源的 API 版本号。 kind： 资源的类型，比如 Pod、Deployment、Service 等。 metadata： 元数据字段，用于存储 Kubernetes 对象的名称、命名空间、标签等信息。 spec： 对象的规格，用于定义对象的期望状态，如 Pod 的容器、Service 的端口等。 status： 对象的状态，用于记录对象的实际状态，如 Pod 的运行状态、Service 的访问地址等。 另外还有一些常用的子字段，如：</description></item><item><title>PyPi</title><link>http://example.org/docs/programmer/base/pypi/</link><pubDate>Thu, 31 Mar 2022 15:15:14 +0000</pubDate><guid>http://example.org/docs/programmer/base/pypi/</guid><description>示例项目 # py-muti-scrcpy
-=======
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Ian&#39;s Blog</title>
-    <link>http://example.org/docs/programmer/base/</link>
-    <description>Recent content on Ian&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 27 Mar 2023 10:58:56 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/base/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>k8s</title>
-      <link>http://example.org/docs/programmer/base/k8s/</link>
-      <pubDate>Mon, 27 Mar 2023 10:58:56 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/k8s/</guid>
-      <description>k8s学习 # 常用命令 # kubectl apply -f rcm_log_monut_k8s_pod.yaml kubectl get pod -A kubectl get pod -all-namespaces kubectl get node kubectl get deploy 持久卷 - PersistentVolume kubectl get persistentvolume kubectl describe persistentvolume example-pv kubectl **delete** persistentvolume example-pv 从kubectl cp -n &amp;lt;命名空间&amp;gt; -c :xxx.json xxx.json 常用字段 # 下面是一些 Kubernetes 中常用的配置字段：
-apiVersion： Kubernetes API 的版本，用于定义资源的 API 版本号。 kind： 资源的类型，比如 Pod、Deployment、Service 等。 metadata： 元数据字段，用于存储 Kubernetes 对象的名称、命名空间、标签等信息。 spec： 对象的规格，用于定义对象的期望状态，如 Pod 的容器、Service 的端口等。 status： 对象的状态，用于记录对象的实际状态，如 Pod 的运行状态、Service 的访问地址等。 另外还有一些常用的子字段，如：</description>
-    </item>
-    
-    <item>
-      <title>PyPi</title>
-      <link>http://example.org/docs/programmer/base/pypi/</link>
-      <pubDate>Thu, 31 Mar 2022 15:15:14 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/pypi/</guid>
-      <description>示例项目 # py-muti-scrcpy
->>>>>>> e8a20db89ff8b55c86dad1077c2fa4173600ca74
 配置文件 # pyproject
 工具介绍 # poetry
 增加安装包 # 直接修改pyproject.toml文件并不能生效, 因为还依赖于poetry.lock
 可使用poetry add {xxx}进行添加
 注意事项 # 需要链接外网 # HTTPSConnectionPool(host=&amp;#39;files.pythonhosted.org&amp;#39;, port=443): Max retries exceeded with url: /packages/17/61/32c3ab8951142e061587d957226b5683d1387fb22d95b4f69186d92616d1/typing_extensions-4.0.0-py3-none-any.whl (Caused by ProxyError(&amp;#39;Cannot connect to proxy.&amp;#39;, ConnectionResetError(54, &amp;#39;Connection reset by peer&amp;#39;))) HTTPSConnectionPool(host=&amp;#39;pypi.org&amp;#39;, port=443): Max retries exceeded with url: /pypi/colorama/0.4.4/json (Caused by ProxyError(&amp;#39;Cannot connect to proxy.&amp;#39;, ConnectionResetError(54, &amp;#39;Connection reset by peer&amp;#39;))) 需要安装ssl # SSLError HTTPSConnectionPool(host=&amp;#39;pypi.org&amp;#39;, port=443): Max retries exceeded with url: /pypi/importlib-metadata/4.2.0/json (Caused by SSLError(SSLEOFError(8, &amp;#39;EOF occurred in violation of protocol (_ssl.</description></item><item><title>Nginx高可用</title><link>http://example.org/docs/programmer/base/tipsofweb/</link><pubDate>Sun, 09 May 2021 09:56:41 +0000</pubDate><guid>http://example.org/docs/programmer/base/tipsofweb/</guid><description>Keepalived+Nginx实现高可用 # Nginx 关键字 # IO多路复用epoll(IO复用) 轻量,插件: Nginx仅保留了HTTP CPU亲和: 每个worker进程固定在一个CPU Nginx配置 # 代理 # 动静分离 # 动态页面和静态页面交给不同的服务器来解析
 负载均衡 # upstream balanceServer { server 10.1.22.33:12345; server 10.1.22.34:12345; server 10.1.22.35:12345; } server { server_name fe.server.com; listen 80; location /api { proxy_pass http://balanceServer; } } 机制 # 默认: 轮询, 单机卡顿, 影响分配在这台服务器下的用户 默认: 权重轮询, 宕机Nginx会自动剔除出队列, ip_hash-来源IP分配分配给同个服务器 fair: 根据相应时间均衡分配, 默认不支持. 需安装upstream_fair, url_hash类ip_hash同样需要安装Nginx的hash软件包. Keepalived 配置 # 粘贴自: 这里
-<<<<<<< HEAD
 概览 # VIP IP 主机名 Nginx端口 默认主从 192.</description></item><item><title>各个软件换源</title><link>http://example.org/docs/programmer/base/for_china/</link><pubDate>Thu, 22 Apr 2021 17:04:15 +0000</pubDate><guid>http://example.org/docs/programmer/base/for_china/</guid><description>在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.
-=======
-概览 # VIP IP 主机名 Nginx端口 默认主从 192.</description>
-    </item>
-    
-    <item>
-      <title>各个软件换源</title>
-      <link>http://example.org/docs/programmer/base/for_china/</link>
-      <pubDate>Thu, 22 Apr 2021 17:04:15 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/for_china/</guid>
-      <description>在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.
->>>>>>> e8a20db89ff8b55c86dad1077c2fa4173600ca74
 Qt # 使用Maintain管理kit时，可以在Settings中设置Repositories，设置地址可从Qt Downloads页面查询.
 apt # 可解决版本升级时的问题,即使用了国内源,最后一个文件不知道为什么还是从国外拉取&amp;hellip;
 # sudo touch /etc/apt/apt.conf sudo vim /etc/apt/apt.conf -&amp;gt; Acquire::http::Proxy &amp;ldquo;http://127.0.0.1:8001&amp;rdquo;;
 FreeBSD # mkdir -p /usr/local/etc/pkg/repos vim /usr/local/etc/pkg/repos/bjtu.conf
 bjtu: { url: &amp;#34;pkg+http://mirror.bjtu.edu.cn/reverse/freebsd-pkg/${ABI}/quarterly&amp;#34;, mirror_type: &amp;#34;srv&amp;#34;, signature_type: &amp;#34;none&amp;#34;, fingerprints: &amp;#34;/usr/share/keys/pkg&amp;#34;, enabled: yes } FreeBSD: { enabled: no } pkg update
-<<<<<<< HEAD
 Qt # 源 # 中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/ 清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/ 北京理工大学：http://mirror.bit.edu.cn/qtproject/ 中国互联网络信息中心：https://mirrors.cnnic.cn/qt/ Python Pip # pip install --index https://pypi.mirrors.ustc.edu.cn/simple/ dlib(numpy等包名) 源 # 阿里云 http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣(douban) http://pypi.</description></item><item><title>tips Of Debuggers</title><link>http://example.org/docs/programmer/base/tipsofdebugers/</link><pubDate>Thu, 10 Jan 2019 12:21:12 +0000</pubDate><guid>http://example.org/docs/programmer/base/tipsofdebugers/</guid><description>Clang &amp;amp;&amp;amp; lldb # 听说clang+lldb &amp;gt;= gcc + gdb, 所以一试:
-=======
-Qt # 源 # 中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/ 清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/ 北京理工大学：http://mirror.bit.edu.cn/qtproject/ 中国互联网络信息中心：https://mirrors.cnnic.cn/qt/ Python Pip # pip install --index https://pypi.mirrors.ustc.edu.cn/simple/ dlib(numpy等包名) 源 # 阿里云 http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣(douban) http://pypi.</description>
-    </item>
-    
-    <item>
-      <title>tips Of Debuggers</title>
-      <link>http://example.org/docs/programmer/base/tipsofdebugers/</link>
-      <pubDate>Thu, 10 Jan 2019 12:21:12 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/tipsofdebugers/</guid>
-      <description>Clang &amp;amp;&amp;amp; lldb # 听说clang+lldb &amp;gt;= gcc + gdb, 所以一试:
->>>>>>> e8a20db89ff8b55c86dad1077c2fa4173600ca74
 lldb基本命令 # 与GDB相同
 break (b) - 设置断点，也就是程序暂停的地方 run (r) - 启动目标程序，如果遇到断点则暂停 step (s) - 进入下一条指令中的函数内部 backtrace (bt) - 显示当前的有效函数 frame (f) - 默认显示当前栈的内容，可以通过 frame arg 进入特定的 frame（用作输出本地变量） next (n) - 运行当前箭头指向行 continue (c) - 继续运行程序直到遇到断点。 clang hello.c -g -o hello lldb hello # lldb b main run n p str 还有颜色 😂 可视效果确实提高了不少 而且这四个工具可以混用,也蛮好.
 GDB # First and foremost, you will need to compile your program with the flag &amp;ldquo;-g&amp;rdquo; (for debug) to run it via GDB.</description></item><item><title>Django的建站的(｡･･)ﾉﾞ</title><link>http://example.org/docs/programmer/base/notesdjango/</link><pubDate>Thu, 07 Jun 2018 16:30:18 +0000</pubDate><guid>http://example.org/docs/programmer/base/notesdjango/</guid><description>author: Ian

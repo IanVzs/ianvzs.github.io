@@ -27,35 +27,10 @@ error.dtd\error.xml 错误定义文件 ---- ThostFrfcMdApi.h 交易接口类定�
 API压缩包——API含常量对应字符、类型定义、操作系统编译定义、回调函数（MdSpi）（柜台向用户端发送信息后被系统自动调用的函数）、主动函数（MdApi）（向柜台发送各种请求和指令）
 API工作流程： 创建MdSpi对象（回掉函数），调用MdApi类，以Create开头的静态方法，创建MdApi对象（主动函数），注册MdSpi对象指针，行情柜台前置机地址，调用MdApi对象Init方法初始化连接前置机，连接成功会通过OnFrontConnected回调通知用户，用户获得连接成功通知后，调MdApi的ReqUserLogin登陆，登陆后MdSpi的OnRsqUserLogin通知用户 &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-到此登陆完成&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;
 MdApi：（行情相关） 使用MdApi对象的SubscribeMarketData方法，传入参数为想要订阅的“合约 代码”，订阅成功当合约有新行情通过MdApi的OnRtnDepthMarketData回调通知 用户 &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-至此订阅完成&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash; 当用户的某次请求发生错误时，会通过OnRspError通知用户 MdApi也含有退订合约、登出功能。 而一般退出程序则直接杀进程（不太安全便是）
-<<<<<<< HEAD
 TraderApi：（交易相关） 不同于以上的有 注册TraderSpi对象的指针后需要调用TraderApi对象的 SubscribePrivateTopic和SubscribePublicTopic方法去选择公开和私有数据流的重 传方法 对于期货柜台，每一日第一次登陆需要先查询前一日的结算单，等待查询 结果返回，确认，才可进行后续操作（CTP、恒生UFT），证券（LTS）无此要求 上一步完成后，用户可以调用ReqQryInstrument的方法查询柜台上所有可 以交易的合约信息（包括代码、中文名、涨跌停、最小价位变动、合约乘数等大 量细节），一般是在这里获得合约信息列表后，再去MdApi中订阅合约；经常有 人问为什么在MdApi中找不到查询可供订阅的合约代码的函数，这里尤其要注 意，必须通过TraderApi来获取 当用户报单、成交状态发生变化时，TraderApi会自动通过OnRtnOrder、 OnRtnTrade通知，无需额外订阅 /封装API****/ 封装后API的动作： 主动函数： 调用封装API主动函数，传入Python变量作为参数—&amp;gt;封装API将Python变量转换成C++变量—&amp;gt;API调用原生API主动函数传入C++变量作为参数 回掉函数： 交易柜台通过原生API传入参数为C++变量-&amp;gt;封装API将C++变量转换为Python变量-&amp;gt;封装API调用封装后的回调函数想Python程序中推送数</description></item><item><title>tips Of markdown</title><link>http://example.org/docs/programmer/langs/tipsofmarkdown/</link><pubDate>Tue, 15 May 2018 10:00:47 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tipsofmarkdown/</guid><description>Markdown Notes 📪 # HTML锚点 - 页面内点击跳转 # 可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。 具体实现方法如下：
 首先，在需要跳转到的标题前插入一个 HTML 锚点，例如： ### &amp;lt;a name=&amp;#34;section1&amp;#34;&amp;gt;Section 1&amp;lt;/a&amp;gt; 这个锚点的名称为 &amp;#34;section1&amp;#34;，可以根据需要自定义。 在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如： [跳转到 Section 1](#section1) 这样，点击这个链接就会跳转到页面中的 &amp;#34;Section 1&amp;#34; 标题处。 注意事项： # 锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。 如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。
 ## Test 二级标题
 Now I will test the Markdown&amp;rsquo;s hobiy 二级 # Maybe is a nice way to impove my blog. 三级 # 原来标题 要# 与正文隔开一个空格… ···print “hello Markdown”··· 欸？ 怎么回事？上面的文字 莫非是用Tab能将其放到一个容器里？</description></item><item><title>tip Of vim</title><link>http://example.org/docs/programmer/base/tipsofvim/</link><pubDate>Tue, 15 May 2018 09:56:41 +0000</pubDate><guid>http://example.org/docs/programmer/base/tipsofvim/</guid><description>Vim 使用 # 除去“简便生活”里的几条配置，在纠结是否添加到别的地方，果然还是单独给vim一个使用手册比较好……
-=======
-TraderApi：（交易相关） 不同于以上的有 注册TraderSpi对象的指针后需要调用TraderApi对象的 SubscribePrivateTopic和SubscribePublicTopic方法去选择公开和私有数据流的重 传方法 对于期货柜台，每一日第一次登陆需要先查询前一日的结算单，等待查询 结果返回，确认，才可进行后续操作（CTP、恒生UFT），证券（LTS）无此要求 上一步完成后，用户可以调用ReqQryInstrument的方法查询柜台上所有可 以交易的合约信息（包括代码、中文名、涨跌停、最小价位变动、合约乘数等大 量细节），一般是在这里获得合约信息列表后，再去MdApi中订阅合约；经常有 人问为什么在MdApi中找不到查询可供订阅的合约代码的函数，这里尤其要注 意，必须通过TraderApi来获取 当用户报单、成交状态发生变化时，TraderApi会自动通过OnRtnOrder、 OnRtnTrade通知，无需额外订阅 /封装API****/ 封装后API的动作： 主动函数： 调用封装API主动函数，传入Python变量作为参数—&amp;gt;封装API将Python变量转换成C++变量—&amp;gt;API调用原生API主动函数传入C++变量作为参数 回掉函数： 交易柜台通过原生API传入参数为C++变量-&amp;gt;封装API将C++变量转换为Python变量-&amp;gt;封装API调用封装后的回调函数想Python程序中推送数</description>
-    </item>
-    
-    <item>
-      <title>tips Of markdown</title>
-      <link>http://example.org/docs/programmer/langs/tipsofmarkdown/</link>
-      <pubDate>Tue, 15 May 2018 10:00:47 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/langs/tipsofmarkdown/</guid>
-      <description>Markdown Notes 📪 # HTML锚点 - 页面内点击跳转 # 可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。 具体实现方法如下：
-首先，在需要跳转到的标题前插入一个 HTML 锚点，例如： ### &amp;lt;a name=&amp;#34;section1&amp;#34;&amp;gt;Section 1&amp;lt;/a&amp;gt; 这个锚点的名称为 &amp;#34;section1&amp;#34;，可以根据需要自定义。 在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如： [跳转到 Section 1](#section1) 这样，点击这个链接就会跳转到页面中的 &amp;#34;Section 1&amp;#34; 标题处。 注意事项： # 锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。 如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。
-## Test 二级标题
-Now I will test the Markdown&amp;rsquo;s hobiy 二级 # Maybe is a nice way to impove my blog. 三级 # 原来标题 要# 与正文隔开一个空格… ···print “hello Markdown”··· 欸？ 怎么回事？上面的文字 莫非是用Tab能将其放到一个容器里？</description>
-    </item>
-    
-    <item>
-      <title>tip Of vim</title>
-      <link>http://example.org/docs/programmer/base/tipsofvim/</link>
-      <pubDate>Tue, 15 May 2018 09:56:41 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/tipsofvim/</guid>
-      <description>Vim 使用 # 除去“简便生活”里的几条配置，在纠结是否添加到别的地方，果然还是单独给vim一个使用手册比较好……
->>>>>>> e8a20db89ff8b55c86dad1077c2fa4173600ca74
 注释 # # 注释 1， 12s/^/#/g --- # 取消注释 1， 12s/^#//g 其实 是vim中的 :s替换命令… 下方解释
 或者，使用列编辑的模式:
 v、选择区域、ctrl q置行首、I插入#、Esc应用到全列 ctrl v、I、#、Esc 因为有的ctrl q或者ctrl v 不能用…… 取消，即使用上述方法选中行首，删除第一个字节即可了 替换 # :s/oldWords/newWords/g g : 代表当前光标所在行。
