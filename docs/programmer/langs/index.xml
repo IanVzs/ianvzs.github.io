@@ -1,15 +1,79 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ian's Blog</title><link>http://example.org/docs/programmer/langs/</link><description>Recent content on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 30 Aug 2022 12:00:56 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/langs/index.xml" rel="self" type="application/rss+xml"/><item><title>CMake 使用Tips</title><link>http://example.org/docs/programmer/langs/cmake/</link><pubDate>Tue, 30 Aug 2022 12:00:56 +0000</pubDate><guid>http://example.org/docs/programmer/langs/cmake/</guid><description> 在编译时将编译产物放在build # 据网友所知，cmake文档中没有记录，仅出于兼容性原因或内部使用而保留：
 -B和-H标志 # cmake -Hpath/to/source -Bpath/to/build 甚至从源目录 -B # 重要：-B后没有空格
 该命令会自动创建build目录 之后cd到build下去make即可 cmake . -Bbuild 样例记录 # OpenCV # CMakeLists.txt 文件tree -L 1 |-- CMakeLists.txt |-- DisplayImage.cpp |-- DisplayImage.out |-- cmake_install.cmake |-- CMakeCache.txt |-- CMakeFiles |-- Makefile cmake_minimum_required(VERSION 2.8) project( DisplayImageExample ) find_package( OpenCV REQUIRED ) include_directories( ${OpenCV_INCLUDE_DIRS} ) add_executable( DisplayImage.out DisplayImage.cpp ) target_link_libraries( DisplayImage.out ${OpenCV_LIBS} ) Qt #</description></item><item><title>Golang进阶笔记</title><link>http://example.org/docs/programmer/langs/noteofgoexp/</link><pubDate>Wed, 19 May 2021 19:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/noteofgoexp/</guid><description>Golang进阶笔记 # 路径问题 # test_test.go # package main import &amp;#34;testing&amp;#34; func TestHelloWorld(t *testing.T) { // t.Fatal(&amp;#34;not implemented&amp;#34;) path := getCurrentPath() t.Log(&amp;#34;getCurrentPath: &amp;#34;, path) } test.go # package main import ( &amp;#34;fmt&amp;#34; &amp;#34;log&amp;#34; &amp;#34;os&amp;#34; &amp;#34;path&amp;#34; &amp;#34;path/filepath&amp;#34; &amp;#34;runtime&amp;#34; &amp;#34;strings&amp;#34; ) func main() { fmt.Println(&amp;#34;getTmpDir（当前系统临时目录） = &amp;#34;, getTmpDir()) fmt.Println(&amp;#34;getCurrentAbPathByExecutable（仅支持go build） = &amp;#34;, getCurrentAbPathByExecutable()) fmt.Println(&amp;#34;getCurrentAbPathByCaller（仅支持go run） = &amp;#34;, getCurrentAbPathByCaller()) fmt.Println(&amp;#34;getCurrentAbPath（最终方案-全兼容） = &amp;#34;, getCurrentAbPath()) fmt.Println(&amp;#34;getCurrentPath（runtime.Caller1） = &amp;#34;, getCurrentPath()) } // 最终方案-全兼容 func getCurrentAbPath() string { dir := getCurrentAbPathByExecutable() if strings.</description></item><item><title>Golang笔记</title><link>http://example.org/docs/programmer/langs/noteofgolang/</link><pubDate>Tue, 15 May 2018 10:18:26 +0000</pubDate><guid>http://example.org/docs/programmer/langs/noteofgolang/</guid><description>Golang笔记 # 先贴一个客观的教程文档网站http://www.runoob.com/go/go-slice.html
+=======
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ian&#39;s Blog</title>
+    <link>http://example.org/docs/programmer/langs/</link>
+    <description>Recent content on Ian&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 30 Aug 2022 12:00:56 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/langs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CMake 使用Tips</title>
+      <link>http://example.org/docs/programmer/langs/cmake/</link>
+      <pubDate>Tue, 30 Aug 2022 12:00:56 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/langs/cmake/</guid>
+      <description> 在编译时将编译产物放在build # 据网友所知，cmake文档中没有记录，仅出于兼容性原因或内部使用而保留：
+-B和-H标志 # cmake -Hpath/to/source -Bpath/to/build 甚至从源目录 -B # 重要：-B后没有空格
+该命令会自动创建build目录 之后cd到build下去make即可 cmake . -Bbuild 样例记录 # OpenCV # CMakeLists.txt 文件tree -L 1 |-- CMakeLists.txt |-- DisplayImage.cpp |-- DisplayImage.out |-- cmake_install.cmake |-- CMakeCache.txt |-- CMakeFiles |-- Makefile cmake_minimum_required(VERSION 2.8) project( DisplayImageExample ) find_package( OpenCV REQUIRED ) include_directories( ${OpenCV_INCLUDE_DIRS} ) add_executable( DisplayImage.out DisplayImage.cpp ) target_link_libraries( DisplayImage.out ${OpenCV_LIBS} ) Qt # </description>
+    </item>
+    
+    <item>
+      <title>Golang进阶笔记</title>
+      <link>http://example.org/docs/programmer/langs/noteofgoexp/</link>
+      <pubDate>Wed, 19 May 2021 19:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/langs/noteofgoexp/</guid>
+      <description>Golang进阶笔记 # 路径问题 # test_test.go # package main import &amp;#34;testing&amp;#34; func TestHelloWorld(t *testing.T) { // t.Fatal(&amp;#34;not implemented&amp;#34;) path := getCurrentPath() t.Log(&amp;#34;getCurrentPath: &amp;#34;, path) } test.go # package main import ( &amp;#34;fmt&amp;#34; &amp;#34;log&amp;#34; &amp;#34;os&amp;#34; &amp;#34;path&amp;#34; &amp;#34;path/filepath&amp;#34; &amp;#34;runtime&amp;#34; &amp;#34;strings&amp;#34; ) func main() { fmt.Println(&amp;#34;getTmpDir（当前系统临时目录） = &amp;#34;, getTmpDir()) fmt.Println(&amp;#34;getCurrentAbPathByExecutable（仅支持go build） = &amp;#34;, getCurrentAbPathByExecutable()) fmt.Println(&amp;#34;getCurrentAbPathByCaller（仅支持go run） = &amp;#34;, getCurrentAbPathByCaller()) fmt.Println(&amp;#34;getCurrentAbPath（最终方案-全兼容） = &amp;#34;, getCurrentAbPath()) fmt.Println(&amp;#34;getCurrentPath（runtime.Caller1） = &amp;#34;, getCurrentPath()) } // 最终方案-全兼容 func getCurrentAbPath() string { dir := getCurrentAbPathByExecutable() if strings.</description>
+    </item>
+    
+    <item>
+      <title>Golang笔记</title>
+      <link>http://example.org/docs/programmer/langs/noteofgolang/</link>
+      <pubDate>Tue, 15 May 2018 10:18:26 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/langs/noteofgolang/</guid>
+      <description>Golang笔记 # 先贴一个客观的教程文档网站http://www.runoob.com/go/go-slice.html
+>>>>>>> e8a20db89ff8b55c86dad1077c2fa4173600ca74
 并发 Channel # 使用关键字go开启goroutine 轻量级线程
 go fun_name(paras_list) # eg: go f(x, y, z) 代码
 package main import ( &amp;#34;fmt&amp;#34; &amp;#34;time&amp;#34; ) func say(s string) { for i := 0; i &amp;lt; 5; i++ { time.Sleep(100 * time.Millisecond) fmt.Println(s) } } func main() { go say(&amp;#34;world&amp;#34;) say(&amp;#34;hello&amp;#34;) } Channel # 用于传递数据的数据结构 可用于两个goroutine之间传递指定类型值，同步和通讯 &amp;lt;- 指定通道方向(发送or接受)，未指定则双向通道
 声明通道 # 使用chan关键字, 在使用之前，需先创建.
 ch := make(chan int) 示例
+<<<<<<< HEAD
 package main import &amp;#34;fmt&amp;#34; func sum(s []int, c chan int) { sum := 0 for _, v := range s { sum += v } c &amp;lt;- sum // 把 sum 发送到通道 c } func main() { s := []int{7, 2, 8, -9, 4, 0} c := make(chan int) go sum(s[:len(s)/2], c) go sum(s[len(s)/2:], c) x, y := &amp;lt;-c, &amp;lt;-c // 从通道 c 中接收 fmt.</description></item><item><title>tips Of markdown</title><link>http://example.org/docs/programmer/langs/tipsofmarkdown/</link><pubDate>Tue, 15 May 2018 10:00:47 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tipsofmarkdown/</guid><description>Markdown Notes 📪 # HTML锚点 - 页面内点击跳转 # 可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。 具体实现方法如下：
 首先，在需要跳转到的标题前插入一个 HTML 锚点，例如： ### &amp;lt;a name=&amp;#34;section1&amp;#34;&amp;gt;Section 1&amp;lt;/a&amp;gt; 这个锚点的名称为 &amp;#34;section1&amp;#34;，可以根据需要自定义。 在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如： [跳转到 Section 1](#section1) 这样，点击这个链接就会跳转到页面中的 &amp;#34;Section 1&amp;#34; 标题处。 注意事项： # 锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。 如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。
 ## Test 二级标题
 Now I will test the Markdown&amp;rsquo;s hobiy 二级 # Maybe is a nice way to impove my blog. 三级 # 原来标题 要# 与正文隔开一个空格… ···print “hello Markdown”··· 欸？ 怎么回事？上面的文字 莫非是用Tab能将其放到一个容器里？</description></item><item><title>Python笔记(notes of Python)</title><link>http://example.org/docs/programmer/langs/notespython/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/notespython/</guid><description>author:Ian
+=======
+package main import &amp;#34;fmt&amp;#34; func sum(s []int, c chan int) { sum := 0 for _, v := range s { sum += v } c &amp;lt;- sum // 把 sum 发送到通道 c } func main() { s := []int{7, 2, 8, -9, 4, 0} c := make(chan int) go sum(s[:len(s)/2], c) go sum(s[len(s)/2:], c) x, y := &amp;lt;-c, &amp;lt;-c // 从通道 c 中接收 fmt.</description>
+    </item>
+    
+    <item>
+      <title>tips Of markdown</title>
+      <link>http://example.org/docs/programmer/langs/tipsofmarkdown/</link>
+      <pubDate>Tue, 15 May 2018 10:00:47 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/langs/tipsofmarkdown/</guid>
+      <description>Markdown Notes 📪 # HTML锚点 - 页面内点击跳转 # 可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。 具体实现方法如下：
+首先，在需要跳转到的标题前插入一个 HTML 锚点，例如： ### &amp;lt;a name=&amp;#34;section1&amp;#34;&amp;gt;Section 1&amp;lt;/a&amp;gt; 这个锚点的名称为 &amp;#34;section1&amp;#34;，可以根据需要自定义。 在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如： [跳转到 Section 1](#section1) 这样，点击这个链接就会跳转到页面中的 &amp;#34;Section 1&amp;#34; 标题处。 注意事项： # 锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。 如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。
+## Test 二级标题
+Now I will test the Markdown&amp;rsquo;s hobiy 二级 # Maybe is a nice way to impove my blog. 三级 # 原来标题 要# 与正文隔开一个空格… ···print “hello Markdown”··· 欸？ 怎么回事？上面的文字 莫非是用Tab能将其放到一个容器里？</description>
+    </item>
+    
+    <item>
+      <title>Python笔记(notes of Python)</title>
+      <link>http://example.org/docs/programmer/langs/notespython/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/langs/notespython/</guid>
+      <description>author:Ian
+>>>>>>> e8a20db89ff8b55c86dad1077c2fa4173600ca74
 彻底摆脱to_dict和from_dict # 使用 pydantic # BaseModel类型支持:
 b = BattleAxiePositionInfo.parse_obj(DICT_DATA) b.json() b.dict() parse_file parse_raw from pydantic import BaseModel class PositionInfo(BaseModel): error: int = -1 # 收集错误 none: int = 0 # 还没开始 clicked: int = 1 # 在client 赋此值 done: int = 2 # 在server 赋此值 xy: List[int] = [0, 0] status: int = 0 # clicked or done or none or error class BattleAxiePositionInfo(BaseModel): our: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] enemy: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] pp = BattleAxiePositionInfo() print(f&amp;#34;pp json: {pp.</description></item><item><title>愉快的Java(happy to learn the fuck java)</title><link>http://example.org/docs/programmer/langs/notesjava/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/notesjava/</guid><description>author: Ian
 happy to the fuck java 😅 # &amp;lt;微人事&amp;gt; 笔记 -&amp;gt; ψ(._. )&amp;gt; # 先贴官方文档 哦 还有官方项目地址

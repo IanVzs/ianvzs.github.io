@@ -5,6 +5,7 @@ vmware # pkg install open-vm-tools xf86-video-vmware xf86-input-vmmouse 继续�
 换源 # mkdir -p /usr/local/etc/pkg/repos vim /usr/local/etc/pkg/repos/bjtu.</description></item><item><title/><link>http://example.org/docs/programmer/software/gitbook/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/software/gitbook/</guid><description>Gitbook # Author: Ian
 安装 # 官方文档 Github Gitbook 打造的 Gitbook 说明文档 使用npm进行安装, 安装npm (v4.0.0 and above is recommended) npm install gitbook-cli -g 需要sudo权限 实际在执行gitbook -V后才算是安装完成 问题 # TypeError: cb.apply is not a function # npm 安装软件不出点儿问题貌似都不是很合适, 该问题代码级问题是因为在适配某些可能本机上并没有安装的npm版本时写了bug，导致执行出错.
 所以注释掉相关代码即可，或者直接删除。删除的好处是不会因为编辑器的原因触发npm的某些缩进问题。
+<<<<<<< HEAD
 62. // fs.stat = statFix(fs.stat) 63. // fs.fstat = statFix(fs.fstat) 64. // fs.lstat = statFix(fs.lstat) 固然可以通过安装相匹配版本进行适配，不过&amp;hellip;Ian怕导致本机上的hexo再出现版本不兼容的问题。 使用 # 功能 示例 个人使用习惯(Ian) 新建book gitbook init gitbook init gitbooks/Architecture 编译和运行服务 gitbook serve 编译 gitbook serve pdf # 参考自 码谱</description></item><item><title/><link>http://example.org/docs/programmer/software/markdown/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/software/markdown/</guid><description> Markdown # 文本字体速查表 # 参考自: csdn 王大雄
 高亮 # 1. 使用&amp;#34;`&amp;#34;双引, eg: `{要高亮的文本}`; 2. 使用&amp;#34;```&amp;#34; 跨行, eg:```\n{要高亮的文本}\n```; 3. HTML &amp;lt;mark&amp;gt;双引, eg: &amp;lt;mark&amp;gt;{要高亮的文本}&amp;lt;mark&amp;gt; 要高亮的文本 见下 要高亮的文本 要高亮的文本</description></item><item><title/><link>http://example.org/docs/programmer/software/npm/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/software/npm/</guid><description>npm # 树莓派 # 官网下载 树莓派4b 选择ARMv8之前的树莓派型号选择ARMv7 配置PATH 向/usr/local/bin/下建立node软链 export PATH=&amp;#34;~/node-v16.14.0-linux-arm64/bin:$PATH&amp;#34; #sudo ln -s ~/node-v16.14.0-linux-arm64/bin/node /usr/bin/node Windows下wsl2 安装 npm &amp;amp;&amp;amp; nodejs # 摘抄自微软说明文档
 安装nvm (Node 版本管理器) 国内网可能有问题, 下载下保存直接bash install.sh就可安装. curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash command -v nvm验证是否安装成功,它会自行添加.bashrc需重启bash nvm ls查看Node版本 nvm install --lts即可安装lts版, nvm install node安装最新版 会安装这么多东西 -&amp;gt; v16.13.2 default -&amp;gt; lts/* (-&amp;gt; v16.13.2) iojs -&amp;gt; N/A (default) unstable -&amp;gt; N/A (default) node -&amp;gt; stable (-&amp;gt; v16.13.2) (default) stable -&amp;gt; 16.</description></item><item><title/><link>http://example.org/docs/programmer/software/readme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/software/readme/</guid><description>软件篇 # 主要记录一些工具、软件的Initialization，或者实用插件的安装等问题</description></item><item><title/><link>http://example.org/docs/programmer/software/vim/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/software/vim/</guid><description>&lt;h1 id="vim-使用">
@@ -25,6 +26,64 @@ Vim 使用
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>其实 是&lt;code>vim&lt;/code>中的 &lt;code>:s&lt;/code>替换命令… 下方解释&lt;/p>
 &lt;p>或者，使用列编辑的模式:&lt;/p>
 &lt;pre>&lt;code>v、选择区域、ctrl q置行首、I插入#、Esc应用到全列
+=======
+62. // fs.stat = statFix(fs.stat) 63. // fs.fstat = statFix(fs.fstat) 64. // fs.lstat = statFix(fs.lstat) 固然可以通过安装相匹配版本进行适配，不过&amp;hellip;Ian怕导致本机上的hexo再出现版本不兼容的问题。 使用 # 功能 示例 个人使用习惯(Ian) 新建book gitbook init gitbook init gitbooks/Architecture 编译和运行服务 gitbook serve 编译 gitbook serve pdf # 参考自 码谱</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/docs/programmer/software/markdown/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/software/markdown/</guid>
+      <description> Markdown # 文本字体速查表 # 参考自: csdn 王大雄
+高亮 # 1. 使用&amp;#34;`&amp;#34;双引, eg: `{要高亮的文本}`; 2. 使用&amp;#34;```&amp;#34; 跨行, eg:```\n{要高亮的文本}\n```; 3. HTML &amp;lt;mark&amp;gt;双引, eg: &amp;lt;mark&amp;gt;{要高亮的文本}&amp;lt;mark&amp;gt; 要高亮的文本 见下 要高亮的文本 要高亮的文本 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/docs/programmer/software/npm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/software/npm/</guid>
+      <description>npm # 树莓派 # 官网下载 树莓派4b 选择ARMv8之前的树莓派型号选择ARMv7 配置PATH 向/usr/local/bin/下建立node软链 export PATH=&amp;#34;~/node-v16.14.0-linux-arm64/bin:$PATH&amp;#34; #sudo ln -s ~/node-v16.14.0-linux-arm64/bin/node /usr/bin/node Windows下wsl2 安装 npm &amp;amp;&amp;amp; nodejs # 摘抄自微软说明文档
+安装nvm (Node 版本管理器) 国内网可能有问题, 下载下保存直接bash install.sh就可安装. curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash command -v nvm验证是否安装成功,它会自行添加.bashrc需重启bash nvm ls查看Node版本 nvm install --lts即可安装lts版, nvm install node安装最新版 会安装这么多东西 -&amp;gt; v16.13.2 default -&amp;gt; lts/* (-&amp;gt; v16.13.2) iojs -&amp;gt; N/A (default) unstable -&amp;gt; N/A (default) node -&amp;gt; stable (-&amp;gt; v16.13.2) (default) stable -&amp;gt; 16.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/docs/programmer/software/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/software/readme/</guid>
+      <description>软件篇 # 主要记录一些工具、软件的Initialization，或者实用插件的安装等问题</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/docs/programmer/software/vim/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/programmer/software/vim/</guid>
+      <description>&lt;h1 id=&#34;vim-使用&#34;&gt;
+  Vim 使用
+  &lt;a class=&#34;anchor&#34; href=&#34;#vim-%e4%bd%bf%e7%94%a8&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Auther: Ian&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.vim.org/images/vim_header.gif&#34; alt=&#34;vim&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;注释&#34;&gt;
+  注释
+  &lt;a class=&#34;anchor&#34; href=&#34;#%e6%b3%a8%e9%87%8a&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    # 注释&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;， &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;s&lt;span style=&#34;color:#e6db74&#34;&gt;/^/&lt;/span&gt;#/&lt;span style=&#34;color:#a6e22e&#34;&gt;g&lt;/span&gt;   &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    ---&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    # 取消注释&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;， &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;s&lt;span style=&#34;color:#e6db74&#34;&gt;/^#/&lt;/span&gt;/&lt;span style=&#34;color:#a6e22e&#34;&gt;g&lt;/span&gt;     &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其实 是&lt;code&gt;vim&lt;/code&gt;中的 &lt;code&gt;:s&lt;/code&gt;替换命令… 下方解释&lt;/p&gt;
+&lt;p&gt;或者，使用列编辑的模式:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;v、选择区域、ctrl q置行首、I插入#、Esc应用到全列
+>>>>>>> e8a20db89ff8b55c86dad1077c2fa4173600ca74
 ctrl v、I、#、Esc
 因为有的ctrl q或者ctrl v 不能用……
 取消，即使用上述方法选中行首，删除第一个字节即可了
