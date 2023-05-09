@@ -1,21 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>版本兼容 on Ian&#39;s Blog</title>
-    <link>http://example.org/categories/%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9/</link>
-    <description>Recent content in 版本兼容 on Ian&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 30 Mar 2022 17:23:23 +0000</lastBuildDate><atom:link href="http://example.org/categories/%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Tensorflow</title>
-      <link>http://example.org/docs/programmer/ml/tensorflow/</link>
-      <pubDate>Wed, 30 Mar 2022 17:23:23 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/ml/tensorflow/</guid>
-      <description>
-v2兼容v1 API # import tensorflow.compat.v1 as tf tf.disable_v2_behavior() </description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>版本兼容 on Ian's Blog</title><link>http://example.org/categories/%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9/</link><description>Recent content in 版本兼容 on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 30 Mar 2022 17:23:23 +0000</lastBuildDate><atom:link href="http://example.org/categories/%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9/index.xml" rel="self" type="application/rss+xml"/><item><title>Tensorflow</title><link>http://example.org/docs/programmer/ml/tensorflow/</link><pubDate>Wed, 30 Mar 2022 17:23:23 +0000</pubDate><guid>http://example.org/docs/programmer/ml/tensorflow/</guid><description>
+v2兼容v1 API # import tensorflow.compat.v1 as tf tf.disable_v2_behavior()</description></item></channel></rss>

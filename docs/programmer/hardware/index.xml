@@ -1,54 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Ian&#39;s Blog</title>
-    <link>http://example.org/docs/programmer/hardware/</link>
-    <description>Recent content on Ian&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://example.org/docs/programmer/hardware/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title></title>
-      <link>http://example.org/docs/programmer/hardware/android/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/hardware/android/</guid>
-      <description>将安卓手机用于开发 # Termux # 类似于WIN端的Subsystem——其实更像Ubuntu下的虚拟终端。 不过这东西功能强大，除了将安卓里的Linux发挥出来。还有Termux API来调用手机的底层接口。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ian's Blog</title><link>http://example.org/docs/programmer/hardware/</link><description>Recent content on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="http://example.org/docs/programmer/hardware/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>http://example.org/docs/programmer/hardware/android/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/hardware/android/</guid><description>将安卓手机用于开发 # Termux # 类似于WIN端的Subsystem——其实更像Ubuntu下的虚拟终端。 不过这东西功能强大，除了将安卓里的Linux发挥出来。还有Termux API来调用手机的底层接口。
 XFCE4 # 步骤：
 安装Termux 执行pkg update 执行pkg install git &amp;amp;&amp;amp; git clone https://github.com/Yisus7u7/termux-desktop-xfce.git 执行cd termux-desktop-xfce &amp;amp;&amp;amp; bash boostrap.sh 当然，3&amp;amp;4步可以合并为一句curl -sLf https://raw.githubusercontent.com/Yisus7u7/termux-desktop-xfce/main/boostrap.sh | bash
 VNC # 默认VNC只能通过localhost:1来连接，局域网不能访问。想用大屏来看就不是很方便。
 # 先执行`vncserver`使用本机的`VNC Viewer`看看效果，主要是需要先设置一下密码 vncserver # 现在还无法通过局域网连接 # 去设置 cd ~/.vnc/ vim config # 打开最后一行注释 # 重新运行 vncserver -kill :1 vncserver 配置文件一览 # 将config文件最后一行的注释打开，即可
-## Supported server options to pass to vncserver upon invocation can be listed ## in this file.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://example.org/docs/programmer/hardware/raspberrypi/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/hardware/raspberrypi/</guid>
-      <description>树莓派 # 详细文档 # 参考Cloud Atlas
-很详细的罗列了树莓派各个版本的参数以及IO&amp;amp;其他参数的汇总，属于对官方文档的翻译以及补充，基于实践的补充，很有用。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://example.org/docs/programmer/hardware/readme/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/hardware/readme/</guid>
-      <description> 硬件篇 # 这里虽说是&amp;quot;硬件篇&amp;quot;其实并不是仅有硬件该怎么配，而包括了在这些硬件上，软件应该如何部署。 当然，也会有一些硬件的使用经验。
-树莓派 安卓手机 便携屏幕 </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://example.org/docs/programmer/hardware/screen/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/hardware/screen/</guid>
-      <description>便携屏幕 # 某日入得4K便携屏幕一个, 甚是欢喜。无论手机、NS、PC用之皆爽.然NS 1080P 缩放至 4k 略糊，只可远观。
-某日因压了个键盘和书，搬，屏幕裂，屏花之。方知平时屏幕擦灰时，稍加用力就会破碎感不是虚妄，而是确实。可见质量甚是不行，弃。</description>
-    </item>
-    
-  </channel>
-</rss>
+## Supported server options to pass to vncserver upon invocation can be listed ## in this file.</description></item><item><title/><link>http://example.org/docs/programmer/hardware/raspberrypi/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/hardware/raspberrypi/</guid><description>树莓派 # 详细文档 # 参考Cloud Atlas
+很详细的罗列了树莓派各个版本的参数以及IO&amp;amp;其他参数的汇总，属于对官方文档的翻译以及补充，基于实践的补充，很有用。</description></item><item><title/><link>http://example.org/docs/programmer/hardware/readme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/hardware/readme/</guid><description> 硬件篇 # 这里虽说是&amp;quot;硬件篇&amp;quot;其实并不是仅有硬件该怎么配，而包括了在这些硬件上，软件应该如何部署。 当然，也会有一些硬件的使用经验。
+树莓派 安卓手机 便携屏幕</description></item><item><title/><link>http://example.org/docs/programmer/hardware/screen/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/hardware/screen/</guid><description>便携屏幕 # 某日入得4K便携屏幕一个, 甚是欢喜。无论手机、NS、PC用之皆爽.然NS 1080P 缩放至 4k 略糊，只可远观。
+某日因压了个键盘和书，搬，屏幕裂，屏花之。方知平时屏幕擦灰时，稍加用力就会破碎感不是虚妄，而是确实。可见质量甚是不行，弃。</description></item></channel></rss>

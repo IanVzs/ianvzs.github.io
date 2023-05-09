@@ -1,24 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Linux on Ian&#39;s Blog</title>
-    <link>http://example.org/tags/linux/</link>
-    <description>Recent content in Linux on Ian&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 08 Apr 2016 16:58:56 +0000</lastBuildDate><atom:link href="http://example.org/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Linux</title>
-      <link>http://example.org/docs/programmer/base/noteoflinux/</link>
-      <pubDate>Fri, 08 Apr 2016 16:58:56 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/noteoflinux/</guid>
-      <description>Ubuntu22.04 依赖项整理 # vbox: libqt5opengl5 kate: konsole Qt5.12.12: mesa-common-dev, libgl1-mesa-dev OpenCV4.6.0: libgtk2.0-dev, pkg-config, libcanberra-gtk-module 如果没有安装这俩依赖不会影响编译，但是编译后会有功能损失，补充安装后不会修复； 如果想修复，只能安装后再编译一次； dpkg .deb # Install # sudo dpkg -i file.deb
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Ian's Blog</title><link>http://example.org/tags/linux/</link><description>Recent content in Linux on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 27 Mar 2023 10:58:56 +0000</lastBuildDate><atom:link href="http://example.org/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>k8s</title><link>http://example.org/docs/programmer/base/k8s/</link><pubDate>Mon, 27 Mar 2023 10:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/base/k8s/</guid><description>k8s学习 # 常用命令 # kubectl apply -f rcm_log_monut_k8s_pod.yaml kubectl get pod -A kubectl get pod -all-namespaces kubectl get node kubectl get deploy 持久卷 - PersistentVolume kubectl get persistentvolume kubectl describe persistentvolume example-pv kubectl **delete** persistentvolume example-pv 从kubectl cp -n &amp;lt;命名空间&amp;gt; -c :xxx.json xxx.json 常用字段 # 下面是一些 Kubernetes 中常用的配置字段：
+apiVersion： Kubernetes API 的版本，用于定义资源的 API 版本号。 kind： 资源的类型，比如 Pod、Deployment、Service 等。 metadata： 元数据字段，用于存储 Kubernetes 对象的名称、命名空间、标签等信息。 spec： 对象的规格，用于定义对象的期望状态，如 Pod 的容器、Service 的端口等。 status： 对象的状态，用于记录对象的实际状态，如 Pod 的运行状态、Service 的访问地址等。 另外还有一些常用的子字段，如：</description></item><item><title>Linux</title><link>http://example.org/docs/programmer/base/noteoflinux/</link><pubDate>Fri, 08 Apr 2016 16:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/base/noteoflinux/</guid><description>Ubuntu22.04 依赖项整理 # vbox: libqt5opengl5 kate: konsole Qt5.12.12: mesa-common-dev, libgl1-mesa-dev OpenCV4.6.0: libgtk2.0-dev, pkg-config, libcanberra-gtk-module 如果没有安装这俩依赖不会影响编译，但是编译后会有功能损失，补充安装后不会修复； 如果想修复，只能安装后再编译一次； dpkg .deb # Install # sudo dpkg -i file.deb
 c l r P L s # -c列出内容 -l提取包信息 -r移除一个已安装的包 -P完全清除一个已安装包 -L列出安装所有文件清单 -s显示已安装包信息 WSL # wsl问题 因为后面不太喜欢这种东西了,还是上了物理机. 所以就不粘贴过来了.
 sudo apt upgrade # E: Sub-process /usr/bin/dpkg returned an error code (1)
 解决 # sudu下
-备份/var/lib/dpkg/info 新建/var/lib/dpkg/info 重新执行更新 合并/var/lib/dpkg/info 和 备份文件 完 说明 # 非原理性解决方案, 若解决不了, 另寻他法或者需要直击灵魂.</description>
-    </item>
-    
-  </channel>
-</rss>
+备份/var/lib/dpkg/info 新建/var/lib/dpkg/info 重新执行更新 合并/var/lib/dpkg/info 和 备份文件 完 说明 # 非原理性解决方案, 若解决不了, 另寻他法或者需要直击灵魂.</description></item></channel></rss>

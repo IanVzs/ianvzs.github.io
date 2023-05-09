@@ -1,25 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>markdown on Ian&#39;s Blog</title>
-    <link>http://example.org/tags/markdown/</link>
-    <description>Recent content in markdown on Ian&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 15 May 2018 10:00:47 +0000</lastBuildDate><atom:link href="http://example.org/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>tips Of markdown</title>
-      <link>http://example.org/docs/programmer/langs/tipsofmarkdown/</link>
-      <pubDate>Tue, 15 May 2018 10:00:47 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/langs/tipsofmarkdown/</guid>
-      <description>Markdown Notes 📪 # ##Test 二级标题
-Now I will test the Markdown&amp;rsquo;s hobiy 二级 # Maybe is a nice way to impove my blog. 三级 # 原来标题 要# 与正文隔开一个空格… ···print “hello Markdown”··· 欸？ 怎么回事？上面的文字 莫非是用Tab能将其放到一个容器里？
-新的区块 # 你好，这是我新创建的容器。 ———好吧，只有直接在标题之下的Tab才能创建 no~，在空行下面也是可以的。 address@example.com
-Markdown 字体颜色、流程图 # 斜体 # *文字*：前后星号斜体 就像这样？
-流程图 # st=&amp;gt;start: Start e=&amp;gt;end: End opl=&amp;gt;operation: My Operation sub1=&amp;gt;subroutine: My subroutine cond=&amp;gt;condition: Yes or No? io=&amp;gt;inputoutput: catch something
-呃 流程图我不清楚，不过</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>markdown on Ian's Blog</title><link>http://example.org/tags/markdown/</link><description>Recent content in markdown on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 15 May 2018 10:00:47 +0000</lastBuildDate><atom:link href="http://example.org/tags/markdown/index.xml" rel="self" type="application/rss+xml"/><item><title>tips Of markdown</title><link>http://example.org/docs/programmer/langs/tipsofmarkdown/</link><pubDate>Tue, 15 May 2018 10:00:47 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tipsofmarkdown/</guid><description>Markdown Notes 📪 # HTML锚点 - 页面内点击跳转 # 可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。 具体实现方法如下：
+首先，在需要跳转到的标题前插入一个 HTML 锚点，例如： ### &amp;lt;a name=&amp;#34;section1&amp;#34;&amp;gt;Section 1&amp;lt;/a&amp;gt; 这个锚点的名称为 &amp;#34;section1&amp;#34;，可以根据需要自定义。 在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如： [跳转到 Section 1](#section1) 这样，点击这个链接就会跳转到页面中的 &amp;#34;Section 1&amp;#34; 标题处。 注意事项： # 锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。 如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。
+## Test 二级标题
+Now I will test the Markdown&amp;rsquo;s hobiy 二级 # Maybe is a nice way to impove my blog. 三级 # 原来标题 要# 与正文隔开一个空格… ···print “hello Markdown”··· 欸？ 怎么回事？上面的文字 莫非是用Tab能将其放到一个容器里？</description></item></channel></rss>

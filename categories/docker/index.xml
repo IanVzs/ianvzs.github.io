@@ -1,23 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>docker on Ian&#39;s Blog</title>
-    <link>http://example.org/categories/docker/</link>
-    <description>Recent content in docker on Ian&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 16 Dec 2021 16:00:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/docker/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>notes Of docker</title>
-      <link>http://example.org/docs/programmer/database/noteofdocker/</link>
-      <pubDate>Thu, 16 Dec 2021 16:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/database/noteofdocker/</guid>
-      <description>Docker # 教程手册 # 好用的使用教程
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>docker on Ian's Blog</title><link>http://example.org/categories/docker/</link><description>Recent content in docker on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 16 Dec 2021 16:00:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>notes Of docker</title><link>http://example.org/docs/programmer/database/noteofdocker/</link><pubDate>Thu, 16 Dec 2021 16:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/database/noteofdocker/</guid><description>Docker # 教程手册 # 好用的使用教程
 Install # 略过~ 😁
 常见问题和模板 # 用户sudo问题 # debian增加docker用户组,优化每次sudo问题 或
-sudo groupadd docker # 安装完docker.io之后一般都会自动创建所以这一步其实没啥用 sudo gpasswd -a $USERNAME docker newgrp docker # 更新 Docker Mysql编码 # version: &amp;#34;2.2&amp;#34; services: redis: image: &amp;#34;redis&amp;#34; # ports: # - 6379:6379 command: redis-server --appendonly yes #一个容器启动时要运行的命令 restart: always # 自动重启 myserver: image: mainName/myserver restart: always # 自动重启 mainServer: image: mainName/mainServer # container_name: mainServerv1.0.0 depends_on: - redis ports: - 9001:9001 restart: always volumes: - &amp;#34;.</description>
-    </item>
-    
-  </channel>
-</rss>
+sudo groupadd docker # 安装完docker.io之后一般都会自动创建所以这一步其实没啥用 sudo gpasswd -a $USERNAME docker newgrp docker # 更新 Docker Mysql编码 # version: &amp;#34;2.2&amp;#34; services: redis: image: &amp;#34;redis&amp;#34; # ports: # - 6379:6379 command: redis-server --appendonly yes #一个容器启动时要运行的命令 restart: always # 自动重启 myserver: image: mainName/myserver restart: always # 自动重启 mainServer: image: mainName/mainServer # container_name: mainServerv1.0.0 depends_on: - redis ports: - 9001:9001 restart: always volumes: - &amp;#34;.</description></item></channel></rss>

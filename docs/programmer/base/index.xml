@@ -1,136 +1,38 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Ian&#39;s Blog</title>
-    <link>http://example.org/docs/programmer/base/</link>
-    <description>Recent content on Ian&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 31 Mar 2022 15:15:14 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/base/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>PyPi</title>
-      <link>http://example.org/docs/programmer/base/pypi/</link>
-      <pubDate>Thu, 31 Mar 2022 15:15:14 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/pypi/</guid>
-      <description>示例项目 # py-muti-scrcpy
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ian's Blog</title><link>http://example.org/docs/programmer/base/</link><description>Recent content on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 27 Mar 2023 10:58:56 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/base/index.xml" rel="self" type="application/rss+xml"/><item><title>k8s</title><link>http://example.org/docs/programmer/base/k8s/</link><pubDate>Mon, 27 Mar 2023 10:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/base/k8s/</guid><description>k8s学习 # 常用命令 # kubectl apply -f rcm_log_monut_k8s_pod.yaml kubectl get pod -A kubectl get pod -all-namespaces kubectl get node kubectl get deploy 持久卷 - PersistentVolume kubectl get persistentvolume kubectl describe persistentvolume example-pv kubectl **delete** persistentvolume example-pv 从kubectl cp -n &amp;lt;命名空间&amp;gt; -c :xxx.json xxx.json 常用字段 # 下面是一些 Kubernetes 中常用的配置字段：
+apiVersion： Kubernetes API 的版本，用于定义资源的 API 版本号。 kind： 资源的类型，比如 Pod、Deployment、Service 等。 metadata： 元数据字段，用于存储 Kubernetes 对象的名称、命名空间、标签等信息。 spec： 对象的规格，用于定义对象的期望状态，如 Pod 的容器、Service 的端口等。 status： 对象的状态，用于记录对象的实际状态，如 Pod 的运行状态、Service 的访问地址等。 另外还有一些常用的子字段，如：</description></item><item><title>PyPi</title><link>http://example.org/docs/programmer/base/pypi/</link><pubDate>Thu, 31 Mar 2022 15:15:14 +0000</pubDate><guid>http://example.org/docs/programmer/base/pypi/</guid><description>示例项目 # py-muti-scrcpy
 配置文件 # pyproject
 工具介绍 # poetry
 增加安装包 # 直接修改pyproject.toml文件并不能生效, 因为还依赖于poetry.lock
 可使用poetry add {xxx}进行添加
-注意事项 # 需要链接外网 # HTTPSConnectionPool(host=&amp;#39;files.pythonhosted.org&amp;#39;, port=443): Max retries exceeded with url: /packages/17/61/32c3ab8951142e061587d957226b5683d1387fb22d95b4f69186d92616d1/typing_extensions-4.0.0-py3-none-any.whl (Caused by ProxyError(&amp;#39;Cannot connect to proxy.&amp;#39;, ConnectionResetError(54, &amp;#39;Connection reset by peer&amp;#39;))) HTTPSConnectionPool(host=&amp;#39;pypi.org&amp;#39;, port=443): Max retries exceeded with url: /pypi/colorama/0.4.4/json (Caused by ProxyError(&amp;#39;Cannot connect to proxy.&amp;#39;, ConnectionResetError(54, &amp;#39;Connection reset by peer&amp;#39;))) 需要安装ssl # SSLError HTTPSConnectionPool(host=&amp;#39;pypi.org&amp;#39;, port=443): Max retries exceeded with url: /pypi/importlib-metadata/4.2.0/json (Caused by SSLError(SSLEOFError(8, &amp;#39;EOF occurred in violation of protocol (_ssl.</description>
-    </item>
-    
-    <item>
-      <title>Nginx高可用</title>
-      <link>http://example.org/docs/programmer/base/tipsofweb/</link>
-      <pubDate>Sun, 09 May 2021 09:56:41 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/tipsofweb/</guid>
-      <description>Keepalived+Nginx实现高可用 # Nginx 关键字 # IO多路复用epoll(IO复用) 轻量,插件: Nginx仅保留了HTTP CPU亲和: 每个worker进程固定在一个CPU Nginx配置 # 代理 # 动静分离 # 动态页面和静态页面交给不同的服务器来解析
+注意事项 # 需要链接外网 # HTTPSConnectionPool(host=&amp;#39;files.pythonhosted.org&amp;#39;, port=443): Max retries exceeded with url: /packages/17/61/32c3ab8951142e061587d957226b5683d1387fb22d95b4f69186d92616d1/typing_extensions-4.0.0-py3-none-any.whl (Caused by ProxyError(&amp;#39;Cannot connect to proxy.&amp;#39;, ConnectionResetError(54, &amp;#39;Connection reset by peer&amp;#39;))) HTTPSConnectionPool(host=&amp;#39;pypi.org&amp;#39;, port=443): Max retries exceeded with url: /pypi/colorama/0.4.4/json (Caused by ProxyError(&amp;#39;Cannot connect to proxy.&amp;#39;, ConnectionResetError(54, &amp;#39;Connection reset by peer&amp;#39;))) 需要安装ssl # SSLError HTTPSConnectionPool(host=&amp;#39;pypi.org&amp;#39;, port=443): Max retries exceeded with url: /pypi/importlib-metadata/4.2.0/json (Caused by SSLError(SSLEOFError(8, &amp;#39;EOF occurred in violation of protocol (_ssl.</description></item><item><title>Nginx高可用</title><link>http://example.org/docs/programmer/base/tipsofweb/</link><pubDate>Sun, 09 May 2021 09:56:41 +0000</pubDate><guid>http://example.org/docs/programmer/base/tipsofweb/</guid><description>Keepalived+Nginx实现高可用 # Nginx 关键字 # IO多路复用epoll(IO复用) 轻量,插件: Nginx仅保留了HTTP CPU亲和: 每个worker进程固定在一个CPU Nginx配置 # 代理 # 动静分离 # 动态页面和静态页面交给不同的服务器来解析
 负载均衡 # upstream balanceServer { server 10.1.22.33:12345; server 10.1.22.34:12345; server 10.1.22.35:12345; } server { server_name fe.server.com; listen 80; location /api { proxy_pass http://balanceServer; } } 机制 # 默认: 轮询, 单机卡顿, 影响分配在这台服务器下的用户 默认: 权重轮询, 宕机Nginx会自动剔除出队列, ip_hash-来源IP分配分配给同个服务器 fair: 根据相应时间均衡分配, 默认不支持. 需安装upstream_fair, url_hash类ip_hash同样需要安装Nginx的hash软件包. Keepalived 配置 # 粘贴自: 这里
-概览 # VIP IP 主机名 Nginx端口 默认主从 192.</description>
-    </item>
-    
-    <item>
-      <title>各个软件换源</title>
-      <link>http://example.org/docs/programmer/base/for_china/</link>
-      <pubDate>Thu, 22 Apr 2021 17:04:15 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/for_china/</guid>
-      <description>在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.
+概览 # VIP IP 主机名 Nginx端口 默认主从 192.</description></item><item><title>各个软件换源</title><link>http://example.org/docs/programmer/base/for_china/</link><pubDate>Thu, 22 Apr 2021 17:04:15 +0000</pubDate><guid>http://example.org/docs/programmer/base/for_china/</guid><description>在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.
+Qt # 使用Maintain管理kit时，可以在Settings中设置Repositories，设置地址可从Qt Downloads页面查询.
 apt # 可解决版本升级时的问题,即使用了国内源,最后一个文件不知道为什么还是从国外拉取&amp;hellip;
 # sudo touch /etc/apt/apt.conf sudo vim /etc/apt/apt.conf -&amp;gt; Acquire::http::Proxy &amp;ldquo;http://127.0.0.1:8001&amp;rdquo;;
 FreeBSD # mkdir -p /usr/local/etc/pkg/repos vim /usr/local/etc/pkg/repos/bjtu.conf
 bjtu: { url: &amp;#34;pkg+http://mirror.bjtu.edu.cn/reverse/freebsd-pkg/${ABI}/quarterly&amp;#34;, mirror_type: &amp;#34;srv&amp;#34;, signature_type: &amp;#34;none&amp;#34;, fingerprints: &amp;#34;/usr/share/keys/pkg&amp;#34;, enabled: yes } FreeBSD: { enabled: no } pkg update
-Qt # 源 # 中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/ 清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/ 北京理工大学：http://mirror.bit.edu.cn/qtproject/ 中国互联网络信息中心：https://mirrors.cnnic.cn/qt/ Python Pip # pip install --index https://pypi.mirrors.ustc.edu.cn/simple/ dlib(numpy等包名) 源 # 阿里云 http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣(douban) http://pypi.douban.com/simple/ 清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/ 中国科学技术大学 http://pypi.</description>
-    </item>
-    
-    <item>
-      <title>tips Of Debuggers</title>
-      <link>http://example.org/docs/programmer/base/tipsofdebugers/</link>
-      <pubDate>Thu, 10 Jan 2019 12:21:12 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/tipsofdebugers/</guid>
-      <description>Clang &amp;amp;&amp;amp; lldb # 听说clang+lldb &amp;gt;= gcc + gdb, 所以一试:
+Qt # 源 # 中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/ 清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/ 北京理工大学：http://mirror.bit.edu.cn/qtproject/ 中国互联网络信息中心：https://mirrors.cnnic.cn/qt/ Python Pip # pip install --index https://pypi.mirrors.ustc.edu.cn/simple/ dlib(numpy等包名) 源 # 阿里云 http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣(douban) http://pypi.</description></item><item><title>tips Of Debuggers</title><link>http://example.org/docs/programmer/base/tipsofdebugers/</link><pubDate>Thu, 10 Jan 2019 12:21:12 +0000</pubDate><guid>http://example.org/docs/programmer/base/tipsofdebugers/</guid><description>Clang &amp;amp;&amp;amp; lldb # 听说clang+lldb &amp;gt;= gcc + gdb, 所以一试:
 lldb基本命令 # 与GDB相同
 break (b) - 设置断点，也就是程序暂停的地方 run (r) - 启动目标程序，如果遇到断点则暂停 step (s) - 进入下一条指令中的函数内部 backtrace (bt) - 显示当前的有效函数 frame (f) - 默认显示当前栈的内容，可以通过 frame arg 进入特定的 frame（用作输出本地变量） next (n) - 运行当前箭头指向行 continue (c) - 继续运行程序直到遇到断点。 clang hello.c -g -o hello lldb hello # lldb b main run n p str 还有颜色 😂 可视效果确实提高了不少 而且这四个工具可以混用,也蛮好.
-GDB # First and foremost, you will need to compile your program with the flag &amp;ldquo;-g&amp;rdquo; (for debug) to run it via GDB.</description>
-    </item>
-    
-    <item>
-      <title>Django的建站的(｡･･)ﾉﾞ</title>
-      <link>http://example.org/docs/programmer/base/notesdjango/</link>
-      <pubDate>Thu, 07 Jun 2018 16:30:18 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/notesdjango/</guid>
-      <description>author: Ian
+GDB # First and foremost, you will need to compile your program with the flag &amp;ldquo;-g&amp;rdquo; (for debug) to run it via GDB.</description></item><item><title>Django的建站的(｡･･)ﾉﾞ</title><link>http://example.org/docs/programmer/base/notesdjango/</link><pubDate>Thu, 07 Jun 2018 16:30:18 +0000</pubDate><guid>http://example.org/docs/programmer/base/notesdjango/</guid><description>author: Ian
 Django 的一些东西 # 利用nginxfd反向代理解决跨域问题 # 纠结了很久的跨域问题。。。。。。一直配置Django。。。。。问题重重，从配置方面这条路还没找到解决方案，如以后确认无误后就再放在这儿。告慰前面付出的种种艰辛 😓😀
 来自(这儿)[https://www.jb51.net/article/105786.htm]
 方法是： 打开nginx默认配置文件/etc/nginx/sites-available/default 更改如下：
-## demo listen 5017 proxy 5000 and 5001 ## server { listen 5017; server_name a.xxx.com; access_log /var/log/nginx/a.access.log; error_log /var/log/nginx/a.error.log; root html; index index.html index.htm index.php; ## send request back to flask ## location / { proxy_pass http://127.0.0.1:5000/ ; #Proxy Settings proxy_redirect off; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504; proxy_max_temp_file_size 0; proxy_connect_timeout 90; proxy_send_timeout 90; proxy_read_timeout 90; proxy_buffer_size 4k; proxy_buffers 4 32k; proxy_busy_buffers_size 64k; } location /proxy { rewrite ^.</description>
-    </item>
-    
-    <item>
-      <title>tip Of vim</title>
-      <link>http://example.org/docs/programmer/base/tipsofvim/</link>
-      <pubDate>Tue, 15 May 2018 09:56:41 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/tipsofvim/</guid>
-      <description>Vim 使用 # 除去“简便生活”里的几条配置，在纠结是否添加到别的地方，果然还是单独给vim一个使用手册比较好……
+## demo listen 5017 proxy 5000 and 5001 ## server { listen 5017; server_name a.xxx.com; access_log /var/log/nginx/a.access.log; error_log /var/log/nginx/a.error.log; root html; index index.html index.htm index.php; ## send request back to flask ## location / { proxy_pass http://127.0.0.1:5000/ ; #Proxy Settings proxy_redirect off; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504; proxy_max_temp_file_size 0; proxy_connect_timeout 90; proxy_send_timeout 90; proxy_read_timeout 90; proxy_buffer_size 4k; proxy_buffers 4 32k; proxy_busy_buffers_size 64k; } location /proxy { rewrite ^.</description></item><item><title>tip Of vim</title><link>http://example.org/docs/programmer/base/tipsofvim/</link><pubDate>Tue, 15 May 2018 09:56:41 +0000</pubDate><guid>http://example.org/docs/programmer/base/tipsofvim/</guid><description>Vim 使用 # 除去“简便生活”里的几条配置，在纠结是否添加到别的地方，果然还是单独给vim一个使用手册比较好……
 注释 # # 注释 1， 12s/^/#/g --- # 取消注释 1， 12s/^#//g 其实 是vim中的 :s替换命令… 下方解释
 或者，使用列编辑的模式:
 v、选择区域、ctrl q置行首、I插入#、Esc应用到全列 ctrl v、I、#、Esc 因为有的ctrl q或者ctrl v 不能用…… 取消，即使用上述方法选中行首，删除第一个字节即可了 替换 # :s/oldWords/newWords/g g : 代表当前光标所在行。
 由此可知: # ^表行首标识符。 /^/表示行首的空字符。 而取消注释中的/^#/即表示行首的#，被//空字符所替换。
-查找高亮 # set hlsearch set nohlsearch 分屏 # 实现 # 在外部使用-o or -O参数 内部split or vsplit 操作 # 移动光标 Ctrl + w hjkl 移动分区Ctrl + w HJKL 统一高度Ctrl + w = 改变高度Ctrl + w +- more and less # 阅读器~~~ 因为经常读大文件发现了这两个的无敌好处——快。</description>
-    </item>
-    
-    <item>
-      <title>编辑器使用</title>
-      <link>http://example.org/docs/programmer/base/editer/</link>
-      <pubDate>Sat, 29 Oct 2016 16:58:56 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/editer/</guid>
-      <description>Jupyter-Note # 局域网访问 # 方法1: 使用jupyter notebook --generate-config生成配置文件 修改配置文件中c.NotebookApp.allow_root(因为安卓用的Termux跑的,所以伪root),c.NotebookApp.ip这样就能通过局域网和Token访问了 如果想要使用密码(长期使用局域网的话),可以使用from notebook.auth import passwd;passwd()生成加密密码,配置到c.NotebookApp.password 方法2: 如果只是临时的,那传入运行命令肯定最好了,如下可以使用如下格式: jupyter-notebook --allow-root --ip=0.0.0.0 自动补全 # 安装插件: pip install jupyter_contrib_nbextensions -i https://pypi.tuna.tsinghua.edu.cn/simple(此命令包含代理) 到Nbextensions中将Disable改为Enable 开始 Vim # vim 查看日志中文乱码(2021) # .bash_profile # export LC_ALL=en_US.utf-8 .vimrc # set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 set termencoding=utf-8 set encoding=utf-8 双管齐下, 一个解决系统配置, 一个解决vim配置
+查找高亮 # set hlsearch set nohlsearch 分屏 # 实现 # 在外部使用-o or -O参数 内部split or vsplit 操作 # 移动光标 Ctrl + w hjkl 移动分区Ctrl + w HJKL 统一高度Ctrl + w = 改变高度Ctrl + w +- more and less # 阅读器~~~ 因为经常读大文件发现了这两个的无敌好处——快。</description></item><item><title>编辑器使用</title><link>http://example.org/docs/programmer/base/editer/</link><pubDate>Sat, 29 Oct 2016 16:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/base/editer/</guid><description>Jupyter-Note # 局域网访问 # 方法1: 使用jupyter notebook --generate-config生成配置文件 修改配置文件中c.NotebookApp.allow_root(因为安卓用的Termux跑的,所以伪root),c.NotebookApp.ip这样就能通过局域网和Token访问了 如果想要使用密码(长期使用局域网的话),可以使用from notebook.auth import passwd;passwd()生成加密密码,配置到c.NotebookApp.password 方法2: 如果只是临时的,那传入运行命令肯定最好了,如下可以使用如下格式: jupyter-notebook --allow-root --ip=0.0.0.0 自动补全 # 安装插件: pip install jupyter_contrib_nbextensions -i https://pypi.tuna.tsinghua.edu.cn/simple(此命令包含代理) 到Nbextensions中将Disable改为Enable 开始 Vim # vim 查看日志中文乱码(2021) # .bash_profile # export LC_ALL=en_US.utf-8 .vimrc # set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 set termencoding=utf-8 set encoding=utf-8 双管齐下, 一个解决系统配置, 一个解决vim配置
 中文乱码问题(2018) # 在.bash_profile中增加
 export LANG=zh_CN.utf8 export LC_ALL=zh_CN.utf8 即可增加中文支持。 不过，还是
 export LANG=en_US.utf8 export LC_ALL=en_US.utf8 比较香，因为中文字体很难看… ^_^: 2019年5月5日19点46分
-vscode vs code # venv # Python # Command Palette.</description>
-    </item>
-    
-    <item>
-      <title>Linux</title>
-      <link>http://example.org/docs/programmer/base/noteoflinux/</link>
-      <pubDate>Fri, 08 Apr 2016 16:58:56 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/noteoflinux/</guid>
-      <description>Ubuntu22.04 依赖项整理 # vbox: libqt5opengl5 kate: konsole Qt5.12.12: mesa-common-dev, libgl1-mesa-dev OpenCV4.6.0: libgtk2.0-dev, pkg-config, libcanberra-gtk-module 如果没有安装这俩依赖不会影响编译，但是编译后会有功能损失，补充安装后不会修复； 如果想修复，只能安装后再编译一次； dpkg .deb # Install # sudo dpkg -i file.deb
+vscode vs code # venv # Python # Command Palette.</description></item><item><title>Linux</title><link>http://example.org/docs/programmer/base/noteoflinux/</link><pubDate>Fri, 08 Apr 2016 16:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/base/noteoflinux/</guid><description>Ubuntu22.04 依赖项整理 # vbox: libqt5opengl5 kate: konsole Qt5.12.12: mesa-common-dev, libgl1-mesa-dev OpenCV4.6.0: libgtk2.0-dev, pkg-config, libcanberra-gtk-module 如果没有安装这俩依赖不会影响编译，但是编译后会有功能损失，补充安装后不会修复； 如果想修复，只能安装后再编译一次； dpkg .deb # Install # sudo dpkg -i file.deb
 c l r P L s # -c列出内容 -l提取包信息 -r移除一个已安装的包 -P完全清除一个已安装包 -L列出安装所有文件清单 -s显示已安装包信息 WSL # wsl问题 因为后面不太喜欢这种东西了,还是上了物理机. 所以就不粘贴过来了.
 sudo apt upgrade # E: Sub-process /usr/bin/dpkg returned an error code (1)
 解决 # sudu下
-备份/var/lib/dpkg/info 新建/var/lib/dpkg/info 重新执行更新 合并/var/lib/dpkg/info 和 备份文件 完 说明 # 非原理性解决方案, 若解决不了, 另寻他法或者需要直击灵魂.</description>
-    </item>
-    
-    <item>
-      <title>Dgraph</title>
-      <link>http://example.org/docs/programmer/base/tip_dgraph/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/tip_dgraph/</guid>
-      <description>
+备份/var/lib/dpkg/info 新建/var/lib/dpkg/info 重新执行更新 合并/var/lib/dpkg/info 和 备份文件 完 说明 # 非原理性解决方案, 若解决不了, 另寻他法或者需要直击灵魂.</description></item><item><title>Dgraph</title><link>http://example.org/docs/programmer/base/tip_dgraph/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/base/tip_dgraph/</guid><description>
 问题 # 在新手村的时候使用dgraph/standalone 但此时(2021-12-8 18:30:23)文档使用的版本为dgraph/standalone:v21.03.2但是这个版本的Ratel UI不工作&amp;hellip;. 导致hello 不了 world很是难受
 结果换了dgraph/standalone:v20.11.3好了诶.
-sudo docker run --rm -it -p &amp;#34;8080:8080&amp;#34; -p &amp;#34;9080:9080&amp;#34; -p &amp;#34;8000:8000&amp;#34; -v ~/dgraph:/dgraph &amp;#34;dgraph/standalone:v20.11.3&amp;#34; http://127.0.0.1:8000 </description>
-    </item>
-    
-    <item>
-      <title>数据格式笔记</title>
-      <link>http://example.org/docs/programmer/base/noteoffmtdata/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/base/noteoffmtdata/</guid>
-      <description>单向链表实现和反转 # # 单向链表实现和反转 &amp;#34;&amp;#34;&amp;#34; # 当前值, 下一个值 # 循环 # 将当前值赋值为下一个的值, 下一个节点值为当前节点值 # 当前节点next赋 &amp;#34;&amp;#34;&amp;#34; class A: def __init__(self, v): self.v = v self.next = None class LA: def __init__(self): self.head = None def add(self, v): node = A(v) node.next = self.head self.head = node def print(self): cur = self.head while cur and cur.v != None: print(f&amp;#34;linkdata node v: {cur.v}&amp;#34;) cur = cur.next def revert(self, node: A=None, head=None): if not head: cache = self.</description>
-    </item>
-    
-  </channel>
-</rss>
+sudo docker run --rm -it -p &amp;#34;8080:8080&amp;#34; -p &amp;#34;9080:9080&amp;#34; -p &amp;#34;8000:8000&amp;#34; -v ~/dgraph:/dgraph &amp;#34;dgraph/standalone:v20.11.3&amp;#34; http://127.0.0.1:8000</description></item><item><title>数据格式笔记</title><link>http://example.org/docs/programmer/base/noteoffmtdata/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/base/noteoffmtdata/</guid><description>单向链表实现和反转 # # 单向链表实现和反转 &amp;#34;&amp;#34;&amp;#34; # 当前值, 下一个值 # 循环 # 将当前值赋值为下一个的值, 下一个节点值为当前节点值 # 当前节点next赋 &amp;#34;&amp;#34;&amp;#34; class A: def __init__(self, v): self.v = v self.next = None class LA: def __init__(self): self.head = None def add(self, v): node = A(v) node.next = self.head self.head = node def print(self): cur = self.head while cur and cur.v != None: print(f&amp;#34;linkdata node v: {cur.v}&amp;#34;) cur = cur.next def revert(self, node: A=None, head=None): if not head: cache = self.</description></item></channel></rss>

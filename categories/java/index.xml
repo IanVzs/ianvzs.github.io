@@ -1,22 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>java on Ian&#39;s Blog</title>
-    <link>http://example.org/categories/java/</link>
-    <description>Recent content in java on Ian&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://example.org/categories/java/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>愉快的Java(happy to learn the fuck java)</title>
-      <link>http://example.org/docs/programmer/langs/notesjava/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/langs/notesjava/</guid>
-      <description>author: Ian
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>java on Ian's Blog</title><link>http://example.org/categories/java/</link><description>Recent content in java on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="http://example.org/categories/java/index.xml" rel="self" type="application/rss+xml"/><item><title>愉快的Java(happy to learn the fuck java)</title><link>http://example.org/docs/programmer/langs/notesjava/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/notesjava/</guid><description>author: Ian
 happy to the fuck java 😅 # &amp;lt;微人事&amp;gt; 笔记 -&amp;gt; ψ(._. )&amp;gt; # 先贴官方文档 哦 还有官方项目地址
 爪哇方法定义: # 修饰符 返回值类型 方法名(参数类型 参数名){ 方法体; return 返回值; } # 示个例 public boolean NiHou(int num){ int a = num; return turn; } // `boolean` 处 可为 public Collection&amp;lt;? extends GrantedAuthority&amp;gt; getAuthorities(){ List&amp;lt;GrantedAuthority&amp;gt; authorities = new ArrayList&amp;lt;&amp;gt;(); return authorities; } // 表泛型中可以是的`GrantedAuthority`所有子类 爪哇抽象方法(即Python父类中直接pass的函数…) # abstract
-包含抽象方法必须得是抽象类 任何子类必须重写父类抽象方法，或者声明自身为抽象类 public abstract class Employee { private String name; private int number; public abstract double computePay(); //其余 } 爪哇接口 # interface, implements</description>
-    </item>
-    
-  </channel>
-</rss>
+包含抽象方法必须得是抽象类 任何子类必须重写父类抽象方法，或者声明自身为抽象类 public abstract class Employee { private String name; private int number; public abstract double computePay(); //其余 } 爪哇接口 # interface, implements</description></item></channel></rss>

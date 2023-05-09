@@ -1,21 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>install on Ian&#39;s Blog</title>
-    <link>http://example.org/tags/install/</link>
-    <description>Recent content in install on Ian&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 15 Jan 2022 16:24:41 +0000</lastBuildDate><atom:link href="http://example.org/tags/install/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>安装问题</title>
-      <link>http://example.org/docs/programmer/install_some/</link>
-      <pubDate>Sat, 15 Jan 2022 16:24:41 +0000</pubDate>
-      
-      <guid>http://example.org/docs/programmer/install_some/</guid>
-      <description>记录一些安装问题 # Debian 使用 apt-add-repository(ppa) # sudo apt update sudo apt install software-properties-common FreeBSD桌面 # 换源 pkg install xorg xfce echo &amp;lsquo;dbus_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf echo &amp;ldquo;/usr/local/etc/xdg/xfce4/xinitrc&amp;rdquo; &amp;gt; ~/.xinitrc startx 登录界面 # pkg install slim slim-themes echo &amp;lsquo;slim_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf vbox(没测试) # pkg install virtualbox-ose-additions 向/etc/rc.conf写入 vboxguest_enable=&amp;#34;YES&amp;#34; vboxservice_enable=&amp;#34;YES&amp;#34; 仅供参考看这里 因为vbox显卡太弱安装了vmware后就一直没用回过vbox,我还没测试过
-vmware # pkg install open-vm-tools xf86-video-vmware xf86-input-vmmouse 继续向/etc/rc.conf中写入 hald_enable=&amp;#34;YES&amp;#34; moused_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmblock_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmhgfs_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmmemctl_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmxnet_enable=&amp;#34;YES&amp;#34; # vmware_guest_enable=&amp;#34;YES&amp;#34; 下面注释掉的是因为在测试中如果打开的话会有各种问题&amp;hellip;.</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>install on Ian's Blog</title><link>http://example.org/tags/install/</link><description>Recent content in install on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 15 Jan 2022 16:24:41 +0000</lastBuildDate><atom:link href="http://example.org/tags/install/index.xml" rel="self" type="application/rss+xml"/><item><title>安装问题</title><link>http://example.org/docs/programmer/install_some/</link><pubDate>Sat, 15 Jan 2022 16:24:41 +0000</pubDate><guid>http://example.org/docs/programmer/install_some/</guid><description>记录一些安装问题 # Debian 使用 apt-add-repository(ppa) # sudo apt update sudo apt install software-properties-common FreeBSD桌面 # 换源 pkg install xorg xfce echo &amp;lsquo;dbus_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf echo &amp;ldquo;/usr/local/etc/xdg/xfce4/xinitrc&amp;rdquo; &amp;gt; ~/.xinitrc startx 登录界面 # pkg install slim slim-themes echo &amp;lsquo;slim_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf vbox(没测试) # pkg install virtualbox-ose-additions 向/etc/rc.conf写入 vboxguest_enable=&amp;#34;YES&amp;#34; vboxservice_enable=&amp;#34;YES&amp;#34; 仅供参考看这里 因为vbox显卡太弱安装了vmware后就一直没用回过vbox,我还没测试过
+vmware # pkg install open-vm-tools xf86-video-vmware xf86-input-vmmouse 继续向/etc/rc.conf中写入 hald_enable=&amp;#34;YES&amp;#34; moused_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmblock_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmhgfs_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmmemctl_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmxnet_enable=&amp;#34;YES&amp;#34; # vmware_guest_enable=&amp;#34;YES&amp;#34; 下面注释掉的是因为在测试中如果打开的话会有各种问题&amp;hellip;.</description></item></channel></rss>
