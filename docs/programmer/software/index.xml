@@ -8,60 +8,61 @@ vmware # pkg install open-vm-tools xf86-video-vmware xf86-input-vmmouse 继续�
 62. // fs.stat = statFix(fs.stat) 63. // fs.fstat = statFix(fs.fstat) 64. // fs.lstat = statFix(fs.lstat) 固然可以通过安装相匹配版本进行适配，不过&amp;hellip;Ian怕导致本机上的hexo再出现版本不兼容的问题。 使用 # 功能 示例 个人使用习惯(Ian) 新建book gitbook init gitbook init gitbooks/Architecture 编译和运行服务 gitbook serve 编译 gitbook serve pdf # 参考自 码谱</description></item><item><title/><link>http://example.org/docs/programmer/software/markdown/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/software/markdown/</guid><description> Markdown # 折叠 # 文本字体速查表 # 参考自: csdn 王大雄
 高亮 # 1. 使用&amp;#34;`&amp;#34;双引, eg: `{要高亮的文本}`; 2. 使用&amp;#34;```&amp;#34; 跨行, eg:```\n{要高亮的文本}\n```; 3. HTML &amp;lt;mark&amp;gt;双引, eg: &amp;lt;mark&amp;gt;{要高亮的文本}&amp;lt;mark&amp;gt; 要高亮的文本 见下 要高亮的文本 要高亮的文本</description></item><item><title/><link>http://example.org/docs/programmer/software/npm/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/software/npm/</guid><description>npm # 树莓派 # 官网下载 树莓派4b 选择ARMv8之前的树莓派型号选择ARMv7 配置PATH 向/usr/local/bin/下建立node软链 export PATH=&amp;#34;~/node-v16.14.0-linux-arm64/bin:$PATH&amp;#34; #sudo ln -s ~/node-v16.14.0-linux-arm64/bin/node /usr/bin/node Windows下wsl2 安装 npm &amp;amp;&amp;amp; nodejs # 摘抄自微软说明文档
 安装nvm (Node 版本管理器) 国内网可能有问题, 下载下保存直接bash install.sh就可安装. curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash command -v nvm验证是否安装成功,它会自行添加.bashrc需重启bash nvm ls查看Node版本 nvm install --lts即可安装lts版, nvm install node安装最新版 会安装这么多东西 -&amp;gt; v16.13.2 default -&amp;gt; lts/* (-&amp;gt; v16.13.2) iojs -&amp;gt; N/A (default) unstable -&amp;gt; N/A (default) node -&amp;gt; stable (-&amp;gt; v16.13.2) (default) stable -&amp;gt; 16.</description></item><item><title/><link>http://example.org/docs/programmer/software/readme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/software/readme/</guid><description>软件篇 # 主要记录一些工具、软件的Initialization，或者实用插件的安装等问题</description></item><item><title/><link>http://example.org/docs/programmer/software/vim/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/software/vim/</guid><description>&lt;h1 id="vim-使用">
-Vim 使用
-&lt;a class="anchor" href="#vim-%e4%bd%bf%e7%94%a8">#&lt;/a>
+ Vim 使用
+ &lt;a class="anchor" href="#vim-%e4%bd%bf%e7%94%a8">#&lt;/a>
 &lt;/h1>
 &lt;p>Auther: Ian&lt;/p>
 &lt;p>&lt;img src="https://www.vim.org/images/vim_header.gif" alt="vim" />&lt;/p>
 &lt;h2 id="注释">
-注释
-&lt;a class="anchor" href="#%e6%b3%a8%e9%87%8a">#&lt;/a>
+ 注释
+ &lt;a class="anchor" href="#%e6%b3%a8%e9%87%8a">#&lt;/a>
 &lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> # 注释&lt;span style="color:#960050;background-color:#1e0010">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>， &lt;span style="color:#ae81ff">12&lt;/span>s&lt;span style="color:#e6db74">/^/&lt;/span>#/&lt;span style="color:#a6e22e">g&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> ---&lt;span style="color:#960050;background-color:#1e0010">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> # 取消注释&lt;span style="color:#960050;background-color:#1e0010">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>， &lt;span style="color:#ae81ff">12&lt;/span>s&lt;span style="color:#e6db74">/^#/&lt;/span>/&lt;span style="color:#a6e22e">g&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>其实 是&lt;code>vim&lt;/code>中的 &lt;code>:s&lt;/code>替换命令… 下方解释&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> # &lt;span style="color:#a6e22e">注释&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">1&lt;/span>， &lt;span style="color:#ae81ff">12&lt;/span>s&lt;span style="color:#e6db74">/^/&lt;/span>#/&lt;span style="color:#a6e22e">g&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ---
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> # &lt;span style="color:#a6e22e">取消注释&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">1&lt;/span>， &lt;span style="color:#ae81ff">12&lt;/span>s&lt;span style="color:#e6db74">/^#/&lt;/span>/&lt;span style="color:#a6e22e">g&lt;/span> 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>其实 是&lt;code>vim&lt;/code>中的 &lt;code>:s&lt;/code>替换命令… 下方解释&lt;/p>
 &lt;p>或者，使用列编辑的模式:&lt;/p>
 &lt;pre>&lt;code>v、选择区域、ctrl q置行首、I插入#、Esc应用到全列
 ctrl v、I、#、Esc
 因为有的ctrl q或者ctrl v 不能用……
+
 取消，即使用上述方法选中行首，删除第一个字节即可了
 &lt;/code>&lt;/pre>
 &lt;h2 id="替换">
-替换
-&lt;a class="anchor" href="#%e6%9b%bf%e6%8d%a2">#&lt;/a>
+ 替换
+ &lt;a class="anchor" href="#%e6%9b%bf%e6%8d%a2">#&lt;/a>
 &lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> :&lt;span style="color:#a6e22e">s&lt;/span>&lt;span style="color:#e6db74">/oldWords/&lt;/span>&lt;span style="color:#a6e22e">newWords&lt;/span>/&lt;span style="color:#a6e22e">g&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>g : 代表当前光标所在行。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> :&lt;span style="color:#a6e22e">s&lt;/span>&lt;span style="color:#e6db74">/oldWords/&lt;/span>&lt;span style="color:#a6e22e">newWords&lt;/span>/&lt;span style="color:#a6e22e">g&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>g : 代表当前光标所在行。&lt;/p>
 &lt;h3 id="由此可知">
-由此可知:
-&lt;a class="anchor" href="#%e7%94%b1%e6%ad%a4%e5%8f%af%e7%9f%a5">#&lt;/a>
+ 由此可知:
+ &lt;a class="anchor" href="#%e7%94%b1%e6%ad%a4%e5%8f%af%e7%9f%a5">#&lt;/a>
 &lt;/h3>
 &lt;p>&lt;code>^&lt;/code>表行首标识符。 &lt;code>/^/&lt;/code>表示行首的空字符。 而取消注释中的&lt;code>/^#/&lt;/code>即表示行首的&lt;code>#&lt;/code>，被&lt;code>//&lt;/code>空字符所替换。&lt;/p>
 &lt;hr>
 &lt;h2 id="查找高亮">
-查找高亮
-&lt;a class="anchor" href="#%e6%9f%a5%e6%89%be%e9%ab%98%e4%ba%ae">#&lt;/a>
+ 查找高亮
+ &lt;a class="anchor" href="#%e6%9f%a5%e6%89%be%e9%ab%98%e4%ba%ae">#&lt;/a>
 &lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">set&lt;/span> &lt;span style="color:#a6e22e">hlsearch&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> &lt;span style="color:#a6e22e">set&lt;/span> &lt;span style="color:#a6e22e">nohlsearch&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="分屏">
-分屏
-&lt;a class="anchor" href="#%e5%88%86%e5%b1%8f">#&lt;/a>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">set&lt;/span> &lt;span style="color:#a6e22e">hlsearch&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">set&lt;/span> &lt;span style="color:#a6e22e">nohlsearch&lt;/span> 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="分屏">
+ 分屏
+ &lt;a class="anchor" href="#%e5%88%86%e5%b1%8f">#&lt;/a>
 &lt;/h2>
 &lt;h3 id="实现">
-实现
-&lt;a class="anchor" href="#%e5%ae%9e%e7%8e%b0">#&lt;/a>
+ 实现
+ &lt;a class="anchor" href="#%e5%ae%9e%e7%8e%b0">#&lt;/a>
 &lt;/h3>
 &lt;ul>
 &lt;li>在外部使用&lt;code>-o&lt;/code> or &lt;code>-O&lt;/code>参数&lt;/li>
 &lt;li>内部&lt;code>split&lt;/code> or &lt;code>vsplit&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;h3 id="操作">
-操作
-&lt;a class="anchor" href="#%e6%93%8d%e4%bd%9c">#&lt;/a>
+ 操作
+ &lt;a class="anchor" href="#%e6%93%8d%e4%bd%9c">#&lt;/a>
 &lt;/h3>
 &lt;ul>
 &lt;li>移动光标 &lt;code>Ctrl + w&lt;/code> hjkl&lt;/li>
@@ -70,5 +71,6 @@ ctrl v、I、#、Esc
 &lt;li>改变高度&lt;code>Ctrl + w&lt;/code> +-&lt;/li>
 &lt;/ul>
 &lt;h1 id="heading">
-&lt;a class="anchor" href="#heading">#&lt;/a>
+ 
+ &lt;a class="anchor" href="#heading">#&lt;/a>
 &lt;/h1></description></item></channel></rss>

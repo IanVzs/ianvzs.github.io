@@ -1,33 +1,36 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="title: Paddle date: 2022-06-08 18:58:56 modified: 2022-06-08 18:58:56 category: [note, 机器学习] tags: [Paddle] slug: # Paddle的坑 # 资源占用 # 命令示例(yml中修改了train,test样本地址,使用--gpus这里只用了一个GPU,可方便修改为多卡0,1,2,3)
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="title: Paddle date: 2022-06-08 18:58:56 modified: 2022-06-08 18:58:56 category: [note, 机器学习] tags: [Paddle] slug: # Paddle的坑 # 资源占用 # 命令示例(yml中修改了train,test样本地址,使用--gpus这里只用了一个GPU,可方便修改为多卡0,1,2,3)
 python -m paddle.distributed.launch --gpus '1' tools/train.py -c configs/rec/PP-OCRv3/en_PP-OCRv3_rec.yml -o Global.pretrained_model=./pretrain_models/en_PP-OCRv3_rec_train/best_accuracy.pdparams en_PP-OCRv3_rec默认性能配置在, 单卡V100上: +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+ | 1 Tesla V100-SXM2&mldr; On | 00000000:00:09.0 Off | 0 | | N/A 53C P0 223W / 300W | 23065MiB / 32510MiB | 100% Default | | | | N/A | +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+
 Paddle 多卡训练 # You may need to install &rsquo;nccl2&rsquo; from NVIDIA official website"><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="title: Paddle date: 2022-06-08 18:58:56 modified: 2022-06-08 18:58:56 category: [note, 机器学习] tags: [Paddle] slug: # Paddle的坑 # 资源占用 # 命令示例(yml中修改了train,test样本地址,使用--gpus这里只用了一个GPU,可方便修改为多卡0,1,2,3)
 python -m paddle.distributed.launch --gpus '1' tools/train.py -c configs/rec/PP-OCRv3/en_PP-OCRv3_rec.yml -o Global.pretrained_model=./pretrain_models/en_PP-OCRv3_rec_train/best_accuracy.pdparams en_PP-OCRv3_rec默认性能配置在, 单卡V100上: +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+ | 1 Tesla V100-SXM2&mldr; On | 00000000:00:09.0 Off | 0 | | N/A 53C P0 223W / 300W | 23065MiB / 32510MiB | 100% Default | | | | N/A | +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+
-Paddle 多卡训练 # You may need to install &rsquo;nccl2&rsquo; from NVIDIA official website"><meta property="og:type" content="article"><meta property="og:url" content="http://example.org/docs/programmer/ml/paddle/"><meta property="article:section" content="docs"><title>Paddle | Ian's Blog</title><link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.5e4e3eb98c95fed21f8711ae46e7adcc8e1c4c08be1a14ecf6aec385463eb782.js integrity="sha256-Xk4+uYyV/tIfhxGuRuetzI4cTAi+GhTs9q7DhUY+t4I=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Ian's Blog</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><a href=/docs/programmer/>程序员笔记</a><ul><li><input type=checkbox id=section-52f633cba5cf47818d8ec01e928396f2 class=toggle>
-<label for=section-52f633cba5cf47818d8ec01e928396f2 class="flex justify-between"><a role=button>Base</a></label><ul><li><a href=/docs/programmer/base/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/>k8s技术分享</a></li><li><a href=/docs/programmer/base/k8s-%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E/>k8s网络配置说明</a></li><li><a href=/docs/programmer/base/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/>k8s学习-常用命令和配置文件</a></li><li><a href=/docs/programmer/base/pypi/>PyPi</a></li><li><a href=/docs/programmer/base/tipsofweb/>Nginx高可用</a></li><li><a href=/docs/programmer/base/for_china/>各个软件换源</a></li><li><a href=/docs/programmer/base/tipsofdebugers/>tips Of Debuggers</a></li><li><a href=/docs/programmer/base/notesdjango/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/base/tipsofvim/>tip Of vim</a></li><li><a href=/docs/programmer/base/editer/>编辑器使用</a></li><li><a href=/docs/programmer/base/noteoflinux/>Linux</a></li><li><a href=/docs/programmer/base/argo-workflow%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/>Argo Workflow技术分享</a></li><li><a href=/docs/programmer/base/argo-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/>Argo 使用记录</a></li><li><a href=/docs/programmer/base/kafka-%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/>Kafka 安装和使用</a></li><li><a href=/docs/programmer/base/pytest-%E6%B5%8B%E8%AF%95/>Py Test 测试</a></li><li><a href=/docs/programmer/base/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/>Sonar 代码静态检查</a></li><li><a href=/docs/programmer/base/%E5%B0%8F%E5%91%BD%E4%BB%A4/>小命令</a></li><li><a href=/docs/programmer/base/tip_dgraph/>Dgraph</a></li><li><a href=/docs/programmer/base/noteoffmtdata/>数据格式笔记</a></li></ul></li><li><input type=checkbox id=section-de7bfad1d124522974cdf8addfbb23f2 class=toggle>
-<label for=section-de7bfad1d124522974cdf8addfbb23f2 class="flex justify-between"><a role=button>Net</a></label><ul><li><a href=/docs/programmer/net/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/>uwsgi 处理记录</a></li><li><a href=/docs/programmer/net/tipsofgrpc/>gRpc使用小记</a></li><li><a href=/docs/programmer/net/net/>网络(Computer Network)</a></li><li><a href=/docs/programmer/net/elk%E5%9C%A8k8s%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B/>Elk在k8s上的部署使用示例</a></li><li><a href=/docs/programmer/net/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li></ul></li><li><input type=checkbox id=section-bf4e0d6f0b81f7b3ec08ed1fc66b874d class=toggle>
-<label for=section-bf4e0d6f0b81f7b3ec08ed1fc66b874d class="flex justify-between"><a role=button>Langs</a></label><ul><li><a href=/docs/programmer/langs/cmake/>CMake 使用Tips</a></li><li><a href=/docs/programmer/langs/noteofgoexp/>Golang进阶笔记</a></li><li><a href=/docs/programmer/langs/noteofgolang/>Golang笔记</a></li><li><a href=/docs/programmer/langs/tipsofmarkdown/>tips Of markdown</a></li><li><a href=/docs/programmer/langs/notespython/>Python笔记(notes of Python)</a></li><li><a href=/docs/programmer/langs/notesjava/>愉快的Java(happy to learn the fuck java)</a></li></ul></li><li><input type=checkbox id=section-cd029da01a5cf373a5379dc078a74f2c class=toggle>
-<label for=section-cd029da01a5cf373a5379dc078a74f2c class="flex justify-between"><a role=button>Game and Simulation</a></label><ul><li><a href=/docs/programmer/game_and_simulation/blender/>Blender</a></li><li><a href=/docs/programmer/game_and_simulation/noteofue4/>UE4 笔记</a></li></ul></li><li><input type=checkbox id=section-883e27361d38e16afb68faff3435ac0b class=toggle checked>
-<label for=section-883e27361d38e16afb68faff3435ac0b class="flex justify-between"><a role=button>Ml</a></label><ul><li><a href=/docs/programmer/ml/tensorflow/>Tensorflow</a></li><li><a href=/docs/programmer/ml/opencv/>OpenCV</a></li><li><a href=/docs/programmer/ml/paddle/ class=active>Paddle</a></li><li><a href=/docs/programmer/ml/noteofmachinelearning/>机器学习库</a></li></ul></li><li><input type=checkbox id=section-7e5360c5e7954906b897ed79085884b6 class=toggle>
-<label for=section-7e5360c5e7954906b897ed79085884b6 class="flex justify-between"><a href=/docs/programmer/gui/>Gui</a></label><ul><li><a href=/docs/programmer/gui/pyinstaller/>python打包</a></li><li><a href=/docs/programmer/gui/qt/>Qt/PySide</a></li><li><a href=/docs/programmer/gui/noteofvn_py/>Vn.Py学习笔记（Python交易平台框架）</a></li><li><a href=/docs/programmer/gui/notespython/>图形化界面 （Python Gui）</a></li></ul></li><li><input type=checkbox id=section-4446dd07527142b855f26d7cc8f0e617 class=toggle>
-<label for=section-4446dd07527142b855f26d7cc8f0e617 class="flex justify-between"><a role=button>Database</a></label><ul><li><a href=/docs/programmer/database/dgraph/>Dgraph使用小记</a></li><li><a href=/docs/programmer/database/noteofdocker/>notes Of docker</a></li><li><a href=/docs/programmer/database/noteofdbdata/>db数据库</a></li><li><a href=/docs/programmer/database/mongodb/>Mongodb</a></li></ul></li><li><input type=checkbox id=section-d325c59fc6513e1b1e05a60b192d4973 class=toggle>
-<label for=section-d325c59fc6513e1b1e05a60b192d4973 class="flex justify-between"><a href=/docs/programmer/hardware/>Hardware</a></label><ul><li><a href=/docs/programmer/hardware/android/>Android</a></li><li><a href=/docs/programmer/hardware/raspberrypi/>Raspberry Pi</a></li><li><a href=/docs/programmer/hardware/readme/>Readme</a></li><li><a href=/docs/programmer/hardware/screen/>Screen</a></li></ul></li><li><input type=checkbox id=section-40d35e91afa620ff2e7bf6291cfb3e1d class=toggle>
-<label for=section-40d35e91afa620ff2e7bf6291cfb3e1d class="flex justify-between"><a href=/docs/programmer/software/>Software</a></label><ul><li><a href=/docs/programmer/software/bash/>Bash</a></li><li><a href=/docs/programmer/software/freebsd/>Freebsd</a></li><li><a href=/docs/programmer/software/gitbook/>Gitbook</a></li><li><a href=/docs/programmer/software/markdown/>Markdown</a></li><li><a href=/docs/programmer/software/npm/>Npm</a></li><li><a href=/docs/programmer/software/readme/>Readme</a></li><li><a href=/docs/programmer/software/vim/>Vim</a></li></ul></li><li><a href=/docs/programmer/install_some/>安装问题</a></li><li><a href=/docs/programmer/demo_test_some/>Demo Test项目中的一些东西</a></li><li><a href=/docs/programmer/tipsofproblems/>解决问题</a></li></ul></li><li class=book-section-flat><a href=/docs/example/>Example Site</a><ul><li><a href=/docs/example/table-of-contents/>Table of Contents</a><ul><li><a href=/docs/example/table-of-contents/with-toc/>With ToC</a></li><li><a href=/docs/example/table-of-contents/without-toc/>Without ToC</a></li></ul></li></ul></li><li class=book-section-flat><span>Shortcodes</span><ul><li><a href=/docs/shortcodes/buttons/>Buttons</a></li><li><a href=/docs/shortcodes/columns/>Columns</a></li><li><a href=/docs/shortcodes/details/>Details</a></li><li><a href=/docs/shortcodes/expand/>Expand</a></li><li><a href=/docs/shortcodes/hints/>Hints</a></li><li><input type=checkbox id=section-d3fc1bf6d66cd84b896a0af9f40cb1d5 class=toggle>
-<label for=section-d3fc1bf6d66cd84b896a0af9f40cb1d5 class="flex justify-between"><a href=/docs/shortcodes/section/>Section</a></label><ul><li><a href=/docs/shortcodes/section/first-page/>First Page</a></li><li><a href=/docs/shortcodes/section/second-page/>Second Page</a></li></ul></li><li><a href=/docs/shortcodes/tabs/>Tabs</a></li></ul></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label>
-<strong>Paddle</strong>
+Paddle 多卡训练 # You may need to install &rsquo;nccl2&rsquo; from NVIDIA official website"><meta property="og:type" content="article"><meta property="og:url" content="http://example.org/docs/programmer/ml/paddle/"><meta property="article:section" content="docs"><title>Paddle | Ian's Blog</title>
+<link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script><script defer src=/en.search.min.2d8d2bb9754cea7562c9f4c6dd439b23aa4670e648a288ebbc817f1f4eaa725f.js integrity="sha256-LY0ruXVM6nViyfTG3UObI6pGcOZIoojrvIF/H06qcl8=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Ian's Blog</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><a href=/docs/programmer/>程序员笔记</a><ul><li><input type=checkbox id=section-8658298e10b544e890095f646916165a class=toggle>
+<label for=section-8658298e10b544e890095f646916165a class="flex justify-between"><a role=button>云原生</a></label><ul><li><input type=checkbox id=section-62d608ed890b3abc76dae78ccfcab912 class=toggle>
+<label for=section-62d608ed890b3abc76dae78ccfcab912 class="flex justify-between"><a role=button>k8s</a></label><ul><li><a href=/docs/programmer/cloudnative/k8s/elk%E5%9C%A8k8s%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B/>elk在k8s上的部署使用示例</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/>k8s 配套说明</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/>k8s技术分享</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/>k8s学习-常用命令和配置文件</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-workflow%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/>Argo Workflow性能测试和使用场景分析</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/>Argo 使用记录</a></li></ul></li><li><input type=checkbox id=section-b828bf3d116bc282da9db25a06bf908e class=toggle>
+<label for=section-b828bf3d116bc282da9db25a06bf908e class="flex justify-between"><a role=button>中间件</a></label><ul><li><a href=/docs/programmer/cloudnative/middleware/kafka-%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/>Kafka 安装和使用</a></li></ul></li><li><a href=/docs/programmer/cloudnative/noteofdocker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/tipsofweb/>Nginx高可用</a></li><li><a href=/docs/programmer/cloudnative/notesdjango/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/>Sonar 代码静态检查</a></li></ul></li><li><input type=checkbox id=section-de7bfad1d124522974cdf8addfbb23f2 class=toggle>
+<label for=section-de7bfad1d124522974cdf8addfbb23f2 class="flex justify-between"><a role=button>Net</a></label><ul><li><a href=/docs/programmer/net/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/>uwsgi 处理记录</a></li><li><a href=/docs/programmer/net/tipsofgrpc/>gRpc使用小记</a></li><li><a href=/docs/programmer/net/net/>Epoll实现</a></li><li><a href=/docs/programmer/net/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li></ul></li><li><input type=checkbox id=section-bf4e0d6f0b81f7b3ec08ed1fc66b874d class=toggle>
+<label for=section-bf4e0d6f0b81f7b3ec08ed1fc66b874d class="flex justify-between"><a role=button>编程语言</a></label><ul><li><input type=checkbox id=section-771df6c720301e69f1715f7fc174ac3d class=toggle>
+<label for=section-771df6c720301e69f1715f7fc174ac3d class="flex justify-between"><a role=button>Python</a></label><ul><li><a href=/docs/programmer/langs/python/pypi/>PyPi使用说明</a></li><li><a href=/docs/programmer/langs/python/paramiko-%E4%BD%BF%E7%94%A8-sshsftp/>Paramiko 使用 Ssh&amp;sftp</a></li><li><a href=/docs/programmer/langs/python/pytest/>Pytest</a></li><li><a href=/docs/programmer/langs/python/notespython/>笔记</a></li></ul></li><li><input type=checkbox id=section-9f8ac8f06e138c7ac13ff61f23b4d497 class=toggle>
+<label for=section-9f8ac8f06e138c7ac13ff61f23b4d497 class="flex justify-between"><a role=button>Golang</a></label><ul><li><a href=/docs/programmer/langs/golang/noteofgoexp/>Golang进阶笔记</a></li><li><a href=/docs/programmer/langs/golang/noteofgolang/>Golang笔记</a></li></ul></li><li><a href=/docs/programmer/langs/cmake/>CMake 使用Tips</a></li><li><a href=/docs/programmer/langs/tipsofdebugers/>tips Of Debuggers</a></li><li><a href=/docs/programmer/langs/tipsofmarkdown/>Markdown</a></li><li><a href=/docs/programmer/langs/markdown/>Markdown</a></li><li><a href=/docs/programmer/langs/java/notesjava/>愉快的Java(happy to learn the fuck java)</a></li><li><a href=/docs/programmer/langs/noteoffmtdata/>数据格式笔记</a></li></ul></li><li><input type=checkbox id=section-883e27361d38e16afb68faff3435ac0b class=toggle checked>
+<label for=section-883e27361d38e16afb68faff3435ac0b class="flex justify-between"><a role=button>机器学习</a></label><ul><li><a href=/docs/programmer/ml/tensorflow/>Tensorflow</a></li><li><a href=/docs/programmer/ml/opencv/>OpenCV</a></li><li><a href=/docs/programmer/ml/paddle/ class=active>Paddle</a></li><li><a href=/docs/programmer/ml/yolo/>Demo Test项目中的一些东西</a></li><li><a href=/docs/programmer/ml/noteofmachinelearning/>机器学习库</a></li></ul></li><li><input type=checkbox id=section-7e5360c5e7954906b897ed79085884b6 class=toggle>
+<label for=section-7e5360c5e7954906b897ed79085884b6 class="flex justify-between"><a href=/docs/programmer/gui/>图形用户界面-GUI</a></label><ul><li><a href=/docs/programmer/gui/pyinstaller/>python打包</a></li><li><a href=/docs/programmer/gui/qt/>Qt/PySide</a></li><li><a href=/docs/programmer/gui/noteofvn_py/>Vn.Py学习笔记（Python交易平台框架）</a></li><li><a href=/docs/programmer/gui/notespython/>图形化界面 （Python Gui）</a></li></ul></li><li><input type=checkbox id=section-ddcbe632dc99a9fb372422dada8ee641 class=toggle>
+<label for=section-ddcbe632dc99a9fb372422dada8ee641 class="flex justify-between"><a role=button>OS操作系统问题处理</a></label><ul><li><a href=/docs/programmer/os/install_some/>安装问题</a></li><li><a href=/docs/programmer/os/noteoflinux/>Linux</a></li><li><a href=/docs/programmer/os/android/>Android</a></li><li><a href=/docs/programmer/os/freebsd/>Freebsd</a></li><li><a href=/docs/programmer/os/npm/>Npm</a></li><li><a href=/docs/programmer/os/tipsofproblems/>解决问题</a></li></ul></li><li><input type=checkbox id=section-4446dd07527142b855f26d7cc8f0e617 class=toggle>
+<label for=section-4446dd07527142b855f26d7cc8f0e617 class="flex justify-between"><a role=button>Database</a></label><ul><li><a href=/docs/programmer/database/dgraph/>Dgraph使用小记</a></li><li><a href=/docs/programmer/database/noteofdbdata/>db数据库</a></li><li><a href=/docs/programmer/database/mongodb/>Mongodb</a></li><li><a href=/docs/programmer/database/tip_dgraph/>Dgraph</a></li></ul></li><li><input type=checkbox id=section-d5f99046a51e5e750b61f2e037945fcc class=toggle>
+<label for=section-d5f99046a51e5e750b61f2e037945fcc class="flex justify-between"><a role=button>基础工具和配置</a></label><ul><li><a href=/docs/programmer/basetc/for_china/>各个软件换源</a></li><li><a href=/docs/programmer/basetc/tipsofvim/>tip Of vim</a></li><li><a href=/docs/programmer/basetc/editer/>编辑器使用</a></li><li><a href=/docs/programmer/basetc/bash/>Bash</a></li><li><a href=/docs/programmer/basetc/gitbook/>Gitbook</a></li><li><a href=/docs/programmer/basetc/vim/>Vim</a></li></ul></li><li><input type=checkbox id=section-d325c59fc6513e1b1e05a60b192d4973 class=toggle>
+<label for=section-d325c59fc6513e1b1e05a60b192d4973 class="flex justify-between"><a href=/docs/programmer/hardware/>硬件</a></label><ul><li><a href=/docs/programmer/hardware/raspberrypi/>Raspberry Pi</a></li><li><a href=/docs/programmer/hardware/screen/>Screen</a></li></ul></li></ul></li><li class=book-section-flat><span>建模和游戏</span><ul><li><a href=/docs/3dgame/blender/>Blender</a></li><li><a href=/docs/3dgame/noteofue4/>UE4 笔记</a></li></ul></li><li class=book-section-flat><a href=/docs/example/>Hugo特殊Markdown语法说明</a><ul><li><a href=/docs/example/table-of-contents/>Table of Contents</a><ul><li><a href=/docs/example/table-of-contents/with-toc/>With ToC</a></li><li><a href=/docs/example/table-of-contents/without-toc/>Without ToC</a></li></ul></li><li><a href=/docs/example/shortcodes/buttons/>Buttons</a></li><li><a href=/docs/example/shortcodes/columns/>Columns</a></li><li><a href=/docs/example/shortcodes/details/>Details</a></li><li><a href=/docs/example/shortcodes/expand/>Expand</a></li><li><a href=/docs/example/shortcodes/hints/>Hints</a></li><li><a href=/docs/example/shortcodes/tabs/>Tabs</a></li></ul></li></ul><ul><li><a href=/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu>
+</label><strong>Paddle</strong>
 <label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#slug>title: Paddle
 date: 2022-06-08 18:58:56
 modified: 2022-06-08 18:58:56
 category: [note, 机器学习]
 tags: [Paddle]
-slug:</a></li></ul><ul><li><a href=#资源占用>资源占用</a></li><li><a href=#paddle-多卡训练>Paddle 多卡训练</a></li><li><a href=#写在坑前头>写在坑前头</a></li><li><a href=#paddleocr-预训练模型>PaddleOCR 预训练模型</a><ul><li><a href=#但是>但是</a></li></ul></li><li><a href=#使用训练结果检测单张图片>使用训练结果检测单张图片</a></li><li><a href=#多卡和断点续传>多卡和断点续传</a></li></ul></nav></aside></header><article class=markdown><h2 id=slug>title: Paddle
+slug:</a></li></ul><ul><li><a href=#资源占用>资源占用</a></li><li><a href=#paddle-多卡训练>Paddle 多卡训练</a></li><li><a href=#写在坑前头>写在坑前头</a></li><li><a href=#paddleocr-预训练模型>PaddleOCR 预训练模型</a><ul><li><a href=#但是>但是</a></li></ul></li><li><a href=#使用训练结果检测单张图片>使用训练结果检测单张图片</a></li><li><a href=#多卡和断点续传>多卡和断点续传</a></li><li><a href=#lstm-model>LSTM Model</a><ul><li><a href=#可视化>可视化</a></li></ul></li></ul></nav></aside></header><article class=markdown><h2 id=slug>title: Paddle
 date: 2022-06-08 18:58:56
 modified: 2022-06-08 18:58:56
 category: [note, 机器学习]
 tags: [Paddle]
 slug:
-<a class=anchor href=#slug>#</a></h2><p><img src="https://th.bing.com/th/id/R.51a92409a6ab153b1ef0a45bc252c001?rik=8zti23A8ZlF6TA&riu=http%3a%2f%2f5b0988e595225.cdn.sohucs.com%2fimages%2f20180125%2f3195f903a92843f8b39058abb2982c9e.jpeg&ehk=7KSd71aeS7%2fSjkkVHUVubARN75%2f7e5CWFhARxbWe0kY%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" alt=天坑></p><h1 id=paddle的坑>Paddle的坑
+<a class=anchor href=#slug>#</a></h2><p><img src="https://th.bing.com/th/id/R.51a92409a6ab153b1ef0a45bc252c001?rik=8zti23A8ZlF6TA&amp;riu=http%3a%2f%2f5b0988e595225.cdn.sohucs.com%2fimages%2f20180125%2f3195f903a92843f8b39058abb2982c9e.jpeg&amp;ehk=7KSd71aeS7%2fSjkkVHUVubARN75%2f7e5CWFhARxbWe0kY%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0&amp;sres=1&amp;sresct=1" alt=天坑></p><h1 id=paddle的坑>Paddle的坑
 <a class=anchor href=#paddle%e7%9a%84%e5%9d%91>#</a></h1><h2 id=资源占用>资源占用
 <a class=anchor href=#%e8%b5%84%e6%ba%90%e5%8d%a0%e7%94%a8>#</a></h2><p>命令示例(yml中修改了<code>train,test</code>样本地址,使用<code>--gpus</code>这里只用了一个GPU,可方便修改为多卡<code>0,1,2,3</code>)</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>python -m paddle.distributed.launch --gpus <span style=color:#e6db74>&#39;1&#39;</span>  tools/train.py -c configs/rec/PP-OCRv3/en_PP-OCRv3_rec.yml -o Global.pretrained_model<span style=color:#f92672>=</span>./pretrain_models/en_PP-OCRv3_rec_train/best_accuracy.pdparams
 </span></span></code></pre></div><p><code>en_PP-OCRv3_rec</code>默认性能配置在, 单卡V100上:
@@ -94,9 +97,440 @@ tar -xf ./pretrain_models/MobileNetV3_large_x0_5_pretrained.tar ./pretrain_model
 </span></span><span style=display:flex><span>  2. Configure third-party dynamic library environment variables as follows:
 </span></span><span style=display:flex><span>  - Linux: set LD_LIBRARY_PATH by <span style=color:#e6db74>`</span>export LD_LIBRARY_PATH<span style=color:#f92672>=</span>...<span style=color:#e6db74>`</span>
 </span></span><span style=display:flex><span>  - Windows: set PATH by <span style=color:#e6db74>`</span>set PATH<span style=color:#f92672>=</span>XXX; <span style=color:#f92672>(</span>at /paddle/paddle/phi/backends/dynload/dynamic_loader.cc:303<span style=color:#f92672>)</span>
+</span></span></code></pre></div><h2 id=lstm-model>LSTM Model
+<a class=anchor href=#lstm-model>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> os
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> sys
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> jieba
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> codecs
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> chardet
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> shutil
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> time
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> tqdm <span style=color:#f92672>import</span> tqdm, trange
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> bs4 <span style=color:#f92672>import</span> BeautifulSoup
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> paddle
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> paddlenlp
+</span></span><span style=display:flex><span>chardet<span style=color:#f92672>.</span>__dict__
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> numpy <span style=color:#66d9ef>as</span> np
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> functools <span style=color:#f92672>import</span> partial
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> paddle.nn <span style=color:#66d9ef>as</span> nn
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> paddle.nn.functional <span style=color:#66d9ef>as</span> F
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> paddlenlp <span style=color:#66d9ef>as</span> ppnlp
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> paddlenlp.data <span style=color:#f92672>import</span> Pad, Stack, Tuple
+</span></span><span style=display:flex><span>print(paddle<span style=color:#f92672>.</span>__version__, paddlenlp<span style=color:#f92672>.</span>__version__)
+</span></span><span style=display:flex><span><span style=color:#75715e># from paddlenlp.datasets import MapDatasetWrapper</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 加载文件列表</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> pandas <span style=color:#66d9ef>as</span> pd
+</span></span><span style=display:flex><span>columns <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#39;id&#39;</span>, <span style=color:#e6db74>&#39;flag&#39;</span>, <span style=color:#e6db74>&#39;filename&#39;</span>, <span style=color:#e6db74>&#39;url&#39;</span>]
+</span></span><span style=display:flex><span>tempdf <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>read_csv(<span style=color:#e6db74>&#39;MaliciousWebpage/file_list.txt&#39;</span>, sep<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;,&#39;</span>,skiprows<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>, header<span style=color:#f92672>=</span><span style=color:#66d9ef>None</span>, names<span style=color:#f92672>=</span>columns, skipfooter<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>tempdf[:<span style=color:#ae81ff>5</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># p为钓鱼页面，d为被黑页面，n为正常页面</span>
+</span></span><span style=display:flex><span>tempdf[<span style=color:#e6db74>&#39;flag&#39;</span>]<span style=color:#f92672>.</span>unique()
+</span></span><span style=display:flex><span>tempdf[<span style=color:#e6db74>&#39;flag&#39;</span>]<span style=color:#f92672>.</span>value_counts()
+</span></span><span style=display:flex><span><span style=color:#75715e># 查看正常页面对应的filename</span>
+</span></span><span style=display:flex><span>df1<span style=color:#f92672>=</span>tempdf[tempdf[<span style=color:#e6db74>&#39;flag&#39;</span>]<span style=color:#f92672>==</span><span style=color:#e6db74>&#39;n&#39;</span>]
+</span></span><span style=display:flex><span>df1<span style=color:#f92672>.</span>head()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 选择一个正常页面进行html内容解析</span>
+</span></span><span style=display:flex><span>html <span style=color:#f92672>=</span> BeautifulSoup(open(<span style=color:#e6db74>&#39;MaliciousWebpage/file1/&#39;</span><span style=color:#f92672>+</span><span style=color:#e6db74>&#39;66178272dee70b26f1400bb5c2aea1ab&#39;</span>, encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span>),<span style=color:#e6db74>&#39;html.parser&#39;</span>, from_encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;utf-8&#39;</span>)
+</span></span><span style=display:flex><span><span style=color:#75715e># 获取最后20组非标签字符串，会自动去掉空白字符串，返回的是一个list</span>
+</span></span><span style=display:flex><span>list(html<span style=color:#f92672>.</span>stripped_strings)[<span style=color:#f92672>-</span><span style=color:#ae81ff>20</span>:]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 由于在PaddleNLP进行文本分类时，我们需要构造的输入内容是一串连续的文字，因此这里要用到list和string的转化</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 将list转化为string</span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#39;&#39;</span><span style=color:#f92672>.</span>join(list(html<span style=color:#f92672>.</span>stripped_strings)[<span style=color:#f92672>-</span><span style=color:#ae81ff>20</span>:]))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>n_page <span style=color:#f92672>=</span> tempdf[tempdf[<span style=color:#e6db74>&#39;flag&#39;</span>]<span style=color:#f92672>==</span><span style=color:#e6db74>&#39;n&#39;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 对正常页面进行随机采样</span>
+</span></span><span style=display:flex><span>n_page <span style=color:#f92672>=</span> n_page<span style=color:#f92672>.</span>sample(n<span style=color:#f92672>=</span><span style=color:#ae81ff>500</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 提取全部被黑页面样本</span>
+</span></span><span style=display:flex><span>d_page <span style=color:#f92672>=</span> tempdf[tempdf[<span style=color:#e6db74>&#39;flag&#39;</span>]<span style=color:#f92672>==</span><span style=color:#e6db74>&#39;d&#39;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 合并样本</span>
+</span></span><span style=display:flex><span>train_page <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>concat([n_page,d_page],axis<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 做一个乱序</span>
+</span></span><span style=display:flex><span>train_page <span style=color:#f92672>=</span> train_page<span style=color:#f92672>.</span>sample(frac <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>) 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 查看效果，确认数据集的样本准备完成</span>
+</span></span><span style=display:flex><span>train_page<span style=color:#f92672>.</span>head(<span style=color:#ae81ff>10</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> filename <span style=color:#f92672>in</span> tqdm(train_page[<span style=color:#e6db74>&#39;filename&#39;</span>]):
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 这里要先做个判断，有的file_list里面的文件不存在</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>exists(<span style=color:#e6db74>&#39;MaliciousWebpage/file1/&#39;</span><span style=color:#f92672>+</span>filename):
+</span></span><span style=display:flex><span>        <span style=color:#75715e># 读取文件，获取字符集</span>
+</span></span><span style=display:flex><span>        content <span style=color:#f92672>=</span> codecs<span style=color:#f92672>.</span>open(<span style=color:#e6db74>&#39;MaliciousWebpage/file1/&#39;</span><span style=color:#f92672>+</span>filename,<span style=color:#e6db74>&#39;rb&#39;</span>)<span style=color:#f92672>.</span>read()
+</span></span><span style=display:flex><span>        source_encoding <span style=color:#f92672>=</span> chardet<span style=color:#f92672>.</span>detect(content)[<span style=color:#e6db74>&#39;encoding&#39;</span>]
+</span></span><span style=display:flex><span>        <span style=color:#75715e># 个别文件的source_encoding是None，这里要先进行筛选</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> source_encoding <span style=color:#f92672>is</span> <span style=color:#66d9ef>None</span>:
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>pass</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># 只对字符集是gb2312格式的文件尝试转码</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>elif</span> source_encoding <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;gb2312&#39;</span>:
+</span></span><span style=display:flex><span>            <span style=color:#75715e># 转码如果失败，就跳过该文件</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>try</span>:
+</span></span><span style=display:flex><span>                content <span style=color:#f92672>=</span> content<span style=color:#f92672>.</span>decode(source_encoding)<span style=color:#f92672>.</span>encode(<span style=color:#e6db74>&#39;utf-8&#39;</span>)
+</span></span><span style=display:flex><span>                codecs<span style=color:#f92672>.</span>open(<span style=color:#e6db74>&#39;TrainWebpage/file1/&#39;</span><span style=color:#f92672>+</span>filename,<span style=color:#e6db74>&#39;wb&#39;</span>)<span style=color:#f92672>.</span>write(content)
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>except</span> <span style=color:#a6e22e>UnicodeDecodeError</span>:
+</span></span><span style=display:flex><span>                print(filename <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;读取失败&#34;</span>)
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>pass</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># 字符集是utf-8格式的文件直接保存</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>elif</span> source_encoding <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;utf-8&#39;</span>:
+</span></span><span style=display:flex><span>            codecs<span style=color:#f92672>.</span>open(<span style=color:#e6db74>&#39;TrainWebpage/file1/&#39;</span><span style=color:#f92672>+</span>filename,<span style=color:#e6db74>&#39;wb&#39;</span>)<span style=color:#f92672>.</span>write(content)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>pass</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> i, filename <span style=color:#f92672>in</span> enumerate(tqdm(train_page[<span style=color:#e6db74>&#39;filename&#39;</span>])):
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 这里要先做个判断，有的file_list里面的文件不存在</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>exists(<span style=color:#e6db74>&#39;TrainWebpage/file1/&#39;</span><span style=color:#f92672>+</span>filename):
+</span></span><span style=display:flex><span>        <span style=color:#75715e># 读取文件，解析HTML页面</span>
+</span></span><span style=display:flex><span>        html <span style=color:#f92672>=</span> BeautifulSoup(open(<span style=color:#e6db74>&#39;TrainWebpage/file1/&#39;</span><span style=color:#f92672>+</span>filename, encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span>),<span style=color:#e6db74>&#39;html.parser&#39;</span>, from_encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;utf-8&#39;</span>)
+</span></span><span style=display:flex><span>        text <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;&#39;</span><span style=color:#f92672>.</span>join(list(html<span style=color:#f92672>.</span>stripped_strings)[<span style=color:#f92672>-</span><span style=color:#ae81ff>20</span>:])
+</span></span><span style=display:flex><span>        <span style=color:#75715e># 去掉多余的换行符（部分数据最后解析结果为）</span>
+</span></span><span style=display:flex><span>        text <span style=color:#f92672>=</span> text<span style=color:#f92672>.</span>replace(<span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, <span style=color:#e6db74>&#34;&#34;</span>)
+</span></span><span style=display:flex><span>        text <span style=color:#f92672>=</span> text<span style=color:#f92672>.</span>replace(<span style=color:#e6db74>&#34; &#34;</span>, <span style=color:#e6db74>&#34;,&#34;</span>)
+</span></span><span style=display:flex><span>        <span style=color:#75715e># real_label = train_page[&#39;flag&#39;][train_page[&#39;filename&#39;]==filename].values[0]</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> i <span style=color:#f92672>%</span> <span style=color:#ae81ff>5</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> train_page[<span style=color:#e6db74>&#39;flag&#39;</span>][train_page[<span style=color:#e6db74>&#39;filename&#39;</span>]<span style=color:#f92672>==</span>filename]<span style=color:#f92672>.</span>values[<span style=color:#ae81ff>0</span>] <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;n&#39;</span>:
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>with</span> open(<span style=color:#e6db74>&#34;webtest.txt&#34;</span>,<span style=color:#e6db74>&#34;a+&#34;</span>, encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span>) <span style=color:#66d9ef>as</span> f:
+</span></span><span style=display:flex><span>                    f<span style=color:#f92672>.</span>write(text[<span style=color:#f92672>-</span><span style=color:#ae81ff>100</span>:] <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;0&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>elif</span> train_page[<span style=color:#e6db74>&#39;flag&#39;</span>][train_page[<span style=color:#e6db74>&#39;filename&#39;</span>]<span style=color:#f92672>==</span>filename]<span style=color:#f92672>.</span>values[<span style=color:#ae81ff>0</span>] <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;d&#39;</span>:
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>with</span> open(<span style=color:#e6db74>&#34;webtest.txt&#34;</span>,<span style=color:#e6db74>&#34;a+&#34;</span>, encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span>) <span style=color:#66d9ef>as</span> f:
+</span></span><span style=display:flex><span>                    f<span style=color:#f92672>.</span>write(text[<span style=color:#f92672>-</span><span style=color:#ae81ff>100</span>:] <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;1&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>elif</span> i <span style=color:#f92672>%</span> <span style=color:#ae81ff>5</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span>:
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> train_page[<span style=color:#e6db74>&#39;flag&#39;</span>][train_page[<span style=color:#e6db74>&#39;filename&#39;</span>]<span style=color:#f92672>==</span>filename]<span style=color:#f92672>.</span>values[<span style=color:#ae81ff>0</span>] <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;n&#39;</span>:
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>with</span> open(<span style=color:#e6db74>&#34;webdev.txt&#34;</span>,<span style=color:#e6db74>&#34;a+&#34;</span>, encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span>) <span style=color:#66d9ef>as</span> f:
+</span></span><span style=display:flex><span>                    f<span style=color:#f92672>.</span>write(text[<span style=color:#f92672>-</span><span style=color:#ae81ff>100</span>:] <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;0&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>elif</span> train_page[<span style=color:#e6db74>&#39;flag&#39;</span>][train_page[<span style=color:#e6db74>&#39;filename&#39;</span>]<span style=color:#f92672>==</span>filename]<span style=color:#f92672>.</span>values[<span style=color:#ae81ff>0</span>] <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;d&#39;</span>:
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>with</span> open(<span style=color:#e6db74>&#34;webdev.txt&#34;</span>,<span style=color:#e6db74>&#34;a+&#34;</span>, encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span>) <span style=color:#66d9ef>as</span> f:
+</span></span><span style=display:flex><span>                    f<span style=color:#f92672>.</span>write(text[<span style=color:#f92672>-</span><span style=color:#ae81ff>100</span>:] <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;1&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> train_page[<span style=color:#e6db74>&#39;flag&#39;</span>][train_page[<span style=color:#e6db74>&#39;filename&#39;</span>]<span style=color:#f92672>==</span>filename]<span style=color:#f92672>.</span>values[<span style=color:#ae81ff>0</span>] <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;n&#39;</span>:
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>with</span> open(<span style=color:#e6db74>&#34;webtrain.txt&#34;</span>,<span style=color:#e6db74>&#34;a+&#34;</span>, encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span>) <span style=color:#66d9ef>as</span> f:
+</span></span><span style=display:flex><span>                    f<span style=color:#f92672>.</span>write(text[<span style=color:#f92672>-</span><span style=color:#ae81ff>100</span>:] <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;0&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>elif</span> train_page[<span style=color:#e6db74>&#39;flag&#39;</span>][train_page[<span style=color:#e6db74>&#39;filename&#39;</span>]<span style=color:#f92672>==</span>filename]<span style=color:#f92672>.</span>values[<span style=color:#ae81ff>0</span>] <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;d&#39;</span>:
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>with</span> open(<span style=color:#e6db74>&#34;webtrain.txt&#34;</span>,<span style=color:#e6db74>&#34;a+&#34;</span>, encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span>) <span style=color:#66d9ef>as</span> f:
+</span></span><span style=display:flex><span>                    f<span style=color:#f92672>.</span>write(text[<span style=color:#f92672>-</span><span style=color:#ae81ff>100</span>:] <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;1&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MyDataset</span>(paddle<span style=color:#f92672>.</span>io<span style=color:#f92672>.</span>Dataset):
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    步骤一：继承 paddle.io.Dataset 类
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __init__(self, data_path<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>, data_list<span style=color:#f92672>=</span>[]):
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&#34;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        步骤二：实现 __init__ 函数，初始化数据集，将样本和标签映射到列表中
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>        super()<span style=color:#f92672>.</span>__init__()
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> data_list:
+</span></span><span style=display:flex><span>            self<span style=color:#f92672>.</span>data_list <span style=color:#f92672>=</span> data_list
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>            self<span style=color:#f92672>.</span>data_list <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>with</span> open(data_path, encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;utf-8&#39;</span>) <span style=color:#66d9ef>as</span> f:
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>for</span> line <span style=color:#f92672>in</span> f:
+</span></span><span style=display:flex><span>                    self<span style=color:#f92672>.</span>data_list<span style=color:#f92672>.</span>append(line<span style=color:#f92672>.</span>strip()<span style=color:#f92672>.</span>split(<span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>&#39;</span>))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __getitem__(self, index):
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&#34;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        步骤三：实现 __getitem__ 函数，定义指定 index 时如何获取数据，并返回单条数据（样本数据、对应的标签）
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># 根据索引，从列表中取出一个图像</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>try</span>:
+</span></span><span style=display:flex><span>            data <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>data_list[index]
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> len(data) <span style=color:#f92672>==</span> <span style=color:#ae81ff>2</span>:
+</span></span><span style=display:flex><span>                content, label <span style=color:#f92672>=</span> data
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>elif</span> len(data) <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>2</span>:
+</span></span><span style=display:flex><span>                label <span style=color:#f92672>=</span> data[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]
+</span></span><span style=display:flex><span>                content <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;&#39;</span><span style=color:#f92672>.</span>join(data[<span style=color:#ae81ff>0</span>: <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>])
+</span></span><span style=display:flex><span>                print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;fuck you: </span><span style=color:#e6db74>{</span>data<span style=color:#e6db74>}</span><span style=color:#e6db74> index: </span><span style=color:#e6db74>{</span>index<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>except</span> <span style=color:#a6e22e>Exception</span> <span style=color:#66d9ef>as</span> err:
+</span></span><span style=display:flex><span>            print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;阿西吧: </span><span style=color:#e6db74>{</span>self<span style=color:#f92672>.</span>data_list[index]<span style=color:#e6db74>}</span><span style=color:#e6db74>， index: </span><span style=color:#e6db74>{</span>index<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>        label <span style=color:#f92672>=</span> int(label)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> [content, label]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __len__(self):
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&#34;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        步骤四：实现 __len__ 函数，返回数据集的样本总数
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> len(self<span style=color:#f92672>.</span>data_list)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>get_labels</span>(self):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> [<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>train_ds, dev_ds, test_ds <span style=color:#f92672>=</span> MyDataset(<span style=color:#e6db74>&#39;webtrain.txt&#39;</span>), MyDataset(<span style=color:#e6db74>&#39;webdev.txt&#39;</span>), MyDataset(<span style=color:#e6db74>&#39;webtest.txt&#39;</span>)
+</span></span><span style=display:flex><span>label_list <span style=color:#f92672>=</span> train_ds<span style=color:#f92672>.</span>get_labels()
+</span></span><span style=display:flex><span>print(label_list)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>10</span>):
+</span></span><span style=display:flex><span>    print (train_ds[i])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> jieba
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dict_path <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;webdict.txt&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#创建数据字典，存放位置：webdict.txt。在生成之前先清空webdict.txt</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#在生成all_data.txt之前，首先将其清空</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>with</span> open(dict_path, <span style=color:#e6db74>&#39;w&#39;</span>, encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span>) <span style=color:#66d9ef>as</span> f:
+</span></span><span style=display:flex><span>    f<span style=color:#f92672>.</span>seek(<span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>    f<span style=color:#f92672>.</span>truncate() 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dict_set <span style=color:#f92672>=</span> set()
+</span></span><span style=display:flex><span>train_data <span style=color:#f92672>=</span> open(<span style=color:#e6db74>&#39;webtrain.txt&#39;</span>, encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> data <span style=color:#f92672>in</span> train_data:
+</span></span><span style=display:flex><span>    seg <span style=color:#f92672>=</span> jieba<span style=color:#f92672>.</span>lcut(data[:<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>])
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> datas <span style=color:#f92672>in</span> seg:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> datas <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#34; &#34;</span>:
+</span></span><span style=display:flex><span>            dict_set<span style=color:#f92672>.</span>add(datas)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dicts <span style=color:#f92672>=</span> open(dict_path,<span style=color:#e6db74>&#39;w&#39;</span>, encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span>)
+</span></span><span style=display:flex><span>dicts<span style=color:#f92672>.</span>write(<span style=color:#e6db74>&#39;[PAD]</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>dicts<span style=color:#f92672>.</span>write(<span style=color:#e6db74>&#39;[UNK]</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> data <span style=color:#f92672>in</span> dict_set:
+</span></span><span style=display:flex><span>    dicts<span style=color:#f92672>.</span>write(data <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>dicts<span style=color:#f92672>.</span>close()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># # 下载词汇表文件word_dict.txt，用于构造词-id映射关系。</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># !wget https://paddlenlp.bj.bcebos.com/data/senta_word_dict.txt</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>load_vocab</span>(vocab_file):
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;Loads a vocabulary file into a dictionary.&#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>    vocab <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>with</span> open(vocab_file, <span style=color:#e6db74>&#34;r&#34;</span>, encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span>) <span style=color:#66d9ef>as</span> reader:
+</span></span><span style=display:flex><span>        tokens <span style=color:#f92672>=</span> reader<span style=color:#f92672>.</span>readlines()
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> index, token <span style=color:#f92672>in</span> enumerate(tokens):
+</span></span><span style=display:flex><span>        token <span style=color:#f92672>=</span> token<span style=color:#f92672>.</span>rstrip(<span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>)<span style=color:#f92672>.</span>split(<span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>&#34;</span>)[<span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>        vocab[token] <span style=color:#f92672>=</span> index
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> vocab
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 加载词表</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># vocab = load_vocab(&#39;data/webdict.txt&#39;)</span>
+</span></span><span style=display:flex><span>vocab <span style=color:#f92672>=</span> load_vocab(<span style=color:#e6db74>&#39;./webdict.txt&#39;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> k, v <span style=color:#f92672>in</span> vocab<span style=color:#f92672>.</span>items():
+</span></span><span style=display:flex><span>    print(k, v)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>break</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>convert_example</span>(example, vocab, unk_token_id<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>, is_test<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>):
+</span></span><span style=display:flex><span>    tokenizer <span style=color:#f92672>=</span> jieba
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Builds model inputs from a sequence for sequence classification tasks.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    It use `jieba.cut` to tokenize text.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Args:
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        example(obj:`list[str]`): List of input data, containing text and label if it have label.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        vocab(obj:`dict`): The vocabulary.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        unk_token_id(obj:`int`, defaults to 1): The unknown token id.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        is_test(obj:`False`, defaults to `False`): Whether the example contains label or not.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Returns:
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        input_ids(obj:`list[int]`): The list of token ids.s
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        valid_length(obj:`int`): The input sequence valid length.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        label(obj:`numpy.array`, data type of int64, optional): The input label if not is_test.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    input_ids <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>    <span style=color:#75715e># print(&#34;example 是: &#34;, example)</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> len(example) <span style=color:#f92672>!=</span> <span style=color:#ae81ff>2</span>:
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;fuck you!: </span><span style=color:#e6db74>{</span>example<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> token <span style=color:#f92672>in</span> tokenizer<span style=color:#f92672>.</span>cut(example[<span style=color:#ae81ff>0</span>]):
+</span></span><span style=display:flex><span>        token_id <span style=color:#f92672>=</span> vocab<span style=color:#f92672>.</span>get(token, unk_token_id)
+</span></span><span style=display:flex><span>        input_ids<span style=color:#f92672>.</span>append(token_id)
+</span></span><span style=display:flex><span>    valid_length <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([len(input_ids)])
+</span></span><span style=display:flex><span>    input_ids <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array(input_ids, dtype<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;int32&#34;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> is_test:
+</span></span><span style=display:flex><span>        label <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array(example[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>], dtype<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;int64&#34;</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> input_ids, valid_length, label
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> input_ids, valid_length
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># python中的偏函数partial，把一个函数的某些参数固定住（也就是设置默认值），返回一个新的函数，调用这个新函数会更简单。</span>
+</span></span><span style=display:flex><span>trans_function <span style=color:#f92672>=</span> partial(
+</span></span><span style=display:flex><span>    convert_example,
+</span></span><span style=display:flex><span>    vocab<span style=color:#f92672>=</span>vocab,
+</span></span><span style=display:flex><span>    unk_token_id<span style=color:#f92672>=</span>vocab<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#39;[UNK]&#39;</span>, <span style=color:#ae81ff>1</span>),
+</span></span><span style=display:flex><span>    is_test<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 版本不匹配的兼容修改方式</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> paddlenlp.datasets <span style=color:#f92672>import</span> MapDataset
+</span></span><span style=display:flex><span>train_ds_new <span style=color:#f92672>=</span> MapDataset(train_ds)
+</span></span><span style=display:flex><span>dev_ds_new <span style=color:#f92672>=</span> MapDataset(dev_ds)
+</span></span><span style=display:flex><span>test_ds_new <span style=color:#f92672>=</span> MapDataset(test_ds)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># train_ds_new.map(trans_function, lazy=True)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>create_dataloader</span>(dataset,
+</span></span><span style=display:flex><span>                      trans_function<span style=color:#f92672>=</span><span style=color:#66d9ef>None</span>,
+</span></span><span style=display:flex><span>                      mode<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;train&#39;</span>,
+</span></span><span style=display:flex><span>                      batch_size<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>,
+</span></span><span style=display:flex><span>                      pad_token_id<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>,
+</span></span><span style=display:flex><span>                      batchify_fn<span style=color:#f92672>=</span><span style=color:#66d9ef>None</span>):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> trans_function:
+</span></span><span style=display:flex><span>        dataset <span style=color:#f92672>=</span> dataset<span style=color:#f92672>.</span>map(trans_function, lazy<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># return_list 数据是否以list形式返回</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># collate_fn  指定如何将样本列表组合为mini-batch数据。传给它参数需要是一个callable对象，需要实现对组建的batch的处理逻辑，并返回每个batch的数据。在这里传入的是`prepare_input`函数，对产生的数据进行pad操作，并返回实际长度等。</span>
+</span></span><span style=display:flex><span>    dataloader <span style=color:#f92672>=</span> paddle<span style=color:#f92672>.</span>io<span style=color:#f92672>.</span>DataLoader(
+</span></span><span style=display:flex><span>        dataset,
+</span></span><span style=display:flex><span>        return_list<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>,
+</span></span><span style=display:flex><span>        batch_size<span style=color:#f92672>=</span>batch_size,
+</span></span><span style=display:flex><span>        collate_fn<span style=color:#f92672>=</span>batchify_fn)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> dataloader
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 将读入的数据batch化处理，便于模型batch化运算。</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># batch中的每个句子将会padding到这个batch中的文本最大长度batch_max_seq_len。</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 当文本长度大于batch_max_seq时，将会截断到batch_max_seq_len；当文本长度小于batch_max_seq时，将会padding补齐到batch_max_seq_len.</span>
+</span></span><span style=display:flex><span>batchify_fn <span style=color:#f92672>=</span> <span style=color:#66d9ef>lambda</span> samples, fn<span style=color:#f92672>=</span>Tuple(
+</span></span><span style=display:flex><span>    Pad(axis<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>, pad_val<span style=color:#f92672>=</span>vocab[<span style=color:#e6db74>&#39;[PAD]&#39;</span>]),  <span style=color:#75715e># input_ids</span>
+</span></span><span style=display:flex><span>    Stack(dtype<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;int64&#34;</span>),  <span style=color:#75715e># seq len</span>
+</span></span><span style=display:flex><span>    Stack(dtype<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;int64&#34;</span>)  <span style=color:#75715e># label</span>
+</span></span><span style=display:flex><span>): [data <span style=color:#66d9ef>for</span> data <span style=color:#f92672>in</span> fn(samples)]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>train_loader <span style=color:#f92672>=</span> create_dataloader(
+</span></span><span style=display:flex><span>    train_ds_new,
+</span></span><span style=display:flex><span>    trans_function<span style=color:#f92672>=</span>trans_function,
+</span></span><span style=display:flex><span>    batch_size<span style=color:#f92672>=</span><span style=color:#ae81ff>32</span>,
+</span></span><span style=display:flex><span>    mode<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;train&#39;</span>,
+</span></span><span style=display:flex><span>    batchify_fn<span style=color:#f92672>=</span>batchify_fn)
+</span></span><span style=display:flex><span>dev_loader <span style=color:#f92672>=</span> create_dataloader(
+</span></span><span style=display:flex><span>    dev_ds_new,
+</span></span><span style=display:flex><span>    trans_function<span style=color:#f92672>=</span>trans_function,
+</span></span><span style=display:flex><span>    batch_size<span style=color:#f92672>=</span><span style=color:#ae81ff>32</span>,
+</span></span><span style=display:flex><span>    mode<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;validation&#39;</span>,
+</span></span><span style=display:flex><span>    batchify_fn<span style=color:#f92672>=</span>batchify_fn)
+</span></span><span style=display:flex><span>test_loader <span style=color:#f92672>=</span> create_dataloader(
+</span></span><span style=display:flex><span>    test_ds_new,
+</span></span><span style=display:flex><span>    trans_function<span style=color:#f92672>=</span>trans_function,
+</span></span><span style=display:flex><span>    batch_size<span style=color:#f92672>=</span><span style=color:#ae81ff>32</span>,
+</span></span><span style=display:flex><span>    mode<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;test&#39;</span>,
+</span></span><span style=display:flex><span>    batchify_fn<span style=color:#f92672>=</span>batchify_fn)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>LSTMModel</span>(nn<span style=color:#f92672>.</span>Layer):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __init__(self,
+</span></span><span style=display:flex><span>                 vocab_size,
+</span></span><span style=display:flex><span>                 num_classes,
+</span></span><span style=display:flex><span>                 emb_dim<span style=color:#f92672>=</span><span style=color:#ae81ff>64</span>,
+</span></span><span style=display:flex><span>                 padding_idx<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>,
+</span></span><span style=display:flex><span>                 lstm_hidden_size<span style=color:#f92672>=</span><span style=color:#ae81ff>96</span>,
+</span></span><span style=display:flex><span>                 direction<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;forward&#39;</span>,
+</span></span><span style=display:flex><span>                 lstm_layers<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span>,
+</span></span><span style=display:flex><span>                 dropout_rate<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>,
+</span></span><span style=display:flex><span>                 pooling_type<span style=color:#f92672>=</span><span style=color:#66d9ef>None</span>,
+</span></span><span style=display:flex><span>                 fc_hidden_size<span style=color:#f92672>=</span><span style=color:#ae81ff>48</span>):
+</span></span><span style=display:flex><span>        super()<span style=color:#f92672>.</span>__init__()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># 首先将输入word id 查表后映射成 word embedding</span>
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>embedder <span style=color:#f92672>=</span> nn<span style=color:#f92672>.</span>Embedding(
+</span></span><span style=display:flex><span>            num_embeddings<span style=color:#f92672>=</span>vocab_size,
+</span></span><span style=display:flex><span>            embedding_dim<span style=color:#f92672>=</span>emb_dim,
+</span></span><span style=display:flex><span>            padding_idx<span style=color:#f92672>=</span>padding_idx)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># 将word embedding经过LSTMEncoder变换到文本语义表征空间中</span>
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>lstm_encoder <span style=color:#f92672>=</span> ppnlp<span style=color:#f92672>.</span>seq2vec<span style=color:#f92672>.</span>LSTMEncoder(
+</span></span><span style=display:flex><span>            emb_dim,
+</span></span><span style=display:flex><span>            lstm_hidden_size,
+</span></span><span style=display:flex><span>            num_layers<span style=color:#f92672>=</span>lstm_layers,
+</span></span><span style=display:flex><span>            direction<span style=color:#f92672>=</span>direction,
+</span></span><span style=display:flex><span>            dropout<span style=color:#f92672>=</span>dropout_rate,
+</span></span><span style=display:flex><span>            pooling_type<span style=color:#f92672>=</span>pooling_type)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># LSTMEncoder.get_output_dim()方法可以获取经过encoder之后的文本表示hidden_size</span>
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>fc <span style=color:#f92672>=</span> nn<span style=color:#f92672>.</span>Linear(self<span style=color:#f92672>.</span>lstm_encoder<span style=color:#f92672>.</span>get_output_dim(), fc_hidden_size)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># 最后的分类器</span>
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>output_layer <span style=color:#f92672>=</span> nn<span style=color:#f92672>.</span>Linear(fc_hidden_size, num_classes)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>forward</span>(self, text, seq_len):
+</span></span><span style=display:flex><span>        <span style=color:#75715e># text shape: (batch_size, num_tokens)</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># print(&#39;input :&#39;, text.shape)</span>
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Shape: (batch_size, num_tokens, embedding_dim)</span>
+</span></span><span style=display:flex><span>        embedded_text <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>embedder(text)
+</span></span><span style=display:flex><span>        <span style=color:#75715e># print(&#39;after word-embeding:&#39;, embedded_text.shape)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Shape: (batch_size, num_tokens, num_directions*lstm_hidden_size)</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># num_directions = 2 if direction is &#39;bidirectional&#39; else 1</span>
+</span></span><span style=display:flex><span>        text_repr <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>lstm_encoder(embedded_text, sequence_length<span style=color:#f92672>=</span>seq_len)
+</span></span><span style=display:flex><span>        <span style=color:#75715e># print(&#39;after lstm:&#39;, text_repr.shape)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Shape: (batch_size, fc_hidden_size)</span>
+</span></span><span style=display:flex><span>        fc_out <span style=color:#f92672>=</span> paddle<span style=color:#f92672>.</span>tanh(self<span style=color:#f92672>.</span>fc(text_repr))
+</span></span><span style=display:flex><span>        <span style=color:#75715e># print(&#39;after Linear classifier:&#39;, fc_out.shape)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Shape: (batch_size, num_classes)</span>
+</span></span><span style=display:flex><span>        logits <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>output_layer(fc_out)
+</span></span><span style=display:flex><span>        <span style=color:#75715e># print(&#39;output:&#39;, logits.shape)</span>
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># probs 分类概率值</span>
+</span></span><span style=display:flex><span>        probs <span style=color:#f92672>=</span> F<span style=color:#f92672>.</span>softmax(logits, axis<span style=color:#f92672>=-</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>        <span style=color:#75715e># print(&#39;output probability:&#39;, probs.shape)</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> probs
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>model<span style=color:#f92672>=</span> LSTMModel(
+</span></span><span style=display:flex><span>        len(vocab),
+</span></span><span style=display:flex><span>        len(label_list),
+</span></span><span style=display:flex><span>        direction<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;bidirectional&#39;</span>,
+</span></span><span style=display:flex><span>        padding_idx<span style=color:#f92672>=</span>vocab[<span style=color:#e6db74>&#39;[PAD]&#39;</span>])
+</span></span><span style=display:flex><span>model <span style=color:#f92672>=</span> paddle<span style=color:#f92672>.</span>Model(model)
+</span></span><span style=display:flex><span>model
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>optimizer <span style=color:#f92672>=</span> paddle<span style=color:#f92672>.</span>optimizer<span style=color:#f92672>.</span>Adam(
+</span></span><span style=display:flex><span>        parameters<span style=color:#f92672>=</span>model<span style=color:#f92672>.</span>parameters(), learning_rate<span style=color:#f92672>=</span><span style=color:#ae81ff>1e-4</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>loss <span style=color:#f92672>=</span> paddle<span style=color:#f92672>.</span>nn<span style=color:#f92672>.</span>CrossEntropyLoss()
+</span></span><span style=display:flex><span>metric <span style=color:#f92672>=</span> paddle<span style=color:#f92672>.</span>metric<span style=color:#f92672>.</span>Accuracy()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>model<span style=color:#f92672>.</span>prepare(optimizer, loss, metric)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 设置visualdl路径</span>
+</span></span><span style=display:flex><span>log_dir <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;./visualdl&#39;</span>
+</span></span><span style=display:flex><span>callback <span style=color:#f92672>=</span> paddle<span style=color:#f92672>.</span>callbacks<span style=color:#f92672>.</span>VisualDL(log_dir<span style=color:#f92672>=</span>log_dir)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>model<span style=color:#f92672>.</span>fit(train_loader, dev_loader, epochs<span style=color:#f92672>=</span><span style=color:#ae81ff>100</span>, save_dir<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;./checkpoints&#39;</span>, save_freq<span style=color:#f92672>=</span><span style=color:#ae81ff>5</span>, callbacks<span style=color:#f92672>=</span>callback)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>results <span style=color:#f92672>=</span> model<span style=color:#f92672>.</span>evaluate(dev_loader)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Finally test acc: </span><span style=color:#e6db74>%.5f</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> results[<span style=color:#e6db74>&#39;acc&#39;</span>])
+</span></span><span style=display:flex><span>print(results)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> random
+</span></span><span style=display:flex><span>label_map <span style=color:#f92672>=</span> {<span style=color:#ae81ff>0</span>: <span style=color:#e6db74>&#39;正常页面&#39;</span>, <span style=color:#ae81ff>1</span>: <span style=color:#e6db74>&#39;被黑页面&#39;</span>}
+</span></span><span style=display:flex><span>results <span style=color:#f92672>=</span> model<span style=color:#f92672>.</span>predict(test_loader, batch_size<span style=color:#f92672>=</span><span style=color:#ae81ff>128</span>)[<span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>predictions <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> batch_probs <span style=color:#f92672>in</span> results:
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 映射分类label</span>
+</span></span><span style=display:flex><span>    idx <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>argmax(batch_probs, axis<span style=color:#f92672>=-</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>    idx <span style=color:#f92672>=</span> idx<span style=color:#f92672>.</span>tolist()
+</span></span><span style=display:flex><span>    labels <span style=color:#f92672>=</span> [label_map[i] <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> idx]
+</span></span><span style=display:flex><span>    predictions<span style=color:#f92672>.</span>extend(labels)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 看看预测数据前5个样例分类结果</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> idx, data <span style=color:#f92672>in</span> enumerate(test_ds<span style=color:#f92672>.</span>data_list[:<span style=color:#ae81ff>10</span>]):
+</span></span><span style=display:flex><span>   print(<span style=color:#e6db74>&#39;Data: </span><span style=color:#e6db74>{}</span><span style=color:#e6db74> </span><span style=color:#ae81ff>\t</span><span style=color:#e6db74> Value: </span><span style=color:#e6db74>{}</span><span style=color:#e6db74> </span><span style=color:#ae81ff>\t</span><span style=color:#e6db74> Label: </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#39;</span><span style=color:#f92672>.</span>format(data[<span style=color:#ae81ff>0</span>], data[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>], predictions[idx]))
+</span></span></code></pre></div><h3 id=可视化>可视化
+<a class=anchor href=#%e5%8f%af%e8%a7%86%e5%8c%96>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>python -m pip install visualdl -i https://mirror.baidu.com/pypi/simple
+</span></span><span style=display:flex><span>visualdl.exe --logdir .
 </span></span></code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#slug>title: Paddle
 date: 2022-06-08 18:58:56
 modified: 2022-06-08 18:58:56
 category: [note, 机器学习]
 tags: [Paddle]
-slug:</a></li></ul><ul><li><a href=#资源占用>资源占用</a></li><li><a href=#paddle-多卡训练>Paddle 多卡训练</a></li><li><a href=#写在坑前头>写在坑前头</a></li><li><a href=#paddleocr-预训练模型>PaddleOCR 预训练模型</a><ul><li><a href=#但是>但是</a></li></ul></li><li><a href=#使用训练结果检测单张图片>使用训练结果检测单张图片</a></li><li><a href=#多卡和断点续传>多卡和断点续传</a></li></ul></nav></div></aside></main></body></html>
+slug:</a></li></ul><ul><li><a href=#资源占用>资源占用</a></li><li><a href=#paddle-多卡训练>Paddle 多卡训练</a></li><li><a href=#写在坑前头>写在坑前头</a></li><li><a href=#paddleocr-预训练模型>PaddleOCR 预训练模型</a><ul><li><a href=#但是>但是</a></li></ul></li><li><a href=#使用训练结果检测单张图片>使用训练结果检测单张图片</a></li><li><a href=#多卡和断点续传>多卡和断点续传</a></li><li><a href=#lstm-model>LSTM Model</a><ul><li><a href=#可视化>可视化</a></li></ul></li></ul></nav></div></aside></main></body></html>

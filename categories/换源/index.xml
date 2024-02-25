@@ -4,7 +4,7 @@
 寻找依赖库 $ apt-file search libSM.so.6
 libsm6: /usr/lib/x86_64-linux-gnu/libSM.so.6 libsm6: /usr/lib/x86_64-linux-gnu/libSM.so.6.0.1
 根据提示，安装合适的依赖库 $ apt-get install libsm6
-其余文件缺失类似, 即可解决问题。</description></item><item><title>各个软件换源</title><link>http://example.org/docs/programmer/base/for_china/</link><pubDate>Thu, 22 Apr 2021 17:04:15 +0000</pubDate><guid>http://example.org/docs/programmer/base/for_china/</guid><description>在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.
+其余文件缺失类似, 即可解决问题。</description></item><item><title>各个软件换源</title><link>http://example.org/docs/programmer/basetc/for_china/</link><pubDate>Thu, 22 Apr 2021 17:04:15 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/for_china/</guid><description>在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.
 Qt # 使用Maintain管理kit时，可以在Settings中设置Repositories，设置地址可从Qt Downloads页面查询.
 apt # 可解决版本升级时的问题,即使用了国内源,最后一个文件不知道为什么还是从国外拉取&amp;hellip;
 # sudo touch /etc/apt/apt.conf sudo vim /etc/apt/apt.conf -&amp;gt; Acquire::http::Proxy &amp;ldquo;http://127.0.0.1:8001&amp;rdquo;;

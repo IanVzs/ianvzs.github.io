@@ -1,0 +1,122 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Move static content to static # Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
+▾ <root>/ ▾ images/ logo.png should become
+▾ <root>/ ▾ static/ ▾ images/ logo.png Additionally, you&rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content="Migrate to Hugo from Jekyll"><meta property="og:description" content="Move static content to static # Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
+▾ <root>/ ▾ images/ logo.png should become
+▾ <root>/ ▾ static/ ▾ images/ logo.png Additionally, you&rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static."><meta property="og:type" content="article"><meta property="og:url" content="http://example.org/posts/migrate-from-jekyll/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2014-03-10T00:00:00+00:00"><meta property="article:modified_time" content="2014-03-10T00:00:00+00:00"><title>Migrating from Jekyll | Ian's Blog</title>
+<link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script><script defer src=/en.search.min.2d8d2bb9754cea7562c9f4c6dd439b23aa4670e648a288ebbc817f1f4eaa725f.js integrity="sha256-LY0ruXVM6nViyfTG3UObI6pGcOZIoojrvIF/H06qcl8=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Ian's Blog</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><a href=/docs/programmer/>程序员笔记</a><ul><li><input type=checkbox id=section-8658298e10b544e890095f646916165a class=toggle>
+<label for=section-8658298e10b544e890095f646916165a class="flex justify-between"><a role=button>云原生</a></label><ul><li><input type=checkbox id=section-62d608ed890b3abc76dae78ccfcab912 class=toggle>
+<label for=section-62d608ed890b3abc76dae78ccfcab912 class="flex justify-between"><a role=button>k8s</a></label><ul><li><a href=/docs/programmer/cloudnative/k8s/elk%E5%9C%A8k8s%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B/>elk在k8s上的部署使用示例</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/>k8s 配套说明</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/>k8s技术分享</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/>k8s学习-常用命令和配置文件</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-workflow%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/>Argo Workflow性能测试和使用场景分析</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/>Argo 使用记录</a></li></ul></li><li><input type=checkbox id=section-b828bf3d116bc282da9db25a06bf908e class=toggle>
+<label for=section-b828bf3d116bc282da9db25a06bf908e class="flex justify-between"><a role=button>中间件</a></label><ul><li><a href=/docs/programmer/cloudnative/middleware/kafka-%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/>Kafka 安装和使用</a></li></ul></li><li><a href=/docs/programmer/cloudnative/noteofdocker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/tipsofweb/>Nginx高可用</a></li><li><a href=/docs/programmer/cloudnative/notesdjango/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/>Sonar 代码静态检查</a></li></ul></li><li><input type=checkbox id=section-de7bfad1d124522974cdf8addfbb23f2 class=toggle>
+<label for=section-de7bfad1d124522974cdf8addfbb23f2 class="flex justify-between"><a role=button>Net</a></label><ul><li><a href=/docs/programmer/net/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/>uwsgi 处理记录</a></li><li><a href=/docs/programmer/net/tipsofgrpc/>gRpc使用小记</a></li><li><a href=/docs/programmer/net/net/>Epoll实现</a></li><li><a href=/docs/programmer/net/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li></ul></li><li><input type=checkbox id=section-bf4e0d6f0b81f7b3ec08ed1fc66b874d class=toggle>
+<label for=section-bf4e0d6f0b81f7b3ec08ed1fc66b874d class="flex justify-between"><a role=button>编程语言</a></label><ul><li><input type=checkbox id=section-771df6c720301e69f1715f7fc174ac3d class=toggle>
+<label for=section-771df6c720301e69f1715f7fc174ac3d class="flex justify-between"><a role=button>Python</a></label><ul><li><a href=/docs/programmer/langs/python/pypi/>PyPi使用说明</a></li><li><a href=/docs/programmer/langs/python/paramiko-%E4%BD%BF%E7%94%A8-sshsftp/>Paramiko 使用 Ssh&amp;sftp</a></li><li><a href=/docs/programmer/langs/python/pytest/>Pytest</a></li><li><a href=/docs/programmer/langs/python/notespython/>笔记</a></li></ul></li><li><input type=checkbox id=section-9f8ac8f06e138c7ac13ff61f23b4d497 class=toggle>
+<label for=section-9f8ac8f06e138c7ac13ff61f23b4d497 class="flex justify-between"><a role=button>Golang</a></label><ul><li><a href=/docs/programmer/langs/golang/noteofgoexp/>Golang进阶笔记</a></li><li><a href=/docs/programmer/langs/golang/noteofgolang/>Golang笔记</a></li></ul></li><li><a href=/docs/programmer/langs/cmake/>CMake 使用Tips</a></li><li><a href=/docs/programmer/langs/tipsofdebugers/>tips Of Debuggers</a></li><li><a href=/docs/programmer/langs/tipsofmarkdown/>Markdown</a></li><li><a href=/docs/programmer/langs/markdown/>Markdown</a></li><li><a href=/docs/programmer/langs/java/notesjava/>愉快的Java(happy to learn the fuck java)</a></li><li><a href=/docs/programmer/langs/noteoffmtdata/>数据格式笔记</a></li></ul></li><li><input type=checkbox id=section-883e27361d38e16afb68faff3435ac0b class=toggle>
+<label for=section-883e27361d38e16afb68faff3435ac0b class="flex justify-between"><a role=button>机器学习</a></label><ul><li><a href=/docs/programmer/ml/tensorflow/>Tensorflow</a></li><li><a href=/docs/programmer/ml/opencv/>OpenCV</a></li><li><a href=/docs/programmer/ml/paddle/>Paddle</a></li><li><a href=/docs/programmer/ml/yolo/>Demo Test项目中的一些东西</a></li><li><a href=/docs/programmer/ml/noteofmachinelearning/>机器学习库</a></li></ul></li><li><input type=checkbox id=section-7e5360c5e7954906b897ed79085884b6 class=toggle>
+<label for=section-7e5360c5e7954906b897ed79085884b6 class="flex justify-between"><a href=/docs/programmer/gui/>图形用户界面-GUI</a></label><ul><li><a href=/docs/programmer/gui/pyinstaller/>python打包</a></li><li><a href=/docs/programmer/gui/qt/>Qt/PySide</a></li><li><a href=/docs/programmer/gui/noteofvn_py/>Vn.Py学习笔记（Python交易平台框架）</a></li><li><a href=/docs/programmer/gui/notespython/>图形化界面 （Python Gui）</a></li></ul></li><li><input type=checkbox id=section-ddcbe632dc99a9fb372422dada8ee641 class=toggle>
+<label for=section-ddcbe632dc99a9fb372422dada8ee641 class="flex justify-between"><a role=button>OS操作系统问题处理</a></label><ul><li><a href=/docs/programmer/os/install_some/>安装问题</a></li><li><a href=/docs/programmer/os/noteoflinux/>Linux</a></li><li><a href=/docs/programmer/os/android/>Android</a></li><li><a href=/docs/programmer/os/freebsd/>Freebsd</a></li><li><a href=/docs/programmer/os/npm/>Npm</a></li><li><a href=/docs/programmer/os/tipsofproblems/>解决问题</a></li></ul></li><li><input type=checkbox id=section-4446dd07527142b855f26d7cc8f0e617 class=toggle>
+<label for=section-4446dd07527142b855f26d7cc8f0e617 class="flex justify-between"><a role=button>Database</a></label><ul><li><a href=/docs/programmer/database/dgraph/>Dgraph使用小记</a></li><li><a href=/docs/programmer/database/noteofdbdata/>db数据库</a></li><li><a href=/docs/programmer/database/mongodb/>Mongodb</a></li><li><a href=/docs/programmer/database/tip_dgraph/>Dgraph</a></li></ul></li><li><input type=checkbox id=section-d5f99046a51e5e750b61f2e037945fcc class=toggle>
+<label for=section-d5f99046a51e5e750b61f2e037945fcc class="flex justify-between"><a role=button>基础工具和配置</a></label><ul><li><a href=/docs/programmer/basetc/for_china/>各个软件换源</a></li><li><a href=/docs/programmer/basetc/tipsofvim/>tip Of vim</a></li><li><a href=/docs/programmer/basetc/editer/>编辑器使用</a></li><li><a href=/docs/programmer/basetc/bash/>Bash</a></li><li><a href=/docs/programmer/basetc/gitbook/>Gitbook</a></li><li><a href=/docs/programmer/basetc/vim/>Vim</a></li></ul></li><li><input type=checkbox id=section-d325c59fc6513e1b1e05a60b192d4973 class=toggle>
+<label for=section-d325c59fc6513e1b1e05a60b192d4973 class="flex justify-between"><a href=/docs/programmer/hardware/>硬件</a></label><ul><li><a href=/docs/programmer/hardware/raspberrypi/>Raspberry Pi</a></li><li><a href=/docs/programmer/hardware/screen/>Screen</a></li></ul></li></ul></li><li class=book-section-flat><span>建模和游戏</span><ul><li><a href=/docs/3dgame/blender/>Blender</a></li><li><a href=/docs/3dgame/noteofue4/>UE4 笔记</a></li></ul></li><li class=book-section-flat><a href=/docs/example/>Hugo特殊Markdown语法说明</a><ul><li><a href=/docs/example/table-of-contents/>Table of Contents</a><ul><li><a href=/docs/example/table-of-contents/with-toc/>With ToC</a></li><li><a href=/docs/example/table-of-contents/without-toc/>Without ToC</a></li></ul></li><li><a href=/docs/example/shortcodes/buttons/>Buttons</a></li><li><a href=/docs/example/shortcodes/columns/>Columns</a></li><li><a href=/docs/example/shortcodes/details/>Details</a></li><li><a href=/docs/example/shortcodes/expand/>Expand</a></li><li><a href=/docs/example/shortcodes/hints/>Hints</a></li><li><a href=/docs/example/shortcodes/tabs/>Tabs</a></li></ul></li></ul><ul><li><a href=/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu>
+</label><strong>Migrating from Jekyll</strong>
+<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#move-static-content-to-static>Move static content to <code>static</code></a></li><li><a href=#create-your-hugo-configuration-file>Create your Hugo configuration file</a></li><li><a href=#set-your-configuration-publish-folder-to-_site>Set your configuration publish folder to <code>_site</code></a></li><li><a href=#convert-jekyll-templates-to-hugo-templates>Convert Jekyll templates to Hugo templates</a></li><li><a href=#convert-jekyll-plugins-to-hugo-shortcodes>Convert Jekyll plugins to Hugo shortcodes</a><ul><li><a href=#implementation>Implementation</a></li><li><a href=#usage>Usage</a></li></ul></li><li><a href=#finishing-touches>Finishing touches</a><ul><li><a href=#fix-content>Fix content</a></li><li><a href=#clean-up>Clean up</a></li></ul></li><li><a href=#a-practical-example-in-a-diff>A practical example in a diff</a></li></ul></nav></aside></header><article class=markdown><h1><a href=/posts/migrate-from-jekyll/>Migrating from Jekyll</a></h1><h5>March 10, 2014</h5><h2 id=move-static-content-to-static>Move static content to <code>static</code>
+<a class=anchor href=#move-static-content-to-static>#</a></h2><p>Jekyll has a rule that any directory not starting with <code>_</code> will be copied as-is to the <code>_site</code> output. Hugo keeps all static content under <code>static</code>. You should therefore move it all there.
+With Jekyll, something that looked like</p><pre><code>▾ &lt;root&gt;/
+    ▾ images/
+        logo.png
+</code></pre><p>should become</p><pre><code>▾ &lt;root&gt;/
+    ▾ static/
+        ▾ images/
+            logo.png
+</code></pre><p>Additionally, you&rsquo;ll want any files that should reside at the root (such as <code>CNAME</code>) to be moved to <code>static</code>.</p><h2 id=create-your-hugo-configuration-file>Create your Hugo configuration file
+<a class=anchor href=#create-your-hugo-configuration-file>#</a></h2><p>Hugo can read your configuration as JSON, YAML or TOML. Hugo supports parameters custom configuration too. Refer to the <a href=/overview/configuration/>Hugo configuration documentation</a> for details.</p><h2 id=set-your-configuration-publish-folder-to-_site>Set your configuration publish folder to <code>_site</code>
+<a class=anchor href=#set-your-configuration-publish-folder-to-_site>#</a></h2><p>The default is for Jekyll to publish to <code>_site</code> and for Hugo to publish to <code>public</code>. If, like me, you have <a href=http://blog.blindgaenger.net/generate_github_pages_in_a_submodule.html><code>_site</code> mapped to a git submodule on the <code>gh-pages</code> branch</a>, you&rsquo;ll want to do one of two alternatives:</p><ol><li><p>Change your submodule to point to map <code>gh-pages</code> to public instead of <code>_site</code> (recommended).</p><pre><code> git submodule deinit _site
+ git rm _site
+ git submodule add -b gh-pages git@github.com:your-username/your-repo.git public
+</code></pre></li><li><p>Or, change the Hugo configuration to use <code>_site</code> instead of <code>public</code>.</p><pre><code> {
+     ..
+     &quot;publishdir&quot;: &quot;_site&quot;,
+     ..
+ }
+</code></pre></li></ol><h2 id=convert-jekyll-templates-to-hugo-templates>Convert Jekyll templates to Hugo templates
+<a class=anchor href=#convert-jekyll-templates-to-hugo-templates>#</a></h2><p>That&rsquo;s the bulk of the work right here. The documentation is your friend. You should refer to <a href=http://jekyllrb.com/docs/templates/>Jekyll&rsquo;s template documentation</a> if you need to refresh your memory on how you built your blog and <a href=/layout/templates/>Hugo&rsquo;s template</a> to learn Hugo&rsquo;s way.</p><p>As a single reference data point, converting my templates for <a href=http://heyitsalex.net/>heyitsalex.net</a> took me no more than a few hours.</p><h2 id=convert-jekyll-plugins-to-hugo-shortcodes>Convert Jekyll plugins to Hugo shortcodes
+<a class=anchor href=#convert-jekyll-plugins-to-hugo-shortcodes>#</a></h2><p>Jekyll has <a href=http://jekyllrb.com/docs/plugins/>plugins</a>; Hugo has <a href=/doc/shortcodes/>shortcodes</a>. It&rsquo;s fairly trivial to do a port.</p><h3 id=implementation>Implementation
+<a class=anchor href=#implementation>#</a></h3><p>As an example, I was using a custom <a href=https://github.com/alexandre-normand/alexandre-normand/blob/74bb12036a71334fdb7dba84e073382fc06908ec/_plugins/image_tag.rb><code>image_tag</code></a> plugin to generate figures with caption when running Jekyll. As I read about shortcodes, I found Hugo had a nice built-in shortcode that does exactly the same thing.</p><p>Jekyll&rsquo;s plugin:</p><pre><code>module Jekyll
+  class ImageTag &lt; Liquid::Tag
+    @url = nil
+    @caption = nil
+    @class = nil
+    @link = nil
+    // Patterns
+    IMAGE_URL_WITH_CLASS_AND_CAPTION =
+    IMAGE_URL_WITH_CLASS_AND_CAPTION_AND_LINK = /(\w+)(\s+)((https?:\/\/|\/)(\S+))(\s+)&quot;(.*?)&quot;(\s+)-&gt;((https?:\/\/|\/)(\S+))(\s*)/i
+    IMAGE_URL_WITH_CAPTION = /((https?:\/\/|\/)(\S+))(\s+)&quot;(.*?)&quot;/i
+    IMAGE_URL_WITH_CLASS = /(\w+)(\s+)((https?:\/\/|\/)(\S+))/i
+    IMAGE_URL = /((https?:\/\/|\/)(\S+))/i
+    def initialize(tag_name, markup, tokens)
+      super
+      if markup =~ IMAGE_URL_WITH_CLASS_AND_CAPTION_AND_LINK
+        @class   = $1
+        @url     = $3
+        @caption = $7
+        @link = $9
+      elsif markup =~ IMAGE_URL_WITH_CLASS_AND_CAPTION
+        @class   = $1
+        @url     = $3
+        @caption = $7
+      elsif markup =~ IMAGE_URL_WITH_CAPTION
+        @url     = $1
+        @caption = $5
+      elsif markup =~ IMAGE_URL_WITH_CLASS
+        @class = $1
+        @url   = $3
+      elsif markup =~ IMAGE_URL
+        @url = $1
+      end
+    end
+    def render(context)
+      if @class
+        source = &quot;&lt;figure class='#{@class}'&gt;&quot;
+      else
+        source = &quot;&lt;figure&gt;&quot;
+      end
+      if @link
+        source += &quot;&lt;a href=\&quot;#{@link}\&quot;&gt;&quot;
+      end
+      source += &quot;&lt;img src=\&quot;#{@url}\&quot;&gt;&quot;
+      if @link
+        source += &quot;&lt;/a&gt;&quot;
+      end
+      source += &quot;&lt;figcaption&gt;#{@caption}&lt;/figcaption&gt;&quot; if @caption
+      source += &quot;&lt;/figure&gt;&quot;
+      source
+    end
+  end
+end
+Liquid::Template.register_tag('image', Jekyll::ImageTag)
+</code></pre><p>is written as this Hugo shortcode:</p><pre><code>&lt;!-- image --&gt;
+&lt;figure {{ with .Get &quot;class&quot; }}class=&quot;{{.}}&quot;{{ end }}&gt;
+    {{ with .Get &quot;link&quot;}}&lt;a href=&quot;{{.}}&quot;&gt;{{ end }}
+        &lt;img src=&quot;{{ .Get &quot;src&quot; }}&quot; {{ if or (.Get &quot;alt&quot;) (.Get &quot;caption&quot;) }}alt=&quot;{{ with .Get &quot;alt&quot;}}{{.}}{{else}}{{ .Get &quot;caption&quot; }}{{ end }}&quot;{{ end }} /&gt;
+    {{ if .Get &quot;link&quot;}}&lt;/a&gt;{{ end }}
+    {{ if or (or (.Get &quot;title&quot;) (.Get &quot;caption&quot;)) (.Get &quot;attr&quot;)}}
+    &lt;figcaption&gt;{{ if isset .Params &quot;title&quot; }}
+        {{ .Get &quot;title&quot; }}{{ end }}
+        {{ if or (.Get &quot;caption&quot;) (.Get &quot;attr&quot;)}}&lt;p&gt;
+        {{ .Get &quot;caption&quot; }}
+        {{ with .Get &quot;attrlink&quot;}}&lt;a href=&quot;{{.}}&quot;&gt; {{ end }}
+            {{ .Get &quot;attr&quot; }}
+        {{ if .Get &quot;attrlink&quot;}}&lt;/a&gt; {{ end }}
+        &lt;/p&gt; {{ end }}
+    &lt;/figcaption&gt;
+    {{ end }}
+&lt;/figure&gt;
+&lt;!-- image --&gt;
+</code></pre><h3 id=usage>Usage
+<a class=anchor href=#usage>#</a></h3><p>I simply changed:</p><pre><code>{% image full http://farm5.staticflickr.com/4136/4829260124_57712e570a_o_d.jpg &quot;One of my favorite touristy-type photos. I secretly waited for the good light while we were &quot;having fun&quot; and took this. Only regret: a stupid pole in the top-left corner of the frame I had to clumsily get rid of at post-processing.&quot; -&gt;http://www.flickr.com/photos/alexnormand/4829260124/in/set-72157624547713078/ %}
+</code></pre><p>to this (this example uses a slightly extended version named <code>fig</code>, different than the built-in <code>figure</code>):</p><pre><code>{{% fig class=&quot;full&quot; src=&quot;http://farm5.staticflickr.com/4136/4829260124_57712e570a_o_d.jpg&quot; title=&quot;One of my favorite touristy-type photos. I secretly waited for the good light while we were having fun and took this. Only regret: a stupid pole in the top-left corner of the frame I had to clumsily get rid of at post-processing.&quot; link=&quot;http://www.flickr.com/photos/alexnormand/4829260124/in/set-72157624547713078/&quot; %}}
+</code></pre><p>As a bonus, the shortcode named parameters are, arguably, more readable.</p><h2 id=finishing-touches>Finishing touches
+<a class=anchor href=#finishing-touches>#</a></h2><h3 id=fix-content>Fix content
+<a class=anchor href=#fix-content>#</a></h3><p>Depending on the amount of customization that was done with each post with Jekyll, this step will require more or less effort. There are no hard and fast rules here except that <code>hugo server --watch</code> is your friend. Test your changes and fix errors as needed.</p><h3 id=clean-up>Clean up
+<a class=anchor href=#clean-up>#</a></h3><p>You&rsquo;ll want to remove the Jekyll configuration at this point. If you have anything else that isn&rsquo;t used, delete it.</p><h2 id=a-practical-example-in-a-diff>A practical example in a diff
+<a class=anchor href=#a-practical-example-in-a-diff>#</a></h2><p><a href=http://heyitsalex.net/>Hey, it&rsquo;s Alex</a> was migrated in less than a <em>father-with-kids day</em> from Jekyll to Hugo. You can see all the changes (and screw-ups) by looking at this <a href=https://github.com/alexandre-normand/alexandre-normand/compare/869d69435bd2665c3fbf5b5c78d4c22759d7613a...b7f6605b1265e83b4b81495423294208cc74d610>diff</a>.</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#move-static-content-to-static>Move static content to <code>static</code></a></li><li><a href=#create-your-hugo-configuration-file>Create your Hugo configuration file</a></li><li><a href=#set-your-configuration-publish-folder-to-_site>Set your configuration publish folder to <code>_site</code></a></li><li><a href=#convert-jekyll-templates-to-hugo-templates>Convert Jekyll templates to Hugo templates</a></li><li><a href=#convert-jekyll-plugins-to-hugo-shortcodes>Convert Jekyll plugins to Hugo shortcodes</a><ul><li><a href=#implementation>Implementation</a></li><li><a href=#usage>Usage</a></li></ul></li><li><a href=#finishing-touches>Finishing touches</a><ul><li><a href=#fix-content>Fix content</a></li><li><a href=#clean-up>Clean up</a></li></ul></li><li><a href=#a-practical-example-in-a-diff>A practical example in a diff</a></li></ul></nav></div></aside></main></body></html>

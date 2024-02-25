@@ -1,0 +1,322 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="命令行的简便生活 💦🤣 # VirtualBox: linux 没有权限访问共享文件夹的问题 # 错误原因及解决办法
+这个自动mount的文件夹linux_share的所有者为root，所属的组是vboxsf，并且只有这两个用户有访问权限。Virtualbox的共享文件夹一般都挂载在/media下面，用ll查看会发现文件夹的所有者是root，所有组是vboxsf，所以文件管理去无法访问是正常的，解决方法是把你自己加入到vboxsf组里面。
+# 把自己添加到这个vboxsf组里面: sudo usermod -a -G vboxsf {USERNAME} 需要重启机器才能生效
+Delete Git Submodule # 逆初始化模块，其中{MOD_NAME}为模块目录，执行后可发现模块目录被清空 git submodule deinit {MOD_NAME} 删除.gitmodules中记录的模块信息（&ndash;cached选项清除.git/modules中的缓存） git rm --cached {MOD_NAME} apt 安装前查看库里版本 # sudo apt-cache madison kdenlive 4K显示器软件不适配导致的字太小问题 # 在路径: /usr/share/applications下 将对应的.desktop文件使用文本编辑器打开,将Exec修改为:
+Exec=env QT_DEVICE_PIXEL_RATIO=2 /opt/resolve/bin/resolve 主要是增加env QT_DEVICE_PIXEL_RATIO=2, 上述例中所示为达芬奇的配置. (不过很可惜它并不能和我的AMD 5700g+Ubuntu22.04+不知哪儿来的驱动一起工作. 虽然确实变好了.)
+切换用户默认终端程序 # 赢在起跑线: useradd -s /bin/bash ian 力挽狂澜: usermod -s /bin/bash ian 奋起反抗: chsh + 按提示操作 Github Personal access tokens # github 干掉了https账号密码pull push 之后 https pull push 专用 url"><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content="Make things easy and enjoy"><meta property="og:description" content="命令行的简便生活 💦🤣 # VirtualBox: linux 没有权限访问共享文件夹的问题 # 错误原因及解决办法
+这个自动mount的文件夹linux_share的所有者为root，所属的组是vboxsf，并且只有这两个用户有访问权限。Virtualbox的共享文件夹一般都挂载在/media下面，用ll查看会发现文件夹的所有者是root，所有组是vboxsf，所以文件管理去无法访问是正常的，解决方法是把你自己加入到vboxsf组里面。
+# 把自己添加到这个vboxsf组里面: sudo usermod -a -G vboxsf {USERNAME} 需要重启机器才能生效
+Delete Git Submodule # 逆初始化模块，其中{MOD_NAME}为模块目录，执行后可发现模块目录被清空 git submodule deinit {MOD_NAME} 删除.gitmodules中记录的模块信息（&ndash;cached选项清除.git/modules中的缓存） git rm --cached {MOD_NAME} apt 安装前查看库里版本 # sudo apt-cache madison kdenlive 4K显示器软件不适配导致的字太小问题 # 在路径: /usr/share/applications下 将对应的.desktop文件使用文本编辑器打开,将Exec修改为:
+Exec=env QT_DEVICE_PIXEL_RATIO=2 /opt/resolve/bin/resolve 主要是增加env QT_DEVICE_PIXEL_RATIO=2, 上述例中所示为达芬奇的配置. (不过很可惜它并不能和我的AMD 5700g+Ubuntu22.04+不知哪儿来的驱动一起工作. 虽然确实变好了.)
+切换用户默认终端程序 # 赢在起跑线: useradd -s /bin/bash ian 力挽狂澜: usermod -s /bin/bash ian 奋起反抗: chsh + 按提示操作 Github Personal access tokens # github 干掉了https账号密码pull push 之后 https pull push 专用 url"><meta property="og:type" content="article"><meta property="og:url" content="http://example.org/posts/makethingseasyandenjoy/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2016-10-08T16:58:56+00:00"><meta property="article:modified_time" content="2021-12-28T15:48:59+00:00"><title>Make things easy and enjoy | Ian's Blog</title>
+<link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script><script defer src=/en.search.min.2d8d2bb9754cea7562c9f4c6dd439b23aa4670e648a288ebbc817f1f4eaa725f.js integrity="sha256-LY0ruXVM6nViyfTG3UObI6pGcOZIoojrvIF/H06qcl8=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Ian's Blog</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><a href=/docs/programmer/>程序员笔记</a><ul><li><input type=checkbox id=section-8658298e10b544e890095f646916165a class=toggle>
+<label for=section-8658298e10b544e890095f646916165a class="flex justify-between"><a role=button>云原生</a></label><ul><li><input type=checkbox id=section-62d608ed890b3abc76dae78ccfcab912 class=toggle>
+<label for=section-62d608ed890b3abc76dae78ccfcab912 class="flex justify-between"><a role=button>k8s</a></label><ul><li><a href=/docs/programmer/cloudnative/k8s/elk%E5%9C%A8k8s%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B/>elk在k8s上的部署使用示例</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/>k8s 配套说明</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/>k8s技术分享</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/>k8s学习-常用命令和配置文件</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-workflow%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/>Argo Workflow性能测试和使用场景分析</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/>Argo 使用记录</a></li></ul></li><li><input type=checkbox id=section-b828bf3d116bc282da9db25a06bf908e class=toggle>
+<label for=section-b828bf3d116bc282da9db25a06bf908e class="flex justify-between"><a role=button>中间件</a></label><ul><li><a href=/docs/programmer/cloudnative/middleware/kafka-%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/>Kafka 安装和使用</a></li></ul></li><li><a href=/docs/programmer/cloudnative/noteofdocker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/tipsofweb/>Nginx高可用</a></li><li><a href=/docs/programmer/cloudnative/notesdjango/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/>Sonar 代码静态检查</a></li></ul></li><li><input type=checkbox id=section-de7bfad1d124522974cdf8addfbb23f2 class=toggle>
+<label for=section-de7bfad1d124522974cdf8addfbb23f2 class="flex justify-between"><a role=button>Net</a></label><ul><li><a href=/docs/programmer/net/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/>uwsgi 处理记录</a></li><li><a href=/docs/programmer/net/tipsofgrpc/>gRpc使用小记</a></li><li><a href=/docs/programmer/net/net/>Epoll实现</a></li><li><a href=/docs/programmer/net/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li></ul></li><li><input type=checkbox id=section-bf4e0d6f0b81f7b3ec08ed1fc66b874d class=toggle>
+<label for=section-bf4e0d6f0b81f7b3ec08ed1fc66b874d class="flex justify-between"><a role=button>编程语言</a></label><ul><li><input type=checkbox id=section-771df6c720301e69f1715f7fc174ac3d class=toggle>
+<label for=section-771df6c720301e69f1715f7fc174ac3d class="flex justify-between"><a role=button>Python</a></label><ul><li><a href=/docs/programmer/langs/python/pypi/>PyPi使用说明</a></li><li><a href=/docs/programmer/langs/python/paramiko-%E4%BD%BF%E7%94%A8-sshsftp/>Paramiko 使用 Ssh&amp;sftp</a></li><li><a href=/docs/programmer/langs/python/pytest/>Pytest</a></li><li><a href=/docs/programmer/langs/python/notespython/>笔记</a></li></ul></li><li><input type=checkbox id=section-9f8ac8f06e138c7ac13ff61f23b4d497 class=toggle>
+<label for=section-9f8ac8f06e138c7ac13ff61f23b4d497 class="flex justify-between"><a role=button>Golang</a></label><ul><li><a href=/docs/programmer/langs/golang/noteofgoexp/>Golang进阶笔记</a></li><li><a href=/docs/programmer/langs/golang/noteofgolang/>Golang笔记</a></li></ul></li><li><a href=/docs/programmer/langs/cmake/>CMake 使用Tips</a></li><li><a href=/docs/programmer/langs/tipsofdebugers/>tips Of Debuggers</a></li><li><a href=/docs/programmer/langs/tipsofmarkdown/>Markdown</a></li><li><a href=/docs/programmer/langs/markdown/>Markdown</a></li><li><a href=/docs/programmer/langs/java/notesjava/>愉快的Java(happy to learn the fuck java)</a></li><li><a href=/docs/programmer/langs/noteoffmtdata/>数据格式笔记</a></li></ul></li><li><input type=checkbox id=section-883e27361d38e16afb68faff3435ac0b class=toggle>
+<label for=section-883e27361d38e16afb68faff3435ac0b class="flex justify-between"><a role=button>机器学习</a></label><ul><li><a href=/docs/programmer/ml/tensorflow/>Tensorflow</a></li><li><a href=/docs/programmer/ml/opencv/>OpenCV</a></li><li><a href=/docs/programmer/ml/paddle/>Paddle</a></li><li><a href=/docs/programmer/ml/yolo/>Demo Test项目中的一些东西</a></li><li><a href=/docs/programmer/ml/noteofmachinelearning/>机器学习库</a></li></ul></li><li><input type=checkbox id=section-7e5360c5e7954906b897ed79085884b6 class=toggle>
+<label for=section-7e5360c5e7954906b897ed79085884b6 class="flex justify-between"><a href=/docs/programmer/gui/>图形用户界面-GUI</a></label><ul><li><a href=/docs/programmer/gui/pyinstaller/>python打包</a></li><li><a href=/docs/programmer/gui/qt/>Qt/PySide</a></li><li><a href=/docs/programmer/gui/noteofvn_py/>Vn.Py学习笔记（Python交易平台框架）</a></li><li><a href=/docs/programmer/gui/notespython/>图形化界面 （Python Gui）</a></li></ul></li><li><input type=checkbox id=section-ddcbe632dc99a9fb372422dada8ee641 class=toggle>
+<label for=section-ddcbe632dc99a9fb372422dada8ee641 class="flex justify-between"><a role=button>OS操作系统问题处理</a></label><ul><li><a href=/docs/programmer/os/install_some/>安装问题</a></li><li><a href=/docs/programmer/os/noteoflinux/>Linux</a></li><li><a href=/docs/programmer/os/android/>Android</a></li><li><a href=/docs/programmer/os/freebsd/>Freebsd</a></li><li><a href=/docs/programmer/os/npm/>Npm</a></li><li><a href=/docs/programmer/os/tipsofproblems/>解决问题</a></li></ul></li><li><input type=checkbox id=section-4446dd07527142b855f26d7cc8f0e617 class=toggle>
+<label for=section-4446dd07527142b855f26d7cc8f0e617 class="flex justify-between"><a role=button>Database</a></label><ul><li><a href=/docs/programmer/database/dgraph/>Dgraph使用小记</a></li><li><a href=/docs/programmer/database/noteofdbdata/>db数据库</a></li><li><a href=/docs/programmer/database/mongodb/>Mongodb</a></li><li><a href=/docs/programmer/database/tip_dgraph/>Dgraph</a></li></ul></li><li><input type=checkbox id=section-d5f99046a51e5e750b61f2e037945fcc class=toggle>
+<label for=section-d5f99046a51e5e750b61f2e037945fcc class="flex justify-between"><a role=button>基础工具和配置</a></label><ul><li><a href=/docs/programmer/basetc/for_china/>各个软件换源</a></li><li><a href=/docs/programmer/basetc/tipsofvim/>tip Of vim</a></li><li><a href=/docs/programmer/basetc/editer/>编辑器使用</a></li><li><a href=/docs/programmer/basetc/bash/>Bash</a></li><li><a href=/docs/programmer/basetc/gitbook/>Gitbook</a></li><li><a href=/docs/programmer/basetc/vim/>Vim</a></li></ul></li><li><input type=checkbox id=section-d325c59fc6513e1b1e05a60b192d4973 class=toggle>
+<label for=section-d325c59fc6513e1b1e05a60b192d4973 class="flex justify-between"><a href=/docs/programmer/hardware/>硬件</a></label><ul><li><a href=/docs/programmer/hardware/raspberrypi/>Raspberry Pi</a></li><li><a href=/docs/programmer/hardware/screen/>Screen</a></li></ul></li></ul></li><li class=book-section-flat><span>建模和游戏</span><ul><li><a href=/docs/3dgame/blender/>Blender</a></li><li><a href=/docs/3dgame/noteofue4/>UE4 笔记</a></li></ul></li><li class=book-section-flat><a href=/docs/example/>Hugo特殊Markdown语法说明</a><ul><li><a href=/docs/example/table-of-contents/>Table of Contents</a><ul><li><a href=/docs/example/table-of-contents/with-toc/>With ToC</a></li><li><a href=/docs/example/table-of-contents/without-toc/>Without ToC</a></li></ul></li><li><a href=/docs/example/shortcodes/buttons/>Buttons</a></li><li><a href=/docs/example/shortcodes/columns/>Columns</a></li><li><a href=/docs/example/shortcodes/details/>Details</a></li><li><a href=/docs/example/shortcodes/expand/>Expand</a></li><li><a href=/docs/example/shortcodes/hints/>Hints</a></li><li><a href=/docs/example/shortcodes/tabs/>Tabs</a></li></ul></li></ul><ul><li><a href=/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu>
+</label><strong>Make things easy and enjoy</strong>
+<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#virtualbox-linux-没有权限访问共享文件夹的问题>VirtualBox: linux 没有权限访问共享文件夹的问题</a></li><li><a href=#delete-git-submodule>Delete Git Submodule</a></li><li><a href=#apt-安装前查看库里版本>apt 安装前查看库里版本</a></li><li><a href=#4k显示器软件不适配导致的字太小问题>4K显示器软件不适配导致的字太小问题</a></li><li><a href=#切换用户默认终端程序>切换用户默认终端程序</a></li><li><a href=#github-personal-access-tokens>Github Personal access tokens</a></li><li><a href=#4k码字>4k码字</a><ul><li><a href=#更改语言>更改语言</a></li><li><a href=#更改tty1字体大小>更改tty1字体大小</a></li></ul></li><li><a href=#操作粘贴板>操作粘贴板</a><ul><li><a href=#将输出存储到粘贴板>将输出存储到粘贴板</a></li><li><a href=#输出粘贴板信息>输出粘贴板信息</a></li></ul></li><li><a href=#美化>美化</a><ul><li><a href=#themes>themes</a></li><li><a href=#图标>图标</a></li></ul></li><li><a href=#文件编码格式嗅探>文件编码格式嗅探</a></li><li><a href=#debian增加docker用户组优化每次sudo问题>debian增加docker用户组,优化每次sudo问题</a></li><li><a href=#使用各种跳板之后的远程文件传输>使用各种跳板之后的远程文件传输</a><ul><li><a href=#sz--rz>sz && rz</a></li><li><a href=#安装>安装</a></li><li><a href=#取代ssh连接>取代ssh连接</a></li><li><a href=#使用>使用</a></li></ul></li><li><a href=#诗句>诗句</a></li><li><a href=#代码量统计>代码量统计</a></li><li><a href=#xfce添加屏幕分辨率>xfce添加屏幕分辨率</a></li><li><a href=#给用户添加sudo权限>给用户添加sudo权限</a></li><li><a href=#find-文件查找>find 文件查找</a></li></ul><ul><li><a href=#方法步骤>方法/步骤</a><ul><li><a href=#windows远程桌面>Windows远程桌面</a></li><li><a href=#windows-输入法故障>Windows 输入法故障</a></li><li><a href=#win-安装ubuntu>Win 安装Ubuntu</a></li></ul></li><li><a href=#python-pip>Python Pip</a></li></ul><ul><li><ul><li><a href=#ubuntu--升级系统>Ubuntu 升级系统</a></li><li><a href=#windows-更新系统错误>Windows 更新系统错误</a></li><li><a href=#ubuntu-桌面显示问题>Ubuntu 桌面显示问题</a></li><li><a href=#vim-设置tab空格数>Vim 设置Tab空格数</a></li></ul></li></ul><ul><li><a href=#闲的没事找事记>闲的没事找事记：</a></li><li><a href=#vim>Vim</a></li></ul><ul><li><ul><li></li><li><a href=#下面是其他软件的学习笔记等待更新>下面是其他软件的学习笔记：（等待更新——）</a></li><li><a href=#tmux>tmux</a></li><li><a href=#termux>Termux</a></li></ul></li><li><a href=#rdfind>Rdfind</a><ul><li><a href=#替代方案>替代方案</a></li><li><a href=#查询重复>查询重复</a></li><li><a href=#终端输出>终端输出</a></li><li><a href=#删除空文件和重复文件>删除空文件和重复文件</a></li><li><a href=#删除重复文件>删除重复文件</a></li></ul></li><li><a href=#鼠标自动点击>鼠标自动点击</a></li></ul></nav></aside></header><article class=markdown><h1><a href=/posts/makethingseasyandenjoy/>Make things easy and enjoy</a></h1><h5>October 8, 2016</h5><div><a href=/tags/%E6%9D%82%E8%B0%88/>杂谈</a></div><h1 id=命令行的简便生活->命令行的简便生活 💦🤣
+<a class=anchor href=#%e5%91%bd%e4%bb%a4%e8%a1%8c%e7%9a%84%e7%ae%80%e4%be%bf%e7%94%9f%e6%b4%bb->#</a></h1><hr><h2 id=virtualbox-linux-没有权限访问共享文件夹的问题>VirtualBox: linux 没有权限访问共享文件夹的问题
+<a class=anchor href=#virtualbox-linux-%e6%b2%a1%e6%9c%89%e6%9d%83%e9%99%90%e8%ae%bf%e9%97%ae%e5%85%b1%e4%ba%ab%e6%96%87%e4%bb%b6%e5%a4%b9%e7%9a%84%e9%97%ae%e9%a2%98>#</a></h2><p>错误原因及解决办法</p><p>这个自动mount的文件夹linux_share的所有者为root，所属的组是vboxsf，并且只有这两个用户有访问权限。Virtualbox的共享文件夹一般都挂载在/media下面，用ll查看会发现文件夹的所有者是root，所有组是vboxsf，所以文件管理去无法访问是正常的，解决方法是把你自己加入到vboxsf组里面。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># 把自己添加到这个vboxsf组里面:</span>
+</span></span><span style=display:flex><span>sudo usermod -a -G vboxsf <span style=color:#f92672>{</span>USERNAME<span style=color:#f92672>}</span>
+</span></span></code></pre></div><p><strong>需要重启机器才能生效</strong></p><h2 id=delete-git-submodule>Delete Git Submodule
+<a class=anchor href=#delete-git-submodule>#</a></h2><ol><li>逆初始化模块，其中{MOD_NAME}为模块目录，执行后可发现模块目录被清空</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>git submodule deinit <span style=color:#f92672>{</span>MOD_NAME<span style=color:#f92672>}</span>
+</span></span></code></pre></div><ol start=2><li>删除.gitmodules中记录的模块信息（&ndash;cached选项清除.git/modules中的缓存）</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>git rm --cached <span style=color:#f92672>{</span>MOD_NAME<span style=color:#f92672>}</span>
+</span></span></code></pre></div><h2 id=apt-安装前查看库里版本>apt 安装前查看库里版本
+<a class=anchor href=#apt-%e5%ae%89%e8%a3%85%e5%89%8d%e6%9f%a5%e7%9c%8b%e5%ba%93%e9%87%8c%e7%89%88%e6%9c%ac>#</a></h2><pre tabindex=0><code>sudo apt-cache madison kdenlive
+</code></pre><h2 id=4k显示器软件不适配导致的字太小问题>4K显示器软件不适配导致的字太小问题
+<a class=anchor href=#4k%e6%98%be%e7%a4%ba%e5%99%a8%e8%bd%af%e4%bb%b6%e4%b8%8d%e9%80%82%e9%85%8d%e5%af%bc%e8%87%b4%e7%9a%84%e5%ad%97%e5%a4%aa%e5%b0%8f%e9%97%ae%e9%a2%98>#</a></h2><p>在路径: <code>/usr/share/applications</code>下
+将对应的<code>.desktop</code>文件使用文本编辑器打开,将<code>Exec</code>修改为:</p><pre tabindex=0><code>Exec=env QT_DEVICE_PIXEL_RATIO=2 /opt/resolve/bin/resolve
+</code></pre><p>主要是增加<code>env QT_DEVICE_PIXEL_RATIO=2</code>, 上述例中所示为达芬奇的配置. (不过很可惜它并不能和我的<code>AMD 5700g</code>+<code>Ubuntu22.04</code>+<code>不知哪儿来的驱动</code>一起工作. 虽然确实变好了.)</p><h2 id=切换用户默认终端程序>切换用户默认终端程序
+<a class=anchor href=#%e5%88%87%e6%8d%a2%e7%94%a8%e6%88%b7%e9%bb%98%e8%ae%a4%e7%bb%88%e7%ab%af%e7%a8%8b%e5%ba%8f>#</a></h2><ul><li>赢在起跑线: <code>useradd -s /bin/bash ian</code></li><li>力挽狂澜: <code>usermod -s /bin/bash ian</code></li><li>奋起反抗: <code>chsh</code> + 按提示操作</li></ul><h2 id=github-personal-access-tokens>Github Personal access tokens
+<a class=anchor href=#github-personal-access-tokens>#</a></h2><p>github 干掉了https账号密码pull push 之后
+https pull push 专用
+<a href=https://github.com/settings/tokens>url</a></p><h2 id=4k码字>4k码字
+<a class=anchor href=#4k%e7%a0%81%e5%ad%97>#</a></h2><h3 id=更改语言>更改语言
+<a class=anchor href=#%e6%9b%b4%e6%94%b9%e8%af%ad%e8%a8%80>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>export LC_ALL<span style=color:#f92672>=</span>C
+</span></span><span style=display:flex><span><span style=color:#75715e># 改了确实大多数成英文了，不过树莓派汉化太狠了，console-setup里还有若干是中文就很蠢...</span>
+</span></span><span style=display:flex><span>unset LC_ALL
+</span></span><span style=display:flex><span><span style=color:#75715e># 改回原始</span>
+</span></span></code></pre></div><h3 id=更改tty1字体大小>更改tty1字体大小
+<a class=anchor href=#%e6%9b%b4%e6%94%b9tty1%e5%ad%97%e4%bd%93%e5%a4%a7%e5%b0%8f>#</a></h3><pre tabindex=0><code>sudo dpkg-reconfigure console-setup
+</code></pre><h2 id=操作粘贴板>操作粘贴板
+<a class=anchor href=#%e6%93%8d%e4%bd%9c%e7%b2%98%e8%b4%b4%e6%9d%bf>#</a></h2><p><code>xsel</code></p><h3 id=将输出存储到粘贴板>将输出存储到粘贴板
+<a class=anchor href=#%e5%b0%86%e8%be%93%e5%87%ba%e5%ad%98%e5%82%a8%e5%88%b0%e7%b2%98%e8%b4%b4%e6%9d%bf>#</a></h3><pre tabindex=0><code>echo &#34;ashsaihs&#34; | xsel -i -b
+</code></pre><h3 id=输出粘贴板信息>输出粘贴板信息
+<a class=anchor href=#%e8%be%93%e5%87%ba%e7%b2%98%e8%b4%b4%e6%9d%bf%e4%bf%a1%e6%81%af>#</a></h3><pre tabindex=0><code>xsel -o -b
+</code></pre><p>由<code>xsel --help</code>可得<code>-i -o</code>分别代表标准输入输出(input output)
+<code>-b</code>代表:
+-b, &ndash;clipboard Operate on the CLIPBOARD selection</p><h2 id=美化>美化
+<a class=anchor href=#%e7%be%8e%e5%8c%96>#</a></h2><h3 id=themes>themes
+<a class=anchor href=#themes>#</a></h3><p><a href=https://github.com/vinceliuice/Orchis-theme>Orchis</a>
+<a href=https://github.com/anmoljagetia/Flatabulous>Flatabulous</a>
+<a href=https://github.com/imccausl/osXFCE>XFCE Flatabulous</a></p><h3 id=图标>图标
+<a class=anchor href=#%e5%9b%be%e6%a0%87>#</a></h3><pre tabindex=0><code>sudo add-apt-repository ppa:numix/ppa
+sudo apt install numix-icon-theme-circle
+</code></pre><h2 id=文件编码格式嗅探>文件编码格式嗅探
+<a class=anchor href=#%e6%96%87%e4%bb%b6%e7%bc%96%e7%a0%81%e6%a0%bc%e5%bc%8f%e5%97%85%e6%8e%a2>#</a></h2><pre tabindex=0><code>pip install chardet
+python
+</code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>f <span style=color:#f92672>=</span> open(<span style=color:#e6db74>&#34;file.path&#34;</span>, <span style=color:#e6db74>&#34;rb&#34;</span>)
+</span></span><span style=display:flex><span>bdata <span style=color:#f92672>=</span> f<span style=color:#f92672>.</span>read()
+</span></span><span style=display:flex><span>f<span style=color:#f92672>.</span>close()
+</span></span><span style=display:flex><span>result <span style=color:#f92672>=</span> chardet<span style=color:#f92672>.</span>detect(bdata)
+</span></span></code></pre></div><h2 id=debian增加docker用户组优化每次sudo问题>debian增加docker用户组,优化每次sudo问题
+<a class=anchor href=#debian%e5%a2%9e%e5%8a%a0docker%e7%94%a8%e6%88%b7%e7%bb%84%e4%bc%98%e5%8c%96%e6%af%8f%e6%ac%a1sudo%e9%97%ae%e9%a2%98>#</a></h2><p>摘抄自<a href=https://www.jianshu.com/p/1354e0506753>这里</a></p><ol><li>检查是否已有docker用户组</li></ol><pre tabindex=0><code>cat /etc/group | grep docker
+</code></pre><ol start=15><li><code>1</code>无则创建</li></ol><pre tabindex=0><code>sudo groupadd docker
+</code></pre><ol start=2><li>添加指定用户到docker用户组</li></ol><pre tabindex=0><code>sudo usermod -aG docker {用户名}
+</code></pre><ol start=25><li>使用1检查2是否成功</li><li>重启docker</li></ol><pre tabindex=0><code>sudo systemctl restart docker
+</code></pre><ol start=4><li>给.sock添加权限</li></ol><pre tabindex=0><code>sudo chmod a+rw /var/run/docker.sock
+</code></pre><ol start=45><li>检查是否成功</li></ol><pre tabindex=0><code>su {用户名}
+docker ps -a
+</code></pre><h2 id=使用各种跳板之后的远程文件传输>使用各种跳板之后的远程文件传输
+<a class=anchor href=#%e4%bd%bf%e7%94%a8%e5%90%84%e7%a7%8d%e8%b7%b3%e6%9d%bf%e4%b9%8b%e5%90%8e%e7%9a%84%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e4%bc%a0%e8%be%93>#</a></h2><h3 id=sz--rz>sz && rz
+<a class=anchor href=#sz--rz>#</a></h3><h3 id=安装>安装
+<a class=anchor href=#%e5%ae%89%e8%a3%85>#</a></h3><pre tabindex=0><code>#mac安装
+brew install zssh
+#linux安装
+sudo apt-get install zssh
+</code></pre><h3 id=取代ssh连接>取代ssh连接
+<a class=anchor href=#%e5%8f%96%e4%bb%a3ssh%e8%bf%9e%e6%8e%a5>#</a></h3><pre tabindex=0><code>zssh username@xxx.xxx.x.x
+</code></pre><h3 id=使用>使用
+<a class=anchor href=#%e4%bd%bf%e7%94%a8>#</a></h3><pre tabindex=0><code>cd destination_dir  #进入到目的地目录
+输入crtl+@组合键(mac是command+@)切换到zssh -- 2022-06-08 发现mac也是`control`+@ 即(`shift+2`和键盘布局有关)
+cd orgin_dir #进入源目录
+sz example.txt  #上传文件
+exit  #退出zssh
+
+sz 在服务器上准备要下载文件
+sz abcde.py
+输入crtl+@组合键(mac是command+@)切换到zssh
+cd  destination_dir #进入到下载目录
+rz #接收下载文件
+</code></pre><p>在执行上传下载过程，开始时在界面上体现不太明显，需要耐心等待一下</p><h2 id=诗句>诗句
+<a class=anchor href=#%e8%af%97%e5%8f%a5>#</a></h2><pre tabindex=0><code>sudo apt install fortunes-zh
+# 显示
+fortune
+</code></pre><h2 id=代码量统计>代码量统计
+<a class=anchor href=#%e4%bb%a3%e7%a0%81%e9%87%8f%e7%bb%9f%e8%ae%a1>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ cloc .
+</span></span><span style=display:flex><span>    <span style=color:#ae81ff>6605</span> text files.
+</span></span><span style=display:flex><span>    <span style=color:#ae81ff>5869</span> unique files.                                          
+</span></span><span style=display:flex><span>    <span style=color:#ae81ff>1049</span> files ignored.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>github.com/AlDanial/cloc v 1.86  T<span style=color:#f92672>=</span>6.47 s <span style=color:#f92672>(</span>862.2 files/s, 137709.8 lines/s<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>--------------------------------------------------------------------------------
+</span></span><span style=display:flex><span>Language                      files          blank        comment           code
+</span></span><span style=display:flex><span>--------------------------------------------------------------------------------
+</span></span><span style=display:flex><span>JavaScript                     <span style=color:#ae81ff>4200</span>          <span style=color:#ae81ff>69941</span>          <span style=color:#ae81ff>83775</span>         <span style=color:#ae81ff>452071</span>
+</span></span><span style=display:flex><span>HTML                            <span style=color:#ae81ff>169</span>          <span style=color:#ae81ff>42890</span>            <span style=color:#ae81ff>164</span>          <span style=color:#ae81ff>69664</span>
+</span></span><span style=display:flex><span>JSON                            <span style=color:#ae81ff>306</span>             <span style=color:#ae81ff>62</span>              <span style=color:#ae81ff>0</span>          <span style=color:#ae81ff>51362</span>
+</span></span><span style=display:flex><span>Markdown                        <span style=color:#ae81ff>363</span>          <span style=color:#ae81ff>17792</span>              <span style=color:#ae81ff>0</span>          <span style=color:#ae81ff>49232</span>
+</span></span><span style=display:flex><span>CSS                             <span style=color:#ae81ff>135</span>           <span style=color:#ae81ff>1670</span>            <span style=color:#ae81ff>901</span>          <span style=color:#ae81ff>14540</span>
+</span></span><span style=display:flex><span>Stylus                          <span style=color:#ae81ff>131</span>           <span style=color:#ae81ff>1401</span>           <span style=color:#ae81ff>1112</span>           <span style=color:#ae81ff>6947</span>
+</span></span><span style=display:flex><span>XML                               <span style=color:#ae81ff>8</span>           <span style=color:#ae81ff>3004</span>           <span style=color:#ae81ff>1289</span>           <span style=color:#ae81ff>5010</span>
+</span></span><span style=display:flex><span>TypeScript                       <span style=color:#ae81ff>92</span>            <span style=color:#ae81ff>881</span>           <span style=color:#ae81ff>2953</span>           <span style=color:#ae81ff>4684</span>
+</span></span><span style=display:flex><span>SVG                               <span style=color:#ae81ff>6</span>              <span style=color:#ae81ff>0</span>              <span style=color:#ae81ff>1</span>           <span style=color:#ae81ff>4299</span>
+</span></span><span style=display:flex><span>EJS                             <span style=color:#ae81ff>105</span>             <span style=color:#ae81ff>49</span>             <span style=color:#ae81ff>15</span>           <span style=color:#ae81ff>1921</span>
+</span></span><span style=display:flex><span>YAML                             <span style=color:#ae81ff>55</span>             <span style=color:#ae81ff>71</span>            <span style=color:#ae81ff>117</span>           <span style=color:#ae81ff>1564</span>
+</span></span><span style=display:flex><span>Bourne Shell                      <span style=color:#ae81ff>1</span>            <span style=color:#ae81ff>163</span>            <span style=color:#ae81ff>112</span>            <span style=color:#ae81ff>791</span>
+</span></span><span style=display:flex><span>DTD                               <span style=color:#ae81ff>1</span>            <span style=color:#ae81ff>179</span>            <span style=color:#ae81ff>177</span>            <span style=color:#ae81ff>514</span>
+</span></span><span style=display:flex><span>make                              <span style=color:#ae81ff>5</span>             <span style=color:#ae81ff>42</span>              <span style=color:#ae81ff>8</span>            <span style=color:#ae81ff>114</span>
+</span></span><span style=display:flex><span>Nix                               <span style=color:#ae81ff>1</span>              <span style=color:#ae81ff>1</span>              <span style=color:#ae81ff>0</span>             <span style=color:#ae81ff>19</span>
+</span></span><span style=display:flex><span>Bourne Again Shell                <span style=color:#ae81ff>1</span>              <span style=color:#ae81ff>5</span>             <span style=color:#ae81ff>13</span>              <span style=color:#ae81ff>7</span>
+</span></span><span style=display:flex><span>zsh                               <span style=color:#ae81ff>1</span>              <span style=color:#ae81ff>4</span>             <span style=color:#ae81ff>13</span>              <span style=color:#ae81ff>7</span>
+</span></span><span style=display:flex><span>DOS Batch                         <span style=color:#ae81ff>1</span>              <span style=color:#ae81ff>0</span>              <span style=color:#ae81ff>0</span>              <span style=color:#ae81ff>5</span>
+</span></span><span style=display:flex><span>CoffeeScript                      <span style=color:#ae81ff>1</span>              <span style=color:#ae81ff>1</span>              <span style=color:#ae81ff>0</span>              <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>--------------------------------------------------------------------------------
+</span></span><span style=display:flex><span>SUM:                           <span style=color:#ae81ff>5582</span>         <span style=color:#ae81ff>138156</span>          <span style=color:#ae81ff>90650</span>         <span style=color:#ae81ff>662751</span>
+</span></span><span style=display:flex><span>--------------------------------------------------------------------------------
+</span></span></code></pre></div><h2 id=xfce添加屏幕分辨率>xfce添加屏幕分辨率
+<a class=anchor href=#xfce%e6%b7%bb%e5%8a%a0%e5%b1%8f%e5%b9%95%e5%88%86%e8%be%a8%e7%8e%87>#</a></h2><p>Virtual1: 使用vmware虚拟出来的显示器名称 具体执行时替换之</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>xrandr  --newmode  <span style=color:#e6db74>&#34;1920x1080_60.00&#34;</span>  173.00  <span style=color:#ae81ff>1920</span> <span style=color:#ae81ff>2048</span> <span style=color:#ae81ff>2248</span> <span style=color:#ae81ff>2576</span>  <span style=color:#ae81ff>1080</span> <span style=color:#ae81ff>1083</span> <span style=color:#ae81ff>1088</span> <span style=color:#ae81ff>1120</span> -hsync +vsync
+</span></span><span style=display:flex><span>xrandr --addmode Virtual1 <span style=color:#e6db74>&#34;1920x1080_60.00&#34;</span>
+</span></span><span style=display:flex><span>xrandr --output Virtual1 --mode <span style=color:#e6db74>&#34;1920x1080_60.00&#34;</span>
+</span></span></code></pre></div><h2 id=给用户添加sudo权限>给用户添加sudo权限
+<a class=anchor href=#%e7%bb%99%e7%94%a8%e6%88%b7%e6%b7%bb%e5%8a%a0sudo%e6%9d%83%e9%99%90>#</a></h2><p>echo: 使用vim添加这行比较保险</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>chmod u+w /etc/sudoers
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#39;{username} ALL=(ALL) ALL&#39;</span> &gt; /etc/sudoers
+</span></span><span style=display:flex><span>chmod u-w /etc/sudoers
+</span></span><span style=display:flex><span><span style=color:#f92672>=======</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>## 查看端口占用</span>
+</span></span><span style=display:flex><span><span style=color:#e6db74>```</span>bash
+</span></span><span style=display:flex><span>netstat -ntulp | grep <span style=color:#ae81ff>80</span>
+</span></span></code></pre></div><h2 id=find-文件查找>find 文件查找
+<a class=anchor href=#find-%e6%96%87%e4%bb%b6%e6%9f%a5%e6%89%be>#</a></h2><p>今天(2018年12月12日，17点08分)在众多文件里找一个文件的时候… 想到<code>find</code>命令。不过之前没有怎么了解过，所以…
+我居然用了<code>tree | grep filename.filetype</code>来找东西。 结果路径太深——就最多确认了此文件的存在性。
+随后，才知道<code>find</code>要加<code>-name</code>参数。 emm&mldr;不过对于<code>find</code>多功能来说也说得过去。 随后便有了以下这个命令:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>find . -name <span style=color:#e6db74>&#34;cifar.py&#34;</span> -exec vim <span style=color:#f92672>{}</span> <span style=color:#ae81ff>\;</span>
+</span></span></code></pre></div><p>没错~，查找之后并编辑——😄
+除此之外，当然可能用于 <code>rm</code>、<code>grep</code>等去替换<code>vim</code>进行操作。
+其中，<code>{}</code>自然时代表匹配文件的路径。 如果不止一个那么…就： vim为例，会关闭一个窗口再打开另一个😓
+另外，配合<code>grep</code>查找文本内容的时候，需要在最后面加<code>-print</code>否则只有匹配文本，不显示文件路径。</p><h1 id=windows-转换磁盘分区格式>Windows 转换磁盘分区格式
+<a class=anchor href=#windows-%e8%bd%ac%e6%8d%a2%e7%a3%81%e7%9b%98%e5%88%86%e5%8c%ba%e6%a0%bc%e5%bc%8f>#</a></h1><h2 id=方法步骤>方法/步骤
+<a class=anchor href=#%e6%96%b9%e6%b3%95%e6%ad%a5%e9%aa%a4>#</a></h2><p>1
+1.U盘引导，进入PE系统</p><p>2
+用pe进去，找到运行输入cmd</p><p>3
+输入”Diskpart”(不用输入引号，下同)，并按回车，进入操作界面</p><p>4
+输入：”list disk”，查看磁盘信息。一般会出现两个选项，一个是你的硬盘，一个是U盘，要注意区分。</p><p>5
+输入：”select disk 0”，选择disk 0为当前操作的磁盘（也就是电脑的 硬盘）</p><p>6
+输入：”Clean”，清空当前磁盘分区</p><p>7
+输入：”convert mbr”，转换为MBR分区。</p><p>8
+OK，搞定，可以安装WIN7了</p><h3 id=windows远程桌面>Windows远程桌面
+<a class=anchor href=#windows%e8%bf%9c%e7%a8%8b%e6%a1%8c%e9%9d%a2>#</a></h3><pre><code>mstsc
+# WIn自带应用，不过用的时候得关闭防火墙就很伤
+</code></pre><h3 id=windows-输入法故障>Windows 输入法故障
+<a class=anchor href=#windows-%e8%be%93%e5%85%a5%e6%b3%95%e6%95%85%e9%9a%9c>#</a></h3><pre><code>ctfmon.exe     win+R 执行此，重启输入法
+</code></pre><h3 id=win-安装ubuntu>Win 安装Ubuntu
+<a class=anchor href=#win-%e5%ae%89%e8%a3%85ubuntu>#</a></h3><pre><code>#在powerShell中管理员运行
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-
+</code></pre><p>Windows-Subsystem-Linux</p><h4 id=windows-自启动项目录>Windows 自启动项目录
+<a class=anchor href=#windows-%e8%87%aa%e5%90%af%e5%8a%a8%e9%a1%b9%e7%9b%ae%e5%bd%95>#</a></h4><p><code>C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</code></p><p>在此目录下添加入快捷方式则在系统启动之后自动加载，但会有一些延时，不同于直接定义的自启动项，算是优先级最落后的项目吧</p><h4 id=windows-查看电池使用情况>Windows 查看电池使用情况
+<a class=anchor href=#windows-%e6%9f%a5%e7%9c%8b%e7%94%b5%e6%b1%a0%e4%bd%bf%e7%94%a8%e6%83%85%e5%86%b5>#</a></h4><pre><code>powercfg /BatteryReport
+# 适用于Win8+
+</code></pre><h2 id=python-pip>Python Pip
+<a class=anchor href=#python-pip>#</a></h2><pre><code>pip install -r *.txt
+# 从*.txt 文件读取需要安装的插件列表
+</code></pre><hr><hr><h1 id=win-ubuntu-时间不一致>win Ubuntu 时间不一致
+<a class=anchor href=#win-ubuntu-%e6%97%b6%e9%97%b4%e4%b8%8d%e4%b8%80%e8%87%b4>#</a></h1><pre><code>timedatectl set-local-rtc true 
+#采用本地时间          推荐
+</code></pre><hr><hr><h3 id=ubuntu--升级系统>Ubuntu 升级系统
+<a class=anchor href=#ubuntu--%e5%8d%87%e7%ba%a7%e7%b3%bb%e7%bb%9f>#</a></h3><pre><code>sudo update-manager -c -d
+#会检测是否有系统更新，
+#如果都更新完毕，
+#则提醒有新版本系统是否更新
+</code></pre><h3 id=windows-更新系统错误>Windows 更新系统错误
+<a class=anchor href=#windows-%e6%9b%b4%e6%96%b0%e7%b3%bb%e7%bb%9f%e9%94%99%e8%af%af>#</a></h3><p>dism++ 你值得拥有</p><p>另外：
+无法连接到更新服务。我们将稍后再试，你也可以立即进行检查。如果问题仍然存在，请确保你已连接到 Internet。<br>可能是
+本地组策略中的windows更新的“指定Intranet Microsoft更新服务位置”被更改过</p><p>解决办法为</p><ul><li><ol><li>gpedit.msc</li></ol></li><li><ol start=2><li>打开“本地组策略编辑器”展开“计算机配置”—“管理模版”—“Windows组件”—“Windows 更新”（专业版称为Windows Update）</li></ol></li><li><ol start=3><li>&ldquo;指定Intranet Microsoft更新服务位置”，点击“未配置&rdquo;</li></ol></li></ul><h3 id=ubuntu-桌面显示问题>Ubuntu 桌面显示问题
+<a class=anchor href=#ubuntu-%e6%a1%8c%e9%9d%a2%e6%98%be%e7%a4%ba%e9%97%ae%e9%a2%98>#</a></h3><p>卸载 ibus 输入法，会出现桌面显示不完全的情况，任务栏显示，启动栏消失，键盘快捷键无法使用。解决办法是重新安装 Unity 之后启动Unity 就会重新打开桌面环境…其实是又重新安装了 ibus 嗯………</p><h3 id=vim-设置tab空格数>Vim 设置Tab空格数
+<a class=anchor href=#vim-%e8%ae%be%e7%bd%aetab%e7%a9%ba%e6%a0%bc%e6%95%b0>#</a></h3><pre><code>:set tabstop=4
+#添加至用户vim配置文件： .vimrc 下即可
+</code></pre><h1 id=正则表达式>正则表达式
+<a class=anchor href=#%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f>#</a></h1><p>作为短小精悍的东西嘞，今天在限制密码类型和长度的时候尝尽了甜头。但在分类时…不好分，应该单独写一个笔记的，但短小精悍嘛，所以就放在命令行这里了。</p><pre><code>import re    # 好吧，其实无所谓的，因为下面并没有用到Python正则模块
+    a = QtCore.QRegExp(&quot;[A-Za-z]{0,5}[1-9][0-9]{0,5}&quot;)
+    a = QtCore.QRegExp(&quot;[a-zA-Z0-9]{0,12}$&quot;)
+    a = QtCore.QRegExp(&quot;[a-zA-Z0-9]+$&quot;)
+a = QtCore.QRegExp(&quot;[a-zA-Z0-9\,\.\\\!\?\#\$\%\^\&amp;\*\(\)\)_\_\=\`\+]+$&quot;)
+</code></pre><p>这里的<code>[]</code>中内容是输入范围，<code>{}</code>中的则是长度限制，而<code>+</code>就是不限长度 与<code>*</code>类似。 <code>$ </code>是结尾标志。 over。</p><h2 id=闲的没事找事记>闲的没事找事记：
+<a class=anchor href=#%e9%97%b2%e7%9a%84%e6%b2%a1%e4%ba%8b%e6%89%be%e4%ba%8b%e8%ae%b0>#</a></h2><pre><code>安装了一个美国版的windows 10 pro N 结果字体缺失，系统默认编码方式是Ascii不是utf……导致程序中的输出中文都出现问题。结果在这些不构成生产力的份儿上浪费时间，真是闲的没事找事…
+</code></pre><h2 id=vim>Vim
+<a class=anchor href=#vim>#</a></h2><pre><code>查看编码格式 `:set fenc`   
+设置文件格式`:set fileformat=unix`或者`:set fileformat=dos` 
+    ——针对于换行符
+</code></pre><p><code>set tabstop=4</code>、<code>set expandtab</code>前者是一个<code>tab</code>的长度，后者是tab换为空格…</p><h1 id=goodapps>GoodApps
+<a class=anchor href=#goodapps>#</a></h1><h4 id=nitruxflatabulous-master>Nitrux、Flatabulous-master：
+<a class=anchor href=#nitruxflatabulous-master>#</a></h4><p>主题，图标 用来美化很漂亮，图例样式可以参看这两者的Github。</p><hr><h4 id=goldendict>GoldenDict：
+<a class=anchor href=#goldendict>#</a></h4><p>一款词典，其可以添加网络翻译源，还可以自行下载本地翻译文件，本地内容我下载的含有：日汉、汉日、英牛津，朗道，还有本本草纲目……没错，确实还有科普类的翻译源。各种奇异翻译本都有。</p><hr><h4 id=xware>Xware：
+<a class=anchor href=#xware>#</a></h4><p>一款迅雷的替代，网络远程下载，完全能当一个没有广告的迅雷来使。 只不过需要账户密码，还有，在安装完毕之后，需要预先设置一番，将Xware托管改为用户态upstar，或者简单的自动启动。否则会显示ETM 没有链接，不能使用。另外将挂载，实际作用是下载保存位置，也设置一下。这么长时间了，英文路径应该养成习惯……</p><hr><h4 id=mypaint>MyPaint：
+<a class=anchor href=#mypaint>#</a></h4><p>画图工具，很好使。</p><hr><h4 id=chrome>Chrome:
+<a class=anchor href=#chrome>#</a></h4><p>这个浏览器不用说，这里介绍的是关于它修改hosts文件之后可能仍然无法使用谷歌搜索的问题。</p><p>1.因为，默认的是http，故显示已被重定向啊，啥的。只要在地址栏前输入https就可以正常访问了。
+2.当然，这样的话无法使用网页里的按钮“使用谷歌搜索”，所以需要修改其默认。可以在Chrome://net-internals/ 中，找见HSTS选项卡，Domain中输入想要默认强制使用https的网址。（PS：因为我的使用google自动跳转谷歌香港，所以这里用google.com还是不行的，得加上.hk的后缀。）
+3.以上修改方法应该只能设置一个默认网址呢，不过一个google搜索就够了…… 嗯，我要求比较低。 至于其他浏览器，大概是默认https的，因为可以直接访问嘛。
+自然还有很好的别的稍微专业的工具，这个会在之后持续更新出来，用学习笔记的形式（而且，等我学会在文章里添加链接啊，图片啊之后）。以上入门级、常用级的也会持续更新的～ 下载链接我以及之后都不会贴出来，嗯，毕竟没有永远保存的，链接经常失效。自行搜索总是好的，还能顺便了解一下这块软件的使用方法，以及类似替代软件的出现。</p><hr><h4 id=nethack>Nethack：
+<a class=anchor href=#nethack>#</a></h4><p>終端運行的一款地牢遊戲，相當高的自由度和隨機程度，除卻一切怪物和地圖都是用符號來代替，戰鬥過程就是用文字信息來描述，在創造和思索方面簡直一流。以後有空閒肯定要玩一玩～</p><hr><h4 id=virbox->Virbox ：
+<a class=anchor href=#virbox->#</a></h4><pre><code>sudo mount /dev/cdrom // ^^^目標地^^^ //掛載光盤 
+sudo mount -t vboxsf //^^Name^^ ^^^目標地^^^ //掛載虛擬機共享文件
+</code></pre><hr><h3 id=下面是其他软件的学习笔记等待更新>下面是其他软件的学习笔记：（等待更新——）
+<a class=anchor href=#%e4%b8%8b%e9%9d%a2%e6%98%af%e5%85%b6%e4%bb%96%e8%bd%af%e4%bb%b6%e7%9a%84%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%e7%ad%89%e5%be%85%e6%9b%b4%e6%96%b0>#</a></h3><hr><h4 id=linux>Linux：
+<a class=anchor href=#linux>#</a></h4><p>嗯，这是个软件…详见《Linuxのノート》</p><hr><h4 id=pelican->Pelican :
+<a class=anchor href=#pelican->#</a></h4><p>静态网页编辑生成工具。 keywords：Python、markdown</p><hr><h4 id=blender>Blender：
+<a class=anchor href=#blender>#</a></h4><p>開源建模，動畫軟件。</p><h6 id=快捷鍵記錄>快捷鍵記錄：
+<a class=anchor href=#%e5%bf%ab%e6%8d%b7%e9%8d%b5%e8%a8%98%e9%8c%84>#</a></h6><pre><code>N、T	//編輯欄呼出、隱藏 
+T	//側重物體，N側重編輯窗口 
+B	//選擇 
+Tab	//模式切換
+Ctrl+U	//用戶界面保存 
+Z	//物體顯示樣式切換 線框、透視 
+H	//刪除 
+G	//移動 
+</code></pre><h4 id=musicbox>musicbox：
+<a class=anchor href=#musicbox>#</a></h4><p>Linux 命令行下的 網易雲音樂 。夠精簡夠豐富，實爲經驗驚豔。</p><h5 id=基於python>基於Python：
+<a class=anchor href=#%e5%9f%ba%e6%96%bcpython>#</a></h5><pre><code>&gt;https://github.com/darknessomi/musicbox
+</code></pre><hr><h4 id=xswipe>xSwipe：
+<a class=anchor href=#xswipe>#</a></h4><p>多指触控软件。通过将触控板手势映射成快捷键，可以支持甚至五指操作，还有侧边功能。在github中搜索<code>xSwipe</code>即可，其中有详细安装说明。之后可以在.conf文件中查看和修改映射快捷键。另最后如果不能运行，可能需要注销重启电脑方可。
+运行 <code>perl xSwipe.pl</code>即可执行。</p><hr><h4 id=opencv>OpenCV：
+<a class=anchor href=#opencv>#</a></h4><p>开源计算机视觉库。 简单记录一下编译过程：(其實沒啥用的，自己爬官網找安裝教程去，基本沒用。)</p><h5 id=1-解决依赖编译工具>1. 解决依赖，编译工具
+<a class=anchor href=#1-%e8%a7%a3%e5%86%b3%e4%be%9d%e8%b5%96%e7%bc%96%e8%af%91%e5%b7%a5%e5%85%b7>#</a></h5><pre><code>sudo apt-get install build-essential
+sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev`
+</code></pre><h5 id=2-github-下载源程序>2. github 下载源程序
+<a class=anchor href=#2-github-%e4%b8%8b%e8%bd%bd%e6%ba%90%e7%a8%8b%e5%ba%8f>#</a></h5><pre><code>git clone https://github.com/opencv/opencv.git
+</code></pre><h5 id=3-building-opencv-from-source-using-cmake-using-the-command-line>3. Building OpenCV from Source Using CMake, Using the Command Line
+<a class=anchor href=#3-building-opencv-from-source-using-cmake-using-the-command-line>#</a></h5><pre><code>cd ~/opencv
+mkdir release
+cd release
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
+</code></pre><h5 id=4>4.
+<a class=anchor href=#4>#</a></h5><pre><code>make
+sudo make install
+all from &gt;http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html
+// (或許安裝過程就這句有用 23333)
+
+Thanks for your teaching.
+</code></pre><hr><h4 id=simplenote>Simplenote:
+<a class=anchor href=#simplenote>#</a></h4><pre><code>一款笔记软件，支持markdown编辑，很轻量、只能记录文字有点儿伤。不过有Linux版就很爽。而且同步速度、启动速度都很迅速。界面简单到不行。手机一次不幸刷机之后，有道云笔记懒得装，之后就用此软件吧…
+</code></pre><h4 id=scp>scp
+<a class=anchor href=#scp>#</a></h4><p><code>server copy</code>? 这个简写不晓得，不过确实是适用于远程连接传输文件的…</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>    scp ian@123.123.41.3<span style=color:#f92672>(</span>😀<span style=color:#f92672>)</span>:/home/ian/nihou.txt ./files
+</span></span><span style=display:flex><span>    scp ./files ian@123.123.41.3<span style=color:#f92672>(</span>😀<span style=color:#f92672>)</span>:/home/ian/nihou.txt 
+</span></span></code></pre></div><h4 id=删除win系统服务>删除Win系统服务
+<a class=anchor href=#%e5%88%a0%e9%99%a4win%e7%b3%bb%e7%bb%9f%e6%9c%8d%e5%8a%a1>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>sc delete serverName
+</span></span></code></pre></div><h3 id=tmux>tmux
+<a class=anchor href=#tmux>#</a></h3><p>丰富纯文字终端窗口，可以创建终端副本(反正也是我取得名字)—&ndash;类似于<code>win</code>的多桌面。也可以分割终端(界面类似vim分割)l&ndash;这便是类似于<code>win</code>的多窗口了。 (官方翻译: &lsquo;窗格&rsquo;？)</p><ul><li>进入: <code>tmux</code></li><li>退出: <code>exit</code></li><li>类似于<code>vim</code>命令模式： <code>ctrl+b</code>以下简写为<code>CL_B</code>。</li><li>创建多桌面: CL_B + c</li><li>查看全部窗口，类似<code>win+Tab</code>: CL_B + s 使用窗口号切换桌面: CL_B + NUM</li><li>关闭当前窗口: CL_B + &,emm直接<code>exit</code>&mldr;</li><li>创建多窗口: CL_B + " (垂直上下)、CL_B + % (水平左右) 调整窗口位置、大小 CL_B + space (默认布局轮换)</li><li>显示窗口编号: CL_B + q 暂时最大化当前窗格: CL_B + z 切换到下一个窗格: CL_B + o</li><li>对换窗格位置: CL_B + CL_O(ctrl + o)</li></ul><h4 id=设置>设置
+<a class=anchor href=#%e8%ae%be%e7%bd%ae>#</a></h4><p><strong>复制</strong></p><pre tabindex=0><code>set-window-option -g mode-keys vi #可以设置为vi或emacs
+set-window-option -g utf8 on #开启窗口的UTF-8支持
+</code></pre><ol><li>CL_B + [</li><li>Space空格开始选择(可使用<code>?</code>,<code>/</code>vi工具辅助定位)</li><li>Enter回车确认选择</li><li>CB_B + ] 可粘贴</li></ol><ul><li>必须保证以上全在Tmux中进行哈</li></ul><p><strong>启用鼠标触控板</strong></p><pre tabindex=0><code>set -g mouse on
+</code></pre><h3 id=termux>Termux
+<a class=anchor href=#termux>#</a></h3><p>类似于<code>WIN</code>端的<code>Subsystem</code>——其实更像Ubuntu下的虚拟终端。 不过这东西功能强大，除了将安卓里的Linux发挥出来。还有<code>Termux API</code>来调用手机的底层接口。</p><h4 id=ssh与手机连接>ssh与手机连接
+<a class=anchor href=#ssh%e4%b8%8e%e6%89%8b%e6%9c%ba%e8%bf%9e%e6%8e%a5>#</a></h4><p>其实应该放在<code>ssh</code>的操作里面？ emm，还是就这儿吧。</p><h5 id=pc>*pc
+<a class=anchor href=#pc>#</a></h5><p>**电脑生成密匙,无视密码设置全部回车</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ssh-keygen -t rsa
+</span></span></code></pre></div><p>**电脑开启sshd服务,用于手机的ssh连接到电脑拷贝id_rsa.pub内容</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>systemctl start sshd
+</span></span></code></pre></div><p>然而我用的是win子系统所以：sshd re-exec requires execution with an absolute path</p><h5 id=phone>phone
+<a class=anchor href=#phone>#</a></h5><p>**手机连接拷贝</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$HOME/.ssh/authorized_keys -&gt; 不管用什么复制，然后放到这个路径就好。
+</span></span></code></pre></div><p>**查看手机的用户名</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>whoami
+</span></span></code></pre></div><p>**开启服务</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sshd -p <span style=color:#ae81ff>9000</span>
+</span></span></code></pre></div><h5 id=pc-1>*pc
+<a class=anchor href=#pc-1>#</a></h5><p>连接到手机</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ssh u0_222@192.168.1.14 -p <span style=color:#ae81ff>9000</span>
+</span></span></code></pre></div><p>Over, 其余问题查看文件权限？ 不过还是自建文件<code>.ssh</code>出错率为0吧。</p><p>2018年12月4日11点27分,当我反过来操作的时候… 嗯，果然在权限这里出问题了…
+另外，电脑端开启<code>sshd</code>的时候用的绝对地址… 因为是Syb？</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>chmod <span style=color:#ae81ff>700</span> ~/.ssh
+</span></span><span style=display:flex><span>chmod <span style=color:#ae81ff>600</span> ~/.ssh/authorized_keys
+</span></span></code></pre></div><pre><code>😓
+</code></pre><h4 id=快捷键有用的音量键>快捷键(有用的音量键？)
+<a class=anchor href=#%e5%bf%ab%e6%8d%b7%e9%94%ae%e6%9c%89%e7%94%a8%e7%9a%84%e9%9f%b3%e9%87%8f%e9%94%ae>#</a></h4><p>显示扩展功能按键</p><p>方法一:</p><ul><li>从左向右滑动,显示隐藏式导航栏,长按左下角的KEYBOARD.</li></ul><p>方法二:</p><ul><li>使用Termux快捷键:音量++Q键</li></ul><p>常用快捷键</p><ul><li>Ctrl键是终端用户常用的按键 – 但大多数触摸键盘都没有这个按键。为此，Termux使用音量减小按钮来模拟Ctrl键。在触摸键盘上按音量减小+ L发送与在硬件键盘上按Ctrl + L相同的输入。</li><li>Ctrl+A -> 将光标移动到行首</li><li>Ctrl+C -> 中止当前进程</li><li>Ctrl+D -> 注销终端会话</li><li>Ctrl+E -> 将光标移动到行尾</li><li>Ctrl+K -> 从光标删除到行尾</li><li>Ctrl+L -> 清除终端</li><li>Ctrl+Z -> 挂起（发送SIGTSTP到）当前进程</li></ul><p>音量加键也可以作为产生特定输入的特殊键.</p><ul><li>音量加+E -> Esc键</li><li>音量加+T -> Tab键</li><li>音量加+1 -> F1（和音量增加+ 2→F2等）</li><li>音量加+0 -> F10</li><li>音量加+B -> Alt + B，使用readline时返回一个单词</li><li>音量加+F -> Alt + F，使用readline时转发一个单词</li><li>音量加+X -> Alt+X</li><li>音量加+W -> 向上箭头键</li><li>音量加+A -> 向左箭头键</li><li>音量加+S -> 向下箭头键</li><li>音量加+D -> 向右箭头键</li><li>音量加+L -> | （管道字符）</li><li>音量加+H -> 〜（波浪号字符）</li><li>音量加+U -> _ (下划线字符)</li><li>音量加+P -> 上一页</li><li>音量加+N -> 下一页</li><li>音量加+. -> Ctrl + \（SIGQUIT）</li><li>音量加+V -> 显示音量控制</li><li>音量加+Q -> 显示额外的按键视图</li></ul><h2 id=rdfind>Rdfind
+<a class=anchor href=#rdfind>#</a></h2><h3 id=替代方案>替代方案
+<a class=anchor href=#%e6%9b%bf%e4%bb%a3%e6%96%b9%e6%a1%88>#</a></h3><p><code>Rdfind</code>是命令行的, <code>DuplicatePhotoFinder1.6.3</code>是有UI的, 可以展示出内容, 不过很傻, 不能多选一次删除, 只能一个一个删除&mldr;..
+所以我做了一个托管鼠标点击器. 如下</p><p>使用<code>Rdfind</code> 进行重复文件查询, 然后删了, 节省磁盘空间.</p><blockquote><p>不过我准备自己做一个, 更方便删减图片, 所以以后应该会用自己做的, 这个就留下参考吧.</p></blockquote><h3 id=查询重复>查询重复
+<a class=anchor href=#%e6%9f%a5%e8%af%a2%e9%87%8d%e5%a4%8d>#</a></h3><p><code>drfind /Image/`, 结果报表存于当前目录`results.txt</code></p><h3 id=终端输出>终端输出
+<a class=anchor href=#%e7%bb%88%e7%ab%af%e8%be%93%e5%87%ba>#</a></h3><p><code>rdfind -dryrun true /Image</code></p><h3 id=删除空文件和重复文件>删除空文件和重复文件
+<a class=anchor href=#%e5%88%a0%e9%99%a4%e7%a9%ba%e6%96%87%e4%bb%b6%e5%92%8c%e9%87%8d%e5%a4%8d%e6%96%87%e4%bb%b6>#</a></h3><p><code>rdfind -deleteduplicates true -ignoreempty false /Image</code></p><h3 id=删除重复文件>删除重复文件
+<a class=anchor href=#%e5%88%a0%e9%99%a4%e9%87%8d%e5%a4%8d%e6%96%87%e4%bb%b6>#</a></h3><p><code>rdfind -deleteduplicates true /Image</code></p><h2 id=鼠标自动点击>鼠标自动点击
+<a class=anchor href=#%e9%bc%a0%e6%a0%87%e8%87%aa%e5%8a%a8%e7%82%b9%e5%87%bb>#</a></h2><p>选择点, 不到1s一点, 终端无法立即实时中断, 估计要用上<code>Listener</code>不过现在这样也可以啦.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#f92672>import</span> time
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> datetime <span style=color:#f92672>import</span> date, datetime
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> pynput <span style=color:#f92672>import</span> mouse
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> pynput.mouse <span style=color:#f92672>import</span> Button, Controller
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>mouse <span style=color:#f92672>=</span> Controller()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>sign_start <span style=color:#f92672>=</span> <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;请将鼠标移动到指定位置, 输入`r`开始.&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>str_input <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
+</span></span><span style=display:flex><span>position_loop <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>while</span> <span style=color:#ae81ff>1</span>:
+</span></span><span style=display:flex><span>    str_input <span style=color:#f92672>=</span> str_input <span style=color:#f92672>or</span> input()
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> str_input <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;r&#39;</span>:
+</span></span><span style=display:flex><span>        position_loop <span style=color:#f92672>=</span> position_loop <span style=color:#f92672>or</span> mouse<span style=color:#f92672>.</span>position
+</span></span><span style=display:flex><span>        mouse<span style=color:#f92672>.</span>position <span style=color:#f92672>=</span> position_loop
+</span></span><span style=display:flex><span>        <span style=color:#75715e># mouse.move(position_loop[0], position_loop[-1])</span>
+</span></span><span style=display:flex><span>        mouse<span style=color:#f92672>.</span>press(Button<span style=color:#f92672>.</span>left)
+</span></span><span style=display:flex><span>        time<span style=color:#f92672>.</span>sleep(<span style=color:#ae81ff>0.2</span>)
+</span></span><span style=display:flex><span>        mouse<span style=color:#f92672>.</span>release(Button<span style=color:#f92672>.</span>left)
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>datetime<span style=color:#f92672>.</span>now()<span style=color:#e6db74>}</span><span style=color:#e6db74> - clicked - </span><span style=color:#e6db74>{</span>position_loop<span style=color:#e6db74>}</span><span style=color:#e6db74>.&#34;</span>)
+</span></span><span style=display:flex><span>        time<span style=color:#f92672>.</span>sleep(<span style=color:#ae81ff>0.4</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;输入错误, 程序结束.&#34;</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>break</span>
+</span></span></code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#virtualbox-linux-没有权限访问共享文件夹的问题>VirtualBox: linux 没有权限访问共享文件夹的问题</a></li><li><a href=#delete-git-submodule>Delete Git Submodule</a></li><li><a href=#apt-安装前查看库里版本>apt 安装前查看库里版本</a></li><li><a href=#4k显示器软件不适配导致的字太小问题>4K显示器软件不适配导致的字太小问题</a></li><li><a href=#切换用户默认终端程序>切换用户默认终端程序</a></li><li><a href=#github-personal-access-tokens>Github Personal access tokens</a></li><li><a href=#4k码字>4k码字</a><ul><li><a href=#更改语言>更改语言</a></li><li><a href=#更改tty1字体大小>更改tty1字体大小</a></li></ul></li><li><a href=#操作粘贴板>操作粘贴板</a><ul><li><a href=#将输出存储到粘贴板>将输出存储到粘贴板</a></li><li><a href=#输出粘贴板信息>输出粘贴板信息</a></li></ul></li><li><a href=#美化>美化</a><ul><li><a href=#themes>themes</a></li><li><a href=#图标>图标</a></li></ul></li><li><a href=#文件编码格式嗅探>文件编码格式嗅探</a></li><li><a href=#debian增加docker用户组优化每次sudo问题>debian增加docker用户组,优化每次sudo问题</a></li><li><a href=#使用各种跳板之后的远程文件传输>使用各种跳板之后的远程文件传输</a><ul><li><a href=#sz--rz>sz && rz</a></li><li><a href=#安装>安装</a></li><li><a href=#取代ssh连接>取代ssh连接</a></li><li><a href=#使用>使用</a></li></ul></li><li><a href=#诗句>诗句</a></li><li><a href=#代码量统计>代码量统计</a></li><li><a href=#xfce添加屏幕分辨率>xfce添加屏幕分辨率</a></li><li><a href=#给用户添加sudo权限>给用户添加sudo权限</a></li><li><a href=#find-文件查找>find 文件查找</a></li></ul><ul><li><a href=#方法步骤>方法/步骤</a><ul><li><a href=#windows远程桌面>Windows远程桌面</a></li><li><a href=#windows-输入法故障>Windows 输入法故障</a></li><li><a href=#win-安装ubuntu>Win 安装Ubuntu</a></li></ul></li><li><a href=#python-pip>Python Pip</a></li></ul><ul><li><ul><li><a href=#ubuntu--升级系统>Ubuntu 升级系统</a></li><li><a href=#windows-更新系统错误>Windows 更新系统错误</a></li><li><a href=#ubuntu-桌面显示问题>Ubuntu 桌面显示问题</a></li><li><a href=#vim-设置tab空格数>Vim 设置Tab空格数</a></li></ul></li></ul><ul><li><a href=#闲的没事找事记>闲的没事找事记：</a></li><li><a href=#vim>Vim</a></li></ul><ul><li><ul><li></li><li><a href=#下面是其他软件的学习笔记等待更新>下面是其他软件的学习笔记：（等待更新——）</a></li><li><a href=#tmux>tmux</a></li><li><a href=#termux>Termux</a></li></ul></li><li><a href=#rdfind>Rdfind</a><ul><li><a href=#替代方案>替代方案</a></li><li><a href=#查询重复>查询重复</a></li><li><a href=#终端输出>终端输出</a></li><li><a href=#删除空文件和重复文件>删除空文件和重复文件</a></li><li><a href=#删除重复文件>删除重复文件</a></li></ul></li><li><a href=#鼠标自动点击>鼠标自动点击</a></li></ul></nav></div></aside></main></body></html>

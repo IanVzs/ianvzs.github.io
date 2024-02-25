@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>基础工具和配置 on Ian's Blog</title><link>http://example.org/docs/programmer/basetc/</link><description>Recent content in 基础工具和配置 on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 18 Jan 2022 11:34:00 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/basetc/index.xml" rel="self" type="application/rss+xml"/><item><title>各个软件换源</title><link>http://example.org/docs/programmer/basetc/for_china/</link><pubDate>Thu, 22 Apr 2021 17:04:15 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/for_china/</guid><description>在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.
+Qt # 使用Maintain管理kit时，可以在Settings中设置Repositories，设置地址可从Qt Downloads页面查询.
+apt # 可解决版本升级时的问题,即使用了国内源,最后一个文件不知道为什么还是从国外拉取&amp;hellip;
+# sudo touch /etc/apt/apt.conf sudo vim /etc/apt/apt.conf -&amp;gt; Acquire::http::Proxy &amp;ldquo;http://127.0.0.1:8001&amp;rdquo;;
+FreeBSD # mkdir -p /usr/local/etc/pkg/repos vim /usr/local/etc/pkg/repos/bjtu.conf
+bjtu: { url: &amp;#34;pkg+http://mirror.bjtu.edu.cn/reverse/freebsd-pkg/${ABI}/quarterly&amp;#34;, mirror_type: &amp;#34;srv&amp;#34;, signature_type: &amp;#34;none&amp;#34;, fingerprints: &amp;#34;/usr/share/keys/pkg&amp;#34;, enabled: yes } FreeBSD: { enabled: no } pkg update
+Qt # 源 # 中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/ 清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/ 北京理工大学：http://mirror.bit.edu.cn/qtproject/ 中国互联网络信息中心：https://mirrors.cnnic.cn/qt/ Python Pip # pip install --index https://pypi.mirrors.ustc.edu.cn/simple/ dlib(numpy等包名) 源 # 阿里云 http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣(douban) http://pypi.</description></item><item><title>tip Of vim</title><link>http://example.org/docs/programmer/basetc/tipsofvim/</link><pubDate>Tue, 15 May 2018 09:56:41 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/tipsofvim/</guid><description>Vim 使用 # 除去“简便生活”里的几条配置，在纠结是否添加到别的地方，果然还是单独给vim一个使用手册比较好……
+注释 # # 注释 1， 12s/^/#/g --- # 取消注释 1， 12s/^#//g 其实 是vim中的 :s替换命令… 下方解释
+或者，使用列编辑的模式:
+v、选择区域、ctrl q置行首、I插入#、Esc应用到全列 ctrl v、I、#、Esc 因为有的ctrl q或者ctrl v 不能用…… 取消，即使用上述方法选中行首，删除第一个字节即可了 替换 # :s/oldWords/newWords/g g : 代表当前光标所在行。
+由此可知: # ^表行首标识符。 /^/表示行首的空字符。 而取消注释中的/^#/即表示行首的#，被//空字符所替换。
+查找高亮 # set hlsearch set nohlsearch 分屏 # 实现 # 在外部使用-o or -O参数 内部split or vsplit 操作 # 移动光标 Ctrl + w hjkl 移动分区Ctrl + w HJKL 统一高度Ctrl + w = 改变高度Ctrl + w +- more and less # 阅读器~~~ 因为经常读大文件发现了这两个的无敌好处——快。</description></item><item><title>编辑器使用</title><link>http://example.org/docs/programmer/basetc/editer/</link><pubDate>Sat, 29 Oct 2016 16:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/editer/</guid><description>Jupyter-Note # 局域网访问 # 方法1: 使用jupyter notebook --generate-config生成配置文件 修改配置文件中c.NotebookApp.allow_root(因为安卓用的Termux跑的,所以伪root),c.NotebookApp.ip这样就能通过局域网和Token访问了 如果想要使用密码(长期使用局域网的话),可以使用from notebook.auth import passwd;passwd()生成加密密码,配置到c.NotebookApp.password 方法2: 如果只是临时的,那传入运行命令肯定最好了,如下可以使用如下格式: jupyter-notebook --allow-root --ip=0.0.0.0 自动补全 # 安装插件: pip install jupyter_contrib_nbextensions -i https://pypi.tuna.tsinghua.edu.cn/simple(此命令包含代理) 到Nbextensions中将Disable改为Enable 开始 Vim # vim 查看日志中文乱码(2021) # .bash_profile # export LC_ALL=en_US.utf-8 .vimrc # set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 set termencoding=utf-8 set encoding=utf-8 双管齐下, 一个解决系统配置, 一个解决vim配置
+中文乱码问题(2018) # 在.bash_profile中增加
+export LANG=zh_CN.utf8 export LC_ALL=zh_CN.utf8 即可增加中文支持。 不过，还是
+export LANG=en_US.utf8 export LC_ALL=en_US.utf8 比较香，因为中文字体很难看… ^_^: 2019年5月5日19点46分
+vscode vs code # venv # Python # Command Palette.</description></item><item><title/><link>http://example.org/docs/programmer/basetc/bash/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/bash/</guid><description>Bash # Auther: Ian
+自动补全 # linux中使用bash_completion工具进行自动不全，在某些发行版或者版本中make或者git没有Tab自动补全，这时在Github上找一个bash_completion文件放在相应位置就可以了。
+sudo cp bash_completion /usr/share/bash-completion/bash_completion source /usr/share/bash-completion/bash_completion Powershell # 命令历史存储在: C:\Users\{USERNAME}\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine下 ConsoleHost_history.txt文件</description></item><item><title/><link>http://example.org/docs/programmer/basetc/gitbook/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/gitbook/</guid><description>Gitbook # Author: Ian
+安装 # 官方文档 Github Gitbook 打造的 Gitbook 说明文档 使用npm进行安装, 安装npm (v4.0.0 and above is recommended) npm install gitbook-cli -g 需要sudo权限 实际在执行gitbook -V后才算是安装完成 问题 # TypeError: cb.apply is not a function # npm 安装软件不出点儿问题貌似都不是很合适, 该问题代码级问题是因为在适配某些可能本机上并没有安装的npm版本时写了bug，导致执行出错.
+所以注释掉相关代码即可，或者直接删除。删除的好处是不会因为编辑器的原因触发npm的某些缩进问题。
+62. // fs.stat = statFix(fs.stat) 63. // fs.fstat = statFix(fs.fstat) 64. // fs.lstat = statFix(fs.lstat) 固然可以通过安装相匹配版本进行适配，不过&amp;hellip;Ian怕导致本机上的hexo再出现版本不兼容的问题。 使用 # 功能 示例 个人使用习惯(Ian) 新建book gitbook init gitbook init gitbooks/Architecture 编译和运行服务 gitbook serve 编译 gitbook serve pdf # 参考自 码谱</description></item><item><title/><link>http://example.org/docs/programmer/basetc/vim/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/vim/</guid><description>&lt;h1 id="vim-使用">
+ Vim 使用
+ &lt;a class="anchor" href="#vim-%e4%bd%bf%e7%94%a8">#&lt;/a>
+&lt;/h1>
+&lt;p>Auther: Ian&lt;/p>
+&lt;p>&lt;img src="https://www.vim.org/images/vim_header.gif" alt="vim" />&lt;/p>
+&lt;h2 id="注释">
+ 注释
+ &lt;a class="anchor" href="#%e6%b3%a8%e9%87%8a">#&lt;/a>
+&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> # &lt;span style="color:#a6e22e">注释&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">1&lt;/span>， &lt;span style="color:#ae81ff">12&lt;/span>s&lt;span style="color:#e6db74">/^/&lt;/span>#/&lt;span style="color:#a6e22e">g&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ---
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> # &lt;span style="color:#a6e22e">取消注释&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">1&lt;/span>， &lt;span style="color:#ae81ff">12&lt;/span>s&lt;span style="color:#e6db74">/^#/&lt;/span>/&lt;span style="color:#a6e22e">g&lt;/span> 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>其实 是&lt;code>vim&lt;/code>中的 &lt;code>:s&lt;/code>替换命令… 下方解释&lt;/p>
+&lt;p>或者，使用列编辑的模式:&lt;/p>
+&lt;pre>&lt;code>v、选择区域、ctrl q置行首、I插入#、Esc应用到全列
+ctrl v、I、#、Esc
+因为有的ctrl q或者ctrl v 不能用……
+
+取消，即使用上述方法选中行首，删除第一个字节即可了
+&lt;/code>&lt;/pre>
+&lt;h2 id="替换">
+ 替换
+ &lt;a class="anchor" href="#%e6%9b%bf%e6%8d%a2">#&lt;/a>
+&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> :&lt;span style="color:#a6e22e">s&lt;/span>&lt;span style="color:#e6db74">/oldWords/&lt;/span>&lt;span style="color:#a6e22e">newWords&lt;/span>/&lt;span style="color:#a6e22e">g&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>g : 代表当前光标所在行。&lt;/p>
+&lt;h3 id="由此可知">
+ 由此可知:
+ &lt;a class="anchor" href="#%e7%94%b1%e6%ad%a4%e5%8f%af%e7%9f%a5">#&lt;/a>
+&lt;/h3>
+&lt;p>&lt;code>^&lt;/code>表行首标识符。 &lt;code>/^/&lt;/code>表示行首的空字符。 而取消注释中的&lt;code>/^#/&lt;/code>即表示行首的&lt;code>#&lt;/code>，被&lt;code>//&lt;/code>空字符所替换。&lt;/p>
+&lt;hr>
+&lt;h2 id="查找高亮">
+ 查找高亮
+ &lt;a class="anchor" href="#%e6%9f%a5%e6%89%be%e9%ab%98%e4%ba%ae">#&lt;/a>
+&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">set&lt;/span> &lt;span style="color:#a6e22e">hlsearch&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">set&lt;/span> &lt;span style="color:#a6e22e">nohlsearch&lt;/span> 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="分屏">
+ 分屏
+ &lt;a class="anchor" href="#%e5%88%86%e5%b1%8f">#&lt;/a>
+&lt;/h2>
+&lt;h3 id="实现">
+ 实现
+ &lt;a class="anchor" href="#%e5%ae%9e%e7%8e%b0">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>在外部使用&lt;code>-o&lt;/code> or &lt;code>-O&lt;/code>参数&lt;/li>
+&lt;li>内部&lt;code>split&lt;/code> or &lt;code>vsplit&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h3 id="操作">
+ 操作
+ &lt;a class="anchor" href="#%e6%93%8d%e4%bd%9c">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>移动光标 &lt;code>Ctrl + w&lt;/code> hjkl&lt;/li>
+&lt;li>移动分区&lt;code>Ctrl + w&lt;/code> HJKL&lt;/li>
+&lt;li>统一高度&lt;code>Ctrl + w&lt;/code> =&lt;/li>
+&lt;li>改变高度&lt;code>Ctrl + w&lt;/code> +-&lt;/li>
+&lt;/ul>
+&lt;h1 id="heading">
+ 
+ &lt;a class="anchor" href="#heading">#&lt;/a>
+&lt;/h1></description></item></channel></rss>
