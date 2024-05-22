@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>面试 on Ian's Blog</title><link>http://example.org/categories/%E9%9D%A2%E8%AF%95/</link><description>Recent content in 面试 on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 05 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml"/><item><title>Redis基础</title><link>http://example.org/docs/programmer/cloudnative/redis/the-basics-of-redis/</link><pubDate>Sun, 05 May 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/redis/the-basics-of-redis/</guid><description>基础理论 # 概况 # Redis (Remote Dictionary Server) 是一个开源的、支持网络、基于内存、可选持久性的键值对数据库。它支持多种类型的数据结构，如字符串（strings）、列表（lists）、集合（sets）、有序集合（sorted sets）以及散列（hashes）、位图（bitmaps）、超日志（hyperloglogs）和地理空间（geospatial）索引半径查询。
+特点包括：
+高性能：因为数据主要在内存中进行操作，读写速度非常快。 丰富的数据类型：提供多种数据结构来满足不同场景下的需求。 原子性：所有操作都是原子性的，支持事务（通过MULTI/EXEC命令）。 丰富的功能：支持发布订阅、Lua脚本、事务等。 数据结构 # Redis提供的数据结构包括： Redis 支持多种数据类型，以下是一些常用的数据类型以及它们的简要描述和使用场景：
+数据类型 描述 使用场景 String 二进制安全字符串，最大可以存储 512MB 存储文本或二进制数据，如缓存用户个人信息等 List 有序集合，按插入顺序排序 消息队列、时间线、最新消息列表 Set 无序集合，元素不重复 标签、社交网络中的朋友关系等 Sorted Set 有序集合，元素不重复，并且每个元素都会关联一个浮点数分数 排行榜、带权重的集合 Hash 键值对集合，适用于存储对象 存储、访问和修改对象属性 Bitmaps 通过位来表示数据的数据类型，适合做计数统计 在线状态、特性标志、统计等 HyperLogLog 近似去重计数的数据结构 大数据量的计数，如统计独立 IP 访问数量 Geospatial 存储地理位置信息，并进行相关地理操作 储存经纬度，查询附近的地点 Streams Redis 5.0 新增的数据类型，是一个可持久化的日志数据结构 实现消息队列，发布/订阅模式，日志记录 Redis 之所以快速，主要原因有以下几点： # 内存存储：Redis 将所有数据存储在内存中，内存的读写速度远高于硬盘。 数据结构简单：Redis 的数据结构设计简单直观，易于高效操作。 非阻塞 IO：Redis 使用非阻塞 IO 和多路复用技术，可以处理多个并发连接。 单线程模型：Redis 大部分操作是单线程执行，避免了多线程的上下文切换开销。 Redis高性能IO模型 # Redis的IO模型使用的是非阻塞IO复用技术，主要是epoll作为IO多路复用技术的实现方式。它通过单线程事件循环来处理所有客户端请求，确保绝大部分请求都是非阻塞的，并且使用异步编程模式来提高性能。</description></item><item><title>Redis进阶</title><link>http://example.org/docs/programmer/cloudnative/redis/advanced-knowledge-of-redis/</link><pubDate>Sun, 05 May 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/redis/advanced-knowledge-of-redis/</guid><description>主从架构-主从同步 # 在Redis中，主从同步是一种常用的数据复制方式，它允许一个或多个从服务器（slave）获得与主服务器（master）相同的数据副本。这种架构提供了数据的冗余和读取扩展性。
+全量复制：当一个从服务器第一次连接到主服务器时，或是由于某些原因需要重新同步时，会进行全量复制。在这个过程中，主服务器会生成一个当前所有数据的快照，并将这个快照发送至请求同步的从服务器。从服务器接收到数据后，加载到自己的数据空间内。
+部分复制：一旦完成了全量复制，如果从服务器断开连接又重新连接，且中断时间不长，主服务器可以只发送这段时间内发生变化的数据给从服务器，而不是再次进行全量复制。这依赖于主服务器的复制积压缓冲区来存储最近的写命令。
+同步策略：为了保证数据的一致性，从服务器在初始同步完成之前不会对外提供服务。在日常运行时，主服务器会将写命令同时发送给所有的从服务器，以此来保证数据的实时一致性。
+主从同步使得从服务器可以承担读操作，减轻主服务器的负载，同时也可以在主服务器遇到故障时，进行故障转移。
+主从哨兵架构 # Redis哨兵（Sentinel）系统是用于管理多个Redis服务器的系统。该体系结构具有以下特点：
+监控：哨兵会监控主从服务器是否正常运作。 自动故障转移：如果主服务器出现故障，哨兵可以自动选举新的主服务器，并让原来的从服务器指向新的主服务器。 配置提供者：哨兵还会将当前的主服务器地址提供给客户端，确保客户端总是连接到正确的主服务器。 哨兵机制通过这些功能增加了Redis环境的高可用性和稳定性。
+切片集群-Redis Cluster # Redis Cluster是Redis的分布式解决方案。它支持数据的水平分片，以下是其关键特性：
+自动分片：��动将数据分布在不同的节点上，每个节点只保存整个数据集的一部分。 高可用性：采用主从复制模型，即使在多个节点失败的情况下也能保证服务的可用性。 无中心设计：没有中心节点，每个节点都保存着整个集群状态的一部分，节点之间通过Gossip协议交换信息。 Redis Cluster通过对键进行CRC16计算并对16384取余数来决定将键分配到哪个槽位，每个节点负责一部分槽位，从而实现负载均衡。
+Redis Cluster 通信开销 # 由于Redis Cluster节点间需要频繁地交换消息以维护集群状态，因此会产生额外的通信开销：
+Gossip通信：节点间通过Gossip协议定期交换信息，包括数据迁移、故障检测等。 重定向操作：客户端可能会尝试向不包含数据所在槽的节点发起请求，这时节点会返回一个重定向信息 切片集群-Codis
+Redis 分布式锁是一种用于多个计算节点之间同步访问共享资源的机制。在分布式系统中，当多个进程需要同时访问某些数据或执行某些任务时，为了避免竞态条件（race conditions）和数据不一致，通常需要使用分布式锁来保证在同一时间只有一个进程能够执行特定的操作。
+Redis 分布式锁实现 # 一个常见的Redis分布式锁实现是使用 Redis 的 SETNX 命令（Set if not exists）。这个命令只在键不存在的情况下设置键的值，并且返回是否成功设置。由于 SETNX 是原子操作，因此可以用来实现锁的功能。
+另一个更加推荐的方式是使用 Redis 2.6.12 版本引入的 SET 命令结合选项 NX（表示只有键不存在时才进行设置）和 PX（给键设置过期时间，单位为毫秒），这可以保证即使在客户端崩溃的情况下，锁也会在一定时间后自动释放，防止死锁。
+使用 Redis 分布式锁的步骤： # 尝试获取锁
+使用 SET key value NX PX milliseconds 进行设置。 如果返回 OK，则获取锁成功。 如果返回 nil，则获取锁失败。 执行业务逻辑</description></item></channel></rss>

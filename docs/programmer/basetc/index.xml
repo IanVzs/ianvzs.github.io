@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>基础工具和配置 on Ian's Blog</title><link>http://example.org/docs/programmer/basetc/</link><description>Recent content in 基础工具和配置 on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 18 Jan 2022 11:34:00 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/basetc/index.xml" rel="self" type="application/rss+xml"/><item><title>各个软件换源</title><link>http://example.org/docs/programmer/basetc/for_china/</link><pubDate>Thu, 22 Apr 2021 17:04:15 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/for_china/</guid><description>在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>基础工具和配置 on Ian's Blog</title><link>http://example.org/docs/programmer/basetc/</link><description>Recent content in 基础工具和配置 on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 13 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/basetc/index.xml" rel="self" type="application/rss+xml"/><item><title>Obsidian思维导图插件</title><link>http://example.org/docs/programmer/basetc/obsidian%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%8F%92%E4%BB%B6/</link><pubDate>Mon, 13 May 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/obsidian%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%8F%92%E4%BB%B6/</guid><description> Enhancing Mind map # Links # https://github.com/MarkMindLtd/obsidian-enhancing-mindmap GitHub Related # coc-markmap gatsby-remark-markmap Features # links inline text styles multiline text inline code Katex - $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$ 注意这里 # 该插件支持如上以及无序列表等有限的markdown格式，无法支持其他格式，一定要注意这点，否则可能会丢失数据，切记。
+Short cuts # 新建脑图 Ctrl/Cmd+P 新增子节点 Tab 新增兄弟节点 enter 删除节点 Delete 编辑节点 Space/dblclick node 后退 Ctrl/Cmd+Z 前进 Ctrl/Cmd+Y 取消编辑节点 Tab 展开节点 Ctrl/Cmd + / 收缩节点 Ctrl/Cmd + / 拖动节点 Drag and drop node 切换节点 Up/down/left/right 放大、缩小 Ctrl/Cmd + 滚轮 居中 Ctrl/Cmd + E 功能 # 编辑节点 拖动节点至某节点 前进/后退 在markdown和思维导图视图之间切换 数据同步</description></item><item><title>各个软件换源</title><link>http://example.org/docs/programmer/basetc/for_china/</link><pubDate>Thu, 22 Apr 2021 17:04:15 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/for_china/</guid><description>在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.
 Qt # 使用Maintain管理kit时，可以在Settings中设置Repositories，设置地址可从Qt Downloads页面查询.
 apt # 可解决版本升级时的问题,即使用了国内源,最后一个文件不知道为什么还是从国外拉取&amp;hellip;
 # sudo touch /etc/apt/apt.conf sudo vim /etc/apt/apt.conf -&amp;gt; Acquire::http::Proxy &amp;ldquo;http://127.0.0.1:8001&amp;rdquo;;
@@ -19,61 +20,60 @@ sudo cp bash_completion /usr/share/bash-completion/bash_completion source /usr/s
 安装 # 官方文档 Github Gitbook 打造的 Gitbook 说明文档 使用npm进行安装, 安装npm (v4.0.0 and above is recommended) npm install gitbook-cli -g 需要sudo权限 实际在执行gitbook -V后才算是安装完成 问题 # TypeError: cb.apply is not a function # npm 安装软件不出点儿问题貌似都不是很合适, 该问题代码级问题是因为在适配某些可能本机上并没有安装的npm版本时写了bug，导致执行出错.
 所以注释掉相关代码即可，或者直接删除。删除的好处是不会因为编辑器的原因触发npm的某些缩进问题。
 62. // fs.stat = statFix(fs.stat) 63. // fs.fstat = statFix(fs.fstat) 64. // fs.lstat = statFix(fs.lstat) 固然可以通过安装相匹配版本进行适配，不过&amp;hellip;Ian怕导致本机上的hexo再出现版本不兼容的问题。 使用 # 功能 示例 个人使用习惯(Ian) 新建book gitbook init gitbook init gitbooks/Architecture 编译和运行服务 gitbook serve 编译 gitbook serve pdf # 参考自 码谱</description></item><item><title/><link>http://example.org/docs/programmer/basetc/vim/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/vim/</guid><description>&lt;h1 id="vim-使用">
- Vim 使用
- &lt;a class="anchor" href="#vim-%e4%bd%bf%e7%94%a8">#&lt;/a>
+Vim 使用
+&lt;a class="anchor" href="#vim-%e4%bd%bf%e7%94%a8">#&lt;/a>
 &lt;/h1>
 &lt;p>Auther: Ian&lt;/p>
 &lt;p>&lt;img src="https://www.vim.org/images/vim_header.gif" alt="vim" />&lt;/p>
 &lt;h2 id="注释">
- 注释
- &lt;a class="anchor" href="#%e6%b3%a8%e9%87%8a">#&lt;/a>
+注释
+&lt;a class="anchor" href="#%e6%b3%a8%e9%87%8a">#&lt;/a>
 &lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> # &lt;span style="color:#a6e22e">注释&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">1&lt;/span>， &lt;span style="color:#ae81ff">12&lt;/span>s&lt;span style="color:#e6db74">/^/&lt;/span>#/&lt;span style="color:#a6e22e">g&lt;/span> 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ---
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> # &lt;span style="color:#a6e22e">取消注释&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">1&lt;/span>， &lt;span style="color:#ae81ff">12&lt;/span>s&lt;span style="color:#e6db74">/^#/&lt;/span>/&lt;span style="color:#a6e22e">g&lt;/span> 
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>其实 是&lt;code>vim&lt;/code>中的 &lt;code>:s&lt;/code>替换命令… 下方解释&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> # 注释&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>， &lt;span style="color:#ae81ff">12&lt;/span>s&lt;span style="color:#e6db74">/^/&lt;/span>#/&lt;span style="color:#a6e22e">g&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> ---&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> # 取消注释&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>， &lt;span style="color:#ae81ff">12&lt;/span>s&lt;span style="color:#e6db74">/^#/&lt;/span>/&lt;span style="color:#a6e22e">g&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>其实 是&lt;code>vim&lt;/code>中的 &lt;code>:s&lt;/code>替换命令… 下方解释&lt;/p>
 &lt;p>或者，使用列编辑的模式:&lt;/p>
 &lt;pre>&lt;code>v、选择区域、ctrl q置行首、I插入#、Esc应用到全列
 ctrl v、I、#、Esc
 因为有的ctrl q或者ctrl v 不能用……
-
 取消，即使用上述方法选中行首，删除第一个字节即可了
 &lt;/code>&lt;/pre>
 &lt;h2 id="替换">
- 替换
- &lt;a class="anchor" href="#%e6%9b%bf%e6%8d%a2">#&lt;/a>
+替换
+&lt;a class="anchor" href="#%e6%9b%bf%e6%8d%a2">#&lt;/a>
 &lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> :&lt;span style="color:#a6e22e">s&lt;/span>&lt;span style="color:#e6db74">/oldWords/&lt;/span>&lt;span style="color:#a6e22e">newWords&lt;/span>/&lt;span style="color:#a6e22e">g&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>g : 代表当前光标所在行。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> :&lt;span style="color:#a6e22e">s&lt;/span>&lt;span style="color:#e6db74">/oldWords/&lt;/span>&lt;span style="color:#a6e22e">newWords&lt;/span>/&lt;span style="color:#a6e22e">g&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>g : 代表当前光标所在行。&lt;/p>
 &lt;h3 id="由此可知">
- 由此可知:
- &lt;a class="anchor" href="#%e7%94%b1%e6%ad%a4%e5%8f%af%e7%9f%a5">#&lt;/a>
+由此可知:
+&lt;a class="anchor" href="#%e7%94%b1%e6%ad%a4%e5%8f%af%e7%9f%a5">#&lt;/a>
 &lt;/h3>
 &lt;p>&lt;code>^&lt;/code>表行首标识符。 &lt;code>/^/&lt;/code>表示行首的空字符。 而取消注释中的&lt;code>/^#/&lt;/code>即表示行首的&lt;code>#&lt;/code>，被&lt;code>//&lt;/code>空字符所替换。&lt;/p>
 &lt;hr>
 &lt;h2 id="查找高亮">
- 查找高亮
- &lt;a class="anchor" href="#%e6%9f%a5%e6%89%be%e9%ab%98%e4%ba%ae">#&lt;/a>
+查找高亮
+&lt;a class="anchor" href="#%e6%9f%a5%e6%89%be%e9%ab%98%e4%ba%ae">#&lt;/a>
 &lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">set&lt;/span> &lt;span style="color:#a6e22e">hlsearch&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">set&lt;/span> &lt;span style="color:#a6e22e">nohlsearch&lt;/span> 
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="分屏">
- 分屏
- &lt;a class="anchor" href="#%e5%88%86%e5%b1%8f">#&lt;/a>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">set&lt;/span> &lt;span style="color:#a6e22e">hlsearch&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> &lt;span style="color:#a6e22e">set&lt;/span> &lt;span style="color:#a6e22e">nohlsearch&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="分屏">
+分屏
+&lt;a class="anchor" href="#%e5%88%86%e5%b1%8f">#&lt;/a>
 &lt;/h2>
 &lt;h3 id="实现">
- 实现
- &lt;a class="anchor" href="#%e5%ae%9e%e7%8e%b0">#&lt;/a>
+实现
+&lt;a class="anchor" href="#%e5%ae%9e%e7%8e%b0">#&lt;/a>
 &lt;/h3>
 &lt;ul>
 &lt;li>在外部使用&lt;code>-o&lt;/code> or &lt;code>-O&lt;/code>参数&lt;/li>
 &lt;li>内部&lt;code>split&lt;/code> or &lt;code>vsplit&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;h3 id="操作">
- 操作
- &lt;a class="anchor" href="#%e6%93%8d%e4%bd%9c">#&lt;/a>
+操作
+&lt;a class="anchor" href="#%e6%93%8d%e4%bd%9c">#&lt;/a>
 &lt;/h3>
 &lt;ul>
 &lt;li>移动光标 &lt;code>Ctrl + w&lt;/code> hjkl&lt;/li>
@@ -82,6 +82,5 @@ ctrl v、I、#、Esc
 &lt;li>改变高度&lt;code>Ctrl + w&lt;/code> +-&lt;/li>
 &lt;/ul>
 &lt;h1 id="heading">
- 
- &lt;a class="anchor" href="#heading">#&lt;/a>
+&lt;a class="anchor" href="#heading">#&lt;/a>
 &lt;/h1></description></item></channel></rss>

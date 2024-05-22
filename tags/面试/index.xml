@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>面试 on Ian's Blog</title><link>http://example.org/tags/%E9%9D%A2%E8%AF%95/</link><description>Recent content in 面试 on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 06 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml"/><item><title>网络编程</title><link>http://example.org/docs/programmer/net/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link><pubDate>Mon, 06 May 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/net/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</guid><description>网络分层图 # ![[net_layer.png]]
+TCP是传输层的协议，而基于TCP造出来的HTTP和各类RPC协议，它们都只是定义了不同消息格式的应用层协议而已。 HTTP协议（Hyper Text Transfer Protocol），又叫做超文本传输协议。我们用的比较多，平时上网在浏览器上敲个网址就能访问网页，这里用到的就是HTTP协议。 RPC（Remote Procedure Call），又叫做远程过程调用。它本身并不是一个具体的协议，而是一种调用方式。虽然大部分RPC协议底层使用TCP，但实际上它们不一定非得使用TCP，改用UDP或者HTTP，其实也可以做到类似的功能。 RPC # vs HTTP # HTTP: ![[http.png]] RPC: ![[rpc.png]]
+服务发现 [x] # 首先要向某个服务器发起请求，你得先建立连接，而建立连接的前提是，你得知道IP地址和端口。这个找到服务对应的IP端口的过程，其实就是服务发现。
+在HTTP中，你知道服务的域名，就可以通过DNS服务去解析得到它背后的IP地址，默认80端口。
+而RPC的话，就有些区别，一般会有专门的中间服务去保存服务名和IP信息，比如consul或者etcd，甚至是redis。想要访问某个服务，就去这些中间服务去获得IP和端口信息。由于dns也是服务发现的一种，所以也有基于dns去做服务发现的组件，比如CoreDNS。
+底层连接形式 [x] # 以主流的HTTP1.1协议为例，其默认在建立底层TCP连接之后会一直保持这个连接（keep alive），之后的请求和响应都会复用这条连接。
+而RPC协议，也跟HTTP类似，也是通过建立TCP长链接进行数据交互，但不同的地方在于，RPC协议一般还会再建个连接池，在请求量大的时候，建立多条连接放在池内，要发数据的时候就从池里取一条连接出来，用完放回去，下次再复用，可以说非常环保。
+由于连接池有利于提升网络请求性能，所以不少编程语言的网络库里都会给HTTP加个连接池，比如go就是这么干的。
+可以看出这一块两者也没太大区别，所以也不是关键。
+传输的内容 # 基于TCP传输的消息，说到底，无非都是消息头header和消息体body。
+header是用于标记一些特殊信息，其中最重要的是消息体长度。
+body则是放我们真正需要传输的内容，而这些内容只能是二进制01串，毕竟计算机只认识这玩意。所以TCP传字符串和数字都问题不大，因为字符串可以转成编码再变成01串，而数字本身也能直接转为二进制。但结构体呢，我们得想个办法将它也转为二进制01串，这样的方案现在也有很多现成的，比如json，protobuf。
+这个将结构体转为二进制数组的过程就叫序列化，反过来将二进制数组复原成结构体的过程叫反序列化。 ![[tobytes.png]]
+序列化和反序列化
+对于主流的HTTP1.1，虽然它现在叫超文本协议，支持音频视频，但HTTP设计初是用于做网页文本展示的，所以它传的内容以字符串为主。header和body都是如此。在body这块，它使用json来序列化结构体数据。
+我们可以随便截个图直观看下。 ![[tobetes_details.png]] HTTP报文
+可以看到这里面的内容非常多的冗余，显得非常啰嗦。最明显的，像header里的那些信息，其实如果我们约定好头部的第几位是content-type，就不需要每次都真的把&amp;quot;content-type&amp;quot;这个字段都传过来，类似的情况其实在body的json结构里也特别明显。
+而RPC，因为它定制化程度更高，可以采用体积更小的protobuf或其他序列化协议去保存结构体数据，同时也不需要像HTTP那样考虑各种浏览器行为，比如302重定向跳转啥的。因此性能也会更好一些，这也是在公司内部微服务中抛弃HTTP，选择使用RPC的最主要原因。
+当然上面说的HTTP，其实特指的是现在主流使用的HTTP1.1，HTTP2在前者的基础上做了很多改进，所以性能可能比很多RPC协议还要好，甚至连gRPC底层都直接用的HTTP2。
+结论 # 纯裸TCP是能收发数据，但它是个无边界的数据流，上层需要定义消息格式用于定义消息边界。于是就有了各种协议，HTTP和各类RPC协议就是在TCP之上定义的应用层协议。 RPC本质上不算是协议，而是一种调用方式，而像gRPC和thrift这样的具体实现，才是协议，它们是实现了RPC调用的协议。目的是希望程序员能像调用本地方法那样去调用远端的服务方法。同时RPC有很多种实现方式，不一定非得基于TCP协议。 从发展历史来说，**HTTP主要用于b/s架构，而RPC更多用于c/s架构。但现在其实已经没分那么清了，b/s和c/s在慢慢融合。**很多软件同时支持多端，所以对外一般用HTTP协议，而内部集群的微服务之间则采用RPC协议进行通讯。 RPC其实比HTTP出现的要早，且比目前主流的HTTP1.1性能要更好，所以大部分公司内部都还在使用RPC。 HTTP2.0在HTTP1.1的基础上做了优化，性能可能比很多RPC协议都要好，但由于是这几年才出来的，所以也不太可能取代掉RPC。 TCP # 八股文常背，TCP是有三个特点，面向连接、可靠、基于字节流。
+粘包问题 # 因为： ![[tcp_is_dataflow.png]] 所以： ![[nianbaowenti.png]] 无法区分上述两种情况。 得出： 纯裸TCP是不能直接拿来用的，你需要在这个基础上加入一些自定义的规则，用于区分消息边界。
+于是我们会把每条要发送的数据都包装一下，比如加入消息头，消息头里写清楚一个完整的包长度是多少，根据这个长度可以继续接收数据，截取出来后它们就是我们真正要传输的消息体。</description></item><item><title>Redis基础</title><link>http://example.org/docs/programmer/cloudnative/redis/the-basics-of-redis/</link><pubDate>Sun, 05 May 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/redis/the-basics-of-redis/</guid><description>基础理论 # 概况 # Redis (Remote Dictionary Server) 是一个开源的、支持网络、基于内存、可选持久性的键值对数据库。它支持多种类型的数据结构，如字符串（strings）、列表（lists）、集合（sets）、有序集合（sorted sets）以及散列（hashes）、位图（bitmaps）、超日志（hyperloglogs）和地理空间（geospatial）索引半径查询。
+特点包括：
+高性能：因为数据主要在内存中进行操作，读写速度非常快。 丰富的数据类型：提供多种数据结构来满足不同场景下的需求。 原子性：所有操作都是原子性的，支持事务（通过MULTI/EXEC命令）。 丰富的功能：支持发布订阅、Lua脚本、事务等。 数据结构 # Redis提供的数据结构包括： Redis 支持多种数据类型，以下是一些常用的数据类型以及它们的简要描述和使用场景：
+数据类型 描述 使用场景 String 二进制安全字符串，最大可以存储 512MB 存储文本或二进制数据，如缓存用户个人信息等 List 有序集合，按插入顺序排序 消息队列、时间线、最新消息列表 Set 无序集合，元素不重复 标签、社交网络中的朋友关系等 Sorted Set 有序集合，元素不重复，并且每个元素都会关联一个浮点数分数 排行榜、带权重的集合 Hash 键值对集合，适用于存储对象 存储、访问和修改对象属性 Bitmaps 通过位来表示数据的数据类型，适合做计数统计 在线状态、特性标志、统计等 HyperLogLog 近似去重计数的数据结构 大数据量的计数，如统计独立 IP 访问数量 Geospatial 存储地理位置信息，并进行相关地理操作 储存经纬度，查询附近的地点 Streams Redis 5.0 新增的数据类型，是一个可持久化的日志数据结构 实现消息队列，发布/订阅模式，日志记录 Redis 之所以快速，主要原因有以下几点： # 内存存储：Redis 将所有数据存储在内存中，内存的读写速度远高于硬盘。 数据结构简单：Redis 的数据结构设计简单直观，易于高效操作。 非阻塞 IO：Redis 使用非阻塞 IO 和多路复用技术，可以处理多个并发连接。 单线程模型：Redis 大部分操作是单线程执行，避免了多线程的上下文切换开销。 Redis高性能IO模型 # Redis的IO模型使用的是非阻塞IO复用技术，主要是epoll作为IO多路复用技术的实现方式。它通过单线程事件循环来处理所有客户端请求，确保绝大部分请求都是非阻塞的，并且使用异步编程模式来提高性能。</description></item><item><title>Redis进阶</title><link>http://example.org/docs/programmer/cloudnative/redis/advanced-knowledge-of-redis/</link><pubDate>Sun, 05 May 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/redis/advanced-knowledge-of-redis/</guid><description>主从架构-主从同步 # 在Redis中，主从同步是一种常用的数据复制方式，它允许一个或多个从服务器（slave）获得与主服务器（master）相同的数据副本。这种架构提供了数据的冗余和读取扩展性。
+全量复制：当一个从服务器第一次连接到主服务器时，或是由于某些原因需要重新同步时，会进行全量复制。在这个过程中，主服务器会生成一个当前所有数据的快照，并将这个快照发送至请求同步的从服务器。从服务器接收到数据后，加载到自己的数据空间内。
+部分复制：一旦完成了全量复制，如果从服务器断开连接又重新连接，且中断时间不长，主服务器可以只发送这段时间内发生变化的数据给从服务器，而不是再次进行全量复制。这依赖于主服务器的复制积压缓冲区来存储最近的写命令。
+同步策略：为了保证数据的一致性，从服务器在初始同步完成之前不会对外提供服务。在日常运行时，主服务器会将写命令同时发送给所有的从服务器，以此来保证数据的实时一致性。
+主从同步使得从服务器可以承担读操作，减轻主服务器的负载，同时也可以在主服务器遇到故障时，进行故障转移。
+主从哨兵架构 # Redis哨兵（Sentinel）系统是用于管理多个Redis服务器的系统。该体系结构具有以下特点：
+监控：哨兵会监控主从服务器是否正常运作。 自动故障转移：如果主服务器出现故障，哨兵可以自动选举新的主服务器，并让原来的从服务器指向新的主服务器。 配置提供者：哨兵还会将当前的主服务器地址提供给客户端，确保客户端总是连接到正确的主服务器。 哨兵机制通过这些功能增加了Redis环境的高可用性和稳定性。
+切片集群-Redis Cluster # Redis Cluster是Redis的分布式解决方案。它支持数据的水平分片，以下是其关键特性：
+自动分片：��动将数据分布在不同的节点上，每个节点只保存整个数据集的一部分。 高可用性：采用主从复制模型，即使在多个节点失败的情况下也能保证服务的可用性。 无中心设计：没有中心节点，每个节点都保存着整个集群状态的一部分，节点之间通过Gossip协议交换信息。 Redis Cluster通过对键进行CRC16计算并对16384取余数来决定将键分配到哪个槽位，每个节点负责一部分槽位，从而实现负载均衡。
+Redis Cluster 通信开销 # 由于Redis Cluster节点间需要频繁地交换消息以维护集群状态，因此会产生额外的通信开销：
+Gossip通信：节点间通过Gossip协议定期交换信息，包括数据迁移、故障检测等。 重定向操作：客户端可能会尝试向不包含数据所在槽的节点发起请求，这时节点会返回一个重定向信息 切片集群-Codis
+Redis 分布式锁是一种用于多个计算节点之间同步访问共享资源的机制。在分布式系统中，当多个进程需要同时访问某些数据或执行某些任务时，为了避免竞态条件（race conditions）和数据不一致，通常需要使用分布式锁来保证在同一时间只有一个进程能够执行特定的操作。
+Redis 分布式锁实现 # 一个常见的Redis分布式锁实现是使用 Redis 的 SETNX 命令（Set if not exists）。这个命令只在键不存在的情况下设置键的值，并且返回是否成功设置。由于 SETNX 是原子操作，因此可以用来实现锁的功能。
+另一个更加推荐的方式是使用 Redis 2.6.12 版本引入的 SET 命令结合选项 NX（表示只有键不存在时才进行设置）和 PX（给键设置过期时间，单位为毫秒），这可以保证即使在客户端崩溃的情况下，锁也会在一定时间后自动释放，防止死锁。
+使用 Redis 分布式锁的步骤： # 尝试获取锁
+使用 SET key value NX PX milliseconds 进行设置。 如果返回 OK，则获取锁成功。 如果返回 nil，则获取锁失败。 执行业务逻辑</description></item></channel></rss>

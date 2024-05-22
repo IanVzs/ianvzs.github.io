@@ -2,4 +2,8 @@
 matplotlib # import matplotlib.pyplot as plt 参数等太多，链接最可靠 # pyplot参数
 还是粘一些常用的： marker 属性（下面写在分号里呦） o . v ^ &amp;lt; &amp;gt; 1 2 3 4 8 s p * h H + x D d | _ 之类
 画出一些“花儿”
+绘图 # plt.plot(x, y) # 在y之后可添加参数，例如常用的label = ‘IamLabel’之类 # 线的样式、颜色 ：b: blue g: green r: red c: cyan m: magenta y: yellow k: black w: white '-' : solid , '--' : dashed, '-.</description></item><item><title>机器学习库</title><link>http://example.org/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</guid><description>Python 机器学习库 👽 # Plotly # 与matplotlib 都是绘图工具，不过效果炫一些，我也没画过，所以只放链接，不放实例了 Plotly Python Library : https://plot.ly/python/
+matplotlib # import matplotlib.pyplot as plt 参数等太多，链接最可靠 # pyplot参数
+还是粘一些常用的： marker 属性（下面写在分号里呦） o . v ^ &amp;lt; &amp;gt; 1 2 3 4 8 s p * h H + x D d | _ 之类
+画出一些“花儿”
 绘图 # plt.plot(x, y) # 在y之后可添加参数，例如常用的label = ‘IamLabel’之类 # 线的样式、颜色 ：b: blue g: green r: red c: cyan m: magenta y: yellow k: black w: white '-' : solid , '--' : dashed, '-.</description></item></channel></rss>
