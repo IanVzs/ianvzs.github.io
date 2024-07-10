@@ -1,25 +1,40 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="author:Ian
-彻底摆脱to_dict和from_dict # 使用 pydantic # BaseModel类型支持:
-b = BattleAxiePositionInfo.parse_obj(DICT_DATA) b.json() b.dict() parse_file parse_raw from pydantic import BaseModel class PositionInfo(BaseModel): error: int = -1 # 收集错误 none: int = 0 # 还没开始 clicked: int = 1 # 在client 赋此值 done: int = 2 # 在server 赋此值 xy: List[int] = [0, 0] status: int = 0 # clicked or done or none or error class BattleAxiePositionInfo(BaseModel): our: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] enemy: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] pp = BattleAxiePositionInfo() print(f&#34;pp json: {pp."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content="笔记"><meta property="og:description" content="author:Ian
-彻底摆脱to_dict和from_dict # 使用 pydantic # BaseModel类型支持:
-b = BattleAxiePositionInfo.parse_obj(DICT_DATA) b.json() b.dict() parse_file parse_raw from pydantic import BaseModel class PositionInfo(BaseModel): error: int = -1 # 收集错误 none: int = 0 # 还没开始 clicked: int = 1 # 在client 赋此值 done: int = 2 # 在server 赋此值 xy: List[int] = [0, 0] status: int = 0 # clicked or done or none or error class BattleAxiePositionInfo(BaseModel): our: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] enemy: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] pp = BattleAxiePositionInfo() print(f&#34;pp json: {pp."><meta property="og:type" content="article"><meta property="og:url" content="http://example.org/docs/programmer/langs/python/notespython/"><meta property="article:section" content="docs"><title>笔记 | Ian's Blog</title>
-<link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script><script defer src=/en.search.min.2d8d2bb9754cea7562c9f4c6dd439b23aa4670e648a288ebbc817f1f4eaa725f.js integrity="sha256-LY0ruXVM6nViyfTG3UObI6pGcOZIoojrvIF/H06qcl8=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Ian's Blog</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><a href=/docs/programmer/>程序员笔记</a><ul><li><input type=checkbox id=section-8658298e10b544e890095f646916165a class=toggle>
-<label for=section-8658298e10b544e890095f646916165a class="flex justify-between"><a role=button>云原生</a></label><ul><li><input type=checkbox id=section-62d608ed890b3abc76dae78ccfcab912 class=toggle>
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="特殊函数调用 property # 使用字段的方式调用函数
+from datetime import datetime from pydantic import BaseModel class InstallCountInfo(BaseModel): count: int total: int @property def done_rate(self): return round(self.count / self.total, 4) class InstallCount(BaseModel): pass_day: int install_day: datetime info: InstallCountInfo 彻底摆脱to_dict和from_dict # 使用 pydantic # BaseModel类型支持:
+b = BattleAxiePositionInfo.parse_obj(DICT_DATA) b.json() b.dict() parse_file parse_raw from pydantic import BaseModel class PositionInfo(BaseModel): error: int = -1 # 收集错误 none: int = 0 # 还没开始 clicked: int = 1 # 在client 赋此值 done: int = 2 # 在server 赋此值 xy: List[int] = [0, 0] status: int = 0 # clicked or done or none or error class BattleAxiePositionInfo(BaseModel): our: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] enemy: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] pp = BattleAxiePositionInfo() print(f&#34;pp json: {pp."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content="Python 笔记"><meta property="og:description" content="特殊函数调用 property # 使用字段的方式调用函数
+from datetime import datetime from pydantic import BaseModel class InstallCountInfo(BaseModel): count: int total: int @property def done_rate(self): return round(self.count / self.total, 4) class InstallCount(BaseModel): pass_day: int install_day: datetime info: InstallCountInfo 彻底摆脱to_dict和from_dict # 使用 pydantic # BaseModel类型支持:
+b = BattleAxiePositionInfo.parse_obj(DICT_DATA) b.json() b.dict() parse_file parse_raw from pydantic import BaseModel class PositionInfo(BaseModel): error: int = -1 # 收集错误 none: int = 0 # 还没开始 clicked: int = 1 # 在client 赋此值 done: int = 2 # 在server 赋此值 xy: List[int] = [0, 0] status: int = 0 # clicked or done or none or error class BattleAxiePositionInfo(BaseModel): our: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] enemy: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] pp = BattleAxiePositionInfo() print(f&#34;pp json: {pp."><meta property="og:type" content="article"><meta property="og:url" content="http://example.org/docs/programmer/langs/python/notespython/"><meta property="article:section" content="docs"><title>Python 笔记 | Ian's Blog</title>
+<link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script><script defer src=/en.search.min.80b0c12c6a3982c23bab5eb1d10c75b4cf8bfbaa1c7e183729648ce8a09207d7.js integrity="sha256-gLDBLGo5gsI7q16x0Qx1tM+L+6ocfhg3KWSM6KCSB9c=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Ian's Blog</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><a href=/docs/programmer/>程序员笔记</a><ul><li><input type=checkbox id=section-d5f99046a51e5e750b61f2e037945fcc class=toggle>
+<label for=section-d5f99046a51e5e750b61f2e037945fcc class="flex justify-between"><a role=button>基础工具和配置</a></label><ul><li><a href=/docs/programmer/basetc/%E6%96%87%E6%9C%AC%E4%B8%89%E5%89%91%E5%AE%A2/>文本三剑客</a></li><li><a href=/docs/programmer/basetc/tmux/>Tmux使用笔记</a></li><li><a href=/docs/programmer/basetc/obsidian%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%8F%92%E4%BB%B6/>Obsidian思维导图插件</a></li><li><a href=/docs/programmer/basetc/for_china/>各个软件换源</a></li><li><a href=/docs/programmer/basetc/tipsofvim/>tip Of vim</a></li><li><a href=/docs/programmer/basetc/editer/>编辑器使用</a></li><li><a href=/docs/programmer/basetc/bash/>Bash</a></li><li><a href=/docs/programmer/basetc/gitbook/>Gitbook</a></li><li><a href=/docs/programmer/basetc/vim/>Vim</a></li><li><a href=/docs/programmer/basetc/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/>supervisor</a></li></ul></li><li><input type=checkbox id=section-8658298e10b544e890095f646916165a class=toggle>
+<label for=section-8658298e10b544e890095f646916165a class="flex justify-between"><a href=/docs/programmer/cloudnative/>云原生</a></label><ul><li><input type=checkbox id=section-31d3b02fd4a132635e483e7e756058ea class=toggle>
+<label for=section-31d3b02fd4a132635e483e7e756058ea class="flex justify-between"><a href=/docs/programmer/cloudnative/redis/>中间件</a></label><ul><li><a href=/docs/programmer/cloudnative/redis/python-redis-%E5%AE%A2%E6%88%B7%E7%AB%AF/>Python Redis 客户端</a></li><li><a href=/docs/programmer/cloudnative/redis/bigkey-and-hotkey/>大key、热key问题</a></li><li><a href=/docs/programmer/cloudnative/redis/the-basics-of-redis/>Redis基础</a></li><li><a href=/docs/programmer/cloudnative/redis/advanced-knowledge-of-redis/>Redis进阶</a></li><li><a href=/docs/programmer/cloudnative/redis/%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4/>Redis常用命令</a></li></ul></li><li><input type=checkbox id=section-62d608ed890b3abc76dae78ccfcab912 class=toggle>
 <label for=section-62d608ed890b3abc76dae78ccfcab912 class="flex justify-between"><a role=button>k8s</a></label><ul><li><a href=/docs/programmer/cloudnative/k8s/elk%E5%9C%A8k8s%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B/>elk在k8s上的部署使用示例</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/>k8s 配套说明</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/>k8s技术分享</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/>k8s学习-常用命令和配置文件</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-workflow%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/>Argo Workflow性能测试和使用场景分析</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/>Argo 使用记录</a></li></ul></li><li><input type=checkbox id=section-b828bf3d116bc282da9db25a06bf908e class=toggle>
-<label for=section-b828bf3d116bc282da9db25a06bf908e class="flex justify-between"><a role=button>中间件</a></label><ul><li><a href=/docs/programmer/cloudnative/middleware/kafka-%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/>Kafka 安装和使用</a></li></ul></li><li><a href=/docs/programmer/cloudnative/noteofdocker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/tipsofweb/>Nginx高可用</a></li><li><a href=/docs/programmer/cloudnative/notesdjango/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/>Sonar 代码静态检查</a></li></ul></li><li><input type=checkbox id=section-de7bfad1d124522974cdf8addfbb23f2 class=toggle>
-<label for=section-de7bfad1d124522974cdf8addfbb23f2 class="flex justify-between"><a role=button>Net</a></label><ul><li><a href=/docs/programmer/net/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/>uwsgi 处理记录</a></li><li><a href=/docs/programmer/net/tipsofgrpc/>gRpc使用小记</a></li><li><a href=/docs/programmer/net/net/>Epoll实现</a></li><li><a href=/docs/programmer/net/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li></ul></li><li><input type=checkbox id=section-bf4e0d6f0b81f7b3ec08ed1fc66b874d class=toggle checked>
-<label for=section-bf4e0d6f0b81f7b3ec08ed1fc66b874d class="flex justify-between"><a role=button>编程语言</a></label><ul><li><input type=checkbox id=section-771df6c720301e69f1715f7fc174ac3d class=toggle checked>
-<label for=section-771df6c720301e69f1715f7fc174ac3d class="flex justify-between"><a role=button>Python</a></label><ul><li><a href=/docs/programmer/langs/python/pypi/>PyPi使用说明</a></li><li><a href=/docs/programmer/langs/python/paramiko-%E4%BD%BF%E7%94%A8-sshsftp/>Paramiko 使用 Ssh&amp;sftp</a></li><li><a href=/docs/programmer/langs/python/pytest/>Pytest</a></li><li><a href=/docs/programmer/langs/python/notespython/ class=active>笔记</a></li></ul></li><li><input type=checkbox id=section-9f8ac8f06e138c7ac13ff61f23b4d497 class=toggle>
-<label for=section-9f8ac8f06e138c7ac13ff61f23b4d497 class="flex justify-between"><a role=button>Golang</a></label><ul><li><a href=/docs/programmer/langs/golang/noteofgoexp/>Golang进阶笔记</a></li><li><a href=/docs/programmer/langs/golang/noteofgolang/>Golang笔记</a></li></ul></li><li><a href=/docs/programmer/langs/cmake/>CMake 使用Tips</a></li><li><a href=/docs/programmer/langs/tipsofdebugers/>tips Of Debuggers</a></li><li><a href=/docs/programmer/langs/tipsofmarkdown/>Markdown</a></li><li><a href=/docs/programmer/langs/markdown/>Markdown</a></li><li><a href=/docs/programmer/langs/java/notesjava/>愉快的Java(happy to learn the fuck java)</a></li><li><a href=/docs/programmer/langs/noteoffmtdata/>数据格式笔记</a></li></ul></li><li><input type=checkbox id=section-883e27361d38e16afb68faff3435ac0b class=toggle>
-<label for=section-883e27361d38e16afb68faff3435ac0b class="flex justify-between"><a role=button>机器学习</a></label><ul><li><a href=/docs/programmer/ml/tensorflow/>Tensorflow</a></li><li><a href=/docs/programmer/ml/opencv/>OpenCV</a></li><li><a href=/docs/programmer/ml/paddle/>Paddle</a></li><li><a href=/docs/programmer/ml/yolo/>Demo Test项目中的一些东西</a></li><li><a href=/docs/programmer/ml/noteofmachinelearning/>机器学习库</a></li></ul></li><li><input type=checkbox id=section-7e5360c5e7954906b897ed79085884b6 class=toggle>
-<label for=section-7e5360c5e7954906b897ed79085884b6 class="flex justify-between"><a href=/docs/programmer/gui/>图形用户界面-GUI</a></label><ul><li><a href=/docs/programmer/gui/pyinstaller/>python打包</a></li><li><a href=/docs/programmer/gui/qt/>Qt/PySide</a></li><li><a href=/docs/programmer/gui/noteofvn_py/>Vn.Py学习笔记（Python交易平台框架）</a></li><li><a href=/docs/programmer/gui/notespython/>图形化界面 （Python Gui）</a></li></ul></li><li><input type=checkbox id=section-ddcbe632dc99a9fb372422dada8ee641 class=toggle>
-<label for=section-ddcbe632dc99a9fb372422dada8ee641 class="flex justify-between"><a role=button>OS操作系统问题处理</a></label><ul><li><a href=/docs/programmer/os/install_some/>安装问题</a></li><li><a href=/docs/programmer/os/noteoflinux/>Linux</a></li><li><a href=/docs/programmer/os/android/>Android</a></li><li><a href=/docs/programmer/os/freebsd/>Freebsd</a></li><li><a href=/docs/programmer/os/npm/>Npm</a></li><li><a href=/docs/programmer/os/tipsofproblems/>解决问题</a></li></ul></li><li><input type=checkbox id=section-4446dd07527142b855f26d7cc8f0e617 class=toggle>
-<label for=section-4446dd07527142b855f26d7cc8f0e617 class="flex justify-between"><a role=button>Database</a></label><ul><li><a href=/docs/programmer/database/dgraph/>Dgraph使用小记</a></li><li><a href=/docs/programmer/database/noteofdbdata/>db数据库</a></li><li><a href=/docs/programmer/database/mongodb/>Mongodb</a></li><li><a href=/docs/programmer/database/tip_dgraph/>Dgraph</a></li></ul></li><li><input type=checkbox id=section-d5f99046a51e5e750b61f2e037945fcc class=toggle>
-<label for=section-d5f99046a51e5e750b61f2e037945fcc class="flex justify-between"><a role=button>基础工具和配置</a></label><ul><li><a href=/docs/programmer/basetc/for_china/>各个软件换源</a></li><li><a href=/docs/programmer/basetc/tipsofvim/>tip Of vim</a></li><li><a href=/docs/programmer/basetc/editer/>编辑器使用</a></li><li><a href=/docs/programmer/basetc/bash/>Bash</a></li><li><a href=/docs/programmer/basetc/gitbook/>Gitbook</a></li><li><a href=/docs/programmer/basetc/vim/>Vim</a></li></ul></li><li><input type=checkbox id=section-d325c59fc6513e1b1e05a60b192d4973 class=toggle>
+<label for=section-b828bf3d116bc282da9db25a06bf908e class="flex justify-between"><a role=button>中间件</a></label><ul><li><a href=/docs/programmer/cloudnative/middleware/kafka-%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/>Kafka 安装和使用</a></li></ul></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/>Podman</a></li><li><a href=/docs/programmer/cloudnative/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li><li><a href=/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/>uwsgi 处理记录</a></li><li><a href=/docs/programmer/cloudnative/note-of-docker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/fastapi/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/>Nginx高可用</a></li><li><a href=/docs/programmer/cloudnative/notesdjango/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/>Sonar 代码静态检查</a></li></ul></li><li><input type=checkbox id=section-883e27361d38e16afb68faff3435ac0b class=toggle>
+<label for=section-883e27361d38e16afb68faff3435ac0b class="flex justify-between"><a role=button>机器学习</a></label><ul><li><a href=/docs/programmer/ml/stable-diffusion/>AI画图</a></li><li><a href=/docs/programmer/ml/%E7%88%AC%E8%99%AB/>爬虫</a></li><li><a href=/docs/programmer/ml/paddle/>Paddle</a></li><li><a href=/docs/programmer/ml/tensorflow/>Tensorflow</a></li><li><a href=/docs/programmer/ml/opencv/>OpenCV</a></li><li><a href=/docs/programmer/ml/yolo/>Demo Test项目中的一些东西</a></li><li><a href=/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/>机器学习库</a></li></ul></li><li><input type=checkbox id=section-0bf4f4329214e20fa67ca3e12c6aad0c class=toggle>
+<label for=section-0bf4f4329214e20fa67ca3e12c6aad0c class="flex justify-between"><a role=button>平台</a></label><ul><li><a href=/docs/programmer/platforms/ubuntu/>Ubuntu</a></li><li><a href=/docs/programmer/platforms/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8/>阿里云使用</a></li><li><a href=/docs/programmer/platforms/wps-for-linux/>WPS for Linux</a></li><li><a href=/docs/programmer/platforms/appsflyer/>AppsFlyer-外网移动归因营销分析平台</a></li></ul></li><li><input type=checkbox id=section-bf4e0d6f0b81f7b3ec08ed1fc66b874d class=toggle checked>
+<label for=section-bf4e0d6f0b81f7b3ec08ed1fc66b874d class="flex justify-between"><a href=/docs/programmer/langs/>编程语言</a></label><ul><li><input type=checkbox id=section-771df6c720301e69f1715f7fc174ac3d class=toggle checked>
+<label for=section-771df6c720301e69f1715f7fc174ac3d class="flex justify-between"><a role=button>Python</a></label><ul><li><a href=/docs/programmer/langs/python/sqlalchemy/>SqlAlchemy - 数据库Orm</a></li><li><a href=/docs/programmer/langs/python/pypi/>PyPi使用说明</a></li><li><a href=/docs/programmer/langs/python/pytest/>PyTest</a></li><li><a href=/docs/programmer/langs/python/paramiko-%E4%BD%BF%E7%94%A8-sshsftp/>Paramiko 使用 Ssh&amp;sftp</a></li><li><a href=/docs/programmer/langs/python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B/>Python 多线程多进程</a></li><li><a href=/docs/programmer/langs/python/notespython/>Python 常用库</a></li><li><a href=/docs/programmer/langs/python/notespython/ class=active>Python 笔记</a></li><li><a href=/docs/programmer/langs/python/py%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%92%8C%E5%8A%9F%E8%83%BD%E6%80%A7%E6%96%B9%E6%B3%95/>Py小工具和功能性方法</a></li><li><a href=/docs/programmer/langs/python/notespython/>解决问题</a></li></ul></li><li><input type=checkbox id=section-9f8ac8f06e138c7ac13ff61f23b4d497 class=toggle>
+<label for=section-9f8ac8f06e138c7ac13ff61f23b4d497 class="flex justify-between"><a role=button>Golang</a></label><ul><li><a href=/docs/programmer/langs/golang/advanced-knowledge-of-golang/>Golang进阶笔记</a></li><li><a href=/docs/programmer/langs/golang/noteofgoexp/>Golang进阶笔记</a></li><li><a href=/docs/programmer/langs/golang/note-of-golang/>Golang笔记</a></li><li><a href=/docs/programmer/langs/golang/noteofgolang/>Golang笔记</a></li></ul></li><li><a href=/docs/programmer/langs/cmake/>CMake 使用Tips</a></li><li><a href=/docs/programmer/langs/tips-of-debugers/>Tips of debuggers</a></li><li><a href=/docs/programmer/langs/tips-of-markdown/>Tips of MarkDown</a></li><li><a href=/docs/programmer/langs/java/notesjava/>愉快的Java(happy to learn the fuck java)</a></li><li><a href=/docs/programmer/langs/note-for-fmtdata/>数据格式笔记</a></li></ul></li><li><input type=checkbox id=section-de7bfad1d124522974cdf8addfbb23f2 class=toggle>
+<label for=section-de7bfad1d124522974cdf8addfbb23f2 class="flex justify-between"><a role=button>Net</a></label><ul><li><a href=/docs/programmer/net/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/>网络编程</a></li><li><a href=/docs/programmer/net/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li><li><a href=/docs/programmer/net/tips-of-grpc/>gRpc使用小记</a></li><li><a href=/docs/programmer/net/epoll%E5%AE%9E%E7%8E%B0/>Epoll实现</a></li><li><a href=/docs/programmer/net/net/>Epoll实现</a></li></ul></li><li><input type=checkbox id=section-4446dd07527142b855f26d7cc8f0e617 class=toggle>
+<label for=section-4446dd07527142b855f26d7cc8f0e617 class="flex justify-between"><a href=/docs/programmer/database/>Database</a></label><ul><li><a href=/docs/programmer/database/mongodb/>Mongodb使用记录</a></li><li><a href=/docs/programmer/database/dgraph/>Dgraph使用小记</a></li><li><a href=/docs/programmer/database/note-of-db-data-mongodb/>数据库-MongoDB篇</a></li><li><a href=/docs/programmer/database/note-of-db-data/>数据库-MongoDB篇</a></li><li><a href=/docs/programmer/database/note-of-db-data-mysql/>数据库-MySQL篇</a></li></ul></li><li><input type=checkbox id=section-7e5360c5e7954906b897ed79085884b6 class=toggle>
+<label for=section-7e5360c5e7954906b897ed79085884b6 class="flex justify-between"><a href=/docs/programmer/gui/>图形用户界面-GUI</a></label><ul><li><a href=/docs/programmer/gui/pyinstaller-python%E6%89%93%E5%8C%85/>python打包</a></li><li><a href=/docs/programmer/gui/pyinstaller/>python打包</a></li><li><a href=/docs/programmer/gui/qt/>Qt/PySide</a></li><li><a href=/docs/programmer/gui/noteofvn_py/>Vn.Py学习笔记（Python交易平台框架）</a></li><li><a href=/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/>Vn.Py学习笔记（Python交易平台框架）</a></li><li><a href=/docs/programmer/gui/notespython/>图形化界面 （Python Gui）</a></li><li><a href=/docs/programmer/gui/notespython/>图形化界面 （Python Gui）</a></li></ul></li><li><input type=checkbox id=section-ddcbe632dc99a9fb372422dada8ee641 class=toggle>
+<label for=section-ddcbe632dc99a9fb372422dada8ee641 class="flex justify-between"><a role=button>OS操作系统问题处理</a></label><ul><li><a href=/docs/programmer/os/install_some/>安装问题</a></li><li><a href=/docs/programmer/os/android/>安卓</a></li><li><a href=/docs/programmer/os/freebsd/>FreeBSD</a></li><li><a href=/docs/programmer/os/note-of-linux/>Linux 笔记</a></li><li><a href=/docs/programmer/os/npm/>Npm</a></li><li><a href=/docs/programmer/os/git/>Git</a></li><li><a href=/docs/programmer/os/problem-of-windows/>Windows 爬坑记</a></li><li><a href=/docs/programmer/os/tips-of-problems/>解决问题记录笔记</a></li></ul></li><li><input type=checkbox id=section-d325c59fc6513e1b1e05a60b192d4973 class=toggle>
 <label for=section-d325c59fc6513e1b1e05a60b192d4973 class="flex justify-between"><a href=/docs/programmer/hardware/>硬件</a></label><ul><li><a href=/docs/programmer/hardware/raspberrypi/>Raspberry Pi</a></li><li><a href=/docs/programmer/hardware/screen/>Screen</a></li></ul></li></ul></li><li class=book-section-flat><span>建模和游戏</span><ul><li><a href=/docs/3dgame/blender/>Blender</a></li><li><a href=/docs/3dgame/noteofue4/>UE4 笔记</a></li></ul></li><li class=book-section-flat><a href=/docs/example/>Hugo特殊Markdown语法说明</a><ul><li><a href=/docs/example/table-of-contents/>Table of Contents</a><ul><li><a href=/docs/example/table-of-contents/with-toc/>With ToC</a></li><li><a href=/docs/example/table-of-contents/without-toc/>Without ToC</a></li></ul></li><li><a href=/docs/example/shortcodes/buttons/>Buttons</a></li><li><a href=/docs/example/shortcodes/columns/>Columns</a></li><li><a href=/docs/example/shortcodes/details/>Details</a></li><li><a href=/docs/example/shortcodes/expand/>Expand</a></li><li><a href=/docs/example/shortcodes/hints/>Hints</a></li><li><a href=/docs/example/shortcodes/tabs/>Tabs</a></li></ul></li></ul><ul><li><a href=/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu>
-</label><strong>笔记</strong>
-<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#彻底摆脱to_dict和from_dict>彻底摆脱<code>to_dict</code>和<code>from_dict</code></a><ul><li><a href=#使用-pydantic>使用 <code>pydantic</code></a></li></ul></li><li><a href=#多个类属性一次赋值>多个类属性一次赋值</a></li><li><a href=#列表表达式-二维数组边一维-取字典内变一维>列表表达式 二维数组边一维 取字典内变一维</a></li><li><a href=#pip-not-found-issue>PiP Not Found Issue</a></li><li><a href=#modulenotfounderror-no-module-named-pip>ModuleNotFoundError: No module named &lsquo;pip&rsquo;</a><ul><li><a href=#升级pip时出现问题可由下方命令修复>升级<code>PiP</code>时出现问题可由下方命令修复</a></li></ul></li><li><a href=#ssl校验>SSL校验</a><ul><li><a href=#使用国内镜像下载python>使用国内镜像下载Python</a></li><li><a href=#声明参数类型>声明参数类型</a></li><li><a href=#时间处理>时间处理</a></li><li><a href=#合并字典>合并字典</a></li><li><a href=#聊胜于无的小玩意-preety-tools>聊胜于无的小玩意 preety tools</a></li><li><a href=#ide>IDE?</a></li><li><a href=#beautifulsoup>BeautifulSoup</a></li><li><a href=#datetime字符串转时间--时间转字符串>datetime字符串转时间 时间转字符串:</a></li><li><a href=#保存數據到xlsxsqlite3csv>保存數據到xlsx，sqlite3、csv：</a></li><li><a href=#image下>Image下：</a></li><li><a href=#pandas>Pandas:</a></li></ul></li><li><a href=#闲语>闲语：</a><ul><li></li></ul></li></ul><ul><li><ul><li></li><li><a href=#变量>变量</a></li></ul></li><li><a href=#变换数据类型>变换数据类型</a><ul><li></li></ul></li><li><a href=#python3>Python3</a><ul><li><a href=#一不小心发现的语法>一不小心发现的语法</a></li><li><a href=#-与--方法>* 与 ** 方法:</a></li><li><a href=#获取指定目录下所有文件名列表>获取指定目录下所有文件名列表</a></li><li><a href=#if-else>IF ELSE</a></li><li><a href=#python-2-中的object新式类和经典类>Python 2 中的object新式类和经典类</a></li><li><a href=#queue>Queue</a></li><li><a href=#series和dataframe>series和dataframe</a></li><li><a href=#自命名创建方式>自命名创建方式</a></li><li><a href=#查看>查看</a></li><li><a href=#zip-和-数组变字典>zip 和 数组变字典</a></li><li><a href=#字典操作>字典操作</a></li><li><a href=#csv>CSV</a></li><li><a href=#txt保存>txt保存</a></li><li><a href=#json>json</a></li><li><a href=#shelve>Shelve</a></li></ul></li><li><a href=#接口>接口。</a></li><li><a href=#列表list>列表List</a><ul><li><a href=#列表操作包含以下函数>列表操作包含以下函数:</a></li><li><a href=#列表操作包含以下方法>列表操作包含以下方法:</a></li></ul></li><li><a href=#字符串连接>字符串连接</a><ul><li><a href=#方法一>方法一</a></li><li><a href=#方法二>方法二</a></li><li><a href=#方法三>方法三</a></li></ul></li><li><a href=#手动编译py文件>手动编译Py文件</a></li><li><a href=#时间>时间</a><ul><li></li><li><a href=#格式化输出当前时间>格式化输出当前时间</a></li><li><a href=#time>time</a></li><li><a href=#线程-threading>线程 threading</a></li></ul></li></ul><ul><li><ul><li><a href=#数值取整>数值取整</a></li></ul></li></ul><ul><li><a href=#对象伪类间变量传递>对象（伪类）间变量传递</a></li><li><a href=#字典中建立函数映射方便调用>字典中建立函数映射，方便调用~</a><ul><li><a href=#collections-模块>collections 模块</a></li></ul></li><li><a href=#线程>线程</a><ul><li><a href=#线程同步>线程同步</a></li></ul></li><li><a href=#队列>队列</a><ul><li><a href=#一些方法>一些方法</a></li><li><a href=#老夫的demo>老夫的Demo</a></li></ul></li><li><a href=#进程>进程</a><ul><li></li><li><a href=#将进程定义为类>将进程定义为类</a></li></ul></li><li><a href=#font-colorcc0000警个告font><em><strong>警个告</strong></em></a><ul><li></li></ul></li><li><a href=#再加一个协程>再加一个协程</a><ul><li><a href=#基础实现>基础实现：</a></li><li><a href=#较完善方案>较完善方案：</a></li><li><a href=#futures>futures</a></li></ul></li><li><a href=#父类中的变量与类中变量>父类中的变量与类中变量</a><ul><li><a href=#列表的增删添>列表的增删添</a></li><li><a href=#一个函数的有效方式只在循环中执行一次---代码日志>一个函数的有效方式只在循环中执行一次 - 代码日志</a></li><li><a href=#函数调用函数-and-语法糖->函数调用函数 and 语法糖 @</a></li><li><a href=#变量作用域>变量作用域</a></li></ul></li><li><a href=#functools>functools</a><ul><li><a href=#partial>partial</a></li></ul></li></ul><ul><li><a href=#socket>socket</a></li><li><a href=#select----与socket配合的跨平台的异步io模型>select : 与Socket配合的跨平台的异步io模型</a></li><li><a href=#引用模块>引用模块</a><ul><li><a href=#同一文件夹下>同一文件夹下</a></li><li><a href=#其下级文件here下>其下级文件"here"下</a></li><li><a href=#在上级文件下>在上级文件下</a></li><li><a href=#在上级文件的下级文件中也就是在隔壁wang文件中>在上级文件的下级文件中（也就是在隔壁“wang”文件中）</a></li></ul></li><li><a href=#解决编码问题>解决编码问题</a><ul><li><a href=#输出提示打印乱码>输出提示打印乱码</a></li><li><a href=#内存异常占用>内存异常占用</a></li></ul></li><li><a href=#异常>异常</a><ul><li><a href=#plan1->plan1 ：</a></li><li><a href=#列表的坑>列表的坑</a></li><li><a href=#staticmethod>@staticmethod</a></li><li><a href=#常见异常>常见异常</a></li></ul></li></ul><ul><li><ul><li><a href=#visualstudio模式>VisualStudio模式：</a></li><li><a href=#netbeans模式>NetBeans模式：</a></li></ul></li></ul><ul><li><a href=#数据类>数据类</a><ul><li><a href=#若出现docx模块pyinstaller打包问题>若出现docx模块pyInstaller打包问题</a></li><li><a href=#simplehttpserver>SimpleHTTPServer</a></li><li><a href=#老夫的月份生成>老夫的月份生成</a></li></ul></li><li><a href=#python36之后的奇淫技巧>Python3.6之后的奇淫技巧</a></li></ul><ul><li><ul><li><a href=#collectionss>collectionss</a></li><li><a href=#function-annotations>Function Annotations</a></li><li><a href=#logger>Logger</a></li></ul></li><li><a href=#lambda函数>lambda函数</a><ul><li><a href=#排序>排序</a></li></ul></li><li><a href=#mock>Mock</a></li></ul></nav></aside></header><article class=markdown><p>author:Ian</p><p><img src=https://www.python.org/static/img/python-logo@2x.png alt=python></p><h2 id=彻底摆脱to_dict和from_dict>彻底摆脱<code>to_dict</code>和<code>from_dict</code>
+</label><strong>Python 笔记</strong>
+<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#特殊函数调用-property>特殊函数调用 property</a></li><li><a href=#彻底摆脱to_dict和from_dict>彻底摆脱<code>to_dict</code>和<code>from_dict</code></a><ul><li><a href=#使用-pydantic>使用 <code>pydantic</code></a></li></ul></li><li><a href=#多个类属性一次赋值>多个类属性一次赋值</a></li><li><a href=#列表表达式-二维数组边一维-取字典内变一维>列表表达式 二维数组边一维 取字典内变一维</a></li><li><a href=#pip-not-found-issue>PiP Not Found Issue</a></li><li><a href=#modulenotfounderror-no-module-named-pip>ModuleNotFoundError: No module named &lsquo;pip&rsquo;</a><ul><li><a href=#升级pip时出现问题可由下方命令修复>升级<code>PiP</code>时出现问题可由下方命令修复</a></li></ul></li><li><a href=#ssl校验>SSL校验</a><ul><li><a href=#使用国内镜像下载python>使用国内镜像下载Python</a></li><li><a href=#声明参数类型>声明参数类型</a></li><li><a href=#时间处理>时间处理</a></li><li><a href=#合并字典>合并字典</a></li><li><a href=#聊胜于无的小玩意-preety-tools>聊胜于无的小玩意 preety tools</a></li><li><a href=#ide>IDE?</a></li><li><a href=#beautifulsoup>BeautifulSoup</a></li><li><a href=#datetime字符串转时间--时间转字符串>datetime字符串转时间 时间转字符串:</a></li><li><a href=#保存數據到xlsxsqlite3csv>保存數據到xlsx，sqlite3、csv：</a></li><li><a href=#image下>Image下：</a></li><li><a href=#pandas>Pandas:</a></li></ul></li><li><a href=#闲语>闲语：</a><ul><li></li></ul></li></ul><ul><li><ul><li></li><li><a href=#变量>变量</a></li></ul></li><li><a href=#变换数据类型>变换数据类型</a><ul><li></li></ul></li></ul><ul><li><ul><li></li></ul></li><li><a href=#python3>Python3</a><ul><li><a href=#一不小心发现的语法>一不小心发现的语法</a></li><li><a href=#-与--方法>* 与 ** 方法:</a></li><li><a href=#获取指定目录下所有文件名列表>获取指定目录下所有文件名列表</a></li><li><a href=#if-else>IF ELSE</a></li><li><a href=#python-2-中的object新式类和经典类>Python 2 中的object新式类和经典类</a></li><li><a href=#queue>Queue</a></li><li><a href=#series和dataframe>series和dataframe</a></li></ul></li></ul><ul><li><ul><li></li><li><a href=#自命名创建方式>自命名创建方式</a></li><li><a href=#查看>查看</a></li><li><a href=#zip-和-数组变字典>zip 和 数组变字典</a></li><li><a href=#字典操作>字典操作</a></li><li><a href=#csv>CSV</a></li><li><a href=#txt保存>txt保存</a></li><li><a href=#json>json</a></li><li><a href=#shelve>Shelve</a></li></ul></li><li><a href=#接口>接口。</a></li><li><a href=#列表list>列表List</a><ul><li><a href=#列表操作包含以下函数>列表操作包含以下函数:</a></li><li><a href=#列表操作包含以下方法>列表操作包含以下方法:</a></li></ul></li><li><a href=#字符串连接>字符串连接</a><ul><li><a href=#方法一>方法一</a></li><li><a href=#方法二>方法二</a></li><li><a href=#方法三>方法三</a></li></ul></li><li><a href=#手动编译py文件>手动编译Py文件</a></li><li><a href=#时间>时间</a><ul><li></li><li><a href=#格式化输出当前时间>格式化输出当前时间</a></li><li><a href=#time>time</a></li><li><a href=#线程-threading>线程 threading</a></li></ul></li></ul><ul><li><ul><li><a href=#数值取整>数值取整</a></li></ul></li></ul><ul><li><a href=#对象伪类间变量传递>对象（伪类）间变量传递</a></li><li><a href=#字典中建立函数映射方便调用>字典中建立函数映射，方便调用~</a><ul><li><a href=#collections-模块>collections 模块</a></li></ul></li><li><a href=#线程>线程</a><ul><li><a href=#线程同步>线程同步</a></li></ul></li><li><a href=#队列>队列</a><ul><li><a href=#一些方法>一些方法</a></li><li><a href=#老夫的demo>老夫的Demo</a></li></ul></li><li><a href=#进程>进程</a><ul><li></li><li><a href=#将进程定义为类>将进程定义为类</a></li></ul></li><li><a href=#font-colorcc0000警个告font><em><strong>警个告</strong></em></a><ul><li></li></ul></li><li><a href=#再加一个协程>再加一个协程</a><ul><li><a href=#基础实现>基础实现：</a></li><li><a href=#较完善方案>较完善方案：</a></li><li><a href=#futures>futures</a></li></ul></li><li><a href=#父类中的变量与类中变量>父类中的变量与类中变量</a><ul><li><a href=#列表的增删添>列表的增删添</a></li><li><a href=#一个函数的有效方式只在循环中执行一次---代码日志>一个函数的有效方式只在循环中执行一次 - 代码日志</a></li><li><a href=#函数调用函数-and-语法糖->函数调用函数 and 语法糖 @</a></li><li><a href=#变量作用域>变量作用域</a></li></ul></li><li><a href=#functools>functools</a><ul><li><a href=#partial>partial</a></li></ul></li></ul><ul><li><a href=#socket>socket</a></li><li><a href=#select----与socket配合的跨平台的异步io模型>select : 与Socket配合的跨平台的异步io模型</a></li><li><a href=#引用模块>引用模块</a><ul><li><a href=#同一文件夹下>同一文件夹下</a></li><li><a href=#其下级文件here下>其下级文件"here"下</a></li><li><a href=#在上级文件下>在上级文件下</a></li><li><a href=#在上级文件的下级文件中也就是在隔壁wang文件中>在上级文件的下级文件中（也就是在隔壁“wang”文件中）</a></li></ul></li><li><a href=#解决编码问题>解决编码问题</a><ul><li><a href=#输出提示打印乱码>输出提示打印乱码</a></li><li><a href=#内存异常占用>内存异常占用</a></li></ul></li><li><a href=#异常>异常</a><ul><li><a href=#plan1->plan1 ：</a></li><li><a href=#列表的坑>列表的坑</a></li><li><a href=#staticmethod>@staticmethod</a></li><li><a href=#常见异常>常见异常</a></li></ul></li></ul><ul><li><ul><li><a href=#visualstudio模式>VisualStudio模式：</a></li><li><a href=#netbeans模式>NetBeans模式：</a></li></ul></li></ul><ul><li><a href=#数据类>数据类</a><ul><li><a href=#若出现docx模块pyinstaller打包问题>若出现docx模块pyInstaller打包问题</a></li><li><a href=#simplehttpserver>SimpleHTTPServer</a></li><li><a href=#老夫的月份生成>老夫的月份生成</a></li></ul></li><li><a href=#python36之后的奇淫技巧>Python3.6之后的奇淫技巧</a></li></ul><ul><li><ul><li><a href=#collectionss>collectionss</a></li><li><a href=#function-annotations>Function Annotations</a></li><li><a href=#logger>Logger</a></li></ul></li><li><a href=#lambda函数>lambda函数</a><ul><li><a href=#排序>排序</a></li></ul></li><li><a href=#mock>Mock</a></li></ul></nav></aside></header><article class=markdown><p><img src=https://www.python.org/static/img/python-logo@2x.png alt=python></p><h2 id=特殊函数调用-property>特殊函数调用 property
+<a class=anchor href=#%e7%89%b9%e6%ae%8a%e5%87%bd%e6%95%b0%e8%b0%83%e7%94%a8-property>#</a></h2><p>使用字段的方式调用函数</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> datetime <span style=color:#f92672>import</span> datetime
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> pydantic <span style=color:#f92672>import</span> BaseModel
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>InstallCountInfo</span>(BaseModel):
+</span></span><span style=display:flex><span>	count: int
+</span></span><span style=display:flex><span>	total: int
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>@property</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>done_rate</span>(self):
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> round(self<span style=color:#f92672>.</span>count <span style=color:#f92672>/</span> self<span style=color:#f92672>.</span>total, <span style=color:#ae81ff>4</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>InstallCount</span>(BaseModel):
+</span></span><span style=display:flex><span>	pass_day: int
+</span></span><span style=display:flex><span>	install_day: datetime
+</span></span><span style=display:flex><span>	info: InstallCountInfo
+</span></span></code></pre></div><h2 id=彻底摆脱to_dict和from_dict>彻底摆脱<code>to_dict</code>和<code>from_dict</code>
 <a class=anchor href=#%e5%bd%bb%e5%ba%95%e6%91%86%e8%84%b1to_dict%e5%92%8cfrom_dict>#</a></h2><h3 id=使用-pydantic>使用 <code>pydantic</code>
 <a class=anchor href=#%e4%bd%bf%e7%94%a8-pydantic>#</a></h3><p><code>BaseModel</code>类型支持:</p><ul><li>b = BattleAxiePositionInfo.parse_obj(DICT_DATA)</li><li>b.json()</li><li>b.dict()</li><li>parse_file</li><li>parse_raw</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#f92672>from</span> pydantic <span style=color:#f92672>import</span> BaseModel
 </span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>PositionInfo</span>(BaseModel):
@@ -205,9 +220,8 @@ Windows 下 用<code>py -2 -m pip install ***</code>以及<code>py -3 -m pip ins
 </span></span><span style=display:flex><span>    print str
 </span></span><span style=display:flex><span>    print repr(str)
 </span></span></code></pre></div><blockquote><p>&mdash;- result
-length: 8
-> #&mdash;-这里是乱码
-&lsquo;/x14/x00/x00/x00/x90/x01/x00/x00&rsquo;</p></blockquote><p>格式符”i”表示转换为int，’ii’表示有两个int变量。进行转换后的结果长度为8个字节（int类型占用4个字节，两个int为8个字节），可以看到输出的结果是乱码，因为结果是二进制数据，所以显示为乱码。可以使用python的内置函数repr来获取可识别的字符串，其中十六进制的0x00000014, 0x00001009分别表示20和400。</p><h4 id=structunpack>struct.unpack
+length: 8</p><h1 id=----这里是乱码>&mdash;-这里是乱码
+<a class=anchor href=#----%e8%bf%99%e9%87%8c%e6%98%af%e4%b9%b1%e7%a0%81>#</a></h1><p>&lsquo;/x14/x00/x00/x00/x90/x01/x00/x00&rsquo;</p></blockquote><p>格式符”i”表示转换为int，’ii’表示有两个int变量。进行转换后的结果长度为8个字节（int类型占用4个字节，两个int为8个字节），可以看到输出的结果是乱码，因为结果是二进制数据，所以显示为乱码。可以使用python的内置函数repr来获取可识别的字符串，其中十六进制的0x00000014, 0x00001009分别表示20和400。</p><h4 id=structunpack>struct.unpack
 <a class=anchor href=#structunpack>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>    str <span style=color:#f92672>=</span> struct<span style=color:#f92672>.</span>pack(<span style=color:#e6db74>&#34;ii&#34;</span>, <span style=color:#ae81ff>20</span>, <span style=color:#ae81ff>400</span>)
 </span></span><span style=display:flex><span>    a1, a2 <span style=color:#f92672>=</span> struct<span style=color:#f92672>.</span>unpack(<span style=color:#e6db74>&#34;ii&#34;</span>, str)
 </span></span><span style=display:flex><span>    print <span style=color:#e6db74>&#39;a1:&#39;</span>, a1
@@ -347,12 +361,15 @@ print obj_series_dict
 print type(obj_series_list),obj_series_list.dtype
 print obj_series_list.index,obj_series_list.index.name
 print obj_series_list.values,obj_series_list.name
-</code></pre><blockquote><p>#通过列表创建series</p></blockquote><blockquote><p>zimu</p></blockquote><blockquote><p>0 1</p></blockquote><blockquote><p>1 2</p></blockquote><blockquote><p>2 3</p></blockquote><blockquote><p>3 4</p></blockquote><blockquote><p>Name: data, dtype: int64</p></blockquote><hr><blockquote><p>#通过元组创建series</p></blockquote><pre><code>a    4
+</code></pre><blockquote><h1 id=通过列表创建series>通过列表创建series
+<a class=anchor href=#%e9%80%9a%e8%bf%87%e5%88%97%e8%a1%a8%e5%88%9b%e5%bb%baseries>#</a></h1></blockquote><blockquote><p>zimu</p></blockquote><blockquote><p>0 1</p></blockquote><blockquote><p>1 2</p></blockquote><blockquote><p>2 3</p></blockquote><blockquote><p>3 4</p></blockquote><blockquote><p>Name: data, dtype: int64</p></blockquote><hr><blockquote><h1 id=通过元组创建series>通过元组创建series
+<a class=anchor href=#%e9%80%9a%e8%bf%87%e5%85%83%e7%bb%84%e5%88%9b%e5%bb%baseries>#</a></h1></blockquote><pre><code>a    4
 b    5
 c    6
 d    7
 dtype: int32
-</code></pre><hr><blockquote><p>#通过字典创建series</p></blockquote><pre><code>a    [1, 2]
+</code></pre><hr><blockquote><h1 id=通过字典创建series>通过字典创建series
+<a class=anchor href=#%e9%80%9a%e8%bf%87%e5%ad%97%e5%85%b8%e5%88%9b%e5%bb%baseries>#</a></h1></blockquote><pre><code>a    [1, 2]
 b    [2, 3]
 c    [3, 4]
 d    [4, 5]
@@ -1113,12 +1130,14 @@ nihoua
 </span></span><span style=display:flex><span>print(ge<span style=color:#f92672>.</span>next())
 </span></span><span style=display:flex><span>print(ge<span style=color:#f92672>.</span>send(<span style=color:#ae81ff>2</span>))
 </span></span><span style=display:flex><span>print(ge<span style=color:#f92672>.</span>send(<span style=color:#ae81ff>3</span>))
-</span></span></code></pre></div><blockquote><p>1
-2
-(&lsquo;finally: &lsquo;, 3)
-Traceback (most recent call last):
-File &ldquo;yield_emm3.py&rdquo;, line 8, in print(ge.send(3))
-StopIteration</p></blockquote><p>可知：
+</span></span></code></pre></div><pre tabindex=0><code class=language-print data-lang=print>&gt; 1
+&gt; 2
+&gt; (&#39;finally: &#39;, 3)
+&gt; Traceback (most recent call last):
+&gt;   File &#34;yield_emm3.py&#34;, line 8, in &lt;module&gt;
+&gt;     print(ge.send(3))
+&gt; StopIteration
+</code></pre><p>可知：
 当<code>next</code>时，<code>yield</code>挂起，但将之后的<code>1</code>返回。而后<code>send</code>激活了之前挂起赋值动作，但此时<code>yield 1</code>被替换为<code>send</code>来的<code>2</code>所以<code>value</code>被置为<code>2</code>. 再第三次调用，完成赋值动作之后，由于只被挂起两次动作，而这里调取了三次，所以报错 停止递归 。若直接递归则得到1 和 None.</p><p>所以 <code>next</code>与<code>send</code>都是用来激活挂起动作而使用的，但<code>send</code>好在可以与之交互。
 在<code>send``之前需先</code>next<code>否则提示</code>can&rsquo;t send * to a just-started generator`(⊙﹏⊙) 我上面阐述的挂起，激活，是不是出现了什么偏差…</p><blockquote><p>2018年5月18日16点30分</p></blockquote><h3 id=较完善方案>较完善方案：
 <a class=anchor href=#%e8%be%83%e5%ae%8c%e5%96%84%e6%96%b9%e6%a1%88>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># 1</span>
@@ -1274,68 +1293,86 @@ s.connect((host, port))
 print s.recv(1024)
 # 客户端显示welcome here
 </code></pre><h2 id=select----与socket配合的跨平台的异步io模型>select : 与Socket配合的跨平台的异步io模型
-<a class=anchor href=#select----%e4%b8%8esocket%e9%85%8d%e5%90%88%e7%9a%84%e8%b7%a8%e5%b9%b3%e5%8f%b0%e7%9a%84%e5%bc%82%e6%ad%a5io%e6%a8%a1%e5%9e%8b>#</a></h2><p>import select
-import socket
-import Queue</p><p>#create a socket
-server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-server.setblocking(False)
-#set option reused
-server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR , 1)</p><p>server_address= (&lsquo;192.168.1.102&rsquo;,10001)
-server.bind(server_address)</p><p>server.listen(10)</p><p>#sockets from which we except to read
-inputs = [server]</p><p>#sockets from which we expect to write
-outputs = []</p><p>#Outgoing message queues (socket:Queue)
-message_queues = {}</p><p>#A optional parameter for select is TIMEOUT
-timeout = 20</p><p>while inputs:
-print &ldquo;waiting for next event&rdquo;
-readable , writable , exceptional = select.select(inputs, outputs, inputs, timeout)</p><pre><code># When timeout reached , select return three empty lists
-if not (readable or writable or exceptional) :
-    print &quot;Time out ! &quot;
-    break;    
-for s in readable :
-    if s is server:
-        # A &quot;readable&quot; socket is ready to accept a connection
-        connection, client_address = s.accept()
-        print &quot;    connection from &quot;, client_address
-        connection.setblocking(0)
-        inputs.append(connection)
-        message_queues[connection] = Queue.Queue()
-    else:
-        data = s.recv(1024)
-        if data :
-            print &quot; received &quot; , data , &quot;from &quot;,s.getpeername()
-            message_queues[s].put(data)
-            # Add output channel for response    
-            if s not in outputs:
-                outputs.append(s)
-        else:
-            #Interpret empty result as closed connection
-            print &quot;  closing&quot;, client_address
-            if s in outputs :
-                outputs.remove(s)
-            inputs.remove(s)
-            s.close()
-            #remove message queue 
-            del message_queues[s]
-for s in writable:
-    try:
-        next_msg = message_queues[s].get_nowait()
-    except Queue.Empty:
-        print &quot; &quot; , s.getpeername() , 'queue empty'
-        outputs.remove(s)
-    else:
-        print &quot; sending &quot; , next_msg , &quot; to &quot;, s.getpeername()
-        s.send(next_msg)
-
-for s in exceptional:
-    print &quot; exception condition on &quot;, s.getpeername()
-    #stop listening for input on the connection
-    inputs.remove(s)
-    if s in outputs:
-        outputs.remove(s)
-    s.close()
-    #Remove message queue
-    del message_queues[s]
-</code></pre><p><a href=http://www.cnblogs.com/coser/archive/2012/01/06/2315216.html>糖拌咸鱼 - 记录学习的点点滴滴~</a></p><p>简单来说一下<code>select</code>的作用：
+<a class=anchor href=#select----%e4%b8%8esocket%e9%85%8d%e5%90%88%e7%9a%84%e8%b7%a8%e5%b9%b3%e5%8f%b0%e7%9a%84%e5%bc%82%e6%ad%a5io%e6%a8%a1%e5%9e%8b>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> select
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> socket
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> Queue
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#create a socket</span>
+</span></span><span style=display:flex><span>server <span style=color:#f92672>=</span> socket<span style=color:#f92672>.</span>socket(socket<span style=color:#f92672>.</span>AF_INET,socket<span style=color:#f92672>.</span>SOCK_STREAM)
+</span></span><span style=display:flex><span>server<span style=color:#f92672>.</span>setblocking(<span style=color:#66d9ef>False</span>)
+</span></span><span style=display:flex><span><span style=color:#75715e>#set option reused</span>
+</span></span><span style=display:flex><span>server<span style=color:#f92672>.</span>setsockopt(socket<span style=color:#f92672>.</span>SOL_SOCKET, socket<span style=color:#f92672>.</span>SO_REUSEADDR  , <span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>server_address<span style=color:#f92672>=</span> (<span style=color:#e6db74>&#39;192.168.1.102&#39;</span>,<span style=color:#ae81ff>10001</span>)
+</span></span><span style=display:flex><span>server<span style=color:#f92672>.</span>bind(server_address)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>server<span style=color:#f92672>.</span>listen(<span style=color:#ae81ff>10</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#sockets from which we except to read</span>
+</span></span><span style=display:flex><span>inputs <span style=color:#f92672>=</span> [server]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#sockets from which we expect to write</span>
+</span></span><span style=display:flex><span>outputs <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#Outgoing message queues (socket:Queue)</span>
+</span></span><span style=display:flex><span>message_queues <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#A optional parameter for select is TIMEOUT</span>
+</span></span><span style=display:flex><span>timeout <span style=color:#f92672>=</span> <span style=color:#ae81ff>20</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>while</span> inputs:
+</span></span><span style=display:flex><span>    print <span style=color:#e6db74>&#34;waiting for next event&#34;</span>
+</span></span><span style=display:flex><span>    readable , writable , exceptional <span style=color:#f92672>=</span> select<span style=color:#f92672>.</span>select(inputs, outputs, inputs, timeout)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># When timeout reached , select return three empty lists</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> (readable <span style=color:#f92672>or</span> writable <span style=color:#f92672>or</span> exceptional) :
+</span></span><span style=display:flex><span>        print <span style=color:#e6db74>&#34;Time out ! &#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>break</span>;    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> s <span style=color:#f92672>in</span> readable :
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> s <span style=color:#f92672>is</span> server:
+</span></span><span style=display:flex><span>            <span style=color:#75715e># A &#34;readable&#34; socket is ready to accept a connection</span>
+</span></span><span style=display:flex><span>            connection, client_address <span style=color:#f92672>=</span> s<span style=color:#f92672>.</span>accept()
+</span></span><span style=display:flex><span>            print <span style=color:#e6db74>&#34;    connection from &#34;</span>, client_address
+</span></span><span style=display:flex><span>            connection<span style=color:#f92672>.</span>setblocking(<span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>            inputs<span style=color:#f92672>.</span>append(connection)
+</span></span><span style=display:flex><span>            message_queues[connection] <span style=color:#f92672>=</span> Queue<span style=color:#f92672>.</span>Queue()
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>            data <span style=color:#f92672>=</span> s<span style=color:#f92672>.</span>recv(<span style=color:#ae81ff>1024</span>)
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> data :
+</span></span><span style=display:flex><span>                print <span style=color:#e6db74>&#34; received &#34;</span> , data , <span style=color:#e6db74>&#34;from &#34;</span>,s<span style=color:#f92672>.</span>getpeername()
+</span></span><span style=display:flex><span>                message_queues[s]<span style=color:#f92672>.</span>put(data)
+</span></span><span style=display:flex><span>                <span style=color:#75715e># Add output channel for response    </span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> s <span style=color:#f92672>not</span> <span style=color:#f92672>in</span> outputs:
+</span></span><span style=display:flex><span>                    outputs<span style=color:#f92672>.</span>append(s)
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>                <span style=color:#75715e>#Interpret empty result as closed connection</span>
+</span></span><span style=display:flex><span>                print <span style=color:#e6db74>&#34;  closing&#34;</span>, client_address
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> s <span style=color:#f92672>in</span> outputs :
+</span></span><span style=display:flex><span>                    outputs<span style=color:#f92672>.</span>remove(s)
+</span></span><span style=display:flex><span>                inputs<span style=color:#f92672>.</span>remove(s)
+</span></span><span style=display:flex><span>                s<span style=color:#f92672>.</span>close()
+</span></span><span style=display:flex><span>                <span style=color:#75715e>#remove message queue </span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>del</span> message_queues[s]
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> s <span style=color:#f92672>in</span> writable:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>try</span>:
+</span></span><span style=display:flex><span>            next_msg <span style=color:#f92672>=</span> message_queues[s]<span style=color:#f92672>.</span>get_nowait()
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>except</span> Queue<span style=color:#f92672>.</span>Empty:
+</span></span><span style=display:flex><span>            print <span style=color:#e6db74>&#34; &#34;</span> , s<span style=color:#f92672>.</span>getpeername() , <span style=color:#e6db74>&#39;queue empty&#39;</span>
+</span></span><span style=display:flex><span>            outputs<span style=color:#f92672>.</span>remove(s)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>            print <span style=color:#e6db74>&#34; sending &#34;</span> , next_msg , <span style=color:#e6db74>&#34; to &#34;</span>, s<span style=color:#f92672>.</span>getpeername()
+</span></span><span style=display:flex><span>            s<span style=color:#f92672>.</span>send(next_msg)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> s <span style=color:#f92672>in</span> exceptional:
+</span></span><span style=display:flex><span>        print <span style=color:#e6db74>&#34; exception condition on &#34;</span>, s<span style=color:#f92672>.</span>getpeername()
+</span></span><span style=display:flex><span>        <span style=color:#75715e>#stop listening for input on the connection</span>
+</span></span><span style=display:flex><span>        inputs<span style=color:#f92672>.</span>remove(s)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> s <span style=color:#f92672>in</span> outputs:
+</span></span><span style=display:flex><span>            outputs<span style=color:#f92672>.</span>remove(s)
+</span></span><span style=display:flex><span>        s<span style=color:#f92672>.</span>close()
+</span></span><span style=display:flex><span>        <span style=color:#75715e>#Remove message queue</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>del</span> message_queues[s]
+</span></span></code></pre></div><p><a href=http://www.cnblogs.com/coser/archive/2012/01/06/2315216.html>糖拌咸鱼 - 记录学习的点点滴滴~</a></p><p>简单来说一下<code>select</code>的作用：
 返回值：三个列表
 select方法用来监视文件描述符(当文件描述符条件不满足时，select会阻塞)，当某个文件描述符状态改变后，会返回三个列表
 1、当参数1 序列中的fd满足“可读”条件时，则获取发生变化的fd并添加到fd_r_list中
@@ -1677,72 +1714,72 @@ from collections import Counter</p><h3 id=function-annotations>Function Annotati
 </span></span></code></pre></div><h3 id=logger>Logger
 <a class=anchor href=#logger>#</a></h3><p>模块名： logging
 上手容易，功能丰富，性能肯定也好过自己✍
-另外，懒———</p><pre tabindex=0><code>import sys
-import logging
-import logging_error
-
-logger1 = logging.getLogger(&#39;loger1&#39;)
-logger2 = logging.getLogger(&#39;loger2&#39;)
-#实例化两个logger,默认名称为：`root`
-&#34;&#34;&#34;
-我居然以为root是程序执行处的名字，以为放到函数中就会显示函数名。emm
-所以才有了下面多层函数嵌套…，以及调用外部`import`
-&#34;&#34;&#34;
-
-formatter = logging.Formatter(&#39;[%(name)s]%(asctime)s %(levelname)-8s: %(message)s&#39;)
-#定义日志格式：
-&#34;&#34;&#34;
-%(name)s Logger的名字
-%(levelno)s 数字形式的日志级别
-%(levelname)s 文本形式的日志级别
-%(pathname)s 调用日志输出函数的模块的完整路径名，可能没有
-%(filename)s 调用日志输出函数的模块的文件名
-%(module)s 调用日志输出函数的模块名|
-%(funcName)s 调用日志输出函数的函数名|
-%(lineno)d 调用日志输出函数的语句所在的代码行
-%(created)f 当前时间，用UNIX标准的表示时间的浮点数表示|
-%(relativeCreated)d 输出日志信息时的，自Logger创建以来的毫秒数|
-%(asctime)s 字符串形式的当前时间。默认格式是“2003-07-08 16:49:45,896”。逗号后面的是毫秒
-%(thread)d 线程ID。可能没有
-%(threadName)s 线程名。可能没有
-%(process)d 进程ID。可能没有
-%(message)s 用户输出的消息
-&#34;&#34;&#34;
-
-fileHandler = logging.FileHandler(&#39;loger.log&#39;)
-fileHandler.setFormatter(formatter)
-
-consoleHandler = logging.StreamHandler(sys.stdout)
-consoleHandler.formatter = formatter
-#配置文件、终端日志处理器。可以使用不同格式，来区分处理
-
-logger1.addHandler(fileHandler)
-logger2.addHandler(fileHandler)
-logger1.addHandler(consoleHandler)
-logger2.addHandler(consoleHandler)
-#为日志机添加处理器
-
-logger1.setLevel(logging.INFO)
-#logger2.setLevel()
-#设置各日志机打印等级
-
-
-logger1.debug(&#39;debugO&#39;)
-logger1.info(&#39;info&#39;)
-logger2.info(&#39;info&#39;)
-logger1.error(&#39;error&#39;)
-def warn_msg():
-    logger1.warn(&#39;warn msg&#39;)
-    warn_msg2()
-def warn_msg2():
-    logger2.warn(u&#39;warn 信息&#39;)
-    logging_error.error_demo()
-warn_msg()
-</code></pre><p>当然，logger还有别的调用方法，不过这应该就够了，
+另外，懒———</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> sys
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> logging
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> logging_error
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>logger1 <span style=color:#f92672>=</span> logging<span style=color:#f92672>.</span>getLogger(<span style=color:#e6db74>&#39;loger1&#39;</span>)
+</span></span><span style=display:flex><span>logger2 <span style=color:#f92672>=</span> logging<span style=color:#f92672>.</span>getLogger(<span style=color:#e6db74>&#39;loger2&#39;</span>)
+</span></span><span style=display:flex><span><span style=color:#75715e>#实例化两个logger,默认名称为：`root`</span>
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;&#34;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>我居然以为root是程序执行处的名字，以为放到函数中就会显示函数名。emm
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>所以才有了下面多层函数嵌套…，以及调用外部`import`
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>formatter <span style=color:#f92672>=</span> logging<span style=color:#f92672>.</span>Formatter(<span style=color:#e6db74>&#39;[</span><span style=color:#e6db74>%(name)s</span><span style=color:#e6db74>]</span><span style=color:#e6db74>%(asctime)s</span><span style=color:#e6db74> </span><span style=color:#e6db74>%(levelname)-8s</span><span style=color:#e6db74>: </span><span style=color:#e6db74>%(message)s</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span><span style=color:#75715e>#定义日志格式：</span>
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;&#34;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#e6db74>%(name)s</span><span style=color:#e6db74> Logger的名字
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#e6db74>%(levelno)s</span><span style=color:#e6db74> 数字形式的日志级别
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#e6db74>%(levelname)s</span><span style=color:#e6db74> 文本形式的日志级别
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#e6db74>%(pathname)s</span><span style=color:#e6db74> 调用日志输出函数的模块的完整路径名，可能没有
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#e6db74>%(filename)s</span><span style=color:#e6db74> 调用日志输出函数的模块的文件名
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#e6db74>%(module)s</span><span style=color:#e6db74> 调用日志输出函数的模块名|
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#e6db74>%(funcName)s</span><span style=color:#e6db74> 调用日志输出函数的函数名|
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#e6db74>%(lineno)d</span><span style=color:#e6db74> 调用日志输出函数的语句所在的代码行
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#e6db74>%(created)f</span><span style=color:#e6db74> 当前时间，用UNIX标准的表示时间的浮点数表示|
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#e6db74>%(relativeCreated)d</span><span style=color:#e6db74> 输出日志信息时的，自Logger创建以来的毫秒数|
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#e6db74>%(asctime)s</span><span style=color:#e6db74> 字符串形式的当前时间。默认格式是“2003-07-08 16:49:45,896”。逗号后面的是毫秒
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#e6db74>%(thread)d</span><span style=color:#e6db74> 线程ID。可能没有
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#e6db74>%(threadName)s</span><span style=color:#e6db74> 线程名。可能没有
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#e6db74>%(process)d</span><span style=color:#e6db74> 进程ID。可能没有
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#e6db74>%(message)s</span><span style=color:#e6db74> 用户输出的消息
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>fileHandler <span style=color:#f92672>=</span> logging<span style=color:#f92672>.</span>FileHandler(<span style=color:#e6db74>&#39;loger.log&#39;</span>)
+</span></span><span style=display:flex><span>fileHandler<span style=color:#f92672>.</span>setFormatter(formatter)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>consoleHandler <span style=color:#f92672>=</span> logging<span style=color:#f92672>.</span>StreamHandler(sys<span style=color:#f92672>.</span>stdout)
+</span></span><span style=display:flex><span>consoleHandler<span style=color:#f92672>.</span>formatter <span style=color:#f92672>=</span> formatter
+</span></span><span style=display:flex><span><span style=color:#75715e>#配置文件、终端日志处理器。可以使用不同格式，来区分处理</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>logger1<span style=color:#f92672>.</span>addHandler(fileHandler)
+</span></span><span style=display:flex><span>logger2<span style=color:#f92672>.</span>addHandler(fileHandler)
+</span></span><span style=display:flex><span>logger1<span style=color:#f92672>.</span>addHandler(consoleHandler)
+</span></span><span style=display:flex><span>logger2<span style=color:#f92672>.</span>addHandler(consoleHandler)
+</span></span><span style=display:flex><span><span style=color:#75715e>#为日志机添加处理器</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>logger1<span style=color:#f92672>.</span>setLevel(logging<span style=color:#f92672>.</span>INFO)
+</span></span><span style=display:flex><span><span style=color:#75715e>#logger2.setLevel()</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#设置各日志机打印等级</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>logger1<span style=color:#f92672>.</span>debug(<span style=color:#e6db74>&#39;debugO&#39;</span>)
+</span></span><span style=display:flex><span>logger1<span style=color:#f92672>.</span>info(<span style=color:#e6db74>&#39;info&#39;</span>)
+</span></span><span style=display:flex><span>logger2<span style=color:#f92672>.</span>info(<span style=color:#e6db74>&#39;info&#39;</span>)
+</span></span><span style=display:flex><span>logger1<span style=color:#f92672>.</span>error(<span style=color:#e6db74>&#39;error&#39;</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>warn_msg</span>():
+</span></span><span style=display:flex><span>    logger1<span style=color:#f92672>.</span>warn(<span style=color:#e6db74>&#39;warn msg&#39;</span>)
+</span></span><span style=display:flex><span>    warn_msg2()
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>warn_msg2</span>():
+</span></span><span style=display:flex><span>    logger2<span style=color:#f92672>.</span>warn(<span style=color:#e6db74>u</span><span style=color:#e6db74>&#39;warn 信息&#39;</span>)
+</span></span><span style=display:flex><span>    logging_error<span style=color:#f92672>.</span>error_demo()
+</span></span><span style=display:flex><span>warn_msg()
+</span></span></code></pre></div><p>当然，logger还有别的调用方法，不过这应该就够了，
 具体要怎么实现，就去找官方文档了。
 预防针： 多种配置方法、日志重复输出:<a href=http://python.jobbole.com/86887/>见此</a></p><h2 id=lambda函数>lambda函数
 <a class=anchor href=#lambda%e5%87%bd%e6%95%b0>#</a></h2><h3 id=排序>排序
-<a class=anchor href=#%e6%8e%92%e5%ba%8f>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>aaa
+<a class=anchor href=#%e6%8e%92%e5%ba%8f>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>aaa
 </span></span><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> [{<span style=color:#e6db74>&#39;time&#39;</span>: <span style=color:#ae81ff>1</span>}, {<span style=color:#e6db74>&#39;time&#39;</span>: <span style=color:#ae81ff>3</span>}, {<span style=color:#e6db74>&#39;time&#39;</span>: <span style=color:#ae81ff>2</span>}]
 </span></span><span style=display:flex><span>sorted(aaa, key <span style=color:#f92672>=</span> <span style=color:#66d9ef>lambda</span> x: x[<span style=color:#e6db74>&#34;time&#34;</span>])
 </span></span><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> [{<span style=color:#e6db74>&#39;time&#39;</span>: <span style=color:#ae81ff>1</span>}, {<span style=color:#e6db74>&#39;time&#39;</span>: <span style=color:#ae81ff>2</span>}, {<span style=color:#e6db74>&#39;time&#39;</span>: <span style=color:#ae81ff>3</span>}]
@@ -1759,4 +1796,4 @@ warn_msg()
 </span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
 </span></span><span style=display:flex><span>        mock_send_template_msg<span style=color:#f92672>.</span>return_value <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;&#39;</span><span style=color:#f92672>/</span>{}<span style=color:#f92672>/</span>[]<span style=color:#f92672>/</span>() 皆可  设定mock返回值
 </span></span><span style=display:flex><span>        mock_get_user_base_info<span style=color:#f92672>.</span>side_effect <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#39;&#39;</span><span style=color:#f92672>/</span>{}<span style=color:#f92672>/</span>[]<span style=color:#f92672>/</span>(), <span style=color:#e6db74>&#39;&#39;</span><span style=color:#f92672>/</span>{}<span style=color:#f92672>/</span>[]<span style=color:#f92672>/</span>()] 设定每次调用mock函数依次返回返回值
-</span></span></code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#彻底摆脱to_dict和from_dict>彻底摆脱<code>to_dict</code>和<code>from_dict</code></a><ul><li><a href=#使用-pydantic>使用 <code>pydantic</code></a></li></ul></li><li><a href=#多个类属性一次赋值>多个类属性一次赋值</a></li><li><a href=#列表表达式-二维数组边一维-取字典内变一维>列表表达式 二维数组边一维 取字典内变一维</a></li><li><a href=#pip-not-found-issue>PiP Not Found Issue</a></li><li><a href=#modulenotfounderror-no-module-named-pip>ModuleNotFoundError: No module named &lsquo;pip&rsquo;</a><ul><li><a href=#升级pip时出现问题可由下方命令修复>升级<code>PiP</code>时出现问题可由下方命令修复</a></li></ul></li><li><a href=#ssl校验>SSL校验</a><ul><li><a href=#使用国内镜像下载python>使用国内镜像下载Python</a></li><li><a href=#声明参数类型>声明参数类型</a></li><li><a href=#时间处理>时间处理</a></li><li><a href=#合并字典>合并字典</a></li><li><a href=#聊胜于无的小玩意-preety-tools>聊胜于无的小玩意 preety tools</a></li><li><a href=#ide>IDE?</a></li><li><a href=#beautifulsoup>BeautifulSoup</a></li><li><a href=#datetime字符串转时间--时间转字符串>datetime字符串转时间 时间转字符串:</a></li><li><a href=#保存數據到xlsxsqlite3csv>保存數據到xlsx，sqlite3、csv：</a></li><li><a href=#image下>Image下：</a></li><li><a href=#pandas>Pandas:</a></li></ul></li><li><a href=#闲语>闲语：</a><ul><li></li></ul></li></ul><ul><li><ul><li></li><li><a href=#变量>变量</a></li></ul></li><li><a href=#变换数据类型>变换数据类型</a><ul><li></li></ul></li><li><a href=#python3>Python3</a><ul><li><a href=#一不小心发现的语法>一不小心发现的语法</a></li><li><a href=#-与--方法>* 与 ** 方法:</a></li><li><a href=#获取指定目录下所有文件名列表>获取指定目录下所有文件名列表</a></li><li><a href=#if-else>IF ELSE</a></li><li><a href=#python-2-中的object新式类和经典类>Python 2 中的object新式类和经典类</a></li><li><a href=#queue>Queue</a></li><li><a href=#series和dataframe>series和dataframe</a></li><li><a href=#自命名创建方式>自命名创建方式</a></li><li><a href=#查看>查看</a></li><li><a href=#zip-和-数组变字典>zip 和 数组变字典</a></li><li><a href=#字典操作>字典操作</a></li><li><a href=#csv>CSV</a></li><li><a href=#txt保存>txt保存</a></li><li><a href=#json>json</a></li><li><a href=#shelve>Shelve</a></li></ul></li><li><a href=#接口>接口。</a></li><li><a href=#列表list>列表List</a><ul><li><a href=#列表操作包含以下函数>列表操作包含以下函数:</a></li><li><a href=#列表操作包含以下方法>列表操作包含以下方法:</a></li></ul></li><li><a href=#字符串连接>字符串连接</a><ul><li><a href=#方法一>方法一</a></li><li><a href=#方法二>方法二</a></li><li><a href=#方法三>方法三</a></li></ul></li><li><a href=#手动编译py文件>手动编译Py文件</a></li><li><a href=#时间>时间</a><ul><li></li><li><a href=#格式化输出当前时间>格式化输出当前时间</a></li><li><a href=#time>time</a></li><li><a href=#线程-threading>线程 threading</a></li></ul></li></ul><ul><li><ul><li><a href=#数值取整>数值取整</a></li></ul></li></ul><ul><li><a href=#对象伪类间变量传递>对象（伪类）间变量传递</a></li><li><a href=#字典中建立函数映射方便调用>字典中建立函数映射，方便调用~</a><ul><li><a href=#collections-模块>collections 模块</a></li></ul></li><li><a href=#线程>线程</a><ul><li><a href=#线程同步>线程同步</a></li></ul></li><li><a href=#队列>队列</a><ul><li><a href=#一些方法>一些方法</a></li><li><a href=#老夫的demo>老夫的Demo</a></li></ul></li><li><a href=#进程>进程</a><ul><li></li><li><a href=#将进程定义为类>将进程定义为类</a></li></ul></li><li><a href=#font-colorcc0000警个告font><em><strong>警个告</strong></em></a><ul><li></li></ul></li><li><a href=#再加一个协程>再加一个协程</a><ul><li><a href=#基础实现>基础实现：</a></li><li><a href=#较完善方案>较完善方案：</a></li><li><a href=#futures>futures</a></li></ul></li><li><a href=#父类中的变量与类中变量>父类中的变量与类中变量</a><ul><li><a href=#列表的增删添>列表的增删添</a></li><li><a href=#一个函数的有效方式只在循环中执行一次---代码日志>一个函数的有效方式只在循环中执行一次 - 代码日志</a></li><li><a href=#函数调用函数-and-语法糖->函数调用函数 and 语法糖 @</a></li><li><a href=#变量作用域>变量作用域</a></li></ul></li><li><a href=#functools>functools</a><ul><li><a href=#partial>partial</a></li></ul></li></ul><ul><li><a href=#socket>socket</a></li><li><a href=#select----与socket配合的跨平台的异步io模型>select : 与Socket配合的跨平台的异步io模型</a></li><li><a href=#引用模块>引用模块</a><ul><li><a href=#同一文件夹下>同一文件夹下</a></li><li><a href=#其下级文件here下>其下级文件"here"下</a></li><li><a href=#在上级文件下>在上级文件下</a></li><li><a href=#在上级文件的下级文件中也就是在隔壁wang文件中>在上级文件的下级文件中（也就是在隔壁“wang”文件中）</a></li></ul></li><li><a href=#解决编码问题>解决编码问题</a><ul><li><a href=#输出提示打印乱码>输出提示打印乱码</a></li><li><a href=#内存异常占用>内存异常占用</a></li></ul></li><li><a href=#异常>异常</a><ul><li><a href=#plan1->plan1 ：</a></li><li><a href=#列表的坑>列表的坑</a></li><li><a href=#staticmethod>@staticmethod</a></li><li><a href=#常见异常>常见异常</a></li></ul></li></ul><ul><li><ul><li><a href=#visualstudio模式>VisualStudio模式：</a></li><li><a href=#netbeans模式>NetBeans模式：</a></li></ul></li></ul><ul><li><a href=#数据类>数据类</a><ul><li><a href=#若出现docx模块pyinstaller打包问题>若出现docx模块pyInstaller打包问题</a></li><li><a href=#simplehttpserver>SimpleHTTPServer</a></li><li><a href=#老夫的月份生成>老夫的月份生成</a></li></ul></li><li><a href=#python36之后的奇淫技巧>Python3.6之后的奇淫技巧</a></li></ul><ul><li><ul><li><a href=#collectionss>collectionss</a></li><li><a href=#function-annotations>Function Annotations</a></li><li><a href=#logger>Logger</a></li></ul></li><li><a href=#lambda函数>lambda函数</a><ul><li><a href=#排序>排序</a></li></ul></li><li><a href=#mock>Mock</a></li></ul></nav></div></aside></main></body></html>
+</span></span></code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#特殊函数调用-property>特殊函数调用 property</a></li><li><a href=#彻底摆脱to_dict和from_dict>彻底摆脱<code>to_dict</code>和<code>from_dict</code></a><ul><li><a href=#使用-pydantic>使用 <code>pydantic</code></a></li></ul></li><li><a href=#多个类属性一次赋值>多个类属性一次赋值</a></li><li><a href=#列表表达式-二维数组边一维-取字典内变一维>列表表达式 二维数组边一维 取字典内变一维</a></li><li><a href=#pip-not-found-issue>PiP Not Found Issue</a></li><li><a href=#modulenotfounderror-no-module-named-pip>ModuleNotFoundError: No module named &lsquo;pip&rsquo;</a><ul><li><a href=#升级pip时出现问题可由下方命令修复>升级<code>PiP</code>时出现问题可由下方命令修复</a></li></ul></li><li><a href=#ssl校验>SSL校验</a><ul><li><a href=#使用国内镜像下载python>使用国内镜像下载Python</a></li><li><a href=#声明参数类型>声明参数类型</a></li><li><a href=#时间处理>时间处理</a></li><li><a href=#合并字典>合并字典</a></li><li><a href=#聊胜于无的小玩意-preety-tools>聊胜于无的小玩意 preety tools</a></li><li><a href=#ide>IDE?</a></li><li><a href=#beautifulsoup>BeautifulSoup</a></li><li><a href=#datetime字符串转时间--时间转字符串>datetime字符串转时间 时间转字符串:</a></li><li><a href=#保存數據到xlsxsqlite3csv>保存數據到xlsx，sqlite3、csv：</a></li><li><a href=#image下>Image下：</a></li><li><a href=#pandas>Pandas:</a></li></ul></li><li><a href=#闲语>闲语：</a><ul><li></li></ul></li></ul><ul><li><ul><li></li><li><a href=#变量>变量</a></li></ul></li><li><a href=#变换数据类型>变换数据类型</a><ul><li></li></ul></li></ul><ul><li><ul><li></li></ul></li><li><a href=#python3>Python3</a><ul><li><a href=#一不小心发现的语法>一不小心发现的语法</a></li><li><a href=#-与--方法>* 与 ** 方法:</a></li><li><a href=#获取指定目录下所有文件名列表>获取指定目录下所有文件名列表</a></li><li><a href=#if-else>IF ELSE</a></li><li><a href=#python-2-中的object新式类和经典类>Python 2 中的object新式类和经典类</a></li><li><a href=#queue>Queue</a></li><li><a href=#series和dataframe>series和dataframe</a></li></ul></li></ul><ul><li><ul><li></li><li><a href=#自命名创建方式>自命名创建方式</a></li><li><a href=#查看>查看</a></li><li><a href=#zip-和-数组变字典>zip 和 数组变字典</a></li><li><a href=#字典操作>字典操作</a></li><li><a href=#csv>CSV</a></li><li><a href=#txt保存>txt保存</a></li><li><a href=#json>json</a></li><li><a href=#shelve>Shelve</a></li></ul></li><li><a href=#接口>接口。</a></li><li><a href=#列表list>列表List</a><ul><li><a href=#列表操作包含以下函数>列表操作包含以下函数:</a></li><li><a href=#列表操作包含以下方法>列表操作包含以下方法:</a></li></ul></li><li><a href=#字符串连接>字符串连接</a><ul><li><a href=#方法一>方法一</a></li><li><a href=#方法二>方法二</a></li><li><a href=#方法三>方法三</a></li></ul></li><li><a href=#手动编译py文件>手动编译Py文件</a></li><li><a href=#时间>时间</a><ul><li></li><li><a href=#格式化输出当前时间>格式化输出当前时间</a></li><li><a href=#time>time</a></li><li><a href=#线程-threading>线程 threading</a></li></ul></li></ul><ul><li><ul><li><a href=#数值取整>数值取整</a></li></ul></li></ul><ul><li><a href=#对象伪类间变量传递>对象（伪类）间变量传递</a></li><li><a href=#字典中建立函数映射方便调用>字典中建立函数映射，方便调用~</a><ul><li><a href=#collections-模块>collections 模块</a></li></ul></li><li><a href=#线程>线程</a><ul><li><a href=#线程同步>线程同步</a></li></ul></li><li><a href=#队列>队列</a><ul><li><a href=#一些方法>一些方法</a></li><li><a href=#老夫的demo>老夫的Demo</a></li></ul></li><li><a href=#进程>进程</a><ul><li></li><li><a href=#将进程定义为类>将进程定义为类</a></li></ul></li><li><a href=#font-colorcc0000警个告font><em><strong>警个告</strong></em></a><ul><li></li></ul></li><li><a href=#再加一个协程>再加一个协程</a><ul><li><a href=#基础实现>基础实现：</a></li><li><a href=#较完善方案>较完善方案：</a></li><li><a href=#futures>futures</a></li></ul></li><li><a href=#父类中的变量与类中变量>父类中的变量与类中变量</a><ul><li><a href=#列表的增删添>列表的增删添</a></li><li><a href=#一个函数的有效方式只在循环中执行一次---代码日志>一个函数的有效方式只在循环中执行一次 - 代码日志</a></li><li><a href=#函数调用函数-and-语法糖->函数调用函数 and 语法糖 @</a></li><li><a href=#变量作用域>变量作用域</a></li></ul></li><li><a href=#functools>functools</a><ul><li><a href=#partial>partial</a></li></ul></li></ul><ul><li><a href=#socket>socket</a></li><li><a href=#select----与socket配合的跨平台的异步io模型>select : 与Socket配合的跨平台的异步io模型</a></li><li><a href=#引用模块>引用模块</a><ul><li><a href=#同一文件夹下>同一文件夹下</a></li><li><a href=#其下级文件here下>其下级文件"here"下</a></li><li><a href=#在上级文件下>在上级文件下</a></li><li><a href=#在上级文件的下级文件中也就是在隔壁wang文件中>在上级文件的下级文件中（也就是在隔壁“wang”文件中）</a></li></ul></li><li><a href=#解决编码问题>解决编码问题</a><ul><li><a href=#输出提示打印乱码>输出提示打印乱码</a></li><li><a href=#内存异常占用>内存异常占用</a></li></ul></li><li><a href=#异常>异常</a><ul><li><a href=#plan1->plan1 ：</a></li><li><a href=#列表的坑>列表的坑</a></li><li><a href=#staticmethod>@staticmethod</a></li><li><a href=#常见异常>常见异常</a></li></ul></li></ul><ul><li><ul><li><a href=#visualstudio模式>VisualStudio模式：</a></li><li><a href=#netbeans模式>NetBeans模式：</a></li></ul></li></ul><ul><li><a href=#数据类>数据类</a><ul><li><a href=#若出现docx模块pyinstaller打包问题>若出现docx模块pyInstaller打包问题</a></li><li><a href=#simplehttpserver>SimpleHTTPServer</a></li><li><a href=#老夫的月份生成>老夫的月份生成</a></li></ul></li><li><a href=#python36之后的奇淫技巧>Python3.6之后的奇淫技巧</a></li></ul><ul><li><ul><li><a href=#collectionss>collectionss</a></li><li><a href=#function-annotations>Function Annotations</a></li><li><a href=#logger>Logger</a></li></ul></li><li><a href=#lambda函数>lambda函数</a><ul><li><a href=#排序>排序</a></li></ul></li><li><a href=#mock>Mock</a></li></ul></nav></div></aside></main></body></html>
