@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>打包 on Ian's Blog</title><link>http://example.org/tags/%E6%89%93%E5%8C%85/</link><description>Recent content in 打包 on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 18 Mar 2022 18:15:14 +0000</lastBuildDate><atom:link href="http://example.org/tags/%E6%89%93%E5%8C%85/index.xml" rel="self" type="application/rss+xml"/><item><title>python打包</title><link>http://example.org/docs/programmer/gui/pyinstaller-python%E6%89%93%E5%8C%85/</link><pubDate>Fri, 18 Mar 2022 18:15:14 +0000</pubDate><guid>http://example.org/docs/programmer/gui/pyinstaller-python%E6%89%93%E5%8C%85/</guid><description> 打包 # pyinstaller
+pip install pyinstaller pyinstaller /path/to/yourscript.py pyinstaller -key yourpasswd -F /path/to/yourscript.py 解包 # 解包工具 # pyinstxtractor.py
+hex编辑器 # 010Editor 下载地址
+步骤 # 将pyinstxtractor.py与exe放置在一个文件夹内，打开cmd，输入下列指令生成一个文件夹
+python pyinstxtractor.py xxx.exe 使用010Editor打开文件夹中的main和struct，将struct中E3前面的字节复制粘贴到010Editor的E3前 修改main文件后缀为main.pyc 使用在线工具https://tool.lu/pyc/ 将main.pyc反编译为py文件
+应对增加key之后的解包 # 暂无
+安装程序 # 先将程序打包exe(以多文件模式, 但文件运行起来每次都需要解压再运行很慢，大文件的话多次运行还会挤压C盘空间) 将打包好的目录压缩打包zip 编写本质为mv lnk的脚本 把脚本打包成exe 执行脚本exe 具体代码可以看这里</description></item></channel></rss>
