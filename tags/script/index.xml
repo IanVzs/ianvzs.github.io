@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>script on Ian's Blog</title><link>http://example.org/tags/script/</link><description>Recent content in script on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 25 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/script/index.xml" rel="self" type="application/rss+xml"/><item><title>把Golang当脚本语言用</title><link>http://example.org/docs/programmer/langs/golang/%E6%8A%8Agolang%E5%BD%93%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%94%A8/</link><pubDate>Wed, 25 Sep 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/golang/%E6%8A%8Agolang%E5%BD%93%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%94%A8/</guid><description>支持 # Go 软件包：
+github.com/fatih/color[8] 是用于输出对应编码颜色的包。
+github.com/schollz/progressbar[9] 是用于为执行时间过久的任务创建进度条的包。
+github.com/jimlawless/whereami[10] 是用于捕获源代码的文件名、行号、函数等信息的包，这对于改正错误信息十分有用！
+github.com/spf13/cobra[11] 是用于更轻松地创建带有输入选项和相关文档的复杂脚本的包。</description></item></channel></rss>

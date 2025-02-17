@@ -1,6 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>podman on Ian's Blog</title><link>http://example.org/categories/podman/</link><description>Recent content in podman on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 27 Jun 2024 21:37:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/podman/index.xml" rel="self" type="application/rss+xml"/><item><title>Podman</title><link>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/</link><pubDate>Thu, 27 Jun 2024 21:37:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/</guid><description> Podman # 命令用法 # 命令几乎和docker一致, alias docker=podman完全可以无感知
-不同点 # pull路径需要完整 podman pull docker.io/library/mysql:5.7 迁移镜像存储路径 # 切换到
-lazydocker # [[Note of Docker#lazydocker 可视化]]
-export DOCKER_HOST=unix:///run/user/1000/podman/podman.sock lazydocker VSCode # Dev Containers # https://code.visualstudio.com/remote/advancedcontainers/docker-options
-在插件设置中, 将Docker Path里docker修改为podman即可
-网络 # slirp4netns问题 # podman network connect example-network example-container会报错 podman 网络连接未针对 slirp4netns 实现 #19577</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>podman on Ian's Blog</title><link>http://example.org/categories/podman/</link><description>Recent content in podman on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 27 Jun 2024 21:37:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/podman/index.xml" rel="self" type="application/rss+xml"/><item><title>Podman</title><link>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/</link><pubDate>Thu, 27 Jun 2024 21:37:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/</guid><description>Podman # 常用命令 # 2. 启动容器并进入交互模式 # 你可以使用 docker run 命令启动容器并进入容器的交互式 shell。这样你就可以进入容器内部进行调试。
+复制代码
+docker run -it --entrypoint /bin/bash nova-crawler:latest 参数说明： # -it：-i 表示以交互模式运行容器，-t 给容器分配一个伪终端，这样你就可以在终端与容器交互。 --entrypoint /bin/bash：这将覆盖容器的默认入口点，直接启动一个 bash shell 以便你进入容器进行调试。 nova-crawler:latest：你要运行的镜像名称。 3. 启动容器并调试特定命令 # 如果你不想进入容器的 shell，而是想直接执行调试命令（比如启动应用并在调试模式下运行），可以使用以下命令：
+bash
+复制代码
+docker run -it --entrypoint /bin/bash nova-crawler:latest -c &amp;quot;your-debug-command&amp;quot;
+4. 查看容器日志 # 如果你希望在调试时查看容器的日志输出，可以使用以下命令：
+bash
+复制代码
+docker logs &amp;lt;container_id&amp;gt;
+你可以通过 docker ps 查找运行的容器 ID，然后查看日志输出。
+5. 调试时挂载本地目录（可选） # 如果你需要调试代码，并且希望挂载本地目录到容器中进行实时编辑，可以使用 -v 参数来挂载本地目录。例如，假设你的本地代码在 /path/to/your/code 目录下：
+bash
+复制代码</description></item></channel></rss>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>adb on Ian's Blog</title><link>http://example.org/tags/adb/</link><description>Recent content in adb on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="http://example.org/tags/adb/index.xml" rel="self" type="application/rss+xml"/><item><title>adb</title><link>http://example.org/docs/programmer/platforms/android/adb/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/android/adb/</guid><description> 常规 # adb connect 127.0.0.1:34534 adb devices adb -s 192.168.240.112:5555 shell
+app操作 # 查看已经安装的app # adb shell pm list packages
+打开某app # adb shell monkey -p com.example.myapp -c android.intent.category.LAUNCHER 1 通过adb输入文字 # 在界面选中的输入框内输入文字
+input text &amp;#34;{输入文字}&amp;#34;</description></item></channel></rss>
