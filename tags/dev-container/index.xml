@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dev-Container on Ian's Blog</title><link>http://example.org/tags/dev-container/</link><description>Recent content in Dev-Container on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 03 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/dev-container/index.xml" rel="self" type="application/rss+xml"/><item><title>📝 Windows + Docker + VS Code Remote-Containers 故障排查与恢复</title><link>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/vs-code-dev-container/</link><pubDate>Wed, 03 Dec 2025 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/vs-code-dev-container/</guid><description>&lt;h1 id="-windows--docker--vs-code-remote-containers-故障排查与恢复"&gt;📝 Windows + Docker + VS Code Remote-Containers 故障排查与恢复&lt;a class="anchor" href="#-windows--docker--vs-code-remote-containers-%e6%95%85%e9%9a%9c%e6%8e%92%e6%9f%a5%e4%b8%8e%e6%81%a2%e5%a4%8d"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="1-背景问题"&gt;1️⃣ 背景问题&lt;a class="anchor" href="#1-%e8%83%8c%e6%99%af%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;常见报错：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;remote-containers.explorerTargetsRefresh: stream is closed&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;An error occurred attaching to the container&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Unable to read file '…package.json'&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;原因一般为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Docker context 错误（VS Code 连接到错误 Docker 引擎）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Remote-Containers / Dev Containers 扩展损坏或缓存残留&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;VS Code 内部缓存或 workspaceStorage 被锁&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;容器本身缺 shell 或 ENTRYPOINT 阻塞（本次案例排除）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id="2-排查-docker-context"&gt;2️⃣ 排查 Docker Context&lt;a class="anchor" href="#2-%e6%8e%92%e6%9f%a5-docker-context"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-powershell" data-lang="powershell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker context ls&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;正确 context 应该指向 Windows Docker 引擎：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;default *&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;如果 context 是 &lt;code&gt;desktop-linux&lt;/code&gt;，切换回默认：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-powershell" data-lang="powershell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker context use &lt;span style="color:#66d9ef"&gt;default&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;验证容器可访问：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-powershell" data-lang="powershell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker ps
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker exec -it &amp;lt;container&amp;gt; sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker exec -it &amp;lt;container&amp;gt; bash&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;✅ 能进入容器说明容器正常。&lt;/p&gt;</description></item></channel></rss>

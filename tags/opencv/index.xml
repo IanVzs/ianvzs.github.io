@@ -1,7 +1,30 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>opencv on Ian's Blog</title><link>http://example.org/tags/opencv/</link><description>Recent content in opencv on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 22 Apr 2021 17:23:23 +0000</lastBuildDate><atom:link href="http://example.org/tags/opencv/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenCV</title><link>http://example.org/docs/programmer/ml/opencv/</link><pubDate>Thu, 22 Apr 2021 17:23:23 +0000</pubDate><guid>http://example.org/docs/programmer/ml/opencv/</guid><description>
-问题(libSM.so.6 缺失) # 运行opencv的代码时，报以下错误： # Traceback (most recent call last): File &amp;#34;data_generator.py&amp;#34;, line 24, in &amp;lt;module&amp;gt; import cv2 File &amp;#34;/usr/local/lib/python3.5/dist-packages/cv2/__init__.py&amp;#34;, line 3, in &amp;lt;module&amp;gt; from .cv2 import * ImportError: libSM.so.6: cannot open shared object file: No such file or directory 解决 # 原因是缺少共享文件库，解决办法如下：
-安装apt-file $ apt-get update $ apt-get install apt-file $ apt-file update
-寻找依赖库 $ apt-file search libSM.so.6
-libsm6: /usr/lib/x86_64-linux-gnu/libSM.so.6 libsm6: /usr/lib/x86_64-linux-gnu/libSM.so.6.0.1
-根据提示，安装合适的依赖库 $ apt-get install libsm6
-其余文件缺失类似, 即可解决问题。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Opencv on Ian's Blog</title><link>http://example.org/tags/opencv/</link><description>Recent content in Opencv on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 22 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/opencv/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenCV</title><link>http://example.org/docs/programmer/ml/opencv/</link><pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/opencv/</guid><description>&lt;p&gt;&lt;img src="https://opencv.org/wp-content/uploads/2020/07/cropped-OpenCV_logo_white_600x.png" alt="opencv" title="cv"/&gt;&lt;/p&gt;
+&lt;h2 id="问题libsmso6-缺失"&gt;问题(libSM.so.6 缺失)&lt;a class="anchor" href="#%e9%97%ae%e9%a2%98libsmso6-%e7%bc%ba%e5%a4%b1"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="运行opencv的代码时报以下错误"&gt;运行opencv的代码时，报以下错误：&lt;a class="anchor" href="#%e8%bf%90%e8%a1%8copencv%e7%9a%84%e4%bb%a3%e7%a0%81%e6%97%b6%e6%8a%a5%e4%bb%a5%e4%b8%8b%e9%94%99%e8%af%af"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;Traceback (most recent call last):
+ File &amp;#34;data_generator.py&amp;#34;, line 24, in &amp;lt;module&amp;gt;
+ import cv2
+ File &amp;#34;/usr/local/lib/python3.5/dist-packages/cv2/__init__.py&amp;#34;, line 3, in &amp;lt;module&amp;gt;
+ from .cv2 import *
+ImportError: libSM.so.6: cannot open shared object file: No such file or directory&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="解决"&gt;解决&lt;a class="anchor" href="#%e8%a7%a3%e5%86%b3"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;原因是缺少共享文件库，解决办法如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;安装apt-file
+$ apt-get update
+$ apt-get install apt-file
+$ apt-file update&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;寻找依赖库
+$ apt-file search libSM.so.6&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;libsm6: /usr/lib/x86_64-linux-gnu/libSM.so.6
+libsm6: /usr/lib/x86_64-linux-gnu/libSM.so.6.0.1&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;根据提示，安装合适的依赖库
+$ apt-get install libsm6&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;其余文件缺失类似, 即可解决问题。&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

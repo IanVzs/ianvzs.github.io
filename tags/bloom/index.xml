@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bloom on Ian's Blog</title><link>http://example.org/tags/bloom/</link><description>Recent content in Bloom on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 18 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/bloom/index.xml" rel="self" type="application/rss+xml"/><item><title>布隆过滤器</title><link>http://example.org/docs/programmer/cloudnative/redis/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/</link><pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/redis/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/</guid><description>&lt;h1 id="hello"&gt;Hello&lt;a class="anchor" href="#hello"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="新建"&gt;新建&lt;a class="anchor" href="#%e6%96%b0%e5%bb%ba"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-r" data-lang="r"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 创建一个预期容量100万，错误率1%的布隆过滤器&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;BF.RESERVE my_bloom &lt;span style="color:#ae81ff"&gt;0.01&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1000000&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="添加元素"&gt;添加元素&lt;a class="anchor" href="#%e6%b7%bb%e5%8a%a0%e5%85%83%e7%b4%a0"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-r" data-lang="r"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;BF.ADD my_bloom item1
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;BF.MADD my_bloom item2 item3 item4&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="检查元素是否存在"&gt;检查元素是否存在&lt;a class="anchor" href="#%e6%a3%80%e6%9f%a5%e5%85%83%e7%b4%a0%e6%98%af%e5%90%a6%e5%ad%98%e5%9c%a8"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-r" data-lang="r"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;BF.EXISTS my_bloom item1 &lt;span style="color:#75715e"&gt;# 返回1（可能存在）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;BF.EXISTS my_bloom itemX &lt;span style="color:#75715e"&gt;# 返回0（绝对不存在）&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="批量查询"&gt;批量查询&lt;a class="anchor" href="#%e6%89%b9%e9%87%8f%e6%9f%a5%e8%af%a2"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-r" data-lang="r"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;BF.MEXISTS my_bloom item1 itemX&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="查看过滤器信息"&gt;查看过滤器信息&lt;a class="anchor" href="#%e6%9f%a5%e7%9c%8b%e8%bf%87%e6%bb%a4%e5%99%a8%e4%bf%a1%e6%81%af"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;命令: &lt;code&gt;BF.DEBUG my_bloom&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-r" data-lang="r"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;total_items&lt;span style="color:#f92672"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;4&lt;/span&gt;,num_blooms&lt;span style="color:#f92672"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;,bytes&lt;span style="color:#f92672"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2097152&lt;/span&gt; bits&lt;span style="color:#f92672"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;16777216&lt;/span&gt; hashes&lt;span style="color:#f92672"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;7&lt;/span&gt; hashwidth&lt;span style="color:#f92672"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;64&lt;/span&gt; capacity&lt;span style="color:#f92672"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1750350&lt;/span&gt; items&lt;span style="color:#f92672"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;4&lt;/span&gt; error_ratio&lt;span style="color:#f92672"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0.01&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;命令: &lt;code&gt;TYPE my_bloom&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-r" data-lang="r"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;exbloom&lt;span style="color:#f92672"&gt;--&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="重要特性说明"&gt;重要特性说明&lt;a class="anchor" href="#%e9%87%8d%e8%a6%81%e7%89%b9%e6%80%a7%e8%af%b4%e6%98%8e"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;特性&lt;/th&gt;
+ &lt;th&gt;说明&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;误判率&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;可能误报（假阳性），但不会漏报（假阴性）&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;空间效率&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;100万元素+1%误判率约占用1.7MB内存&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;不可删除元素&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;标准布隆过滤器不支持删除，可用&lt;code&gt;Cuckoo Filter&lt;/code&gt;（&lt;code&gt;CF&lt;/code&gt;命令）替代&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;自动扩容&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;如果不使用&lt;code&gt;RESERVE&lt;/code&gt;，过滤器会动态扩容，但错误率可能上升&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id="python-代码示例"&gt;Python 代码示例&lt;a class="anchor" href="#python-%e4%bb%a3%e7%a0%81%e7%a4%ba%e4%be%8b"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; redis
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 连接Redis&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;r &lt;span style="color:#f92672"&gt;=&lt;/span&gt; redis&lt;span style="color:#f92672"&gt;.&lt;/span&gt;Redis(host&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;, port&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;6379&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 创建布隆过滤器（如果不存在）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;try&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; r&lt;span style="color:#f92672"&gt;.&lt;/span&gt;execute_command(&lt;span style="color:#e6db74"&gt;&amp;#34;BF.RESERVE&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;user_filter&amp;#34;&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0.01&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;1000000&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;except&lt;/span&gt; redis&lt;span style="color:#f92672"&gt;.&lt;/span&gt;exceptions&lt;span style="color:#f92672"&gt;.&lt;/span&gt;ResponseError &lt;span style="color:#66d9ef"&gt;as&lt;/span&gt; e:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;item exists&amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;not&lt;/span&gt; &lt;span style="color:#f92672"&gt;in&lt;/span&gt; str(e):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;raise&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 添加数据&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;r&lt;span style="color:#f92672"&gt;.&lt;/span&gt;execute_command(&lt;span style="color:#e6db74"&gt;&amp;#34;BF.ADD&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;user_filter&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;user123&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;r&lt;span style="color:#f92672"&gt;.&lt;/span&gt;execute_command(&lt;span style="color:#e6db74"&gt;&amp;#34;BF.MADD&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;user_filter&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;user456&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;user789&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 检查是否存在&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(r&lt;span style="color:#f92672"&gt;.&lt;/span&gt;execute_command(&lt;span style="color:#e6db74"&gt;&amp;#34;BF.EXISTS&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;user_filter&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;user123&amp;#34;&lt;/span&gt;)) &lt;span style="color:#75715e"&gt;# 1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(r&lt;span style="color:#f92672"&gt;.&lt;/span&gt;execute_command(&lt;span style="color:#e6db74"&gt;&amp;#34;BF.EXISTS&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;user_filter&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;unknown&amp;#34;&lt;/span&gt;)) &lt;span style="color:#75715e"&gt;# 0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 重建&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 1. 查询所有需要保留的元素&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;existing_items &lt;span style="color:#f92672"&gt;=&lt;/span&gt; get_all_valid_items() &lt;span style="color:#75715e"&gt;# 自定义获取有效元素的逻辑&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 2. 删除旧过滤器&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;r&lt;span style="color:#f92672"&gt;.&lt;/span&gt;delete(&lt;span style="color:#e6db74"&gt;&amp;#34;my_bloom&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 3. 创建新过滤器并重新添加有效元素&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;r&lt;span style="color:#f92672"&gt;.&lt;/span&gt;execute_command(&lt;span style="color:#e6db74"&gt;&amp;#34;BF.RESERVE&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;my_bloom&amp;#34;&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0.01&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;1000000&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;r&lt;span style="color:#f92672"&gt;.&lt;/span&gt;execute_command(&lt;span style="color:#e6db74"&gt;&amp;#34;BF.MADD&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;my_bloom&amp;#34;&lt;/span&gt;, &lt;span style="color:#f92672"&gt;*&lt;/span&gt;existing_items)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>

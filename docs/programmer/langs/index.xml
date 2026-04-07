@@ -1,14 +1,189 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>编程语言 on Ian's Blog</title><link>http://example.org/docs/programmer/langs/</link><description>Recent content in 编程语言 on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 30 Aug 2022 12:00:56 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/langs/index.xml" rel="self" type="application/rss+xml"/><item><title>CMake 使用Tips</title><link>http://example.org/docs/programmer/langs/cmake/</link><pubDate>Tue, 30 Aug 2022 12:00:56 +0000</pubDate><guid>http://example.org/docs/programmer/langs/cmake/</guid><description> 在编译时将编译产物放在build # 据网友所知，cmake文档中没有记录，仅出于兼容性原因或内部使用而保留：
--B和-H标志 # cmake -Hpath/to/source -Bpath/to/build 甚至从源目录 -B # 重要：-B后没有空格
-该命令会自动创建build目录 之后cd到build下去make即可 cmake . -Bbuild 样例记录 # OpenCV # CMakeLists.txt 文件tree -L 1 |-- CMakeLists.txt |-- DisplayImage.cpp |-- DisplayImage.out |-- cmake_install.cmake |-- CMakeCache.txt |-- CMakeFiles |-- Makefile cmake_minimum_required(VERSION 2.8) project( DisplayImageExample ) find_package( OpenCV REQUIRED ) include_directories( ${OpenCV_INCLUDE_DIRS} ) add_executable( DisplayImage.out DisplayImage.cpp ) target_link_libraries( DisplayImage.out ${OpenCV_LIBS} ) Qt #</description></item><item><title>Tips of debuggers</title><link>http://example.org/docs/programmer/langs/tips-of-debugers/</link><pubDate>Thu, 10 Jan 2019 12:21:12 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tips-of-debugers/</guid><description>Clang &amp;amp;&amp;amp; lldb # 听说clang+lldb &amp;gt;= gcc + gdb, 所以一试:
-lldb基本命令 # 与GDB相同
-break (b) - 设置断点，也就是程序暂停的地方 run (r) - 启动目标程序，如果遇到断点则暂停 step (s) - 进入下一条指令中的函数内部 backtrace (bt) - 显示当前的有效函数 frame (f) - 默认显示当前栈的内容，可以通过 frame arg 进入特定的 frame（用作输出本地变量） next (n) - 运行当前箭头指向行 continue (c) - 继续运行程序直到遇到断点。 clang hello.c -g -o hello lldb hello # lldb b main run n p str 还有颜色 😂 可视效果确实提高了不少 而且这四个工具可以混用,也蛮好.
-GDB # First and foremost, you will need to compile your program with the flag &amp;ldquo;-g&amp;rdquo; (for debug) to run it via GDB.</description></item><item><title>Tips of MarkDown</title><link>http://example.org/docs/programmer/langs/tips-of-markdown/</link><pubDate>Tue, 15 May 2018 10:00:47 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tips-of-markdown/</guid><description>Markdown Notes 📪 # 对勾和叉叉(叉号) # #对勾 #叉号
-- &amp;amp;#9744; x &amp;amp;cross; - &amp;amp;#9745; &amp;amp;#10004; &amp;amp;check; ☐ x ✗ ☑ ✔ ✓ HTML锚点 - 页面内点击跳转 # 可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。 具体实现方法如下：
-首先，在需要跳转到的标题前插入一个 HTML 锚点，例如： ### &amp;lt;a name=&amp;#34;section1&amp;#34;&amp;gt;Section 1&amp;lt;/a&amp;gt; 这个锚点的名称为 &amp;#34;section1&amp;#34;，可以根据需要自定义。 在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如： [跳转到 Section 1](#section1) 这样，点击这个链接就会跳转到页面中的 &amp;#34;Section 1&amp;#34; 标题处。 注意事项： # 锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。 如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。
-## Test 二级标题
-Now I will test the Markdown&amp;rsquo;s hobiy 二级 # Maybe is a nice way to impove my blog.</description></item><item><title>愉快的Java(happy to learn the fuck java)</title><link>http://example.org/docs/programmer/langs/java/notesjava/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/java/notesjava/</guid><description>author: Ian
-happy to learn the fuck java 😅 # &amp;lt;微人事&amp;gt; 笔记 -&amp;gt; ψ(._. )&amp;gt; # 先贴官方文档 哦 还有官方项目地址
-Java语法 # 爪哇方法定义: # 修饰符 返回值类型 方法名(参数类型 参数名){ 方法体; return 返回值; } # 示个例 public boolean NiHou(int num){ int a = num; return turn; } // `boolean` 处 可为 public Collection&amp;lt;? extends GrantedAuthority&amp;gt; getAuthorities(){ List&amp;lt;GrantedAuthority&amp;gt; authorities = new ArrayList&amp;lt;&amp;gt;(); return authorities; } // 表泛型中可以是的`GrantedAuthority`所有子类 爪哇抽象方法(即Python父类中直接pass的函数…) # abstract
-包含抽象方法必须得是抽象类 任何子类必须重写父类抽象方法，或者声明自身为抽象类 public abstract class Employee { private String name; private int number; public abstract double computePay(); //其余 } 爪哇接口 # interface, implements</description></item><item><title>算法</title><link>http://example.org/docs/programmer/langs/note-for-algo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/note-for-algo/</guid><description>算法图解 # 在线书: https://www.hello-algo.com
-单向链表实现和反转 # # 单向链表实现和反转 &amp;#34;&amp;#34;&amp;#34; # 当前值, 下一个值 # 循环 # 将当前值赋值为下一个的值, 下一个节点值为当前节点值 # 当前节点next赋 &amp;#34;&amp;#34;&amp;#34; class A: def __init__(self, v): self.v = v self.next = None class LA: def __init__(self): self.head = None def add(self, v): node = A(v) node.next = self.head self.head = node def print(self): cur = self.head while cur and cur.v != None: print(f&amp;#34;linkdata node v: {cur.v}&amp;#34;) cur = cur.next def revert(self, node: A=None, head=None): if not head: cache = self.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>编程语言 on Ian's Blog</title><link>http://example.org/docs/programmer/langs/</link><description>Recent content in 编程语言 on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 30 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/langs/index.xml" rel="self" type="application/rss+xml"/><item><title>CMake 使用Tips</title><link>http://example.org/docs/programmer/langs/cmake/</link><pubDate>Tue, 30 Aug 2022 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/cmake/</guid><description>&lt;h1 id="在编译时将编译产物放在build"&gt;在编译时将编译产物放在build&lt;a class="anchor" href="#%e5%9c%a8%e7%bc%96%e8%af%91%e6%97%b6%e5%b0%86%e7%bc%96%e8%af%91%e4%ba%a7%e7%89%a9%e6%94%be%e5%9c%a8build"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;据网友所知，cmake文档中没有记录，仅出于兼容性原因或内部使用而保留：&lt;/p&gt;
+&lt;h2 id="-b和-h标志"&gt;-B和-H标志&lt;a class="anchor" href="#-b%e5%92%8c-h%e6%a0%87%e5%bf%97"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cmake -Hpath/to/source -Bpath/to/build&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="甚至从源目录--b"&gt;甚至从源目录 -B&lt;a class="anchor" href="#%e7%94%9a%e8%87%b3%e4%bb%8e%e6%ba%90%e7%9b%ae%e5%bd%95--b"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;重要：-B后没有空格&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;该命令会自动创建build目录&lt;/li&gt;
+&lt;li&gt;之后cd到build下去make即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cmake . -Bbuild&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id="样例记录"&gt;样例记录&lt;a class="anchor" href="#%e6%a0%b7%e4%be%8b%e8%ae%b0%e5%bd%95"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="opencv"&gt;OpenCV&lt;a class="anchor" href="#opencv"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;CMakeLists.txt&lt;/li&gt;
+&lt;li&gt;文件&lt;code&gt;tree -L 1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-txt" data-lang="txt"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;|-- CMakeLists.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;|-- DisplayImage.cpp
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;|-- DisplayImage.out
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;|-- cmake_install.cmake
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;|-- CMakeCache.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;|-- CMakeFiles
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;|-- Makefile&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cmake" data-lang="cmake"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cmake_minimum_required(&lt;span style="color:#e6db74"&gt;VERSION&lt;/span&gt; &lt;span style="color:#e6db74"&gt;2.8&lt;/span&gt;)&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;project( &lt;span style="color:#e6db74"&gt;DisplayImageExample&lt;/span&gt; )&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;find_package( &lt;span style="color:#e6db74"&gt;OpenCV&lt;/span&gt; &lt;span style="color:#e6db74"&gt;REQUIRED&lt;/span&gt; )&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;include_directories( &lt;span style="color:#f92672"&gt;${&lt;/span&gt;OpenCV_INCLUDE_DIRS&lt;span style="color:#f92672"&gt;}&lt;/span&gt; )&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;add_executable( &lt;span style="color:#e6db74"&gt;DisplayImage.out&lt;/span&gt; &lt;span style="color:#e6db74"&gt;DisplayImage.cpp&lt;/span&gt; )&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;target_link_libraries( &lt;span style="color:#e6db74"&gt;DisplayImage.out&lt;/span&gt; &lt;span style="color:#f92672"&gt;${&lt;/span&gt;OpenCV_LIBS&lt;span style="color:#f92672"&gt;}&lt;/span&gt; )&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="qt"&gt;Qt&lt;a class="anchor" href="#qt"&gt;#&lt;/a&gt;&lt;/h2&gt;</description></item><item><title>算法</title><link>http://example.org/docs/programmer/langs/note-for-algo/</link><pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/note-for-algo/</guid><description>&lt;h2 id="算法图解"&gt;算法图解&lt;a class="anchor" href="#%e7%ae%97%e6%b3%95%e5%9b%be%e8%a7%a3"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;在线书: &lt;a href="https://www.hello-algo.com"&gt;https://www.hello-algo.com&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="单向链表实现和反转"&gt;单向链表实现和反转&lt;a class="anchor" href="#%e5%8d%95%e5%90%91%e9%93%be%e8%a1%a8%e5%ae%9e%e7%8e%b0%e5%92%8c%e5%8f%8d%e8%bd%ac"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-py" data-lang="py"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 单向链表实现和反转&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;# 当前值, 下一个值
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;# 循环
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;# 将当前值赋值为下一个的值, 下一个节点值为当前节点值
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;# 当前节点next赋
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;A&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;__init__&lt;/span&gt;(self, v):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;v &lt;span style="color:#f92672"&gt;=&lt;/span&gt; v
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;LA&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;__init__&lt;/span&gt;(self):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;head &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;add&lt;/span&gt;(self, v):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; node &lt;span style="color:#f92672"&gt;=&lt;/span&gt; A(v)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; node&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next &lt;span style="color:#f92672"&gt;=&lt;/span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;head
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;head &lt;span style="color:#f92672"&gt;=&lt;/span&gt; node
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;print&lt;/span&gt;(self):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; cur &lt;span style="color:#f92672"&gt;=&lt;/span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;head
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; cur &lt;span style="color:#f92672"&gt;and&lt;/span&gt; cur&lt;span style="color:#f92672"&gt;.&lt;/span&gt;v &lt;span style="color:#f92672"&gt;!=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(&lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;linkdata node v: &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;cur&lt;span style="color:#f92672"&gt;.&lt;/span&gt;v&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; cur &lt;span style="color:#f92672"&gt;=&lt;/span&gt; cur&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;revert&lt;/span&gt;(self, node: A&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;, head&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#f92672"&gt;not&lt;/span&gt; head:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; cache &lt;span style="color:#f92672"&gt;=&lt;/span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;head&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; cache &lt;span style="color:#f92672"&gt;=&lt;/span&gt; node&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; cache:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;pass&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# print(f&amp;#34;cache: {cache.v}&amp;#34;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;head &lt;span style="color:#f92672"&gt;=&lt;/span&gt; node
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;head&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next &lt;span style="color:#f92672"&gt;=&lt;/span&gt; head
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; head &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; node &lt;span style="color:#f92672"&gt;=&lt;/span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;head
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; node&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;revert(cache, node)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; node&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next &lt;span style="color:#f92672"&gt;=&lt;/span&gt; head
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;revert(cache, node)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; __name__ &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 1234&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 234&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ldata &lt;span style="color:#f92672"&gt;=&lt;/span&gt; LA()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; (&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;4&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ldata&lt;span style="color:#f92672"&gt;.&lt;/span&gt;add(i)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ldata&lt;span style="color:#f92672"&gt;.&lt;/span&gt;print()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(&lt;span style="color:#e6db74"&gt;&amp;#34;---&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;10&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ldata&lt;span style="color:#f92672"&gt;.&lt;/span&gt;revert()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ldata&lt;span style="color:#f92672"&gt;.&lt;/span&gt;print()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;&amp;gt;&amp;gt;&amp;gt;运行输出:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;linkdata node v: 4
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;linkdata node v: 3
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;linkdata node v: 2
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;linkdata node v: 1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;------------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;linkdata node v: 1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;linkdata node v: 2
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;linkdata node v: 3
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;linkdata node v: 4
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="其他"&gt;其他&lt;a class="anchor" href="#%e5%85%b6%e4%bb%96"&gt;#&lt;/a&gt;&lt;/h2&gt;</description></item><item><title>Tips of debuggers</title><link>http://example.org/docs/programmer/langs/tips-of-debugers/</link><pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tips-of-debugers/</guid><description>&lt;h1 id="clang--lldb"&gt;Clang &amp;amp;&amp;amp; lldb&lt;a class="anchor" href="#clang--lldb"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;听说&lt;code&gt;clang&lt;/code&gt;+&lt;code&gt;lldb&lt;/code&gt; &amp;gt;= &lt;code&gt;gcc&lt;/code&gt; + &lt;code&gt;gdb&lt;/code&gt;, 所以一试:&lt;/p&gt;
+&lt;h2 id="lldb基本命令"&gt;lldb基本命令&lt;a class="anchor" href="#lldb%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;与GDB相同&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;break (b) - 设置断点，也就是程序暂停的地方&lt;/li&gt;
+&lt;li&gt;run (r) - 启动目标程序，如果遇到断点则暂停&lt;/li&gt;
+&lt;li&gt;step (s) - 进入下一条指令中的函数内部&lt;/li&gt;
+&lt;li&gt;backtrace (bt) - 显示当前的有效函数&lt;/li&gt;
+&lt;li&gt;frame (f) - 默认显示当前栈的内容，可以通过 &lt;code&gt;frame arg&lt;/code&gt; 进入特定的 frame（用作输出本地变量）&lt;/li&gt;
+&lt;li&gt;next (n) - 运行当前箭头指向行&lt;/li&gt;
+&lt;li&gt;continue (c) - 继续运行程序直到遇到断点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;clang hello.c -g -o hello
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;lldb hello&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex="0"&gt;&lt;code class="language-lldb" data-lang="lldb"&gt;# lldb
+b main
+run
+n
+p str&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;还有颜色 😂 可视效果确实提高了不少
+而且这四个工具可以混用,也蛮好.&lt;/p&gt;
+&lt;h2 id="gdb"&gt;GDB&lt;a class="anchor" href="#gdb"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img src="https://www.linuxprobe.com/wp-content/uploads/2017/02/175653ff8gl0f5flw4f518.jpg" alt="gdb" title="tmp"/&gt;&lt;/p&gt;
+&lt;p&gt;First and foremost, you will need to compile your program with the flag &amp;ldquo;-g&amp;rdquo; (for debug) to run it via GDB. From there the syntax to start debugging is:&lt;/p&gt;</description></item><item><title>愉快的Java(happy to learn the fuck java)</title><link>http://example.org/docs/programmer/langs/java/notesjava/</link><pubDate>Thu, 24 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/java/notesjava/</guid><description>&lt;h1 id="happy-to-learn-the-fuck-java-"&gt;happy to learn the fuck java 😅&lt;a class="anchor" href="#happy-to-learn-the-fuck-java-"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="微人事-笔记------ψ_-"&gt;&amp;lt;微人事&amp;gt; 笔记 -&amp;gt; ψ(._. )&amp;gt;&lt;a class="anchor" href="#%e5%be%ae%e4%ba%ba%e4%ba%8b-%e7%ac%94%e8%ae%b0------%cf%88_-"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;先贴&lt;a href="https://github.com/lenve/vhr/wiki/1.%e6%9d%83%e9%99%90%e6%95%b0%e6%8d%ae%e5%ba%93%e8%ae%be%e8%ae%a1"&gt;官方文档&lt;/a&gt; 哦 还有&lt;a href="https://github.com/lenve/vhr"&gt;官方项目地址&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="java语法"&gt;Java语法&lt;a class="anchor" href="#java%e8%af%ad%e6%b3%95"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h4 id="爪哇方法定义"&gt;爪哇方法定义:&lt;a class="anchor" href="#%e7%88%aa%e5%93%87%e6%96%b9%e6%b3%95%e5%ae%9a%e4%b9%89"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;修饰符 返回值类型 &lt;span style="color:#a6e22e"&gt;方法名&lt;/span&gt;(参数类型 参数名){
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 方法体;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; 返回值;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;#&lt;/span&gt; 示个例
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;public&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;boolean&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;NiHou&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; num){
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; a &lt;span style="color:#f92672"&gt;=&lt;/span&gt; num;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; turn;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// `boolean` 处 可为&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;public&lt;/span&gt; Collection&lt;span style="color:#f92672"&gt;&amp;lt;?&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;extends&lt;/span&gt; GrantedAuthority&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getAuthorities&lt;/span&gt;(){
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	List&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;GrantedAuthority&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; authorities &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;new&lt;/span&gt; ArrayList&lt;span style="color:#f92672"&gt;&amp;lt;&amp;gt;&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; authorities;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;//&lt;/span&gt; 表泛型中可以是的&lt;span style="color:#960050;background-color:#1e0010"&gt;`&lt;/span&gt;GrantedAuthority&lt;span style="color:#960050;background-color:#1e0010"&gt;`&lt;/span&gt;所有子类&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="爪哇抽象方法即python父类中直接pass的函数"&gt;爪哇抽象方法(即Python父类中直接&lt;code&gt;pass&lt;/code&gt;的函数…)&lt;a class="anchor" href="#%e7%88%aa%e5%93%87%e6%8a%bd%e8%b1%a1%e6%96%b9%e6%b3%95%e5%8d%b3python%e7%88%b6%e7%b1%bb%e4%b8%ad%e7%9b%b4%e6%8e%a5pass%e7%9a%84%e5%87%bd%e6%95%b0"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;code&gt;abstract&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;包含抽象方法必须得是抽象类&lt;/li&gt;
+&lt;li&gt;任何子类必须重写父类抽象方法，或者声明自身为抽象类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;public&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;abstract&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Employee&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;private&lt;/span&gt; String name;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;private&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; number;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;public&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;abstract&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;double&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;computePay&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;//其余&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="爪哇接口"&gt;爪哇接口&lt;a class="anchor" href="#%e7%88%aa%e5%93%87%e6%8e%a5%e5%8f%a3"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;code&gt;interface&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;, &lt;!-- raw HTML omitted --&gt;&lt;code&gt;implements&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>Tips of MarkDown</title><link>http://example.org/docs/programmer/langs/tips-of-markdown/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tips-of-markdown/</guid><description>&lt;h1 id="markdown-notes-"&gt;Markdown Notes 📪&lt;a class="anchor" href="#markdown-notes-"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://justyy.com/wp-content/uploads/2016/01/markdown-syntax-language.png" alt="markdown" /&gt;&lt;/p&gt;
+&lt;h2 id="对勾和叉叉叉号"&gt;对勾和叉叉(叉号)&lt;a class="anchor" href="#%e5%af%b9%e5%8b%be%e5%92%8c%e5%8f%89%e5%8f%89%e5%8f%89%e5%8f%b7"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;#对勾 #叉号&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; &amp;amp;#9744; x &amp;amp;cross; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &amp;amp;#9745; &amp;amp;#10004; &amp;amp;check;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;☐ x ✗&lt;/li&gt;
+&lt;li&gt;☑ ✔ ✓&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="html锚点---页面内点击跳转"&gt;HTML锚点 - 页面内点击跳转&lt;a class="anchor" href="#html%e9%94%9a%e7%82%b9---%e9%a1%b5%e9%9d%a2%e5%86%85%e7%82%b9%e5%87%bb%e8%b7%b3%e8%bd%ac"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。
+具体实现方法如下：&lt;/p&gt;
+&lt;/blockquote&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;首先，在需要跳转到的标题前插入一个 HTML 锚点，例如：
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;### &amp;lt;a name=&amp;#34;section1&amp;#34;&amp;gt;Section 1&amp;lt;/a&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;这个锚点的名称为 &amp;#34;section1&amp;#34;，可以根据需要自定义。
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如：
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[&lt;span style="color:#f92672"&gt;跳转到 Section 1&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;#section1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;这样，点击这个链接就会跳转到页面中的 &amp;#34;Section 1&amp;#34; 标题处。&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="注意事项"&gt;注意事项：&lt;a class="anchor" href="#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。
+如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;code&gt;## Test 二级标题&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="now-i-will-test-the-markdowns-hobiy-二级"&gt;Now I will test the Markdown&amp;rsquo;s hobiy 二级&lt;a class="anchor" href="#now-i-will-test-the-markdowns-hobiy-%e4%ba%8c%e7%ba%a7"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="maybe-is-a-nice-way-to-impove-my-blog-三级"&gt;Maybe is a nice way to impove my blog. 三级&lt;a class="anchor" href="#maybe-is-a-nice-way-to-impove-my-blog-%e4%b8%89%e7%ba%a7"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;原来标题 要# 与正文隔开一个空格…
+···print “hello Markdown”···
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;欸？ 怎么回事？上面的文字
+莫非是用Tab能将其放到一个容器里？&lt;/p&gt;</description></item></channel></rss>

@@ -1,5 +1,45 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>安卓 on Ian's Blog</title><link>http://example.org/tags/%E5%AE%89%E5%8D%93/</link><description>Recent content in 安卓 on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 18 Jun 2024 23:03:41 +0000</lastBuildDate><atom:link href="http://example.org/tags/%E5%AE%89%E5%8D%93/index.xml" rel="self" type="application/rss+xml"/><item><title>安卓玩机</title><link>http://example.org/posts/android%E7%8E%A9%E6%9C%BA/</link><pubDate>Tue, 18 Jun 2024 23:03:41 +0000</pubDate><guid>http://example.org/posts/android%E7%8E%A9%E6%9C%BA/</guid><description> shizuku # 启动命令:
-adb shell sh /storage/emulated/0/Android/data/moe.shizuku.privileged.api/start.sh 自动任务 AutoTask # 自动化任务
-Scene # 查看安卓进程管理
-App Ops # App权限监测
-ADB # 设置http代理 # adb shell settings put global http_proxy 192.168.105.230:8080 adb shell settings put global https_proxy 192.168.105.230:8080 # 删除代理 adb shell settings delete global http_proxy Deleted 1 rows adb shell settings delete global https_proxy Deleted 1 rows adb shell settings delete global global_http_proxy_host Deleted 1 rows adb shell settings delete global global_https_proxy_host Deleted 0 rows adb shell settings delete global global_http_proxy_port Deleted 1 rows adb shell settings delete global global_https_proxy_port Deleted 0 rows # 需要冲起生效 - 有的机器可能不用 adb reboot</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>安卓 on Ian's Blog</title><link>http://example.org/tags/%E5%AE%89%E5%8D%93/</link><description>Recent content in 安卓 on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 18 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/%E5%AE%89%E5%8D%93/index.xml" rel="self" type="application/rss+xml"/><item><title>安卓玩机</title><link>http://example.org/posts/android%E7%8E%A9%E6%9C%BA/</link><pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate><guid>http://example.org/posts/android%E7%8E%A9%E6%9C%BA/</guid><description>&lt;h1 id="shizuku"&gt;shizuku&lt;a class="anchor" href="#shizuku"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;启动命令:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;adb shell sh /storage/emulated/0/Android/data/moe.shizuku.privileged.api/start.sh&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="自动任务-autotask"&gt;自动任务 AutoTask&lt;a class="anchor" href="#%e8%87%aa%e5%8a%a8%e4%bb%bb%e5%8a%a1-autotask"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;自动化任务&lt;/p&gt;
+&lt;/blockquote&gt;&lt;h2 id="scene"&gt;Scene&lt;a class="anchor" href="#scene"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;查看安卓进程管理&lt;/p&gt;
+&lt;/blockquote&gt;&lt;h2 id="app-ops"&gt;App Ops&lt;a class="anchor" href="#app-ops"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;App权限监测&lt;/p&gt;
+&lt;/blockquote&gt;&lt;h1 id="adb"&gt;ADB&lt;a class="anchor" href="#adb"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="设置http代理"&gt;设置http代理&lt;a class="anchor" href="#%e8%ae%be%e7%bd%aehttp%e4%bb%a3%e7%90%86"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;adb shell settings put global http_proxy 192.168.105.230:8080
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;adb shell settings put global https_proxy 192.168.105.230:8080
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 删除代理&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;adb shell settings delete global http_proxy 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Deleted &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; rows
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;adb shell settings delete global https_proxy 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Deleted &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; rows
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;adb shell settings delete global global_http_proxy_host
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Deleted &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; rows
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;adb shell settings delete global global_https_proxy_host
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Deleted &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; rows
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;adb shell settings delete global global_http_proxy_port
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Deleted &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; rows
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;adb shell settings delete global global_https_proxy_port
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Deleted &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; rows
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 需要冲起生效 - 有的机器可能不用&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;adb reboot&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="小小电脑"&gt;小小电脑&lt;a class="anchor" href="#%e5%b0%8f%e5%b0%8f%e7%94%b5%e8%84%91"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="1-配置ssh"&gt;1. 配置ssh&lt;a class="anchor" href="#1-%e9%85%8d%e7%bd%aessh"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;apt install openssh-server
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vim /etc/ssh/sshd_config
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 改配置端口&amp;gt;=1024, 一般用8022&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir /run/sshd
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo /sbin/sshd
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 或者图方便&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo /sbin/sshd -p &lt;span style="color:#ae81ff"&gt;8022&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="2-配置自动补全"&gt;2. 配置自动补全&lt;a class="anchor" href="#2-%e9%85%8d%e7%bd%ae%e8%87%aa%e5%8a%a8%e8%a1%a5%e5%85%a8"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install bash-completion
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo &lt;span style="color:#e6db74"&gt;&amp;#39;[[ -r /etc/bash_completion ]] &amp;amp;&amp;amp; . /etc/bash_completion&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; ~/.bashrc &lt;span style="color:#f92672"&gt;&amp;amp;&amp;amp;&lt;/span&gt; source ~/.bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# ~/.bashrc 中补充&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# -&amp;gt; [[ -r /etc/bash_completion ]] &amp;amp;&amp;amp; . /etc/bash_completion&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>

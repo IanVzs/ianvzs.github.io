@@ -1,24 +1,174 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Ian's Blog</title><link>http://example.org/tags/linux/</link><description>Recent content in Linux on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 06 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>Steam</title><link>http://example.org/docs/programmer/platforms/os/steam/</link><pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/steam/</guid><description>双人成行 # Win上存档位置： /Users/{user name}/AppData/Local/ItTakesTwo Linux Steam 存档位置: ~/.steam/steam/steamapps/compatdata/3097223920/pfx/drive_c/users/steamuser/AppData/Local/ItTakesTwo$ 说明 # ~/.steam/steam/steamapps/compatdata/为steam porton统一虚拟环境位置 3097223920为steam为每个游戏都创建一个独立的环境 pfx/drive_c/users/steamuser这些就是windows下的存储路径了, steamuser为默认用户名pfx表示私有存储空间？大概
-2686703063 - GTAV</description></item><item><title>Ubuntu</title><link>http://example.org/docs/programmer/platforms/os/ubuntu/</link><pubDate>Mon, 17 Jun 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/ubuntu/</guid><description>一、Snap # 如果Ubuntu有问题,那么很有可能是因为Snap
-Firefox # 在升级Ubuntu 24.04后内存占用极为不正常, 多次排查无果, 增加了交换空间还是没有治本, 几经排查终于发现是firefox的问题, 且是Snap的firefox的问题,所以手动下载别的版本后修改如下:
-修改/usr/bin/firefox中的最一开始的监测安装和运行为自行下载软件路径 添加gnome favorite-apps 1. 添加Firefox到Favorites（喜爱应用） # 打开终端（Ctrl + Alt + T）。 输入以下命令来查看当前的喜爱应用列表： gsettings get org.gnome.shell favorite-apps 这会输出当前的喜爱应用列表 3. 如果没有看到 firefox.desktop 在列表中，可以使用以下命令将它添加进去,这个命令会将 firefox.desktop 添加到喜爱应用列表的末尾。：
-gsettings set org.gnome.shell favorite-apps &amp;#34;$(gsettings get org.gnome.shell favorite-apps | sed &amp;#34;s/]/, &amp;#39;firefox.desktop&amp;#39;]/&amp;#34;)&amp;#34; 2. 检查.desktop文件是否正确 # 确保 firefox.desktop 文件存在并且正确配置。通常，它应该位于 /usr/share/applications/ 目录或者在Snap安装中可能位于 /var/lib/snapd/desktop/applications/ 目录。你可以使用 ls 命令检查这些位置是否有相关的 .desktop 文件：
-ls /usr/share/applications/firefox.desktop ls /var/lib/snapd/desktop/applications/firefox_firefox.desktop # 如果是通过Snap安装的Firefox` 3. 更新缓存和重启(可选) - 我用的 [[#^bef1ba]] # 如果以上步骤没有解决问题，尝试更新GNOME的缓存并重新启动GNOME Shell：</description></item><item><title>WPS for Linux</title><link>http://example.org/docs/programmer/platforms/wps-for-linux/</link><pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/wps-for-linux/</guid><description> wps 在linux上打开提示字体缺失 # wps 在linux上打开提示字体缺失 # git clone https://github.com/dv-anomaly/ttf-wps-fonts cd ttf-wps-fonts &amp;amp;&amp;amp; sudo ./install.sh</description></item><item><title>k8s 配套说明</title><link>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/</link><pubDate>Thu, 07 Sep 2023 20:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/</guid><description>ctr # 如果定义了 -n 应该是namesplace 那么每个命令都得跟上
-load镜像 # sudo ctr -n=k8s.io images import ${imageTarFile}
-保存文件 # sudo ctr -n k8s.io images export &amp;ndash;platform=linux/amd64 hi.tar 101.32.1.4:30002/web-docker/worker:2121
-切换tag # sudo ctr -n k8s.io images tag &amp;ndash;force repos.x.com/web-docker/worker:2121 101.32.1.4:30002/web-docker/worker:2121
-推送镜像 # sudo ctr -n k8s.io images push -k -u admin:fat213asfdFS2W &amp;ndash;plain-http 101.32.1.4:30002/web-docker/worker:2121
-拉取 # sudo ctr -n k8s.io images pull -k -u admin:fat1239ASD124W &amp;ndash;plain-http 101.32.1.4:30002/web-docker/worker:2121
-Docker # [[Note of Docker]] 好像并没有整理docker命令&amp;hellip; 后续补吧</description></item><item><title>k8s技术分享</title><link>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/</link><pubDate>Thu, 07 Sep 2023 20:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/</guid><description>k8s技术分享 # 工作负载资源 # 一、pod # 1. 概要 # 可创建管理、最小的可部署计算单元，是可以在主机上运行的容器的集合 我们的服务都在其中运行。如我们的服务是nginx，则最内层是我们的服务 nginx，运行在 container 容器当中。container (容器) 的本质是进程，而 pod 是管理这一组进程的资源 所以pod可视为一个极为轻量化、没插网线的电脑，如果所需任务无需交互，那么用pod就很合适。例如给它挂载一个文件来训练模型、生成报表，可以根据场景使用 Job 或者 CronJob 或者其它 图示关系如下 # ![[k8s-pod-insert.png]]
-2. pod网络 # 当然，pod 可以管理多个 container，又因为container (容器) 的本质是进程，如果有本地网络通信需求(使用 localhost 或者 Socket 文件进行本地通信)，在这些场景中使用 pod 管理多个 container 就非常的推荐。
-如下图展示了Pod网络所依赖的3个网络设备
-1. eth0是节点主机上的网卡，支持该节点流量出入的设备、也是支持集群节点间IP寻址和互通的设备；
-2. docker0是一个虚拟网桥，可以简单理解为一个虚拟交换机，支持该节点上的Pod之间进行IP寻址和互通的设备；
-3. veth0则是Pod1的虚拟网卡，支持该Pod内容器互通和对外访问的虚拟设备；
-4. docker0网桥和veth0网卡，都是linux支持和创建的虚拟网络设备；
-5. pause属于特殊容器，其运行的唯一目的是为Pod建立共享的veth0网络接口
-![[k8s-nginx-pod.png]]
-二、deployment、StatefulSet # 1. 概要 # Deployment 使得 Pod 和 ReplicaSet 能够进行声明式更新
-StatefulSet 表示一组具有一致身份的 Pod：
-1. 身份定义为：</description></item><item><title>k8s学习-常用命令和配置文件</title><link>http://example.org/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/</link><pubDate>Mon, 27 Mar 2023 10:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/</guid><description>k8s学习 # 常用命令 # kubectl apply -f rcm_log_monut_k8s_pod.yaml kubectl get pod -A kubectl get pod -all-namespaces kubectl get node kubectl get deploy 持久卷 - PersistentVolume kubectl get persistentvolume kubectl describe persistentvolume example-pv kubectl **delete** persistentvolume example-pv 从kubectl cp -n &amp;lt;命名空间&amp;gt; -c :xxx.json xxx.json configmap / secret 存储文件内容 # sftpkey 为名称
-新建 # kubectl create secret generic sftpkey --from-file=/etc/id_rsa # kubectl create -n {NAMESPACE} secret generic sftpkey --from-file=/etc/id_rsa 删除 # kubectl delete secret sftpkey</description></item><item><title>Linux 笔记</title><link>http://example.org/docs/programmer/platforms/os/note-of-linux/</link><pubDate>Fri, 08 Apr 2016 16:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/note-of-linux/</guid><description>git fetch &amp;ndash;all git reset &amp;ndash;hard origin/master git pull 交换分区 # 大小推荐 # 物理内存 交换分区（SWAP） &amp;lt;= 4G 至少4G 4~16G 至少8G 16G~64G 至少16G 64G~256G 至少32G 调节操作 # # 查看命令相关 sudo swapo swapoff swapon # 关闭现有的交换分区 sudo swapoff /swapfile # 查看效果 htop # 预支出一块儿空地 sudo fallocate -l 16G /swapfile du -sh /swapfile # 设置权限 防止误操作 sudo chmod 600 /swapfile # 整上 sudo mkswap /swapfile mkswap: /swapfile：警告，将擦除旧的 swap 签名。 正在设置交换空间版本 1，大小 = 16 GiB (17179865088 个字节) 无标签， UUID=6de8b5e1-bdc3-4e7b-98c9-6801126fcb0b # 开!</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Ian's Blog</title><link>http://example.org/tags/linux/</link><description>Recent content in Linux on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 06 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>Steam</title><link>http://example.org/docs/programmer/platforms/os/steam/</link><pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/steam/</guid><description>&lt;h1 id="双人成行"&gt;双人成行&lt;a class="anchor" href="#%e5%8f%8c%e4%ba%ba%e6%88%90%e8%a1%8c"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Win上存档位置： &lt;code&gt;/Users/{user name}/AppData/Local/ItTakesTwo&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Linux Steam 存档位置: &lt;code&gt;~/.steam/steam/steamapps/compatdata/3097223920/pfx/drive_c/users/steamuser/AppData/Local/ItTakesTwo$ &lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="说明"&gt;说明&lt;a class="anchor" href="#%e8%af%b4%e6%98%8e"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;~/.steam/steam/steamapps/compatdata/&lt;/code&gt;为&lt;code&gt;steam porton&lt;/code&gt;统一虚拟环境位置
+&lt;code&gt;3097223920&lt;/code&gt;为steam为每个游戏都创建一个独立的环境
+&lt;code&gt;pfx/drive_c/users/steamuser&lt;/code&gt;这些就是windows下的存储路径了, &lt;code&gt;steamuser&lt;/code&gt;为默认用户名&lt;code&gt;pfx&lt;/code&gt;表示&lt;code&gt;私有存储空间&lt;/code&gt;？大概&lt;/p&gt;
+&lt;p&gt;2686703063 - GTAV&lt;/p&gt;</description></item><item><title>Ubuntu</title><link>http://example.org/docs/programmer/platforms/os/ubuntu/</link><pubDate>Mon, 17 Jun 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/ubuntu/</guid><description>&lt;h1 id="一snap"&gt;一、Snap&lt;a class="anchor" href="#%e4%b8%80snap"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;如果&lt;code&gt;Ubuntu&lt;/code&gt;有问题,那么很有可能是因为&lt;code&gt;Snap&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;&lt;h2 id="firefox"&gt;Firefox&lt;a class="anchor" href="#firefox"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;在升级&lt;code&gt;Ubuntu 24.04&lt;/code&gt;后内存占用极为不正常, 多次排查无果, 增加了交换空间还是没有治本, 几经排查终于发现是&lt;code&gt;firefox&lt;/code&gt;的问题, 且是Snap的firefox的问题,所以手动下载别的版本后修改如下:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;修改&lt;code&gt;/usr/bin/firefox&lt;/code&gt;中的最一开始的监测安装和运行为自行下载软件路径&lt;/li&gt;
+&lt;li&gt;添加&lt;code&gt;gnome favorite-apps&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-添加firefox到favorites喜爱应用"&gt;1. 添加Firefox到Favorites（喜爱应用）&lt;a class="anchor" href="#1-%e6%b7%bb%e5%8a%a0firefox%e5%88%b0favorites%e5%96%9c%e7%88%b1%e5%ba%94%e7%94%a8"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;打开终端（Ctrl + Alt + T）。&lt;/li&gt;
+&lt;li&gt;输入以下命令来查看当前的喜爱应用列表：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;gsettings get org.gnome.shell favorite-apps&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这会输出当前的喜爱应用列表
+3. 如果没有看到 &lt;code&gt;firefox.desktop&lt;/code&gt; 在列表中，可以使用以下命令将它添加进去,这个命令会将 &lt;code&gt;firefox.desktop&lt;/code&gt; 添加到喜爱应用列表的末尾。：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;gsettings set org.gnome.shell favorite-apps &lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;$(&lt;/span&gt;gsettings get org.gnome.shell favorite-apps | sed &lt;span style="color:#e6db74"&gt;&amp;#34;s/]/, &amp;#39;firefox.desktop&amp;#39;]/&amp;#34;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;)&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="2-检查desktop文件是否正确"&gt;2. 检查.desktop文件是否正确&lt;a class="anchor" href="#2-%e6%a3%80%e6%9f%a5desktop%e6%96%87%e4%bb%b6%e6%98%af%e5%90%a6%e6%ad%a3%e7%a1%ae"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;确保 &lt;code&gt;firefox.desktop&lt;/code&gt; 文件存在并且正确配置。通常，它应该位于 &lt;code&gt;/usr/share/applications/&lt;/code&gt; 目录或者在Snap安装中可能位于 &lt;code&gt;/var/lib/snapd/desktop/applications/&lt;/code&gt; 目录。你可以使用 &lt;code&gt;ls&lt;/code&gt; 命令检查这些位置是否有相关的 &lt;code&gt;.desktop&lt;/code&gt; 文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ls /usr/share/applications/firefox.desktop
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ls /var/lib/snapd/desktop/applications/firefox_firefox.desktop &lt;span style="color:#75715e"&gt;# 如果是通过Snap安装的Firefox`&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="3-更新缓存和重启可选---我用的-bef1ba"&gt;3. 更新缓存和重启(可选) - 我用的 [[#^bef1ba]]&lt;a class="anchor" href="#3-%e6%9b%b4%e6%96%b0%e7%bc%93%e5%ad%98%e5%92%8c%e9%87%8d%e5%90%af%e5%8f%af%e9%80%89---%e6%88%91%e7%94%a8%e7%9a%84-bef1ba"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;如果以上步骤没有解决问题，尝试更新GNOME的缓存并重新启动GNOME Shell：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo update-desktop-database&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后注销并重新登录GNOME Shell，看看是否能够显示Firefox图标。&lt;/p&gt;
+&lt;h3 id="4-手动创建desktop文件将软件添加到软件列表"&gt;4. 手动创建.desktop文件(将软件添加到软件列表)&lt;a class="anchor" href="#4-%e6%89%8b%e5%8a%a8%e5%88%9b%e5%bb%badesktop%e6%96%87%e4%bb%b6%e5%b0%86%e8%bd%af%e4%bb%b6%e6%b7%bb%e5%8a%a0%e5%88%b0%e8%bd%af%e4%bb%b6%e5%88%97%e8%a1%a8"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;^bef1ba&lt;/p&gt;</description></item><item><title>WPS for Linux</title><link>http://example.org/docs/programmer/platforms/wps-for-linux/</link><pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/wps-for-linux/</guid><description>&lt;h2 id="wps-在linux上打开提示字体缺失"&gt;wps 在linux上打开提示字体缺失&lt;a class="anchor" href="#wps-%e5%9c%a8linux%e4%b8%8a%e6%89%93%e5%bc%80%e6%8f%90%e7%a4%ba%e5%ad%97%e4%bd%93%e7%bc%ba%e5%a4%b1"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="wps-在linux上打开提示字体缺失-1"&gt;wps 在linux上打开提示字体缺失&lt;a class="anchor" href="#wps-%e5%9c%a8linux%e4%b8%8a%e6%89%93%e5%bc%80%e6%8f%90%e7%a4%ba%e5%ad%97%e4%bd%93%e7%bc%ba%e5%a4%b1-1"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git clone https://github.com/dv-anomaly/ttf-wps-fonts
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd ttf-wps-fonts &lt;span style="color:#f92672"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo ./install.sh &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>k8s 配套说明</title><link>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/</link><pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/</guid><description>&lt;h1 id="ctr"&gt;ctr&lt;a class="anchor" href="#ctr"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;如果定义了 -n 应该是namesplace 那么每个命令都得跟上&lt;/p&gt;
+&lt;h2 id="load镜像"&gt;load镜像&lt;a class="anchor" href="#load%e9%95%9c%e5%83%8f"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;sudo ctr -n=&lt;a href="http://k8s.io/"&gt;k8s.io&lt;/a&gt; images import ${imageTarFile}&lt;/p&gt;
+&lt;h2 id="保存文件"&gt;保存文件&lt;a class="anchor" href="#%e4%bf%9d%e5%ad%98%e6%96%87%e4%bb%b6"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;sudo ctr -n k8s.io images export &amp;ndash;platform=linux/amd64 hi.tar 101.32.1.4:30002/web-docker/worker:2121&lt;/p&gt;
+&lt;h2 id="切换tag"&gt;切换tag&lt;a class="anchor" href="#%e5%88%87%e6%8d%a2tag"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;sudo ctr -n &lt;a href="http://k8s.io/"&gt;k8s.io&lt;/a&gt; images tag &amp;ndash;force repos.x.com/web-docker/worker:2121 101.32.1.4:30002/web-docker/worker:2121&lt;/p&gt;
+&lt;h2 id="推送镜像"&gt;推送镜像&lt;a class="anchor" href="#%e6%8e%a8%e9%80%81%e9%95%9c%e5%83%8f"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;sudo ctr -n &lt;a href="http://k8s.io/"&gt;k8s.io&lt;/a&gt; images push -k -u admin:fat213asfdFS2W &amp;ndash;plain-http 101.32.1.4:30002/web-docker/worker:2121&lt;/p&gt;
+&lt;h2 id="拉取"&gt;拉取&lt;a class="anchor" href="#%e6%8b%89%e5%8f%96"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;sudo ctr -n k8s.io images pull -k -u admin:fat1239ASD124W &amp;ndash;plain-http 101.32.1.4:30002/web-docker/worker:2121&lt;/p&gt;
+&lt;h1 id="docker"&gt;Docker&lt;a class="anchor" href="#docker"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;[[Note of Docker]]
+好像并没有整理docker命令&amp;hellip; 后续补吧&lt;/p&gt;
+&lt;h2 id="加载镜像"&gt;加载镜像&lt;a class="anchor" href="#%e5%8a%a0%e8%bd%bd%e9%95%9c%e5%83%8f"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;docker load -i .\hi.tar&lt;/p&gt;
+&lt;h2 id="保存为本地文件"&gt;保存为本地文件&lt;a class="anchor" href="#%e4%bf%9d%e5%ad%98%e4%b8%ba%e6%9c%ac%e5%9c%b0%e6%96%87%e4%bb%b6"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;docker save  repos.x.com/web-docker/worker:2121 -o hi.tar&lt;/p&gt;</description></item><item><title>k8s技术分享</title><link>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/</link><pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/</guid><description>&lt;h1 id="k8s技术分享"&gt;k8s技术分享&lt;a class="anchor" href="#k8s%e6%8a%80%e6%9c%af%e5%88%86%e4%ba%ab"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="工作负载资源"&gt;工作负载资源&lt;a class="anchor" href="#%e5%b7%a5%e4%bd%9c%e8%b4%9f%e8%bd%bd%e8%b5%84%e6%ba%90"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="一pod"&gt;一、&lt;a href="https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/pod-v1/"&gt;pod&lt;/a&gt;&lt;a class="anchor" href="#%e4%b8%80pod"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="1-概要"&gt;1. 概要&lt;a class="anchor" href="#1-%e6%a6%82%e8%a6%81"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;可创建管理、最小的可部署计算单元，是可以在主机上运行的容器的集合&lt;/li&gt;
+&lt;li&gt;我们的服务都在其中运行。如我们的服务是nginx，则最内层是我们的服务 &lt;code&gt;nginx&lt;/code&gt;，运行在 &lt;code&gt;container&lt;/code&gt; 容器当中。&lt;code&gt;container&lt;/code&gt; (容器) 的本质是进程，而 &lt;code&gt;pod&lt;/code&gt; 是管理这一组进程的资源&lt;/li&gt;
+&lt;li&gt;所以pod可视为一个极为轻量化、没插网线的电脑，如果所需任务无需交互，那么用pod就很合适。例如给它挂载一个文件来训练模型、生成报表，可以根据场景使用 &lt;a href="https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/job-v1/"&gt;Job&lt;/a&gt; 或者 &lt;a href="https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/cron-job-v1/"&gt;CronJob&lt;/a&gt; 或者其它&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="图示关系如下"&gt;图示关系如下&lt;a class="anchor" href="#%e5%9b%be%e7%a4%ba%e5%85%b3%e7%b3%bb%e5%a6%82%e4%b8%8b"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;![[k8s-pod-insert.png]]&lt;/p&gt;
+&lt;h3 id="2-pod网络"&gt;2. pod网络&lt;a class="anchor" href="#2-pod%e7%bd%91%e7%bb%9c"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;当然，&lt;code&gt;pod&lt;/code&gt; 可以管理多个 &lt;code&gt;container&lt;/code&gt;，又因为&lt;code&gt;container&lt;/code&gt; (容器) 的本质是进程，如果有本地网络通信需求(使用 localhost 或者 Socket 文件进行本地通信)，在这些场景中使用 &lt;code&gt;pod&lt;/code&gt; 管理多个 &lt;code&gt;container&lt;/code&gt; 就非常的推荐。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如下图展示了Pod网络所依赖的3个网络设备&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;    1. eth0是节点主机上的网卡，支持该节点流量出入的设备、也是支持集群节点间IP寻址和互通的设备；&lt;/p&gt;
+&lt;p&gt;    2. docker0是一个虚拟网桥，可以简单理解为一个虚拟交换机，支持该节点上的Pod之间进行IP寻址和互通的设备；&lt;/p&gt;
+&lt;p&gt;    3. veth0则是Pod1的虚拟网卡，支持该Pod内容器互通和对外访问的虚拟设备；&lt;/p&gt;
+&lt;p&gt;    4. docker0网桥和veth0网卡，都是linux支持和创建的虚拟网络设备；&lt;/p&gt;
+&lt;p&gt;    5. pause属于特殊容器，其运行的唯一目的是为Pod建立共享的veth0网络接口&lt;/p&gt;
+&lt;p&gt;![[k8s-nginx-pod.png]]&lt;/p&gt;
+&lt;h2 id="二deploymentstatefulset"&gt;二、&lt;a href="https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/deployment-v1/"&gt;deployment&lt;/a&gt;、&lt;a href="https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/stateful-set-v1/"&gt;StatefulSet&lt;/a&gt;&lt;a class="anchor" href="#%e4%ba%8cdeploymentstatefulset"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="1-概要-1"&gt;1. 概要&lt;a class="anchor" href="#1-%e6%a6%82%e8%a6%81-1"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Deployment 使得 Pod 和 ReplicaSet 能够进行声明式更新&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;StatefulSet 表示一组具有一致身份的 Pod：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;    1. 身份定义为：&lt;/p&gt;
+&lt;p&gt;        - 网络：一个稳定的 DNS 和主机名。&lt;/p&gt;
+&lt;p&gt;        - 存储：根据要求提供尽可能多的 VolumeClaim。&lt;/p&gt;
+&lt;p&gt;        StatefulSet 保证给定的网络身份将始终映射到相同的存储身份。&lt;/p&gt;
+&lt;p&gt;        虽然pod完全具备在生产环境中部署独立的单体服务的能力，但在生产环境中，我们基本上不会直接管理 &lt;code&gt;pod&lt;/code&gt;，我们会使用&lt;code&gt;deployment&lt;/code&gt; 代为控管。延续上面的比喻就是将 &lt;code&gt;deployment&lt;/code&gt; 视为一个好用的机房管理员：帮助我们进货，对pod进行开关机，对pod做系统升级和重装系统以实现功能升级和回滚。 &lt;code&gt;StatefulSet&lt;/code&gt; 也相同，只不过每次它会保证一致性，而不像&lt;code&gt;deployment&lt;/code&gt; 每次重启都是随机分配&lt;/p&gt;</description></item><item><title>k8s学习-常用命令和配置文件</title><link>http://example.org/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/</link><pubDate>Mon, 27 Mar 2023 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/</guid><description>&lt;p&gt;&lt;img src="https://d33wubrfki0l68.cloudfront.net/69e55f968a6f44613384615c6a78b881bfe28bd6/1600c/zh-cn/_common-resources/images/flower.svg" alt="k8s" /&gt;&lt;/p&gt;
+&lt;h1 id="k8s学习"&gt;k8s学习&lt;a class="anchor" href="#k8s%e5%ad%a6%e4%b9%a0"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="常用命令"&gt;常用命令&lt;a class="anchor" href="#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;kubectl apply -f rcm_log_monut_k8s_pod.yaml&lt;/li&gt;
+&lt;li&gt;kubectl get pod -A&lt;/li&gt;
+&lt;li&gt;kubectl get pod -all-namespaces&lt;/li&gt;
+&lt;li&gt;kubectl get node&lt;/li&gt;
+&lt;li&gt;kubectl get deploy&lt;/li&gt;
+&lt;li&gt;&lt;a href="#%e6%8c%81%e4%b9%85%e5%8d%b7"&gt;持久卷 - PersistentVolume&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;kubectl get persistentvolume&lt;/li&gt;
+&lt;li&gt;kubectl describe persistentvolume example-pv&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;kubectl **delete** persistentvolume example-pv&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;从kubectl cp -n &amp;lt;命名空间&amp;gt; -c &lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;:xxx.json xxx.json&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="configmap--secret-存储文件内容"&gt;configmap / secret 存储文件内容&lt;a class="anchor" href="#configmap--secret-%e5%ad%98%e5%82%a8%e6%96%87%e4%bb%b6%e5%86%85%e5%ae%b9"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;sftpkey&lt;/code&gt; 为名称&lt;/p&gt;
+&lt;h3 id="新建"&gt;新建&lt;a class="anchor" href="#%e6%96%b0%e5%bb%ba"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;kubectl create secret generic sftpkey --from-file&lt;span style="color:#f92672"&gt;=&lt;/span&gt;/etc/id_rsa
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# kubectl create -n {NAMESPACE} secret generic sftpkey --from-file=/etc/id_rsa&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="删除"&gt;删除&lt;a class="anchor" href="#%e5%88%a0%e9%99%a4"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;kubectl delete secret sftpkey&lt;/p&gt;</description></item><item><title>Linux 笔记</title><link>http://example.org/docs/programmer/platforms/os/note-of-linux/</link><pubDate>Fri, 08 Apr 2016 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/note-of-linux/</guid><description>&lt;p&gt;git fetch &amp;ndash;all
+git reset &amp;ndash;hard origin/master
+git pull
+&lt;img src="https://static1.makeuseofimages.com/wp-content/uploads/2015/01/best-linux-distros.jpg" alt="linux" /&gt;&lt;/p&gt;
+&lt;h2 id="交换分区"&gt;交换分区&lt;a class="anchor" href="#%e4%ba%a4%e6%8d%a2%e5%88%86%e5%8c%ba"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="大小推荐"&gt;大小推荐&lt;a class="anchor" href="#%e5%a4%a7%e5%b0%8f%e6%8e%a8%e8%8d%90"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;物理内存&lt;/th&gt;
+ &lt;th&gt;交换分区（SWAP）&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&amp;lt;= 4G&lt;/td&gt;
+ &lt;td&gt;至少4G&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;4~16G&lt;/td&gt;
+ &lt;td&gt;至少8G&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;16G~64G&lt;/td&gt;
+ &lt;td&gt;至少16G&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;64G~256G&lt;/td&gt;
+ &lt;td&gt;至少32G&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="调节操作"&gt;调节操作&lt;a class="anchor" href="#%e8%b0%83%e8%8a%82%e6%93%8d%e4%bd%9c"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 查看命令相关&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo swapo
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;swapoff swapon
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 关闭现有的交换分区&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo swapoff /swapfile
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 查看效果&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;htop
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 预支出一块儿空地&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo fallocate -l 16G /swapfile
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;du -sh /swapfile
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 设置权限 防止误操作&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo chmod &lt;span style="color:#ae81ff"&gt;600&lt;/span&gt; /swapfile
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 整上&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo mkswap /swapfile
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkswap: /swapfile：警告，将擦除旧的 swap 签名。
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;正在设置交换空间版本 1，大小 &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;16&lt;/span&gt; GiB &lt;span style="color:#f92672"&gt;(&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;17179865088&lt;/span&gt; 个字节&lt;span style="color:#f92672"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;无标签， UUID&lt;span style="color:#f92672"&gt;=&lt;/span&gt;6de8b5e1-bdc3-4e7b-98c9-6801126fcb0b
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 开!&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo swapon /swapfile
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 查看&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;swapon --show
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;NAME TYPE SIZE USED PRIO
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;/swapfile file 16G 535.3M -2
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 写到fstab自动挂载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/fstab&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;fstab&lt;/code&gt;示例:&lt;/p&gt;</description></item></channel></rss>

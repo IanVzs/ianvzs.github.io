@@ -1,2 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>demo_test on Ian's Blog</title><link>http://example.org/tags/demo_test/</link><description>Recent content in demo_test on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="http://example.org/tags/demo_test/index.xml" rel="self" type="application/rss+xml"/><item><title>Demo Test项目中的一些东西</title><link>http://example.org/docs/programmer/ml/yolo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/yolo/</guid><description>yolov5 # 使用自己的素材进行目标识别训练
-之前使用个位数样本识别Vmon结果败的一塌糊涂 现在用来检测卡片倒是得心应手 9个训练卡片,准确率可以到50多,自我感觉还行 使用方法: 在此</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Demo_test on Ian's Blog</title><link>http://example.org/tags/demo_test/</link><description>Recent content in Demo_test on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 10 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/demo_test/index.xml" rel="self" type="application/rss+xml"/><item><title>Demo Test项目中的一些东西</title><link>http://example.org/docs/programmer/ml/yolo/</link><pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/yolo/</guid><description>&lt;p&gt;&lt;img src="https://avatars.githubusercontent.com/u/17629611?s=96&amp;amp;v=4" alt="avator" title="avator"/&gt;&lt;/p&gt;
+&lt;h1 id="yolov5"&gt;yolov5&lt;a class="anchor" href="#yolov5"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;使用自己的素材进行目标识别训练&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;之前使用个位数样本识别Vmon结果败的一塌糊涂&lt;/li&gt;
+&lt;li&gt;现在用来检测卡片倒是得心应手&lt;/li&gt;
+&lt;li&gt;9个训练卡片,准确率可以到50多,自我感觉还行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用方法: &lt;a href="https://github.com/IanVzs/demo_test/tree/master/opencv_some/yolo5v_test#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"&gt;在此&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

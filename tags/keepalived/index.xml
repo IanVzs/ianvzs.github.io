@@ -1,3 +1,155 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>keepalived on Ian's Blog</title><link>http://example.org/tags/keepalived/</link><description>Recent content in keepalived on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 09 May 2021 09:56:41 +0000</lastBuildDate><atom:link href="http://example.org/tags/keepalived/index.xml" rel="self" type="application/rss+xml"/><item><title>Nginx高可用</title><link>http://example.org/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/</link><pubDate>Sun, 09 May 2021 09:56:41 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/</guid><description>Keepalived+Nginx实现高可用 # Nginx 关键字 # IO多路复用epoll(IO复用) 轻量,插件: Nginx仅保留了HTTP CPU亲和: 每个worker进程固定在一个CPU Nginx配置 # 代理 # 动静分离 # 动态页面和静态页面交给不同的服务器来解析
-负载均衡 # upstream balanceServer { server 10.1.22.33:12345; server 10.1.22.34:12345; server 10.1.22.35:12345; } server { server_name fe.server.com; listen 80; location /api { proxy_pass http://balanceServer; } } 机制 # 默认: 轮询, 单机卡顿, 影响分配在这台服务器下的用户 默认: 权重轮询, 宕机Nginx会自动剔除出队列, ip_hash-来源IP分配分配给同个服务器 fair: 根据相应时间均衡分配, 默认不支持. 需安装upstream_fair, url_hash类ip_hash同样需要安装Nginx的hash软件包. Keepalived 配置 # 粘贴自: 这里
-概览 # VIP IP 主机名 Nginx端口 默认主从 192.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Keepalived on Ian's Blog</title><link>http://example.org/tags/keepalived/</link><description>Recent content in Keepalived on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 09 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/keepalived/index.xml" rel="self" type="application/rss+xml"/><item><title>Nginx高可用</title><link>http://example.org/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/</link><pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/</guid><description>&lt;h1 id="keepalivednginx实现高可用"&gt;Keepalived+Nginx实现高可用&lt;a class="anchor" href="#keepalivednginx%e5%ae%9e%e7%8e%b0%e9%ab%98%e5%8f%af%e7%94%a8"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://pic4.zhimg.com/80/v2-ec3208d1ea659d126fe2a008ec5ae927_1440w.jpg" alt="Keepalived&amp;#43;Nginx实现高可用示意图" title="zhuanlan.zhihu.com/p/34943332"/&gt;&lt;/p&gt;
+&lt;h2 id="nginx-关键字"&gt;Nginx 关键字&lt;a class="anchor" href="#nginx-%e5%85%b3%e9%94%ae%e5%ad%97"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;IO多路复用epoll(IO复用)&lt;/li&gt;
+&lt;li&gt;轻量,插件: Nginx仅保留了HTTP&lt;/li&gt;
+&lt;li&gt;CPU亲和: 每个worker进程固定在一个CPU&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="nginx配置"&gt;Nginx配置&lt;a class="anchor" href="#nginx%e9%85%8d%e7%bd%ae"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="代理"&gt;代理&lt;a class="anchor" href="#%e4%bb%a3%e7%90%86"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://pic2.zhimg.com/80/v2-f339964bbc01f2437f93acbac8158715_1440w.jpg" alt="正向代理示意图" title="https://zhuanlan.zhihu.com/p/69072041"/&gt;
+&lt;img src="https://pic4.zhimg.com/80/v2-21da2af85639573089e42bbf6074cc07_1440w.jpg" alt="正向代理意义?" title="https://zhuanlan.zhihu.com/p/69072041"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://pic4.zhimg.com/80/v2-102d945941e4c24ccc7c4712474cadd7_1440w.jpg" alt="反向代理示意图" title="https://zhuanlan.zhihu.com/p/69072041"/&gt;&lt;/p&gt;
+&lt;h3 id="动静分离"&gt;动静分离&lt;a class="anchor" href="#%e5%8a%a8%e9%9d%99%e5%88%86%e7%a6%bb"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;动态页面和静态页面交给不同的服务器来解析&lt;/p&gt;
+&lt;h3 id="负载均衡"&gt;负载均衡&lt;a class="anchor" href="#%e8%b4%9f%e8%bd%bd%e5%9d%87%e8%a1%a1"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-conf" data-lang="conf"&gt;upstream balanceServer {
+ server 10.1.22.33:12345;
+ server 10.1.22.34:12345;
+ server 10.1.22.35:12345;
+}
+
+server { 
+ server_name fe.server.com;
+ listen 80;
+ location /api {
+ proxy_pass http://balanceServer;
+ }
+}&lt;/code&gt;&lt;/pre&gt;&lt;h4 id="机制"&gt;机制&lt;a class="anchor" href="#%e6%9c%ba%e5%88%b6"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;默认: &lt;code&gt;轮询&lt;/code&gt;, 单机卡顿, 影响分配在这台服务器下的用户&lt;/li&gt;
+&lt;li&gt;默认: &lt;code&gt;权重轮询&lt;/code&gt;, 宕机Nginx会自动剔除出队列, &lt;code&gt;ip_hash&lt;/code&gt;-来源IP分配分配给同个服务器&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fair&lt;/code&gt;: 根据相应时间均衡分配, 默认不支持. 需安装&lt;code&gt;upstream_fair&lt;/code&gt;, &lt;code&gt;url_hash&lt;/code&gt;类&lt;code&gt;ip_hash&lt;/code&gt;同样需要安装Nginx的&lt;code&gt;hash软件包&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="keepalived-配置"&gt;Keepalived 配置&lt;a class="anchor" href="#keepalived-%e9%85%8d%e7%bd%ae"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;粘贴自: &lt;a href="https://blog.csdn.net/l1028386804/article/details/72801492"&gt;这里&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="概览"&gt;概览&lt;a class="anchor" href="#%e6%a6%82%e8%a7%88"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th style="text-align: right"&gt;VIP&lt;/th&gt;
+ &lt;th style="text-align: center"&gt;IP&lt;/th&gt;
+ &lt;th style="text-align: center"&gt;主机名&lt;/th&gt;
+ &lt;th style="text-align: center"&gt;Nginx端口&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;默认主从&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: right"&gt;192.168.50.130&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;192.168.50.133&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;liuyazhuang133&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;88&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;MASTER&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: right"&gt;192.168.50.130&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;192.168.50.134&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;liuyazhuang134&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;88&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;BACKUP&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="主机器配置"&gt;主机器配置&lt;a class="anchor" href="#%e4%b8%bb%e6%9c%ba%e5%99%a8%e9%85%8d%e7%bd%ae"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vi /etc/keepalived/keepalived.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex="0"&gt;&lt;code class="language-conf" data-lang="conf"&gt;# 主要
+global_defs {
+	## keepalived 自带的邮件提醒需要开启 sendmail 服务。 建议用独立的监控或第三方 SMTP
+	router_id liuyazhuang133 ## 标识本节点的字条串，通常为 hostname
+} 
+## keepalived 会定时执行脚本并对脚本执行的结果进行分析，动态调整 vrrp_instance 的优先级。如果脚本执行结果为 0，并且 weight 配置的值大于 0，则优先级相应的增加。如果脚本执行结果非 0，并且 weight配置的值小于 0，则优先级相应的减少。其他情况，维持原本配置的优先级，即配置文件中 priority 对应的值。
+vrrp_script chk_nginx {
+	script &amp;#34;/etc/keepalived/nginx_check.sh&amp;#34; ## 检测 nginx 状态的脚本路径
+	interval 2 ## 检测时间间隔
+	weight -20 ## 如果条件成立，权重-20
+}
+## 定义虚拟路由， VI_1 为虚拟路由的标示符，自己定义名称
+vrrp_instance VI_1 {
+	state MASTER ## 主节点为 MASTER， 对应的备份节点为 BACKUP
+	interface eth0 ## 绑定虚拟 IP 的网络接口，与本机 IP 地址所在的网络接口相同， 我的是 eth0
+	virtual_router_id 33 ## 虚拟路由的 ID 号， 两个节点设置必须一样， 可选 IP 最后一段使用, 相同的 VRID 为一个组，他将决定多播的 MAC 地址
+	mcast_src_ip 192.168.50.133 ## 本机 IP 地址
+	priority 100 ## 节点优先级， 值范围 0-254， MASTER 要比 BACKUP 高
+	nopreempt ## 优先级高的设置 nopreempt 解决异常恢复后再次抢占的问题
+	advert_int 1 ## 组播信息发送间隔，两个节点设置必须一样， 默认 1s
+	## 设置验证信息，两个节点必须一致
+	authentication {
+		auth_type PASS
+		auth_pass 1111 ## 真实生产，按需求对应该过来
+	}
+	## 将 track_script 块加入 instance 配置块
+	track_script {
+		chk_nginx ## 执行 Nginx 监控的服务
+	} #
+	# 虚拟 IP 池, 两个节点设置必须一样
+	virtual_ipaddress {
+		192.168.50.130 ## 虚拟 ip，可以定义多个
+	}
+}&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="备份机配置"&gt;备份机配置&lt;a class="anchor" href="#%e5%a4%87%e4%bb%bd%e6%9c%ba%e9%85%8d%e7%bd%ae"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vi /etc/keepalived/keepalived.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex="0"&gt;&lt;code class="language-conf" data-lang="conf"&gt;# 备份
+! Configuration File for keepalived
+global_defs {
+	router_id liuyazhuang134
+}
+vrrp_script chk_nginx {
+	script &amp;#34;/etc/keepalived/nginx_check.sh&amp;#34;
+	interval 2
+	weight -20
+}
+vrrp_instance VI_1 {
+	state BACKUP
+	interface eth1
+	virtual_router_id 33
+	mcast_src_ip 192.168.50.134
+	priority 90
+	advert_int 1
+	authentication {
+		auth_type PASS
+		auth_pass 1111
+	}
+	track_script {
+		chk_nginx
+	}
+	virtual_ipaddress {
+		192.168.50.130
+	}
+}&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id="nginx-运维命令"&gt;Nginx 运维命令&lt;a class="anchor" href="#nginx-%e8%bf%90%e7%bb%b4%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 快速关闭Nginx，可能不保存相关信息，并迅速终止web服务&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -s stop
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 平稳关闭Nginx，保存相关信息，有安排的结束web服务&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -s quit
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 因改变了Nginx相关配置，需要重新加载配置而重载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -s reload
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 重新打开日志文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -s reopen
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 为 Nginx 指定一个配置文件，来代替缺省的&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -c filename
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 不运行，而仅仅测试配置文件。nginx 将检查配置文件的语法的正确性，并尝试打开配置文件中所引用到的文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -t
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 显示 nginx 的版本&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -v
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 显示 nginx 的版本，编译器版本和配置参数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -V
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 格式换显示 nginx 配置参数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;2&amp;gt;&amp;amp;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; nginx -V | xargs -n1
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;2&amp;gt;&amp;amp;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; nginx -V | xargs -n1 | grep lua&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>

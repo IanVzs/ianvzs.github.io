@@ -1,0 +1,195 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="AI 的瞎咧咧：0️⃣ 问题抽象（数学视角）# 你原始数据是一个样本集合： [ X = {x_1, x_2, \dots, x_n}
+]
+你只能存一小部分信息
+目标不是“精确复原 (X)”，而是构造一个新样本集合： [
+\tilde{X} = {\tilde{x}_1, \dots, \tilde{x}_m}
+] 使得：
+分布形态尽量接近 一阶 / 二阶统计量接近 尾部和边界不炸 1️⃣ 平均值 & 标准差（一阶 / 二阶矩）# 定义# [
+\mu = \frac{1}{n}\sum x_i
+] [
+\sigma = \sqrt{\frac{1}{n}\sum (x_i - \mu)^2}
+]
+数学意义# (\mu)：位置（location） (\sigma)：尺度（scale） 但它们只刻画“中心 + 离散程度”
+完全不描述分布形状 👉 所以我们没有用“正态假设直接生成”，而是只把它们当 约束条件 / 噪声尺度。
+2️⃣ 分位数（Quantiles）——形状的骨架# 定义# p 分位数 (Q(p)) 满足： [
+P(X \le Q(p)) = p
+] 你存的是： [
+Q(0), Q(0.05), Q(0.25), Q(0.5), Q(0.75), Q(0.95), Q(1)
+]
+"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#2e3440"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://example.org/docs/programmer/langs/python/%E5%A4%A7%E6%95%B0%E5%88%97%E9%9B%86%E5%90%88%E5%AD%98%E5%82%A8%E5%92%8C%E8%BF%98%E5%8E%9F/"><meta property="og:site_name" content="Ian's Blog"><meta property="og:title" content="大数列集合存储和还原"><meta property="og:description" content="AI 的瞎咧咧：0️⃣ 问题抽象（数学视角）# 你原始数据是一个样本集合： [ X = {x_1, x_2, \dots, x_n}
+]
+你只能存一小部分信息
+目标不是“精确复原 (X)”，而是构造一个新样本集合： [
+\tilde{X} = {\tilde{x}_1, \dots, \tilde{x}_m}
+] 使得：
+分布形态尽量接近 一阶 / 二阶统计量接近 尾部和边界不炸 1️⃣ 平均值 & 标准差（一阶 / 二阶矩）# 定义# [
+\mu = \frac{1}{n}\sum x_i
+] [
+\sigma = \sqrt{\frac{1}{n}\sum (x_i - \mu)^2}
+]
+数学意义# (\mu)：位置（location） (\sigma)：尺度（scale） 但它们只刻画“中心 + 离散程度”
+完全不描述分布形状 👉 所以我们没有用“正态假设直接生成”，而是只把它们当 约束条件 / 噪声尺度。
+2️⃣ 分位数（Quantiles）——形状的骨架# 定义# p 分位数 (Q(p)) 满足： [
+P(X \le Q(p)) = p
+] 你存的是： [
+Q(0), Q(0.05), Q(0.25), Q(0.5), Q(0.75), Q(0.95), Q(1)
+]"><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:published_time" content="2026-01-07T00:00:00+00:00"><meta property="article:modified_time" content="2026-01-07T00:00:00+00:00"><meta property="article:tag" content="大数组"><meta property="article:tag" content="存储还原"><meta itemprop=name content="大数列集合存储和还原"><meta itemprop=description content="AI 的瞎咧咧：0️⃣ 问题抽象（数学视角）# 你原始数据是一个样本集合： [ X = {x_1, x_2, \dots, x_n}
+]
+你只能存一小部分信息
+目标不是“精确复原 (X)”，而是构造一个新样本集合： [
+\tilde{X} = {\tilde{x}_1, \dots, \tilde{x}_m}
+] 使得：
+分布形态尽量接近 一阶 / 二阶统计量接近 尾部和边界不炸 1️⃣ 平均值 & 标准差（一阶 / 二阶矩）# 定义# [
+\mu = \frac{1}{n}\sum x_i
+] [
+\sigma = \sqrt{\frac{1}{n}\sum (x_i - \mu)^2}
+]
+数学意义# (\mu)：位置（location） (\sigma)：尺度（scale） 但它们只刻画“中心 + 离散程度”
+完全不描述分布形状 👉 所以我们没有用“正态假设直接生成”，而是只把它们当 约束条件 / 噪声尺度。
+2️⃣ 分位数（Quantiles）——形状的骨架# 定义# p 分位数 (Q(p)) 满足： [
+P(X \le Q(p)) = p
+] 你存的是： [
+Q(0), Q(0.05), Q(0.25), Q(0.5), Q(0.75), Q(0.95), Q(1)
+]"><meta itemprop=datePublished content="2026-01-07T00:00:00+00:00"><meta itemprop=dateModified content="2026-01-07T00:00:00+00:00"><meta itemprop=wordCount content="458"><meta itemprop=keywords content="大数组,存储还原"><title>大数列集合存储和还原 | Ian's Blog</title><link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://example.org/docs/programmer/langs/python/%E5%A4%A7%E6%95%B0%E5%88%97%E9%9B%86%E5%90%88%E5%AD%98%E5%82%A8%E5%92%8C%E8%BF%98%E5%8E%9F/><link rel=stylesheet href=/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q+RjFGKeI5ztdZ5nSJg=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.efc6dc35cf4ad70f9ddb5b92020d13c3015ca8ef6229d0a2b4a0cf3a2cc21644.js integrity="sha256-78bcNc9K1w+d21uSAg0TwwFcqO9iKdCitKDPOizCFkQ=" crossorigin=anonymous></script></head><body dir=ltr class="book-kind-page book-type-docs"><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Ian's Blog</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li class=book-section-flat><a href=/docs/programmer/>程序员笔记</a><ul><li><input type=checkbox id=section-c2c95db2f79edee23bbb71965e55c1e2 class=toggle checked>
+<label for=section-c2c95db2f79edee23bbb71965e55c1e2 class=flex><a href=/docs/programmer/langs/>编程语言</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-9f06ecccad732c4eb9d00c2abb8d8a7d class=toggle checked>
+<label for=section-9f06ecccad732c4eb9d00c2abb8d8a7d class=flex><a role=button>Python</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/langs/python/%E5%A4%A7%E6%95%B0%E5%88%97%E9%9B%86%E5%90%88%E5%AD%98%E5%82%A8%E5%92%8C%E8%BF%98%E5%8E%9F/ class=active>大数列集合存储和还原</a></li><li><a href=/docs/programmer/langs/python/python%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/>Python包管理</a></li><li><a href=/docs/programmer/langs/python/%E8%A7%84%E8%8C%83/>Python编码规范</a></li><li><a href=/docs/programmer/langs/python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B/>Python 多线程多进程</a></li><li><a href=/docs/programmer/langs/python/sqlalchemy/>SqlAlchemy - 数据库Orm</a></li><li><a href=/docs/programmer/langs/python/notespython/>解决问题</a></li><li><a href=/docs/programmer/langs/python/py%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%92%8C%E5%8A%9F%E8%83%BD%E6%80%A7%E6%96%B9%E6%B3%95/>Py小工具和功能性方法</a></li><li><a href=/docs/programmer/langs/python/pypi/>PyPi使用说明</a></li><li><a href=/docs/programmer/langs/python/pytest/>PyTest</a></li><li><a href=/docs/programmer/langs/python/notespython/>Python 常用库</a></li><li><a href=/docs/programmer/langs/python/notespython/>Python 笔记</a></li><li><a href=/docs/programmer/langs/python/paramiko-%E4%BD%BF%E7%94%A8---sshsftp/>Paramiko 使用 Ssh&amp;sftp</a></li><li><a href=/docs/programmer/langs/python/fastapi/>FastAPI</a></li></ul></li><li><input type=checkbox id=section-bf0d1fcaeb2dbb985e2dbbcc7202e9ad class=toggle>
+<label for=section-bf0d1fcaeb2dbb985e2dbbcc7202e9ad class=flex><a role=button>Golang</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/langs/golang/%E6%8A%8Agolang%E5%BD%93%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%94%A8/>把Golang当脚本语言用</a></li><li><a href=/docs/programmer/langs/golang/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/>常用命令</a></li><li><a href=/docs/programmer/langs/golang/advanced-knowledge-of-golang/>Golang进阶笔记</a></li><li><a href=/docs/programmer/langs/golang/note-of-golang/>Golang笔记</a></li></ul></li><li><a href=/docs/programmer/langs/cmake/>CMake 使用Tips</a></li><li><a href=/docs/programmer/langs/note-for-algo/>算法</a></li><li><a href=/docs/programmer/langs/tips-of-debugers/>Tips of debuggers</a></li><li><a href=/docs/programmer/langs/java/notesjava/>愉快的Java(happy to learn the fuck java)</a></li><li><a href=/docs/programmer/langs/tips-of-markdown/>Tips of MarkDown</a></li></ul></li><li><input type=checkbox id=section-81ac9fee5838836cbeab3fef2e0cfd9a class=toggle>
+<label for=section-81ac9fee5838836cbeab3fef2e0cfd9a class=flex><a role=button>机器学习</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/ml/stable-diffusion/>AI画图</a></li><li><a href=/docs/programmer/ml/langchain/>LangChain入门</a></li><li><a href=/docs/programmer/ml/%E5%9B%BE%E7%89%87%E8%83%8C%E6%99%AF%E6%B6%88%E9%99%A4/>图片背景消除</a></li><li><a href=/docs/programmer/ml/python-%E5%9B%BE%E8%A1%A8/>Python 图表</a></li><li><a href=/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%A1%8C%E4%B8%BA%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%92%8C%E4%BB%BB%E5%8A%A1/>机器人行为自动编排和任务</a></li><li><a href=/docs/programmer/ml/%E7%88%AC%E8%99%AB/>爬虫</a></li><li><a href=/docs/programmer/ml/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/>大模型使用笔记</a></li><li><a href=/docs/programmer/ml/paddle/>Paddle</a></li><li><a href=/docs/programmer/ml/tensorflow/>Tensorflow</a></li><li><a href=/docs/programmer/ml/yolo/>Demo Test项目中的一些东西</a></li><li><a href=/docs/programmer/ml/opencv/>OpenCV</a></li><li><a href=/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/>机器学习库</a></li></ul></li><li><input type=checkbox id=section-c6a6fd31106ee5bfefce9ec29333f46a class=toggle>
+<label for=section-c6a6fd31106ee5bfefce9ec29333f46a class=flex><a href=/docs/programmer/cloudnative/>云原生</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-559dc1ffcd65f3dd0a90ee18d4307178 class=toggle>
+<label for=section-559dc1ffcd65f3dd0a90ee18d4307178 class=flex><a href=/docs/programmer/cloudnative/redis/>中间件</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/redis/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/>布隆过滤器</a></li><li><a href=/docs/programmer/cloudnative/redis/redis%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/>Redis集群部署</a></li><li><a href=/docs/programmer/cloudnative/redis/python-redis-%E5%AE%A2%E6%88%B7%E7%AB%AF/>Python Redis 客户端</a></li><li><a href=/docs/programmer/cloudnative/redis/bigkey-and-hotkey/>大key、热key问题</a></li><li><a href=/docs/programmer/cloudnative/redis/the-basics-of-redis/>Redis基础</a></li><li><a href=/docs/programmer/cloudnative/redis/advanced-knowledge-of-redis/>Redis进阶</a></li><li><a href=/docs/programmer/cloudnative/redis/%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4/>Redis常用命令</a></li></ul></li><li><input type=checkbox id=section-cd44077b962ee7a7e8356ce12d624a84 class=toggle>
+<label for=section-cd44077b962ee7a7e8356ce12d624a84 class=flex><a role=button>k8s</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/k8s/%E9%98%BF%E9%87%8C%E8%87%AA%E5%8A%A8%E4%BC%B8%E7%BC%A9/>阿里k8s自动伸缩</a></li><li><a href=/docs/programmer/cloudnative/k8s/elk%E5%9C%A8k8s%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B/>elk在k8s上的部署使用示例</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/>k8s 配套说明</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/>k8s技术分享</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/>k8s学习-常用命令和配置文件</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-workflow%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/>Argo Workflow性能测试和使用场景分析</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/>Argo 使用记录</a></li></ul></li><li><input type=checkbox id=section-d6f1ed2a1ee0ed192f3a26afc247f2ca class=toggle>
+<label for=section-d6f1ed2a1ee0ed192f3a26afc247f2ca class=flex><a role=button>中间件</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/middleware/kafka-%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/>Kafka 安装和使用</a></li></ul></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/vs-code-dev-container/>📝 Windows + Docker + VS Code Remote-Containers 故障排查与恢复</a></li><li><a href=/docs/programmer/cloudnative/elk/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E7%B3%BB%E7%BB%9F/>日志收集系统: loki+promtail+Grafana</a></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/>Podman</a></li><li><a href=/docs/programmer/cloudnative/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li><li><a href=/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/>uwsgi 处理记录</a></li><li><a href=/docs/programmer/cloudnative/note-of-docker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/fastapi/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/>Nginx高可用</a></li><li><a href=/docs/programmer/cloudnative/notesdjango/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/>Sonar 代码静态检查</a></li></ul></li><li><input type=checkbox id=section-54a7005495649a744640d7e57eb2922f class=toggle>
+<label for=section-54a7005495649a744640d7e57eb2922f class=flex><a role=button>Net</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/net/crawler/selenium-grid/>Selenium Grid</a></li><li><a href=/docs/programmer/net/tools/ngrok/>ngrok - 一个免费内网穿透api工具</a></li><li><a href=/docs/programmer/net/crawler/mitmproxy/>mitmproxy</a></li><li><a href=/docs/programmer/net/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/>网络编程</a></li><li><a href=/docs/programmer/net/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li><li><a href=/docs/programmer/net/tips-of-grpc/>gRpc使用小记</a></li><li><a href=/docs/programmer/net/epoll%E5%AE%9E%E7%8E%B0/>Epoll实现</a></li></ul></li><li><input type=checkbox id=section-7f016ed5a6649ca58d0a410cdf35a516 class=toggle>
+<label for=section-7f016ed5a6649ca58d0a410cdf35a516 class=flex><a role=button>基础工具和配置</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/basetc/obsidian/>Obsidian笔记软件</a></li><li><a href=/docs/programmer/basetc/%E7%BB%88%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8/>终端浏览器</a></li><li><a href=/docs/programmer/basetc/curl/>curl</a></li><li><a href=/docs/programmer/basetc/%E6%96%87%E6%9C%AC%E4%B8%89%E5%89%91%E5%AE%A2/>文本三剑客</a></li><li><a href=/docs/programmer/basetc/tmux/>Tmux使用笔记</a></li><li><a href=/docs/programmer/basetc/obsidian%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%8F%92%E4%BB%B6/>Obsidian思维导图插件</a></li><li><a href=/docs/programmer/basetc/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/>supervisor</a></li><li><a href=/docs/programmer/basetc/for_china/>各个软件换源</a></li><li><a href=/docs/programmer/basetc/tipsofvim/>tip Of vim</a></li><li><a href=/docs/programmer/basetc/editer---%E5%B8%B8%E7%94%A8%E7%BC%96%E8%BE%91%E5%99%A8/>编辑器使用</a></li><li><a href=/docs/programmer/basetc/bash/>Bash</a></li><li><a href=/docs/programmer/basetc/gitbook/>Gitbook</a></li><li><a href=/docs/programmer/basetc/vim/>Vim</a></li></ul></li><li><input type=checkbox id=section-fc5f118f9eeaadb8a197ae7afc492278 class=toggle>
+<label for=section-fc5f118f9eeaadb8a197ae7afc492278 class=flex><a href=/docs/programmer/gui/>图形用户界面-GUI</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-972e385681a4b005ea7bcc47b6e638df class=toggle>
+<label for=section-972e385681a4b005ea7bcc47b6e638df class=flex><a href=/docs/programmer/gui/example/>Blog 构建</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-430a598f940f78aec47cf3f247404e76 class=toggle>
+<label for=section-430a598f940f78aec47cf3f247404e76 class=flex><a href=/docs/programmer/gui/example/table-of-contents/>Table of Contents</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/table-of-contents/with-toc/>With ToC</a></li><li><a href=/docs/programmer/gui/example/table-of-contents/without-toc/>Without ToC</a></li></ul></li><li><input type=checkbox id=section-520d6bf1c7271c23fc73944ff214df89 class=toggle>
+<label for=section-520d6bf1c7271c23fc73944ff214df89 class=flex><a href=/docs/programmer/gui/example/shortcodes/>Shortcodes</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/shortcodes/buttons/>Buttons</a></li><li><a href=/docs/programmer/gui/example/shortcodes/columns/>Columns</a></li><li><a href=/docs/programmer/gui/example/shortcodes/details/>Details</a></li><li><a href=/docs/programmer/gui/example/shortcodes/hints/>Hints</a></li><li><input type=checkbox id=section-c3bd76891eda7866e899b6bb68cdba88 class=toggle>
+<label for=section-c3bd76891eda7866e899b6bb68cdba88 class=flex><a href=/docs/programmer/gui/example/shortcodes/section/>Section</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/shortcodes/section/first-page/>First Page</a></li><li><a href=/docs/programmer/gui/example/shortcodes/section/second-page/>Second Page</a></li></ul></li><li><a href=/docs/programmer/gui/example/shortcodes/tabs/>Tabs</a></li></ul></li></ul></li><li><a href=/docs/programmer/gui/ffmpeg/>ffmpeg 使用</a></li><li><a href=/docs/programmer/gui/pyinstaller-python%E6%89%93%E5%8C%85/>python打包</a></li><li><a href=/docs/programmer/gui/qt/>Qt/PySide</a></li><li><a href=/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/>Vn.Py学习笔记（Python交易平台框架）</a></li><li><a href=/docs/programmer/gui/notespython/>图形化界面 （Python Gui）</a></li></ul></li><li><input type=checkbox id=section-c2b6418070eb71b7734d9996a505c6f5 class=toggle>
+<label for=section-c2b6418070eb71b7734d9996a505c6f5 class=flex><a role=button>平台</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/platforms/%E9%80%86%E5%90%91/>逆向三板斧</a></li><li><a href=/docs/programmer/platforms/os/steam/>Steam</a></li><li><a href=/docs/programmer/platforms/android/waydroid/>Linux 跑安卓</a></li><li><a href=/docs/programmer/platforms/os/ubuntu/>Ubuntu</a></li><li><a href=/docs/programmer/platforms/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8/>阿里云使用</a></li><li><a href=/docs/programmer/platforms/wps-for-linux/>WPS for Linux</a></li><li><a href=/docs/programmer/platforms/appsflyer/>AppsFlyer-外网移动归因营销分析平台</a></li><li><a href=/docs/programmer/platforms/install_some/>安装问题</a></li><li><a href=/docs/programmer/platforms/git/>Git</a></li><li><a href=/docs/programmer/platforms/os/problem-of-windows/>Windows 爬坑记</a></li><li><a href=/docs/programmer/platforms/tips-of-problems/>解决问题记录笔记</a></li><li><a href=/docs/programmer/platforms/android/android/>安卓</a></li><li><a href=/docs/programmer/platforms/os/freebsd/>FreeBSD</a></li><li><a href=/docs/programmer/platforms/os/note-of-linux/>Linux 笔记</a></li><li><a href=/docs/programmer/platforms/android/adb/>adb</a></li><li><a href=/docs/programmer/platforms/os/ros/>ROS机器人操作系统</a></li></ul></li><li><input type=checkbox id=section-77065c9ce8e402792c5901181c3058d2 class=toggle>
+<label for=section-77065c9ce8e402792c5901181c3058d2 class=flex><a href=/docs/programmer/database/>Database</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/database/note-of-db-data---mariadb/>数据库-MariaDB篇</a></li><li><a href=/docs/programmer/database/dgraph---graph-db/>Dgraph使用小记</a></li><li><a href=/docs/programmer/database/note-of-db-data---mongodb/>数据库-MongoDB篇</a></li><li><a href=/docs/programmer/database/note-of-db-data---mysql/>数据库-MySQL篇</a></li></ul></li><li><input type=checkbox id=section-1f1c8bdadacc50268445bf8f4916bb94 class=toggle>
+<label for=section-1f1c8bdadacc50268445bf8f4916bb94 class=flex><a href=/docs/programmer/hardware/>硬件</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/hardware/raspberrypi/>Raspberry Pi</a></li><li><a href=/docs/programmer/hardware/screen/>Screen</a></li></ul></li></ul></li><li class=book-section-flat><a>建模和游戏</a><ul><li><a href=/docs/3dgame/blender/>Blender</a></li><li><a href=/docs/3dgame/noteofue4/>UE4 笔记</a></li></ul></li></ul><ul><li><a href=/posts/ title=Blog>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/icons/menu.svg class=book-icon alt=Menu></label><h3>大数列集合存储和还原</h3><label for=toc-control><img src=/icons/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class=hidden><nav id=TableOfContents><ul><li><ul><li><a href=#定义>定义</a></li><li><a href=#数学意义>数学意义</a></li></ul></li></ul><ul><li><ul><li><a href=#定义-1>定义</a></li><li><a href=#数学本质>数学本质</a></li></ul></li></ul><ul><li><ul><li><a href=#理论基础>理论基础</a></li><li><a href=#在你这个问题里的变形>在你这个问题里的变形</a></li><li><a href=#数学意义-1>数学意义</a></li></ul></li></ul><ul><li><ul><li><a href=#数学形式>数学形式</a></li></ul></li></ul><ul><li><ul><li><a href=#为什么不用更高阶插值>为什么不用更高阶插值？</a></li></ul></li></ul><ul><li><ul><li><a href=#数学解释>数学解释</a></li></ul></li></ul><ul><li><ul><li><a href=#数学意义-2>数学意义</a></li></ul></li></ul></nav></aside></header><article class="markdown book-article"><h1 id=ai-的瞎咧咧0-问题抽象数学视角>AI 的瞎咧咧：0️⃣ 问题抽象（数学视角）<a class=anchor href=#ai-%e7%9a%84%e7%9e%8e%e5%92%a7%e5%92%a70-%e9%97%ae%e9%a2%98%e6%8a%bd%e8%b1%a1%e6%95%b0%e5%ad%a6%e8%a7%86%e8%a7%92>#</a></h1><p>你原始数据是一个样本集合：
+[
+X = {x_1, x_2, \dots, x_n}<br>]</p><p>你只能存一小部分信息<br>目标不是“精确复原 (X)”，而是构造一个新样本集合：
+[<br>\tilde{X} = {\tilde{x}_1, \dots, \tilde{x}_m}<br>]
+使得：</p><ul><li>分布形态尽量接近</li><li>一阶 / 二阶统计量接近</li><li>尾部和边界不炸</li></ul><h1 id=1-平均值--标准差一阶--二阶矩>1️⃣ 平均值 & 标准差（一阶 / 二阶矩）<a class=anchor href=#1-%e5%b9%b3%e5%9d%87%e5%80%bc--%e6%a0%87%e5%87%86%e5%b7%ae%e4%b8%80%e9%98%b6--%e4%ba%8c%e9%98%b6%e7%9f%a9>#</a></h1><h3 id=定义>定义<a class=anchor href=#%e5%ae%9a%e4%b9%89>#</a></h3><p>[<br>\mu = \frac{1}{n}\sum x_i<br>]
+[<br>\sigma = \sqrt{\frac{1}{n}\sum (x_i - \mu)^2}<br>]</p><h3 id=数学意义>数学意义<a class=anchor href=#%e6%95%b0%e5%ad%a6%e6%84%8f%e4%b9%89>#</a></h3><ul><li>(\mu)：位置（location）</li><li>(\sigma)：尺度（scale）</li></ul><p>但它们<strong>只刻画“中心 + 离散程度”</strong><br><strong>完全不描述分布形状</strong>
+👉 所以我们没有用“正态假设直接生成”，而是只把它们当 <strong>约束条件 / 噪声尺度</strong>。</p><h1 id=2-分位数quantiles形状的骨架>2️⃣ 分位数（Quantiles）——形状的骨架<a class=anchor href=#2-%e5%88%86%e4%bd%8d%e6%95%b0quantiles%e5%bd%a2%e7%8a%b6%e7%9a%84%e9%aa%a8%e6%9e%b6>#</a></h1><h3 id=定义-1>定义<a class=anchor href=#%e5%ae%9a%e4%b9%89-1>#</a></h3><p>p 分位数 (Q(p)) 满足：
+[<br>P(X \le Q(p)) = p<br>]
+你存的是：
+[<br>Q(0), Q(0.05), Q(0.25), Q(0.5), Q(0.75), Q(0.95), Q(1)<br>]</p><h3 id=数学本质>数学本质<a class=anchor href=#%e6%95%b0%e5%ad%a6%e6%9c%ac%e8%b4%a8>#</a></h3><ul><li>这是在 <strong>CDF（累积分布函数）</strong> 上打“锚点”</li><li>它们是 <strong>分布形状的骨架</strong>
+相比矩：</li></ul><table><thead><tr><th>方法</th><th>是否稳健</th></tr></thead><tbody><tr><td>高阶矩</td><td>❌ 对离群点极敏感</td></tr><tr><td>分位数</td><td>✅ 稳定、鲁棒</td></tr></tbody></table><h1 id=3-逆变换采样inverse-transform-sampling>3️⃣ 逆变换采样（Inverse Transform Sampling）<a class=anchor href=#3-%e9%80%86%e5%8f%98%e6%8d%a2%e9%87%87%e6%a0%b7inverse-transform-sampling>#</a></h1><p>这是<strong>整个还原过程的核心数学原理</strong>。</p><h3 id=理论基础>理论基础<a class=anchor href=#%e7%90%86%e8%ae%ba%e5%9f%ba%e7%a1%80>#</a></h3><p>设：</p><ul><li>(U \sim \text{Uniform}(0,1))</li><li>(F(x)) 是原分布的 CDF
+则：
+[<br>X = F^{-1}(U)<br>]
+服从分布 (F)。</li></ul><h3 id=在你这个问题里的变形>在你这个问题里的变形<a class=anchor href=#%e5%9c%a8%e4%bd%a0%e8%bf%99%e4%b8%aa%e9%97%ae%e9%a2%98%e9%87%8c%e7%9a%84%e5%8f%98%e5%bd%a2>#</a></h3><p>你不知道完整的 (F)，<br>但你知道 <strong>若干个点上的 (F^{-1}(p))</strong>：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>p : 0.0  0.05  0.25  0.50  0.75  0.95  1.0
+</span></span><span style=display:flex><span>x : min  p05   p25   p50   p75   p95   max</span></span></code></pre></div><p>于是你构造一个 <strong>分段线性的 (\tilde{F}^{-1})</strong>：
+[<br>\tilde{F}^{-1}(p) =<br>\text{linear interpolation between known quantiles}<br>]
+这就是：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>np<span style=color:#f92672>.</span>interp(u, probs, quantiles)</span></span></code></pre></div><h3 id=数学意义-1>数学意义<a class=anchor href=#%e6%95%b0%e5%ad%a6%e6%84%8f%e4%b9%89-1>#</a></h3><ul><li>你在 <strong>概率空间均匀采样</strong></li><li>再映射回 <strong>数值空间</strong></li><li>保证每个分位区间占对的比例</li></ul><p>👉 <strong>分布形状被保留下来</strong></p><h1 id=4-线性插值piecewise-linear-approximation>4️⃣ 线性插值（Piecewise Linear Approximation）<a class=anchor href=#4-%e7%ba%bf%e6%80%a7%e6%8f%92%e5%80%bcpiecewise-linear-approximation>#</a></h1><h3 id=数学形式>数学形式<a class=anchor href=#%e6%95%b0%e5%ad%a6%e5%bd%a2%e5%bc%8f>#</a></h3><p>对于 (p \in [p_i, p_{i+1}])：</p><h1 id=heading>[<a class=anchor href=#heading>#</a></h1><p>\tilde{F}^{-1}(p)
+x_i + (x_{i+1}-x_i)\frac{p - p_i}{p_{i+1}-p_i}<br>]
+这是对真实逆 CDF 的一阶近似。</p><h3 id=为什么不用更高阶插值>为什么不用更高阶插值？<a class=anchor href=#%e4%b8%ba%e4%bb%80%e4%b9%88%e4%b8%8d%e7%94%a8%e6%9b%b4%e9%ab%98%e9%98%b6%e6%8f%92%e5%80%bc>#</a></h3><table><thead><tr><th>方法</th><th>问题</th></tr></thead><tbody><tr><td>样条</td><td>会过冲（overshoot）</td></tr><tr><td>多项式</td><td>不单调</td></tr><tr><td>线性</td><td>单调、稳定、可解释</td></tr></tbody></table><p>👉 工程里：<strong>宁可钝一点，也不炸</strong></p><hr><h1 id=5-加噪声正则化思想>5️⃣ 加噪声（正则化思想）<a class=anchor href=#5-%e5%8a%a0%e5%99%aa%e5%a3%b0%e6%ad%a3%e5%88%99%e5%8c%96%e6%80%9d%e6%83%b3>#</a></h1><p>插值本身的问题：</p><blockquote class=book-hint><p>会产生“硬折线分布”，点都落在几条线上
+于是我们加一个 <strong>小扰动项</strong>：
+[<br>\tilde{x}&rsquo; = \tilde{x} + \varepsilon<br>]
+[<br>\varepsilon \sim \mathcal{N}(0, \alpha\sigma)<br>]
+其中：
+[<br>\alpha \ll 1 \quad (\text{如 } 0.02)<br>]</p></blockquote><h3 id=数学解释>数学解释<a class=anchor href=#%e6%95%b0%e5%ad%a6%e8%a7%a3%e9%87%8a>#</a></h3><ul><li>相当于对估计分布做 <strong>核平滑</strong></li><li>类似 KDE 中的 bandwidth
+但我们：</li><li>不需要存 kernel</li><li>不需要存全样本</li></ul><h1 id=6-边界裁剪support-constraint>6️⃣ 边界裁剪（Support Constraint）<a class=anchor href=#6-%e8%be%b9%e7%95%8c%e8%a3%81%e5%89%aasupport-constraint>#</a></h1><p>你存了：
+[<br>x_{\min}, x_{\max}<br>]
+于是强制：
+[<br>\tilde{x} \in [x_{\min}, x_{\max}]<br>]</p><h3 id=数学意义-2>数学意义<a class=anchor href=#%e6%95%b0%e5%ad%a6%e6%84%8f%e4%b9%89-2>#</a></h3><ul><li>限制分布的 <strong>support</strong></li><li>防止噪声破坏物理 / 业务边界</li></ul><h1 id=7-整体等价于什么高层视角>7️⃣ 整体等价于什么（高层视角）<a class=anchor href=#7-%e6%95%b4%e4%bd%93%e7%ad%89%e4%bb%b7%e4%ba%8e%e4%bb%80%e4%b9%88%e9%ab%98%e5%b1%82%e8%a7%86%e8%a7%92>#</a></h1><p>你做的事情 ≈</p><blockquote class=book-hint><p><strong>用有限分位点构造经验分布函数（EDF）的近似</strong>
+再从这个近似 EDF 中采样。
+这在统计学里是<strong>完全正统的做法</strong>。</p></blockquote><h1 id=8-为什么它是接近最优的>8️⃣ 为什么它是“接近最优”的<a class=anchor href=#8-%e4%b8%ba%e4%bb%80%e4%b9%88%e5%ae%83%e6%98%af%e6%8e%a5%e8%bf%91%e6%9c%80%e4%bc%98%e7%9a%84>#</a></h1><table><thead><tr><th>条件</th><th>满足</th></tr></thead><tbody><tr><td>存储极小</td><td>✅</td></tr><tr><td>不依赖分布假设</td><td>✅</td></tr><tr><td>鲁棒</td><td>✅</td></tr><tr><td>可复现</td><td>✅</td></tr><tr><td>不产生非法值</td><td>✅</td></tr></tbody></table><h1 id=show-the-code>Show the Code<a class=anchor href=#show-the-code>#</a></h1><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>estimate_precision</span>(arr, eps<span style=color:#f92672>=</span><span style=color:#ae81ff>1e-12</span>):
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    估计数据精度（最小步长）
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>    arr <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>asarray(arr, dtype<span style=color:#f92672>=</span>float)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    uniq <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>unique(arr)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> uniq<span style=color:#f92672>.</span>size <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>2</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0.0</span>  <span style=color:#75715e># 常数数组</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    diffs <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>diff(np<span style=color:#f92672>.</span>sort(uniq))
+</span></span><span style=display:flex><span>    diffs <span style=color:#f92672>=</span> diffs[diffs <span style=color:#f92672>&gt;</span> eps]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> diffs<span style=color:#f92672>.</span>size <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0.0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 用中位数，避免异常</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> float(np<span style=color:#f92672>.</span>median(diffs))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>summarize_array</span>(arr):
+</span></span><span style=display:flex><span>    arr <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>asarray(arr, dtype<span style=color:#f92672>=</span>float)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> arr<span style=color:#f92672>.</span>size <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>ValueError</span>(<span style=color:#e6db74>&#34;array is empty&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    precision <span style=color:#f92672>=</span> estimate_precision(arr)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    summary <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;n&#34;</span>: int(arr<span style=color:#f92672>.</span>size),
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;mean&#34;</span>: float(arr<span style=color:#f92672>.</span>mean()),
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;std&#34;</span>: float(arr<span style=color:#f92672>.</span>std(ddof<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>)),
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;min&#34;</span>: float(arr<span style=color:#f92672>.</span>min()),
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;max&#34;</span>: float(arr<span style=color:#f92672>.</span>max()),
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;p05&#34;</span>: float(np<span style=color:#f92672>.</span>percentile(arr, <span style=color:#ae81ff>5</span>)),
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;p25&#34;</span>: float(np<span style=color:#f92672>.</span>percentile(arr, <span style=color:#ae81ff>25</span>)),
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;p50&#34;</span>: float(np<span style=color:#f92672>.</span>percentile(arr, <span style=color:#ae81ff>50</span>)),
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;p75&#34;</span>: float(np<span style=color:#f92672>.</span>percentile(arr, <span style=color:#ae81ff>75</span>)),
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;p95&#34;</span>: float(np<span style=color:#f92672>.</span>percentile(arr, <span style=color:#ae81ff>95</span>)),
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;precision&#34;</span>: precision,
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> summary
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>restore_array</span>(summary, size<span style=color:#f92672>=</span><span style=color:#66d9ef>None</span>, random_state<span style=color:#f92672>=</span><span style=color:#66d9ef>None</span>):
+</span></span><span style=display:flex><span>    rng <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>random<span style=color:#f92672>.</span>default_rng(random_state)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> size <span style=color:#f92672>is</span> <span style=color:#66d9ef>None</span>:
+</span></span><span style=display:flex><span>        size <span style=color:#f92672>=</span> summary[<span style=color:#e6db74>&#34;n&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    quantiles <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([
+</span></span><span style=display:flex><span>        summary[<span style=color:#e6db74>&#34;min&#34;</span>],
+</span></span><span style=display:flex><span>        summary[<span style=color:#e6db74>&#34;p05&#34;</span>],
+</span></span><span style=display:flex><span>        summary[<span style=color:#e6db74>&#34;p25&#34;</span>],
+</span></span><span style=display:flex><span>        summary[<span style=color:#e6db74>&#34;p50&#34;</span>],
+</span></span><span style=display:flex><span>        summary[<span style=color:#e6db74>&#34;p75&#34;</span>],
+</span></span><span style=display:flex><span>        summary[<span style=color:#e6db74>&#34;p95&#34;</span>],
+</span></span><span style=display:flex><span>        summary[<span style=color:#e6db74>&#34;max&#34;</span>],
+</span></span><span style=display:flex><span>    ])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    probs <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([<span style=color:#ae81ff>0.0</span>, <span style=color:#ae81ff>0.05</span>, <span style=color:#ae81ff>0.25</span>, <span style=color:#ae81ff>0.5</span>, <span style=color:#ae81ff>0.75</span>, <span style=color:#ae81ff>0.95</span>, <span style=color:#ae81ff>1.0</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    u <span style=color:#f92672>=</span> rng<span style=color:#f92672>.</span>uniform(<span style=color:#ae81ff>0.0</span>, <span style=color:#ae81ff>1.0</span>, size)
+</span></span><span style=display:flex><span>    restored <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>interp(u, probs, quantiles)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 加轻噪声</span>
+</span></span><span style=display:flex><span>    noise_scale <span style=color:#f92672>=</span> summary[<span style=color:#e6db74>&#34;std&#34;</span>] <span style=color:#f92672>*</span> <span style=color:#ae81ff>0.02</span>
+</span></span><span style=display:flex><span>    restored <span style=color:#f92672>+=</span> rng<span style=color:#f92672>.</span>normal(<span style=color:#ae81ff>0</span>, noise_scale, size)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 裁剪边界</span>
+</span></span><span style=display:flex><span>    restored <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>clip(restored, summary[<span style=color:#e6db74>&#34;min&#34;</span>], summary[<span style=color:#e6db74>&#34;max&#34;</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ★ 精度量化（关键）</span>
+</span></span><span style=display:flex><span>    precision <span style=color:#f92672>=</span> summary<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#34;precision&#34;</span>, <span style=color:#ae81ff>0.0</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> precision <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>        restored <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>round(restored <span style=color:#f92672>/</span> precision) <span style=color:#f92672>*</span> precision
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> restored</span></span></code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div></div><div></div></div><div class="flex flex-wrap justify-between"><span><a href=/docs/programmer/langs/ class="flex align-center"><img src=/icons/backward.svg class=book-icon alt=Backward>
+<span>编程语言</span>
+</a></span><span><a href=/docs/programmer/langs/python/python%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/ class="flex align-center"><span>Python包管理</span>
+<img src=/icons/forward.svg class=book-icon alt=Forward></a></span></div><div class=book-comments></div><script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><ul><li><a href=#定义>定义</a></li><li><a href=#数学意义>数学意义</a></li></ul></li></ul><ul><li><ul><li><a href=#定义-1>定义</a></li><li><a href=#数学本质>数学本质</a></li></ul></li></ul><ul><li><ul><li><a href=#理论基础>理论基础</a></li><li><a href=#在你这个问题里的变形>在你这个问题里的变形</a></li><li><a href=#数学意义-1>数学意义</a></li></ul></li></ul><ul><li><ul><li><a href=#数学形式>数学形式</a></li></ul></li></ul><ul><li><ul><li><a href=#为什么不用更高阶插值>为什么不用更高阶插值？</a></li></ul></li></ul><ul><li><ul><li><a href=#数学解释>数学解释</a></li></ul></li></ul><ul><li><ul><li><a href=#数学意义-2>数学意义</a></li></ul></li></ul></nav></div></aside></main></body></html>

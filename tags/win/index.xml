@@ -1,11 +1,92 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>win on Ian's Blog</title><link>http://example.org/tags/win/</link><description>Recent content in win on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 24 May 2021 10:30:41 +0000</lastBuildDate><atom:link href="http://example.org/tags/win/index.xml" rel="self" type="application/rss+xml"/><item><title>gRpc使用小记</title><link>http://example.org/docs/programmer/net/tips-of-grpc/</link><pubDate>Mon, 24 May 2021 10:30:41 +0000</pubDate><guid>http://example.org/docs/programmer/net/tips-of-grpc/</guid><description>
-gRpc HelloWorld # helloWorld # quickstart
-protoc --go_out=. --go_opt=paths=source_relative \ --go-grpc_out=. --go-grpc_opt=paths=source_relative \ helloworld/helloworld.proto MacOS下问题 # 原本protobuf中没有mac的gen-go和gen-go-grpc,所以需要额外运行安装. 除了使用brew用go get应该也是可以的,就是有路径问题,所以还是使用brew吧 brew install protobuf brew install protoc-gen-go brew install protoc-gen-go-grpc</description></item><item><title>Windows 爬坑记</title><link>http://example.org/docs/programmer/platforms/os/problem-of-windows/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/problem-of-windows/</guid><description> Windows下Git问题 # Linux没啥问题,但在Win下报checkout失败,路径问题 git config core.protectNTFS false Win 开机问题 # 按下Shift+F10或者是Fn+Shift+F10快捷键调出命令提示符窗口。 输入以下指令文本：OOBE\BYPASSNRO 等待重启, 再次操作来到联网界面. &amp;ldquo;下一步&amp;quot;按钮旁会多出一个&amp;quot;我没有internet连接&amp;quot;的选项, 点击该选项</description></item><item><title>解决问题记录笔记</title><link>http://example.org/docs/programmer/platforms/tips-of-problems/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/tips-of-problems/</guid><description>各种一键问题解决方案 # Windows下Git问题 # Linux没啥问题,但在Win下报checkout失败,路径问题 git config core.protectNTFS false docker - supervisord 禁用日志文件或使用 logfile=/dev/stdout # from: https://www.coder.work/article/100835 标签 docker supervisord
-[supervisord] nodaemon=true logfile=/dev/stdout pidfile=/var/run/supervisord.pid childlogdir=/var/log/supervisor 当我这样做时，这个主管会崩溃，因为它无法在/dev/stdout 中寻找
-如何禁用 supervisord 在我的 docker 容器中创建任何日志文件？
-最佳答案
-对于主主管，nodaemon 将导致日志转到 stdout
-[supervisord] nodaemon=true logfile=/dev/null logfile_maxbytes=0 然后将每个托管进程的日志发送到标准输出文件描述符/dev/fd/1
-[program:x] command=echo test stdout_logfile=/dev/fd/1 stdout_logfile_maxbytes=0 redirect_stderr=true 或者，如果您希望将 stderr 保留在不同的流上:
-[program:x] command=echo test stdout_logfile=/dev/fd/1 stdout_logfile_maxbytes=0 stderr_logfile=/dev/fd/2 stderr_logfile_maxbytes=0 关于docker - supervisord 禁用日志文件或使用 logfile=/dev/stdout，我们在Stack Overflow上找到一个类似的问题： https://stackoverflow.com/questions/45645758/
-docker中执行sed报Device or resource busy错误的处理原因及方式 转载 # kuSorZ 博主文章分类：Linux 文章标签: docker | sed 文章分类: Docker 原文出处： https://www.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Win on Ian's Blog</title><link>http://example.org/tags/win/</link><description>Recent content in Win on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 24 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/win/index.xml" rel="self" type="application/rss+xml"/><item><title>gRpc使用小记</title><link>http://example.org/docs/programmer/net/tips-of-grpc/</link><pubDate>Mon, 24 May 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/net/tips-of-grpc/</guid><description>&lt;p&gt;&lt;img src="https://grpc.io/img/logos/grpc-logo.png" alt="gRpc" title="gRpc"/&gt;&lt;/p&gt;
+&lt;h1 id="grpc-helloworld"&gt;gRpc HelloWorld&lt;a class="anchor" href="#grpc-helloworld"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="helloworld"&gt;helloWorld&lt;a class="anchor" href="#helloworld"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://grpc.io/docs/languages/go/quickstart/"&gt;quickstart&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;protoc --go_out&lt;span style="color:#f92672"&gt;=&lt;/span&gt;. --go_opt&lt;span style="color:#f92672"&gt;=&lt;/span&gt;paths&lt;span style="color:#f92672"&gt;=&lt;/span&gt;source_relative &lt;span style="color:#ae81ff"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --go-grpc_out&lt;span style="color:#f92672"&gt;=&lt;/span&gt;. --go-grpc_opt&lt;span style="color:#f92672"&gt;=&lt;/span&gt;paths&lt;span style="color:#f92672"&gt;=&lt;/span&gt;source_relative &lt;span style="color:#ae81ff"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; helloworld/helloworld.proto&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="macos下问题"&gt;MacOS下问题&lt;a class="anchor" href="#macos%e4%b8%8b%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;原本&lt;code&gt;protobuf&lt;/code&gt;中没有mac的gen-go和gen-go-grpc,所以需要额外运行安装.&lt;/li&gt;
+&lt;li&gt;除了使用brew用&lt;code&gt;go get&lt;/code&gt;应该也是可以的,就是有路径问题,所以还是使用brew吧&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;brew install protobuf
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;brew install protoc-gen-go
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;brew install protoc-gen-go-grpc&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Windows 爬坑记</title><link>http://example.org/docs/programmer/platforms/os/problem-of-windows/</link><pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/problem-of-windows/</guid><description>&lt;h1 id="1-windows下git问题"&gt;1. Windows下Git问题&lt;a class="anchor" href="#1-windows%e4%b8%8bgit%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux没啥问题,但在Win下报checkout失败,路径问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git config core.protectNTFS false&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="2-win-开机问题"&gt;2. Win 开机问题&lt;a class="anchor" href="#2-win-%e5%bc%80%e6%9c%ba%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;按下&lt;code&gt;Shift+F10&lt;/code&gt;或者是&lt;code&gt;Fn+Shift+F10&lt;/code&gt;快捷键调出命令提示符窗口。&lt;/li&gt;
+&lt;li&gt;输入以下指令文本：&lt;code&gt;OOBE\BYPASSNRO&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;等待重启, 再次操作来到联网界面. &amp;ldquo;下一步&amp;quot;按钮旁会多出一个&amp;quot;我没有internet连接&amp;quot;的选项, 点击该选项&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="3-切换鼠标滚轮方向"&gt;3. 切换鼠标滚轮方向&lt;a class="anchor" href="#3-%e5%88%87%e6%8d%a2%e9%bc%a0%e6%a0%87%e6%bb%9a%e8%bd%ae%e6%96%b9%e5%90%91"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;以下是在 Windows 11 中修改滚轮（鼠标或触摸板）滚动方向的几种方案汇总，包括系统设置、注册表和第三方工具方法，帮助你根据使用习惯选择最合适的方式。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="概览"&gt;概览&lt;a class="anchor" href="#%e6%a6%82%e8%a7%88"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;触摸板滚动方向&lt;/strong&gt;：Windows 11 内置支持反转触摸板滚动方向，仅适用于精密触摸板设备，无需动用注册表或外部工具。 (&lt;a href="https://blog.csdn.net/qq_21137441/article/details/130697079?utm_source=chatgpt.com"&gt;Windows 11 反转鼠标和触摸板滚动方向原创 - CSDN博客&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;鼠标滚轮方向&lt;/strong&gt;：系统默认不提供 UI，需通过修改注册表键值 &lt;code&gt;FlipFlopWheel&lt;/code&gt; 或使用第三方软件来实现。 (&lt;a href="https://blog.csdn.net/flynetcn/article/details/136279818?utm_source=chatgpt.com"&gt;Windows通过注册表改变鼠标滚轮和触摸板的滚动方向转载 - CSDN博客&lt;/a&gt;, &lt;a href="https://www.windowscentral.com/how-enable-reverse-mouse-and-touchpad-scrolling-windows-11?utm_source=chatgpt.com"&gt;How to enable reverse mouse and touchpad scrolling on Windows 11&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;第三方工具&lt;/strong&gt;：例如 Winaero Tweaker 可一键切换自然/传统滚动模式，无需手动改注册表。 (&lt;a href="https://winaero.com/windows-11-will-allow-you-to-easily-change-mouse-wheel-scrolling-direction/?utm_source=chatgpt.com"&gt;Windows 11 will allow you to easily change mouse wheel scrolling &amp;hellip;&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="一反转触摸板滚动方向"&gt;一、反转触摸板滚动方向&lt;a class="anchor" href="#%e4%b8%80%e5%8f%8d%e8%bd%ac%e8%a7%a6%e6%91%b8%e6%9d%bf%e6%bb%9a%e5%8a%a8%e6%96%b9%e5%90%91"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;按 &lt;strong&gt;Win + I&lt;/strong&gt; 打开「设置」。&lt;/li&gt;
+&lt;li&gt;在左侧点击 &lt;strong&gt;蓝牙和设备&lt;/strong&gt;，再选择 &lt;strong&gt;触摸板&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;在 &lt;strong&gt;滚动和缩放&lt;/strong&gt; 下拉选项中，将滚动方向设置为：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;向下移动时向上滚动&lt;/strong&gt;：传统模式&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;向下移动时向下滚动&lt;/strong&gt;：自然（反向）模式 (&lt;a href="https://blog.csdn.net/qq_21137441/article/details/130697079?utm_source=chatgpt.com"&gt;Windows 11 反转鼠标和触摸板滚动方向原创 - CSDN博客&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;触控板一般提供设置中直接设置 - 仅精密触摸板设备提供此选项，如不可用可使用设备厂商驱动程序或第三方软件进一步定制。&lt;/p&gt;</description></item><item><title>解决问题记录笔记</title><link>http://example.org/docs/programmer/platforms/tips-of-problems/</link><pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/tips-of-problems/</guid><description>&lt;p&gt;&lt;img src="https://tse2-mm.cn.bing.net/th/id/OIP.Z6kn8Zh9FDU2oe4r5ceCgAHaEK?pid=ImgDet&amp;amp;rs=1" alt="问题们" title="Problem"/&gt;&lt;/p&gt;
+&lt;h1 id="各种一键问题解决方案"&gt;各种一键问题解决方案&lt;a class="anchor" href="#%e5%90%84%e7%a7%8d%e4%b8%80%e9%94%ae%e9%97%ae%e9%a2%98%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="windows下git问题"&gt;Windows下Git问题&lt;a class="anchor" href="#windows%e4%b8%8bgit%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux没啥问题,但在Win下报checkout失败,路径问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git config core.protectNTFS false&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="docker---supervisord-禁用日志文件或使用-logfiledevstdout"&gt;docker - supervisord 禁用日志文件或使用 logfile=/dev/stdout&lt;a class="anchor" href="#docker---supervisord-%e7%a6%81%e7%94%a8%e6%97%a5%e5%bf%97%e6%96%87%e4%bb%b6%e6%88%96%e4%bd%bf%e7%94%a8-logfiledevstdout"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;from: &lt;a href="https://www.coder.work/article/100835"&gt;https://www.coder.work/article/100835&lt;/a&gt;
+标签 &lt;a href="https://www.coder.work/blog?tag=docker" title="docker"&gt;docker&lt;/a&gt; &lt;a href="https://www.coder.work/blog?tag=supervisord" title="supervisord"&gt;supervisord&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-supervisor" data-lang="supervisor"&gt;[supervisord]
+nodaemon=true
+logfile=/dev/stdout
+pidfile=/var/run/supervisord.pid
+childlogdir=/var/log/supervisor&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当我这样做时，这个主管会崩溃，因为它无法在/dev/stdout 中寻找&lt;/p&gt;
+&lt;p&gt;如何禁用 supervisord 在我的 docker 容器中创建任何日志文件？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;最佳答案&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对于主主管，&lt;code&gt;nodaemon&lt;/code&gt; 将导致日志转到 &lt;code&gt;stdout&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-supervisor" data-lang="supervisor"&gt;[supervisord]
+nodaemon=true
+logfile=/dev/null
+logfile_maxbytes=0&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后将每个托管进程的日志发送到标准输出文件描述符&lt;code&gt;/dev/fd/1&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-supervisor" data-lang="supervisor"&gt;[program:x]
+command=echo test
+stdout_logfile=/dev/fd/1
+stdout_logfile_maxbytes=0
+redirect_stderr=true&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;或者，如果您希望将 stderr 保留在不同的流上:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-supervisor" data-lang="supervisor"&gt;[program:x]
+command=echo test
+stdout_logfile=/dev/fd/1
+stdout_logfile_maxbytes=0
+stderr_logfile=/dev/fd/2
+stderr_logfile_maxbytes=0&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;关于docker - supervisord 禁用日志文件或使用 logfile=/dev/stdout，我们在Stack Overflow上找到一个类似的问题： &lt;a href="https://stackoverflow.com/questions/45645758/"&gt;https://stackoverflow.com/questions/45645758/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="docker中执行sed报device-or-resource-busy错误的处理原因及方式-转载"&gt;docker中执行sed报Device or resource busy错误的处理原因及方式 转载&lt;a class="anchor" href="#docker%e4%b8%ad%e6%89%a7%e8%a1%8csed%e6%8a%a5device-or-resource-busy%e9%94%99%e8%af%af%e7%9a%84%e5%a4%84%e7%90%86%e5%8e%9f%e5%9b%a0%e5%8f%8a%e6%96%b9%e5%bc%8f-%e8%bd%ac%e8%bd%bd"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;kuSorZ
+博主文章分类：Linux
+文章标签: docker | sed
+文章分类: Docker
+原文出处： &lt;a href="https://www.cnblogs.com/xuxinkun/p/7116737.html"&gt;https://www.cnblogs.com/xuxinkun/p/7116737.html&lt;/a&gt;错误现象&lt;/p&gt;
+&lt;p&gt;在docker容器中想要修改/etc/resolv.conf中的namesever，使用sed命令进行执行时遇到错误：&lt;/p&gt;
+&lt;p&gt;/ # sed -i &amp;rsquo;s/192.168.1.1/192.168.1.254/g&amp;rsquo; /etc/resolv.conf
+sed: can&amp;rsquo;t move &amp;lsquo;/etc/resolv.conf73UqmG&amp;rsquo; to &amp;lsquo;/etc/resolv.conf&amp;rsquo;: Device or resource busy&lt;/p&gt;</description></item></channel></rss>

@@ -1,5 +1,39 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>测试 on Ian's Blog</title><link>http://example.org/tags/%E6%B5%8B%E8%AF%95/</link><description>Recent content in 测试 on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 10 May 2021 12:13:26 +0000</lastBuildDate><atom:link href="http://example.org/tags/%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml"/><item><title>PyTest</title><link>http://example.org/docs/programmer/langs/python/pytest/</link><pubDate>Mon, 10 May 2021 12:13:26 +0000</pubDate><guid>http://example.org/docs/programmer/langs/python/pytest/</guid><description>一、命令 # 常用参数 # 1. 忽略报警信息 # -p no:warnings 2. pdb调试 # ipdb有的版本可以有的不行
---pdb 3. 指定工作目录 # 有时候需要使用python -m pytest才生效, 直接pytest不生效 总之不如使用sys.path.insert
---rootdir /home/path/ 4. Django使用pytest测试 # pip install pytest-django pytest -s -vv .\tests\test_step2.py --rootdir X:\Code\workflows\ --ds project.settings rootdir 指定项目根目录 ds 指向django setting.py 文件 二、泛论 # 1、为什么需要pytest # helps you write better programs
-提高阅读理解代码效率 提高debug效率 提高开发效率 保证交付代码质量 简单例子 # 入门例子:
-了解使用test文件命名格式: test_前缀 了解断言assert 了解测试输出 # content of test_sample.py def inc(x): return x + 1 def test_answer(): assert inc(3) == 5 输出</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>测试 on Ian's Blog</title><link>http://example.org/tags/%E6%B5%8B%E8%AF%95/</link><description>Recent content in 测试 on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 10 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml"/><item><title>PyTest</title><link>http://example.org/docs/programmer/langs/python/pytest/</link><pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/python/pytest/</guid><description>&lt;h1 id="一命令"&gt;一、命令&lt;a class="anchor" href="#%e4%b8%80%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="常用参数"&gt;常用参数&lt;a class="anchor" href="#%e5%b8%b8%e7%94%a8%e5%8f%82%e6%95%b0"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="1-忽略报警信息"&gt;1. 忽略报警信息&lt;a class="anchor" href="#1-%e5%bf%bd%e7%95%a5%e6%8a%a5%e8%ad%a6%e4%bf%a1%e6%81%af"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;-p no:warnings&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="2-pdb调试"&gt;2. pdb调试&lt;a class="anchor" href="#2-pdb%e8%b0%83%e8%af%95"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;ipdb有的版本可以有的不行&lt;/p&gt;
+&lt;/blockquote&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--pdb&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="3-指定工作目录"&gt;3. 指定工作目录&lt;a class="anchor" href="#3-%e6%8c%87%e5%ae%9a%e5%b7%a5%e4%bd%9c%e7%9b%ae%e5%bd%95"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;有时候需要使用&lt;code&gt;python -m pytest&lt;/code&gt;才生效, 直接&lt;code&gt;pytest&lt;/code&gt;不生效 总之不如使用&lt;code&gt;sys.path.insert&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--rootdir /home/path/&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="4-django使用pytest测试"&gt;4. &lt;code&gt;Django&lt;/code&gt;使用&lt;code&gt;pytest&lt;/code&gt;测试&lt;a class="anchor" href="#4-django%e4%bd%bf%e7%94%a8pytest%e6%b5%8b%e8%af%95"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install pytest-django
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pytest -s -vv .&lt;span style="color:#ae81ff"&gt;\t&lt;/span&gt;ests&lt;span style="color:#ae81ff"&gt;\t&lt;/span&gt;est_step2.py --rootdir X:&lt;span style="color:#ae81ff"&gt;\C&lt;/span&gt;ode&lt;span style="color:#ae81ff"&gt;\w&lt;/span&gt;orkflows&lt;span style="color:#ae81ff"&gt;\ &lt;/span&gt;--ds project.settings&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;rootdir 指定项目根目录&lt;/li&gt;
+&lt;li&gt;ds 指向django &lt;code&gt;setting.py&lt;/code&gt; 文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="二泛论"&gt;二、泛论&lt;a class="anchor" href="#%e4%ba%8c%e6%b3%9b%e8%ae%ba"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="1为什么需要pytest"&gt;1、为什么需要pytest&lt;a class="anchor" href="#1%e4%b8%ba%e4%bb%80%e4%b9%88%e9%9c%80%e8%a6%81pytest"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;helps you write better programs&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;提高阅读理解代码效率&lt;/li&gt;
+&lt;li&gt;提高debug效率&lt;/li&gt;
+&lt;li&gt;提高开发效率&lt;/li&gt;
+&lt;li&gt;保证交付代码质量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="简单例子"&gt;简单例子&lt;a class="anchor" href="#%e7%ae%80%e5%8d%95%e4%be%8b%e5%ad%90"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;入门例子:&lt;/p&gt;
+&lt;/blockquote&gt;&lt;ol&gt;
+&lt;li&gt;了解使用test文件命名格式: &lt;code&gt;test_&lt;/code&gt;前缀&lt;/li&gt;
+&lt;li&gt;了解断言&lt;code&gt;assert&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;了解测试输出&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# content of test_sample.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;inc&lt;/span&gt;(x):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;    &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; x &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;test_answer&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;    &lt;span style="color:#66d9ef"&gt;assert&lt;/span&gt; inc(&lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;) &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;5&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;输出&lt;/p&gt;</description></item></channel></rss>

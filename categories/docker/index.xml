@@ -1,22 +1,89 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>docker on Ian's Blog</title><link>http://example.org/categories/docker/</link><description>Recent content in docker on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 27 Jun 2024 21:37:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Podman</title><link>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/</link><pubDate>Thu, 27 Jun 2024 21:37:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/</guid><description>Podman # 常用命令 # 2. 启动容器并进入交互模式 # 你可以使用 docker run 命令启动容器并进入容器的交互式 shell。这样你就可以进入容器内部进行调试。
-复制代码
-docker run -it --entrypoint /bin/bash nova-crawler:latest 参数说明： # -it：-i 表示以交互模式运行容器，-t 给容器分配一个伪终端，这样你就可以在终端与容器交互。 --entrypoint /bin/bash：这将覆盖容器的默认入口点，直接启动一个 bash shell 以便你进入容器进行调试。 nova-crawler:latest：你要运行的镜像名称。 3. 启动容器并调试特定命令 # 如果你不想进入容器的 shell，而是想直接执行调试命令（比如启动应用并在调试模式下运行），可以使用以下命令：
-bash
-复制代码
-docker run -it --entrypoint /bin/bash nova-crawler:latest -c &amp;quot;your-debug-command&amp;quot;
-4. 查看容器日志 # 如果你希望在调试时查看容器的日志输出，可以使用以下命令：
-bash
-复制代码
-docker logs &amp;lt;container_id&amp;gt;
-你可以通过 docker ps 查找运行的容器 ID，然后查看日志输出。
-5. 调试时挂载本地目录（可选） # 如果你需要调试代码，并且希望挂载本地目录到容器中进行实时编辑，可以使用 -v 参数来挂载本地目录。例如，假设你的本地代码在 /path/to/your/code 目录下：
-bash
-复制代码</description></item><item><title>Docker</title><link>http://example.org/docs/programmer/cloudnative/note-of-docker/</link><pubDate>Thu, 16 Dec 2021 16:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/note-of-docker/</guid><description>Docker # 教程手册 # 好用的使用教程
-Install # 略过~ 😁
-打镜像和跑 # docker build -t server:v0 . -f server.dockerfile 跑 # docker run -p 9080:80 --name server server:v0 指定启动命令 # sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &amp;#34;echo hello&amp;#34; 加入自定义网络 # --network {{network name}} 详见：[[#Network]]
-跑出问题-进入容器排查 # sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &amp;#34;bash&amp;#34; 使用-it进入容器手动执行命令进行调试
-启动全部容器 # docker ps -a | grep &amp;#34;Exited&amp;#34; | awk &amp;#39;{print $1}&amp;#39; | xargs docker start Network # docker run时容器加入方法-redis为例 后期加入方式 创建一个新网 检测 init_redis: docker run -p 6379:6379 \\ --network websafe-network \\ --name redislatest redis:latest --requirepass 3b21d032a7fd8eb51fa7bd8a2e812b78b7b3a36f join_network: docker network connect websafe-network mysql56 docker network connect websafe-network daemon-xxx init_network: docker network create websafe-network check_network: docker network inspect websafe-network docker network inspect websafe-network | findStr IPv4Address 删除 # 可视化 # go install github.</description></item><item><title>Docker</title><link>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/</link><pubDate>Thu, 16 Dec 2021 16:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/</guid><description>Docker # 教程手册 # 好用的使用教程
-Install # 略过~ 😁
-基础命令 # 打镜像和跑 # 打 # docker build -t server:v0 . -f server.dockerfile dockerignore # 如果您想在 Dockerfile 中将当前目录中的所有文件都复制到 Docker 镜像中，可以使用 Dockerfile 中的 COPY 指令。具体的语法如下：
-COPY . /目标路径/ 其中. 表示当前目录，/目标路径/ 表示目标路径，这里可以是绝对路径或相对路径。 这将会将当前目录中的所有文件复制到镜像中的 /app/ 目录下。请注意，在这种情况下，所有文件和文件夹都会被复制到镜像中，包括隐藏文件和文件夹。如果您不想复制某些文件或文件夹，可以在运行 COPY 指令之前通过 .dockerignore 文件来指定忽略的文件和文件夹。
-跑 # docker run -p 9080:80 --name server server:v0 指定启动命令 # sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &amp;#34;echo hello&amp;#34; 加入自定义网络 # --network {{network name}} 详见：[[#Network]]</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on Ian's Blog</title><link>http://example.org/categories/docker/</link><description>Recent content in Docker on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 27 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Podman</title><link>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/</link><pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/</guid><description>&lt;h1 id="podman"&gt;Podman&lt;a class="anchor" href="#podman"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://mma.prnewswire.com/media/776689/New_Docker_logo_Logo.jpg?p=facebook" alt="docker img" title="docker"/&gt;&lt;/p&gt;
+&lt;h1 id="常用命令"&gt;常用命令&lt;a class="anchor" href="#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h3 id="2-启动容器并进入交互模式"&gt;2. 启动容器并进入交互模式&lt;a class="anchor" href="#2-%e5%90%af%e5%8a%a8%e5%ae%b9%e5%99%a8%e5%b9%b6%e8%bf%9b%e5%85%a5%e4%ba%a4%e4%ba%92%e6%a8%a1%e5%bc%8f"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;你可以使用 &lt;code&gt;docker run&lt;/code&gt; 命令启动容器并进入容器的交互式 shell。这样你就可以进入容器内部进行调试。&lt;/p&gt;
+&lt;p&gt;复制代码&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run -it --entrypoint /bin/bash nova-crawler:latest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="参数说明"&gt;参数说明：&lt;a class="anchor" href="#%e5%8f%82%e6%95%b0%e8%af%b4%e6%98%8e"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-it&lt;/code&gt;：&lt;code&gt;-i&lt;/code&gt; 表示以交互模式运行容器，&lt;code&gt;-t&lt;/code&gt; 给容器分配一个伪终端，这样你就可以在终端与容器交互。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--entrypoint /bin/bash&lt;/code&gt;：这将覆盖容器的默认入口点，直接启动一个 bash shell 以便你进入容器进行调试。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nova-crawler:latest&lt;/code&gt;：你要运行的镜像名称。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="3-启动容器并调试特定命令"&gt;3. 启动容器并调试特定命令&lt;a class="anchor" href="#3-%e5%90%af%e5%8a%a8%e5%ae%b9%e5%99%a8%e5%b9%b6%e8%b0%83%e8%af%95%e7%89%b9%e5%ae%9a%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;如果你不想进入容器的 shell，而是想直接执行调试命令（比如启动应用并在调试模式下运行），可以使用以下命令：&lt;/p&gt;
+&lt;p&gt;bash&lt;/p&gt;
+&lt;p&gt;复制代码&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker run -it --entrypoint /bin/bash nova-crawler:latest -c &amp;quot;your-debug-command&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="4-查看容器日志"&gt;4. 查看容器日志&lt;a class="anchor" href="#4-%e6%9f%a5%e7%9c%8b%e5%ae%b9%e5%99%a8%e6%97%a5%e5%bf%97"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;如果你希望在调试时查看容器的日志输出，可以使用以下命令：&lt;/p&gt;
+&lt;p&gt;bash&lt;/p&gt;
+&lt;p&gt;复制代码&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker logs &amp;lt;container_id&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;你可以通过 &lt;code&gt;docker ps&lt;/code&gt; 查找运行的容器 ID，然后查看日志输出。&lt;/p&gt;
+&lt;h3 id="5-调试时挂载本地目录可选"&gt;5. 调试时挂载本地目录（可选）&lt;a class="anchor" href="#5-%e8%b0%83%e8%af%95%e6%97%b6%e6%8c%82%e8%bd%bd%e6%9c%ac%e5%9c%b0%e7%9b%ae%e5%bd%95%e5%8f%af%e9%80%89"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;如果你需要调试代码，并且希望挂载本地目录到容器中进行实时编辑，可以使用 &lt;code&gt;-v&lt;/code&gt; 参数来挂载本地目录。例如，假设你的本地代码在 &lt;code&gt;/path/to/your/code&lt;/code&gt; 目录下：&lt;/p&gt;
+&lt;p&gt;bash&lt;/p&gt;
+&lt;p&gt;复制代码&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker run -it -v /path/to/your/code:/app --entrypoint /bin/bash nova-crawler:latest&lt;/code&gt;&lt;/p&gt;</description></item><item><title>Docker</title><link>http://example.org/docs/programmer/cloudnative/note-of-docker/</link><pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/note-of-docker/</guid><description>&lt;h1 id="docker"&gt;Docker&lt;a class="anchor" href="#docker"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://mma.prnewswire.com/media/776689/New_Docker_logo_Logo.jpg?p=facebook" alt="docker img" title="docker"/&gt;&lt;/p&gt;
+&lt;h2 id="教程手册"&gt;教程手册&lt;a class="anchor" href="#%e6%95%99%e7%a8%8b%e6%89%8b%e5%86%8c"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://yeasy.gitbook.io/docker_practice/introduction/why"&gt;好用的使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="install"&gt;Install&lt;a class="anchor" href="#install"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;略过~ 😁&lt;/p&gt;
+&lt;h2 id="打镜像和跑"&gt;打镜像和跑&lt;a class="anchor" href="#%e6%89%93%e9%95%9c%e5%83%8f%e5%92%8c%e8%b7%91"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker build -t server:v0 . -f server.dockerfile&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="跑"&gt;跑&lt;a class="anchor" href="#%e8%b7%91"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run -p 9080:80 --name server server:v0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="指定启动命令"&gt;指定启动命令&lt;a class="anchor" href="#%e6%8c%87%e5%ae%9a%e5%90%af%e5%8a%a8%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &amp;#34;echo hello&amp;#34;&lt;/code&gt;&lt;/pre&gt;&lt;h4 id="加入自定义网络"&gt;加入自定义网络&lt;a class="anchor" href="#%e5%8a%a0%e5%85%a5%e8%87%aa%e5%ae%9a%e4%b9%89%e7%bd%91%e7%bb%9c"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;--network {{network name}}&lt;/code&gt;
+详见：[[#Network]]&lt;/p&gt;
+&lt;h4 id="跑出问题-进入容器排查"&gt;跑出问题-进入容器排查&lt;a class="anchor" href="#%e8%b7%91%e5%87%ba%e9%97%ae%e9%a2%98-%e8%bf%9b%e5%85%a5%e5%ae%b9%e5%99%a8%e6%8e%92%e6%9f%a5"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &lt;span style="color:#e6db74"&gt;&amp;#34;bash&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使用&lt;code&gt;-it&lt;/code&gt;进入容器手动执行命令进行调试&lt;/p&gt;
+&lt;h4 id="启动全部容器"&gt;启动全部容器&lt;a class="anchor" href="#%e5%90%af%e5%8a%a8%e5%85%a8%e9%83%a8%e5%ae%b9%e5%99%a8"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker ps -a | grep &lt;span style="color:#e6db74"&gt;&amp;#34;Exited&amp;#34;&lt;/span&gt; | awk &lt;span style="color:#e6db74"&gt;&amp;#39;{print $1}&amp;#39;&lt;/span&gt; | xargs docker start&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="network"&gt;Network&lt;a class="anchor" href="#network"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;docker run时容器加入方法-redis为例&lt;/li&gt;
+&lt;li&gt;后期加入方式&lt;/li&gt;
+&lt;li&gt;创建一个新网&lt;/li&gt;
+&lt;li&gt;检测&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-makefile" data-lang="makefile"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; init_redis:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker run -p 6379:6379 &lt;span style="color:#ae81ff"&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	--network websafe-network &lt;span style="color:#ae81ff"&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	--name redislatest redis:latest --requirepass 3b21d032a7fd8eb51fa7bd8a2e812b78b7b3a36f 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; join_network:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network connect websafe-network mysql56
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network connect websafe-network daemon-xxx
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; init_network:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network create websafe-network
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; check_network:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network inspect websafe-network
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network inspect websafe-network | findStr IPv4Address
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="删除"&gt;删除&lt;a class="anchor" href="#%e5%88%a0%e9%99%a4"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id="可视化"&gt;可视化&lt;a class="anchor" href="#%e5%8f%af%e8%a7%86%e5%8c%96"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;go install github.com/jesseduffield/lazydocker@latest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;如果需要&lt;code&gt;sudo&lt;/code&gt;权限的话无法直接执行命令，只能where获取原始路径后&lt;code&gt;sudo&lt;/code&gt;+原始路径执行
+如：&lt;/p&gt;</description></item><item><title>Docker</title><link>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/</link><pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/</guid><description>&lt;h1 id="docker"&gt;Docker&lt;a class="anchor" href="#docker"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://mma.prnewswire.com/media/776689/New_Docker_logo_Logo.jpg?p=facebook" alt="docker img" title="docker"/&gt;&lt;/p&gt;
+&lt;h2 id="教程手册"&gt;教程手册&lt;a class="anchor" href="#%e6%95%99%e7%a8%8b%e6%89%8b%e5%86%8c"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://yeasy.gitbook.io/docker_practice/introduction/why"&gt;好用的使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="install"&gt;Install&lt;a class="anchor" href="#install"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;略过~ 😁&lt;/p&gt;
+&lt;h2 id="基础命令"&gt;基础命令&lt;a class="anchor" href="#%e5%9f%ba%e7%a1%80%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="打镜像和跑"&gt;打镜像和跑&lt;a class="anchor" href="#%e6%89%93%e9%95%9c%e5%83%8f%e5%92%8c%e8%b7%91"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="打"&gt;打&lt;a class="anchor" href="#%e6%89%93"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker build -t server:v0 . -f server.dockerfile&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="dockerignore"&gt;dockerignore&lt;a class="anchor" href="#dockerignore"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;如果您想在 Dockerfile 中将当前目录中的所有文件都复制到 Docker 镜像中，可以使用 Dockerfile 中的 &lt;code&gt;COPY&lt;/code&gt; 指令。具体的语法如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-Dockerfile" data-lang="Dockerfile"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;COPY&lt;/span&gt; . /目标路径/&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中&lt;code&gt;.&lt;/code&gt; 表示当前目录，&lt;code&gt;/目标路径/&lt;/code&gt; 表示目标路径，这里可以是绝对路径或相对路径。
+这将会将当前目录中的所有文件复制到镜像中的 &lt;code&gt;/app/&lt;/code&gt; 目录下。请注意，在这种情况下，所有文件和文件夹都会被复制到镜像中，包括隐藏文件和文件夹。如果您不想复制某些文件或文件夹，可以在运行 &lt;code&gt;COPY&lt;/code&gt; 指令之前通过 &lt;code&gt;.dockerignore&lt;/code&gt; 文件来指定忽略的文件和文件夹。&lt;/p&gt;
+&lt;h3 id="跑"&gt;跑&lt;a class="anchor" href="#%e8%b7%91"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run -p 9080:80 --name server server:v0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="指定启动命令"&gt;指定启动命令&lt;a class="anchor" href="#%e6%8c%87%e5%ae%9a%e5%90%af%e5%8a%a8%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &amp;#34;echo hello&amp;#34;&lt;/code&gt;&lt;/pre&gt;&lt;h4 id="加入自定义网络"&gt;加入自定义网络&lt;a class="anchor" href="#%e5%8a%a0%e5%85%a5%e8%87%aa%e5%ae%9a%e4%b9%89%e7%bd%91%e7%bb%9c"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;--network {{network name}}&lt;/code&gt;
+详见：[[#Network]]&lt;/p&gt;
+&lt;h4 id="跑出问题-进入容器排查"&gt;跑出问题-进入容器排查&lt;a class="anchor" href="#%e8%b7%91%e5%87%ba%e9%97%ae%e9%a2%98-%e8%bf%9b%e5%85%a5%e5%ae%b9%e5%99%a8%e6%8e%92%e6%9f%a5"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &lt;span style="color:#e6db74"&gt;&amp;#34;bash&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使用&lt;code&gt;-it&lt;/code&gt;进入容器手动执行命令进行调试&lt;/p&gt;</description></item></channel></rss>

@@ -1,5 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>markdown on Ian's Blog</title><link>http://example.org/categories/markdown/</link><description>Recent content in markdown on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 15 May 2018 10:00:47 +0000</lastBuildDate><atom:link href="http://example.org/categories/markdown/index.xml" rel="self" type="application/rss+xml"/><item><title>Tips of MarkDown</title><link>http://example.org/docs/programmer/langs/tips-of-markdown/</link><pubDate>Tue, 15 May 2018 10:00:47 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tips-of-markdown/</guid><description>Markdown Notes 📪 # 对勾和叉叉(叉号) # #对勾 #叉号
-- &amp;amp;#9744; x &amp;amp;cross; - &amp;amp;#9745; &amp;amp;#10004; &amp;amp;check; ☐ x ✗ ☑ ✔ ✓ HTML锚点 - 页面内点击跳转 # 可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。 具体实现方法如下：
-首先，在需要跳转到的标题前插入一个 HTML 锚点，例如： ### &amp;lt;a name=&amp;#34;section1&amp;#34;&amp;gt;Section 1&amp;lt;/a&amp;gt; 这个锚点的名称为 &amp;#34;section1&amp;#34;，可以根据需要自定义。 在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如： [跳转到 Section 1](#section1) 这样，点击这个链接就会跳转到页面中的 &amp;#34;Section 1&amp;#34; 标题处。 注意事项： # 锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。 如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。
-## Test 二级标题
-Now I will test the Markdown&amp;rsquo;s hobiy 二级 # Maybe is a nice way to impove my blog.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Markdown on Ian's Blog</title><link>http://example.org/categories/markdown/</link><description>Recent content in Markdown on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 15 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/markdown/index.xml" rel="self" type="application/rss+xml"/><item><title>Tips of MarkDown</title><link>http://example.org/docs/programmer/langs/tips-of-markdown/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tips-of-markdown/</guid><description>&lt;h1 id="markdown-notes-"&gt;Markdown Notes 📪&lt;a class="anchor" href="#markdown-notes-"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://justyy.com/wp-content/uploads/2016/01/markdown-syntax-language.png" alt="markdown" /&gt;&lt;/p&gt;
+&lt;h2 id="对勾和叉叉叉号"&gt;对勾和叉叉(叉号)&lt;a class="anchor" href="#%e5%af%b9%e5%8b%be%e5%92%8c%e5%8f%89%e5%8f%89%e5%8f%89%e5%8f%b7"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;#对勾 #叉号&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; &amp;amp;#9744; x &amp;amp;cross; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &amp;amp;#9745; &amp;amp;#10004; &amp;amp;check;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;☐ x ✗&lt;/li&gt;
+&lt;li&gt;☑ ✔ ✓&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="html锚点---页面内点击跳转"&gt;HTML锚点 - 页面内点击跳转&lt;a class="anchor" href="#html%e9%94%9a%e7%82%b9---%e9%a1%b5%e9%9d%a2%e5%86%85%e7%82%b9%e5%87%bb%e8%b7%b3%e8%bd%ac"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。
+具体实现方法如下：&lt;/p&gt;
+&lt;/blockquote&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;首先，在需要跳转到的标题前插入一个 HTML 锚点，例如：
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;### &amp;lt;a name=&amp;#34;section1&amp;#34;&amp;gt;Section 1&amp;lt;/a&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;这个锚点的名称为 &amp;#34;section1&amp;#34;，可以根据需要自定义。
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如：
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[&lt;span style="color:#f92672"&gt;跳转到 Section 1&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;#section1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;这样，点击这个链接就会跳转到页面中的 &amp;#34;Section 1&amp;#34; 标题处。&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="注意事项"&gt;注意事项：&lt;a class="anchor" href="#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。
+如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;code&gt;## Test 二级标题&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="now-i-will-test-the-markdowns-hobiy-二级"&gt;Now I will test the Markdown&amp;rsquo;s hobiy 二级&lt;a class="anchor" href="#now-i-will-test-the-markdowns-hobiy-%e4%ba%8c%e7%ba%a7"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="maybe-is-a-nice-way-to-impove-my-blog-三级"&gt;Maybe is a nice way to impove my blog. 三级&lt;a class="anchor" href="#maybe-is-a-nice-way-to-impove-my-blog-%e4%b8%89%e7%ba%a7"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;原来标题 要# 与正文隔开一个空格…
+···print “hello Markdown”···
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;欸？ 怎么回事？上面的文字
+莫非是用Tab能将其放到一个容器里？&lt;/p&gt;</description></item></channel></rss>

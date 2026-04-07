@@ -1,9 +1,61 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ue4 on Ian's Blog</title><link>http://example.org/tags/ue4/</link><description>Recent content in ue4 on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 10 May 2021 12:13:26 +0000</lastBuildDate><atom:link href="http://example.org/tags/ue4/index.xml" rel="self" type="application/rss+xml"/><item><title>UE4 笔记</title><link>http://example.org/docs/3dgame/noteofue4/</link><pubDate>Mon, 10 May 2021 12:13:26 +0000</pubDate><guid>http://example.org/docs/3dgame/noteofue4/</guid><description> UE4 笔记 # 手机 # 路径必须不能用汉字, 一律全英文(神奇&amp;hellip;以前习惯就是全英,以为这问题是上世纪的了,测试时不知怎么就把顺手的英文换成中文了,结果就莫名中枪了) java8 (ue4.26.2, 之前4.25也是, 反正就找个稳定版java一直使吧, 这语言太amazing了.) 虽然对java版本有一定要求, 不过按照我这次的测试和使用, 觉得折腾那么久完全是汉字项目名不支持&amp;hellip;所以java版本要求应该不是很严重 动画 # 事件图表&amp;amp;动画图表 # 事件图表: 收集动画-&amp;gt;存储在变量中 动画图表: 驱动所有动作 事件图表 # isValid # 蓝图不知道被哪个实例持有(通用)
-朝向 # 主角本地坐标X轴正方向表正前方
-GetVelocity
-RotationFromXVector
-GetControlRotaion
-2,3求Delta.
-输出 # 速度 方向 总步骤 # 向量长度获取Speed 向量方向-控制器方向获取Direction 以上2保存为变量, 交由动画图表 动画图表 # Params-Blend-Result:
-获取速度,方向(看情况可多可少) 将1输入动画混合空间 输出姿势 State Machine # 在以上一组动作中加入状态细分
-State Machine - State1-(rule)-State2&amp;hellip;StateN State - (Params-Blend-Result) 生效 # 角色 网格体(骨骼网格体) 动画-动画类-动画蓝图</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ue4 on Ian's Blog</title><link>http://example.org/tags/ue4/</link><description>Recent content in Ue4 on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 10 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/ue4/index.xml" rel="self" type="application/rss+xml"/><item><title>UE4 笔记</title><link>http://example.org/docs/3dgame/noteofue4/</link><pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/3dgame/noteofue4/</guid><description>&lt;h1 id="ue4-笔记"&gt;UE4 笔记&lt;a class="anchor" href="#ue4-%e7%ac%94%e8%ae%b0"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://cdn2.unrealengine.com/Unreal&amp;#43;Engine%2Fblog%2Fconnect-with-the-unreal-engine-community-online%2FUE_Community_Online_Feed-thumb-desktop-1400x788-a6917dba2f2cc41cc1426a3afdff135521cea738.png" alt="ue4" title="ue4"/&gt;&lt;/p&gt;
+&lt;h2 id="手机"&gt;手机&lt;a class="anchor" href="#%e6%89%8b%e6%9c%ba"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;路径必须不能用汉字, 一律全英文(神奇&amp;hellip;以前习惯就是全英,以为这问题是上世纪的了,测试时不知怎么就把顺手的英文换成中文了,结果就莫名中枪了)&lt;/li&gt;
+&lt;li&gt;java8 (ue4.26.2, 之前4.25也是, 反正就找个稳定版java一直使吧, 这语言太amazing了.)&lt;/li&gt;
+&lt;li&gt;虽然对java版本有一定要求, 不过按照我这次的测试和使用, 觉得折腾那么久完全是汉字项目名不支持&amp;hellip;所以java版本要求应该不是很严重&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="动画"&gt;动画&lt;a class="anchor" href="#%e5%8a%a8%e7%94%bb"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="事件图表动画图表"&gt;事件图表&amp;amp;动画图表&lt;a class="anchor" href="#%e4%ba%8b%e4%bb%b6%e5%9b%be%e8%a1%a8%e5%8a%a8%e7%94%bb%e5%9b%be%e8%a1%a8"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;事件图表: 收集动画-&amp;gt;存储在变量中&lt;/li&gt;
+&lt;li&gt;动画图表: 驱动所有动作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="事件图表"&gt;事件图表&lt;a class="anchor" href="#%e4%ba%8b%e4%bb%b6%e5%9b%be%e8%a1%a8"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="isvalid"&gt;isValid&lt;a class="anchor" href="#isvalid"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;蓝图不知道被哪个实例持有(通用)&lt;/p&gt;
+&lt;h4 id="朝向"&gt;朝向&lt;a class="anchor" href="#%e6%9c%9d%e5%90%91"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;主角本地坐标X轴正方向表正前方&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;GetVelocity&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RotationFromXVector&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;GetControlRotaion&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;2,3求&lt;code&gt;Delta&lt;/code&gt;.&lt;/p&gt;
+&lt;h4 id="输出"&gt;输出&lt;a class="anchor" href="#%e8%be%93%e5%87%ba"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;速度&lt;/li&gt;
+&lt;li&gt;方向&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="总步骤"&gt;总步骤&lt;a class="anchor" href="#%e6%80%bb%e6%ad%a5%e9%aa%a4"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;向量长度获取&lt;code&gt;Speed&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;向量方向-控制器方向获取&lt;code&gt;Direction&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;以上2保存为变量, 交由&lt;code&gt;动画图表&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="动画图表"&gt;动画图表&lt;a class="anchor" href="#%e5%8a%a8%e7%94%bb%e5%9b%be%e8%a1%a8"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Params-Blend-Result:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;获取速度,方向(看情况可多可少)&lt;/li&gt;
+&lt;li&gt;将&lt;code&gt;1&lt;/code&gt;输入动画混合空间&lt;/li&gt;
+&lt;li&gt;输出姿势&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="state-machine"&gt;State Machine&lt;a class="anchor" href="#state-machine"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;在以上一组动作中加入状态细分&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;State Machine - State1-(rule)-State2&amp;hellip;StateN&lt;/li&gt;
+&lt;li&gt;State - (Params-Blend-Result)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="生效"&gt;生效&lt;a class="anchor" href="#%e7%94%9f%e6%95%88"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;角色&lt;/li&gt;
+&lt;li&gt;网格体(骨骼网格体)&lt;/li&gt;
+&lt;li&gt;动画-动画类-动画蓝图&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

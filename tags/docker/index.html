@@ -1,381 +1,243 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content="docker"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="http://example.org/tags/docker/"><title>docker | Ian's Blog</title>
-<link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script><script defer src=/en.search.min.16245b0bb25077ebd4049aa300a4508efe008564bd0b65dd95e30c73955de206.js integrity="sha256-FiRbC7JQd+vUBJqjAKRQjv4AhWS9C2XdleMMc5Vd4gY=" crossorigin=anonymous></script><link rel=alternate type=application/rss+xml href=http://example.org/tags/docker/index.xml title="Ian's Blog"></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Ian's Blog</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><a href=/docs/programmer/>程序员笔记</a><ul><li><input type=checkbox id=section-bf4e0d6f0b81f7b3ec08ed1fc66b874d class=toggle>
-<label for=section-bf4e0d6f0b81f7b3ec08ed1fc66b874d class="flex justify-between"><a href=/docs/programmer/langs/>编程语言</a></label><ul><li><input type=checkbox id=section-771df6c720301e69f1715f7fc174ac3d class=toggle>
-<label for=section-771df6c720301e69f1715f7fc174ac3d class="flex justify-between"><a role=button>Python</a></label><ul><li><a href=/docs/programmer/langs/python/python%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/>Python包管理</a></li><li><a href=/docs/programmer/langs/python/%E8%A7%84%E8%8C%83/>Python编码规范</a></li><li><a href=/docs/programmer/langs/python/sqlalchemy/>SqlAlchemy - 数据库Orm</a></li><li><a href=/docs/programmer/langs/python/pypi/>PyPi使用说明</a></li><li><a href=/docs/programmer/langs/python/pytest/>PyTest</a></li><li><a href=/docs/programmer/langs/python/paramiko-%E4%BD%BF%E7%94%A8-sshsftp/>Paramiko 使用 Ssh&amp;sftp</a></li><li><a href=/docs/programmer/langs/python/fastapi/>FastAPI</a></li><li><a href=/docs/programmer/langs/python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B/>Python 多线程多进程</a></li><li><a href=/docs/programmer/langs/python/notespython/>Python 常用库</a></li><li><a href=/docs/programmer/langs/python/notespython/>Python 笔记</a></li><li><a href=/docs/programmer/langs/python/py%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%92%8C%E5%8A%9F%E8%83%BD%E6%80%A7%E6%96%B9%E6%B3%95/>Py小工具和功能性方法</a></li><li><a href=/docs/programmer/langs/python/notespython/>解决问题</a></li></ul></li><li><input type=checkbox id=section-9f8ac8f06e138c7ac13ff61f23b4d497 class=toggle>
-<label for=section-9f8ac8f06e138c7ac13ff61f23b4d497 class="flex justify-between"><a role=button>Golang</a></label><ul><li><a href=/docs/programmer/langs/golang/%E6%8A%8Agolang%E5%BD%93%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%94%A8/>把Golang当脚本语言用</a></li><li><a href=/docs/programmer/langs/golang/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/>常用命令</a></li><li><a href=/docs/programmer/langs/golang/advanced-knowledge-of-golang/>Golang进阶笔记</a></li><li><a href=/docs/programmer/langs/golang/note-of-golang/>Golang笔记</a></li></ul></li><li><a href=/docs/programmer/langs/cmake/>CMake 使用Tips</a></li><li><a href=/docs/programmer/langs/tips-of-debugers/>Tips of debuggers</a></li><li><a href=/docs/programmer/langs/tips-of-markdown/>Tips of MarkDown</a></li><li><a href=/docs/programmer/langs/java/notesjava/>愉快的Java(happy to learn the fuck java)</a></li><li><a href=/docs/programmer/langs/note-for-algo/>算法</a></li></ul></li><li><input type=checkbox id=section-8658298e10b544e890095f646916165a class=toggle>
-<label for=section-8658298e10b544e890095f646916165a class="flex justify-between"><a href=/docs/programmer/cloudnative/>云原生</a></label><ul><li><input type=checkbox id=section-31d3b02fd4a132635e483e7e756058ea class=toggle>
-<label for=section-31d3b02fd4a132635e483e7e756058ea class="flex justify-between"><a href=/docs/programmer/cloudnative/redis/>中间件</a></label><ul><li><a href=/docs/programmer/cloudnative/redis/redis%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/>Redis集群部署</a></li><li><a href=/docs/programmer/cloudnative/redis/python-redis-%E5%AE%A2%E6%88%B7%E7%AB%AF/>Python Redis 客户端</a></li><li><a href=/docs/programmer/cloudnative/redis/bigkey-and-hotkey/>大key、热key问题</a></li><li><a href=/docs/programmer/cloudnative/redis/the-basics-of-redis/>Redis基础</a></li><li><a href=/docs/programmer/cloudnative/redis/advanced-knowledge-of-redis/>Redis进阶</a></li><li><a href=/docs/programmer/cloudnative/redis/%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4/>Redis常用命令</a></li></ul></li><li><input type=checkbox id=section-62d608ed890b3abc76dae78ccfcab912 class=toggle>
-<label for=section-62d608ed890b3abc76dae78ccfcab912 class="flex justify-between"><a role=button>k8s</a></label><ul><li><a href=/docs/programmer/cloudnative/k8s/elk%E5%9C%A8k8s%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B/>elk在k8s上的部署使用示例</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/>k8s 配套说明</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/>k8s技术分享</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/>k8s学习-常用命令和配置文件</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-workflow%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/>Argo Workflow性能测试和使用场景分析</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/>Argo 使用记录</a></li></ul></li><li><input type=checkbox id=section-b828bf3d116bc282da9db25a06bf908e class=toggle>
-<label for=section-b828bf3d116bc282da9db25a06bf908e class="flex justify-between"><a role=button>中间件</a></label><ul><li><a href=/docs/programmer/cloudnative/middleware/kafka-%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/>Kafka 安装和使用</a></li></ul></li><li><a href=/docs/programmer/cloudnative/elk/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E7%B3%BB%E7%BB%9F/>日志收集系统: loki+promtail+Grafana</a></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/>Podman</a></li><li><a href=/docs/programmer/cloudnative/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li><li><a href=/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/>uwsgi 处理记录</a></li><li><a href=/docs/programmer/cloudnative/note-of-docker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/fastapi/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/>Nginx高可用</a></li><li><a href=/docs/programmer/cloudnative/notesdjango/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/>Sonar 代码静态检查</a></li></ul></li><li><input type=checkbox id=section-de7bfad1d124522974cdf8addfbb23f2 class=toggle>
-<label for=section-de7bfad1d124522974cdf8addfbb23f2 class="flex justify-between"><a role=button>Net</a></label><ul><li><a href=/docs/programmer/net/crawler/selenium-grid/>Selenium Grid</a></li><li><a href=/docs/programmer/net/tools/ngrok/>ngrok - 一个免费内网穿透api工具</a></li><li><a href=/docs/programmer/net/crawler/mitmproxy/>mitmproxy</a></li><li><a href=/docs/programmer/net/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/>网络编程</a></li><li><a href=/docs/programmer/net/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li><li><a href=/docs/programmer/net/tips-of-grpc/>gRpc使用小记</a></li><li><a href=/docs/programmer/net/epoll%E5%AE%9E%E7%8E%B0/>Epoll实现</a></li></ul></li><li><input type=checkbox id=section-d5f99046a51e5e750b61f2e037945fcc class=toggle>
-<label for=section-d5f99046a51e5e750b61f2e037945fcc class="flex justify-between"><a role=button>基础工具和配置</a></label><ul><li><a href=/docs/programmer/basetc/obsidian/>Obsidian笔记软件</a></li><li><a href=/docs/programmer/basetc/%E7%BB%88%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8/>终端浏览器</a></li><li><a href=/docs/programmer/basetc/curl/>curl</a></li><li><a href=/docs/programmer/basetc/%E6%96%87%E6%9C%AC%E4%B8%89%E5%89%91%E5%AE%A2/>文本三剑客</a></li><li><a href=/docs/programmer/basetc/tmux/>Tmux使用笔记</a></li><li><a href=/docs/programmer/basetc/obsidian%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%8F%92%E4%BB%B6/>Obsidian思维导图插件</a></li><li><a href=/docs/programmer/basetc/for_china/>各个软件换源</a></li><li><a href=/docs/programmer/basetc/tipsofvim/>tip Of vim</a></li><li><a href=/docs/programmer/basetc/editer/>编辑器使用</a></li><li><a href=/docs/programmer/basetc/bash/>Bash</a></li><li><a href=/docs/programmer/basetc/gitbook/>Gitbook</a></li><li><a href=/docs/programmer/basetc/vim/>Vim</a></li><li><a href=/docs/programmer/basetc/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/>supervisor</a></li></ul></li><li><input type=checkbox id=section-883e27361d38e16afb68faff3435ac0b class=toggle>
-<label for=section-883e27361d38e16afb68faff3435ac0b class="flex justify-between"><a role=button>机器学习</a></label><ul><li><a href=/docs/programmer/ml/stable-diffusion/>AI画图</a></li><li><a href=/docs/programmer/ml/%E5%9B%BE%E7%89%87%E8%83%8C%E6%99%AF%E6%B6%88%E9%99%A4/>图片背景消除</a></li><li><a href=/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%A1%8C%E4%B8%BA%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%92%8C%E4%BB%BB%E5%8A%A1/>机器人行为自动编排和任务</a></li><li><a href=/docs/programmer/ml/%E7%88%AC%E8%99%AB/>爬虫</a></li><li><a href=/docs/programmer/ml/paddle/>Paddle</a></li><li><a href=/docs/programmer/ml/tensorflow/>Tensorflow</a></li><li><a href=/docs/programmer/ml/opencv/>OpenCV</a></li><li><a href=/docs/programmer/ml/yolo/>Demo Test项目中的一些东西</a></li><li><a href=/docs/programmer/ml/python-%E5%9B%BE%E8%A1%A8/>Python 图表</a></li><li><a href=/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/>机器学习库</a></li></ul></li><li><input type=checkbox id=section-7e5360c5e7954906b897ed79085884b6 class=toggle>
-<label for=section-7e5360c5e7954906b897ed79085884b6 class="flex justify-between"><a href=/docs/programmer/gui/>图形用户界面-GUI</a></label><ul><li><input type=checkbox id=section-d68552b374b14edaa2443cb0f45f94f7 class=toggle>
-<label for=section-d68552b374b14edaa2443cb0f45f94f7 class="flex justify-between"><a href=/docs/programmer/gui/example/>Blog 构建</a></label><ul><li><input type=checkbox id=section-9610a10c098f6edce85f18e8d27ddc6d class=toggle>
-<label for=section-9610a10c098f6edce85f18e8d27ddc6d class="flex justify-between"><a href=/docs/programmer/gui/example/table-of-contents/>Table of Contents</a></label><ul><li><a href=/docs/programmer/gui/example/table-of-contents/with-toc/>With ToC</a></li><li><a href=/docs/programmer/gui/example/table-of-contents/without-toc/>Without ToC</a></li></ul></li><li><input type=checkbox id=section-9ec2030fb4762791e574be1af10795d3 class=toggle>
-<label for=section-9ec2030fb4762791e574be1af10795d3 class="flex justify-between"><a href=/docs/programmer/gui/example/shortcodes/>Shortcodes</a></label><ul><li><a href=/docs/programmer/gui/example/shortcodes/buttons/>Buttons</a></li><li><a href=/docs/programmer/gui/example/shortcodes/columns/>Columns</a></li><li><a href=/docs/programmer/gui/example/shortcodes/details/>Details</a></li><li><a href=/docs/programmer/gui/example/shortcodes/expand/>Expand</a></li><li><a href=/docs/programmer/gui/example/shortcodes/hints/>Hints</a></li><li><input type=checkbox id=section-0a13810fcdbb2cfbfd8459e55601b351 class=toggle>
-<label for=section-0a13810fcdbb2cfbfd8459e55601b351 class="flex justify-between"><a href=/docs/programmer/gui/example/shortcodes/section/>Section</a></label><ul><li><a href=/docs/programmer/gui/example/shortcodes/section/first-page/>First Page</a></li><li><a href=/docs/programmer/gui/example/shortcodes/section/second-page/>Second Page</a></li></ul></li><li><a href=/docs/programmer/gui/example/shortcodes/tabs/>Tabs</a></li></ul></li></ul></li><li><a href=/docs/programmer/gui/ffmpeg/>ffmpeg 使用</a></li><li><a href=/docs/programmer/gui/pyinstaller-python%E6%89%93%E5%8C%85/>python打包</a></li><li><a href=/docs/programmer/gui/qt/>Qt/PySide</a></li><li><a href=/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/>Vn.Py学习笔记（Python交易平台框架）</a></li><li><a href=/docs/programmer/gui/notespython/>图形化界面 （Python Gui）</a></li></ul></li><li><input type=checkbox id=section-0bf4f4329214e20fa67ca3e12c6aad0c class=toggle>
-<label for=section-0bf4f4329214e20fa67ca3e12c6aad0c class="flex justify-between"><a role=button>平台</a></label><ul><li><a href=/docs/programmer/platforms/%E9%80%86%E5%90%91/>逆向三板斧</a></li><li><a href=/docs/programmer/platforms/os/steam/>Steam</a></li><li><a href=/docs/programmer/platforms/android/waydroid/>Linux 跑安卓</a></li><li><a href=/docs/programmer/platforms/os/ubuntu/>Ubuntu</a></li><li><a href=/docs/programmer/platforms/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8/>阿里云使用</a></li><li><a href=/docs/programmer/platforms/wps-for-linux/>WPS for Linux</a></li><li><a href=/docs/programmer/platforms/appsflyer/>AppsFlyer-外网移动归因营销分析平台</a></li><li><a href=/docs/programmer/platforms/install_some/>安装问题</a></li><li><a href=/docs/programmer/platforms/android/android/>安卓</a></li><li><a href=/docs/programmer/platforms/os/freebsd/>FreeBSD</a></li><li><a href=/docs/programmer/platforms/os/note-of-linux/>Linux 笔记</a></li><li><a href=/docs/programmer/platforms/android/adb/>adb</a></li><li><a href=/docs/programmer/platforms/git/>Git</a></li><li><a href=/docs/programmer/platforms/os/ros/>ROS机器人操作系统</a></li><li><a href=/docs/programmer/platforms/os/problem-of-windows/>Windows 爬坑记</a></li><li><a href=/docs/programmer/platforms/tips-of-problems/>解决问题记录笔记</a></li></ul></li><li><input type=checkbox id=section-4446dd07527142b855f26d7cc8f0e617 class=toggle>
-<label for=section-4446dd07527142b855f26d7cc8f0e617 class="flex justify-between"><a href=/docs/programmer/database/>Database</a></label><ul><li><a href=/docs/programmer/database/note-of-db-data-mariadb/>数据库-MariaDB篇</a></li><li><a href=/docs/programmer/database/dgraph-graph-db/>Dgraph使用小记</a></li><li><a href=/docs/programmer/database/note-of-db-data-mongodb/>数据库-MongoDB篇</a></li><li><a href=/docs/programmer/database/note-of-db-data-mysql/>数据库-MySQL篇</a></li></ul></li><li><input type=checkbox id=section-d325c59fc6513e1b1e05a60b192d4973 class=toggle>
-<label for=section-d325c59fc6513e1b1e05a60b192d4973 class="flex justify-between"><a href=/docs/programmer/hardware/>硬件</a></label><ul><li><a href=/docs/programmer/hardware/raspberrypi/>Raspberry Pi</a></li><li><a href=/docs/programmer/hardware/screen/>Screen</a></li></ul></li></ul></li><li class=book-section-flat><span>建模和游戏</span><ul><li><a href=/docs/3dgame/blender/>Blender</a></li><li><a href=/docs/3dgame/noteofue4/>UE4 笔记</a></li></ul></li></ul><ul><li><a href=/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu>
-</label><strong>docker</strong>
-<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav><ul><li class=book-section-flat><strong>Categories</strong><ul><li class="flex justify-between"><a href=/categories/db/>db</a>
-<span>3</span></li><li class="flex justify-between"><a href=/categories/docker/>docker</a>
-<span>3</span></li><li class="flex justify-between"><a href=/categories/podman/>podman</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/%E5%AE%89%E5%8D%93/>安卓</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/redis/>redis</a>
-<span>2</span></li><li class="flex justify-between"><a href=/categories/%E9%9D%A2%E8%AF%95/>面试</a>
-<span>2</span></li><li class="flex justify-between"><a href=/categories/%E5%B0%8F%E5%91%BD%E4%BB%A4/>小命令</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/nginx/>nginx</a>
-<span>2</span></li><li class="flex justify-between"><a href=/categories/problem/>problem</a>
-<span>3</span></li><li class="flex justify-between"><a href=/categories/tip/>tip</a>
-<span>11</span></li><li class="flex justify-between"><a href=/categories/uwsgi/>uwsgi</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9/>版本兼容</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/pyside/>pyside</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/qt/>qt</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/install/>install</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/dgraph/>Dgraph</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/>图数据库</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/learning/>learning</a>
-<span>11</span></li><li class="flex justify-between"><a href=/categories/note/>note</a>
-<span>9</span></li><li class="flex justify-between"><a href=/categories/grpc/>gRpc</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/expansion/>expansion</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/golang/>golang</a>
-<span>2</span></li><li class="flex justify-between"><a href=/categories/ue4/>ue4</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/web/>web</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/>机器视觉</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/%E6%8D%A2%E6%BA%90/>换源</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/debug/>debug</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/python/>python</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/markdown/>markdown</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/vim/>vim</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/%E6%9D%82%E8%B0%88/>杂谈</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/java/>java</a>
-<span>1</span></li></ul></li><li class=book-section-flat><strong>Tags</strong><ul><li class="flex justify-between"><a href=/tags/python/>python</a>
-<span>10</span></li><li class="flex justify-between"><a href=/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/>版本管理</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/redis/>redis</a>
-<span>6</span></li><li class="flex justify-between"><a href=/tags/%E9%9B%86%E7%BE%A4/>集群</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/selenium/>selenium</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E7%88%AC%E8%99%AB/>爬虫</a>
-<span>2</span></li><li class="flex justify-between"><a href=/tags/obsidian/>obsidian</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/background-removal/>background-removal</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/>图像处理</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E8%83%8C%E6%99%AF%E6%B6%88%E9%99%A4/>背景消除</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/elk/>elk</a>
-<span>2</span></li><li class="flex justify-between"><a href=/tags/%E6%97%A5%E5%BF%97/>日志</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/ci/>ci</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/golang/>golang</a>
-<span>4</span></li><li class="flex justify-between"><a href=/tags/script/>script</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/chrome/>chrome</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/terminal/>terminal</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/ffmpeg/>ffmpeg</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/apktool/>apktool</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E9%80%86%E5%90%91/>逆向</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E8%A7%84%E8%8C%83/>规范</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/databases/>databases</a>
-<span>3</span></li><li class="flex justify-between"><a href=/tags/mariadb/>mariadb</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/ai/>AI</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/llms/>llms</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/>机器人</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/api/>api</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/ngrok/>ngrok</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/bash/>bash</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/curl/>curl</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/mitmproxy/>mitmproxy</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/proxy/>proxy</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/awk/>awk</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/grep/>grep</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/sed/>sed</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/tmux/>tmux</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/linux/>Linux</a>
-<span>7</span></li><li class="flex justify-between"><a href=/tags/porton/>Porton</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/steam/>Steam</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/android/>android</a>
-<span>3</span></li><li class="flex justify-between"><a href=/tags/wayland/>wayland</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/docker/>docker</a>
-<span>4</span></li><li class="flex justify-between"><a href=/tags/podman/>podman</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E5%AE%89%E5%8D%93/>安卓</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/ubuntu/>Ubuntu</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/oss/>oss</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/key/>key</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/wps/>wps</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/orm/>orm</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/sqlalchemy/>sqlalchemy</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/appsflyer/>AppsFlyer</a>
-<span>2</span></li><li class="flex justify-between"><a href=/tags/tcp/>tcp</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E9%9D%A2%E8%AF%95/>面试</a>
-<span>3</span></li><li class="flex justify-between"><a href=/tags/%E5%B0%8F%E5%91%BD%E4%BB%A4/>小命令</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/k8s/>k8s</a>
-<span>3</span></li><li class="flex justify-between"><a href=/tags/nginx/>nginx</a>
-<span>3</span></li><li class="flex justify-between"><a href=/tags/uwsgi/>uwsgi</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/c++/>c++</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/cmake/>cmake</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/cpp/>cpp</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/>深度学习</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/3d-model-creator/>3d model creator</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/pyinstaller/>pyinstaller</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E6%89%93%E5%8C%85/>打包</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/install/>install</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/nodejs/>nodejs</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/npm/>npm</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/dgraph/>dgraph</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/>图数据库</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/learning/>learning</a>
-<span>9</span></li><li class="flex justify-between"><a href=/tags/backend/>backend</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/fastapi/>fastapi</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/web/>web</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/rpc/>rpc</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/win/>win</a>
-<span>3</span></li><li class="flex justify-between"><a href=/tags/expansion/>expansion</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/ue4/>ue4</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E6%B5%8B%E8%AF%95/>测试</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/keepalived/>keepalived</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/opencv/>opencv</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/>机器视觉</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/apt/>apt</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/pip/>pip</a>
-<span>2</span></li><li class="flex justify-between"><a href=/tags/pkg/>pkg</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E6%BA%90/>源</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/debuger/>debuger</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/gdb/>gdb</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/pdb/>pdb</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/ajax/>ajax</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/apache/>apache</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/django/>django</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/missjava/>missjava</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/vue/>vue</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/gui/>Gui</a>
-<span>2</span></li><li class="flex justify-between"><a href=/tags/socket/>socket</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/vn.py/>Vn.Py</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/markdown/>markdown</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/md/>md</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/tip/>tip</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/less/>less</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/more/>more</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/vim/>vim</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/mongo/>mongo</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/mysql/>mysql</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/freebsd/>freebsd</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E6%9D%82%E8%B0%88/>杂谈</a>
-<span>5</span></li><li class="flex justify-between"><a href=/tags/adb/>adb</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/asyncio/>asyncio</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/demo_test/>demo_test</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/excalidraw/>excalidraw</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/git/>git</a>
-<span>2</span></li><li class="flex justify-between"><a href=/tags/java-springboot-mybatis-maven-learning/>java, springboot, mybatis, maven, learning</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/matplotlib/>matplotlib</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/ml/>ml</a>
-<span>2</span></li><li class="flex justify-between"><a href=/tags/multiprocessing/>multiprocessing</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/pydantic/>pydantic</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/pyqt/>pyqt</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/supervisor/>supervisor</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/systemd/>systemd</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/threading/>threading</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/tools/>tools</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E5%9B%BE%E8%A1%A8/>图表</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E7%AE%97%E6%B3%95/>算法</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E9%97%AE%E9%A2%98/>问题</a>
-<span>1</span></li></ul></li></ul></nav></aside></header><article class="markdown book-post"><h2><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/>Podman</a></h2><h5>June 27, 2024</h5><div><a href=/categories/docker/>docker</a>,
-<a href=/categories/podman/>podman</a></div><div><a href=/tags/docker/>docker</a>,
-<a href=/tags/podman/>podman</a></div><p>Podman # 常用命令 # 2. 启动容器并进入交互模式 # 你可以使用 docker run 命令启动容器并进入容器的交互式 shell。这样你就可以进入容器内部进行调试。
-复制代码
-docker run -it --entrypoint /bin/bash nova-crawler:latest 参数说明： # -it：-i 表示以交互模式运行容器，-t 给容器分配一个伪终端，这样你就可以在终端与容器交互。 --entrypoint /bin/bash：这将覆盖容器的默认入口点，直接启动一个 bash shell 以便你进入容器进行调试。 nova-crawler:latest：你要运行的镜像名称。 3. 启动容器并调试特定命令 # 如果你不想进入容器的 shell，而是想直接执行调试命令（比如启动应用并在调试模式下运行），可以使用以下命令：
-bash
-复制代码
-docker run -it --entrypoint /bin/bash nova-crawler:latest -c "your-debug-command"
-4. 查看容器日志 # 如果你希望在调试时查看容器的日志输出，可以使用以下命令：
-bash
-复制代码
-docker logs &lt;container_id>
-你可以通过 docker ps 查找运行的容器 ID，然后查看日志输出。
-5. 调试时挂载本地目录（可选） # 如果你需要调试代码，并且希望挂载本地目录到容器中进行实时编辑，可以使用 -v 参数来挂载本地目录。例如，假设你的本地代码在 /path/to/your/code 目录下：
-bash
-复制代码
-<a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/>...</a></p></article><article class="markdown book-post"><h2><a href=/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/>k8s技术分享</a></h2><h5>September 7, 2023</h5><div><a href=/tags/linux/>Linux</a>,
-<a href=/tags/k8s/>k8s</a>,
-<a href=/tags/docker/>docker</a></div><p>k8s技术分享 # 工作负载资源 # 一、pod # 1. 概要 # 可创建管理、最小的可部署计算单元，是可以在主机上运行的容器的集合 我们的服务都在其中运行。如我们的服务是nginx，则最内层是我们的服务 nginx，运行在 container 容器当中。container (容器) 的本质是进程，而 pod 是管理这一组进程的资源 所以pod可视为一个极为轻量化、没插网线的电脑，如果所需任务无需交互，那么用pod就很合适。例如给它挂载一个文件来训练模型、生成报表，可以根据场景使用 Job 或者 CronJob 或者其它 图示关系如下 # ![[k8s-pod-insert.png]]
-2. pod网络 # 当然，pod 可以管理多个 container，又因为container (容器) 的本质是进程，如果有本地网络通信需求(使用 localhost 或者 Socket 文件进行本地通信)，在这些场景中使用 pod 管理多个 container 就非常的推荐。
-如下图展示了Pod网络所依赖的3个网络设备
-1. eth0是节点主机上的网卡，支持该节点流量出入的设备、也是支持集群节点间IP寻址和互通的设备；
-2. docker0是一个虚拟网桥，可以简单理解为一个虚拟交换机，支持该节点上的Pod之间进行IP寻址和互通的设备；
-3. veth0则是Pod1的虚拟网卡，支持该Pod内容器互通和对外访问的虚拟设备；
-4. docker0网桥和veth0网卡，都是linux支持和创建的虚拟网络设备；
-5. pause属于特殊容器，其运行的唯一目的是为Pod建立共享的veth0网络接口
-![[k8s-nginx-pod.png]]
-二、deployment、StatefulSet # 1. 概要 # Deployment 使得 Pod 和 ReplicaSet 能够进行声明式更新
-StatefulSet 表示一组具有一致身份的 Pod：
-1. 身份定义为：
-<a href=/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/>...</a></p></article><article class="markdown book-post"><h2><a href=/docs/programmer/cloudnative/note-of-docker/>Docker</a></h2><h5>December 16, 2021</h5><div><a href=/categories/note/>note</a>,
-<a href=/categories/docker/>docker</a>,
-<a href=/categories/learning/>learning</a></div><div><a href=/tags/docker/>docker</a>,
-<a href=/tags/learning/>learning</a></div><p>Docker # 教程手册 # 好用的使用教程
-Install # 略过~ 😁
-打镜像和跑 # docker build -t server:v0 . -f server.dockerfile 跑 # docker run -p 9080:80 --name server server:v0 指定启动命令 # sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c "echo hello" 加入自定义网络 # --network {{network name}} 详见：[[#Network]]
-跑出问题-进入容器排查 # sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c "bash" 使用-it进入容器手动执行命令进行调试
-启动全部容器 # docker ps -a | grep "Exited" | awk '{print $1}' | xargs docker start Network # docker run时容器加入方法-redis为例 后期加入方式 创建一个新网 检测 init_redis: docker run -p 6379:6379 \\ --network websafe-network \\ --name redislatest redis:latest --requirepass 3b21d032a7fd8eb51fa7bd8a2e812b78b7b3a36f join_network: docker network connect websafe-network mysql56 docker network connect websafe-network daemon-xxx init_network: docker network create websafe-network check_network: docker network inspect websafe-network docker network inspect websafe-network | findStr IPv4Address 删除 # 可视化 # go install github.
-<a href=/docs/programmer/cloudnative/note-of-docker/>...</a></p></article><article class="markdown book-post"><h2><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/>Docker</a></h2><h5>December 16, 2021</h5><div><a href=/categories/note/>note</a>,
-<a href=/categories/docker/>docker</a>,
-<a href=/categories/learning/>learning</a></div><div><a href=/tags/docker/>docker</a>,
-<a href=/tags/learning/>learning</a></div><p>Docker # 教程手册 # 好用的使用教程
-Install # 略过~ 😁
-基础命令 # 打镜像和跑 # 打 # docker build -t server:v0 . -f server.dockerfile dockerignore # 如果您想在 Dockerfile 中将当前目录中的所有文件都复制到 Docker 镜像中，可以使用 Dockerfile 中的 COPY 指令。具体的语法如下：
-COPY . /目标路径/ 其中. 表示当前目录，/目标路径/ 表示目标路径，这里可以是绝对路径或相对路径。 这将会将当前目录中的所有文件复制到镜像中的 /app/ 目录下。请注意，在这种情况下，所有文件和文件夹都会被复制到镜像中，包括隐藏文件和文件夹。如果您不想复制某些文件或文件夹，可以在运行 COPY 指令之前通过 .dockerignore 文件来指定忽略的文件和文件夹。
-跑 # docker run -p 9080:80 --name server server:v0 指定启动命令 # sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c "echo hello" 加入自定义网络 # --network {{network name}} 详见：[[#Network]]
-<a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/>...</a></p></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav><ul><li class=book-section-flat><strong>Categories</strong><ul><li class="flex justify-between"><a href=/categories/db/>db</a>
-<span>3</span></li><li class="flex justify-between"><a href=/categories/docker/>docker</a>
-<span>3</span></li><li class="flex justify-between"><a href=/categories/podman/>podman</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/%E5%AE%89%E5%8D%93/>安卓</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/redis/>redis</a>
-<span>2</span></li><li class="flex justify-between"><a href=/categories/%E9%9D%A2%E8%AF%95/>面试</a>
-<span>2</span></li><li class="flex justify-between"><a href=/categories/%E5%B0%8F%E5%91%BD%E4%BB%A4/>小命令</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/nginx/>nginx</a>
-<span>2</span></li><li class="flex justify-between"><a href=/categories/problem/>problem</a>
-<span>3</span></li><li class="flex justify-between"><a href=/categories/tip/>tip</a>
-<span>11</span></li><li class="flex justify-between"><a href=/categories/uwsgi/>uwsgi</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9/>版本兼容</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/pyside/>pyside</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/qt/>qt</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/install/>install</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/dgraph/>Dgraph</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/>图数据库</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/learning/>learning</a>
-<span>11</span></li><li class="flex justify-between"><a href=/categories/note/>note</a>
-<span>9</span></li><li class="flex justify-between"><a href=/categories/grpc/>gRpc</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/expansion/>expansion</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/golang/>golang</a>
-<span>2</span></li><li class="flex justify-between"><a href=/categories/ue4/>ue4</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/web/>web</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/>机器视觉</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/%E6%8D%A2%E6%BA%90/>换源</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/debug/>debug</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/python/>python</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/markdown/>markdown</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/vim/>vim</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/%E6%9D%82%E8%B0%88/>杂谈</a>
-<span>1</span></li><li class="flex justify-between"><a href=/categories/java/>java</a>
-<span>1</span></li></ul></li><li class=book-section-flat><strong>Tags</strong><ul><li class="flex justify-between"><a href=/tags/python/>python</a>
-<span>10</span></li><li class="flex justify-between"><a href=/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/>版本管理</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/redis/>redis</a>
-<span>6</span></li><li class="flex justify-between"><a href=/tags/%E9%9B%86%E7%BE%A4/>集群</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/selenium/>selenium</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E7%88%AC%E8%99%AB/>爬虫</a>
-<span>2</span></li><li class="flex justify-between"><a href=/tags/obsidian/>obsidian</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/background-removal/>background-removal</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/>图像处理</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E8%83%8C%E6%99%AF%E6%B6%88%E9%99%A4/>背景消除</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/elk/>elk</a>
-<span>2</span></li><li class="flex justify-between"><a href=/tags/%E6%97%A5%E5%BF%97/>日志</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/ci/>ci</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/golang/>golang</a>
-<span>4</span></li><li class="flex justify-between"><a href=/tags/script/>script</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/chrome/>chrome</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/terminal/>terminal</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/ffmpeg/>ffmpeg</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/apktool/>apktool</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E9%80%86%E5%90%91/>逆向</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E8%A7%84%E8%8C%83/>规范</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/databases/>databases</a>
-<span>3</span></li><li class="flex justify-between"><a href=/tags/mariadb/>mariadb</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/ai/>AI</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/llms/>llms</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/>机器人</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/api/>api</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/ngrok/>ngrok</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/bash/>bash</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/curl/>curl</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/mitmproxy/>mitmproxy</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/proxy/>proxy</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/awk/>awk</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/grep/>grep</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/sed/>sed</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/tmux/>tmux</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/linux/>Linux</a>
-<span>7</span></li><li class="flex justify-between"><a href=/tags/porton/>Porton</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/steam/>Steam</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/android/>android</a>
-<span>3</span></li><li class="flex justify-between"><a href=/tags/wayland/>wayland</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/docker/>docker</a>
-<span>4</span></li><li class="flex justify-between"><a href=/tags/podman/>podman</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E5%AE%89%E5%8D%93/>安卓</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/ubuntu/>Ubuntu</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/oss/>oss</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/key/>key</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/wps/>wps</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/orm/>orm</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/sqlalchemy/>sqlalchemy</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/appsflyer/>AppsFlyer</a>
-<span>2</span></li><li class="flex justify-between"><a href=/tags/tcp/>tcp</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E9%9D%A2%E8%AF%95/>面试</a>
-<span>3</span></li><li class="flex justify-between"><a href=/tags/%E5%B0%8F%E5%91%BD%E4%BB%A4/>小命令</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/k8s/>k8s</a>
-<span>3</span></li><li class="flex justify-between"><a href=/tags/nginx/>nginx</a>
-<span>3</span></li><li class="flex justify-between"><a href=/tags/uwsgi/>uwsgi</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/c++/>c++</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/cmake/>cmake</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/cpp/>cpp</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/>深度学习</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/3d-model-creator/>3d model creator</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/pyinstaller/>pyinstaller</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E6%89%93%E5%8C%85/>打包</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/install/>install</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/nodejs/>nodejs</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/npm/>npm</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/dgraph/>dgraph</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/>图数据库</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/learning/>learning</a>
-<span>9</span></li><li class="flex justify-between"><a href=/tags/backend/>backend</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/fastapi/>fastapi</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/web/>web</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/rpc/>rpc</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/win/>win</a>
-<span>3</span></li><li class="flex justify-between"><a href=/tags/expansion/>expansion</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/ue4/>ue4</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E6%B5%8B%E8%AF%95/>测试</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/keepalived/>keepalived</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/opencv/>opencv</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/>机器视觉</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/apt/>apt</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/pip/>pip</a>
-<span>2</span></li><li class="flex justify-between"><a href=/tags/pkg/>pkg</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E6%BA%90/>源</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/debuger/>debuger</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/gdb/>gdb</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/pdb/>pdb</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/ajax/>ajax</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/apache/>apache</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/django/>django</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/missjava/>missjava</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/vue/>vue</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/gui/>Gui</a>
-<span>2</span></li><li class="flex justify-between"><a href=/tags/socket/>socket</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/vn.py/>Vn.Py</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/markdown/>markdown</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/md/>md</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/tip/>tip</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/less/>less</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/more/>more</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/vim/>vim</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/mongo/>mongo</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/mysql/>mysql</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/freebsd/>freebsd</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E6%9D%82%E8%B0%88/>杂谈</a>
-<span>5</span></li><li class="flex justify-between"><a href=/tags/adb/>adb</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/asyncio/>asyncio</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/demo_test/>demo_test</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/excalidraw/>excalidraw</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/git/>git</a>
-<span>2</span></li><li class="flex justify-between"><a href=/tags/java-springboot-mybatis-maven-learning/>java, springboot, mybatis, maven, learning</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/matplotlib/>matplotlib</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/ml/>ml</a>
-<span>2</span></li><li class="flex justify-between"><a href=/tags/multiprocessing/>multiprocessing</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/pydantic/>pydantic</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/pyqt/>pyqt</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/supervisor/>supervisor</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/systemd/>systemd</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/threading/>threading</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/tools/>tools</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E5%9B%BE%E8%A1%A8/>图表</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E7%AE%97%E6%B3%95/>算法</a>
-<span>1</span></li><li class="flex justify-between"><a href=/tags/%E9%97%AE%E9%A2%98/>问题</a>
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#2e3440"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://example.org/tags/docker/"><meta property="og:site_name" content="Ian's Blog"><meta property="og:title" content="Docker"><meta property="og:locale" content="en_us"><meta property="og:type" content="website"><meta itemprop=name content="Docker"><meta itemprop=datePublished content="2025-12-03T00:00:00+00:00"><meta itemprop=dateModified content="2025-12-03T00:00:00+00:00"><title>Docker | Ian's Blog</title><link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://example.org/tags/docker/><link rel=stylesheet href=/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q+RjFGKeI5ztdZ5nSJg=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.efc6dc35cf4ad70f9ddb5b92020d13c3015ca8ef6229d0a2b4a0cf3a2cc21644.js integrity="sha256-78bcNc9K1w+d21uSAg0TwwFcqO9iKdCitKDPOizCFkQ=" crossorigin=anonymous></script><link rel=alternate type=application/rss+xml href=http://example.org/tags/docker/index.xml title="Ian's Blog"></head><body dir=ltr class="book-kind-term book-type-tags"><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Ian's Blog</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li class=book-section-flat><a href=/docs/programmer/>程序员笔记</a><ul><li><input type=checkbox id=section-c2c95db2f79edee23bbb71965e55c1e2 class=toggle>
+<label for=section-c2c95db2f79edee23bbb71965e55c1e2 class=flex><a href=/docs/programmer/langs/>编程语言</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-9f06ecccad732c4eb9d00c2abb8d8a7d class=toggle>
+<label for=section-9f06ecccad732c4eb9d00c2abb8d8a7d class=flex><a role=button>Python</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/langs/python/%E5%A4%A7%E6%95%B0%E5%88%97%E9%9B%86%E5%90%88%E5%AD%98%E5%82%A8%E5%92%8C%E8%BF%98%E5%8E%9F/>大数列集合存储和还原</a></li><li><a href=/docs/programmer/langs/python/python%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/>Python包管理</a></li><li><a href=/docs/programmer/langs/python/%E8%A7%84%E8%8C%83/>Python编码规范</a></li><li><a href=/docs/programmer/langs/python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B/>Python 多线程多进程</a></li><li><a href=/docs/programmer/langs/python/sqlalchemy/>SqlAlchemy - 数据库Orm</a></li><li><a href=/docs/programmer/langs/python/notespython/>解决问题</a></li><li><a href=/docs/programmer/langs/python/py%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%92%8C%E5%8A%9F%E8%83%BD%E6%80%A7%E6%96%B9%E6%B3%95/>Py小工具和功能性方法</a></li><li><a href=/docs/programmer/langs/python/pypi/>PyPi使用说明</a></li><li><a href=/docs/programmer/langs/python/pytest/>PyTest</a></li><li><a href=/docs/programmer/langs/python/notespython/>Python 常用库</a></li><li><a href=/docs/programmer/langs/python/notespython/>Python 笔记</a></li><li><a href=/docs/programmer/langs/python/paramiko-%E4%BD%BF%E7%94%A8---sshsftp/>Paramiko 使用 Ssh&amp;sftp</a></li><li><a href=/docs/programmer/langs/python/fastapi/>FastAPI</a></li></ul></li><li><input type=checkbox id=section-bf0d1fcaeb2dbb985e2dbbcc7202e9ad class=toggle>
+<label for=section-bf0d1fcaeb2dbb985e2dbbcc7202e9ad class=flex><a role=button>Golang</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/langs/golang/%E6%8A%8Agolang%E5%BD%93%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%94%A8/>把Golang当脚本语言用</a></li><li><a href=/docs/programmer/langs/golang/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/>常用命令</a></li><li><a href=/docs/programmer/langs/golang/advanced-knowledge-of-golang/>Golang进阶笔记</a></li><li><a href=/docs/programmer/langs/golang/note-of-golang/>Golang笔记</a></li></ul></li><li><a href=/docs/programmer/langs/cmake/>CMake 使用Tips</a></li><li><a href=/docs/programmer/langs/note-for-algo/>算法</a></li><li><a href=/docs/programmer/langs/tips-of-debugers/>Tips of debuggers</a></li><li><a href=/docs/programmer/langs/java/notesjava/>愉快的Java(happy to learn the fuck java)</a></li><li><a href=/docs/programmer/langs/tips-of-markdown/>Tips of MarkDown</a></li></ul></li><li><input type=checkbox id=section-81ac9fee5838836cbeab3fef2e0cfd9a class=toggle>
+<label for=section-81ac9fee5838836cbeab3fef2e0cfd9a class=flex><a role=button>机器学习</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/ml/stable-diffusion/>AI画图</a></li><li><a href=/docs/programmer/ml/langchain/>LangChain入门</a></li><li><a href=/docs/programmer/ml/%E5%9B%BE%E7%89%87%E8%83%8C%E6%99%AF%E6%B6%88%E9%99%A4/>图片背景消除</a></li><li><a href=/docs/programmer/ml/python-%E5%9B%BE%E8%A1%A8/>Python 图表</a></li><li><a href=/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%A1%8C%E4%B8%BA%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%92%8C%E4%BB%BB%E5%8A%A1/>机器人行为自动编排和任务</a></li><li><a href=/docs/programmer/ml/%E7%88%AC%E8%99%AB/>爬虫</a></li><li><a href=/docs/programmer/ml/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/>大模型使用笔记</a></li><li><a href=/docs/programmer/ml/paddle/>Paddle</a></li><li><a href=/docs/programmer/ml/tensorflow/>Tensorflow</a></li><li><a href=/docs/programmer/ml/yolo/>Demo Test项目中的一些东西</a></li><li><a href=/docs/programmer/ml/opencv/>OpenCV</a></li><li><a href=/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/>机器学习库</a></li></ul></li><li><input type=checkbox id=section-c6a6fd31106ee5bfefce9ec29333f46a class=toggle>
+<label for=section-c6a6fd31106ee5bfefce9ec29333f46a class=flex><a href=/docs/programmer/cloudnative/>云原生</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-559dc1ffcd65f3dd0a90ee18d4307178 class=toggle>
+<label for=section-559dc1ffcd65f3dd0a90ee18d4307178 class=flex><a href=/docs/programmer/cloudnative/redis/>中间件</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/redis/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/>布隆过滤器</a></li><li><a href=/docs/programmer/cloudnative/redis/redis%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/>Redis集群部署</a></li><li><a href=/docs/programmer/cloudnative/redis/python-redis-%E5%AE%A2%E6%88%B7%E7%AB%AF/>Python Redis 客户端</a></li><li><a href=/docs/programmer/cloudnative/redis/bigkey-and-hotkey/>大key、热key问题</a></li><li><a href=/docs/programmer/cloudnative/redis/the-basics-of-redis/>Redis基础</a></li><li><a href=/docs/programmer/cloudnative/redis/advanced-knowledge-of-redis/>Redis进阶</a></li><li><a href=/docs/programmer/cloudnative/redis/%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4/>Redis常用命令</a></li></ul></li><li><input type=checkbox id=section-cd44077b962ee7a7e8356ce12d624a84 class=toggle>
+<label for=section-cd44077b962ee7a7e8356ce12d624a84 class=flex><a role=button>k8s</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/k8s/%E9%98%BF%E9%87%8C%E8%87%AA%E5%8A%A8%E4%BC%B8%E7%BC%A9/>阿里k8s自动伸缩</a></li><li><a href=/docs/programmer/cloudnative/k8s/elk%E5%9C%A8k8s%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B/>elk在k8s上的部署使用示例</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/>k8s 配套说明</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/>k8s技术分享</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/>k8s学习-常用命令和配置文件</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-workflow%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/>Argo Workflow性能测试和使用场景分析</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/>Argo 使用记录</a></li></ul></li><li><input type=checkbox id=section-d6f1ed2a1ee0ed192f3a26afc247f2ca class=toggle>
+<label for=section-d6f1ed2a1ee0ed192f3a26afc247f2ca class=flex><a role=button>中间件</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/middleware/kafka-%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/>Kafka 安装和使用</a></li></ul></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/vs-code-dev-container/>📝 Windows + Docker + VS Code Remote-Containers 故障排查与恢复</a></li><li><a href=/docs/programmer/cloudnative/elk/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E7%B3%BB%E7%BB%9F/>日志收集系统: loki+promtail+Grafana</a></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/>Podman</a></li><li><a href=/docs/programmer/cloudnative/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li><li><a href=/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/>uwsgi 处理记录</a></li><li><a href=/docs/programmer/cloudnative/note-of-docker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/fastapi/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/>Nginx高可用</a></li><li><a href=/docs/programmer/cloudnative/notesdjango/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/>Sonar 代码静态检查</a></li></ul></li><li><input type=checkbox id=section-54a7005495649a744640d7e57eb2922f class=toggle>
+<label for=section-54a7005495649a744640d7e57eb2922f class=flex><a role=button>Net</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/net/crawler/selenium-grid/>Selenium Grid</a></li><li><a href=/docs/programmer/net/tools/ngrok/>ngrok - 一个免费内网穿透api工具</a></li><li><a href=/docs/programmer/net/crawler/mitmproxy/>mitmproxy</a></li><li><a href=/docs/programmer/net/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/>网络编程</a></li><li><a href=/docs/programmer/net/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li><li><a href=/docs/programmer/net/tips-of-grpc/>gRpc使用小记</a></li><li><a href=/docs/programmer/net/epoll%E5%AE%9E%E7%8E%B0/>Epoll实现</a></li></ul></li><li><input type=checkbox id=section-7f016ed5a6649ca58d0a410cdf35a516 class=toggle>
+<label for=section-7f016ed5a6649ca58d0a410cdf35a516 class=flex><a role=button>基础工具和配置</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/basetc/obsidian/>Obsidian笔记软件</a></li><li><a href=/docs/programmer/basetc/%E7%BB%88%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8/>终端浏览器</a></li><li><a href=/docs/programmer/basetc/curl/>curl</a></li><li><a href=/docs/programmer/basetc/%E6%96%87%E6%9C%AC%E4%B8%89%E5%89%91%E5%AE%A2/>文本三剑客</a></li><li><a href=/docs/programmer/basetc/tmux/>Tmux使用笔记</a></li><li><a href=/docs/programmer/basetc/obsidian%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%8F%92%E4%BB%B6/>Obsidian思维导图插件</a></li><li><a href=/docs/programmer/basetc/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/>supervisor</a></li><li><a href=/docs/programmer/basetc/for_china/>各个软件换源</a></li><li><a href=/docs/programmer/basetc/tipsofvim/>tip Of vim</a></li><li><a href=/docs/programmer/basetc/editer---%E5%B8%B8%E7%94%A8%E7%BC%96%E8%BE%91%E5%99%A8/>编辑器使用</a></li><li><a href=/docs/programmer/basetc/bash/>Bash</a></li><li><a href=/docs/programmer/basetc/gitbook/>Gitbook</a></li><li><a href=/docs/programmer/basetc/vim/>Vim</a></li></ul></li><li><input type=checkbox id=section-fc5f118f9eeaadb8a197ae7afc492278 class=toggle>
+<label for=section-fc5f118f9eeaadb8a197ae7afc492278 class=flex><a href=/docs/programmer/gui/>图形用户界面-GUI</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-972e385681a4b005ea7bcc47b6e638df class=toggle>
+<label for=section-972e385681a4b005ea7bcc47b6e638df class=flex><a href=/docs/programmer/gui/example/>Blog 构建</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-430a598f940f78aec47cf3f247404e76 class=toggle>
+<label for=section-430a598f940f78aec47cf3f247404e76 class=flex><a href=/docs/programmer/gui/example/table-of-contents/>Table of Contents</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/table-of-contents/with-toc/>With ToC</a></li><li><a href=/docs/programmer/gui/example/table-of-contents/without-toc/>Without ToC</a></li></ul></li><li><input type=checkbox id=section-520d6bf1c7271c23fc73944ff214df89 class=toggle>
+<label for=section-520d6bf1c7271c23fc73944ff214df89 class=flex><a href=/docs/programmer/gui/example/shortcodes/>Shortcodes</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/shortcodes/buttons/>Buttons</a></li><li><a href=/docs/programmer/gui/example/shortcodes/columns/>Columns</a></li><li><a href=/docs/programmer/gui/example/shortcodes/details/>Details</a></li><li><a href=/docs/programmer/gui/example/shortcodes/hints/>Hints</a></li><li><input type=checkbox id=section-c3bd76891eda7866e899b6bb68cdba88 class=toggle>
+<label for=section-c3bd76891eda7866e899b6bb68cdba88 class=flex><a href=/docs/programmer/gui/example/shortcodes/section/>Section</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/shortcodes/section/first-page/>First Page</a></li><li><a href=/docs/programmer/gui/example/shortcodes/section/second-page/>Second Page</a></li></ul></li><li><a href=/docs/programmer/gui/example/shortcodes/tabs/>Tabs</a></li></ul></li></ul></li><li><a href=/docs/programmer/gui/ffmpeg/>ffmpeg 使用</a></li><li><a href=/docs/programmer/gui/pyinstaller-python%E6%89%93%E5%8C%85/>python打包</a></li><li><a href=/docs/programmer/gui/qt/>Qt/PySide</a></li><li><a href=/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/>Vn.Py学习笔记（Python交易平台框架）</a></li><li><a href=/docs/programmer/gui/notespython/>图形化界面 （Python Gui）</a></li></ul></li><li><input type=checkbox id=section-c2b6418070eb71b7734d9996a505c6f5 class=toggle>
+<label for=section-c2b6418070eb71b7734d9996a505c6f5 class=flex><a role=button>平台</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/platforms/%E9%80%86%E5%90%91/>逆向三板斧</a></li><li><a href=/docs/programmer/platforms/os/steam/>Steam</a></li><li><a href=/docs/programmer/platforms/android/waydroid/>Linux 跑安卓</a></li><li><a href=/docs/programmer/platforms/os/ubuntu/>Ubuntu</a></li><li><a href=/docs/programmer/platforms/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8/>阿里云使用</a></li><li><a href=/docs/programmer/platforms/wps-for-linux/>WPS for Linux</a></li><li><a href=/docs/programmer/platforms/appsflyer/>AppsFlyer-外网移动归因营销分析平台</a></li><li><a href=/docs/programmer/platforms/install_some/>安装问题</a></li><li><a href=/docs/programmer/platforms/git/>Git</a></li><li><a href=/docs/programmer/platforms/os/problem-of-windows/>Windows 爬坑记</a></li><li><a href=/docs/programmer/platforms/tips-of-problems/>解决问题记录笔记</a></li><li><a href=/docs/programmer/platforms/android/android/>安卓</a></li><li><a href=/docs/programmer/platforms/os/freebsd/>FreeBSD</a></li><li><a href=/docs/programmer/platforms/os/note-of-linux/>Linux 笔记</a></li><li><a href=/docs/programmer/platforms/android/adb/>adb</a></li><li><a href=/docs/programmer/platforms/os/ros/>ROS机器人操作系统</a></li></ul></li><li><input type=checkbox id=section-77065c9ce8e402792c5901181c3058d2 class=toggle>
+<label for=section-77065c9ce8e402792c5901181c3058d2 class=flex><a href=/docs/programmer/database/>Database</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/database/note-of-db-data---mariadb/>数据库-MariaDB篇</a></li><li><a href=/docs/programmer/database/dgraph---graph-db/>Dgraph使用小记</a></li><li><a href=/docs/programmer/database/note-of-db-data---mongodb/>数据库-MongoDB篇</a></li><li><a href=/docs/programmer/database/note-of-db-data---mysql/>数据库-MySQL篇</a></li></ul></li><li><input type=checkbox id=section-1f1c8bdadacc50268445bf8f4916bb94 class=toggle>
+<label for=section-1f1c8bdadacc50268445bf8f4916bb94 class=flex><a href=/docs/programmer/hardware/>硬件</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/hardware/raspberrypi/>Raspberry Pi</a></li><li><a href=/docs/programmer/hardware/screen/>Screen</a></li></ul></li></ul></li><li class=book-section-flat><a>建模和游戏</a><ul><li><a href=/docs/3dgame/blender/>Blender</a></li><li><a href=/docs/3dgame/noteofue4/>UE4 笔记</a></li></ul></li></ul><ul><li><a href=/posts/ title=Blog>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/icons/menu.svg class=book-icon alt=Menu></label><h3>Docker</h3><label for=toc-control></label></div></header><article class="markdown book-post"><h2><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/vs-code-dev-container/>📝 Windows + Docker + VS Code Remote-Containers 故障排查与恢复</a></h2><div class="flex align-center text-small book-post-date"><img src=/icons/calendar.svg class=book-icon alt=Calendar>
+<span>December 3, 2025</span></div><div class=text-small><a href=/tags/dev-container/>Dev-Container</a>,
+<a href=/tags/docker/>Docker</a>,
+<a href=/tags/podman/>Podman</a></div><div class=book-post-content><h1 id=-windows--docker--vs-code-remote-containers-故障排查与恢复>📝 Windows + Docker + VS Code Remote-Containers 故障排查与恢复<a class=anchor href=#-windows--docker--vs-code-remote-containers-%e6%95%85%e9%9a%9c%e6%8e%92%e6%9f%a5%e4%b8%8e%e6%81%a2%e5%a4%8d>#</a></h1><h2 id=1-背景问题>1️⃣ 背景问题<a class=anchor href=#1-%e8%83%8c%e6%99%af%e9%97%ae%e9%a2%98>#</a></h2><p>常见报错：</p><ul><li><p><code>remote-containers.explorerTargetsRefresh: stream is closed</code></p></li><li><p><code>An error occurred attaching to the container</code></p></li><li><p><code>Unable to read file '…package.json'</code></p></li></ul><p>原因一般为：</p><ol><li><p>Docker context 错误（VS Code 连接到错误 Docker 引擎）</p></li><li><p>Remote-Containers / Dev Containers 扩展损坏或缓存残留</p></li><li><p>VS Code 内部缓存或 workspaceStorage 被锁</p></li><li><p>容器本身缺 shell 或 ENTRYPOINT 阻塞（本次案例排除）</p></li></ol><hr><h2 id=2-排查-docker-context>2️⃣ 排查 Docker Context<a class=anchor href=#2-%e6%8e%92%e6%9f%a5-docker-context>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-powershell data-lang=powershell><span style=display:flex><span>docker context ls</span></span></code></pre></div><ul><li>正确 context 应该指向 Windows Docker 引擎：</li></ul><pre tabindex=0><code>default *</code></pre><ul><li>如果 context 是 <code>desktop-linux</code>，切换回默认：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-powershell data-lang=powershell><span style=display:flex><span>docker context use <span style=color:#66d9ef>default</span></span></span></code></pre></div><ul><li>验证容器可访问：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-powershell data-lang=powershell><span style=display:flex><span>docker ps
+</span></span><span style=display:flex><span>docker exec -it &lt;container&gt; sh
+</span></span><span style=display:flex><span>docker exec -it &lt;container&gt; bash</span></span></code></pre></div><p>✅ 能进入容器说明容器正常。</p></div></article><article class="markdown book-post"><h2><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/>Podman</a></h2><div class="flex align-center text-small book-post-date"><img src=/icons/calendar.svg class=book-icon alt=Calendar>
+<span>June 27, 2024</span></div><div class=text-small><a href=/categories/docker/>Docker</a>,
+<a href=/categories/podman/>Podman</a></div><div class=text-small><a href=/tags/docker/>Docker</a>,
+<a href=/tags/podman/>Podman</a></div><div class=book-post-content><h1 id=podman>Podman<a class=anchor href=#podman>#</a></h1><p><img src="https://mma.prnewswire.com/media/776689/New_Docker_logo_Logo.jpg?p=facebook" alt="docker img" title=docker></p><h1 id=常用命令>常用命令<a class=anchor href=#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4>#</a></h1><h3 id=2-启动容器并进入交互模式>2. 启动容器并进入交互模式<a class=anchor href=#2-%e5%90%af%e5%8a%a8%e5%ae%b9%e5%99%a8%e5%b9%b6%e8%bf%9b%e5%85%a5%e4%ba%a4%e4%ba%92%e6%a8%a1%e5%bc%8f>#</a></h3><p>你可以使用 <code>docker run</code> 命令启动容器并进入容器的交互式 shell。这样你就可以进入容器内部进行调试。</p><p>复制代码</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>docker run -it --entrypoint /bin/bash nova-crawler:latest</span></span></code></pre></div><h3 id=参数说明>参数说明：<a class=anchor href=#%e5%8f%82%e6%95%b0%e8%af%b4%e6%98%8e>#</a></h3><ul><li><code>-it</code>：<code>-i</code> 表示以交互模式运行容器，<code>-t</code> 给容器分配一个伪终端，这样你就可以在终端与容器交互。</li><li><code>--entrypoint /bin/bash</code>：这将覆盖容器的默认入口点，直接启动一个 bash shell 以便你进入容器进行调试。</li><li><code>nova-crawler:latest</code>：你要运行的镜像名称。</li></ul><h3 id=3-启动容器并调试特定命令>3. 启动容器并调试特定命令<a class=anchor href=#3-%e5%90%af%e5%8a%a8%e5%ae%b9%e5%99%a8%e5%b9%b6%e8%b0%83%e8%af%95%e7%89%b9%e5%ae%9a%e5%91%bd%e4%bb%a4>#</a></h3><p>如果你不想进入容器的 shell，而是想直接执行调试命令（比如启动应用并在调试模式下运行），可以使用以下命令：</p><p>bash</p><p>复制代码</p><p><code>docker run -it --entrypoint /bin/bash nova-crawler:latest -c "your-debug-command"</code></p><h3 id=4-查看容器日志>4. 查看容器日志<a class=anchor href=#4-%e6%9f%a5%e7%9c%8b%e5%ae%b9%e5%99%a8%e6%97%a5%e5%bf%97>#</a></h3><p>如果你希望在调试时查看容器的日志输出，可以使用以下命令：</p><p>bash</p><p>复制代码</p><p><code>docker logs &lt;container_id></code></p><p>你可以通过 <code>docker ps</code> 查找运行的容器 ID，然后查看日志输出。</p><h3 id=5-调试时挂载本地目录可选>5. 调试时挂载本地目录（可选）<a class=anchor href=#5-%e8%b0%83%e8%af%95%e6%97%b6%e6%8c%82%e8%bd%bd%e6%9c%ac%e5%9c%b0%e7%9b%ae%e5%bd%95%e5%8f%af%e9%80%89>#</a></h3><p>如果你需要调试代码，并且希望挂载本地目录到容器中进行实时编辑，可以使用 <code>-v</code> 参数来挂载本地目录。例如，假设你的本地代码在 <code>/path/to/your/code</code> 目录下：</p><p>bash</p><p>复制代码</p><p><code>docker run -it -v /path/to/your/code:/app --entrypoint /bin/bash nova-crawler:latest</code></p></div></article><article class="markdown book-post"><h2><a href=/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/>k8s技术分享</a></h2><div class="flex align-center text-small book-post-date"><img src=/icons/calendar.svg class=book-icon alt=Calendar>
+<span>September 7, 2023</span></div><div class=text-small><a href=/tags/linux/>Linux</a>,
+<a href=/tags/k8s/>K8s</a>,
+<a href=/tags/docker/>Docker</a></div><div class=book-post-content><h1 id=k8s技术分享>k8s技术分享<a class=anchor href=#k8s%e6%8a%80%e6%9c%af%e5%88%86%e4%ba%ab>#</a></h1><h1 id=工作负载资源>工作负载资源<a class=anchor href=#%e5%b7%a5%e4%bd%9c%e8%b4%9f%e8%bd%bd%e8%b5%84%e6%ba%90>#</a></h1><h2 id=一pod>一、<a href=https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/pod-v1/>pod</a><a class=anchor href=#%e4%b8%80pod>#</a></h2><h3 id=1-概要>1. 概要<a class=anchor href=#1-%e6%a6%82%e8%a6%81>#</a></h3><ol><li>可创建管理、最小的可部署计算单元，是可以在主机上运行的容器的集合</li><li>我们的服务都在其中运行。如我们的服务是nginx，则最内层是我们的服务 <code>nginx</code>，运行在 <code>container</code> 容器当中。<code>container</code> (容器) 的本质是进程，而 <code>pod</code> 是管理这一组进程的资源</li><li>所以pod可视为一个极为轻量化、没插网线的电脑，如果所需任务无需交互，那么用pod就很合适。例如给它挂载一个文件来训练模型、生成报表，可以根据场景使用 <a href=https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/job-v1/>Job</a> 或者 <a href=https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/cron-job-v1/>CronJob</a> 或者其它</li></ol><h3 id=图示关系如下>图示关系如下<a class=anchor href=#%e5%9b%be%e7%a4%ba%e5%85%b3%e7%b3%bb%e5%a6%82%e4%b8%8b>#</a></h3><p>![[k8s-pod-insert.png]]</p><h3 id=2-pod网络>2. pod网络<a class=anchor href=#2-pod%e7%bd%91%e7%bb%9c>#</a></h3><ol><li><p>当然，<code>pod</code> 可以管理多个 <code>container</code>，又因为<code>container</code> (容器) 的本质是进程，如果有本地网络通信需求(使用 localhost 或者 Socket 文件进行本地通信)，在这些场景中使用 <code>pod</code> 管理多个 <code>container</code> 就非常的推荐。</p></li><li><p>如下图展示了Pod网络所依赖的3个网络设备</p></li></ol><p>    1. eth0是节点主机上的网卡，支持该节点流量出入的设备、也是支持集群节点间IP寻址和互通的设备；</p><p>    2. docker0是一个虚拟网桥，可以简单理解为一个虚拟交换机，支持该节点上的Pod之间进行IP寻址和互通的设备；</p><p>    3. veth0则是Pod1的虚拟网卡，支持该Pod内容器互通和对外访问的虚拟设备；</p><p>    4. docker0网桥和veth0网卡，都是linux支持和创建的虚拟网络设备；</p><p>    5. pause属于特殊容器，其运行的唯一目的是为Pod建立共享的veth0网络接口</p><p>![[k8s-nginx-pod.png]]</p><h2 id=二deploymentstatefulset>二、<a href=https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/deployment-v1/>deployment</a>、<a href=https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/stateful-set-v1/>StatefulSet</a><a class=anchor href=#%e4%ba%8cdeploymentstatefulset>#</a></h2><h3 id=1-概要-1>1. 概要<a class=anchor href=#1-%e6%a6%82%e8%a6%81-1>#</a></h3><ol><li><p>Deployment 使得 Pod 和 ReplicaSet 能够进行声明式更新</p></li><li><p>StatefulSet 表示一组具有一致身份的 Pod：</p></li></ol><p>    1. 身份定义为：</p><p>        - 网络：一个稳定的 DNS 和主机名。</p><p>        - 存储：根据要求提供尽可能多的 VolumeClaim。</p><p>        StatefulSet 保证给定的网络身份将始终映射到相同的存储身份。</p><p>        虽然pod完全具备在生产环境中部署独立的单体服务的能力，但在生产环境中，我们基本上不会直接管理 <code>pod</code>，我们会使用<code>deployment</code> 代为控管。延续上面的比喻就是将 <code>deployment</code> 视为一个好用的机房管理员：帮助我们进货，对pod进行开关机，对pod做系统升级和重装系统以实现功能升级和回滚。 <code>StatefulSet</code> 也相同，只不过每次它会保证一致性，而不像<code>deployment</code> 每次重启都是随机分配</p></div></article><article class="markdown book-post"><h2><a href=/docs/programmer/cloudnative/note-of-docker/>Docker</a></h2><div class="flex align-center text-small book-post-date"><img src=/icons/calendar.svg class=book-icon alt=Calendar>
+<span>December 16, 2021</span></div><div class=text-small><a href=/categories/note/>Note</a>,
+<a href=/categories/docker/>Docker</a>,
+<a href=/categories/learning/>Learning</a></div><div class=text-small><a href=/tags/docker/>Docker</a>,
+<a href=/tags/learning/>Learning</a></div><div class=book-post-content><h1 id=docker>Docker<a class=anchor href=#docker>#</a></h1><p><img src="https://mma.prnewswire.com/media/776689/New_Docker_logo_Logo.jpg?p=facebook" alt="docker img" title=docker></p><h2 id=教程手册>教程手册<a class=anchor href=#%e6%95%99%e7%a8%8b%e6%89%8b%e5%86%8c>#</a></h2><p><a href=https://yeasy.gitbook.io/docker_practice/introduction/why>好用的使用教程</a></p><h3 id=install>Install<a class=anchor href=#install>#</a></h3><p>略过~ 😁</p><h2 id=打镜像和跑>打镜像和跑<a class=anchor href=#%e6%89%93%e9%95%9c%e5%83%8f%e5%92%8c%e8%b7%91>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>docker build -t server:v0 . -f server.dockerfile</span></span></code></pre></div><h3 id=跑>跑<a class=anchor href=#%e8%b7%91>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>docker run -p 9080:80 --name server server:v0</span></span></code></pre></div><h4 id=指定启动命令>指定启动命令<a class=anchor href=#%e6%8c%87%e5%ae%9a%e5%90%af%e5%8a%a8%e5%91%bd%e4%bb%a4>#</a></h4><pre tabindex=0><code>sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &#34;echo hello&#34;</code></pre><h4 id=加入自定义网络>加入自定义网络<a class=anchor href=#%e5%8a%a0%e5%85%a5%e8%87%aa%e5%ae%9a%e4%b9%89%e7%bd%91%e7%bb%9c>#</a></h4><p><code>--network {{network name}}</code>
+详见：[[#Network]]</p><h4 id=跑出问题-进入容器排查>跑出问题-进入容器排查<a class=anchor href=#%e8%b7%91%e5%87%ba%e9%97%ae%e9%a2%98-%e8%bf%9b%e5%85%a5%e5%ae%b9%e5%99%a8%e6%8e%92%e6%9f%a5>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c <span style=color:#e6db74>&#34;bash&#34;</span></span></span></code></pre></div><p>使用<code>-it</code>进入容器手动执行命令进行调试</p><h4 id=启动全部容器>启动全部容器<a class=anchor href=#%e5%90%af%e5%8a%a8%e5%85%a8%e9%83%a8%e5%ae%b9%e5%99%a8>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>docker ps -a | grep <span style=color:#e6db74>&#34;Exited&#34;</span> | awk <span style=color:#e6db74>&#39;{print $1}&#39;</span> | xargs docker start</span></span></code></pre></div><h2 id=network>Network<a class=anchor href=#network>#</a></h2><ol><li>docker run时容器加入方法-redis为例</li><li>后期加入方式</li><li>创建一个新网</li><li>检测</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-makefile data-lang=makefile><span style=display:flex><span>    init_redis:
+</span></span><span style=display:flex><span>    	docker run -p 6379:6379 <span style=color:#ae81ff>\\</span>
+</span></span><span style=display:flex><span>    	--network websafe-network <span style=color:#ae81ff>\\</span>
+</span></span><span style=display:flex><span>    	--name redislatest redis:latest --requirepass 3b21d032a7fd8eb51fa7bd8a2e812b78b7b3a36f 
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    join_network:
+</span></span><span style=display:flex><span>    	docker network connect websafe-network mysql56
+</span></span><span style=display:flex><span>    	docker network connect websafe-network daemon-xxx
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    init_network:
+</span></span><span style=display:flex><span>    	docker network create websafe-network
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    check_network:
+</span></span><span style=display:flex><span>    	docker network inspect websafe-network
+</span></span><span style=display:flex><span>    	docker network inspect websafe-network | findStr IPv4Address
+</span></span><span style=display:flex><span>    
+</span></span></code></pre></div><h3 id=删除>删除<a class=anchor href=#%e5%88%a0%e9%99%a4>#</a></h3><h2 id=可视化>可视化<a class=anchor href=#%e5%8f%af%e8%a7%86%e5%8c%96>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>go install github.com/jesseduffield/lazydocker@latest</span></span></code></pre></div><blockquote class=book-hint><p>如果需要<code>sudo</code>权限的话无法直接执行命令，只能where获取原始路径后<code>sudo</code>+原始路径执行
+如：</p></div></article><article class="markdown book-post"><h2><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/>Docker</a></h2><div class="flex align-center text-small book-post-date"><img src=/icons/calendar.svg class=book-icon alt=Calendar>
+<span>December 16, 2021</span></div><div class=text-small><a href=/categories/note/>Note</a>,
+<a href=/categories/docker/>Docker</a>,
+<a href=/categories/learning/>Learning</a></div><div class=text-small><a href=/tags/docker/>Docker</a>,
+<a href=/tags/learning/>Learning</a></div><div class=book-post-content><h1 id=docker>Docker<a class=anchor href=#docker>#</a></h1><p><img src="https://mma.prnewswire.com/media/776689/New_Docker_logo_Logo.jpg?p=facebook" alt="docker img" title=docker></p><h2 id=教程手册>教程手册<a class=anchor href=#%e6%95%99%e7%a8%8b%e6%89%8b%e5%86%8c>#</a></h2><p><a href=https://yeasy.gitbook.io/docker_practice/introduction/why>好用的使用教程</a></p><h3 id=install>Install<a class=anchor href=#install>#</a></h3><p>略过~ 😁</p><h2 id=基础命令>基础命令<a class=anchor href=#%e5%9f%ba%e7%a1%80%e5%91%bd%e4%bb%a4>#</a></h2><h3 id=打镜像和跑>打镜像和跑<a class=anchor href=#%e6%89%93%e9%95%9c%e5%83%8f%e5%92%8c%e8%b7%91>#</a></h3><h3 id=打>打<a class=anchor href=#%e6%89%93>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>docker build -t server:v0 . -f server.dockerfile</span></span></code></pre></div><h4 id=dockerignore>dockerignore<a class=anchor href=#dockerignore>#</a></h4><p>如果您想在 Dockerfile 中将当前目录中的所有文件都复制到 Docker 镜像中，可以使用 Dockerfile 中的 <code>COPY</code> 指令。具体的语法如下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-Dockerfile data-lang=Dockerfile><span style=display:flex><span><span style=color:#66d9ef>COPY</span> . /目标路径/</span></span></code></pre></div><p>其中<code>.</code> 表示当前目录，<code>/目标路径/</code> 表示目标路径，这里可以是绝对路径或相对路径。
+这将会将当前目录中的所有文件复制到镜像中的 <code>/app/</code> 目录下。请注意，在这种情况下，所有文件和文件夹都会被复制到镜像中，包括隐藏文件和文件夹。如果您不想复制某些文件或文件夹，可以在运行 <code>COPY</code> 指令之前通过 <code>.dockerignore</code> 文件来指定忽略的文件和文件夹。</p><h3 id=跑>跑<a class=anchor href=#%e8%b7%91>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>docker run -p 9080:80 --name server server:v0</span></span></code></pre></div><h4 id=指定启动命令>指定启动命令<a class=anchor href=#%e6%8c%87%e5%ae%9a%e5%90%af%e5%8a%a8%e5%91%bd%e4%bb%a4>#</a></h4><pre tabindex=0><code>sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &#34;echo hello&#34;</code></pre><h4 id=加入自定义网络>加入自定义网络<a class=anchor href=#%e5%8a%a0%e5%85%a5%e8%87%aa%e5%ae%9a%e4%b9%89%e7%bd%91%e7%bb%9c>#</a></h4><p><code>--network {{network name}}</code>
+详见：[[#Network]]</p><h4 id=跑出问题-进入容器排查>跑出问题-进入容器排查<a class=anchor href=#%e8%b7%91%e5%87%ba%e9%97%ae%e9%a2%98-%e8%bf%9b%e5%85%a5%e5%ae%b9%e5%99%a8%e6%8e%92%e6%9f%a5>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c <span style=color:#e6db74>&#34;bash&#34;</span></span></span></code></pre></div><p>使用<code>-it</code>进入容器手动执行命令进行调试</p></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div></div><div></div></div><script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav><ul><li class=book-section-flat><a>Categories</a><ul><li class="flex align-center"><a href=/categories/db/>Db</a>
+<span>3</span></li><li class="flex align-center"><a href=/categories/docker/>Docker</a>
+<span>3</span></li><li class="flex align-center"><a href=/categories/podman/>Podman</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/%E5%AE%89%E5%8D%93/>安卓</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/redis/>Redis</a>
+<span>2</span></li><li class="flex align-center"><a href=/categories/%E9%9D%A2%E8%AF%95/>面试</a>
+<span>2</span></li><li class="flex align-center"><a href=/categories/nginx/>Nginx</a>
+<span>2</span></li><li class="flex align-center"><a href=/categories/%E5%B0%8F%E5%91%BD%E4%BB%A4/>小命令</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/problem/>Problem</a>
+<span>3</span></li><li class="flex align-center"><a href=/categories/tip/>Tip</a>
+<span>11</span></li><li class="flex align-center"><a href=/categories/uwsgi/>Uwsgi</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9/>版本兼容</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/pyside/>Pyside</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/qt/>Qt</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/install/>Install</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/dgraph/>Dgraph</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/>图数据库</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/learning/>Learning</a>
+<span>11</span></li><li class="flex align-center"><a href=/categories/note/>Note</a>
+<span>9</span></li><li class="flex align-center"><a href=/categories/grpc/>GRpc</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/expansion/>Expansion</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/golang/>Golang</a>
+<span>2</span></li><li class="flex align-center"><a href=/categories/ue4/>Ue4</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/web/>Web</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/%E6%8D%A2%E6%BA%90/>换源</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/>机器视觉</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/debug/>Debug</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/java/>Java</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/markdown/>Markdown</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/python/>Python</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/vim/>Vim</a>
+<span>1</span></li><li class="flex align-center"><a href=/categories/%E6%9D%82%E8%B0%88/>杂谈</a>
+<span>1</span></li></ul></li><li class=book-section-flat><a>Tags</a><ul><li class="flex align-center"><a href=/tags/%E5%A4%A7%E6%95%B0%E7%BB%84/>大数组</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E5%AD%98%E5%82%A8%E8%BF%98%E5%8E%9F/>存储还原</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/ai/>AI</a>
+<span>2</span></li><li class="flex align-center"><a href=/tags/langchain/>Langchain</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/llms/>Llms</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/ml/>Ml</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/dev-container/>Dev-Container</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/docker/>Docker</a>
+<span>5</span></li><li class="flex align-center"><a href=/tags/podman/>Podman</a>
+<span>2</span></li><li class="flex align-center"><a href=/tags/bloom/>Bloom</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/redis/>Redis</a>
+<span>7</span></li><li class="flex align-center"><a href=/tags/k8s/>K8s</a>
+<span>4</span></li><li class="flex align-center"><a href=/tags/%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%B0%E5%BF%86/>互联网记忆</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E9%81%BF%E9%9B%B7%E5%93%81%E7%89%8C/>避雷品牌</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/python/>Python</a>
+<span>10</span></li><li class="flex align-center"><a href=/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/>版本管理</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E9%9B%86%E7%BE%A4/>集群</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/selenium/>Selenium</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E7%88%AC%E8%99%AB/>爬虫</a>
+<span>2</span></li><li class="flex align-center"><a href=/tags/obsidian/>Obsidian</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/background-removal/>Background-Removal</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/>图像处理</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E8%83%8C%E6%99%AF%E6%B6%88%E9%99%A4/>背景消除</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/elk/>Elk</a>
+<span>2</span></li><li class="flex align-center"><a href=/tags/%E6%97%A5%E5%BF%97/>日志</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/ci/>Ci</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/golang/>Golang</a>
+<span>4</span></li><li class="flex align-center"><a href=/tags/script/>Script</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/chrome/>Chrome</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/terminal/>Terminal</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/ffmpeg/>Ffmpeg</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/apktool/>Apktool</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E9%80%86%E5%90%91/>逆向</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/matplotlib/>Matplotlib</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E5%9B%BE%E8%A1%A8/>图表</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E8%A7%84%E8%8C%83/>规范</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/databases/>Databases</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/mariadb/>Mariadb</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/>机器人</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/api/>Api</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/ngrok/>Ngrok</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/bash/>Bash</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/curl/>Curl</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/mitmproxy/>Mitmproxy</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/proxy/>Proxy</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/awk/>Awk</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/grep/>Grep</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/sed/>Sed</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/tmux/>Tmux</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/linux/>Linux</a>
+<span>7</span></li><li class="flex align-center"><a href=/tags/porton/>Porton</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/steam/>Steam</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/android/>Android</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/wayland/>Wayland</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E5%AE%89%E5%8D%93/>安卓</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/ubuntu/>Ubuntu</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/oss/>Oss</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/key/>Key</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/asyncio/>Asyncio</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/multiprocessing/>Multiprocessing</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/threading/>Threading</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/wps/>Wps</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/orm/>Orm</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/sqlalchemy/>Sqlalchemy</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/appsflyer/>AppsFlyer</a>
+<span>2</span></li><li class="flex align-center"><a href=/tags/tcp/>Tcp</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E9%9D%A2%E8%AF%95/>面试</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/%E9%97%AE%E9%A2%98/>问题</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/tools/>Tools</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/notes/>Notes</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/nginx/>Nginx</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/%E5%B0%8F%E5%91%BD%E4%BB%A4/>小命令</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/uwsgi/>Uwsgi</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/c++/>C++</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/cmake/>Cmake</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/cpp/>Cpp</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/>深度学习</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/3d-model-creator/>3d Model Creator</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/pyinstaller/>Pyinstaller</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E6%89%93%E5%8C%85/>打包</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/demo_test/>Demo_test</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/install/>Install</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/nodejs/>Nodejs</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/npm/>Npm</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/dgraph/>Dgraph</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/>图数据库</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/learning/>Learning</a>
+<span>9</span></li><li class="flex align-center"><a href=/tags/backend/>Backend</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/fastapi/>Fastapi</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/web/>Web</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/rpc/>Rpc</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/win/>Win</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/git/>Git</a>
+<span>2</span></li><li class="flex align-center"><a href=/tags/expansion/>Expansion</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/supervisor/>Supervisor</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/systemd/>Systemd</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/ue4/>Ue4</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E6%B5%8B%E8%AF%95/>测试</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E7%AE%97%E6%B3%95/>算法</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/keepalived/>Keepalived</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/apt/>Apt</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/opencv/>Opencv</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/pip/>Pip</a>
+<span>2</span></li><li class="flex align-center"><a href=/tags/pkg/>Pkg</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/>机器视觉</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E6%BA%90/>源</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/debuger/>Debuger</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/gdb/>Gdb</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/pdb/>Pdb</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/ajax/>Ajax</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/apache/>Apache</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/django/>Django</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/missjava/>Missjava</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/vue/>Vue</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/java-springboot-mybatis-maven-learning/>Java, Springboot, Mybatis, Maven, Learning</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/gui/>Gui</a>
+<span>2</span></li><li class="flex align-center"><a href=/tags/less/>Less</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/markdown/>Markdown</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/md/>Md</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/mongo/>Mongo</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/more/>More</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/mysql/>Mysql</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/socket/>Socket</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/tip/>Tip</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/vim/>Vim</a>
+<span>2</span></li><li class="flex align-center"><a href=/tags/vn.py/>Vn.Py</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/pydantic/>Pydantic</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/pyqt/>Pyqt</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/freebsd/>Freebsd</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/%E6%9D%82%E8%B0%88/>杂谈</a>
+<span>5</span></li><li class="flex align-center"><a href=/tags/jupyter/>Jupyter</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/vscode/>Vscode</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/adb/>Adb</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/excalidraw/>Excalidraw</a>
 <span>1</span></li></ul></li></ul></nav></div></aside></main></body></html>

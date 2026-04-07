@@ -1,6 +1,39 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>more on Ian's Blog</title><link>http://example.org/tags/more/</link><description>Recent content in more on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 15 May 2018 09:56:41 +0000</lastBuildDate><atom:link href="http://example.org/tags/more/index.xml" rel="self" type="application/rss+xml"/><item><title>tip Of vim</title><link>http://example.org/docs/programmer/basetc/tipsofvim/</link><pubDate>Tue, 15 May 2018 09:56:41 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/tipsofvim/</guid><description>Vim 使用 # 除去“简便生活”里的几条配置，在纠结是否添加到别的地方，果然还是单独给vim一个使用手册比较好……
-注释 # # 注释 1， 12s/^/#/g --- # 取消注释 1， 12s/^#//g 其实 是vim中的 :s替换命令… 下方解释
-或者，使用列编辑的模式:
-v、选择区域、ctrl q置行首、I插入#、Esc应用到全列 ctrl v、I、#、Esc 因为有的ctrl q或者ctrl v 不能用…… 取消，即使用上述方法选中行首，删除第一个字节即可了 替换 # :s/oldWords/newWords/g g : 代表当前光标所在行。
-由此可知: # ^表行首标识符。 /^/表示行首的空字符。 而取消注释中的/^#/即表示行首的#，被//空字符所替换。
-删除:g/出现计算意外/d # :g/出现计算意外/d 查找高亮 # set hlsearch set nohlsearch 分屏 # 实现 # 在外部使用-o or -O参数 内部split or vsplit 操作 # 移动光标 Ctrl + w hjkl 移动分区Ctrl + w HJKL 统一高度Ctrl + w = 改变高度Ctrl + w +- more and less # 阅读器~~~ 因为经常读大文件发现了这两个的无敌好处——快。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>More on Ian's Blog</title><link>http://example.org/tags/more/</link><description>Recent content in More on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 15 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/more/index.xml" rel="self" type="application/rss+xml"/><item><title>tip Of vim</title><link>http://example.org/docs/programmer/basetc/tipsofvim/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/tipsofvim/</guid><description>&lt;h1 id="vim-使用"&gt;Vim 使用&lt;a class="anchor" href="#vim-%e4%bd%bf%e7%94%a8"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://www.vim.org/images/vim_header.gif" alt="vim" /&gt;
+除去“简便生活”里的几条配置，在纠结是否添加到别的地方，果然还是单独给vim一个使用手册比较好……&lt;/p&gt;
+&lt;h2 id="注释"&gt;注释&lt;a class="anchor" href="#%e6%b3%a8%e9%87%8a"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; # &lt;span style="color:#a6e22e"&gt;注释&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;， &lt;span style="color:#ae81ff"&gt;12&lt;/span&gt;s&lt;span style="color:#e6db74"&gt;/^/&lt;/span&gt;#/&lt;span style="color:#a6e22e"&gt;g&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ---
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; # &lt;span style="color:#a6e22e"&gt;取消注释&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;， &lt;span style="color:#ae81ff"&gt;12&lt;/span&gt;s&lt;span style="color:#e6db74"&gt;/^#/&lt;/span&gt;/&lt;span style="color:#a6e22e"&gt;g&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其实 是&lt;code&gt;vim&lt;/code&gt;中的 &lt;code&gt;:s&lt;/code&gt;替换命令… 下方解释&lt;/p&gt;
+&lt;p&gt;或者，使用列编辑的模式:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;v、选择区域、ctrl q置行首、I插入#、Esc应用到全列
+ctrl v、I、#、Esc
+因为有的ctrl q或者ctrl v 不能用……
+
+取消，即使用上述方法选中行首，删除第一个字节即可了
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="替换"&gt;替换&lt;a class="anchor" href="#%e6%9b%bf%e6%8d%a2"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;:&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;&lt;span style="color:#e6db74"&gt;/oldWords/&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;newWords&lt;/span&gt;/&lt;span style="color:#a6e22e"&gt;g&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;g : 代表当前光标所在行。&lt;/p&gt;
+&lt;h4 id="由此可知"&gt;由此可知:&lt;a class="anchor" href="#%e7%94%b1%e6%ad%a4%e5%8f%af%e7%9f%a5"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;^&lt;/code&gt;表行首标识符。 &lt;code&gt;/^/&lt;/code&gt;表示行首的空字符。 而取消注释中的&lt;code&gt;/^#/&lt;/code&gt;即表示行首的&lt;code&gt;#&lt;/code&gt;，被&lt;code&gt;//&lt;/code&gt;空字符所替换。&lt;/p&gt;
+&lt;h2 id="删除g出现计算意外d"&gt;删除:g/出现计算意外/d&lt;a class="anchor" href="#%e5%88%a0%e9%99%a4g%e5%87%ba%e7%8e%b0%e8%ae%a1%e7%ae%97%e6%84%8f%e5%a4%96d"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;:&lt;span style="color:#a6e22e"&gt;g&lt;/span&gt;&lt;span style="color:#e6db74"&gt;/出现计算意外/&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;d&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="查找高亮"&gt;查找高亮&lt;a class="anchor" href="#%e6%9f%a5%e6%89%be%e9%ab%98%e4%ba%ae"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;set&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;hlsearch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;set&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;nohlsearch&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="分屏"&gt;分屏&lt;a class="anchor" href="#%e5%88%86%e5%b1%8f"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h4 id="实现"&gt;实现&lt;a class="anchor" href="#%e5%ae%9e%e7%8e%b0"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;在外部使用&lt;code&gt;-o&lt;/code&gt; or &lt;code&gt;-O&lt;/code&gt;参数&lt;/li&gt;
+&lt;li&gt;内部&lt;code&gt;split&lt;/code&gt; or &lt;code&gt;vsplit&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="操作"&gt;操作&lt;a class="anchor" href="#%e6%93%8d%e4%bd%9c"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;移动光标 &lt;code&gt;Ctrl + w&lt;/code&gt; hjkl&lt;/li&gt;
+&lt;li&gt;移动分区&lt;code&gt;Ctrl + w&lt;/code&gt; HJKL&lt;/li&gt;
+&lt;li&gt;统一高度&lt;code&gt;Ctrl + w&lt;/code&gt; =&lt;/li&gt;
+&lt;li&gt;改变高度&lt;code&gt;Ctrl + w&lt;/code&gt; +-&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="more-and-less"&gt;more and less&lt;a class="anchor" href="#more-and-less"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;阅读器~~~ 因为经常读大文件发现了这两个的无敌好处——&lt;!-- raw HTML omitted --&gt;快&lt;!-- raw HTML omitted --&gt;。&lt;/p&gt;</description></item></channel></rss>

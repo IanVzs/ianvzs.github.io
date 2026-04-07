@@ -1,41 +1,441 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>tip on Ian's Blog</title><link>http://example.org/categories/tip/</link><description>Recent content in tip on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 01 Aug 2023 10:30:41 +0000</lastBuildDate><atom:link href="http://example.org/categories/tip/index.xml" rel="self" type="application/rss+xml"/><item><title>uwsgi 处理记录</title><link>http://example.org/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/</link><pubDate>Tue, 01 Aug 2023 10:30:41 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/</guid><description>日志输出到终端 # uwsgi.ini文件中配置
-log-master = true ; logto=/var/log/uwsgi.log 同时这行不能有 启动命令: uwsgi /opt/disk2/var/www/scancenter/3rd/conf/uwsgi-docker/uwsgi.ini --log-master
-隔一段时间卡死,重启不能 # 当作为纯后端API使用时, 使用 http-socket 不使用 http
-使用supervisor管理uwsgi # #daemonize=/var/log/uwsgi8011.log # 守护进程一定要注释掉(关键)
-查看性能数据 # 安装 uwsgitop 查看 uwsgi stats写入位置 查看 pip install uwsgitop cat /opt/trunk/textcheck/3rd/uwsgi/config.ini | grep stats # &amp;gt; stats=/var/run/uwsgi/uwsgi.status uwsgitop /var/run/uwsgi/uwsgi.status # &amp;gt; uwsgi-2.0.19.1 - Wed Oct 18 18:13:48 2023 - req: 113 - RPS: 0 - lq: 0 - tx: 75.1K node: app-58d8477f4-26fzb - cwd: /app - uid: 0 - gid: 0 - masterpid: 8 WID % PID REQ RPS EXC SIG STATUS AVG RSS VSZ TX ReSpwn HC RunT LastSpwn 1 28.</description></item><item><title>Tensorflow</title><link>http://example.org/docs/programmer/ml/tensorflow/</link><pubDate>Wed, 30 Mar 2022 17:23:23 +0000</pubDate><guid>http://example.org/docs/programmer/ml/tensorflow/</guid><description>
-v2兼容v1 API # import tensorflow.compat.v1 as tf tf.disable_v2_behavior()</description></item><item><title>Qt/PySide</title><link>http://example.org/docs/programmer/gui/qt/</link><pubDate>Tue, 18 Jan 2022 14:15:23 +0000</pubDate><guid>http://example.org/docs/programmer/gui/qt/</guid><description>绘制界面和使用 # 安装Qt本体后可以使用Design绘制图形化界面.而后保存为xxx.ui文件.
-转换为py # 注意版本 pyside6-uic xxx.ui -o ui_xxx.py 不过信号槽就不要在Design中去标了, 放在py中手动创建和管理目前看来更为直观方便.
-pyside6-designer 不能用的问题 # 桌面环境: Ubuntu 24.04 LTS Wayland
-pip 安装后运行pyside6-designer 提示, 可以显示欢迎页但是无法进入主页面:
-qt.pysideplugin: Environment variable PYSIDE_DESIGNER_PLUGINS is not set, bailing out. qt.pysideplugin: No instance of QPyDesignerCustomWidgetCollection was found. 安装Qtica后莫名恢复pip install Qtica 本来是本着指定PYSIDE_DESIGNER_PLUGINS, 指定registerwigglywidget.py文件, 然后补充wigglywidget包的目的安装的Qtica但是wigglywidget包依然没有安装上, 但是pyside6-designer它好了,可以进入主界面了&amp;hellip;.</description></item><item><title>安装问题</title><link>http://example.org/docs/programmer/platforms/install_some/</link><pubDate>Sat, 15 Jan 2022 16:24:41 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/install_some/</guid><description>记录一些安装问题 # Debian 使用 apt-add-repository(ppa) # sudo apt update sudo apt install software-properties-common FreeBSD桌面 # 换源 pkg install xorg xfce echo &amp;lsquo;dbus_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf echo &amp;ldquo;/usr/local/etc/xdg/xfce4/xinitrc&amp;rdquo; &amp;gt; ~/.xinitrc startx 登录界面 # pkg install slim slim-themes echo &amp;lsquo;slim_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf vbox(没测试) # pkg install virtualbox-ose-additions 向/etc/rc.conf写入 vboxguest_enable=&amp;#34;YES&amp;#34; vboxservice_enable=&amp;#34;YES&amp;#34; 仅供参考看这里 因为vbox显卡太弱安装了vmware后就一直没用回过vbox,我还没测试过
-vmware # pkg install open-vm-tools xf86-video-vmware xf86-input-vmmouse 继续向/etc/rc.conf中写入 hald_enable=&amp;#34;YES&amp;#34; moused_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmblock_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmhgfs_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmmemctl_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmxnet_enable=&amp;#34;YES&amp;#34; # vmware_guest_enable=&amp;#34;YES&amp;#34; 下面注释掉的是因为在测试中如果打开的话会有各种问题&amp;hellip;.</description></item><item><title>gRpc使用小记</title><link>http://example.org/docs/programmer/net/tips-of-grpc/</link><pubDate>Mon, 24 May 2021 10:30:41 +0000</pubDate><guid>http://example.org/docs/programmer/net/tips-of-grpc/</guid><description>
-gRpc HelloWorld # helloWorld # quickstart
-protoc --go_out=. --go_opt=paths=source_relative \ --go-grpc_out=. --go-grpc_opt=paths=source_relative \ helloworld/helloworld.proto MacOS下问题 # 原本protobuf中没有mac的gen-go和gen-go-grpc,所以需要额外运行安装. 除了使用brew用go get应该也是可以的,就是有路径问题,所以还是使用brew吧 brew install protobuf brew install protoc-gen-go brew install protoc-gen-go-grpc</description></item><item><title>Nginx高可用</title><link>http://example.org/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/</link><pubDate>Sun, 09 May 2021 09:56:41 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/</guid><description>Keepalived+Nginx实现高可用 # Nginx 关键字 # IO多路复用epoll(IO复用) 轻量,插件: Nginx仅保留了HTTP CPU亲和: 每个worker进程固定在一个CPU Nginx配置 # 代理 # 动静分离 # 动态页面和静态页面交给不同的服务器来解析
-负载均衡 # upstream balanceServer { server 10.1.22.33:12345; server 10.1.22.34:12345; server 10.1.22.35:12345; } server { server_name fe.server.com; listen 80; location /api { proxy_pass http://balanceServer; } } 机制 # 默认: 轮询, 单机卡顿, 影响分配在这台服务器下的用户 默认: 权重轮询, 宕机Nginx会自动剔除出队列, ip_hash-来源IP分配分配给同个服务器 fair: 根据相应时间均衡分配, 默认不支持. 需安装upstream_fair, url_hash类ip_hash同样需要安装Nginx的hash软件包. Keepalived 配置 # 粘贴自: 这里
-概览 # VIP IP 主机名 Nginx端口 默认主从 192.</description></item><item><title>各个软件换源</title><link>http://example.org/docs/programmer/basetc/for_china/</link><pubDate>Thu, 22 Apr 2021 17:04:15 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/for_china/</guid><description>在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.
-Qt # 使用Maintain管理kit时，可以在Settings中设置Repositories，设置地址可从Qt Downloads页面查询.
-apt # 可解决版本升级时的问题,即使用了国内源,最后一个文件不知道为什么还是从国外拉取&amp;hellip;
-# sudo touch /etc/apt/apt.conf sudo vim /etc/apt/apt.conf -&amp;gt; Acquire::http::Proxy &amp;ldquo;http://127.0.0.1:8001&amp;rdquo;;
-FreeBSD # mkdir -p /usr/local/etc/pkg/repos vim /usr/local/etc/pkg/repos/bjtu.conf
-bjtu: { url: &amp;#34;pkg+http://mirror.bjtu.edu.cn/reverse/freebsd-pkg/${ABI}/quarterly&amp;#34;, mirror_type: &amp;#34;srv&amp;#34;, signature_type: &amp;#34;none&amp;#34;, fingerprints: &amp;#34;/usr/share/keys/pkg&amp;#34;, enabled: yes } FreeBSD: { enabled: no } pkg update
-Qt # 源 # 中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/ 清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/ 北京理工大学：http://mirror.bit.edu.cn/qtproject/ 中国互联网络信息中心：https://mirrors.cnnic.cn/qt/ Python Pip # pip install --index https://pypi.mirrors.ustc.edu.cn/simple/ dlib(numpy等包名) 源 # 阿里云 http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣(douban) http://pypi.</description></item><item><title>Tips of debuggers</title><link>http://example.org/docs/programmer/langs/tips-of-debugers/</link><pubDate>Thu, 10 Jan 2019 12:21:12 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tips-of-debugers/</guid><description>Clang &amp;amp;&amp;amp; lldb # 听说clang+lldb &amp;gt;= gcc + gdb, 所以一试:
-lldb基本命令 # 与GDB相同
-break (b) - 设置断点，也就是程序暂停的地方 run (r) - 启动目标程序，如果遇到断点则暂停 step (s) - 进入下一条指令中的函数内部 backtrace (bt) - 显示当前的有效函数 frame (f) - 默认显示当前栈的内容，可以通过 frame arg 进入特定的 frame（用作输出本地变量） next (n) - 运行当前箭头指向行 continue (c) - 继续运行程序直到遇到断点。 clang hello.c -g -o hello lldb hello # lldb b main run n p str 还有颜色 😂 可视效果确实提高了不少 而且这四个工具可以混用,也蛮好.
-GDB # First and foremost, you will need to compile your program with the flag &amp;ldquo;-g&amp;rdquo; (for debug) to run it via GDB.</description></item><item><title>Tips of MarkDown</title><link>http://example.org/docs/programmer/langs/tips-of-markdown/</link><pubDate>Tue, 15 May 2018 10:00:47 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tips-of-markdown/</guid><description>Markdown Notes 📪 # 对勾和叉叉(叉号) # #对勾 #叉号
-- &amp;amp;#9744; x &amp;amp;cross; - &amp;amp;#9745; &amp;amp;#10004; &amp;amp;check; ☐ x ✗ ☑ ✔ ✓ HTML锚点 - 页面内点击跳转 # 可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。 具体实现方法如下：
-首先，在需要跳转到的标题前插入一个 HTML 锚点，例如： ### &amp;lt;a name=&amp;#34;section1&amp;#34;&amp;gt;Section 1&amp;lt;/a&amp;gt; 这个锚点的名称为 &amp;#34;section1&amp;#34;，可以根据需要自定义。 在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如： [跳转到 Section 1](#section1) 这样，点击这个链接就会跳转到页面中的 &amp;#34;Section 1&amp;#34; 标题处。 注意事项： # 锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。 如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。
-## Test 二级标题
-Now I will test the Markdown&amp;rsquo;s hobiy 二级 # Maybe is a nice way to impove my blog.</description></item><item><title>tip Of vim</title><link>http://example.org/docs/programmer/basetc/tipsofvim/</link><pubDate>Tue, 15 May 2018 09:56:41 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/tipsofvim/</guid><description>Vim 使用 # 除去“简便生活”里的几条配置，在纠结是否添加到别的地方，果然还是单独给vim一个使用手册比较好……
-注释 # # 注释 1， 12s/^/#/g --- # 取消注释 1， 12s/^#//g 其实 是vim中的 :s替换命令… 下方解释
-或者，使用列编辑的模式:
-v、选择区域、ctrl q置行首、I插入#、Esc应用到全列 ctrl v、I、#、Esc 因为有的ctrl q或者ctrl v 不能用…… 取消，即使用上述方法选中行首，删除第一个字节即可了 替换 # :s/oldWords/newWords/g g : 代表当前光标所在行。
-由此可知: # ^表行首标识符。 /^/表示行首的空字符。 而取消注释中的/^#/即表示行首的#，被//空字符所替换。
-删除:g/出现计算意外/d # :g/出现计算意外/d 查找高亮 # set hlsearch set nohlsearch 分屏 # 实现 # 在外部使用-o or -O参数 内部split or vsplit 操作 # 移动光标 Ctrl + w hjkl 移动分区Ctrl + w HJKL 统一高度Ctrl + w = 改变高度Ctrl + w +- more and less # 阅读器~~~ 因为经常读大文件发现了这两个的无敌好处——快。</description></item><item><title>解决问题记录笔记</title><link>http://example.org/docs/programmer/platforms/tips-of-problems/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/tips-of-problems/</guid><description>各种一键问题解决方案 # Windows下Git问题 # Linux没啥问题,但在Win下报checkout失败,路径问题 git config core.protectNTFS false docker - supervisord 禁用日志文件或使用 logfile=/dev/stdout # from: https://www.coder.work/article/100835 标签 docker supervisord
-[supervisord] nodaemon=true logfile=/dev/stdout pidfile=/var/run/supervisord.pid childlogdir=/var/log/supervisor 当我这样做时，这个主管会崩溃，因为它无法在/dev/stdout 中寻找
-如何禁用 supervisord 在我的 docker 容器中创建任何日志文件？
-最佳答案
-对于主主管，nodaemon 将导致日志转到 stdout
-[supervisord] nodaemon=true logfile=/dev/null logfile_maxbytes=0 然后将每个托管进程的日志发送到标准输出文件描述符/dev/fd/1
-[program:x] command=echo test stdout_logfile=/dev/fd/1 stdout_logfile_maxbytes=0 redirect_stderr=true 或者，如果您希望将 stderr 保留在不同的流上:
-[program:x] command=echo test stdout_logfile=/dev/fd/1 stdout_logfile_maxbytes=0 stderr_logfile=/dev/fd/2 stderr_logfile_maxbytes=0 关于docker - supervisord 禁用日志文件或使用 logfile=/dev/stdout，我们在Stack Overflow上找到一个类似的问题： https://stackoverflow.com/questions/45645758/
-docker中执行sed报Device or resource busy错误的处理原因及方式 转载 # kuSorZ 博主文章分类：Linux 文章标签: docker | sed 文章分类: Docker 原文出处： https://www.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tip on Ian's Blog</title><link>http://example.org/categories/tip/</link><description>Recent content in Tip on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 01 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/tip/index.xml" rel="self" type="application/rss+xml"/><item><title>uwsgi 处理记录</title><link>http://example.org/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/</link><pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/</guid><description>&lt;h1 id="日志输出到终端"&gt;日志输出到终端&lt;a class="anchor" href="#%e6%97%a5%e5%bf%97%e8%be%93%e5%87%ba%e5%88%b0%e7%bb%88%e7%ab%af"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;uwsgi.ini文件中配置&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;log-master = true
+; logto=/var/log/uwsgi.log 同时这行不能有&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;启动命令: &lt;code&gt;uwsgi /opt/disk2/var/www/scancenter/3rd/conf/uwsgi-docker/uwsgi.ini --log-master&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="隔一段时间卡死重启不能"&gt;隔一段时间卡死,重启不能&lt;a class="anchor" href="#%e9%9a%94%e4%b8%80%e6%ae%b5%e6%97%b6%e9%97%b4%e5%8d%a1%e6%ad%bb%e9%87%8d%e5%90%af%e4%b8%8d%e8%83%bd"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;当作为纯后端API使用时, 使用 &lt;code&gt;http-socket&lt;/code&gt; 不使用 &lt;code&gt;http&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="使用supervisor管理uwsgi"&gt;使用supervisor管理uwsgi&lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8supervisor%e7%ae%a1%e7%90%86uwsgi"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;#daemonize=/var/log/uwsgi8011.log # 守护进程一定要注释掉(关键)&lt;/p&gt;
+&lt;h2 id="查看性能数据"&gt;查看性能数据&lt;a class="anchor" href="#%e6%9f%a5%e7%9c%8b%e6%80%a7%e8%83%bd%e6%95%b0%e6%8d%ae"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;安装 &lt;code&gt;uwsgitop&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看 &lt;code&gt;uwsgi&lt;/code&gt; &lt;code&gt;stats&lt;/code&gt;写入位置&lt;/li&gt;
+&lt;li&gt;查看&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install uwsgitop
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /opt/trunk/textcheck/3rd/uwsgi/config.ini | grep stats
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# &amp;gt; stats=/var/run/uwsgi/uwsgi.status&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;uwsgitop /var/run/uwsgi/uwsgi.status
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# &amp;gt; uwsgi-2.0.19.1 - Wed Oct 18 18:13:48 2023 - req: 113 - RPS: 0 - lq: 0 - tx: 75.1K&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;node: app-58d8477f4-26fzb - cwd: /app - uid: 0 - gid: 0 - masterpid: 8
+WID % PID REQ RPS EXC SIG STATUS AVG RSS VSZ TX ReSpwn HC RunT LastSpwn
+1 28.3 132942 32 0 0 0 idle 19161ms 0 0 15.2K 1 0 155394.03 17:34:42
+2 28.3 132950 32 0 0 0 idle 1781ms 0 0 20.1K 1 0 126123.093 17:34:42
+3 22.1 132958 25 0 0 0 idle 5982ms 0 0 16.9K 1 0 127199.778 17:34:42
+4 21.2 132963 24 0 0 0 idle 15274ms 0 0 22.8K 1 0 144018.093 17:34:42&lt;/p&gt;</description></item><item><title>Tensorflow</title><link>http://example.org/docs/programmer/ml/tensorflow/</link><pubDate>Wed, 30 Mar 2022 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/tensorflow/</guid><description>&lt;p&gt;&lt;img src="https://www.gstatic.cn/devrel-devsite/prod/vc705ce9bd51279e80f03a51aec7c6eb1f05e56e75c958618655fc719098c9888/tensorflow/images/lockup.svg" alt="tensorflow" title="tensorflow"/&gt;&lt;/p&gt;
+&lt;h2 id="v2兼容v1-api"&gt;v2兼容v1 API&lt;a class="anchor" href="#v2%e5%85%bc%e5%ae%b9v1-api"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-py" data-lang="py"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; tensorflow.compat.v1 &lt;span style="color:#66d9ef"&gt;as&lt;/span&gt; tf
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;tf&lt;span style="color:#f92672"&gt;.&lt;/span&gt;disable_v2_behavior()&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Qt/PySide</title><link>http://example.org/docs/programmer/gui/qt/</link><pubDate>Tue, 18 Jan 2022 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/gui/qt/</guid><description>&lt;p&gt;&lt;img src="https://qt-wiki-uploads.s3.amazonaws.com/images/3/33/Py-128.png" alt="pyside" title="pyside"/&gt;&lt;/p&gt;
+&lt;h2 id="绘制界面和使用"&gt;绘制界面和使用&lt;a class="anchor" href="#%e7%bb%98%e5%88%b6%e7%95%8c%e9%9d%a2%e5%92%8c%e4%bd%bf%e7%94%a8"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;安装&lt;code&gt;Qt&lt;/code&gt;本体后可以使用&lt;code&gt;Design&lt;/code&gt;绘制图形化界面.而后保存为&lt;code&gt;xxx.ui&lt;/code&gt;文件.&lt;/p&gt;
+&lt;h3 id="转换为py"&gt;转换为py&lt;a class="anchor" href="#%e8%bd%ac%e6%8d%a2%e4%b8%bapy"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;注意版本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pyside6-uic xxx.ui -o ui_xxx.py&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;不过信号槽就不要在&lt;code&gt;Design&lt;/code&gt;中去标了, 放在&lt;code&gt;py&lt;/code&gt;中手动创建和管理目前看来更为直观方便.&lt;/p&gt;
+&lt;h2 id="pyside6-designer-不能用的问题"&gt;pyside6-designer 不能用的问题&lt;a class="anchor" href="#pyside6-designer-%e4%b8%8d%e8%83%bd%e7%94%a8%e7%9a%84%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;桌面环境: Ubuntu 24.04 LTS Wayland&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;pip 安装后运行&lt;code&gt;pyside6-designer&lt;/code&gt;
+提示, 可以显示欢迎页但是无法进入主页面:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;qt.pysideplugin: Environment variable PYSIDE_DESIGNER_PLUGINS is not set, bailing out.
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;qt.pysideplugin: No instance of QPyDesignerCustomWidgetCollection was found.&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装&lt;code&gt;Qtica&lt;/code&gt;后莫名恢复&lt;code&gt;pip install Qtica&lt;/code&gt;
+本来是本着指定&lt;code&gt;PYSIDE_DESIGNER_PLUGINS&lt;/code&gt;, 指定&lt;code&gt;registerwigglywidget.py&lt;/code&gt;文件, 然后补充&lt;code&gt;wigglywidget&lt;/code&gt;包的目的安装的&lt;code&gt;Qtica&lt;/code&gt;但是&lt;code&gt;wigglywidget&lt;/code&gt;包依然没有安装上, 但是&lt;code&gt;pyside6-designer&lt;/code&gt;它好了,可以进入主界面了&amp;hellip;.&lt;/p&gt;</description></item><item><title>安装问题</title><link>http://example.org/docs/programmer/platforms/install_some/</link><pubDate>Sat, 15 Jan 2022 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/install_some/</guid><description>&lt;h1 id="记录一些安装问题"&gt;记录一些安装问题&lt;a class="anchor" href="#%e8%ae%b0%e5%bd%95%e4%b8%80%e4%ba%9b%e5%ae%89%e8%a3%85%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="debian-使用-apt-add-repositoryppa"&gt;Debian 使用 apt-add-repository(ppa)&lt;a class="anchor" href="#debian-%e4%bd%bf%e7%94%a8-apt-add-repositoryppa"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;sudo apt update
+sudo apt install software-properties-common&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="freebsd桌面"&gt;FreeBSD桌面&lt;a class="anchor" href="#freebsd%e6%a1%8c%e9%9d%a2"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;换源&lt;/li&gt;
+&lt;li&gt;pkg install xorg xfce&lt;/li&gt;
+&lt;li&gt;echo &amp;lsquo;dbus_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf&lt;/li&gt;
+&lt;li&gt;echo &amp;ldquo;/usr/local/etc/xdg/xfce4/xinitrc&amp;rdquo; &amp;gt; ~/.xinitrc&lt;/li&gt;
+&lt;li&gt;startx&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="登录界面"&gt;登录界面&lt;a class="anchor" href="#%e7%99%bb%e5%bd%95%e7%95%8c%e9%9d%a2"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;pkg install slim slim-themes&lt;/li&gt;
+&lt;li&gt;echo &amp;lsquo;slim_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="vbox没测试"&gt;vbox(没测试)&lt;a class="anchor" href="#vbox%e6%b2%a1%e6%b5%8b%e8%af%95"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;pkg install virtualbox-ose-additions&lt;/li&gt;
+&lt;li&gt;向&lt;code&gt;/etc/rc.conf&lt;/code&gt;写入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;vboxguest_enable=&amp;#34;YES&amp;#34;
+vboxservice_enable=&amp;#34;YES&amp;#34;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;仅供参考看&lt;a href="https://www.cnblogs.com/mocuishle/p/15582173.html"&gt;这里&lt;/a&gt; 因为vbox显卡太弱安装了vmware后就一直没用回过vbox,我还没测试过&lt;/p&gt;
+&lt;h3 id="vmware"&gt;vmware&lt;a class="anchor" href="#vmware"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;pkg install open-vm-tools xf86-video-vmware xf86-input-vmmouse&lt;/li&gt;
+&lt;li&gt;继续向&lt;code&gt;/etc/rc.conf&lt;/code&gt;中写入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;hald_enable=&amp;#34;YES&amp;#34;
+moused_enable=&amp;#34;YES&amp;#34;
+# vmware_guest_vmblock_enable=&amp;#34;YES&amp;#34;
+# vmware_guest_vmhgfs_enable=&amp;#34;YES&amp;#34;
+# vmware_guest_vmmemctl_enable=&amp;#34;YES&amp;#34;
+# vmware_guest_vmxnet_enable=&amp;#34;YES&amp;#34;
+# vmware_guest_enable=&amp;#34;YES&amp;#34;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下面注释掉的是因为在测试中如果打开的话会有各种问题&amp;hellip;.尤其鼠标
+其他可见&lt;a href="https://www.jianshu.com/p/d4e32dbfe1e6"&gt;这里参考&lt;/a&gt;
+仅供参考, 这里面的东西很多都是有问题的.&lt;/p&gt;
+&lt;h2 id="clash樹莓派4-cli版"&gt;Clash(樹莓派4 cli版)&lt;a class="anchor" href="#clash%e6%a8%b9%e8%8e%93%e6%b4%be4-cli%e7%89%88"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;下載對應版本&lt;a href="https://github.com/Dreamacro/clash/releases/tag/v1.8.0"&gt;地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;注意不要選擇1.9.0版本,我用的1.8.0,9多人反映(以及我)有問題&lt;/li&gt;
+&lt;li&gt;我是樹莓派4 用的&lt;code&gt;armv8&lt;/code&gt; 樹莓派3 據說用&lt;code&gt;armv7&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;解壓給運行權限&lt;/li&gt;
+&lt;li&gt;從無論某處拿到配置文件 大多給訂閱地址, 但這裏使用需要我們手動下載好&lt;/li&gt;
+&lt;li&gt;配置&lt;code&gt;systemd&lt;/code&gt;或其他(手動啓動的話注意需要root,或者給相應用戶配置端口權限)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-systemd" data-lang="systemd"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;[Unit]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;Description&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;clash daemon&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;[Service]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;Type&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;simple&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;User&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;root&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;ExecStart&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;/home/pi/apps/clash-linux-armv8-v1.8.0/clash-linux-armv8-v1.8.0 -f /home/pi/.config/clash/config.yaml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;Restart&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;on-failure&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;[Install]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;WantedBy&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;multi-user.target&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;啓用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl enable clash
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl start clash
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl status clash&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="windows下wsl2-安装-npm--nodejs"&gt;Windows下wsl2 安装 npm &amp;amp;&amp;amp; nodejs&lt;a class="anchor" href="#windows%e4%b8%8bwsl2-%e5%ae%89%e8%a3%85-npm--nodejs"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;摘抄自&lt;a href="https://docs.microsoft.com/zh-cn/windows/dev-environment/javascript/nodejs-on-wsl"&gt;微软说明文档&lt;/a&gt;&lt;/p&gt;</description></item><item><title>gRpc使用小记</title><link>http://example.org/docs/programmer/net/tips-of-grpc/</link><pubDate>Mon, 24 May 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/net/tips-of-grpc/</guid><description>&lt;p&gt;&lt;img src="https://grpc.io/img/logos/grpc-logo.png" alt="gRpc" title="gRpc"/&gt;&lt;/p&gt;
+&lt;h1 id="grpc-helloworld"&gt;gRpc HelloWorld&lt;a class="anchor" href="#grpc-helloworld"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="helloworld"&gt;helloWorld&lt;a class="anchor" href="#helloworld"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://grpc.io/docs/languages/go/quickstart/"&gt;quickstart&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;protoc --go_out&lt;span style="color:#f92672"&gt;=&lt;/span&gt;. --go_opt&lt;span style="color:#f92672"&gt;=&lt;/span&gt;paths&lt;span style="color:#f92672"&gt;=&lt;/span&gt;source_relative &lt;span style="color:#ae81ff"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --go-grpc_out&lt;span style="color:#f92672"&gt;=&lt;/span&gt;. --go-grpc_opt&lt;span style="color:#f92672"&gt;=&lt;/span&gt;paths&lt;span style="color:#f92672"&gt;=&lt;/span&gt;source_relative &lt;span style="color:#ae81ff"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; helloworld/helloworld.proto&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="macos下问题"&gt;MacOS下问题&lt;a class="anchor" href="#macos%e4%b8%8b%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;原本&lt;code&gt;protobuf&lt;/code&gt;中没有mac的gen-go和gen-go-grpc,所以需要额外运行安装.&lt;/li&gt;
+&lt;li&gt;除了使用brew用&lt;code&gt;go get&lt;/code&gt;应该也是可以的,就是有路径问题,所以还是使用brew吧&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;brew install protobuf
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;brew install protoc-gen-go
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;brew install protoc-gen-go-grpc&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>解决问题记录笔记</title><link>http://example.org/docs/programmer/platforms/tips-of-problems/</link><pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/tips-of-problems/</guid><description>&lt;p&gt;&lt;img src="https://tse2-mm.cn.bing.net/th/id/OIP.Z6kn8Zh9FDU2oe4r5ceCgAHaEK?pid=ImgDet&amp;amp;rs=1" alt="问题们" title="Problem"/&gt;&lt;/p&gt;
+&lt;h1 id="各种一键问题解决方案"&gt;各种一键问题解决方案&lt;a class="anchor" href="#%e5%90%84%e7%a7%8d%e4%b8%80%e9%94%ae%e9%97%ae%e9%a2%98%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="windows下git问题"&gt;Windows下Git问题&lt;a class="anchor" href="#windows%e4%b8%8bgit%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux没啥问题,但在Win下报checkout失败,路径问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git config core.protectNTFS false&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="docker---supervisord-禁用日志文件或使用-logfiledevstdout"&gt;docker - supervisord 禁用日志文件或使用 logfile=/dev/stdout&lt;a class="anchor" href="#docker---supervisord-%e7%a6%81%e7%94%a8%e6%97%a5%e5%bf%97%e6%96%87%e4%bb%b6%e6%88%96%e4%bd%bf%e7%94%a8-logfiledevstdout"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;from: &lt;a href="https://www.coder.work/article/100835"&gt;https://www.coder.work/article/100835&lt;/a&gt;
+标签 &lt;a href="https://www.coder.work/blog?tag=docker" title="docker"&gt;docker&lt;/a&gt; &lt;a href="https://www.coder.work/blog?tag=supervisord" title="supervisord"&gt;supervisord&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-supervisor" data-lang="supervisor"&gt;[supervisord]
+nodaemon=true
+logfile=/dev/stdout
+pidfile=/var/run/supervisord.pid
+childlogdir=/var/log/supervisor&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当我这样做时，这个主管会崩溃，因为它无法在/dev/stdout 中寻找&lt;/p&gt;
+&lt;p&gt;如何禁用 supervisord 在我的 docker 容器中创建任何日志文件？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;最佳答案&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对于主主管，&lt;code&gt;nodaemon&lt;/code&gt; 将导致日志转到 &lt;code&gt;stdout&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-supervisor" data-lang="supervisor"&gt;[supervisord]
+nodaemon=true
+logfile=/dev/null
+logfile_maxbytes=0&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后将每个托管进程的日志发送到标准输出文件描述符&lt;code&gt;/dev/fd/1&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-supervisor" data-lang="supervisor"&gt;[program:x]
+command=echo test
+stdout_logfile=/dev/fd/1
+stdout_logfile_maxbytes=0
+redirect_stderr=true&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;或者，如果您希望将 stderr 保留在不同的流上:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-supervisor" data-lang="supervisor"&gt;[program:x]
+command=echo test
+stdout_logfile=/dev/fd/1
+stdout_logfile_maxbytes=0
+stderr_logfile=/dev/fd/2
+stderr_logfile_maxbytes=0&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;关于docker - supervisord 禁用日志文件或使用 logfile=/dev/stdout，我们在Stack Overflow上找到一个类似的问题： &lt;a href="https://stackoverflow.com/questions/45645758/"&gt;https://stackoverflow.com/questions/45645758/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="docker中执行sed报device-or-resource-busy错误的处理原因及方式-转载"&gt;docker中执行sed报Device or resource busy错误的处理原因及方式 转载&lt;a class="anchor" href="#docker%e4%b8%ad%e6%89%a7%e8%a1%8csed%e6%8a%a5device-or-resource-busy%e9%94%99%e8%af%af%e7%9a%84%e5%a4%84%e7%90%86%e5%8e%9f%e5%9b%a0%e5%8f%8a%e6%96%b9%e5%bc%8f-%e8%bd%ac%e8%bd%bd"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;kuSorZ
+博主文章分类：Linux
+文章标签: docker | sed
+文章分类: Docker
+原文出处： &lt;a href="https://www.cnblogs.com/xuxinkun/p/7116737.html"&gt;https://www.cnblogs.com/xuxinkun/p/7116737.html&lt;/a&gt;错误现象&lt;/p&gt;
+&lt;p&gt;在docker容器中想要修改/etc/resolv.conf中的namesever，使用sed命令进行执行时遇到错误：&lt;/p&gt;
+&lt;p&gt;/ # sed -i &amp;rsquo;s/192.168.1.1/192.168.1.254/g&amp;rsquo; /etc/resolv.conf
+sed: can&amp;rsquo;t move &amp;lsquo;/etc/resolv.conf73UqmG&amp;rsquo; to &amp;lsquo;/etc/resolv.conf&amp;rsquo;: Device or resource busy&lt;/p&gt;</description></item><item><title>Nginx高可用</title><link>http://example.org/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/</link><pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/</guid><description>&lt;h1 id="keepalivednginx实现高可用"&gt;Keepalived+Nginx实现高可用&lt;a class="anchor" href="#keepalivednginx%e5%ae%9e%e7%8e%b0%e9%ab%98%e5%8f%af%e7%94%a8"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://pic4.zhimg.com/80/v2-ec3208d1ea659d126fe2a008ec5ae927_1440w.jpg" alt="Keepalived&amp;#43;Nginx实现高可用示意图" title="zhuanlan.zhihu.com/p/34943332"/&gt;&lt;/p&gt;
+&lt;h2 id="nginx-关键字"&gt;Nginx 关键字&lt;a class="anchor" href="#nginx-%e5%85%b3%e9%94%ae%e5%ad%97"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;IO多路复用epoll(IO复用)&lt;/li&gt;
+&lt;li&gt;轻量,插件: Nginx仅保留了HTTP&lt;/li&gt;
+&lt;li&gt;CPU亲和: 每个worker进程固定在一个CPU&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="nginx配置"&gt;Nginx配置&lt;a class="anchor" href="#nginx%e9%85%8d%e7%bd%ae"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="代理"&gt;代理&lt;a class="anchor" href="#%e4%bb%a3%e7%90%86"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://pic2.zhimg.com/80/v2-f339964bbc01f2437f93acbac8158715_1440w.jpg" alt="正向代理示意图" title="https://zhuanlan.zhihu.com/p/69072041"/&gt;
+&lt;img src="https://pic4.zhimg.com/80/v2-21da2af85639573089e42bbf6074cc07_1440w.jpg" alt="正向代理意义?" title="https://zhuanlan.zhihu.com/p/69072041"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://pic4.zhimg.com/80/v2-102d945941e4c24ccc7c4712474cadd7_1440w.jpg" alt="反向代理示意图" title="https://zhuanlan.zhihu.com/p/69072041"/&gt;&lt;/p&gt;
+&lt;h3 id="动静分离"&gt;动静分离&lt;a class="anchor" href="#%e5%8a%a8%e9%9d%99%e5%88%86%e7%a6%bb"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;动态页面和静态页面交给不同的服务器来解析&lt;/p&gt;
+&lt;h3 id="负载均衡"&gt;负载均衡&lt;a class="anchor" href="#%e8%b4%9f%e8%bd%bd%e5%9d%87%e8%a1%a1"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-conf" data-lang="conf"&gt;upstream balanceServer {
+ server 10.1.22.33:12345;
+ server 10.1.22.34:12345;
+ server 10.1.22.35:12345;
+}
+
+server { 
+ server_name fe.server.com;
+ listen 80;
+ location /api {
+ proxy_pass http://balanceServer;
+ }
+}&lt;/code&gt;&lt;/pre&gt;&lt;h4 id="机制"&gt;机制&lt;a class="anchor" href="#%e6%9c%ba%e5%88%b6"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;默认: &lt;code&gt;轮询&lt;/code&gt;, 单机卡顿, 影响分配在这台服务器下的用户&lt;/li&gt;
+&lt;li&gt;默认: &lt;code&gt;权重轮询&lt;/code&gt;, 宕机Nginx会自动剔除出队列, &lt;code&gt;ip_hash&lt;/code&gt;-来源IP分配分配给同个服务器&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fair&lt;/code&gt;: 根据相应时间均衡分配, 默认不支持. 需安装&lt;code&gt;upstream_fair&lt;/code&gt;, &lt;code&gt;url_hash&lt;/code&gt;类&lt;code&gt;ip_hash&lt;/code&gt;同样需要安装Nginx的&lt;code&gt;hash软件包&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="keepalived-配置"&gt;Keepalived 配置&lt;a class="anchor" href="#keepalived-%e9%85%8d%e7%bd%ae"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;粘贴自: &lt;a href="https://blog.csdn.net/l1028386804/article/details/72801492"&gt;这里&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="概览"&gt;概览&lt;a class="anchor" href="#%e6%a6%82%e8%a7%88"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th style="text-align: right"&gt;VIP&lt;/th&gt;
+ &lt;th style="text-align: center"&gt;IP&lt;/th&gt;
+ &lt;th style="text-align: center"&gt;主机名&lt;/th&gt;
+ &lt;th style="text-align: center"&gt;Nginx端口&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;默认主从&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: right"&gt;192.168.50.130&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;192.168.50.133&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;liuyazhuang133&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;88&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;MASTER&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: right"&gt;192.168.50.130&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;192.168.50.134&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;liuyazhuang134&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;88&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;BACKUP&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="主机器配置"&gt;主机器配置&lt;a class="anchor" href="#%e4%b8%bb%e6%9c%ba%e5%99%a8%e9%85%8d%e7%bd%ae"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vi /etc/keepalived/keepalived.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex="0"&gt;&lt;code class="language-conf" data-lang="conf"&gt;# 主要
+global_defs {
+	## keepalived 自带的邮件提醒需要开启 sendmail 服务。 建议用独立的监控或第三方 SMTP
+	router_id liuyazhuang133 ## 标识本节点的字条串，通常为 hostname
+} 
+## keepalived 会定时执行脚本并对脚本执行的结果进行分析，动态调整 vrrp_instance 的优先级。如果脚本执行结果为 0，并且 weight 配置的值大于 0，则优先级相应的增加。如果脚本执行结果非 0，并且 weight配置的值小于 0，则优先级相应的减少。其他情况，维持原本配置的优先级，即配置文件中 priority 对应的值。
+vrrp_script chk_nginx {
+	script &amp;#34;/etc/keepalived/nginx_check.sh&amp;#34; ## 检测 nginx 状态的脚本路径
+	interval 2 ## 检测时间间隔
+	weight -20 ## 如果条件成立，权重-20
+}
+## 定义虚拟路由， VI_1 为虚拟路由的标示符，自己定义名称
+vrrp_instance VI_1 {
+	state MASTER ## 主节点为 MASTER， 对应的备份节点为 BACKUP
+	interface eth0 ## 绑定虚拟 IP 的网络接口，与本机 IP 地址所在的网络接口相同， 我的是 eth0
+	virtual_router_id 33 ## 虚拟路由的 ID 号， 两个节点设置必须一样， 可选 IP 最后一段使用, 相同的 VRID 为一个组，他将决定多播的 MAC 地址
+	mcast_src_ip 192.168.50.133 ## 本机 IP 地址
+	priority 100 ## 节点优先级， 值范围 0-254， MASTER 要比 BACKUP 高
+	nopreempt ## 优先级高的设置 nopreempt 解决异常恢复后再次抢占的问题
+	advert_int 1 ## 组播信息发送间隔，两个节点设置必须一样， 默认 1s
+	## 设置验证信息，两个节点必须一致
+	authentication {
+		auth_type PASS
+		auth_pass 1111 ## 真实生产，按需求对应该过来
+	}
+	## 将 track_script 块加入 instance 配置块
+	track_script {
+		chk_nginx ## 执行 Nginx 监控的服务
+	} #
+	# 虚拟 IP 池, 两个节点设置必须一样
+	virtual_ipaddress {
+		192.168.50.130 ## 虚拟 ip，可以定义多个
+	}
+}&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="备份机配置"&gt;备份机配置&lt;a class="anchor" href="#%e5%a4%87%e4%bb%bd%e6%9c%ba%e9%85%8d%e7%bd%ae"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vi /etc/keepalived/keepalived.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex="0"&gt;&lt;code class="language-conf" data-lang="conf"&gt;# 备份
+! Configuration File for keepalived
+global_defs {
+	router_id liuyazhuang134
+}
+vrrp_script chk_nginx {
+	script &amp;#34;/etc/keepalived/nginx_check.sh&amp;#34;
+	interval 2
+	weight -20
+}
+vrrp_instance VI_1 {
+	state BACKUP
+	interface eth1
+	virtual_router_id 33
+	mcast_src_ip 192.168.50.134
+	priority 90
+	advert_int 1
+	authentication {
+		auth_type PASS
+		auth_pass 1111
+	}
+	track_script {
+		chk_nginx
+	}
+	virtual_ipaddress {
+		192.168.50.130
+	}
+}&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id="nginx-运维命令"&gt;Nginx 运维命令&lt;a class="anchor" href="#nginx-%e8%bf%90%e7%bb%b4%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 快速关闭Nginx，可能不保存相关信息，并迅速终止web服务&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -s stop
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 平稳关闭Nginx，保存相关信息，有安排的结束web服务&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -s quit
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 因改变了Nginx相关配置，需要重新加载配置而重载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -s reload
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 重新打开日志文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -s reopen
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 为 Nginx 指定一个配置文件，来代替缺省的&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -c filename
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 不运行，而仅仅测试配置文件。nginx 将检查配置文件的语法的正确性，并尝试打开配置文件中所引用到的文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -t
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 显示 nginx 的版本&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -v
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 显示 nginx 的版本，编译器版本和配置参数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -V
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 格式换显示 nginx 配置参数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;2&amp;gt;&amp;amp;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; nginx -V | xargs -n1
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;2&amp;gt;&amp;amp;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; nginx -V | xargs -n1 | grep lua&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>各个软件换源</title><link>http://example.org/docs/programmer/basetc/for_china/</link><pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/for_china/</guid><description>&lt;p&gt;&lt;img src="http://img.hc360.com/broadcast/info/images/200909/200909101744424019.jpg" alt="mu ou" title="ma liang"/&gt;&lt;/p&gt;
+&lt;p&gt;在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.&lt;/p&gt;
+&lt;h2 id="qt"&gt;Qt&lt;a class="anchor" href="#qt"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;使用Maintain管理kit时，可以在Settings中设置Repositories，设置地址可从&lt;a href="https://download.qt.io/static/mirrorlist/"&gt;Qt Downloads&lt;/a&gt;页面查询.&lt;/p&gt;
+&lt;h2 id="apt"&gt;apt&lt;a class="anchor" href="#apt"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;可解决版本升级时的问题,即使用了国内源,最后一个文件不知道为什么还是从国外拉取&amp;hellip;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# sudo touch /etc/apt/apt.conf&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/apt/apt.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;-&amp;gt; Acquire::http::Proxy &amp;ldquo;http://127.0.0.1:8001&amp;rdquo;;&lt;/p&gt;
+&lt;h2 id="freebsd"&gt;FreeBSD&lt;a class="anchor" href="#freebsd"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;mkdir -p /usr/local/etc/pkg/repos
+vim /usr/local/etc/pkg/repos/bjtu.conf&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;bjtu: {
+	url: &amp;#34;pkg+http://mirror.bjtu.edu.cn/reverse/freebsd-pkg/${ABI}/quarterly&amp;#34;,
+	mirror_type: &amp;#34;srv&amp;#34;,
+	signature_type: &amp;#34;none&amp;#34;,
+	fingerprints: &amp;#34;/usr/share/keys/pkg&amp;#34;,
+	enabled: yes
+}
+FreeBSD: { enabled: no }&lt;/code&gt;&lt;/pre&gt;&lt;blockquote class='book-hint '&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;pkg update&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;h2 id="qt-1"&gt;Qt&lt;a class="anchor" href="#qt-1"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="源"&gt;源&lt;a class="anchor" href="#%e6%ba%90"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/&lt;/li&gt;
+&lt;li&gt;清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/&lt;/li&gt;
+&lt;li&gt;北京理工大学：http://mirror.bit.edu.cn/qtproject/&lt;/li&gt;
+&lt;li&gt;中国互联网络信息中心：https://mirrors.cnnic.cn/qt/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="python-pip"&gt;Python Pip&lt;a class="anchor" href="#python-pip"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install --index https://pypi.mirrors.ustc.edu.cn/simple/ dlib&lt;span style="color:#f92672"&gt;(&lt;/span&gt;numpy等包名&lt;span style="color:#f92672"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="源-1"&gt;源&lt;a class="anchor" href="#%e6%ba%90-1"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;阿里云 &lt;a href="http://mirrors.aliyun.com/pypi/simple/"&gt;http://mirrors.aliyun.com/pypi/simple/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;中国科技大学 &lt;a href="https://pypi.mirrors.ustc.edu.cn/simple/"&gt;https://pypi.mirrors.ustc.edu.cn/simple/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;豆瓣(douban) &lt;a href="http://pypi.douban.com/simple/"&gt;http://pypi.douban.com/simple/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;清华大学 &lt;a href="https://pypi.tuna.tsinghua.edu.cn/simple/"&gt;https://pypi.tuna.tsinghua.edu.cn/simple/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;中国科学技术大学 &lt;a href="http://pypi.mirrors.ustc.edu.cn/simple/"&gt;http://pypi.mirrors.ustc.edu.cn/simple/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="nodejs-npm"&gt;Nodejs Npm&lt;a class="anchor" href="#nodejs-npm"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;不过好像换了会有问题.Npm各个包依赖混乱不堪,不忍直视.&lt;/p&gt;</description></item><item><title>Tips of debuggers</title><link>http://example.org/docs/programmer/langs/tips-of-debugers/</link><pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tips-of-debugers/</guid><description>&lt;h1 id="clang--lldb"&gt;Clang &amp;amp;&amp;amp; lldb&lt;a class="anchor" href="#clang--lldb"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;听说&lt;code&gt;clang&lt;/code&gt;+&lt;code&gt;lldb&lt;/code&gt; &amp;gt;= &lt;code&gt;gcc&lt;/code&gt; + &lt;code&gt;gdb&lt;/code&gt;, 所以一试:&lt;/p&gt;
+&lt;h2 id="lldb基本命令"&gt;lldb基本命令&lt;a class="anchor" href="#lldb%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;与GDB相同&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;break (b) - 设置断点，也就是程序暂停的地方&lt;/li&gt;
+&lt;li&gt;run (r) - 启动目标程序，如果遇到断点则暂停&lt;/li&gt;
+&lt;li&gt;step (s) - 进入下一条指令中的函数内部&lt;/li&gt;
+&lt;li&gt;backtrace (bt) - 显示当前的有效函数&lt;/li&gt;
+&lt;li&gt;frame (f) - 默认显示当前栈的内容，可以通过 &lt;code&gt;frame arg&lt;/code&gt; 进入特定的 frame（用作输出本地变量）&lt;/li&gt;
+&lt;li&gt;next (n) - 运行当前箭头指向行&lt;/li&gt;
+&lt;li&gt;continue (c) - 继续运行程序直到遇到断点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;clang hello.c -g -o hello
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;lldb hello&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex="0"&gt;&lt;code class="language-lldb" data-lang="lldb"&gt;# lldb
+b main
+run
+n
+p str&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;还有颜色 😂 可视效果确实提高了不少
+而且这四个工具可以混用,也蛮好.&lt;/p&gt;
+&lt;h2 id="gdb"&gt;GDB&lt;a class="anchor" href="#gdb"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img src="https://www.linuxprobe.com/wp-content/uploads/2017/02/175653ff8gl0f5flw4f518.jpg" alt="gdb" title="tmp"/&gt;&lt;/p&gt;
+&lt;p&gt;First and foremost, you will need to compile your program with the flag &amp;ldquo;-g&amp;rdquo; (for debug) to run it via GDB. From there the syntax to start debugging is:&lt;/p&gt;</description></item><item><title>tip Of vim</title><link>http://example.org/docs/programmer/basetc/tipsofvim/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/tipsofvim/</guid><description>&lt;h1 id="vim-使用"&gt;Vim 使用&lt;a class="anchor" href="#vim-%e4%bd%bf%e7%94%a8"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://www.vim.org/images/vim_header.gif" alt="vim" /&gt;
+除去“简便生活”里的几条配置，在纠结是否添加到别的地方，果然还是单独给vim一个使用手册比较好……&lt;/p&gt;
+&lt;h2 id="注释"&gt;注释&lt;a class="anchor" href="#%e6%b3%a8%e9%87%8a"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; # &lt;span style="color:#a6e22e"&gt;注释&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;， &lt;span style="color:#ae81ff"&gt;12&lt;/span&gt;s&lt;span style="color:#e6db74"&gt;/^/&lt;/span&gt;#/&lt;span style="color:#a6e22e"&gt;g&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ---
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; # &lt;span style="color:#a6e22e"&gt;取消注释&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;， &lt;span style="color:#ae81ff"&gt;12&lt;/span&gt;s&lt;span style="color:#e6db74"&gt;/^#/&lt;/span&gt;/&lt;span style="color:#a6e22e"&gt;g&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其实 是&lt;code&gt;vim&lt;/code&gt;中的 &lt;code&gt;:s&lt;/code&gt;替换命令… 下方解释&lt;/p&gt;
+&lt;p&gt;或者，使用列编辑的模式:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;v、选择区域、ctrl q置行首、I插入#、Esc应用到全列
+ctrl v、I、#、Esc
+因为有的ctrl q或者ctrl v 不能用……
+
+取消，即使用上述方法选中行首，删除第一个字节即可了
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="替换"&gt;替换&lt;a class="anchor" href="#%e6%9b%bf%e6%8d%a2"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;:&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;&lt;span style="color:#e6db74"&gt;/oldWords/&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;newWords&lt;/span&gt;/&lt;span style="color:#a6e22e"&gt;g&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;g : 代表当前光标所在行。&lt;/p&gt;
+&lt;h4 id="由此可知"&gt;由此可知:&lt;a class="anchor" href="#%e7%94%b1%e6%ad%a4%e5%8f%af%e7%9f%a5"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;^&lt;/code&gt;表行首标识符。 &lt;code&gt;/^/&lt;/code&gt;表示行首的空字符。 而取消注释中的&lt;code&gt;/^#/&lt;/code&gt;即表示行首的&lt;code&gt;#&lt;/code&gt;，被&lt;code&gt;//&lt;/code&gt;空字符所替换。&lt;/p&gt;
+&lt;h2 id="删除g出现计算意外d"&gt;删除:g/出现计算意外/d&lt;a class="anchor" href="#%e5%88%a0%e9%99%a4g%e5%87%ba%e7%8e%b0%e8%ae%a1%e7%ae%97%e6%84%8f%e5%a4%96d"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;:&lt;span style="color:#a6e22e"&gt;g&lt;/span&gt;&lt;span style="color:#e6db74"&gt;/出现计算意外/&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;d&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="查找高亮"&gt;查找高亮&lt;a class="anchor" href="#%e6%9f%a5%e6%89%be%e9%ab%98%e4%ba%ae"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;set&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;hlsearch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;set&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;nohlsearch&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="分屏"&gt;分屏&lt;a class="anchor" href="#%e5%88%86%e5%b1%8f"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h4 id="实现"&gt;实现&lt;a class="anchor" href="#%e5%ae%9e%e7%8e%b0"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;在外部使用&lt;code&gt;-o&lt;/code&gt; or &lt;code&gt;-O&lt;/code&gt;参数&lt;/li&gt;
+&lt;li&gt;内部&lt;code&gt;split&lt;/code&gt; or &lt;code&gt;vsplit&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="操作"&gt;操作&lt;a class="anchor" href="#%e6%93%8d%e4%bd%9c"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;移动光标 &lt;code&gt;Ctrl + w&lt;/code&gt; hjkl&lt;/li&gt;
+&lt;li&gt;移动分区&lt;code&gt;Ctrl + w&lt;/code&gt; HJKL&lt;/li&gt;
+&lt;li&gt;统一高度&lt;code&gt;Ctrl + w&lt;/code&gt; =&lt;/li&gt;
+&lt;li&gt;改变高度&lt;code&gt;Ctrl + w&lt;/code&gt; +-&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="more-and-less"&gt;more and less&lt;a class="anchor" href="#more-and-less"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;阅读器~~~ 因为经常读大文件发现了这两个的无敌好处——&lt;!-- raw HTML omitted --&gt;快&lt;!-- raw HTML omitted --&gt;。&lt;/p&gt;</description></item><item><title>Tips of MarkDown</title><link>http://example.org/docs/programmer/langs/tips-of-markdown/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tips-of-markdown/</guid><description>&lt;h1 id="markdown-notes-"&gt;Markdown Notes 📪&lt;a class="anchor" href="#markdown-notes-"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://justyy.com/wp-content/uploads/2016/01/markdown-syntax-language.png" alt="markdown" /&gt;&lt;/p&gt;
+&lt;h2 id="对勾和叉叉叉号"&gt;对勾和叉叉(叉号)&lt;a class="anchor" href="#%e5%af%b9%e5%8b%be%e5%92%8c%e5%8f%89%e5%8f%89%e5%8f%89%e5%8f%b7"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;#对勾 #叉号&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; &amp;amp;#9744; x &amp;amp;cross; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &amp;amp;#9745; &amp;amp;#10004; &amp;amp;check;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;☐ x ✗&lt;/li&gt;
+&lt;li&gt;☑ ✔ ✓&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="html锚点---页面内点击跳转"&gt;HTML锚点 - 页面内点击跳转&lt;a class="anchor" href="#html%e9%94%9a%e7%82%b9---%e9%a1%b5%e9%9d%a2%e5%86%85%e7%82%b9%e5%87%bb%e8%b7%b3%e8%bd%ac"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。
+具体实现方法如下：&lt;/p&gt;
+&lt;/blockquote&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;首先，在需要跳转到的标题前插入一个 HTML 锚点，例如：
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;### &amp;lt;a name=&amp;#34;section1&amp;#34;&amp;gt;Section 1&amp;lt;/a&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;这个锚点的名称为 &amp;#34;section1&amp;#34;，可以根据需要自定义。
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如：
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[&lt;span style="color:#f92672"&gt;跳转到 Section 1&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;#section1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;这样，点击这个链接就会跳转到页面中的 &amp;#34;Section 1&amp;#34; 标题处。&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="注意事项"&gt;注意事项：&lt;a class="anchor" href="#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。
+如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;code&gt;## Test 二级标题&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="now-i-will-test-the-markdowns-hobiy-二级"&gt;Now I will test the Markdown&amp;rsquo;s hobiy 二级&lt;a class="anchor" href="#now-i-will-test-the-markdowns-hobiy-%e4%ba%8c%e7%ba%a7"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="maybe-is-a-nice-way-to-impove-my-blog-三级"&gt;Maybe is a nice way to impove my blog. 三级&lt;a class="anchor" href="#maybe-is-a-nice-way-to-impove-my-blog-%e4%b8%89%e7%ba%a7"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;原来标题 要# 与正文隔开一个空格…
+···print “hello Markdown”···
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;欸？ 怎么回事？上面的文字
+莫非是用Tab能将其放到一个容器里？&lt;/p&gt;</description></item></channel></rss>

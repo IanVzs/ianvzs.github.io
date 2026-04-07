@@ -1,9 +1,85 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>pip on Ian's Blog</title><link>http://example.org/tags/pip/</link><description>Recent content in pip on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 22 Apr 2021 17:04:15 +0000</lastBuildDate><atom:link href="http://example.org/tags/pip/index.xml" rel="self" type="application/rss+xml"/><item><title>各个软件换源</title><link>http://example.org/docs/programmer/basetc/for_china/</link><pubDate>Thu, 22 Apr 2021 17:04:15 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/for_china/</guid><description>在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.
-Qt # 使用Maintain管理kit时，可以在Settings中设置Repositories，设置地址可从Qt Downloads页面查询.
-apt # 可解决版本升级时的问题,即使用了国内源,最后一个文件不知道为什么还是从国外拉取&amp;hellip;
-# sudo touch /etc/apt/apt.conf sudo vim /etc/apt/apt.conf -&amp;gt; Acquire::http::Proxy &amp;ldquo;http://127.0.0.1:8001&amp;rdquo;;
-FreeBSD # mkdir -p /usr/local/etc/pkg/repos vim /usr/local/etc/pkg/repos/bjtu.conf
-bjtu: { url: &amp;#34;pkg+http://mirror.bjtu.edu.cn/reverse/freebsd-pkg/${ABI}/quarterly&amp;#34;, mirror_type: &amp;#34;srv&amp;#34;, signature_type: &amp;#34;none&amp;#34;, fingerprints: &amp;#34;/usr/share/keys/pkg&amp;#34;, enabled: yes } FreeBSD: { enabled: no } pkg update
-Qt # 源 # 中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/ 清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/ 北京理工大学：http://mirror.bit.edu.cn/qtproject/ 中国互联网络信息中心：https://mirrors.cnnic.cn/qt/ Python Pip # pip install --index https://pypi.mirrors.ustc.edu.cn/simple/ dlib(numpy等包名) 源 # 阿里云 http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣(douban) http://pypi.</description></item><item><title>Python 笔记</title><link>http://example.org/docs/programmer/langs/python/notespython/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/python/notespython/</guid><description>pip cache 目录 # echo $PIP_CACHE_DIR 特殊函数调用 property # 使用字段的方式调用函数
-from datetime import datetime from pydantic import BaseModel class InstallCountInfo(BaseModel): count: int total: int @property def done_rate(self): return round(self.count / self.total, 4) class InstallCount(BaseModel): pass_day: int install_day: datetime info: InstallCountInfo 彻底摆脱to_dict和from_dict # 使用 pydantic # BaseModel类型支持:
-b = BattleAxiePositionInfo.parse_obj(DICT_DATA) b.json() b.dict() parse_file parse_raw from pydantic import BaseModel class PositionInfo(BaseModel): error: int = -1 # 收集错误 none: int = 0 # 还没开始 clicked: int = 1 # 在client 赋此值 done: int = 2 # 在server 赋此值 xy: List[int] = [0, 0] status: int = 0 # clicked or done or none or error class BattleAxiePositionInfo(BaseModel): our: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] enemy: List[PositionInfo] = [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()] pp = BattleAxiePositionInfo() print(f&amp;#34;pp json: {pp.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pip on Ian's Blog</title><link>http://example.org/tags/pip/</link><description>Recent content in Pip on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 27 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/pip/index.xml" rel="self" type="application/rss+xml"/><item><title>各个软件换源</title><link>http://example.org/docs/programmer/basetc/for_china/</link><pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/for_china/</guid><description>&lt;p&gt;&lt;img src="http://img.hc360.com/broadcast/info/images/200909/200909101744424019.jpg" alt="mu ou" title="ma liang"/&gt;&lt;/p&gt;
+&lt;p&gt;在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.&lt;/p&gt;
+&lt;h2 id="qt"&gt;Qt&lt;a class="anchor" href="#qt"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;使用Maintain管理kit时，可以在Settings中设置Repositories，设置地址可从&lt;a href="https://download.qt.io/static/mirrorlist/"&gt;Qt Downloads&lt;/a&gt;页面查询.&lt;/p&gt;
+&lt;h2 id="apt"&gt;apt&lt;a class="anchor" href="#apt"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;可解决版本升级时的问题,即使用了国内源,最后一个文件不知道为什么还是从国外拉取&amp;hellip;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# sudo touch /etc/apt/apt.conf&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/apt/apt.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;-&amp;gt; Acquire::http::Proxy &amp;ldquo;http://127.0.0.1:8001&amp;rdquo;;&lt;/p&gt;
+&lt;h2 id="freebsd"&gt;FreeBSD&lt;a class="anchor" href="#freebsd"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;mkdir -p /usr/local/etc/pkg/repos
+vim /usr/local/etc/pkg/repos/bjtu.conf&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;bjtu: {
+	url: &amp;#34;pkg+http://mirror.bjtu.edu.cn/reverse/freebsd-pkg/${ABI}/quarterly&amp;#34;,
+	mirror_type: &amp;#34;srv&amp;#34;,
+	signature_type: &amp;#34;none&amp;#34;,
+	fingerprints: &amp;#34;/usr/share/keys/pkg&amp;#34;,
+	enabled: yes
+}
+FreeBSD: { enabled: no }&lt;/code&gt;&lt;/pre&gt;&lt;blockquote class='book-hint '&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;pkg update&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;h2 id="qt-1"&gt;Qt&lt;a class="anchor" href="#qt-1"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="源"&gt;源&lt;a class="anchor" href="#%e6%ba%90"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/&lt;/li&gt;
+&lt;li&gt;清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/&lt;/li&gt;
+&lt;li&gt;北京理工大学：http://mirror.bit.edu.cn/qtproject/&lt;/li&gt;
+&lt;li&gt;中国互联网络信息中心：https://mirrors.cnnic.cn/qt/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="python-pip"&gt;Python Pip&lt;a class="anchor" href="#python-pip"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install --index https://pypi.mirrors.ustc.edu.cn/simple/ dlib&lt;span style="color:#f92672"&gt;(&lt;/span&gt;numpy等包名&lt;span style="color:#f92672"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="源-1"&gt;源&lt;a class="anchor" href="#%e6%ba%90-1"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;阿里云 &lt;a href="http://mirrors.aliyun.com/pypi/simple/"&gt;http://mirrors.aliyun.com/pypi/simple/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;中国科技大学 &lt;a href="https://pypi.mirrors.ustc.edu.cn/simple/"&gt;https://pypi.mirrors.ustc.edu.cn/simple/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;豆瓣(douban) &lt;a href="http://pypi.douban.com/simple/"&gt;http://pypi.douban.com/simple/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;清华大学 &lt;a href="https://pypi.tuna.tsinghua.edu.cn/simple/"&gt;https://pypi.tuna.tsinghua.edu.cn/simple/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;中国科学技术大学 &lt;a href="http://pypi.mirrors.ustc.edu.cn/simple/"&gt;http://pypi.mirrors.ustc.edu.cn/simple/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="nodejs-npm"&gt;Nodejs Npm&lt;a class="anchor" href="#nodejs-npm"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;不过好像换了会有问题.Npm各个包依赖混乱不堪,不忍直视.&lt;/p&gt;</description></item><item><title>Python 笔记</title><link>http://example.org/docs/programmer/langs/python/notespython/</link><pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/python/notespython/</guid><description>&lt;p&gt;&lt;img src="https://www.python.org/static/img/python-logo@2x.png" alt="python" /&gt;&lt;/p&gt;
+&lt;h2 id="pip-cache-目录"&gt;pip cache 目录&lt;a class="anchor" href="#pip-cache-%e7%9b%ae%e5%bd%95"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo $PIP_CACHE_DIR&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="特殊函数调用-property"&gt;特殊函数调用 property&lt;a class="anchor" href="#%e7%89%b9%e6%ae%8a%e5%87%bd%e6%95%b0%e8%b0%83%e7%94%a8-property"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;使用字段的方式调用函数&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; datetime &lt;span style="color:#f92672"&gt;import&lt;/span&gt; datetime
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; pydantic &lt;span style="color:#f92672"&gt;import&lt;/span&gt; BaseModel
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;InstallCountInfo&lt;/span&gt;(BaseModel):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	count: int
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	total: int
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;@property&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;done_rate&lt;/span&gt;(self):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; round(self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;count &lt;span style="color:#f92672"&gt;/&lt;/span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;total, &lt;span style="color:#ae81ff"&gt;4&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;InstallCount&lt;/span&gt;(BaseModel):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	pass_day: int
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	install_day: datetime
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	info: InstallCountInfo&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="彻底摆脱to_dict和from_dict"&gt;彻底摆脱&lt;code&gt;to_dict&lt;/code&gt;和&lt;code&gt;from_dict&lt;/code&gt;&lt;a class="anchor" href="#%e5%bd%bb%e5%ba%95%e6%91%86%e8%84%b1to_dict%e5%92%8cfrom_dict"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="使用-pydantic"&gt;使用 &lt;code&gt;pydantic&lt;/code&gt;&lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8-pydantic"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;BaseModel&lt;/code&gt;类型支持:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;b = BattleAxiePositionInfo.parse_obj(DICT_DATA)&lt;/li&gt;
+&lt;li&gt;b.json()&lt;/li&gt;
+&lt;li&gt;b.dict()&lt;/li&gt;
+&lt;li&gt;parse_file&lt;/li&gt;
+&lt;li&gt;parse_raw&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-py" data-lang="py"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; pydantic &lt;span style="color:#f92672"&gt;import&lt;/span&gt; BaseModel
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;PositionInfo&lt;/span&gt;(BaseModel):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; error: int &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#75715e"&gt;# 收集错误&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; none: int &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#75715e"&gt;# 还没开始&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; clicked: int &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#75715e"&gt;# 在client 赋此值&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; done: int &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt; &lt;span style="color:#75715e"&gt;# 在server 赋此值&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; xy: List[int] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; status: int &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#75715e"&gt;# clicked or done or none or error&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;BattleAxiePositionInfo&lt;/span&gt;(BaseModel):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; our: List[PositionInfo] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; enemy: List[PositionInfo] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo(), PositionInfo()]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pp &lt;span style="color:#f92672"&gt;=&lt;/span&gt; BattleAxiePositionInfo()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(&lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;pp json: &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;pp&lt;span style="color:#f92672"&gt;.&lt;/span&gt;json()&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;dict_pp &lt;span style="color:#f92672"&gt;=&lt;/span&gt; pp&lt;span style="color:#f92672"&gt;.&lt;/span&gt;dict()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pp &lt;span style="color:#f92672"&gt;=&lt;/span&gt; BattleAxiePositionInfo&lt;span style="color:#f92672"&gt;.&lt;/span&gt;parse_obj(dict_pp)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote class='book-hint '&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;pp json: {&amp;ldquo;our&amp;rdquo;: [{&amp;ldquo;error&amp;rdquo;: -1, &amp;ldquo;none&amp;rdquo;: 0, &amp;ldquo;clicked&amp;rdquo;: 1, &amp;ldquo;done&amp;rdquo;: 2, &amp;ldquo;xy&amp;rdquo;: [0, 0], &amp;ldquo;status&amp;rdquo;: 0}, {&amp;ldquo;error&amp;rdquo;: -1, &amp;ldquo;none&amp;rdquo;: 0, &amp;ldquo;clicked&amp;rdquo;: 1, &amp;ldquo;done&amp;rdquo;: 2, &amp;ldquo;xy&amp;rdquo;: [0, 0], &amp;ldquo;status&amp;rdquo;: 0}, {&amp;ldquo;error&amp;rdquo;: -1, &amp;ldquo;none&amp;rdquo;: 0, &amp;ldquo;clicked&amp;rdquo;: 1, &amp;ldquo;done&amp;rdquo;: 2, &amp;ldquo;xy&amp;rdquo;: [0, 0], &amp;ldquo;status&amp;rdquo;: 0}, {&amp;ldquo;error&amp;rdquo;: -1, &amp;ldquo;none&amp;rdquo;: 0, &amp;ldquo;clicked&amp;rdquo;: 1, &amp;ldquo;done&amp;rdquo;: 2, &amp;ldquo;xy&amp;rdquo;: [0, 0], &amp;ldquo;status&amp;rdquo;: 0}, {&amp;ldquo;error&amp;rdquo;: -1, &amp;ldquo;none&amp;rdquo;: 0, &amp;ldquo;clicked&amp;rdquo;: 1, &amp;ldquo;done&amp;rdquo;: 2, &amp;ldquo;xy&amp;rdquo;: [0, 0], &amp;ldquo;status&amp;rdquo;: 0}, {&amp;ldquo;error&amp;rdquo;: -1, &amp;ldquo;none&amp;rdquo;: 0, &amp;ldquo;clicked&amp;rdquo;: 1, &amp;ldquo;done&amp;rdquo;: 2, &amp;ldquo;xy&amp;rdquo;: [0, 0], &amp;ldquo;status&amp;rdquo;: 0}], &amp;ldquo;enemy&amp;rdquo;: [{&amp;ldquo;error&amp;rdquo;: -1, &amp;ldquo;none&amp;rdquo;: 0, &amp;ldquo;clicked&amp;rdquo;: 1, &amp;ldquo;done&amp;rdquo;: 2, &amp;ldquo;xy&amp;rdquo;: [0, 0], &amp;ldquo;status&amp;rdquo;: 0}, {&amp;ldquo;error&amp;rdquo;: -1, &amp;ldquo;none&amp;rdquo;: 0, &amp;ldquo;clicked&amp;rdquo;: 1, &amp;ldquo;done&amp;rdquo;: 2, &amp;ldquo;xy&amp;rdquo;: [0, 0], &amp;ldquo;status&amp;rdquo;: 0}, {&amp;ldquo;error&amp;rdquo;: -1, &amp;ldquo;none&amp;rdquo;: 0, &amp;ldquo;clicked&amp;rdquo;: 1, &amp;ldquo;done&amp;rdquo;: 2, &amp;ldquo;xy&amp;rdquo;: [0, 0], &amp;ldquo;status&amp;rdquo;: 0}, {&amp;ldquo;error&amp;rdquo;: -1, &amp;ldquo;none&amp;rdquo;: 0, &amp;ldquo;clicked&amp;rdquo;: 1, &amp;ldquo;done&amp;rdquo;: 2, &amp;ldquo;xy&amp;rdquo;: [0, 0], &amp;ldquo;status&amp;rdquo;: 0}, {&amp;ldquo;error&amp;rdquo;: -1, &amp;ldquo;none&amp;rdquo;: 0, &amp;ldquo;clicked&amp;rdquo;: 1, &amp;ldquo;done&amp;rdquo;: 2, &amp;ldquo;xy&amp;rdquo;: [0, 0], &amp;ldquo;status&amp;rdquo;: 0}, {&amp;ldquo;error&amp;rdquo;: -1, &amp;ldquo;none&amp;rdquo;: 0, &amp;ldquo;clicked&amp;rdquo;: 1, &amp;ldquo;done&amp;rdquo;: 2, &amp;ldquo;xy&amp;rdquo;: [0, 0], &amp;ldquo;status&amp;rdquo;: 0}]}&lt;/p&gt;</description></item></channel></rss>

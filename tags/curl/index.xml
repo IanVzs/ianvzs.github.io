@@ -1,1 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>curl on Ian's Blog</title><link>http://example.org/tags/curl/</link><description>Recent content in curl on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 18 Jul 2024 12:58:56 +0000</lastBuildDate><atom:link href="http://example.org/tags/curl/index.xml" rel="self" type="application/rss+xml"/><item><title>curl</title><link>http://example.org/docs/programmer/basetc/curl/</link><pubDate>Thu, 18 Jul 2024 12:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/curl/</guid><description> 常用命令 # 文件上传 curl -F &amp;#34;file=@./1.jpg&amp;#34; -X POST &amp;#34;http://localhost:8080/upload&amp;#34; # 上传多个 curl -F &amp;#34;upload=@./1.jpg&amp;#34; -F &amp;#34;upload=@./2.jpg&amp;#34; -X POST &amp;#34;http://localhost:8080/uploadMul 代理IP curl -x {proxyserver}.com -U &amp;#34;{username}-zone-custom-region-ru-session-31fa4be5f7fa2389-sessTime-3:{passwd}&amp;#34; https://jsonip.com/ Post Json curl -X POST -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;key1&amp;#34;:&amp;#34;value1&amp;#34;,&amp;#34;key2&amp;#34;:&amp;#34;value2&amp;#34;}&amp;#39; http://example.com/api/resource 参数 # 参数 作用 示例 -k https时忽略证书验证 curl -k &amp;hellip;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Curl on Ian's Blog</title><link>http://example.org/tags/curl/</link><description>Recent content in Curl on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 18 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/curl/index.xml" rel="self" type="application/rss+xml"/><item><title>curl</title><link>http://example.org/docs/programmer/basetc/curl/</link><pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/curl/</guid><description>&lt;h1 id="常用命令"&gt;常用命令&lt;a class="anchor" href="#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;文件上传&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; curl -F &lt;span style="color:#e6db74"&gt;&amp;#34;file=@./1.jpg&amp;#34;&lt;/span&gt; -X POST &lt;span style="color:#e6db74"&gt;&amp;#34;http://localhost:8080/upload&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 上传多个&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; curl -F &lt;span style="color:#e6db74"&gt;&amp;#34;upload=@./1.jpg&amp;#34;&lt;/span&gt; -F &lt;span style="color:#e6db74"&gt;&amp;#34;upload=@./2.jpg&amp;#34;&lt;/span&gt; -X POST &lt;span style="color:#e6db74"&gt;&amp;#34;http://localhost:8080/uploadMul&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
+&lt;li&gt;代理IP&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl -x &lt;span style="color:#f92672"&gt;{&lt;/span&gt;proxyserver&lt;span style="color:#f92672"&gt;}&lt;/span&gt;.com -U &lt;span style="color:#e6db74"&gt;&amp;#34;{username}-zone-custom-region-ru-session-31fa4be5f7fa2389-sessTime-3:{passwd}&amp;#34;&lt;/span&gt; https://jsonip.com/&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="3"&gt;
+&lt;li&gt;Post Json&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl -X POST -H &lt;span style="color:#e6db74"&gt;&amp;#34;Content-Type: application/json&amp;#34;&lt;/span&gt; -d &lt;span style="color:#e6db74"&gt;&amp;#39;{&amp;#34;key1&amp;#34;:&amp;#34;value1&amp;#34;,&amp;#34;key2&amp;#34;:&amp;#34;value2&amp;#34;}&amp;#39;&lt;/span&gt; http://example.com/api/resource&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="参数"&gt;参数&lt;a class="anchor" href="#%e5%8f%82%e6%95%b0"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;参数&lt;/th&gt;
+ &lt;th&gt;作用&lt;/th&gt;
+ &lt;th&gt;示例&lt;/th&gt;
+ &lt;th&gt;&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;-k&lt;/td&gt;
+ &lt;td&gt;https时忽略证书验证&lt;/td&gt;
+ &lt;td&gt;curl -k &amp;hellip;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;</description></item></channel></rss>

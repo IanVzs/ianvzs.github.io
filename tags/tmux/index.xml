@@ -1,3 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>tmux on Ian's Blog</title><link>http://example.org/tags/tmux/</link><description>Recent content in tmux on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 08 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/tmux/index.xml" rel="self" type="application/rss+xml"/><item><title>Tmux使用笔记</title><link>http://example.org/docs/programmer/basetc/tmux/</link><pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/tmux/</guid><description>tmux # 从posts中迁移来
-丰富纯文字终端窗口，可以创建终端副本(反正也是我取得名字)—&amp;ndash;类似于win的多桌面。也可以分割终端(界面类似vim分割)l&amp;ndash;这便是类似于win的多窗口了。 (官方翻译: &amp;lsquo;窗格&amp;rsquo;？)
-进入: tmux 退出: exit 类似于vim命令模式： ctrl+b以下简写为CL_B。 创建多桌面: CL_B + c 查看全部窗口，类似win+Tab: CL_B + s 使用窗口号切换桌面: CL_B + NUM 关闭当前窗口: CL_B + &amp;amp;,emm直接exit&amp;hellip; 创建多窗口: CL_B + &amp;quot; (垂直上下)、CL_B + % (水平左右) 调整窗口位置、大小 CL_B + space (默认布局轮换) 显示窗口编号: CL_B + q 暂时最大化当前窗格: CL_B + z 切换到下一个窗格: CL_B + o 对换窗格位置: CL_B + CL_O(ctrl + o) 设置 # 启用鼠标触控板 # set -g mouse on 复制终端展示内容 # 复制 # set-window-option -g mode-keys vi #可以设置为vi或emacs set-window-option -g utf8 on #开启窗口的UTF-8支持 CL_B + [ Space空格开始选择(可使用?</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tmux on Ian's Blog</title><link>http://example.org/tags/tmux/</link><description>Recent content in Tmux on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 08 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/tmux/index.xml" rel="self" type="application/rss+xml"/><item><title>Tmux使用笔记</title><link>http://example.org/docs/programmer/basetc/tmux/</link><pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/tmux/</guid><description>&lt;h1 id="tmux"&gt;tmux&lt;a class="anchor" href="#tmux"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;从&lt;code&gt;posts&lt;/code&gt;中迁移来&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;丰富纯文字终端窗口，可以创建终端副本(反正也是我取得名字)—&amp;ndash;类似于&lt;code&gt;win&lt;/code&gt;的多桌面。也可以分割终端(界面类似vim分割)l&amp;ndash;这便是类似于&lt;code&gt;win&lt;/code&gt;的多窗口了。 (官方翻译: &amp;lsquo;窗格&amp;rsquo;？)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;进入: &lt;code&gt;tmux&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;退出: &lt;code&gt;exit&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;类似于&lt;code&gt;vim&lt;/code&gt;命令模式： &lt;code&gt;ctrl+b&lt;/code&gt;以下简写为&lt;code&gt;CL_B&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;创建多桌面: CL_B + c&lt;/li&gt;
+&lt;li&gt;查看全部窗口，类似&lt;code&gt;win+Tab&lt;/code&gt;: CL_B + s 使用窗口号切换桌面: CL_B + NUM&lt;/li&gt;
+&lt;li&gt;关闭当前窗口: CL_B + &amp;amp;,emm直接&lt;code&gt;exit&lt;/code&gt;&amp;hellip;&lt;/li&gt;
+&lt;li&gt;创建多窗口: CL_B + &amp;quot; (垂直上下)、CL_B + % (水平左右) 调整窗口位置、大小 CL_B + space (默认布局轮换)&lt;/li&gt;
+&lt;li&gt;显示窗口编号: CL_B + q 暂时最大化当前窗格: CL_B + z 切换到下一个窗格: CL_B + o&lt;/li&gt;
+&lt;li&gt;对换窗格位置: CL_B + CL_O(ctrl + o)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="设置"&gt;设置&lt;a class="anchor" href="#%e8%ae%be%e7%bd%ae"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="启用鼠标触控板"&gt;&lt;strong&gt;启用鼠标触控板&lt;/strong&gt;&lt;a class="anchor" href="#%e5%90%af%e7%94%a8%e9%bc%a0%e6%a0%87%e8%a7%a6%e6%8e%a7%e6%9d%bf"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-tmux" data-lang="tmux"&gt;set -g mouse on&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="复制终端展示内容"&gt;复制终端展示内容&lt;a class="anchor" href="#%e5%a4%8d%e5%88%b6%e7%bb%88%e7%ab%af%e5%b1%95%e7%a4%ba%e5%86%85%e5%ae%b9"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="复制"&gt;&lt;strong&gt;复制&lt;/strong&gt;&lt;a class="anchor" href="#%e5%a4%8d%e5%88%b6"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;set-window-option -g mode-keys vi #可以设置为vi或emacs
+set-window-option -g utf8 on #开启窗口的UTF-8支持&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
+&lt;li&gt;CL_B + [&lt;/li&gt;
+&lt;li&gt;Space空格开始选择(可使用&lt;code&gt;?&lt;/code&gt;,&lt;code&gt;/&lt;/code&gt;vi工具辅助定位, 在有些终端中不大好使)&lt;/li&gt;
+&lt;li&gt;Enter回车确认选择(在有些终端中不大好使)&lt;/li&gt;
+&lt;li&gt;CB_B + ] 可粘贴&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;必须保证以上全在Tmux中进行哈&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="再次记录"&gt;再次记录&lt;a class="anchor" href="#%e5%86%8d%e6%ac%a1%e8%ae%b0%e5%bd%95"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;按下三个按键进入文本复制模式: &lt;code&gt;CTRL + b + [&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;按下两个按键进入文本开始复制的起始位置: &lt;code&gt;CTRL + 空格&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;上下左右键&lt;/code&gt;或者&lt;code&gt;Page up/down&lt;/code&gt;选择要复制的文本, 选中了要复制的文本后，按&lt;code&gt;ALT + w&lt;/code&gt;，将文本保存到tmux的buffer中&lt;/li&gt;
+&lt;li&gt;按&lt;code&gt;CTRL + b + ]&lt;/code&gt;将文本粘贴到某处&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

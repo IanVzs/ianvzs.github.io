@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Notes on Ian's Blog</title><link>http://example.org/tags/notes/</link><description>Recent content in Notes on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/notes/index.xml" rel="self" type="application/rss+xml"/><item><title>大模型使用笔记</title><link>http://example.org/docs/programmer/ml/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</guid><description>&lt;h1 id="大语言模型关键参数详解"&gt;&lt;strong&gt;大语言模型关键参数详解&lt;/strong&gt;&lt;a class="anchor" href="#%e5%a4%a7%e8%af%ad%e8%a8%80%e6%a8%a1%e5%9e%8b%e5%85%b3%e9%94%ae%e5%8f%82%e6%95%b0%e8%af%a6%e8%a7%a3"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h3 id="1-temperature温度"&gt;&lt;strong&gt;1. temperature（温度）&lt;/strong&gt;&lt;a class="anchor" href="#1-temperature%e6%b8%a9%e5%ba%a6"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;范围：0.0 - 2.0（通常0.1-1.0）
+作用：控制输出的随机性/创造性&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;低值（0.0-0.3）&lt;/strong&gt;：确定性高，重复输入得相同输出
+&lt;ul&gt;
+&lt;li&gt;适合：代码生成、数学计算、规则判断（你的场景）&lt;/li&gt;
+&lt;li&gt;示例：&lt;code&gt;temperature=0.1&lt;/code&gt; → 几乎总是输出相同答案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高值（0.7-1.0）&lt;/strong&gt;：创造性高，每次输出可能不同
+&lt;ul&gt;
+&lt;li&gt;适合：创意写作、头脑风暴&lt;/li&gt;
+&lt;li&gt;示例：&lt;code&gt;temperature=0.9&lt;/code&gt; → 每次生成不同的故事开头&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="2-top_"&gt;&lt;strong&gt;2. top_p（核采样）&lt;/strong&gt;&lt;a class="anchor" href="#2-top_"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;范围：0.0 - 1.0
+作用：控制候选词的选择范围&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;低值（0.1-0.3）&lt;/strong&gt;：只考虑概率最高的少数选项
+&lt;ul&gt;
+&lt;li&gt;适合：精确答案、技术文档&lt;/li&gt;
+&lt;li&gt;示例：&lt;code&gt;top_p=0.1&lt;/code&gt; + &lt;code&gt;temperature=0.1&lt;/code&gt; → 极稳定输出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高值（0.9-1.0）&lt;/strong&gt;：考虑更多可能选项
+&lt;ul&gt;
+&lt;li&gt;适合：创意场景&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="3-frequency_"&gt;&lt;strong&gt;3. frequency_penalty（频率惩罚）&lt;/strong&gt;&lt;a class="anchor" href="#3-frequency_"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;范围：-2.0 到 2.0
+作用：惩罚重复使用的词汇&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;正值&lt;/strong&gt;：避免重复用词
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;frequency_penalty=0.5&lt;/code&gt; → 减少重复词汇&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;负值&lt;/strong&gt;：允许更多重复&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="4-presence_"&gt;&lt;strong&gt;4. presence_penalty（存在惩罚）&lt;/strong&gt;&lt;a class="anchor" href="#4-presence_"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;范围：-2.0 到 2.0 
+作用：惩罚已提到过的话题/概念&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;适合长对话中避免重复讨论同一话题&lt;/li&gt;
+&lt;li&gt;单次查询无需此功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="5-max_"&gt;&lt;strong&gt;5. max_tokens（最大生成长度）&lt;/strong&gt;&lt;a class="anchor" href="#5-max_"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;作用：限制响应长度&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;防止模型过度解释&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="参数组合示例"&gt;&lt;strong&gt;参数组合示例&lt;/strong&gt;&lt;a class="anchor" href="#%e5%8f%82%e6%95%b0%e7%bb%84%e5%90%88%e7%a4%ba%e4%be%8b"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="场景1严格规则判断"&gt;&lt;strong&gt;场景1：严格规则判断&lt;/strong&gt;&lt;a class="anchor" href="#%e5%9c%ba%e6%99%af1%e4%b8%a5%e6%a0%bc%e8%a7%84%e5%88%99%e5%88%a4%e6%96%ad"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;temperature&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.1&lt;/span&gt;, &lt;span style="color:#75715e"&gt;# 低随机性&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;top_p&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.1&lt;/span&gt;, &lt;span style="color:#75715e"&gt;# 只考虑最佳选项&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;frequency_penalty&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#75715e"&gt;# 不惩罚重复&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;presence_penalty&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#75715e"&gt;# 不惩罚话题重复&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;max_tokens&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;10&lt;/span&gt; &lt;span style="color:#75715e"&gt;# 简短输出&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;效果：&lt;code&gt;输入相同→输出几乎100%相同&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="场景2创意写作"&gt;&lt;strong&gt;场景2：创意写作&lt;/strong&gt;&lt;a class="anchor" href="#%e5%9c%ba%e6%99%af2%e5%88%9b%e6%84%8f%e5%86%99%e4%bd%9c"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;temperature&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.8&lt;/span&gt;, &lt;span style="color:#75715e"&gt;# 高创造性&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;top_p&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.9&lt;/span&gt;, &lt;span style="color:#75715e"&gt;# 宽选择范围&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;frequency_penalty&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.3&lt;/span&gt;, &lt;span style="color:#75715e"&gt;# 避免词汇重复&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;max_tokens&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;500&lt;/span&gt; &lt;span style="color:#75715e"&gt;# 长文本&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="场景3平衡对话"&gt;&lt;strong&gt;场景3：平衡对话&lt;/strong&gt;&lt;a class="anchor" href="#%e5%9c%ba%e6%99%af3%e5%b9%b3%e8%a1%a1%e5%af%b9%e8%af%9d"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;temperature&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.5&lt;/span&gt;, &lt;span style="color:#75715e"&gt;# 适中&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;top_p&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.7&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;frequency_penalty&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.1&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;max_tokens&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;200&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>

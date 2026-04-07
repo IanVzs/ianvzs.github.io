@@ -1,3 +1,210 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>llms on Ian's Blog</title><link>http://example.org/tags/llms/</link><description>Recent content in llms on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 04 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/llms/index.xml" rel="self" type="application/rss+xml"/><item><title>机器人行为自动编排和任务</title><link>http://example.org/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%A1%8C%E4%B8%BA%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%92%8C%E4%BB%BB%E5%8A%A1/</link><pubDate>Sun, 04 Aug 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%A1%8C%E4%B8%BA%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%92%8C%E4%BB%BB%E5%8A%A1/</guid><description>一、分层 # 人机交互型的从人到机器逐层看是
-接受端： 语音识别 &amp;amp; 图像识别 &amp;amp; 压力感知 语义理解： 语言大模型/语义提取模型， 前者专业，后者专精 状态感知：图像识别 &amp;amp; 其他传感器 行为编排： 语言大模型/图数据编排/行为树 动作执行 二、最小系统流程 # 使用者发出命令，接收端接受进行语义理解，获知使用者目的 -&amp;gt; 参数一 当获知目的之后，先对当前状态进行分析（所处环境和当前执行任务状态） -&amp;gt; 参数二 将获取到的两参数都传于任务编排模型后，基于当前状态和命令创建后续流程 最后按步骤执行任务即可 三、所需技术 # 语音识别： 本地部署模型可选用阿里Paraformer，地址：https://github.com/modelscope/FunASR/wiki/paraformer， 我这里也有个demo项目: https://github.com/IanVzs/asr 基本和wiki里示例一样 如果需要tts的话可以用: https://github.com/kuangdd/ttskit， 可以在执行动作的时候“说”出来调试用 或者调讯飞服务接口，地址：https://www.xfyun.cn/doc/asr/voicedictation/API.html#%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B 以上两个都涵盖了流式和语音文件识别两种方式，准确率都相当高可以满足几乎任何场合使用 图像识别： 目标识别可用yolo，或者用飞桨相关模型，不过这两个只能获取到二维信息，要对物体进行准确定位还需要搭配“双目深度估计算法”才可以组装出来三维信息 当然也可以用多模态大模型替换yolo，但是速度会变慢，其获取到的还是二维数据，可以对视野里的物体进行广泛的识别但是无法做到精准定位：https://community.modelscope.cn/669e26f4962e585a2565ab42.html 压力感知或其他传感器： 嵌入式内容， 具体情况具体实现 大模型prompt工程和微调： prompt可以满足大多数场景需求，可见： https://www.promptingguide.ai/zh 微调Lora技术 有需要再看，具体得根据大模型选型，去看相对应大模型的具体微调文档 汉语类的可选ChatGLM, QWen这些 Mixtral-8x7b 这种混合模型或许更适合你的使用场景 四、优化点 # 在跑通最小系统的单线程流程之后， 就可以就任务中断、处理干扰、大模型效果优化进行对点的提升。 所用方案大体上也就是：
-同步改异步：将最小系统流程中的步骤由1-&amp;gt;2-&amp;gt;3-&amp;gt;4修改为互相独立的1, 2, 3, 4每个任务都基于事件变化进行触发，如拿红球，突然视野中红球全部变为绿球，因外界状态改变就应自主触发第三步编排任务对当前的抓取动作进行中断。 多任务融合： 续接1中红绿球所描述的，对抓取红球和取消抓取动作这两个任务进行融合 或者说原本视野只有一个红球，突然变成两个，就需要对抓取一个红球的任务编排和抓取两个红球的任务编排进行融合 对大语言模型进行“驯化”，固化大模型输出内容格式，链式思考提升准确度： 大语言模型经常性胡言乱语或逻辑不准，很正常，需要反复了解把控 需要对大模型动作做风控 总之，以上工作所涉领域很多，每个领域所要求都偏高，要实现只能是搭积木。这样就使得这个工作更加偏向工程一些，并不怎么偏研究类。语音识别能力现在已经相当高尽管拿来用，不用投入无用时间。 图像这块儿所投入的精力会比较多，尤其是在具体定位某个物体上。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Llms on Ian's Blog</title><link>http://example.org/tags/llms/</link><description>Recent content in Llms on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 09 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/llms/index.xml" rel="self" type="application/rss+xml"/><item><title>LangChain入门</title><link>http://example.org/docs/programmer/ml/langchain/</link><pubDate>Tue, 09 Dec 2025 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/langchain/</guid><description>&lt;h1 id="langchain工具系统深度剖析从设计哲学到工程实践"&gt;&lt;strong&gt;LangChain工具系统深度剖析：从设计哲学到工程实践&lt;/strong&gt;&lt;a class="anchor" href="#langchain%e5%b7%a5%e5%85%b7%e7%b3%bb%e7%bb%9f%e6%b7%b1%e5%ba%a6%e5%89%96%e6%9e%90%e4%bb%8e%e8%ae%be%e8%ae%a1%e5%93%b2%e5%ad%a6%e5%88%b0%e5%b7%a5%e7%a8%8b%e5%ae%9e%e8%b7%b5"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;本文旨在超越基础教程，从设计范式、架构实现、工具（Tool）系统核心机制及工程实践等多个维度，对现代LangChain进行一次“鞭辟入里”的解析。我们将摒弃对表面API的罗列，转而探究其背后的抽象哲学、实现决策、典型陷阱与效能优化之道。&lt;/p&gt;
+&lt;h3 id="一-设计哲学与范式转移"&gt;&lt;strong&gt;一、 设计哲学与范式转移&lt;/strong&gt;&lt;a class="anchor" href="#%e4%b8%80-%e8%ae%be%e8%ae%a1%e5%93%b2%e5%ad%a6%e4%b8%8e%e8%8c%83%e5%bc%8f%e8%bd%ac%e7%a7%bb"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;LangChain的本质，是一场针对大语言模型（LLM）应用开发的&lt;strong&gt;范式工程化&lt;/strong&gt;。其核心并非发明新算法，而是通过一套精密的抽象，将LLM从封闭的对话接口，改造为可预测、可组合、可嵌入复杂工作流的&lt;strong&gt;软件组件&lt;/strong&gt;。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;从“提示工程”到“软件工程”&lt;/strong&gt;：传统LLM应用依赖精巧但脆弱的提示词（Prompt），本质是“人适应模型”。LangChain引入&lt;code&gt;Runnable&lt;/code&gt;、&lt;code&gt;Chain&lt;/code&gt;等抽象，将交互逻辑固化在代码中，使应用流程可版本化、可测试、可调试，转向“模型适应架构”。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;统一接口（Runnable）的威力&lt;/strong&gt;：&lt;code&gt;Runnable&lt;/code&gt;是LangChain最深刻的抽象。它将所有组件（Prompt、Model、Tool、Parser、Lambda函数）标准化为具有&lt;code&gt;invoke&lt;/code&gt;、&lt;code&gt;batch&lt;/code&gt;、&lt;code&gt;stream&lt;/code&gt;方法的对象。这模仿了函数式编程中的“单子”（Monad）或Unix管道思想，使得任意组件的组合（&lt;code&gt;|&lt;/code&gt;操作符）成为可能。在源码层面，&lt;code&gt;Runnable&lt;/code&gt;是一个协议（Protocol），其实现类（如&lt;code&gt;RunnableSequence&lt;/code&gt;、&lt;code&gt;RunnableParallel&lt;/code&gt;）负责管理数据流和依赖。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;声明式工作流（LCEL）&lt;/strong&gt;：LangChain表达式语言（LCEL）不是一门新语言，而是一种基于Python运算符重载的领域特定（DSL）写法。&lt;code&gt;chain = prompt | model | output_parser&lt;/code&gt;这样的声明式代码，清晰地定义了数据流向，将“怎么做”（How）的控制逻辑交给框架，开发者专注于“做什么”（What）。源码中，&lt;code&gt;|&lt;/code&gt;运算符最终构建了一个&lt;code&gt;RunnableSequence&lt;/code&gt;对象，它按顺序执行各个步骤，并将上一步的输出作为下一步的输入。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;学术视角&lt;/strong&gt;：这可以看作是一种&lt;strong&gt;面向组件的编程&lt;/strong&gt;（Component-Oriented Programming）在AI领域的实践，旨在通过高内聚、低耦合的组件，构建复杂、可维护的智能系统。&lt;/p&gt;
+&lt;h3 id="二-核心架构与工具tool系统的深度解析"&gt;&lt;strong&gt;二、 核心架构与工具（Tool）系统的深度解析&lt;/strong&gt;&lt;a class="anchor" href="#%e4%ba%8c-%e6%a0%b8%e5%bf%83%e6%9e%b6%e6%9e%84%e4%b8%8e%e5%b7%a5%e5%85%b7tool%e7%b3%bb%e7%bb%9f%e7%9a%84%e6%b7%b1%e5%ba%a6%e8%a7%a3%e6%9e%90"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;工具系统是LangChain从“链”迈向“智能体”（Agent）的关键桥梁，也是其工程化思想的集中体现。&lt;/p&gt;
+&lt;h4 id="1-设计理念工具作为可编排的能力单元"&gt;&lt;strong&gt;1. 设计理念：工具作为可编排的能力单元&lt;/strong&gt;&lt;a class="anchor" href="#1-%e8%ae%be%e8%ae%a1%e7%90%86%e5%bf%b5%e5%b7%a5%e5%85%b7%e4%bd%9c%e4%b8%ba%e5%8f%af%e7%bc%96%e6%8e%92%e7%9a%84%e8%83%bd%e5%8a%9b%e5%8d%95%e5%85%83"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;封装与抽象&lt;/strong&gt;：一个&lt;code&gt;Tool&lt;/code&gt;对象封装了三要素：名称、描述、可执行函数（func）。其设计精妙之处在于，它将不确定的自然语言指令（如“查一下天气”）映射到一个确定性的函数调用。描述（description）是此映射的“对齐”关键，为LLM提供选择依据。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;统一接口&lt;/strong&gt;：&lt;code&gt;Tool&lt;/code&gt;本身也是&lt;code&gt;Runnable&lt;/code&gt;，这意味着它可以无缝接入LCEL管道，既能被Agent动态调用，也能被开发者静态编排。这种设计消除了“动态”和“静态”流程的鸿沟。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="2-源码实现探微"&gt;&lt;strong&gt;2. 源码实现探微&lt;/strong&gt;&lt;a class="anchor" href="#2-%e6%ba%90%e7%a0%81%e5%ae%9e%e7%8e%b0%e6%8e%a2%e5%be%ae"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;以&lt;code&gt;langchain_core.tools.BaseTool&lt;/code&gt;为例，其核心简化如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;BaseTool&lt;/span&gt;(Runnable[Dict[str, Any], Any]):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; name: str
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; description: str
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; args_schema: Optional[Type[BaseModel]] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;_run&lt;/span&gt;(self, &lt;span style="color:#f92672"&gt;*&lt;/span&gt;args, &lt;span style="color:#f92672"&gt;**&lt;/span&gt;kwargs) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Any:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 具体工具的执行逻辑&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;async&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;_arun&lt;/span&gt;(self, &lt;span style="color:#f92672"&gt;*&lt;/span&gt;args, &lt;span style="color:#f92672"&gt;**&lt;/span&gt;kwargs) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Any:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 异步执行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;invoke&lt;/span&gt;(self, input: Dict, config: Optional[RunnableConfig] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Any:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 实现Runnable接口，解析input并调用_run或_arun&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; validated_args &lt;span style="color:#f92672"&gt;=&lt;/span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;_validate_args(input)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;_run(&lt;span style="color:#f92672"&gt;**&lt;/span&gt;validated_args)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;输入标准化&lt;/strong&gt;：&lt;code&gt;invoke&lt;/code&gt;方法接受字典输入，通过&lt;code&gt;args_schema&lt;/code&gt;（Pydantic模型）进行验证和解析，确保类型安全。这解决了LLM输出不稳定、需要复杂后处理（如正则匹配）的核心痛点。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;与Agent的协作&lt;/strong&gt;：当Agent（如&lt;code&gt;create_react_agent&lt;/code&gt;）工作时，其核心循环是：1) 将当前状态（问题、历史、工具描述）格式化为Prompt；2) 调用LLM；3) 解析LLM输出，期望得到一个&lt;code&gt;Action&lt;/code&gt;（选择工具和输入）或&lt;code&gt;Final Answer&lt;/code&gt;；4) 若为&lt;code&gt;Action&lt;/code&gt;，则调用对应&lt;code&gt;Tool.invoke()&lt;/code&gt;，将结果作为新观察加入状态，进入下一轮循环。此过程在&lt;code&gt;AgentExecutor&lt;/code&gt;中实现。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="3-工程化的工具设计模式"&gt;&lt;strong&gt;3. 工程化的工具设计模式&lt;/strong&gt;&lt;a class="anchor" href="#3-%e5%b7%a5%e7%a8%8b%e5%8c%96%e7%9a%84%e5%b7%a5%e5%85%b7%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;函数即工具&lt;/strong&gt;：最简模式，使用&lt;code&gt;@tool&lt;/code&gt;装饰器将一个Python函数包装为工具。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;结构化工具&lt;/strong&gt;：定义&lt;code&gt;args_schema&lt;/code&gt;（Pydantic模型），强制LLM输出结构化参数，极大提升调用可靠性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;链即工具&lt;/strong&gt;：将一个复杂的LCEL链（如包含检索、总结的RAG链）作为工具的执行体。这实现了能力的层级封装。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工具集&lt;/strong&gt;：通过&lt;code&gt;Toolkit&lt;/code&gt;概念将相关工具分组管理，便于Agent在特定领域（如数据库操作、文件系统）内进行推理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="三-使用实践模式优化与坑点"&gt;&lt;strong&gt;三、 使用实践：模式、优化与坑点&lt;/strong&gt;&lt;a class="anchor" href="#%e4%b8%89-%e4%bd%bf%e7%94%a8%e5%ae%9e%e8%b7%b5%e6%a8%a1%e5%bc%8f%e4%bc%98%e5%8c%96%e4%b8%8e%e5%9d%91%e7%82%b9"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="1-核心使用模式"&gt;&lt;strong&gt;1. 核心使用模式&lt;/strong&gt;&lt;a class="anchor" href="#1-%e6%a0%b8%e5%bf%83%e4%bd%bf%e7%94%a8%e6%a8%a1%e5%bc%8f"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;静态编排（推荐优先）&lt;/strong&gt;：对于流程确定的任务，使用LCEL显式编排工具链。这更可靠、高效且易于调试。
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;data_process_chain &lt;span style="color:#f92672"&gt;=&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; load_document_tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;|&lt;/span&gt; split_text_tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;|&lt;/span&gt; RunnableParallel({
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;summary&amp;#34;&lt;/span&gt;: summarize_chain,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;keywords&amp;#34;&lt;/span&gt;: extract_keywords_chain
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; })
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;|&lt;/span&gt; format_report_tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动态代理（慎用）&lt;/strong&gt;：仅当任务路径无法预先确定时使用Agent。务必严格限制工具集，并设置最大迭代次数以防止无限循环和成本失控。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="2-关键性能优化点"&gt;&lt;strong&gt;2. 关键性能优化点&lt;/strong&gt;&lt;a class="anchor" href="#2-%e5%85%b3%e9%94%ae%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%82%b9"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;LangChain的便利性常以性能为代价，优化是生产部署的必修课。&lt;/p&gt;</description></item><item><title>机器人行为自动编排和任务</title><link>http://example.org/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%A1%8C%E4%B8%BA%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%92%8C%E4%BB%BB%E5%8A%A1/</link><pubDate>Sun, 04 Aug 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%A1%8C%E4%B8%BA%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%92%8C%E4%BB%BB%E5%8A%A1/</guid><description>&lt;h2 id="一分层"&gt;一、分层&lt;a class="anchor" href="#%e4%b8%80%e5%88%86%e5%b1%82"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;人机交互型的从人到机器逐层看是&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;接受端： 语音识别 &amp;amp; 图像识别 &amp;amp; 压力感知&lt;/li&gt;
+&lt;li&gt;语义理解： 语言大模型/语义提取模型， 前者专业，后者专精&lt;/li&gt;
+&lt;li&gt;状态感知：图像识别 &amp;amp; 其他传感器&lt;/li&gt;
+&lt;li&gt;行为编排： 语言大模型/图数据编排/行为树&lt;/li&gt;
+&lt;li&gt;动作执行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="二最小系统流程"&gt;二、最小系统流程&lt;a class="anchor" href="#%e4%ba%8c%e6%9c%80%e5%b0%8f%e7%b3%bb%e7%bb%9f%e6%b5%81%e7%a8%8b"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;使用者发出命令，接收端接受进行语义理解，获知使用者目的 -&amp;gt; 参数一&lt;/li&gt;
+&lt;li&gt;当获知目的之后，先对当前状态进行分析（所处环境和当前执行任务状态） -&amp;gt; 参数二&lt;/li&gt;
+&lt;li&gt;将获取到的两参数都传于任务编排模型后，基于当前状态和命令创建后续流程&lt;/li&gt;
+&lt;li&gt;最后按步骤执行任务即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="三所需技术"&gt;三、所需技术&lt;a class="anchor" href="#%e4%b8%89%e6%89%80%e9%9c%80%e6%8a%80%e6%9c%af"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;语音识别：
+&lt;ol&gt;
+&lt;li&gt;本地部署模型可选用阿里Paraformer，地址：https://github.com/modelscope/FunASR/wiki/paraformer， 我这里也有个demo项目: &lt;a href="https://github.com/IanVzs/asr"&gt;https://github.com/IanVzs/asr&lt;/a&gt; 基本和wiki里示例一样
+&lt;ol&gt;
+&lt;li&gt;如果需要tts的话可以用: &lt;a href="https://github.com/kuangdd/ttskit"&gt;https://github.com/kuangdd/ttskit&lt;/a&gt;， 可以在执行动作的时候“说”出来调试用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;或者调讯飞服务接口，地址：https://www.xfyun.cn/doc/asr/voicedictation/API.html#%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B
+以上两个都涵盖了流式和语音文件识别两种方式，准确率都相当高可以满足几乎任何场合使用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;图像识别：
+&lt;ol&gt;
+&lt;li&gt;目标识别可用yolo，或者用飞桨相关模型，不过这两个只能获取到二维信息，要对物体进行准确定位还需要搭配“双目深度估计算法”才可以组装出来三维信息&lt;/li&gt;
+&lt;li&gt;当然也可以用多模态大模型替换yolo，但是速度会变慢，其获取到的还是二维数据，可以对视野里的物体进行广泛的识别但是无法做到精准定位：https://community.modelscope.cn/669e26f4962e585a2565ab42.html&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;压力感知或其他传感器：
+&lt;ol&gt;
+&lt;li&gt;嵌入式内容， 具体情况具体实现&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;大模型prompt工程和微调：
+&lt;ol&gt;
+&lt;li&gt;prompt可以满足大多数场景需求，可见： &lt;a href="https://www.promptingguide.ai/zh"&gt;https://www.promptingguide.ai/zh&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;微调Lora技术 有需要再看，具体得根据大模型选型，去看相对应大模型的具体微调文档
+&lt;ol&gt;
+&lt;li&gt;汉语类的可选ChatGLM, QWen这些&lt;/li&gt;
+&lt;li&gt;Mixtral-8x7b 这种混合模型或许更适合你的使用场景&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="四优化点"&gt;四、优化点&lt;a class="anchor" href="#%e5%9b%9b%e4%bc%98%e5%8c%96%e7%82%b9"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;在跑通最小系统的单线程流程之后， 就可以就任务中断、处理干扰、大模型效果优化进行对点的提升。
+所用方案大体上也就是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;同步改异步：将最小系统流程中的步骤由&lt;code&gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4&lt;/code&gt;修改为互相独立的&lt;code&gt;1, 2, 3, 4&lt;/code&gt;每个任务都基于事件变化进行触发，如拿红球，突然视野中红球全部变为绿球，因外界状态改变就应自主触发第三步编排任务对当前的抓取动作进行中断。&lt;/li&gt;
+&lt;li&gt;多任务融合：
+&lt;ol&gt;
+&lt;li&gt;续接1中红绿球所描述的，对抓取红球和取消抓取动作这两个任务进行融合&lt;/li&gt;
+&lt;li&gt;或者说原本视野只有一个红球，突然变成两个，就需要对抓取一个红球的任务编排和抓取两个红球的任务编排进行融合&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;对大语言模型进行“驯化”，固化大模型输出内容格式，链式思考提升准确度：
+&lt;ol&gt;
+&lt;li&gt;大语言模型经常性胡言乱语或逻辑不准，很正常，需要反复了解把控&lt;/li&gt;
+&lt;li&gt;需要对大模型动作做风控&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;总之，以上工作所涉领域很多，每个领域所要求都偏高，要实现只能是搭积木。这样就使得这个工作更加偏向工程一些，并不怎么偏研究类。语音识别能力现在已经相当高尽管拿来用，不用投入无用时间。 图像这块儿所投入的精力会比较多，尤其是在具体定位某个物体上。&lt;/p&gt;
+&lt;p&gt;要用传感器的话，那嵌入式相关知识也得掌握。&lt;/p&gt;
+&lt;p&gt;大模型的作用在这里无非就是比专业的小模型更为通用，可以处理更多意料之外的状况，但是相对应的，还得专门写一个针对它的乱输出的风控。&lt;/p&gt;
+&lt;p&gt;另一个耗时点就是在任务编排上，需要你自己整理出一些通用、独立不耦合的子任务，交由大模型去搭积木，这就是你和大模型去磨合的过程，会很烦。&lt;/p&gt;</description></item><item><title>大模型使用笔记</title><link>http://example.org/docs/programmer/ml/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</guid><description>&lt;h1 id="大语言模型关键参数详解"&gt;&lt;strong&gt;大语言模型关键参数详解&lt;/strong&gt;&lt;a class="anchor" href="#%e5%a4%a7%e8%af%ad%e8%a8%80%e6%a8%a1%e5%9e%8b%e5%85%b3%e9%94%ae%e5%8f%82%e6%95%b0%e8%af%a6%e8%a7%a3"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h3 id="1-temperature温度"&gt;&lt;strong&gt;1. temperature（温度）&lt;/strong&gt;&lt;a class="anchor" href="#1-temperature%e6%b8%a9%e5%ba%a6"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;范围：0.0 - 2.0（通常0.1-1.0）
+作用：控制输出的随机性/创造性&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;低值（0.0-0.3）&lt;/strong&gt;：确定性高，重复输入得相同输出
+&lt;ul&gt;
+&lt;li&gt;适合：代码生成、数学计算、规则判断（你的场景）&lt;/li&gt;
+&lt;li&gt;示例：&lt;code&gt;temperature=0.1&lt;/code&gt; → 几乎总是输出相同答案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高值（0.7-1.0）&lt;/strong&gt;：创造性高，每次输出可能不同
+&lt;ul&gt;
+&lt;li&gt;适合：创意写作、头脑风暴&lt;/li&gt;
+&lt;li&gt;示例：&lt;code&gt;temperature=0.9&lt;/code&gt; → 每次生成不同的故事开头&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="2-top_"&gt;&lt;strong&gt;2. top_p（核采样）&lt;/strong&gt;&lt;a class="anchor" href="#2-top_"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;范围：0.0 - 1.0
+作用：控制候选词的选择范围&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;低值（0.1-0.3）&lt;/strong&gt;：只考虑概率最高的少数选项
+&lt;ul&gt;
+&lt;li&gt;适合：精确答案、技术文档&lt;/li&gt;
+&lt;li&gt;示例：&lt;code&gt;top_p=0.1&lt;/code&gt; + &lt;code&gt;temperature=0.1&lt;/code&gt; → 极稳定输出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高值（0.9-1.0）&lt;/strong&gt;：考虑更多可能选项
+&lt;ul&gt;
+&lt;li&gt;适合：创意场景&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="3-frequency_"&gt;&lt;strong&gt;3. frequency_penalty（频率惩罚）&lt;/strong&gt;&lt;a class="anchor" href="#3-frequency_"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;范围：-2.0 到 2.0
+作用：惩罚重复使用的词汇&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;正值&lt;/strong&gt;：避免重复用词
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;frequency_penalty=0.5&lt;/code&gt; → 减少重复词汇&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;负值&lt;/strong&gt;：允许更多重复&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="4-presence_"&gt;&lt;strong&gt;4. presence_penalty（存在惩罚）&lt;/strong&gt;&lt;a class="anchor" href="#4-presence_"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;范围：-2.0 到 2.0 
+作用：惩罚已提到过的话题/概念&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;适合长对话中避免重复讨论同一话题&lt;/li&gt;
+&lt;li&gt;单次查询无需此功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="5-max_"&gt;&lt;strong&gt;5. max_tokens（最大生成长度）&lt;/strong&gt;&lt;a class="anchor" href="#5-max_"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;作用：限制响应长度&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;防止模型过度解释&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="参数组合示例"&gt;&lt;strong&gt;参数组合示例&lt;/strong&gt;&lt;a class="anchor" href="#%e5%8f%82%e6%95%b0%e7%bb%84%e5%90%88%e7%a4%ba%e4%be%8b"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="场景1严格规则判断"&gt;&lt;strong&gt;场景1：严格规则判断&lt;/strong&gt;&lt;a class="anchor" href="#%e5%9c%ba%e6%99%af1%e4%b8%a5%e6%a0%bc%e8%a7%84%e5%88%99%e5%88%a4%e6%96%ad"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;temperature&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.1&lt;/span&gt;, &lt;span style="color:#75715e"&gt;# 低随机性&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;top_p&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.1&lt;/span&gt;, &lt;span style="color:#75715e"&gt;# 只考虑最佳选项&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;frequency_penalty&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#75715e"&gt;# 不惩罚重复&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;presence_penalty&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#75715e"&gt;# 不惩罚话题重复&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;max_tokens&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;10&lt;/span&gt; &lt;span style="color:#75715e"&gt;# 简短输出&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;效果：&lt;code&gt;输入相同→输出几乎100%相同&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="场景2创意写作"&gt;&lt;strong&gt;场景2：创意写作&lt;/strong&gt;&lt;a class="anchor" href="#%e5%9c%ba%e6%99%af2%e5%88%9b%e6%84%8f%e5%86%99%e4%bd%9c"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;temperature&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.8&lt;/span&gt;, &lt;span style="color:#75715e"&gt;# 高创造性&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;top_p&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.9&lt;/span&gt;, &lt;span style="color:#75715e"&gt;# 宽选择范围&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;frequency_penalty&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.3&lt;/span&gt;, &lt;span style="color:#75715e"&gt;# 避免词汇重复&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;max_tokens&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;500&lt;/span&gt; &lt;span style="color:#75715e"&gt;# 长文本&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="场景3平衡对话"&gt;&lt;strong&gt;场景3：平衡对话&lt;/strong&gt;&lt;a class="anchor" href="#%e5%9c%ba%e6%99%af3%e5%b9%b3%e8%a1%a1%e5%af%b9%e8%af%9d"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;temperature&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.5&lt;/span&gt;, &lt;span style="color:#75715e"&gt;# 适中&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;top_p&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.7&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;frequency_penalty&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.1&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;max_tokens&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;200&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>

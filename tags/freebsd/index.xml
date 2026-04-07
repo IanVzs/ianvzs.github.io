@@ -1,3 +1,45 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>freebsd on Ian's Blog</title><link>http://example.org/tags/freebsd/</link><description>Recent content in freebsd on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 08 Nov 2016 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/freebsd/index.xml" rel="self" type="application/rss+xml"/><item><title>FreeBSD</title><link>http://example.org/docs/programmer/platforms/os/freebsd/</link><pubDate>Tue, 08 Nov 2016 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/freebsd/</guid><description>FreeBSD # 桌面 # 换源 pkg install xorg xfce echo &amp;lsquo;dbus_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf echo &amp;ldquo;/usr/local/etc/xdg/xfce4/xinitrc&amp;rdquo; &amp;gt; ~/.xinitrc startx 登录界面 # pkg install slim slim-themes echo &amp;lsquo;slim_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf vbox(没测试) # pkg install virtualbox-ose-additions 向/etc/rc.conf写入 vboxguest_enable=&amp;#34;YES&amp;#34; vboxservice_enable=&amp;#34;YES&amp;#34; 仅供参考看这里 因为vbox显卡太弱安装了vmware后就一直没用回过vbox,我还没测试过
-vmware # pkg install open-vm-tools xf86-video-vmware xf86-input-vmmouse 继续向/etc/rc.conf中写入 hald_enable=&amp;#34;YES&amp;#34; moused_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmblock_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmhgfs_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmmemctl_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmxnet_enable=&amp;#34;YES&amp;#34; # vmware_guest_enable=&amp;#34;YES&amp;#34; 下面注释掉的是因为在测试中如果打开的话会有各种问题&amp;hellip;.尤其鼠标 其他可见这里参考 =&amp;gt; 该Blog仅供参考, 这里面的东西很多都是有问题的.
-换源 # mkdir -p /usr/local/etc/pkg/repos vim /usr/local/etc/pkg/repos/bjtu.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Freebsd on Ian's Blog</title><link>http://example.org/tags/freebsd/</link><description>Recent content in Freebsd on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 08 Nov 2016 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/freebsd/index.xml" rel="self" type="application/rss+xml"/><item><title>FreeBSD</title><link>http://example.org/docs/programmer/platforms/os/freebsd/</link><pubDate>Tue, 08 Nov 2016 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/freebsd/</guid><description>&lt;h1 id="freebsd"&gt;FreeBSD&lt;a class="anchor" href="#freebsd"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="桌面"&gt;桌面&lt;a class="anchor" href="#%e6%a1%8c%e9%9d%a2"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;换源&lt;/li&gt;
+&lt;li&gt;pkg install xorg xfce&lt;/li&gt;
+&lt;li&gt;echo &amp;lsquo;dbus_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf&lt;/li&gt;
+&lt;li&gt;echo &amp;ldquo;/usr/local/etc/xdg/xfce4/xinitrc&amp;rdquo; &amp;gt; ~/.xinitrc&lt;/li&gt;
+&lt;li&gt;startx&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="登录界面"&gt;登录界面&lt;a class="anchor" href="#%e7%99%bb%e5%bd%95%e7%95%8c%e9%9d%a2"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;pkg install slim slim-themes&lt;/li&gt;
+&lt;li&gt;echo &amp;lsquo;slim_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="vbox没测试"&gt;vbox(没测试)&lt;a class="anchor" href="#vbox%e6%b2%a1%e6%b5%8b%e8%af%95"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;pkg install virtualbox-ose-additions&lt;/li&gt;
+&lt;li&gt;向&lt;code&gt;/etc/rc.conf&lt;/code&gt;写入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;vboxguest_enable=&amp;#34;YES&amp;#34;
+vboxservice_enable=&amp;#34;YES&amp;#34;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;仅供参考看&lt;a href="https://www.cnblogs.com/mocuishle/p/15582173.html"&gt;这里&lt;/a&gt; 因为vbox显卡太弱安装了vmware后就一直没用回过vbox,我还没测试过&lt;/p&gt;
+&lt;h3 id="vmware"&gt;vmware&lt;a class="anchor" href="#vmware"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;pkg install open-vm-tools xf86-video-vmware xf86-input-vmmouse&lt;/li&gt;
+&lt;li&gt;继续向&lt;code&gt;/etc/rc.conf&lt;/code&gt;中写入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;hald_enable=&amp;#34;YES&amp;#34;
+moused_enable=&amp;#34;YES&amp;#34;
+# vmware_guest_vmblock_enable=&amp;#34;YES&amp;#34;
+# vmware_guest_vmhgfs_enable=&amp;#34;YES&amp;#34;
+# vmware_guest_vmmemctl_enable=&amp;#34;YES&amp;#34;
+# vmware_guest_vmxnet_enable=&amp;#34;YES&amp;#34;
+# vmware_guest_enable=&amp;#34;YES&amp;#34;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下面注释掉的是因为在测试中如果打开的话会有各种问题&amp;hellip;.尤其鼠标
+其他可见&lt;a href="https://www.jianshu.com/p/d4e32dbfe1e6"&gt;这里参考&lt;/a&gt; =&amp;gt; 该Blog仅供参考, 这里面的东西很多都是有问题的.&lt;/p&gt;
+&lt;h2 id="换源"&gt;换源&lt;a class="anchor" href="#%e6%8d%a2%e6%ba%90"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir -p /usr/local/etc/pkg/repos
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vim /usr/local/etc/pkg/repos/bjtu.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;bjtu: {
+ url: &amp;#34;pkg+http://mirror.bjtu.edu.cn/reverse/freebsd-pkg/${ABI}/quarterly&amp;#34;,
+ mirror_type: &amp;#34;srv&amp;#34;,
+ signature_type: &amp;#34;none&amp;#34;,
+ fingerprints: &amp;#34;/usr/share/keys/pkg&amp;#34;,
+ enabled: yes
+}
+FreeBSD: { enabled: no }&lt;/code&gt;&lt;/pre&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pkg update&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="附录"&gt;附录&lt;a class="anchor" href="#%e9%99%84%e5%bd%95"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Ian 整理的&lt;a href="https://ianvzs.github.io/2021/04/22/tips/for_china/"&gt;各个软件换源Blog&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

@@ -1,5 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>uwsgi on Ian's Blog</title><link>http://example.org/categories/uwsgi/</link><description>Recent content in uwsgi on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 01 Aug 2023 10:30:41 +0000</lastBuildDate><atom:link href="http://example.org/categories/uwsgi/index.xml" rel="self" type="application/rss+xml"/><item><title>uwsgi 处理记录</title><link>http://example.org/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/</link><pubDate>Tue, 01 Aug 2023 10:30:41 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/</guid><description>日志输出到终端 # uwsgi.ini文件中配置
-log-master = true ; logto=/var/log/uwsgi.log 同时这行不能有 启动命令: uwsgi /opt/disk2/var/www/scancenter/3rd/conf/uwsgi-docker/uwsgi.ini --log-master
-隔一段时间卡死,重启不能 # 当作为纯后端API使用时, 使用 http-socket 不使用 http
-使用supervisor管理uwsgi # #daemonize=/var/log/uwsgi8011.log # 守护进程一定要注释掉(关键)
-查看性能数据 # 安装 uwsgitop 查看 uwsgi stats写入位置 查看 pip install uwsgitop cat /opt/trunk/textcheck/3rd/uwsgi/config.ini | grep stats # &amp;gt; stats=/var/run/uwsgi/uwsgi.status uwsgitop /var/run/uwsgi/uwsgi.status # &amp;gt; uwsgi-2.0.19.1 - Wed Oct 18 18:13:48 2023 - req: 113 - RPS: 0 - lq: 0 - tx: 75.1K node: app-58d8477f4-26fzb - cwd: /app - uid: 0 - gid: 0 - masterpid: 8 WID % PID REQ RPS EXC SIG STATUS AVG RSS VSZ TX ReSpwn HC RunT LastSpwn 1 28.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Uwsgi on Ian's Blog</title><link>http://example.org/categories/uwsgi/</link><description>Recent content in Uwsgi on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 01 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/uwsgi/index.xml" rel="self" type="application/rss+xml"/><item><title>uwsgi 处理记录</title><link>http://example.org/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/</link><pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/</guid><description>&lt;h1 id="日志输出到终端"&gt;日志输出到终端&lt;a class="anchor" href="#%e6%97%a5%e5%bf%97%e8%be%93%e5%87%ba%e5%88%b0%e7%bb%88%e7%ab%af"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;uwsgi.ini文件中配置&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;log-master = true
+; logto=/var/log/uwsgi.log 同时这行不能有&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;启动命令: &lt;code&gt;uwsgi /opt/disk2/var/www/scancenter/3rd/conf/uwsgi-docker/uwsgi.ini --log-master&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="隔一段时间卡死重启不能"&gt;隔一段时间卡死,重启不能&lt;a class="anchor" href="#%e9%9a%94%e4%b8%80%e6%ae%b5%e6%97%b6%e9%97%b4%e5%8d%a1%e6%ad%bb%e9%87%8d%e5%90%af%e4%b8%8d%e8%83%bd"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;当作为纯后端API使用时, 使用 &lt;code&gt;http-socket&lt;/code&gt; 不使用 &lt;code&gt;http&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="使用supervisor管理uwsgi"&gt;使用supervisor管理uwsgi&lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8supervisor%e7%ae%a1%e7%90%86uwsgi"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;#daemonize=/var/log/uwsgi8011.log # 守护进程一定要注释掉(关键)&lt;/p&gt;
+&lt;h2 id="查看性能数据"&gt;查看性能数据&lt;a class="anchor" href="#%e6%9f%a5%e7%9c%8b%e6%80%a7%e8%83%bd%e6%95%b0%e6%8d%ae"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;安装 &lt;code&gt;uwsgitop&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看 &lt;code&gt;uwsgi&lt;/code&gt; &lt;code&gt;stats&lt;/code&gt;写入位置&lt;/li&gt;
+&lt;li&gt;查看&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install uwsgitop
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /opt/trunk/textcheck/3rd/uwsgi/config.ini | grep stats
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# &amp;gt; stats=/var/run/uwsgi/uwsgi.status&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;uwsgitop /var/run/uwsgi/uwsgi.status
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# &amp;gt; uwsgi-2.0.19.1 - Wed Oct 18 18:13:48 2023 - req: 113 - RPS: 0 - lq: 0 - tx: 75.1K&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;node: app-58d8477f4-26fzb - cwd: /app - uid: 0 - gid: 0 - masterpid: 8
+WID % PID REQ RPS EXC SIG STATUS AVG RSS VSZ TX ReSpwn HC RunT LastSpwn
+1 28.3 132942 32 0 0 0 idle 19161ms 0 0 15.2K 1 0 155394.03 17:34:42
+2 28.3 132950 32 0 0 0 idle 1781ms 0 0 20.1K 1 0 126123.093 17:34:42
+3 22.1 132958 25 0 0 0 idle 5982ms 0 0 16.9K 1 0 127199.778 17:34:42
+4 21.2 132963 24 0 0 0 idle 15274ms 0 0 22.8K 1 0 144018.093 17:34:42&lt;/p&gt;</description></item></channel></rss>

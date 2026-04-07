@@ -1,7 +1,121 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>爬虫 on Ian's Blog</title><link>http://example.org/tags/%E7%88%AC%E8%99%AB/</link><description>Recent content in 爬虫 on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 01 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/%E7%88%AC%E8%99%AB/index.xml" rel="self" type="application/rss+xml"/><item><title>Selenium Grid</title><link>http://example.org/docs/programmer/net/crawler/selenium-grid/</link><pubDate>Sat, 01 Mar 2025 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/net/crawler/selenium-grid/</guid><description>[!note] 一个用于分布式测试的工具，它允许你在多个机器上并行运行测试。通过 Selenium Grid，你可以同时在多个浏览器和操作系统上执行测试，从而加快测试速度并提高测试覆盖率。
-主要特点： # 并行执行：可以在多个节点上同时运行测试，显著减少测试时间。 跨浏览器测试：支持在不同的浏览器（如 Chrome、Firefox、Edge 等）上运行测试。 跨平台测试：支持在不同的操作系统（如 Windows、macOS、Linux 等）上运行测试。 集中管理：通过一个中心节点（Hub）来管理多个测试节点（Node），方便配置和监控。 基本架构： # Hub：中心节点，负责接收测试请求并将其分发到合适的节点。 Node：测试节点，负责执行实际的测试任务。每个节点可以配置不同的浏览器和操作系统。 示例： # 假设你有一个测试套件需要在 Chrome、Firefox 和 Edge 上运行，你可以配置一个 Selenium Grid，其中包含三个节点，每个节点分别运行不同的浏览器。然后，你可以通过 Hub 将测试分发到这些节点上并行执行。
-podman-compose部署 # version: &amp;#39;3&amp;#39; services: selenium-hub: image: selenium/hub:latest ports: - &amp;#34;4442:4442&amp;#34; - &amp;#34;4443:4443&amp;#34; - &amp;#34;4444:4444&amp;#34; environment: - SE_EVENT_BUS_PUBLISH_PORT=4442 - SE_EVENT_BUS_SUBSCRIBE_PORT=4443 security_opt: - no-new-privileges:true selenium-node-chrome: image: selenium/node-chrome:latest shm_size: 1g dns: - 8.8.8.8 environment: - SE_EVENT_BUS_HOST=selenium-hub - SE_EVENT_BUS_PUBLISH_PORT=4442 - SE_EVENT_BUS_SUBSCRIBE_PORT=4443 depends_on: - selenium-hub security_opt: - no-new-privileges:true Python代码 # from selenium import webdriver from selenium.</description></item><item><title>机器学习库</title><link>http://example.org/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</guid><description>Python 机器学习库 👽 # Plotly # 与matplotlib 都是绘图工具，不过效果炫一些，我也没画过，所以只放链接，不放实例了 Plotly Python Library : https://plot.ly/python/
-matplotlib # import matplotlib.pyplot as plt 参数等太多，链接最可靠 # pyplot参数
-还是粘一些常用的： marker 属性（下面写在分号里呦） o . v ^ &amp;lt; &amp;gt; 1 2 3 4 8 s p * h H + x D d | _ 之类
-画出一些“花儿”
-绘图 # plt.plot(x, y) # 在y之后可添加参数，例如常用的label = ‘IamLabel’之类 # 线的样式、颜色 ：b: blue g: green r: red c: cyan m: magenta y: yellow k: black w: white '-' : solid , '--' : dashed, '-.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>爬虫 on Ian's Blog</title><link>http://example.org/tags/%E7%88%AC%E8%99%AB/</link><description>Recent content in 爬虫 on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 01 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/%E7%88%AC%E8%99%AB/index.xml" rel="self" type="application/rss+xml"/><item><title>Selenium Grid</title><link>http://example.org/docs/programmer/net/crawler/selenium-grid/</link><pubDate>Sat, 01 Mar 2025 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/net/crawler/selenium-grid/</guid><description>&lt;blockquote class='book-hint note'&gt;
+&lt;p&gt;一个用于分布式测试的工具，它允许你在多个机器上并行运行测试。通过 Selenium Grid，你可以同时在多个浏览器和操作系统上执行测试，从而加快测试速度并提高测试覆盖率。&lt;/p&gt;&lt;/blockquote&gt;&lt;h3 id="主要特点"&gt;主要特点：&lt;a class="anchor" href="#%e4%b8%bb%e8%a6%81%e7%89%b9%e7%82%b9"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;并行执行&lt;/strong&gt;：可以在多个节点上同时运行测试，显著减少测试时间。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;跨浏览器测试&lt;/strong&gt;：支持在不同的浏览器（如 Chrome、Firefox、Edge 等）上运行测试。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;跨平台测试&lt;/strong&gt;：支持在不同的操作系统（如 Windows、macOS、Linux 等）上运行测试。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;集中管理&lt;/strong&gt;：通过一个中心节点（Hub）来管理多个测试节点（Node），方便配置和监控。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="基本架构"&gt;基本架构：&lt;a class="anchor" href="#%e5%9f%ba%e6%9c%ac%e6%9e%b6%e6%9e%84"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Hub&lt;/strong&gt;：中心节点，负责接收测试请求并将其分发到合适的节点。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Node&lt;/strong&gt;：测试节点，负责执行实际的测试任务。每个节点可以配置不同的浏览器和操作系统。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="示例"&gt;示例：&lt;a class="anchor" href="#%e7%a4%ba%e4%be%8b"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;假设你有一个测试套件需要在 Chrome、Firefox 和 Edge 上运行，你可以配置一个 Selenium Grid，其中包含三个节点，每个节点分别运行不同的浏览器。然后，你可以通过 Hub 将测试分发到这些节点上并行执行。&lt;/p&gt;
+&lt;h2 id="podman-compose部署"&gt;podman-compose部署&lt;a class="anchor" href="#podman-compose%e9%83%a8%e7%bd%b2"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;version&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#39;3&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;services&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;selenium-hub&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;image&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;selenium/hub:latest&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;ports&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#e6db74"&gt;&amp;#34;4442:4442&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#e6db74"&gt;&amp;#34;4443:4443&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#e6db74"&gt;&amp;#34;4444:4444&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;environment&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;SE_EVENT_BUS_PUBLISH_PORT=4442&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;SE_EVENT_BUS_SUBSCRIBE_PORT=4443&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;security_opt&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#66d9ef"&gt;no&lt;/span&gt;-&lt;span style="color:#ae81ff"&gt;new-privileges:true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;selenium-node-chrome&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;image&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;selenium/node-chrome:latest&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;shm_size&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;1g&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;dns&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;8.8.8.8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;environment&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;SE_EVENT_BUS_HOST=selenium-hub&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;SE_EVENT_BUS_PUBLISH_PORT=4442&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;SE_EVENT_BUS_SUBSCRIBE_PORT=4443&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;depends_on&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;selenium-hub&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;security_opt&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#66d9ef"&gt;no&lt;/span&gt;-&lt;span style="color:#ae81ff"&gt;new-privileges:true&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="python代码"&gt;Python代码&lt;a class="anchor" href="#python%e4%bb%a3%e7%a0%81"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; selenium &lt;span style="color:#f92672"&gt;import&lt;/span&gt; webdriver
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; selenium.webdriver.common.by &lt;span style="color:#f92672"&gt;import&lt;/span&gt; By
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; selenium.webdriver.support.wait &lt;span style="color:#f92672"&gt;import&lt;/span&gt; WebDriverWait
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; selenium.webdriver.support &lt;span style="color:#f92672"&gt;import&lt;/span&gt; expected_conditions &lt;span style="color:#66d9ef"&gt;as&lt;/span&gt; EC
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; settings &lt;span style="color:#f92672"&gt;import&lt;/span&gt; RemoteBrowserAPIHost &lt;span style="color:#75715e"&gt;# hub 部署host&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Browser&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;__init__&lt;/span&gt;(self, headless&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;, account_info&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;headless &lt;span style="color:#f92672"&gt;=&lt;/span&gt; headless
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;input_element &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;account_info &lt;span style="color:#f92672"&gt;=&lt;/span&gt; account_info
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		logger&lt;span style="color:#f92672"&gt;.&lt;/span&gt;debug(&lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;其它模式使用远程浏览器&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		op &lt;span style="color:#f92672"&gt;=&lt;/span&gt; webdriver&lt;span style="color:#f92672"&gt;.&lt;/span&gt;ChromeOptions()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;browser &lt;span style="color:#f92672"&gt;=&lt;/span&gt; webdriver&lt;span style="color:#f92672"&gt;.&lt;/span&gt;Remote(command_executor&lt;span style="color:#f92672"&gt;=&lt;/span&gt;RemoteBrowserAPIHost &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;/wd/hub&amp;#34;&lt;/span&gt;, options&lt;span style="color:#f92672"&gt;=&lt;/span&gt;op)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;session_id &lt;span style="color:#f92672"&gt;=&lt;/span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;browser&lt;span style="color:#f92672"&gt;.&lt;/span&gt;session_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		RDS&lt;span style="color:#f92672"&gt;.&lt;/span&gt;update_browser_heartbeat(self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;session_id)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		logger&lt;span style="color:#f92672"&gt;.&lt;/span&gt;info(&lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;浏览器 连接成功!&amp;#34;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="查看运行状态"&gt;查看运行状态&lt;a class="anchor" href="#%e6%9f%a5%e7%9c%8b%e8%bf%90%e8%a1%8c%e7%8a%b6%e6%80%81"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;操作Sessions链接: &lt;a href="http://localhost:4444/ui/#/sessions"&gt;Selenium Grid&lt;/a&gt;&lt;/p&gt;</description></item><item><title>机器学习库</title><link>http://example.org/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</link><pubDate>Mon, 24 Jul 2017 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</guid><description>&lt;h1 id="python-机器学习库-"&gt;Python 机器学习库 👽&lt;a class="anchor" href="#python-%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0%e5%ba%93-"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h3 id="plotly"&gt;Plotly&lt;a class="anchor" href="#plotly"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;与matplotlib 都是绘图工具，不过效果炫一些，我也没画过，所以只放链接，不放实例了
+&lt;a href="https://plot.ly/python/"&gt;Plotly Python Library&lt;/a&gt; : &lt;a href="https://plot.ly/python/"&gt;https://plot.ly/python/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="matplotlib"&gt;matplotlib&lt;a class="anchor" href="#matplotlib"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import matplotlib.pyplot as plt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="参数等太多链接最可靠"&gt;参数等太多，链接最可靠&lt;a class="anchor" href="#%e5%8f%82%e6%95%b0%e7%ad%89%e5%a4%aa%e5%a4%9a%e9%93%be%e6%8e%a5%e6%9c%80%e5%8f%af%e9%9d%a0"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://github.com/wizardforcel/matplotlib-user-guide-zh/blob/master/3.1.md"&gt;pyplot参数&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;还是粘一些常用的：
+marker 属性（下面写在分号里呦）
+o . v ^ &amp;lt; &amp;gt; 1 2 3 4 8 s p * h H + x D d | _ 之类&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://blog.csdn.net/pipisorry/article/details/40005163"&gt;画出一些“花儿”&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="绘图"&gt;绘图&lt;a class="anchor" href="#%e7%bb%98%e5%9b%be"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;plt.plot(x, y)
+# 在y之后可添加参数，例如常用的label = ‘IamLabel’之类
+# 线的样式、颜色 ：b: blue g: green r: red c: cyan m: magenta
+y: yellow k: black w: white
+'-' : solid , '--' : dashed, '-.' : dashdot ':' : dotted ' '', ' ' ': None
+# 粗细 lw=3 更改数字
+# 数值折点显示样式 marker = ‘o’ 
+
+plot.show()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="绘制图表"&gt;绘制图表&lt;a class="anchor" href="#%e7%bb%98%e5%88%b6%e5%9b%be%e8%a1%a8"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="1"&gt;1&lt;a class="anchor" href="#1"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;plt.figure(1)
+绘图
+plt.figure(2)
+绘图
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id="2未测试"&gt;2（未测试）&lt;a class="anchor" href="#2%e6%9c%aa%e6%b5%8b%e8%af%95"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;plt.figure(1) # 创建图表1
+plt.figure(2) # 创建图表2
+hi1 = plt.subplot(211) # 在图表2中创建子图1
+hi2 = plt.subplot(212) # 在图表2中创建子图2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="一表多图"&gt;一表多图&lt;a class="anchor" href="#%e4%b8%80%e8%a1%a8%e5%a4%9a%e5%9b%be"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;pCapital = plt.subplot(4, 1, 1)
+ pCapital.set_ylabel(&amp;quot;capital&amp;quot;)
+ pCapital.plot(d['capitalList'], color='r', lw=0.8)
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="标注点"&gt;标注点&lt;a class="anchor" href="#%e6%a0%87%e6%b3%a8%e7%82%b9"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="eg1"&gt;eg1&lt;a class="anchor" href="#eg1"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;for w, m in enumerate(self.lowestPrice):
+ if w % 120*10 == 0:
+ plt.plot([w, w], [m, self.highestPrice[w]], linestyle = '--')
+ #plt.scatter(self.dealPoints,color = 'c')
+for i in self.dealPoints: 
+ plt.scatter([i[0]], [i[1]], color = 'c') 
+ for ii in self.ydealPoints:
+ plt.scatter([ii[0]], [ii[1]], color = 'm')
+ 
+plt.title('Tick &amp;amp; TradePoint')
+plt.legend()
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;plt.legend()&lt;!-- raw HTML omitted --&gt;
+# show() 之前不加这句是不会显示出标注的呦&lt;/p&gt;</description></item></channel></rss>

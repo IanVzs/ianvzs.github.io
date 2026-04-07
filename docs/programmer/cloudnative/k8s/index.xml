@@ -1,37 +1,326 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>k8s on Ian's Blog</title><link>http://example.org/docs/programmer/cloudnative/k8s/</link><description>Recent content in k8s on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 24 Sep 2023 23:01:41 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/cloudnative/k8s/index.xml" rel="self" type="application/rss+xml"/><item><title>elk在k8s上的部署使用示例</title><link>http://example.org/docs/programmer/cloudnative/k8s/elk%E5%9C%A8k8s%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B/</link><pubDate>Sun, 24 Sep 2023 23:01:41 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/elk%E5%9C%A8k8s%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B/</guid><description>示例Yaml # --- apiVersion: v1 kind: ConfigMap metadata: name: filebeat-config namespace: ops labels: k8s-app: filebeat data: filebeat.yml: |- filebeat.config: inputs: # Mounted `filebeat-inputs` configmap: path: ${path.config}/inputs.d/*.yml # Reload inputs configs as they change: reload.enabled: false modules: path: ${path.config}/modules.d/*.yml # Reload module configs as they change: reload.enabled: false output.elasticsearch: hosts: [&amp;#39;49.65.125.91:9200&amp;#39;] --- apiVersion: v1 kind: ConfigMap metadata: name: filebeat-inputs namespace: ops labels: k8s-app: filebeat data: kubernetes.yml: |- - type: docker containers.</description></item><item><title>k8s 配套说明</title><link>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/</link><pubDate>Thu, 07 Sep 2023 20:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/</guid><description>ctr # 如果定义了 -n 应该是namesplace 那么每个命令都得跟上
-load镜像 # sudo ctr -n=k8s.io images import ${imageTarFile}
-保存文件 # sudo ctr -n k8s.io images export &amp;ndash;platform=linux/amd64 hi.tar 101.32.1.4:30002/web-docker/worker:2121
-切换tag # sudo ctr -n k8s.io images tag &amp;ndash;force repos.x.com/web-docker/worker:2121 101.32.1.4:30002/web-docker/worker:2121
-推送镜像 # sudo ctr -n k8s.io images push -k -u admin:fat213asfdFS2W &amp;ndash;plain-http 101.32.1.4:30002/web-docker/worker:2121
-拉取 # sudo ctr -n k8s.io images pull -k -u admin:fat1239ASD124W &amp;ndash;plain-http 101.32.1.4:30002/web-docker/worker:2121
-Docker # [[Note of Docker]] 好像并没有整理docker命令&amp;hellip; 后续补吧</description></item><item><title>k8s技术分享</title><link>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/</link><pubDate>Thu, 07 Sep 2023 20:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/</guid><description>k8s技术分享 # 工作负载资源 # 一、pod # 1. 概要 # 可创建管理、最小的可部署计算单元，是可以在主机上运行的容器的集合 我们的服务都在其中运行。如我们的服务是nginx，则最内层是我们的服务 nginx，运行在 container 容器当中。container (容器) 的本质是进程，而 pod 是管理这一组进程的资源 所以pod可视为一个极为轻量化、没插网线的电脑，如果所需任务无需交互，那么用pod就很合适。例如给它挂载一个文件来训练模型、生成报表，可以根据场景使用 Job 或者 CronJob 或者其它 图示关系如下 # ![[k8s-pod-insert.png]]
-2. pod网络 # 当然，pod 可以管理多个 container，又因为container (容器) 的本质是进程，如果有本地网络通信需求(使用 localhost 或者 Socket 文件进行本地通信)，在这些场景中使用 pod 管理多个 container 就非常的推荐。
-如下图展示了Pod网络所依赖的3个网络设备
-1. eth0是节点主机上的网卡，支持该节点流量出入的设备、也是支持集群节点间IP寻址和互通的设备；
-2. docker0是一个虚拟网桥，可以简单理解为一个虚拟交换机，支持该节点上的Pod之间进行IP寻址和互通的设备；
-3. veth0则是Pod1的虚拟网卡，支持该Pod内容器互通和对外访问的虚拟设备；
-4. docker0网桥和veth0网卡，都是linux支持和创建的虚拟网络设备；
-5. pause属于特殊容器，其运行的唯一目的是为Pod建立共享的veth0网络接口
-![[k8s-nginx-pod.png]]
-二、deployment、StatefulSet # 1. 概要 # Deployment 使得 Pod 和 ReplicaSet 能够进行声明式更新
-StatefulSet 表示一组具有一致身份的 Pod：
-1. 身份定义为：</description></item><item><title>k8s学习-常用命令和配置文件</title><link>http://example.org/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/</link><pubDate>Mon, 27 Mar 2023 10:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/</guid><description>k8s学习 # 常用命令 # kubectl apply -f rcm_log_monut_k8s_pod.yaml kubectl get pod -A kubectl get pod -all-namespaces kubectl get node kubectl get deploy 持久卷 - PersistentVolume kubectl get persistentvolume kubectl describe persistentvolume example-pv kubectl **delete** persistentvolume example-pv 从kubectl cp -n &amp;lt;命名空间&amp;gt; -c :xxx.json xxx.json configmap / secret 存储文件内容 # sftpkey 为名称
-新建 # kubectl create secret generic sftpkey --from-file=/etc/id_rsa # kubectl create -n {NAMESPACE} secret generic sftpkey --from-file=/etc/id_rsa 删除 # kubectl delete secret sftpkey</description></item><item><title/><link>http://example.org/docs/programmer/cloudnative/k8s/argo-workflow%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/argo-workflow%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/</guid><description>Github: https://github.com/argoproj
-一、简介 # Argo Workflow 是一个开源的、基于 Kubernetes 的工作流引擎，用于编排和运行容器化应用的工作流程。它使用 YAML 文件来定义工作流、依赖关系和参数。
-Argo Workflow 还支持任务的重试、跳过、并行执行和失败处理等功能。它提供了丰富的工作流控制和监控功能，可以查看工作流的状态、日志和执行历史，并支持自定义的事件触发和通知机制。
-目前Argo团队下中有如下几个子项目：
-argoproj Common project repo for all Argo Projects gitops-engine Public Democratizing GitOps argo-workflows Workflow engine for Kubernetes argo-cd Declarative continuous deployment for Kubernetes. argo-events Event-driven automation framework argo-rollouts Progressive Delivery for Kubernetes cd和rollouts一个是持续交付工具，一个是渐进式发布工具。 workflows和events一个是基于容器的任务编排工具，一个是事件驱动框架。这两者搭配可以设计出一个由新建任务事件触发从而启动工作流的方案。
-流程如下： ![[content/docs/programmer/base/argo_events_workfows.png]] sensor作用 # 使事件转发和处理松耦合 Trigger事件的参数化，比如根据事件内容动态生成 二、Argo Workflow编排示例 # 以下是一个扔硬币和打印结果的示例，借此可以熟悉一下Workflow的编排语法
-apiVersion: argoproj.io/v1alpha1 kind: Workflow metadata: generateName: coinflip-recursive- spec: entrypoint: coinflip templates: - name: coinflip steps: - - name: flip-coin template: flip-coin - - name: heads template: heads when: &amp;#34;{{steps.</description></item><item><title/><link>http://example.org/docs/programmer/cloudnative/k8s/argo-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/argo-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</guid><description>Github: https://github.com/argoproj
-一、简介 # 目前Argo项目中有如下几个子项目：
-argoproj Common project repo for all Argo Projects
-gitops-engine Public Democratizing GitOps
-argo-workflows Workflow engine for Kubernetes
-argo-cd Declarative continuous deployment for Kubernetes.
-argo-events Event-driven automation framework
-argo-rollouts Progressive Delivery for Kubernetes
-cd和rollouts一个是持续交付工具，一个是渐进式发布工具，与原子能力关系不大。 workflows和events一个是基于容器的任务编排工具，一个是事件驱动框架。都与本次原子能力相关。
-这样，就可以设计出一个由新建扫描任务事件触发，实例化经过编排可实现扫描全流程的方案。
-流程如下：![[book_architecture/content/docs/programmer/base/argo_events_workfows.png]]
-sensor作用 # 使事件转发和处理松耦合 Trigger事件的参数化，比如根据事件内容动态生成 二、Argo Workflow编排 # name: flip-coin script: image: python:alpine3.6 command: [python] source: | import random result = &amp;ldquo;heads&amp;rdquo; if random.randint(0,1) == 0 else &amp;ldquo;tails&amp;rdquo; print(result)
-name: heads container: image: alpine:3.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>k8s on Ian's Blog</title><link>http://example.org/docs/programmer/cloudnative/k8s/</link><description>Recent content in k8s on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 09 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/cloudnative/k8s/index.xml" rel="self" type="application/rss+xml"/><item><title>阿里k8s自动伸缩</title><link>http://example.org/docs/programmer/cloudnative/k8s/%E9%98%BF%E9%87%8C%E8%87%AA%E5%8A%A8%E4%BC%B8%E7%BC%A9/</link><pubDate>Mon, 09 Jun 2025 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/%E9%98%BF%E9%87%8C%E8%87%AA%E5%8A%A8%E4%BC%B8%E7%BC%A9/</guid><description>&lt;h1 id="yaml"&gt;yaml&lt;a class="anchor" href="#yaml"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;apiVersion: autoscaling.alibabacloud.com/v1beta1 kind: AdvancedHorizontalPodAutoscaler metadata: name: demoname-name-requestor-aliyun-ahpa namespace: requestor spec: scaleStrategy: auto metrics: - type: Resource resource: name: cpu target: type: Utilization averageUtilization: 95 scaleTargetRef: apiVersion: apps/v1 kind: Deployment name: demoname-name-requestor-aliyun-deployment maxReplicas: 128 minReplicas: 32 stabilizationWindowSeconds: 1800 prediction: quantile: 95 scaleUpForward: 60 instanceBounds: - startTime&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;2021-12-16 00:00:00&amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;endTime&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;2031-12-16 00:00:00&amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;bounds: - cron&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;* 0-8 * * *&amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;maxReplicas: 128 minReplicas: 32 - cron&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;* 9-15 * * *&amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;maxReplicas: 128 minReplicas: 32 - cron&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;* 16-23 * * *&amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;maxReplicas: 128 minReplicas&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;32&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="说明"&gt;说明&lt;a class="anchor" href="#%e8%af%b4%e6%98%8e"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;这是一份阿里云 ACK（Alibaba Cloud Container Service for Kubernetes）中使用的 &lt;strong&gt;AdvancedHorizontalPodAutoscaler（AHPA）&lt;/strong&gt; 的 YAML 配置文件，用于自动伸缩 Pod 副本数。下面是该配置的逐项解释：&lt;/p&gt;</description></item><item><title>elk在k8s上的部署使用示例</title><link>http://example.org/docs/programmer/cloudnative/k8s/elk%E5%9C%A8k8s%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B/</link><pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/elk%E5%9C%A8k8s%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B/</guid><description>&lt;h1 id="示例yaml"&gt;示例Yaml&lt;a class="anchor" href="#%e7%a4%ba%e4%be%8byaml"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;apiVersion&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;v1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;kind&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;ConfigMap&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;metadata&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat-config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;namespace&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;ops&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;labels&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;k8s-app&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;data&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;filebeat.yml&lt;/span&gt;: |-&lt;span style="color:#e6db74"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; filebeat.config:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; inputs:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; # Mounted `filebeat-inputs` configmap:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; path: ${path.config}/inputs.d/*.yml
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; # Reload inputs configs as they change:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; reload.enabled: false
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; modules:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; path: ${path.config}/modules.d/*.yml
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; # Reload module configs as they change:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; reload.enabled: false
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; output.elasticsearch:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; hosts: [&amp;#39;49.65.125.91:9200&amp;#39;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;apiVersion&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;v1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;kind&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;ConfigMap&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;metadata&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat-inputs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;namespace&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;ops&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;labels&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;k8s-app&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;data&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;kubernetes.yml&lt;/span&gt;: |-&lt;span style="color:#e6db74"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; - type: docker
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; containers.ids:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; - &amp;#34;*&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; processors:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; - add_kubernetes_metadata:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; in_cluster: true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;apiVersion&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;apps/v1 &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;kind&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;DaemonSet&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;metadata&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;namespace&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;ops&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;labels&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;k8s-app&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;spec&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;selector&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;matchLabels&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;k8s-app&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;template&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;metadata&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;labels&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;k8s-app&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;spec&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;serviceAccountName&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;terminationGracePeriodSeconds&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;30&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;containers&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;image&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;elastic/filebeat:7.9.2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;args&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;-c&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;/etc/filebeat.yml&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;-e&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;securityContext&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;runAsUser&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# If using Red Hat OpenShift uncomment this:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;#privileged: true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;resources&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;limits&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;memory&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;200Mi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;requests&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;cpu&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;100m&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;memory&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;100Mi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;volumeMounts&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;mountPath&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;/etc/filebeat.yml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;readOnly&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;subPath&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat.yml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;inputs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;mountPath&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;/usr/share/filebeat/inputs.d&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;readOnly&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;data&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;mountPath&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;/usr/share/filebeat/data&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;varlibdockercontainers&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;mountPath&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;/var/lib/docker/containers&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;readOnly&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;volumes&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;configMap&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;defaultMode&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0600&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat-config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;varlibdockercontainers&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;hostPath&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;path&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;/var/lib/docker/containers&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;inputs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;configMap&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;defaultMode&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0600&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat-inputs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# data folder stores a registry of read status for all files, so we don&amp;#39;t send everything again on a Filebeat pod restart&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;data&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;hostPath&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;path&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;/var/lib/filebeat-data&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;DirectoryOrCreate&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;apiVersion&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;rbac.authorization.k8s.io/v1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;kind&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;ClusterRoleBinding&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;metadata&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;subjects&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &lt;span style="color:#f92672"&gt;kind&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;ServiceAccount&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;namespace&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;ops&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;roleRef&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;kind&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;ClusterRole&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;apiGroup&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;rbac.authorization.k8s.io&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;apiVersion&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;rbac.authorization.k8s.io/v1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;kind&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;ClusterRole&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;metadata&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;labels&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;k8s-app&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;rules&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &lt;span style="color:#f92672"&gt;apiGroups&lt;/span&gt;: [&lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&lt;/span&gt;] &lt;span style="color:#75715e"&gt;# &amp;#34;&amp;#34; indicates the core API group&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;resources&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;namespaces&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;pods&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;verbs&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;get&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;watch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;list&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;apiVersion&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;v1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;kind&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;ServiceAccount&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;metadata&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;namespace&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;ops&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;labels&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;k8s-app&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;filebeat&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;将以上内容存储到 &lt;code&gt;elk.yaml&lt;/code&gt;&lt;/p&gt;</description></item><item><title>k8s 配套说明</title><link>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/</link><pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/</guid><description>&lt;h1 id="ctr"&gt;ctr&lt;a class="anchor" href="#ctr"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;如果定义了 -n 应该是namesplace 那么每个命令都得跟上&lt;/p&gt;
+&lt;h2 id="load镜像"&gt;load镜像&lt;a class="anchor" href="#load%e9%95%9c%e5%83%8f"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;sudo ctr -n=&lt;a href="http://k8s.io/"&gt;k8s.io&lt;/a&gt; images import ${imageTarFile}&lt;/p&gt;
+&lt;h2 id="保存文件"&gt;保存文件&lt;a class="anchor" href="#%e4%bf%9d%e5%ad%98%e6%96%87%e4%bb%b6"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;sudo ctr -n k8s.io images export &amp;ndash;platform=linux/amd64 hi.tar 101.32.1.4:30002/web-docker/worker:2121&lt;/p&gt;
+&lt;h2 id="切换tag"&gt;切换tag&lt;a class="anchor" href="#%e5%88%87%e6%8d%a2tag"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;sudo ctr -n &lt;a href="http://k8s.io/"&gt;k8s.io&lt;/a&gt; images tag &amp;ndash;force repos.x.com/web-docker/worker:2121 101.32.1.4:30002/web-docker/worker:2121&lt;/p&gt;
+&lt;h2 id="推送镜像"&gt;推送镜像&lt;a class="anchor" href="#%e6%8e%a8%e9%80%81%e9%95%9c%e5%83%8f"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;sudo ctr -n &lt;a href="http://k8s.io/"&gt;k8s.io&lt;/a&gt; images push -k -u admin:fat213asfdFS2W &amp;ndash;plain-http 101.32.1.4:30002/web-docker/worker:2121&lt;/p&gt;
+&lt;h2 id="拉取"&gt;拉取&lt;a class="anchor" href="#%e6%8b%89%e5%8f%96"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;sudo ctr -n k8s.io images pull -k -u admin:fat1239ASD124W &amp;ndash;plain-http 101.32.1.4:30002/web-docker/worker:2121&lt;/p&gt;
+&lt;h1 id="docker"&gt;Docker&lt;a class="anchor" href="#docker"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;[[Note of Docker]]
+好像并没有整理docker命令&amp;hellip; 后续补吧&lt;/p&gt;
+&lt;h2 id="加载镜像"&gt;加载镜像&lt;a class="anchor" href="#%e5%8a%a0%e8%bd%bd%e9%95%9c%e5%83%8f"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;docker load -i .\hi.tar&lt;/p&gt;
+&lt;h2 id="保存为本地文件"&gt;保存为本地文件&lt;a class="anchor" href="#%e4%bf%9d%e5%ad%98%e4%b8%ba%e6%9c%ac%e5%9c%b0%e6%96%87%e4%bb%b6"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;docker save  repos.x.com/web-docker/worker:2121 -o hi.tar&lt;/p&gt;</description></item><item><title>k8s技术分享</title><link>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/</link><pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/</guid><description>&lt;h1 id="k8s技术分享"&gt;k8s技术分享&lt;a class="anchor" href="#k8s%e6%8a%80%e6%9c%af%e5%88%86%e4%ba%ab"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="工作负载资源"&gt;工作负载资源&lt;a class="anchor" href="#%e5%b7%a5%e4%bd%9c%e8%b4%9f%e8%bd%bd%e8%b5%84%e6%ba%90"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="一pod"&gt;一、&lt;a href="https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/pod-v1/"&gt;pod&lt;/a&gt;&lt;a class="anchor" href="#%e4%b8%80pod"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="1-概要"&gt;1. 概要&lt;a class="anchor" href="#1-%e6%a6%82%e8%a6%81"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;可创建管理、最小的可部署计算单元，是可以在主机上运行的容器的集合&lt;/li&gt;
+&lt;li&gt;我们的服务都在其中运行。如我们的服务是nginx，则最内层是我们的服务 &lt;code&gt;nginx&lt;/code&gt;，运行在 &lt;code&gt;container&lt;/code&gt; 容器当中。&lt;code&gt;container&lt;/code&gt; (容器) 的本质是进程，而 &lt;code&gt;pod&lt;/code&gt; 是管理这一组进程的资源&lt;/li&gt;
+&lt;li&gt;所以pod可视为一个极为轻量化、没插网线的电脑，如果所需任务无需交互，那么用pod就很合适。例如给它挂载一个文件来训练模型、生成报表，可以根据场景使用 &lt;a href="https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/job-v1/"&gt;Job&lt;/a&gt; 或者 &lt;a href="https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/cron-job-v1/"&gt;CronJob&lt;/a&gt; 或者其它&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="图示关系如下"&gt;图示关系如下&lt;a class="anchor" href="#%e5%9b%be%e7%a4%ba%e5%85%b3%e7%b3%bb%e5%a6%82%e4%b8%8b"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;![[k8s-pod-insert.png]]&lt;/p&gt;
+&lt;h3 id="2-pod网络"&gt;2. pod网络&lt;a class="anchor" href="#2-pod%e7%bd%91%e7%bb%9c"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;当然，&lt;code&gt;pod&lt;/code&gt; 可以管理多个 &lt;code&gt;container&lt;/code&gt;，又因为&lt;code&gt;container&lt;/code&gt; (容器) 的本质是进程，如果有本地网络通信需求(使用 localhost 或者 Socket 文件进行本地通信)，在这些场景中使用 &lt;code&gt;pod&lt;/code&gt; 管理多个 &lt;code&gt;container&lt;/code&gt; 就非常的推荐。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如下图展示了Pod网络所依赖的3个网络设备&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;    1. eth0是节点主机上的网卡，支持该节点流量出入的设备、也是支持集群节点间IP寻址和互通的设备；&lt;/p&gt;
+&lt;p&gt;    2. docker0是一个虚拟网桥，可以简单理解为一个虚拟交换机，支持该节点上的Pod之间进行IP寻址和互通的设备；&lt;/p&gt;
+&lt;p&gt;    3. veth0则是Pod1的虚拟网卡，支持该Pod内容器互通和对外访问的虚拟设备；&lt;/p&gt;
+&lt;p&gt;    4. docker0网桥和veth0网卡，都是linux支持和创建的虚拟网络设备；&lt;/p&gt;
+&lt;p&gt;    5. pause属于特殊容器，其运行的唯一目的是为Pod建立共享的veth0网络接口&lt;/p&gt;
+&lt;p&gt;![[k8s-nginx-pod.png]]&lt;/p&gt;
+&lt;h2 id="二deploymentstatefulset"&gt;二、&lt;a href="https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/deployment-v1/"&gt;deployment&lt;/a&gt;、&lt;a href="https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/stateful-set-v1/"&gt;StatefulSet&lt;/a&gt;&lt;a class="anchor" href="#%e4%ba%8cdeploymentstatefulset"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="1-概要-1"&gt;1. 概要&lt;a class="anchor" href="#1-%e6%a6%82%e8%a6%81-1"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Deployment 使得 Pod 和 ReplicaSet 能够进行声明式更新&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;StatefulSet 表示一组具有一致身份的 Pod：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;    1. 身份定义为：&lt;/p&gt;
+&lt;p&gt;        - 网络：一个稳定的 DNS 和主机名。&lt;/p&gt;
+&lt;p&gt;        - 存储：根据要求提供尽可能多的 VolumeClaim。&lt;/p&gt;
+&lt;p&gt;        StatefulSet 保证给定的网络身份将始终映射到相同的存储身份。&lt;/p&gt;
+&lt;p&gt;        虽然pod完全具备在生产环境中部署独立的单体服务的能力，但在生产环境中，我们基本上不会直接管理 &lt;code&gt;pod&lt;/code&gt;，我们会使用&lt;code&gt;deployment&lt;/code&gt; 代为控管。延续上面的比喻就是将 &lt;code&gt;deployment&lt;/code&gt; 视为一个好用的机房管理员：帮助我们进货，对pod进行开关机，对pod做系统升级和重装系统以实现功能升级和回滚。 &lt;code&gt;StatefulSet&lt;/code&gt; 也相同，只不过每次它会保证一致性，而不像&lt;code&gt;deployment&lt;/code&gt; 每次重启都是随机分配&lt;/p&gt;</description></item><item><title>k8s学习-常用命令和配置文件</title><link>http://example.org/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/</link><pubDate>Mon, 27 Mar 2023 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/</guid><description>&lt;p&gt;&lt;img src="https://d33wubrfki0l68.cloudfront.net/69e55f968a6f44613384615c6a78b881bfe28bd6/1600c/zh-cn/_common-resources/images/flower.svg" alt="k8s" /&gt;&lt;/p&gt;
+&lt;h1 id="k8s学习"&gt;k8s学习&lt;a class="anchor" href="#k8s%e5%ad%a6%e4%b9%a0"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="常用命令"&gt;常用命令&lt;a class="anchor" href="#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;kubectl apply -f rcm_log_monut_k8s_pod.yaml&lt;/li&gt;
+&lt;li&gt;kubectl get pod -A&lt;/li&gt;
+&lt;li&gt;kubectl get pod -all-namespaces&lt;/li&gt;
+&lt;li&gt;kubectl get node&lt;/li&gt;
+&lt;li&gt;kubectl get deploy&lt;/li&gt;
+&lt;li&gt;&lt;a href="#%e6%8c%81%e4%b9%85%e5%8d%b7"&gt;持久卷 - PersistentVolume&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;kubectl get persistentvolume&lt;/li&gt;
+&lt;li&gt;kubectl describe persistentvolume example-pv&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;kubectl **delete** persistentvolume example-pv&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;从kubectl cp -n &amp;lt;命名空间&amp;gt; -c &lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;:xxx.json xxx.json&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="configmap--secret-存储文件内容"&gt;configmap / secret 存储文件内容&lt;a class="anchor" href="#configmap--secret-%e5%ad%98%e5%82%a8%e6%96%87%e4%bb%b6%e5%86%85%e5%ae%b9"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;sftpkey&lt;/code&gt; 为名称&lt;/p&gt;
+&lt;h3 id="新建"&gt;新建&lt;a class="anchor" href="#%e6%96%b0%e5%bb%ba"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;kubectl create secret generic sftpkey --from-file&lt;span style="color:#f92672"&gt;=&lt;/span&gt;/etc/id_rsa
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# kubectl create -n {NAMESPACE} secret generic sftpkey --from-file=/etc/id_rsa&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="删除"&gt;删除&lt;a class="anchor" href="#%e5%88%a0%e9%99%a4"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;kubectl delete secret sftpkey&lt;/p&gt;</description></item><item><title/><link>http://example.org/docs/programmer/cloudnative/k8s/argo-workflow%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/argo-workflow%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/</guid><description>&lt;p&gt;Github: &lt;a href="https://github.com/argoproj"&gt;https://github.com/argoproj&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="一简介"&gt;一、简介&lt;a class="anchor" href="#%e4%b8%80%e7%ae%80%e4%bb%8b"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Argo Workflow&lt;/code&gt; 是一个开源的、基于 &lt;code&gt;Kubernetes&lt;/code&gt; 的工作流引擎，用于编排和运行容器化应用的工作流程。它使用 &lt;code&gt;YAML&lt;/code&gt; 文件来定义工作流、依赖关系和参数。&lt;/p&gt;
+&lt;p&gt;Argo Workflow 还支持任务的重试、跳过、并行执行和失败处理等功能。它提供了丰富的工作流控制和监控功能，可以查看工作流的状态、日志和执行历史，并支持自定义的事件触发和通知机制。&lt;/p&gt;
+&lt;p&gt;目前Argo团队下中有如下几个子项目：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/argoproj/argopro"&gt;argoproj&lt;/a&gt; &lt;code&gt;Common project repo for all Argo Projects&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/argoproj/gitops-engine"&gt;gitops-engine&lt;/a&gt; &lt;code&gt;Public Democratizing GitOps&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/argoproj/argo-workflows"&gt;argo-workflows&lt;/a&gt; &lt;code&gt;Workflow engine for Kubernetes&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/argoproj/argo-cd"&gt;argo-cd&lt;/a&gt; &lt;code&gt;Declarative continuous deployment for Kubernetes.&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/argoproj/argo-events"&gt;argo-events&lt;/a&gt; &lt;code&gt;Event-driven automation framework&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/argoproj/argo-rollouts"&gt;argo-rollouts&lt;/a&gt; &lt;code&gt;Progressive Delivery for Kubernetes&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cd&lt;/code&gt;和&lt;code&gt;rollouts&lt;/code&gt;一个是持续交付工具，一个是渐进式发布工具。
+&lt;code&gt;workflows&lt;/code&gt;和&lt;code&gt;events&lt;/code&gt;一个是基于容器的任务编排工具，一个是事件驱动框架。这两者搭配可以设计出一个由&lt;code&gt;新建任务事件&lt;/code&gt;触发从而&lt;code&gt;启动工作流&lt;/code&gt;的方案。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;流程如下&lt;/strong&gt;：
+![[content/docs/programmer/base/argo_events_workfows.png]]
+&lt;img src="http://example.org/docs/programmer/base/argo_events_workfows.png" alt="argo_events_workfows" /&gt;&lt;/p&gt;
+&lt;h3 id="sensor作用"&gt;sensor作用&lt;a class="anchor" href="#sensor%e4%bd%9c%e7%94%a8"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;使事件转发和处理松耦合&lt;/li&gt;
+&lt;li&gt;Trigger事件的参数化，比如根据事件内容动态生成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="二argo-workflow编排示例"&gt;二、Argo Workflow编排示例&lt;a class="anchor" href="#%e4%ba%8cargo-workflow%e7%bc%96%e6%8e%92%e7%a4%ba%e4%be%8b"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;以下是一个扔硬币和打印结果的示例，借此可以熟悉一下&lt;code&gt;Workflow&lt;/code&gt;的编排语法&lt;/p&gt;
+&lt;/blockquote&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;apiVersion&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;argoproj.io/v1alpha1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;kind&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Workflow&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;metadata&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;generateName&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;coinflip-recursive-&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;spec&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;entrypoint&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;coinflip&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;templates&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;coinflip&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;steps&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;flip-coin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;template&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;flip-coin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;heads&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;template&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;heads&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;when&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;{{steps.flip-coin.outputs.result}} == heads&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;tails&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;template&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;coinflip&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;when&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;{{steps.flip-coin.outputs.result}} == tails&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;flip-coin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;script&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;image&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;python:alpine3.6&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;command&lt;/span&gt;: [&lt;span style="color:#ae81ff"&gt;python]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;source&lt;/span&gt;: |&lt;span style="color:#e6db74"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; import random
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; result = &amp;#34;heads&amp;#34; if random.randint(0,1) == 0 else &amp;#34;tails&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; print(result)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;heads&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;container&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;image&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;alpine:3.6&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;command&lt;/span&gt;: [&lt;span style="color:#ae81ff"&gt;sh, -c]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;args&lt;/span&gt;: [&lt;span style="color:#e6db74"&gt;&amp;#34;echo \&amp;#34;it was heads\&amp;#34;&amp;#34;&lt;/span&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;至于部署Argo的步骤网上都有，为了精简文章就不在此赘述。下面关于一些在使用中需要注意的重要问题进行一些说明。&lt;/p&gt;</description></item><item><title/><link>http://example.org/docs/programmer/cloudnative/k8s/argo-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/argo-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</guid><description>&lt;p&gt;Github: &lt;a href="https://github.com/argoproj"&gt;https://github.com/argoproj&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="一简介"&gt;一、简介&lt;a class="anchor" href="#%e4%b8%80%e7%ae%80%e4%bb%8b"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;目前Argo项目中有如下几个子项目：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/argoproj/argopro"&gt;argoproj&lt;/a&gt; &lt;code&gt;Common project repo for all Argo Projects&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/argoproj/gitops-engine"&gt;gitops-engine&lt;/a&gt; &lt;code&gt;Public Democratizing GitOps&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/argoproj/argo-workflows"&gt;argo-workflows&lt;/a&gt; &lt;code&gt;Workflow engine for Kubernetes&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/argoproj/argo-cd"&gt;argo-cd&lt;/a&gt; &lt;code&gt;Declarative continuous deployment for Kubernetes.&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/argoproj/argo-events"&gt;argo-events&lt;/a&gt; &lt;code&gt;Event-driven automation framework&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/argoproj/argo-rollouts"&gt;argo-rollouts&lt;/a&gt; &lt;code&gt;Progressive Delivery for Kubernetes&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cd&lt;/code&gt;和&lt;code&gt;rollouts&lt;/code&gt;一个是持续交付工具，一个是渐进式发布工具，与原子能力关系不大。
+&lt;code&gt;workflows&lt;/code&gt;和&lt;code&gt;events&lt;/code&gt;一个是基于容器的任务编排工具，一个是事件驱动框架。都与本次原子能力相关。&lt;/p&gt;
+&lt;p&gt;这样，就可以设计出一个由新建扫描任务事件触发，实例化经过编排可实现扫描全流程的方案。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;流程如下：![[book_architecture/content/docs/programmer/base/argo_events_workfows.png]]&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id="sensor作用"&gt;sensor作用&lt;a class="anchor" href="#sensor%e4%bd%9c%e7%94%a8"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;使事件转发和处理松耦合&lt;/li&gt;
+&lt;li&gt;Trigger事件的参数化，比如根据事件内容动态生成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="二argo-workflow编排"&gt;二、Argo Workflow编排&lt;a class="anchor" href="#%e4%ba%8cargo-workflow%e7%bc%96%e6%8e%92"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;name: flip-coin
+script:
+image: python:alpine3.6
+command: [python]
+source: |
+import random
+result = &amp;ldquo;heads&amp;rdquo; if random.randint(0,1) == 0 else &amp;ldquo;tails&amp;rdquo;
+print(result)&lt;/p&gt;</description></item></channel></rss>

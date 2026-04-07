@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>debuger on Ian's Blog</title><link>http://example.org/tags/debuger/</link><description>Recent content in debuger on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 10 Jan 2019 12:21:12 +0000</lastBuildDate><atom:link href="http://example.org/tags/debuger/index.xml" rel="self" type="application/rss+xml"/><item><title>Tips of debuggers</title><link>http://example.org/docs/programmer/langs/tips-of-debugers/</link><pubDate>Thu, 10 Jan 2019 12:21:12 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tips-of-debugers/</guid><description>Clang &amp;amp;&amp;amp; lldb # 听说clang+lldb &amp;gt;= gcc + gdb, 所以一试:
-lldb基本命令 # 与GDB相同
-break (b) - 设置断点，也就是程序暂停的地方 run (r) - 启动目标程序，如果遇到断点则暂停 step (s) - 进入下一条指令中的函数内部 backtrace (bt) - 显示当前的有效函数 frame (f) - 默认显示当前栈的内容，可以通过 frame arg 进入特定的 frame（用作输出本地变量） next (n) - 运行当前箭头指向行 continue (c) - 继续运行程序直到遇到断点。 clang hello.c -g -o hello lldb hello # lldb b main run n p str 还有颜色 😂 可视效果确实提高了不少 而且这四个工具可以混用,也蛮好.
-GDB # First and foremost, you will need to compile your program with the flag &amp;ldquo;-g&amp;rdquo; (for debug) to run it via GDB.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Debuger on Ian's Blog</title><link>http://example.org/tags/debuger/</link><description>Recent content in Debuger on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 10 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/debuger/index.xml" rel="self" type="application/rss+xml"/><item><title>Tips of debuggers</title><link>http://example.org/docs/programmer/langs/tips-of-debugers/</link><pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tips-of-debugers/</guid><description>&lt;h1 id="clang--lldb"&gt;Clang &amp;amp;&amp;amp; lldb&lt;a class="anchor" href="#clang--lldb"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;听说&lt;code&gt;clang&lt;/code&gt;+&lt;code&gt;lldb&lt;/code&gt; &amp;gt;= &lt;code&gt;gcc&lt;/code&gt; + &lt;code&gt;gdb&lt;/code&gt;, 所以一试:&lt;/p&gt;
+&lt;h2 id="lldb基本命令"&gt;lldb基本命令&lt;a class="anchor" href="#lldb%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;与GDB相同&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;break (b) - 设置断点，也就是程序暂停的地方&lt;/li&gt;
+&lt;li&gt;run (r) - 启动目标程序，如果遇到断点则暂停&lt;/li&gt;
+&lt;li&gt;step (s) - 进入下一条指令中的函数内部&lt;/li&gt;
+&lt;li&gt;backtrace (bt) - 显示当前的有效函数&lt;/li&gt;
+&lt;li&gt;frame (f) - 默认显示当前栈的内容，可以通过 &lt;code&gt;frame arg&lt;/code&gt; 进入特定的 frame（用作输出本地变量）&lt;/li&gt;
+&lt;li&gt;next (n) - 运行当前箭头指向行&lt;/li&gt;
+&lt;li&gt;continue (c) - 继续运行程序直到遇到断点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;clang hello.c -g -o hello
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;lldb hello&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex="0"&gt;&lt;code class="language-lldb" data-lang="lldb"&gt;# lldb
+b main
+run
+n
+p str&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;还有颜色 😂 可视效果确实提高了不少
+而且这四个工具可以混用,也蛮好.&lt;/p&gt;
+&lt;h2 id="gdb"&gt;GDB&lt;a class="anchor" href="#gdb"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img src="https://www.linuxprobe.com/wp-content/uploads/2017/02/175653ff8gl0f5flw4f518.jpg" alt="gdb" title="tmp"/&gt;&lt;/p&gt;
+&lt;p&gt;First and foremost, you will need to compile your program with the flag &amp;ldquo;-g&amp;rdquo; (for debug) to run it via GDB. From there the syntax to start debugging is:&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Langchain on Ian's Blog</title><link>http://example.org/tags/langchain/</link><description>Recent content in Langchain on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 09 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/langchain/index.xml" rel="self" type="application/rss+xml"/><item><title>LangChain入门</title><link>http://example.org/docs/programmer/ml/langchain/</link><pubDate>Tue, 09 Dec 2025 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/langchain/</guid><description>&lt;h1 id="langchain工具系统深度剖析从设计哲学到工程实践"&gt;&lt;strong&gt;LangChain工具系统深度剖析：从设计哲学到工程实践&lt;/strong&gt;&lt;a class="anchor" href="#langchain%e5%b7%a5%e5%85%b7%e7%b3%bb%e7%bb%9f%e6%b7%b1%e5%ba%a6%e5%89%96%e6%9e%90%e4%bb%8e%e8%ae%be%e8%ae%a1%e5%93%b2%e5%ad%a6%e5%88%b0%e5%b7%a5%e7%a8%8b%e5%ae%9e%e8%b7%b5"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;本文旨在超越基础教程，从设计范式、架构实现、工具（Tool）系统核心机制及工程实践等多个维度，对现代LangChain进行一次“鞭辟入里”的解析。我们将摒弃对表面API的罗列，转而探究其背后的抽象哲学、实现决策、典型陷阱与效能优化之道。&lt;/p&gt;
+&lt;h3 id="一-设计哲学与范式转移"&gt;&lt;strong&gt;一、 设计哲学与范式转移&lt;/strong&gt;&lt;a class="anchor" href="#%e4%b8%80-%e8%ae%be%e8%ae%a1%e5%93%b2%e5%ad%a6%e4%b8%8e%e8%8c%83%e5%bc%8f%e8%bd%ac%e7%a7%bb"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;LangChain的本质，是一场针对大语言模型（LLM）应用开发的&lt;strong&gt;范式工程化&lt;/strong&gt;。其核心并非发明新算法，而是通过一套精密的抽象，将LLM从封闭的对话接口，改造为可预测、可组合、可嵌入复杂工作流的&lt;strong&gt;软件组件&lt;/strong&gt;。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;从“提示工程”到“软件工程”&lt;/strong&gt;：传统LLM应用依赖精巧但脆弱的提示词（Prompt），本质是“人适应模型”。LangChain引入&lt;code&gt;Runnable&lt;/code&gt;、&lt;code&gt;Chain&lt;/code&gt;等抽象，将交互逻辑固化在代码中，使应用流程可版本化、可测试、可调试，转向“模型适应架构”。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;统一接口（Runnable）的威力&lt;/strong&gt;：&lt;code&gt;Runnable&lt;/code&gt;是LangChain最深刻的抽象。它将所有组件（Prompt、Model、Tool、Parser、Lambda函数）标准化为具有&lt;code&gt;invoke&lt;/code&gt;、&lt;code&gt;batch&lt;/code&gt;、&lt;code&gt;stream&lt;/code&gt;方法的对象。这模仿了函数式编程中的“单子”（Monad）或Unix管道思想，使得任意组件的组合（&lt;code&gt;|&lt;/code&gt;操作符）成为可能。在源码层面，&lt;code&gt;Runnable&lt;/code&gt;是一个协议（Protocol），其实现类（如&lt;code&gt;RunnableSequence&lt;/code&gt;、&lt;code&gt;RunnableParallel&lt;/code&gt;）负责管理数据流和依赖。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;声明式工作流（LCEL）&lt;/strong&gt;：LangChain表达式语言（LCEL）不是一门新语言，而是一种基于Python运算符重载的领域特定（DSL）写法。&lt;code&gt;chain = prompt | model | output_parser&lt;/code&gt;这样的声明式代码，清晰地定义了数据流向，将“怎么做”（How）的控制逻辑交给框架，开发者专注于“做什么”（What）。源码中，&lt;code&gt;|&lt;/code&gt;运算符最终构建了一个&lt;code&gt;RunnableSequence&lt;/code&gt;对象，它按顺序执行各个步骤，并将上一步的输出作为下一步的输入。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;学术视角&lt;/strong&gt;：这可以看作是一种&lt;strong&gt;面向组件的编程&lt;/strong&gt;（Component-Oriented Programming）在AI领域的实践，旨在通过高内聚、低耦合的组件，构建复杂、可维护的智能系统。&lt;/p&gt;
+&lt;h3 id="二-核心架构与工具tool系统的深度解析"&gt;&lt;strong&gt;二、 核心架构与工具（Tool）系统的深度解析&lt;/strong&gt;&lt;a class="anchor" href="#%e4%ba%8c-%e6%a0%b8%e5%bf%83%e6%9e%b6%e6%9e%84%e4%b8%8e%e5%b7%a5%e5%85%b7tool%e7%b3%bb%e7%bb%9f%e7%9a%84%e6%b7%b1%e5%ba%a6%e8%a7%a3%e6%9e%90"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;工具系统是LangChain从“链”迈向“智能体”（Agent）的关键桥梁，也是其工程化思想的集中体现。&lt;/p&gt;
+&lt;h4 id="1-设计理念工具作为可编排的能力单元"&gt;&lt;strong&gt;1. 设计理念：工具作为可编排的能力单元&lt;/strong&gt;&lt;a class="anchor" href="#1-%e8%ae%be%e8%ae%a1%e7%90%86%e5%bf%b5%e5%b7%a5%e5%85%b7%e4%bd%9c%e4%b8%ba%e5%8f%af%e7%bc%96%e6%8e%92%e7%9a%84%e8%83%bd%e5%8a%9b%e5%8d%95%e5%85%83"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;封装与抽象&lt;/strong&gt;：一个&lt;code&gt;Tool&lt;/code&gt;对象封装了三要素：名称、描述、可执行函数（func）。其设计精妙之处在于，它将不确定的自然语言指令（如“查一下天气”）映射到一个确定性的函数调用。描述（description）是此映射的“对齐”关键，为LLM提供选择依据。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;统一接口&lt;/strong&gt;：&lt;code&gt;Tool&lt;/code&gt;本身也是&lt;code&gt;Runnable&lt;/code&gt;，这意味着它可以无缝接入LCEL管道，既能被Agent动态调用，也能被开发者静态编排。这种设计消除了“动态”和“静态”流程的鸿沟。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="2-源码实现探微"&gt;&lt;strong&gt;2. 源码实现探微&lt;/strong&gt;&lt;a class="anchor" href="#2-%e6%ba%90%e7%a0%81%e5%ae%9e%e7%8e%b0%e6%8e%a2%e5%be%ae"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;以&lt;code&gt;langchain_core.tools.BaseTool&lt;/code&gt;为例，其核心简化如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;BaseTool&lt;/span&gt;(Runnable[Dict[str, Any], Any]):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; name: str
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; description: str
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; args_schema: Optional[Type[BaseModel]] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;_run&lt;/span&gt;(self, &lt;span style="color:#f92672"&gt;*&lt;/span&gt;args, &lt;span style="color:#f92672"&gt;**&lt;/span&gt;kwargs) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Any:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 具体工具的执行逻辑&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;async&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;_arun&lt;/span&gt;(self, &lt;span style="color:#f92672"&gt;*&lt;/span&gt;args, &lt;span style="color:#f92672"&gt;**&lt;/span&gt;kwargs) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Any:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 异步执行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;invoke&lt;/span&gt;(self, input: Dict, config: Optional[RunnableConfig] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Any:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 实现Runnable接口，解析input并调用_run或_arun&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; validated_args &lt;span style="color:#f92672"&gt;=&lt;/span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;_validate_args(input)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;_run(&lt;span style="color:#f92672"&gt;**&lt;/span&gt;validated_args)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;输入标准化&lt;/strong&gt;：&lt;code&gt;invoke&lt;/code&gt;方法接受字典输入，通过&lt;code&gt;args_schema&lt;/code&gt;（Pydantic模型）进行验证和解析，确保类型安全。这解决了LLM输出不稳定、需要复杂后处理（如正则匹配）的核心痛点。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;与Agent的协作&lt;/strong&gt;：当Agent（如&lt;code&gt;create_react_agent&lt;/code&gt;）工作时，其核心循环是：1) 将当前状态（问题、历史、工具描述）格式化为Prompt；2) 调用LLM；3) 解析LLM输出，期望得到一个&lt;code&gt;Action&lt;/code&gt;（选择工具和输入）或&lt;code&gt;Final Answer&lt;/code&gt;；4) 若为&lt;code&gt;Action&lt;/code&gt;，则调用对应&lt;code&gt;Tool.invoke()&lt;/code&gt;，将结果作为新观察加入状态，进入下一轮循环。此过程在&lt;code&gt;AgentExecutor&lt;/code&gt;中实现。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="3-工程化的工具设计模式"&gt;&lt;strong&gt;3. 工程化的工具设计模式&lt;/strong&gt;&lt;a class="anchor" href="#3-%e5%b7%a5%e7%a8%8b%e5%8c%96%e7%9a%84%e5%b7%a5%e5%85%b7%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;函数即工具&lt;/strong&gt;：最简模式，使用&lt;code&gt;@tool&lt;/code&gt;装饰器将一个Python函数包装为工具。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;结构化工具&lt;/strong&gt;：定义&lt;code&gt;args_schema&lt;/code&gt;（Pydantic模型），强制LLM输出结构化参数，极大提升调用可靠性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;链即工具&lt;/strong&gt;：将一个复杂的LCEL链（如包含检索、总结的RAG链）作为工具的执行体。这实现了能力的层级封装。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工具集&lt;/strong&gt;：通过&lt;code&gt;Toolkit&lt;/code&gt;概念将相关工具分组管理，便于Agent在特定领域（如数据库操作、文件系统）内进行推理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="三-使用实践模式优化与坑点"&gt;&lt;strong&gt;三、 使用实践：模式、优化与坑点&lt;/strong&gt;&lt;a class="anchor" href="#%e4%b8%89-%e4%bd%bf%e7%94%a8%e5%ae%9e%e8%b7%b5%e6%a8%a1%e5%bc%8f%e4%bc%98%e5%8c%96%e4%b8%8e%e5%9d%91%e7%82%b9"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="1-核心使用模式"&gt;&lt;strong&gt;1. 核心使用模式&lt;/strong&gt;&lt;a class="anchor" href="#1-%e6%a0%b8%e5%bf%83%e4%bd%bf%e7%94%a8%e6%a8%a1%e5%bc%8f"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;静态编排（推荐优先）&lt;/strong&gt;：对于流程确定的任务，使用LCEL显式编排工具链。这更可靠、高效且易于调试。
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;data_process_chain &lt;span style="color:#f92672"&gt;=&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; load_document_tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;|&lt;/span&gt; split_text_tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;|&lt;/span&gt; RunnableParallel({
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;summary&amp;#34;&lt;/span&gt;: summarize_chain,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;keywords&amp;#34;&lt;/span&gt;: extract_keywords_chain
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; })
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;|&lt;/span&gt; format_report_tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动态代理（慎用）&lt;/strong&gt;：仅当任务路径无法预先确定时使用Agent。务必严格限制工具集，并设置最大迭代次数以防止无限循环和成本失控。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="2-关键性能优化点"&gt;&lt;strong&gt;2. 关键性能优化点&lt;/strong&gt;&lt;a class="anchor" href="#2-%e5%85%b3%e9%94%ae%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%82%b9"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;LangChain的便利性常以性能为代价，优化是生产部署的必修课。&lt;/p&gt;</description></item></channel></rss>

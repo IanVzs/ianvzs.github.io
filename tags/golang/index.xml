@@ -1,11 +1,240 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>golang on Ian's Blog</title><link>http://example.org/tags/golang/</link><description>Recent content in golang on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 25 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/golang/index.xml" rel="self" type="application/rss+xml"/><item><title>把Golang当脚本语言用</title><link>http://example.org/docs/programmer/langs/golang/%E6%8A%8Agolang%E5%BD%93%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%94%A8/</link><pubDate>Wed, 25 Sep 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/golang/%E6%8A%8Agolang%E5%BD%93%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%94%A8/</guid><description>支持 # Go 软件包：
-github.com/fatih/color[8] 是用于输出对应编码颜色的包。
-github.com/schollz/progressbar[9] 是用于为执行时间过久的任务创建进度条的包。
-github.com/jimlawless/whereami[10] 是用于捕获源代码的文件名、行号、函数等信息的包，这对于改正错误信息十分有用！
-github.com/spf13/cobra[11] 是用于更轻松地创建带有输入选项和相关文档的复杂脚本的包。</description></item><item><title>常用命令</title><link>http://example.org/docs/programmer/langs/golang/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Mon, 19 Aug 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/golang/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description> build # 编译个后端服务，解决有些包依赖问题
-go build -ldflags &amp;#39;-w -s&amp;#39; -tags netgo -insta llsuffix netgo -o xxxxx 清理 # 清理GOPATH: go clean -modcache # 设置大磁盘的新路径 export GOPATH=/mnt/data/go/gopath</description></item><item><title>Golang进阶笔记</title><link>http://example.org/docs/programmer/langs/golang/advanced-knowledge-of-golang/</link><pubDate>Wed, 19 May 2021 19:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/golang/advanced-knowledge-of-golang/</guid><description>Golang进阶笔记 # 性能分析 # import ( &amp;#34;net/http&amp;#34; _ &amp;#34;net/http/pprof&amp;#34; ) go func() { log.Println(http.ListenAndServe(&amp;#34;localhost:6060&amp;#34;, nil)) }() 将以上代码插入程序中 启动之后执行
-go tool pprof http://localhost:6060/debug/pprof/profile?seconds=30 具体使用方法可以help 如果使用top的话就可以查看方法占用了
-(pprof) top Showing nodes accounting for 29.59s, 98.60% of 30.01s total Dropped 35 nodes (cum &amp;lt;= 0.15s) flat flat% sum% cum cum% 28.98s 96.57% 96.57% 28.98s 96.57% time.Now 0.24s 0.8% 97.37% 0.51s 1.70% runtime.selectgo 0.16s 0.53% 97.90% 0.16s 0.53% memeqbody 0.13s 0.43% 98.33% 0.29s 0.97% runtime.</description></item><item><title>Golang笔记</title><link>http://example.org/docs/programmer/langs/golang/note-of-golang/</link><pubDate>Tue, 15 May 2018 10:18:26 +0000</pubDate><guid>http://example.org/docs/programmer/langs/golang/note-of-golang/</guid><description>Golang笔记 # 先贴一个客观的教程文档网站http://www.runoob.com/go/go-slice.html
-垃圾回收 # 常见的回收算法 # 引用计数 优点：对象可以被很快回收 缺点：不太好处理循环引用 标记-清除 优点：解决了引用计数的缺点 缺点：需要 STW(Stop The World),暂时停止程序运行 分代收集(按照对象生命周期长短划分不同的代空间，生命周期长的放入老年代，段的放入新生代，不同代有不同的回收算法和回收频率) 优点：回收性能好 缺点：算法复杂 三色标记法(初始状态：白色、从根节点开始遍历，遍历到的变成灰色，遍历灰色，将灰色引用的标记灰色，遍历过的灰色对象变为黑色。循环遍历灰色对象。通过写屏障检测对象的变化，重复。收集所有白色对象(垃圾)) GPM调度和CSP模型 # CSP 模型？ # CSP 模型是“以通信的方式来共享内存”，不同于传统的多线程通 过共享内存来通信。用于描述两个独立的并发实体通过共享的通 讯 channel (管道)进行通信的并发模型。
-GPM 分别是什么、分别有多少数量？ # • G（Goroutine）： 即Go协程，每个go关键字都会创建一个协 程。 • M（Machine）：工作线程，在Go中称为Machine，数量对应真 实的CPU数（真正干活的对象）。 • P（Processor）： 处理器（Go中定义的一个摡念，非CPU）， 包含运行Go代码的必要资源，用来调度 G 和 M 之间的关联关 系，其数量可通过 GOMAXPROCS() 来设置，默认为核心数。 M必须拥有P才可以执行G中的代码，P含有一个包含多个G的队 列，P可以调度G交由M执行。
-Goroutine调度策略 # • 队列轮转：P 会周期性的将G调度到M中执行，执行一段时间 后，保存上下文，将G放到队列尾部，然后从队列中再取出一个 G进行调度。除此之外，P还会周期性的查看全局队列是否有G等 待调度到M中执行。 • 系统调用：当G0即将进入系统调用时，M0将释放P，进而某个空 闲的M1获取P，继续执行P队列中剩下的G。M1的来源有可能是 M的缓存池，也可能是新建的。 当G0系统调用结束后，如果有空闲的P，则获取一个P，继续执 行G0。如果没有，则将G0放入全局队列，等待被其他的P调度。 然后M0将进入缓存池睡眠。 !</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Golang on Ian's Blog</title><link>http://example.org/tags/golang/</link><description>Recent content in Golang on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 25 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/golang/index.xml" rel="self" type="application/rss+xml"/><item><title>把Golang当脚本语言用</title><link>http://example.org/docs/programmer/langs/golang/%E6%8A%8Agolang%E5%BD%93%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%94%A8/</link><pubDate>Wed, 25 Sep 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/golang/%E6%8A%8Agolang%E5%BD%93%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%94%A8/</guid><description>&lt;h1 id="支持"&gt;支持&lt;a class="anchor" href="#%e6%94%af%e6%8c%81"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;Go 软件包：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;github.com/fatih/color[8] 是用于输出对应编码颜色的包。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;github.com/schollz/progressbar[9] 是用于为执行时间过久的任务创建进度条的包。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;github.com/jimlawless/whereami[10] 是用于捕获源代码的文件名、行号、函数等信息的包，这对于改正错误信息十分有用！&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;github.com/spf13/cobra[11] 是用于更轻松地创建带有输入选项和相关文档的复杂脚本的包。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>常用命令</title><link>http://example.org/docs/programmer/langs/golang/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Mon, 19 Aug 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/golang/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>&lt;h1 id="build"&gt;build&lt;a class="anchor" href="#build"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;编译个后端服务，解决有些包依赖问题&lt;/p&gt;
+&lt;/blockquote&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;go build -ldflags &lt;span style="color:#e6db74"&gt;&amp;#39;-w -s&amp;#39;&lt;/span&gt; -tags netgo -insta
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;llsuffix netgo -o xxxxx&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="清理"&gt;清理&lt;a class="anchor" href="#%e6%b8%85%e7%90%86"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;清理&lt;code&gt;GOPATH&lt;/code&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;go clean -modcache
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 设置大磁盘的新路径&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;export GOPATH&lt;span style="color:#f92672"&gt;=&lt;/span&gt;/mnt/data/go/gopath&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Golang进阶笔记</title><link>http://example.org/docs/programmer/langs/golang/advanced-knowledge-of-golang/</link><pubDate>Wed, 19 May 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/golang/advanced-knowledge-of-golang/</guid><description>&lt;h1 id="golang进阶笔记"&gt;Golang进阶笔记&lt;a class="anchor" href="#golang%e8%bf%9b%e9%98%b6%e7%ac%94%e8%ae%b0"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://wallpapercave.com/wp/wp7041189.jpg" alt="golang" title="power"/&gt;&lt;/p&gt;
+&lt;h2 id="性能分析"&gt;性能分析&lt;a class="anchor" href="#%e6%80%a7%e8%83%bd%e5%88%86%e6%9e%90"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;net/http&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;_&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;net/http/pprof&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;go&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;func&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;http&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;ListenAndServe&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;localhost:6060&amp;#34;&lt;/span&gt;, &lt;span style="color:#66d9ef"&gt;nil&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}()&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;将以上代码插入程序中
+启动之后执行&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;go tool pprof http://localhost:6060/debug/pprof/profile?seconds&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;30&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;具体使用方法可以&lt;code&gt;help&lt;/code&gt;
+如果使用&lt;code&gt;top&lt;/code&gt;的话就可以查看方法占用了&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;(&lt;/span&gt;pprof&lt;span style="color:#f92672"&gt;)&lt;/span&gt; top
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Showing nodes accounting &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; 29.59s, 98.60% of 30.01s total Dropped &lt;span style="color:#ae81ff"&gt;35&lt;/span&gt; nodes &lt;span style="color:#f92672"&gt;(&lt;/span&gt;cum &amp;lt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt; 0.15s&lt;span style="color:#f92672"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;flat flat% sum% cum cum%
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;28.98s 96.57% 96.57% 28.98s 96.57% time.Now
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;0.24s 0.8% 97.37% 0.51s 1.70% runtime.selectgo
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;0.16s 0.53% 97.90% 0.16s 0.53% memeqbody
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;0.13s 0.43% 98.33% 0.29s 0.97% runtime.mapaccess2_faststr 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;0.08s 0.27% 98.60% 29.95s 99.80% example.com//pts/services/monitor.Run&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如以上就是说&lt;code&gt;monitor.Run&lt;/code&gt;方法中使用了&lt;code&gt;select&lt;/code&gt;, 然后其中的&lt;code&gt;time.Now&lt;/code&gt;被疯狂执行.&lt;/p&gt;
+&lt;h2 id="路径问题"&gt;路径问题&lt;a class="anchor" href="#%e8%b7%af%e5%be%84%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="test_testgo"&gt;test_test.go&lt;a class="anchor" href="#test_testgo"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;package&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;testing&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;TestHelloWorld&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;t&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;testing&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;T&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#75715e"&gt;// t.Fatal(&amp;#34;not implemented&amp;#34;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;path&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getCurrentPath&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;t&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Log&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;getCurrentPath: &amp;#34;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;path&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="testgo"&gt;test.go&lt;a class="anchor" href="#testgo"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;package&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#e6db74"&gt;&amp;#34;fmt&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#e6db74"&gt;&amp;#34;log&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#e6db74"&gt;&amp;#34;os&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#e6db74"&gt;&amp;#34;path&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#e6db74"&gt;&amp;#34;path/filepath&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#e6db74"&gt;&amp;#34;runtime&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#e6db74"&gt;&amp;#34;strings&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;getTmpDir（当前系统临时目录） = &amp;#34;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;getTmpDir&lt;/span&gt;())
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;getCurrentAbPathByExecutable（仅支持go build） = &amp;#34;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;getCurrentAbPathByExecutable&lt;/span&gt;())
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;getCurrentAbPathByCaller（仅支持go run） = &amp;#34;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;getCurrentAbPathByCaller&lt;/span&gt;())
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;getCurrentAbPath（最终方案-全兼容） = &amp;#34;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;getCurrentAbPath&lt;/span&gt;())
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;getCurrentPath（runtime.Caller1） = &amp;#34;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;getCurrentPath&lt;/span&gt;())
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 最终方案-全兼容&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getCurrentAbPath&lt;/span&gt;() &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;dir&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getCurrentAbPathByExecutable&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;strings&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Contains&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;dir&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;getTmpDir&lt;/span&gt;()) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getCurrentAbPathByCaller&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;dir&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getCurrentPath&lt;/span&gt;() &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;_&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;filename&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;_&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;_&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;runtime&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Caller&lt;/span&gt;(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;path&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Dir&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;filename&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 获取系统临时目录，兼容go run&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getTmpDir&lt;/span&gt;() &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;dir&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;os&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Getenv&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;TEMP&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;dir&lt;/span&gt; &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#a6e22e"&gt;dir&lt;/span&gt; = &lt;span style="color:#a6e22e"&gt;os&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Getenv&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;TMP&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;res&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;_&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;filepath&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;EvalSymlinks&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;dir&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;res&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 获取当前执行文件绝对路径&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getCurrentAbPathByExecutable&lt;/span&gt;() &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;exePath&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;err&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;os&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Executable&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;err&lt;/span&gt; &lt;span style="color:#f92672"&gt;!=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;nil&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Fatal&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;err&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;res&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;_&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;filepath&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;EvalSymlinks&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;filepath&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Dir&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;exePath&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;res&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 获取当前执行文件绝对路径（go run）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getCurrentAbPathByCaller&lt;/span&gt;() &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;var&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;abPath&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;_&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;filename&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;_&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;ok&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;runtime&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Caller&lt;/span&gt;(&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;ok&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#a6e22e"&gt;abPath&lt;/span&gt; = &lt;span style="color:#a6e22e"&gt;path&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Dir&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;filename&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;abPath&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="输出"&gt;输出&lt;a class="anchor" href="#%e8%be%93%e5%87%ba"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ian@ianDebian:~$ ./test
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getTmpDir（当前系统临时目录） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; .
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getCurrentAbPathByExecutable（仅支持go build） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; /home/ian
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getCurrentAbPathByCaller（仅支持go run） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; /home/ian
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getCurrentAbPath（最终方案-全兼容） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; /home/ian
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getCurrentPath（runtime.Caller1） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; /home/ian
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ian@ianDebian:~$
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ian@ianDebian:~$ go run test.go
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getTmpDir（当前系统临时目录） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; .
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getCurrentAbPathByExecutable（仅支持go build） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; /tmp/go-build3048077768/b001/exe
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getCurrentAbPathByCaller（仅支持go run） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; /home/ian
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getCurrentAbPath（最终方案-全兼容） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; /tmp/go-build3048077768/b001/exe
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getCurrentPath（runtime.Caller1） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; /home/ian
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ian@ianDebian:~$
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ian@ianDebian:~$ go test test_test.go test.go -v
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;===&lt;/span&gt; RUN TestHelloWorld
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; test_test.go:8: getCurrentPath: /home/ian
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--- PASS: TestHelloWorld &lt;span style="color:#f92672"&gt;(&lt;/span&gt;0.00s&lt;span style="color:#f92672"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;PASS
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ok 	command-line-arguments	0.002s&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="golang-私有仓库"&gt;Golang 私有仓库&lt;a class="anchor" href="#golang-%e7%a7%81%e6%9c%89%e4%bb%93%e5%ba%93"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;xxx&lt;/code&gt;替换为具体地址&lt;/p&gt;</description></item><item><title>Golang笔记</title><link>http://example.org/docs/programmer/langs/golang/note-of-golang/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/golang/note-of-golang/</guid><description>&lt;h1 id="golang笔记"&gt;Golang笔记&lt;a class="anchor" href="#golang%e7%ac%94%e8%ae%b0"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://wallpapercave.com/wp/wp7041189.jpg" alt="golang" title="tmp"/&gt;
+先贴一个客观的教程文档网站&lt;a href="http://www.runoob.com/go/go-slice.html"&gt;http://www.runoob.com/go/go-slice.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="垃圾回收"&gt;垃圾回收&lt;a class="anchor" href="#%e5%9e%83%e5%9c%be%e5%9b%9e%e6%94%b6"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="常见的回收算法"&gt;常见的回收算法&lt;a class="anchor" href="#%e5%b8%b8%e8%a7%81%e7%9a%84%e5%9b%9e%e6%94%b6%e7%ae%97%e6%b3%95"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;引用计数
+&lt;ul&gt;
+&lt;li&gt;优点：对象可以被很快回收&lt;/li&gt;
+&lt;li&gt;缺点：不太好处理循环引用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;标记-清除
+&lt;ul&gt;
+&lt;li&gt;优点：解决了引用计数的缺点&lt;/li&gt;
+&lt;li&gt;缺点：需要 STW(Stop The World),暂时停止程序运行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;分代收集(按照对象生命周期长短划分不同的代空间，生命周期长的放入老年代，段的放入新生代，不同代有不同的回收算法和回收频率)
+&lt;ul&gt;
+&lt;li&gt;优点：回收性能好&lt;/li&gt;
+&lt;li&gt;缺点：算法复杂&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;三色标记法(初始状态：白色、从根节点开始遍历，遍历到的变成灰色，遍历灰色，将灰色引用的标记灰色，遍历过的灰色对象变为黑色。循环遍历灰色对象。通过写屏障检测对象的变化，重复。收集所有白色对象(垃圾))&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="gpm调度和csp模型"&gt;GPM调度和CSP模型&lt;a class="anchor" href="#gpm%e8%b0%83%e5%ba%a6%e5%92%8ccsp%e6%a8%a1%e5%9e%8b"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="csp-模型"&gt;CSP 模型？&lt;a class="anchor" href="#csp-%e6%a8%a1%e5%9e%8b"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;CSP 模型是“以通信的方式来共享内存”，不同于传统的多线程通
+过共享内存来通信。用于描述两个独立的并发实体通过共享的通
+讯 channel (管道)进行通信的并发模型。&lt;/p&gt;
+&lt;h3 id="gpm-分别是什么分别有多少数量"&gt;GPM 分别是什么、分别有多少数量？&lt;a class="anchor" href="#gpm-%e5%88%86%e5%88%ab%e6%98%af%e4%bb%80%e4%b9%88%e5%88%86%e5%88%ab%e6%9c%89%e5%a4%9a%e5%b0%91%e6%95%b0%e9%87%8f"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;• G（Goroutine）： 即Go协程，每个go关键字都会创建一个协
+程。
+• M（Machine）：工作线程，在Go中称为Machine，数量对应真
+实的CPU数（真正干活的对象）。
+• P（Processor）： 处理器（Go中定义的一个摡念，非CPU），
+包含运行Go代码的必要资源，用来调度 G 和 M 之间的关联关
+系，其数量可通过 GOMAXPROCS() 来设置，默认为核心数。
+M必须拥有P才可以执行G中的代码，P含有一个包含多个G的队
+列，P可以调度G交由M执行。&lt;/p&gt;
+&lt;h3 id="goroutine调度策略"&gt;Goroutine调度策略&lt;a class="anchor" href="#goroutine%e8%b0%83%e5%ba%a6%e7%ad%96%e7%95%a5"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;• 队列轮转：P 会周期性的将G调度到M中执行，执行一段时间
+后，保存上下文，将G放到队列尾部，然后从队列中再取出一个
+G进行调度。除此之外，P还会周期性的查看全局队列是否有G等
+待调度到M中执行。
+• 系统调用：当G0即将进入系统调用时，M0将释放P，进而某个空
+闲的M1获取P，继续执行P队列中剩下的G。M1的来源有可能是
+M的缓存池，也可能是新建的。
+当G0系统调用结束后，如果有空闲的P，则获取一个P，继续执
+行G0。如果没有，则将G0放入全局队列，等待被其他的P调度。
+然后M0将进入缓存池睡眠。
+![[goroutine.png]]&lt;/p&gt;
+&lt;h2 id="chan-原理"&gt;CHAN 原理&lt;a class="anchor" href="#chan-%e5%8e%9f%e7%90%86"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="结构体"&gt;结构体&lt;a class="anchor" href="#%e7%bb%93%e6%9e%84%e4%bd%93"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;type&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;hchan&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;qcount&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uint&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 队列中的总元素个数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;dataqsiz&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uint&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 环形队列大小，即可存放元素的个数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;buf&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;unsafe&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Pointer&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 环形队列指针&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;elemsize&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uint16&lt;/span&gt; &lt;span style="color:#75715e"&gt;//每个元素的大小&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;closed&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uint32&lt;/span&gt; &lt;span style="color:#75715e"&gt;//标识关闭状态&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;elemtype&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;_type&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 元素类型&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;sendx&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uint&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 发送索引，元素写入时存放到队列中的位置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;recvx&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uint&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 接收索引，元素从队列的该位置读出&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;recvq&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;waitq&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 等待读消息的goroutine队列&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;sendq&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;waitq&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 等待写消息的goroutine队列&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;lock&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;mutex&lt;/span&gt; &lt;span style="color:#75715e"&gt;//互斥锁，chan不允许并发读写&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="读写流程"&gt;读写流程&lt;a class="anchor" href="#%e8%af%bb%e5%86%99%e6%b5%81%e7%a8%8b"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="向-channel-写数据"&gt;向 channel 写数据:&lt;a class="anchor" href="#%e5%90%91-channel-%e5%86%99%e6%95%b0%e6%8d%ae"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;若等待接收队列 recvq 不为空，则缓冲区中无数据或无缓冲区，将直接从 recvq 取出 G ，并把数据写入，最后把该 G 唤醒，结束发送过程。&lt;/li&gt;
+&lt;li&gt;若缓冲区中有空余位置，则将数据写入缓冲区，结束发送过程。&lt;/li&gt;
+&lt;li&gt;若缓冲区中没有空余位置，则将发送数据写入 G，将当前 G 加入sendq ，进入睡眠，等待被读 goroutine 唤醒。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="从-channel-读数据"&gt;从 channel 读数据&lt;a class="anchor" href="#%e4%bb%8e-channel-%e8%af%bb%e6%95%b0%e6%8d%ae"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;若等待发送队列 sendq 不为空，且没有缓冲区，直接从 sendq中取出 G ，把 G 中数据读出，最后把 G 唤醒，结束读取过程。&lt;/li&gt;
+&lt;li&gt;如果等待发送队列 sendq 不为空，说明缓冲区已满，从缓冲区中首部读出数据，把 G 中数据写入缓冲区尾部，把 G 唤醒，结束读取过程。&lt;/li&gt;
+&lt;li&gt;如果缓冲区中有数据，则从缓冲区取出数据，结束读取过程。&lt;/li&gt;
+&lt;li&gt;将当前 goroutine 加入 recvq ，进入睡眠，等待被写 goroutine唤醒。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="关闭-channel"&gt;关闭 channel&lt;a class="anchor" href="#%e5%85%b3%e9%97%ad-channel"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;关闭 channel 时会将 recvq 中的 G 全部唤醒，本该写入 G 的数据位置为 nil。将 sendq 中的 G 全部唤醒，但是这些 G 会panic。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id="panic-出现的场景还有"&gt;panic 出现的场景还有：&lt;a class="anchor" href="#panic-%e5%87%ba%e7%8e%b0%e7%9a%84%e5%9c%ba%e6%99%af%e8%bf%98%e6%9c%89"&gt;#&lt;/a&gt;&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;关闭值为 nil 的 channel&lt;/li&gt;
+&lt;li&gt;关闭已经关闭的 channel&lt;/li&gt;
+&lt;li&gt;向已经关闭的 channel 中写数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="无缓冲-chan-的发送和接收是否同步"&gt;无缓冲 Chan 的发送和接收是否同步?&lt;a class="anchor" href="#%e6%97%a0%e7%bc%93%e5%86%b2-chan-%e7%9a%84%e5%8f%91%e9%80%81%e5%92%8c%e6%8e%a5%e6%94%b6%e6%98%af%e5%90%a6%e5%90%8c%e6%ad%a5"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 无缓冲的channel由于没有缓冲发送和接收需要同步&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;ch&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; make(&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;//有缓冲channel不要求发送和接收操作同步&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;ch&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; make(&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;channel 无缓冲时，发送阻塞直到数据被接收，接收阻塞直到读
+到数据；channel有缓冲时，当缓冲满时发送阻塞，当缓冲空时接
+收阻塞。&lt;/p&gt;</description></item></channel></rss>

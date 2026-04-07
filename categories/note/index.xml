@@ -1,35 +1,475 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>note on Ian's Blog</title><link>http://example.org/categories/note/</link><description>Recent content in note on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 16 Dec 2021 16:00:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/note/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker</title><link>http://example.org/docs/programmer/cloudnative/note-of-docker/</link><pubDate>Thu, 16 Dec 2021 16:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/note-of-docker/</guid><description>Docker # 教程手册 # 好用的使用教程
-Install # 略过~ 😁
-打镜像和跑 # docker build -t server:v0 . -f server.dockerfile 跑 # docker run -p 9080:80 --name server server:v0 指定启动命令 # sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &amp;#34;echo hello&amp;#34; 加入自定义网络 # --network {{network name}} 详见：[[#Network]]
-跑出问题-进入容器排查 # sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &amp;#34;bash&amp;#34; 使用-it进入容器手动执行命令进行调试
-启动全部容器 # docker ps -a | grep &amp;#34;Exited&amp;#34; | awk &amp;#39;{print $1}&amp;#39; | xargs docker start Network # docker run时容器加入方法-redis为例 后期加入方式 创建一个新网 检测 init_redis: docker run -p 6379:6379 \\ --network websafe-network \\ --name redislatest redis:latest --requirepass 3b21d032a7fd8eb51fa7bd8a2e812b78b7b3a36f join_network: docker network connect websafe-network mysql56 docker network connect websafe-network daemon-xxx init_network: docker network create websafe-network check_network: docker network inspect websafe-network docker network inspect websafe-network | findStr IPv4Address 删除 # 可视化 # go install github.</description></item><item><title>Docker</title><link>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/</link><pubDate>Thu, 16 Dec 2021 16:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/</guid><description>Docker # 教程手册 # 好用的使用教程
-Install # 略过~ 😁
-基础命令 # 打镜像和跑 # 打 # docker build -t server:v0 . -f server.dockerfile dockerignore # 如果您想在 Dockerfile 中将当前目录中的所有文件都复制到 Docker 镜像中，可以使用 Dockerfile 中的 COPY 指令。具体的语法如下：
-COPY . /目标路径/ 其中. 表示当前目录，/目标路径/ 表示目标路径，这里可以是绝对路径或相对路径。 这将会将当前目录中的所有文件复制到镜像中的 /app/ 目录下。请注意，在这种情况下，所有文件和文件夹都会被复制到镜像中，包括隐藏文件和文件夹。如果您不想复制某些文件或文件夹，可以在运行 COPY 指令之前通过 .dockerignore 文件来指定忽略的文件和文件夹。
-跑 # docker run -p 9080:80 --name server server:v0 指定启动命令 # sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &amp;#34;echo hello&amp;#34; 加入自定义网络 # --network {{network name}} 详见：[[#Network]]</description></item><item><title>Golang进阶笔记</title><link>http://example.org/docs/programmer/langs/golang/advanced-knowledge-of-golang/</link><pubDate>Wed, 19 May 2021 19:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/golang/advanced-knowledge-of-golang/</guid><description>Golang进阶笔记 # 性能分析 # import ( &amp;#34;net/http&amp;#34; _ &amp;#34;net/http/pprof&amp;#34; ) go func() { log.Println(http.ListenAndServe(&amp;#34;localhost:6060&amp;#34;, nil)) }() 将以上代码插入程序中 启动之后执行
-go tool pprof http://localhost:6060/debug/pprof/profile?seconds=30 具体使用方法可以help 如果使用top的话就可以查看方法占用了
-(pprof) top Showing nodes accounting for 29.59s, 98.60% of 30.01s total Dropped 35 nodes (cum &amp;lt;= 0.15s) flat flat% sum% cum cum% 28.98s 96.57% 96.57% 28.98s 96.57% time.Now 0.24s 0.8% 97.37% 0.51s 1.70% runtime.selectgo 0.16s 0.53% 97.90% 0.16s 0.53% memeqbody 0.13s 0.43% 98.33% 0.29s 0.97% runtime.</description></item><item><title>UE4 笔记</title><link>http://example.org/docs/3dgame/noteofue4/</link><pubDate>Mon, 10 May 2021 12:13:26 +0000</pubDate><guid>http://example.org/docs/3dgame/noteofue4/</guid><description> UE4 笔记 # 手机 # 路径必须不能用汉字, 一律全英文(神奇&amp;hellip;以前习惯就是全英,以为这问题是上世纪的了,测试时不知怎么就把顺手的英文换成中文了,结果就莫名中枪了) java8 (ue4.26.2, 之前4.25也是, 反正就找个稳定版java一直使吧, 这语言太amazing了.) 虽然对java版本有一定要求, 不过按照我这次的测试和使用, 觉得折腾那么久完全是汉字项目名不支持&amp;hellip;所以java版本要求应该不是很严重 动画 # 事件图表&amp;amp;动画图表 # 事件图表: 收集动画-&amp;gt;存储在变量中 动画图表: 驱动所有动作 事件图表 # isValid # 蓝图不知道被哪个实例持有(通用)
-朝向 # 主角本地坐标X轴正方向表正前方
-GetVelocity
-RotationFromXVector
-GetControlRotaion
-2,3求Delta.
-输出 # 速度 方向 总步骤 # 向量长度获取Speed 向量方向-控制器方向获取Direction 以上2保存为变量, 交由动画图表 动画图表 # Params-Blend-Result:
-获取速度,方向(看情况可多可少) 将1输入动画混合空间 输出姿势 State Machine # 在以上一组动作中加入状态细分
-State Machine - State1-(rule)-State2&amp;hellip;StateN State - (Params-Blend-Result) 生效 # 角色 网格体(骨骼网格体) 动画-动画类-动画蓝图</description></item><item><title>Golang笔记</title><link>http://example.org/docs/programmer/langs/golang/note-of-golang/</link><pubDate>Tue, 15 May 2018 10:18:26 +0000</pubDate><guid>http://example.org/docs/programmer/langs/golang/note-of-golang/</guid><description>Golang笔记 # 先贴一个客观的教程文档网站http://www.runoob.com/go/go-slice.html
-垃圾回收 # 常见的回收算法 # 引用计数 优点：对象可以被很快回收 缺点：不太好处理循环引用 标记-清除 优点：解决了引用计数的缺点 缺点：需要 STW(Stop The World),暂时停止程序运行 分代收集(按照对象生命周期长短划分不同的代空间，生命周期长的放入老年代，段的放入新生代，不同代有不同的回收算法和回收频率) 优点：回收性能好 缺点：算法复杂 三色标记法(初始状态：白色、从根节点开始遍历，遍历到的变成灰色，遍历灰色，将灰色引用的标记灰色，遍历过的灰色对象变为黑色。循环遍历灰色对象。通过写屏障检测对象的变化，重复。收集所有白色对象(垃圾)) GPM调度和CSP模型 # CSP 模型？ # CSP 模型是“以通信的方式来共享内存”，不同于传统的多线程通 过共享内存来通信。用于描述两个独立的并发实体通过共享的通 讯 channel (管道)进行通信的并发模型。
-GPM 分别是什么、分别有多少数量？ # • G（Goroutine）： 即Go协程，每个go关键字都会创建一个协 程。 • M（Machine）：工作线程，在Go中称为Machine，数量对应真 实的CPU数（真正干活的对象）。 • P（Processor）： 处理器（Go中定义的一个摡念，非CPU）， 包含运行Go代码的必要资源，用来调度 G 和 M 之间的关联关 系，其数量可通过 GOMAXPROCS() 来设置，默认为核心数。 M必须拥有P才可以执行G中的代码，P含有一个包含多个G的队 列，P可以调度G交由M执行。
-Goroutine调度策略 # • 队列轮转：P 会周期性的将G调度到M中执行，执行一段时间 后，保存上下文，将G放到队列尾部，然后从队列中再取出一个 G进行调度。除此之外，P还会周期性的查看全局队列是否有G等 待调度到M中执行。 • 系统调用：当G0即将进入系统调用时，M0将释放P，进而某个空 闲的M1获取P，继续执行P队列中剩下的G。M1的来源有可能是 M的缓存池，也可能是新建的。 当G0系统调用结束后，如果有空闲的P，则获取一个P，继续执 行G0。如果没有，则将G0放入全局队列，等待被其他的P调度。 然后M0将进入缓存池睡眠。 !</description></item><item><title>Vn.Py学习笔记（Python交易平台框架）</title><link>http://example.org/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/</link><pubDate>Tue, 15 May 2018 10:13:48 +0000</pubDate><guid>http://example.org/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/</guid><description>author: Ian
-Vn.Py笔记 ✏📔 # # 一个开源Python交易软件，主使用CTP协议。当然，还有其他协议了其源项目在http://www.vnpy.org/ 初期笔记 # 报单交易过程中， CTP使用BrokerID 从业务层面完全隔离不同经纪公司的交易、风控及结算用户的接入。 BrokerID具体取值咨询开户的经纪公司。 CTP中 UserID为操作员代码，InversterID为投资者代码； 投资者自己下单两者同为投资者代码
-CTP-API中，OrderRef和OrderAction 前者为CTP后台提供给客户端标识一笔报 单的字段，从客户端可通过（FrontID、SessionID、OrderRef）唯一确定一笔报 单；；；后者与OrderRef功能相似，提供给客户端来标识一笔撤单。 前者的数据类型为字符数组，必须为阿拉伯数字字符。 OrderRef（OrderActionRef）取值必须保证在同一会话内发送的报单 OrderRef（OrderActionRef）值大于之前的最大值，开发多线程客户端尤为需要 注意。 CTP-API库：
-error.dtd\error.xml 错误定义文件 ---- ThostFrfcMdApi.h 交易接口类定义文件 ——— ThostFtfcUserApiDataType.h 类型定义文件 ------ thostmduserapi.lib,thostmduserpi.dll 行情接口库文件 ----- thosttraderapi.lib,thosttraderapi.dll交易接口库文件 ----- 交易和行情接口类定义文件都包含API 和 SPI类定义，客户端使用API向CTP后台 发送请求，CTP后台则使用SPI向客户端回传响应及回报 行情Demo开发： 1.将API文件复制到工程目录；并将所有的头文件和静态、动态库连链接库 并将文件导入到项目工程中。 先继承行情接口类CThostFtdcMdspi，并实现需要实现的虚函数。 OnFrontConnectde、OnFrontDisconnected、OnPspUserLogin、 OnRspSubMarketDAta /API工作流程***/
-API压缩包——API含常量对应字符、类型定义、操作系统编译定义、回调函数（MdSpi）（柜台向用户端发送信息后被系统自动调用的函数）、主动函数（MdApi）（向柜台发送各种请求和指令）
-API工作流程： 创建MdSpi对象（回掉函数），调用MdApi类，以Create开头的静态方法，创建MdApi对象（主动函数），注册MdSpi对象指针，行情柜台前置机地址，调用MdApi对象Init方法初始化连接前置机，连接成功会通过OnFrontConnected回调通知用户，用户获得连接成功通知后，调MdApi的ReqUserLogin登陆，登陆后MdSpi的OnRsqUserLogin通知用户 &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-到此登陆完成&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;
-MdApi：（行情相关） 使用MdApi对象的SubscribeMarketData方法，传入参数为想要订阅的“合约 代码”，订阅成功当合约有新行情通过MdApi的OnRtnDepthMarketData回调通知 用户 &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-至此订阅完成&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash; 当用户的某次请求发生错误时，会通过OnRspError通知用户 MdApi也含有退订合约、登出功能。 而一般退出程序则直接杀进程（不太安全便是）
-TraderApi：（交易相关） 不同于以上的有 注册TraderSpi对象的指针后需要调用TraderApi对象的 SubscribePrivateTopic和SubscribePublicTopic方法去选择公开和私有数据流的重 传方法 对于期货柜台，每一日第一次登陆需要先查询前一日的结算单，等待查询 结果返回，确认，才可进行后续操作（CTP、恒生UFT），证券（LTS）无此要求 上一步完成后，用户可以调用ReqQryInstrument的方法查询柜台上所有可 以交易的合约信息（包括代码、中文名、涨跌停、最小价位变动、合约乘数等大 量细节），一般是在这里获得合约信息列表后，再去MdApi中订阅合约；经常有 人问为什么在MdApi中找不到查询可供订阅的合约代码的函数，这里尤其要注 意，必须通过TraderApi来获取 当用户报单、成交状态发生变化时，TraderApi会自动通过OnRtnOrder、 OnRtnTrade通知，无需额外订阅 /封装API****/ 封装后API的动作： 主动函数： 调用封装API主动函数，传入Python变量作为参数—&amp;gt;封装API将Python变量转换成C++变量—&amp;gt;API调用原生API主动函数传入C++变量作为参数 回掉函数： 交易柜台通过原生API传入参数为C++变量-&amp;gt;封装API将C++变量转换为Python变量-&amp;gt;封装API调用封装后的回调函数想Python程序中推送数</description></item><item><title>数据库-MongoDB篇</title><link>http://example.org/docs/programmer/database/note-of-db-data-mongodb/</link><pubDate>Tue, 15 May 2018 09:51:09 +0000</pubDate><guid>http://example.org/docs/programmer/database/note-of-db-data-mongodb/</guid><description>DB数据库 🖥 📊🖥 # MongoDB笔记 # 学习网站：http://www.runoob.com/mongodb/mongodb-tutorial.html (其学习教程还挺可观，很多，不过还不清楚好不好)
-安装 # Docker 安装 4.4.12版本 # pull: docker pull mongo:4.4.13 run: docker run -itd --name mongo --restart=always \ -v /mongodb/datadb:/data/db \ -p 27017:27017 \ --network websafe-network \ --privileged=true mongo:4.4.12 进入容器docker exec -it mongo bash后:
-mongo use admin # db.createUser({user: &amp;#34;admin&amp;#34;, pwd: &amp;#34;admin&amp;#34;, roles: [{role: &amp;#34;root&amp;#34;, db: &amp;#34;admin&amp;#34;}]}) # db.createUser({user: &amp;#34;admin&amp;#34;, pwd: &amp;#34;admin&amp;#34;, roles: [{role: &amp;#34;userAdminAnyDatabase&amp;#34;, db: &amp;#34;admin&amp;#34;}]}) # 如果能auth就不用createUser了 db.auth(&amp;#34;admin&amp;#34;, &amp;#34;admin&amp;#34;) 网上传的将 MONGO_INITDB_ROOT_PASSWORD 和 MONGO_INITDB_ROOT_USERNAME传入环境变量的方式，在mongo4.</description></item><item><title>数据库-MySQL篇</title><link>http://example.org/docs/programmer/database/note-of-db-data-mysql/</link><pubDate>Tue, 15 May 2018 09:51:09 +0000</pubDate><guid>http://example.org/docs/programmer/database/note-of-db-data-mysql/</guid><description>MySQL数据库 🖥 📊🖥 # 安装 # docker # podman run -d --name mysql-container -e MYSQL_ROOT_PASSWORD={my-secret-pw} -e MYSQL_TIME_ZONE=UTC -e MYSQL_CHARSET=utf8 -p 3306:3306 mysql:5.7 使用 # 常用命令 # CREATE DATABASE {database_name} DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci; 按天统计 # SELECT DATE(created_at) AS date, COUNT(*) AS count FROM `TABLE_NAME` WHERE created_at &amp;gt;= &amp;#34;2025-01-01&amp;#34; AND created_at &amp;lt; &amp;#34;2025-02-01&amp;#34; GROUP BY DATE(created_at) ORDER BY date LIMIT 100 连接 # 使用MySQL命令行工具连接MySQL时，你可以使用以下命令来：
-启用压缩传输 # mysql --compress -u username -p 完整命令如：</description></item><item><title>愉快的Java(happy to learn the fuck java)</title><link>http://example.org/docs/programmer/langs/java/notesjava/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/java/notesjava/</guid><description>author: Ian
-happy to learn the fuck java 😅 # &amp;lt;微人事&amp;gt; 笔记 -&amp;gt; ψ(._. )&amp;gt; # 先贴官方文档 哦 还有官方项目地址
-Java语法 # 爪哇方法定义: # 修饰符 返回值类型 方法名(参数类型 参数名){ 方法体; return 返回值; } # 示个例 public boolean NiHou(int num){ int a = num; return turn; } // `boolean` 处 可为 public Collection&amp;lt;? extends GrantedAuthority&amp;gt; getAuthorities(){ List&amp;lt;GrantedAuthority&amp;gt; authorities = new ArrayList&amp;lt;&amp;gt;(); return authorities; } // 表泛型中可以是的`GrantedAuthority`所有子类 爪哇抽象方法(即Python父类中直接pass的函数…) # abstract
-包含抽象方法必须得是抽象类 任何子类必须重写父类抽象方法，或者声明自身为抽象类 public abstract class Employee { private String name; private int number; public abstract double computePay(); //其余 } 爪哇接口 # interface, implements</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Note on Ian's Blog</title><link>http://example.org/categories/note/</link><description>Recent content in Note on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 16 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/note/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker</title><link>http://example.org/docs/programmer/cloudnative/note-of-docker/</link><pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/note-of-docker/</guid><description>&lt;h1 id="docker"&gt;Docker&lt;a class="anchor" href="#docker"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://mma.prnewswire.com/media/776689/New_Docker_logo_Logo.jpg?p=facebook" alt="docker img" title="docker"/&gt;&lt;/p&gt;
+&lt;h2 id="教程手册"&gt;教程手册&lt;a class="anchor" href="#%e6%95%99%e7%a8%8b%e6%89%8b%e5%86%8c"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://yeasy.gitbook.io/docker_practice/introduction/why"&gt;好用的使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="install"&gt;Install&lt;a class="anchor" href="#install"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;略过~ 😁&lt;/p&gt;
+&lt;h2 id="打镜像和跑"&gt;打镜像和跑&lt;a class="anchor" href="#%e6%89%93%e9%95%9c%e5%83%8f%e5%92%8c%e8%b7%91"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker build -t server:v0 . -f server.dockerfile&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="跑"&gt;跑&lt;a class="anchor" href="#%e8%b7%91"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run -p 9080:80 --name server server:v0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="指定启动命令"&gt;指定启动命令&lt;a class="anchor" href="#%e6%8c%87%e5%ae%9a%e5%90%af%e5%8a%a8%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &amp;#34;echo hello&amp;#34;&lt;/code&gt;&lt;/pre&gt;&lt;h4 id="加入自定义网络"&gt;加入自定义网络&lt;a class="anchor" href="#%e5%8a%a0%e5%85%a5%e8%87%aa%e5%ae%9a%e4%b9%89%e7%bd%91%e7%bb%9c"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;--network {{network name}}&lt;/code&gt;
+详见：[[#Network]]&lt;/p&gt;
+&lt;h4 id="跑出问题-进入容器排查"&gt;跑出问题-进入容器排查&lt;a class="anchor" href="#%e8%b7%91%e5%87%ba%e9%97%ae%e9%a2%98-%e8%bf%9b%e5%85%a5%e5%ae%b9%e5%99%a8%e6%8e%92%e6%9f%a5"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &lt;span style="color:#e6db74"&gt;&amp;#34;bash&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使用&lt;code&gt;-it&lt;/code&gt;进入容器手动执行命令进行调试&lt;/p&gt;
+&lt;h4 id="启动全部容器"&gt;启动全部容器&lt;a class="anchor" href="#%e5%90%af%e5%8a%a8%e5%85%a8%e9%83%a8%e5%ae%b9%e5%99%a8"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker ps -a | grep &lt;span style="color:#e6db74"&gt;&amp;#34;Exited&amp;#34;&lt;/span&gt; | awk &lt;span style="color:#e6db74"&gt;&amp;#39;{print $1}&amp;#39;&lt;/span&gt; | xargs docker start&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="network"&gt;Network&lt;a class="anchor" href="#network"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;docker run时容器加入方法-redis为例&lt;/li&gt;
+&lt;li&gt;后期加入方式&lt;/li&gt;
+&lt;li&gt;创建一个新网&lt;/li&gt;
+&lt;li&gt;检测&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-makefile" data-lang="makefile"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; init_redis:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker run -p 6379:6379 &lt;span style="color:#ae81ff"&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	--network websafe-network &lt;span style="color:#ae81ff"&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	--name redislatest redis:latest --requirepass 3b21d032a7fd8eb51fa7bd8a2e812b78b7b3a36f 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; join_network:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network connect websafe-network mysql56
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network connect websafe-network daemon-xxx
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; init_network:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network create websafe-network
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; check_network:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network inspect websafe-network
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network inspect websafe-network | findStr IPv4Address
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="删除"&gt;删除&lt;a class="anchor" href="#%e5%88%a0%e9%99%a4"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id="可视化"&gt;可视化&lt;a class="anchor" href="#%e5%8f%af%e8%a7%86%e5%8c%96"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;go install github.com/jesseduffield/lazydocker@latest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;如果需要&lt;code&gt;sudo&lt;/code&gt;权限的话无法直接执行命令，只能where获取原始路径后&lt;code&gt;sudo&lt;/code&gt;+原始路径执行
+如：&lt;/p&gt;</description></item><item><title>Docker</title><link>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/</link><pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/</guid><description>&lt;h1 id="docker"&gt;Docker&lt;a class="anchor" href="#docker"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://mma.prnewswire.com/media/776689/New_Docker_logo_Logo.jpg?p=facebook" alt="docker img" title="docker"/&gt;&lt;/p&gt;
+&lt;h2 id="教程手册"&gt;教程手册&lt;a class="anchor" href="#%e6%95%99%e7%a8%8b%e6%89%8b%e5%86%8c"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://yeasy.gitbook.io/docker_practice/introduction/why"&gt;好用的使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="install"&gt;Install&lt;a class="anchor" href="#install"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;略过~ 😁&lt;/p&gt;
+&lt;h2 id="基础命令"&gt;基础命令&lt;a class="anchor" href="#%e5%9f%ba%e7%a1%80%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="打镜像和跑"&gt;打镜像和跑&lt;a class="anchor" href="#%e6%89%93%e9%95%9c%e5%83%8f%e5%92%8c%e8%b7%91"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="打"&gt;打&lt;a class="anchor" href="#%e6%89%93"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker build -t server:v0 . -f server.dockerfile&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="dockerignore"&gt;dockerignore&lt;a class="anchor" href="#dockerignore"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;如果您想在 Dockerfile 中将当前目录中的所有文件都复制到 Docker 镜像中，可以使用 Dockerfile 中的 &lt;code&gt;COPY&lt;/code&gt; 指令。具体的语法如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-Dockerfile" data-lang="Dockerfile"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;COPY&lt;/span&gt; . /目标路径/&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中&lt;code&gt;.&lt;/code&gt; 表示当前目录，&lt;code&gt;/目标路径/&lt;/code&gt; 表示目标路径，这里可以是绝对路径或相对路径。
+这将会将当前目录中的所有文件复制到镜像中的 &lt;code&gt;/app/&lt;/code&gt; 目录下。请注意，在这种情况下，所有文件和文件夹都会被复制到镜像中，包括隐藏文件和文件夹。如果您不想复制某些文件或文件夹，可以在运行 &lt;code&gt;COPY&lt;/code&gt; 指令之前通过 &lt;code&gt;.dockerignore&lt;/code&gt; 文件来指定忽略的文件和文件夹。&lt;/p&gt;
+&lt;h3 id="跑"&gt;跑&lt;a class="anchor" href="#%e8%b7%91"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run -p 9080:80 --name server server:v0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="指定启动命令"&gt;指定启动命令&lt;a class="anchor" href="#%e6%8c%87%e5%ae%9a%e5%90%af%e5%8a%a8%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &amp;#34;echo hello&amp;#34;&lt;/code&gt;&lt;/pre&gt;&lt;h4 id="加入自定义网络"&gt;加入自定义网络&lt;a class="anchor" href="#%e5%8a%a0%e5%85%a5%e8%87%aa%e5%ae%9a%e4%b9%89%e7%bd%91%e7%bb%9c"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;--network {{network name}}&lt;/code&gt;
+详见：[[#Network]]&lt;/p&gt;
+&lt;h4 id="跑出问题-进入容器排查"&gt;跑出问题-进入容器排查&lt;a class="anchor" href="#%e8%b7%91%e5%87%ba%e9%97%ae%e9%a2%98-%e8%bf%9b%e5%85%a5%e5%ae%b9%e5%99%a8%e6%8e%92%e6%9f%a5"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &lt;span style="color:#e6db74"&gt;&amp;#34;bash&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使用&lt;code&gt;-it&lt;/code&gt;进入容器手动执行命令进行调试&lt;/p&gt;</description></item><item><title>Golang进阶笔记</title><link>http://example.org/docs/programmer/langs/golang/advanced-knowledge-of-golang/</link><pubDate>Wed, 19 May 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/golang/advanced-knowledge-of-golang/</guid><description>&lt;h1 id="golang进阶笔记"&gt;Golang进阶笔记&lt;a class="anchor" href="#golang%e8%bf%9b%e9%98%b6%e7%ac%94%e8%ae%b0"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://wallpapercave.com/wp/wp7041189.jpg" alt="golang" title="power"/&gt;&lt;/p&gt;
+&lt;h2 id="性能分析"&gt;性能分析&lt;a class="anchor" href="#%e6%80%a7%e8%83%bd%e5%88%86%e6%9e%90"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;net/http&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;_&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;net/http/pprof&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;go&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;func&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;http&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;ListenAndServe&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;localhost:6060&amp;#34;&lt;/span&gt;, &lt;span style="color:#66d9ef"&gt;nil&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}()&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;将以上代码插入程序中
+启动之后执行&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;go tool pprof http://localhost:6060/debug/pprof/profile?seconds&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;30&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;具体使用方法可以&lt;code&gt;help&lt;/code&gt;
+如果使用&lt;code&gt;top&lt;/code&gt;的话就可以查看方法占用了&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;(&lt;/span&gt;pprof&lt;span style="color:#f92672"&gt;)&lt;/span&gt; top
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Showing nodes accounting &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; 29.59s, 98.60% of 30.01s total Dropped &lt;span style="color:#ae81ff"&gt;35&lt;/span&gt; nodes &lt;span style="color:#f92672"&gt;(&lt;/span&gt;cum &amp;lt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt; 0.15s&lt;span style="color:#f92672"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;flat flat% sum% cum cum%
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;28.98s 96.57% 96.57% 28.98s 96.57% time.Now
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;0.24s 0.8% 97.37% 0.51s 1.70% runtime.selectgo
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;0.16s 0.53% 97.90% 0.16s 0.53% memeqbody
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;0.13s 0.43% 98.33% 0.29s 0.97% runtime.mapaccess2_faststr 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;0.08s 0.27% 98.60% 29.95s 99.80% example.com//pts/services/monitor.Run&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如以上就是说&lt;code&gt;monitor.Run&lt;/code&gt;方法中使用了&lt;code&gt;select&lt;/code&gt;, 然后其中的&lt;code&gt;time.Now&lt;/code&gt;被疯狂执行.&lt;/p&gt;
+&lt;h2 id="路径问题"&gt;路径问题&lt;a class="anchor" href="#%e8%b7%af%e5%be%84%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="test_testgo"&gt;test_test.go&lt;a class="anchor" href="#test_testgo"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;package&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;testing&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;TestHelloWorld&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;t&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;testing&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;T&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#75715e"&gt;// t.Fatal(&amp;#34;not implemented&amp;#34;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;path&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getCurrentPath&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;t&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Log&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;getCurrentPath: &amp;#34;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;path&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="testgo"&gt;test.go&lt;a class="anchor" href="#testgo"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;package&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#e6db74"&gt;&amp;#34;fmt&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#e6db74"&gt;&amp;#34;log&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#e6db74"&gt;&amp;#34;os&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#e6db74"&gt;&amp;#34;path&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#e6db74"&gt;&amp;#34;path/filepath&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#e6db74"&gt;&amp;#34;runtime&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#e6db74"&gt;&amp;#34;strings&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;getTmpDir（当前系统临时目录） = &amp;#34;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;getTmpDir&lt;/span&gt;())
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;getCurrentAbPathByExecutable（仅支持go build） = &amp;#34;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;getCurrentAbPathByExecutable&lt;/span&gt;())
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;getCurrentAbPathByCaller（仅支持go run） = &amp;#34;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;getCurrentAbPathByCaller&lt;/span&gt;())
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;getCurrentAbPath（最终方案-全兼容） = &amp;#34;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;getCurrentAbPath&lt;/span&gt;())
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;getCurrentPath（runtime.Caller1） = &amp;#34;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;getCurrentPath&lt;/span&gt;())
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 最终方案-全兼容&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getCurrentAbPath&lt;/span&gt;() &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;dir&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getCurrentAbPathByExecutable&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;strings&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Contains&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;dir&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;getTmpDir&lt;/span&gt;()) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getCurrentAbPathByCaller&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;dir&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getCurrentPath&lt;/span&gt;() &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;_&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;filename&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;_&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;_&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;runtime&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Caller&lt;/span&gt;(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;path&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Dir&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;filename&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 获取系统临时目录，兼容go run&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getTmpDir&lt;/span&gt;() &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;dir&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;os&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Getenv&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;TEMP&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;dir&lt;/span&gt; &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#a6e22e"&gt;dir&lt;/span&gt; = &lt;span style="color:#a6e22e"&gt;os&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Getenv&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;TMP&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;res&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;_&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;filepath&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;EvalSymlinks&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;dir&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;res&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 获取当前执行文件绝对路径&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getCurrentAbPathByExecutable&lt;/span&gt;() &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;exePath&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;err&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;os&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Executable&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;err&lt;/span&gt; &lt;span style="color:#f92672"&gt;!=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;nil&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Fatal&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;err&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;res&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;_&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;filepath&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;EvalSymlinks&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;filepath&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Dir&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;exePath&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;res&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 获取当前执行文件绝对路径（go run）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getCurrentAbPathByCaller&lt;/span&gt;() &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;var&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;abPath&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;_&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;filename&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;_&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;ok&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;runtime&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Caller&lt;/span&gt;(&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;ok&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#a6e22e"&gt;abPath&lt;/span&gt; = &lt;span style="color:#a6e22e"&gt;path&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Dir&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;filename&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;abPath&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="输出"&gt;输出&lt;a class="anchor" href="#%e8%be%93%e5%87%ba"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ian@ianDebian:~$ ./test
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getTmpDir（当前系统临时目录） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; .
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getCurrentAbPathByExecutable（仅支持go build） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; /home/ian
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getCurrentAbPathByCaller（仅支持go run） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; /home/ian
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getCurrentAbPath（最终方案-全兼容） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; /home/ian
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getCurrentPath（runtime.Caller1） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; /home/ian
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ian@ianDebian:~$
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ian@ianDebian:~$ go run test.go
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getTmpDir（当前系统临时目录） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; .
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getCurrentAbPathByExecutable（仅支持go build） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; /tmp/go-build3048077768/b001/exe
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getCurrentAbPathByCaller（仅支持go run） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; /home/ian
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getCurrentAbPath（最终方案-全兼容） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; /tmp/go-build3048077768/b001/exe
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;getCurrentPath（runtime.Caller1） &lt;span style="color:#f92672"&gt;=&lt;/span&gt; /home/ian
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ian@ianDebian:~$
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ian@ianDebian:~$ go test test_test.go test.go -v
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;===&lt;/span&gt; RUN TestHelloWorld
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; test_test.go:8: getCurrentPath: /home/ian
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--- PASS: TestHelloWorld &lt;span style="color:#f92672"&gt;(&lt;/span&gt;0.00s&lt;span style="color:#f92672"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;PASS
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ok 	command-line-arguments	0.002s&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="golang-私有仓库"&gt;Golang 私有仓库&lt;a class="anchor" href="#golang-%e7%a7%81%e6%9c%89%e4%bb%93%e5%ba%93"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;xxx&lt;/code&gt;替换为具体地址&lt;/p&gt;</description></item><item><title>UE4 笔记</title><link>http://example.org/docs/3dgame/noteofue4/</link><pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/3dgame/noteofue4/</guid><description>&lt;h1 id="ue4-笔记"&gt;UE4 笔记&lt;a class="anchor" href="#ue4-%e7%ac%94%e8%ae%b0"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://cdn2.unrealengine.com/Unreal&amp;#43;Engine%2Fblog%2Fconnect-with-the-unreal-engine-community-online%2FUE_Community_Online_Feed-thumb-desktop-1400x788-a6917dba2f2cc41cc1426a3afdff135521cea738.png" alt="ue4" title="ue4"/&gt;&lt;/p&gt;
+&lt;h2 id="手机"&gt;手机&lt;a class="anchor" href="#%e6%89%8b%e6%9c%ba"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;路径必须不能用汉字, 一律全英文(神奇&amp;hellip;以前习惯就是全英,以为这问题是上世纪的了,测试时不知怎么就把顺手的英文换成中文了,结果就莫名中枪了)&lt;/li&gt;
+&lt;li&gt;java8 (ue4.26.2, 之前4.25也是, 反正就找个稳定版java一直使吧, 这语言太amazing了.)&lt;/li&gt;
+&lt;li&gt;虽然对java版本有一定要求, 不过按照我这次的测试和使用, 觉得折腾那么久完全是汉字项目名不支持&amp;hellip;所以java版本要求应该不是很严重&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="动画"&gt;动画&lt;a class="anchor" href="#%e5%8a%a8%e7%94%bb"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="事件图表动画图表"&gt;事件图表&amp;amp;动画图表&lt;a class="anchor" href="#%e4%ba%8b%e4%bb%b6%e5%9b%be%e8%a1%a8%e5%8a%a8%e7%94%bb%e5%9b%be%e8%a1%a8"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;事件图表: 收集动画-&amp;gt;存储在变量中&lt;/li&gt;
+&lt;li&gt;动画图表: 驱动所有动作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="事件图表"&gt;事件图表&lt;a class="anchor" href="#%e4%ba%8b%e4%bb%b6%e5%9b%be%e8%a1%a8"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="isvalid"&gt;isValid&lt;a class="anchor" href="#isvalid"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;蓝图不知道被哪个实例持有(通用)&lt;/p&gt;
+&lt;h4 id="朝向"&gt;朝向&lt;a class="anchor" href="#%e6%9c%9d%e5%90%91"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;主角本地坐标X轴正方向表正前方&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;GetVelocity&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RotationFromXVector&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;GetControlRotaion&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;2,3求&lt;code&gt;Delta&lt;/code&gt;.&lt;/p&gt;
+&lt;h4 id="输出"&gt;输出&lt;a class="anchor" href="#%e8%be%93%e5%87%ba"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;速度&lt;/li&gt;
+&lt;li&gt;方向&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="总步骤"&gt;总步骤&lt;a class="anchor" href="#%e6%80%bb%e6%ad%a5%e9%aa%a4"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;向量长度获取&lt;code&gt;Speed&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;向量方向-控制器方向获取&lt;code&gt;Direction&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;以上2保存为变量, 交由&lt;code&gt;动画图表&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="动画图表"&gt;动画图表&lt;a class="anchor" href="#%e5%8a%a8%e7%94%bb%e5%9b%be%e8%a1%a8"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Params-Blend-Result:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;获取速度,方向(看情况可多可少)&lt;/li&gt;
+&lt;li&gt;将&lt;code&gt;1&lt;/code&gt;输入动画混合空间&lt;/li&gt;
+&lt;li&gt;输出姿势&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="state-machine"&gt;State Machine&lt;a class="anchor" href="#state-machine"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;在以上一组动作中加入状态细分&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;State Machine - State1-(rule)-State2&amp;hellip;StateN&lt;/li&gt;
+&lt;li&gt;State - (Params-Blend-Result)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="生效"&gt;生效&lt;a class="anchor" href="#%e7%94%9f%e6%95%88"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;角色&lt;/li&gt;
+&lt;li&gt;网格体(骨骼网格体)&lt;/li&gt;
+&lt;li&gt;动画-动画类-动画蓝图&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>愉快的Java(happy to learn the fuck java)</title><link>http://example.org/docs/programmer/langs/java/notesjava/</link><pubDate>Thu, 24 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/java/notesjava/</guid><description>&lt;h1 id="happy-to-learn-the-fuck-java-"&gt;happy to learn the fuck java 😅&lt;a class="anchor" href="#happy-to-learn-the-fuck-java-"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="微人事-笔记------ψ_-"&gt;&amp;lt;微人事&amp;gt; 笔记 -&amp;gt; ψ(._. )&amp;gt;&lt;a class="anchor" href="#%e5%be%ae%e4%ba%ba%e4%ba%8b-%e7%ac%94%e8%ae%b0------%cf%88_-"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;先贴&lt;a href="https://github.com/lenve/vhr/wiki/1.%e6%9d%83%e9%99%90%e6%95%b0%e6%8d%ae%e5%ba%93%e8%ae%be%e8%ae%a1"&gt;官方文档&lt;/a&gt; 哦 还有&lt;a href="https://github.com/lenve/vhr"&gt;官方项目地址&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="java语法"&gt;Java语法&lt;a class="anchor" href="#java%e8%af%ad%e6%b3%95"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h4 id="爪哇方法定义"&gt;爪哇方法定义:&lt;a class="anchor" href="#%e7%88%aa%e5%93%87%e6%96%b9%e6%b3%95%e5%ae%9a%e4%b9%89"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;修饰符 返回值类型 &lt;span style="color:#a6e22e"&gt;方法名&lt;/span&gt;(参数类型 参数名){
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 方法体;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; 返回值;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;#&lt;/span&gt; 示个例
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;public&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;boolean&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;NiHou&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; num){
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; a &lt;span style="color:#f92672"&gt;=&lt;/span&gt; num;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; turn;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// `boolean` 处 可为&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;public&lt;/span&gt; Collection&lt;span style="color:#f92672"&gt;&amp;lt;?&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;extends&lt;/span&gt; GrantedAuthority&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getAuthorities&lt;/span&gt;(){
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	List&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;GrantedAuthority&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; authorities &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;new&lt;/span&gt; ArrayList&lt;span style="color:#f92672"&gt;&amp;lt;&amp;gt;&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; authorities;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;//&lt;/span&gt; 表泛型中可以是的&lt;span style="color:#960050;background-color:#1e0010"&gt;`&lt;/span&gt;GrantedAuthority&lt;span style="color:#960050;background-color:#1e0010"&gt;`&lt;/span&gt;所有子类&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="爪哇抽象方法即python父类中直接pass的函数"&gt;爪哇抽象方法(即Python父类中直接&lt;code&gt;pass&lt;/code&gt;的函数…)&lt;a class="anchor" href="#%e7%88%aa%e5%93%87%e6%8a%bd%e8%b1%a1%e6%96%b9%e6%b3%95%e5%8d%b3python%e7%88%b6%e7%b1%bb%e4%b8%ad%e7%9b%b4%e6%8e%a5pass%e7%9a%84%e5%87%bd%e6%95%b0"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;code&gt;abstract&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;包含抽象方法必须得是抽象类&lt;/li&gt;
+&lt;li&gt;任何子类必须重写父类抽象方法，或者声明自身为抽象类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;public&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;abstract&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Employee&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;private&lt;/span&gt; String name;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;private&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; number;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;public&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;abstract&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;double&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;computePay&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;//其余&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="爪哇接口"&gt;爪哇接口&lt;a class="anchor" href="#%e7%88%aa%e5%93%87%e6%8e%a5%e5%8f%a3"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;code&gt;interface&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;, &lt;!-- raw HTML omitted --&gt;&lt;code&gt;implements&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>Golang笔记</title><link>http://example.org/docs/programmer/langs/golang/note-of-golang/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/golang/note-of-golang/</guid><description>&lt;h1 id="golang笔记"&gt;Golang笔记&lt;a class="anchor" href="#golang%e7%ac%94%e8%ae%b0"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://wallpapercave.com/wp/wp7041189.jpg" alt="golang" title="tmp"/&gt;
+先贴一个客观的教程文档网站&lt;a href="http://www.runoob.com/go/go-slice.html"&gt;http://www.runoob.com/go/go-slice.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="垃圾回收"&gt;垃圾回收&lt;a class="anchor" href="#%e5%9e%83%e5%9c%be%e5%9b%9e%e6%94%b6"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="常见的回收算法"&gt;常见的回收算法&lt;a class="anchor" href="#%e5%b8%b8%e8%a7%81%e7%9a%84%e5%9b%9e%e6%94%b6%e7%ae%97%e6%b3%95"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;引用计数
+&lt;ul&gt;
+&lt;li&gt;优点：对象可以被很快回收&lt;/li&gt;
+&lt;li&gt;缺点：不太好处理循环引用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;标记-清除
+&lt;ul&gt;
+&lt;li&gt;优点：解决了引用计数的缺点&lt;/li&gt;
+&lt;li&gt;缺点：需要 STW(Stop The World),暂时停止程序运行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;分代收集(按照对象生命周期长短划分不同的代空间，生命周期长的放入老年代，段的放入新生代，不同代有不同的回收算法和回收频率)
+&lt;ul&gt;
+&lt;li&gt;优点：回收性能好&lt;/li&gt;
+&lt;li&gt;缺点：算法复杂&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;三色标记法(初始状态：白色、从根节点开始遍历，遍历到的变成灰色，遍历灰色，将灰色引用的标记灰色，遍历过的灰色对象变为黑色。循环遍历灰色对象。通过写屏障检测对象的变化，重复。收集所有白色对象(垃圾))&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="gpm调度和csp模型"&gt;GPM调度和CSP模型&lt;a class="anchor" href="#gpm%e8%b0%83%e5%ba%a6%e5%92%8ccsp%e6%a8%a1%e5%9e%8b"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="csp-模型"&gt;CSP 模型？&lt;a class="anchor" href="#csp-%e6%a8%a1%e5%9e%8b"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;CSP 模型是“以通信的方式来共享内存”，不同于传统的多线程通
+过共享内存来通信。用于描述两个独立的并发实体通过共享的通
+讯 channel (管道)进行通信的并发模型。&lt;/p&gt;
+&lt;h3 id="gpm-分别是什么分别有多少数量"&gt;GPM 分别是什么、分别有多少数量？&lt;a class="anchor" href="#gpm-%e5%88%86%e5%88%ab%e6%98%af%e4%bb%80%e4%b9%88%e5%88%86%e5%88%ab%e6%9c%89%e5%a4%9a%e5%b0%91%e6%95%b0%e9%87%8f"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;• G（Goroutine）： 即Go协程，每个go关键字都会创建一个协
+程。
+• M（Machine）：工作线程，在Go中称为Machine，数量对应真
+实的CPU数（真正干活的对象）。
+• P（Processor）： 处理器（Go中定义的一个摡念，非CPU），
+包含运行Go代码的必要资源，用来调度 G 和 M 之间的关联关
+系，其数量可通过 GOMAXPROCS() 来设置，默认为核心数。
+M必须拥有P才可以执行G中的代码，P含有一个包含多个G的队
+列，P可以调度G交由M执行。&lt;/p&gt;
+&lt;h3 id="goroutine调度策略"&gt;Goroutine调度策略&lt;a class="anchor" href="#goroutine%e8%b0%83%e5%ba%a6%e7%ad%96%e7%95%a5"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;• 队列轮转：P 会周期性的将G调度到M中执行，执行一段时间
+后，保存上下文，将G放到队列尾部，然后从队列中再取出一个
+G进行调度。除此之外，P还会周期性的查看全局队列是否有G等
+待调度到M中执行。
+• 系统调用：当G0即将进入系统调用时，M0将释放P，进而某个空
+闲的M1获取P，继续执行P队列中剩下的G。M1的来源有可能是
+M的缓存池，也可能是新建的。
+当G0系统调用结束后，如果有空闲的P，则获取一个P，继续执
+行G0。如果没有，则将G0放入全局队列，等待被其他的P调度。
+然后M0将进入缓存池睡眠。
+![[goroutine.png]]&lt;/p&gt;
+&lt;h2 id="chan-原理"&gt;CHAN 原理&lt;a class="anchor" href="#chan-%e5%8e%9f%e7%90%86"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="结构体"&gt;结构体&lt;a class="anchor" href="#%e7%bb%93%e6%9e%84%e4%bd%93"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;type&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;hchan&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;qcount&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uint&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 队列中的总元素个数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;dataqsiz&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uint&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 环形队列大小，即可存放元素的个数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;buf&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;unsafe&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Pointer&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 环形队列指针&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;elemsize&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uint16&lt;/span&gt; &lt;span style="color:#75715e"&gt;//每个元素的大小&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;closed&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uint32&lt;/span&gt; &lt;span style="color:#75715e"&gt;//标识关闭状态&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;elemtype&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;_type&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 元素类型&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;sendx&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uint&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 发送索引，元素写入时存放到队列中的位置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;recvx&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uint&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 接收索引，元素从队列的该位置读出&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;recvq&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;waitq&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 等待读消息的goroutine队列&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;sendq&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;waitq&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 等待写消息的goroutine队列&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;lock&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;mutex&lt;/span&gt; &lt;span style="color:#75715e"&gt;//互斥锁，chan不允许并发读写&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="读写流程"&gt;读写流程&lt;a class="anchor" href="#%e8%af%bb%e5%86%99%e6%b5%81%e7%a8%8b"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="向-channel-写数据"&gt;向 channel 写数据:&lt;a class="anchor" href="#%e5%90%91-channel-%e5%86%99%e6%95%b0%e6%8d%ae"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;若等待接收队列 recvq 不为空，则缓冲区中无数据或无缓冲区，将直接从 recvq 取出 G ，并把数据写入，最后把该 G 唤醒，结束发送过程。&lt;/li&gt;
+&lt;li&gt;若缓冲区中有空余位置，则将数据写入缓冲区，结束发送过程。&lt;/li&gt;
+&lt;li&gt;若缓冲区中没有空余位置，则将发送数据写入 G，将当前 G 加入sendq ，进入睡眠，等待被读 goroutine 唤醒。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="从-channel-读数据"&gt;从 channel 读数据&lt;a class="anchor" href="#%e4%bb%8e-channel-%e8%af%bb%e6%95%b0%e6%8d%ae"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;若等待发送队列 sendq 不为空，且没有缓冲区，直接从 sendq中取出 G ，把 G 中数据读出，最后把 G 唤醒，结束读取过程。&lt;/li&gt;
+&lt;li&gt;如果等待发送队列 sendq 不为空，说明缓冲区已满，从缓冲区中首部读出数据，把 G 中数据写入缓冲区尾部，把 G 唤醒，结束读取过程。&lt;/li&gt;
+&lt;li&gt;如果缓冲区中有数据，则从缓冲区取出数据，结束读取过程。&lt;/li&gt;
+&lt;li&gt;将当前 goroutine 加入 recvq ，进入睡眠，等待被写 goroutine唤醒。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="关闭-channel"&gt;关闭 channel&lt;a class="anchor" href="#%e5%85%b3%e9%97%ad-channel"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;关闭 channel 时会将 recvq 中的 G 全部唤醒，本该写入 G 的数据位置为 nil。将 sendq 中的 G 全部唤醒，但是这些 G 会panic。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id="panic-出现的场景还有"&gt;panic 出现的场景还有：&lt;a class="anchor" href="#panic-%e5%87%ba%e7%8e%b0%e7%9a%84%e5%9c%ba%e6%99%af%e8%bf%98%e6%9c%89"&gt;#&lt;/a&gt;&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;关闭值为 nil 的 channel&lt;/li&gt;
+&lt;li&gt;关闭已经关闭的 channel&lt;/li&gt;
+&lt;li&gt;向已经关闭的 channel 中写数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="无缓冲-chan-的发送和接收是否同步"&gt;无缓冲 Chan 的发送和接收是否同步?&lt;a class="anchor" href="#%e6%97%a0%e7%bc%93%e5%86%b2-chan-%e7%9a%84%e5%8f%91%e9%80%81%e5%92%8c%e6%8e%a5%e6%94%b6%e6%98%af%e5%90%a6%e5%90%8c%e6%ad%a5"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 无缓冲的channel由于没有缓冲发送和接收需要同步&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;ch&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; make(&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;//有缓冲channel不要求发送和接收操作同步&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;ch&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; make(&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;channel 无缓冲时，发送阻塞直到数据被接收，接收阻塞直到读
+到数据；channel有缓冲时，当缓冲满时发送阻塞，当缓冲空时接
+收阻塞。&lt;/p&gt;</description></item><item><title>Vn.Py学习笔记（Python交易平台框架）</title><link>http://example.org/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/</guid><description>&lt;p&gt;author: Ian&lt;/p&gt;
+&lt;h1 id="vnpy笔记-"&gt;Vn.Py笔记 ✏📔&lt;a class="anchor" href="#vnpy%e7%ac%94%e8%ae%b0-"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="vnpy"&gt;&lt;img src="https://static.vnpy.com/static/img/index/2019-5-27/mainwindow.PNG" alt="vn.py" /&gt;&lt;a class="anchor" href="#vnpy"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;一个开源Python交易软件，主使用CTP协议。当然，还有其他协议了其源项目在&lt;a href="http://www.vnpy.org/"&gt;http://www.vnpy.org/&lt;/a&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h2 id="初期笔记"&gt;初期笔记&lt;a class="anchor" href="#%e5%88%9d%e6%9c%9f%e7%ac%94%e8%ae%b0"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;报单交易过程中，
+
+CTP使用BrokerID 从业务层面完全隔离不同经纪公司的交易、风控及结算用户的接入。
+BrokerID具体取值咨询开户的经纪公司。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;CTP中 UserID为操作员代码，InversterID为投资者代码； 投资者自己下单两者同为投资者代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CTP-API中，OrderRef和OrderAction 前者为CTP后台提供给客户端标识一笔报
+单的字段，从客户端可通过（FrontID、SessionID、OrderRef）唯一确定一笔报
+单；；；后者与OrderRef功能相似，提供给客户端来标识一笔撤单。
+前者的数据类型为字符数组，必须为阿拉伯数字字符。
+OrderRef（OrderActionRef）取值必须保证在同一会话内发送的报单
+OrderRef（OrderActionRef）值大于之前的最大值，开发多线程客户端尤为需要 
+注意。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;CTP-API库：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;error.dtd\error.xml 错误定义文件 ---- ThostFrfcMdApi.h 
+交易接口类定义文件 
+——— ThostFtfcUserApiDataType.h 类型定义文件 ------ 
+thostmduserapi.lib,thostmduserpi.dll 行情接口库文件 ----- 
+thosttraderapi.lib,thosttraderapi.dll交易接口库文件 ----- 
+
+交易和行情接口类定义文件都包含API 和 SPI类定义，客户端使用API向CTP后台
+发送请求，CTP后台则使用SPI向客户端回传响应及回报
+
+行情Demo开发：
+ 1.将API文件复制到工程目录；并将所有的头文件和静态、动态库连链接库
+并将文件导入到项目工程中。
+ 先继承行情接口类CThostFtdcMdspi，并实现需要实现的虚函数。 
+OnFrontConnectde、OnFrontDisconnected、OnPspUserLogin、
+OnRspSubMarketDAta
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;/&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;API工作流程&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;***/&lt;/p&gt;
+&lt;p&gt;API压缩包——API含常量对应字符、类型定义、操作系统编译定义、回调函数（MdSpi）（柜台向用户端发送信息后被系统自动调用的函数）、主动函数（MdApi）（向柜台发送各种请求和指令）&lt;/p&gt;
+&lt;p&gt;API工作流程：
+创建MdSpi对象（回掉函数），调用MdApi类，以Create开头的静态方法，创建MdApi对象（主动函数），注册MdSpi对象指针，行情柜台前置机地址，调用MdApi对象Init方法初始化连接前置机，连接成功会通过OnFrontConnected回调通知用户，用户获得连接成功通知后，调MdApi的ReqUserLogin登陆，登陆后MdSpi的OnRsqUserLogin通知用户
+&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-到此登陆完成&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;MdApi：（行情相关）
+ 使用MdApi对象的SubscribeMarketData方法，传入参数为想要订阅的“合约
+代码”，订阅成功当合约有新行情通过MdApi的OnRtnDepthMarketData回调通知 
+用户
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-至此订阅完成&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;
+当用户的某次请求发生错误时，会通过OnRspError通知用户 MdApi也含有退订合约、登出功能。 而一般退出程序则直接杀进程（不太安全便是）&lt;/p&gt;</description></item><item><title>数据库-MongoDB篇</title><link>http://example.org/docs/programmer/database/note-of-db-data---mongodb/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/database/note-of-db-data---mongodb/</guid><description>&lt;h1 id="db数据库--"&gt;DB数据库 🖥 📊🖥&lt;a class="anchor" href="#db%e6%95%b0%e6%8d%ae%e5%ba%93--"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://webassets.mongodb.com/_com_assets/cms/kmxrodmee9int5s1v-HP_Highlight%202.svg" alt="db" /&gt;&lt;/p&gt;
+&lt;h1 id="mongodb笔记"&gt;MongoDB笔记&lt;a class="anchor" href="#mongodb%e7%ac%94%e8%ae%b0"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;学习网站：&lt;a href="http://www.runoob.com/mongodb/mongodb-tutorial.html"&gt;http://www.runoob.com/mongodb/mongodb-tutorial.html&lt;/a&gt;
+(其学习教程还挺可观，很多，不过还不清楚好不好)&lt;/p&gt;
+&lt;h2 id="安装"&gt;安装&lt;a class="anchor" href="#%e5%ae%89%e8%a3%85"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="docker-安装-4412版本"&gt;Docker 安装 4.4.12版本&lt;a class="anchor" href="#docker-%e5%ae%89%e8%a3%85-4412%e7%89%88%e6%9c%ac"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-Makefile" data-lang="Makefile"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;pull&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	docker pull mongo:4.4.13
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;run&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;    &lt;span style="color:#960050;background-color:#1e0010"&gt;docker&lt;/span&gt; &lt;span style="color:#960050;background-color:#1e0010"&gt;run&lt;/span&gt; &lt;span style="color:#960050;background-color:#1e0010"&gt;-itd&lt;/span&gt; &lt;span style="color:#960050;background-color:#1e0010"&gt;--name&lt;/span&gt; &lt;span style="color:#960050;background-color:#1e0010"&gt;mongo&lt;/span&gt; --restart&lt;span style="color:#f92672"&gt;=&lt;/span&gt;always &lt;span style="color:#ae81ff"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;        -v /mongodb/datadb:/data/db &lt;span style="color:#ae81ff"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;        -p 27017:27017 &lt;span style="color:#ae81ff"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;        --network websafe-network &lt;span style="color:#ae81ff"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;        --privileged&lt;span style="color:#f92672"&gt;=&lt;/span&gt;true mongo:4.4.12
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;进入容器&lt;code&gt;docker exec -it mongo bash&lt;/code&gt;后:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mongo
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;use admin
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# db.createUser({user: &amp;#34;admin&amp;#34;, pwd: &amp;#34;admin&amp;#34;, roles: [{role: &amp;#34;root&amp;#34;, db: &amp;#34;admin&amp;#34;}]})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# db.createUser({user: &amp;#34;admin&amp;#34;, pwd: &amp;#34;admin&amp;#34;, roles: [{role: &amp;#34;userAdminAnyDatabase&amp;#34;, db: &amp;#34;admin&amp;#34;}]})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 如果能auth就不用createUser了&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;db.auth&lt;span style="color:#f92672"&gt;(&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;admin&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;admin&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;网上传的将 &lt;code&gt;MONGO_INITDB_ROOT_PASSWORD&lt;/code&gt; 和 &lt;code&gt;MONGO_INITDB_ROOT_USERNAME&lt;/code&gt;传入环境变量的方式，在mongo4.4.12 和 4.4.13上都不好使。&lt;/p&gt;
+&lt;h2 id="数据迁移"&gt;数据迁移&lt;a class="anchor" href="#%e6%95%b0%e6%8d%ae%e8%bf%81%e7%a7%bb"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;insert&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;into&lt;/span&gt; device_data_current &lt;span style="color:#66d9ef"&gt;select&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;from&lt;/span&gt; device_data;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="使用-mysqldump"&gt;使用 &lt;code&gt;mysqldump&lt;/code&gt;&lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8-mysqldump"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;很慢 很大 很方便
+很！不好！使用！在使用&amp;ndash;host时 下面命令没一次正常工作的，很难受&lt;/p&gt;</description></item><item><title>数据库-MySQL篇</title><link>http://example.org/docs/programmer/database/note-of-db-data---mysql/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/database/note-of-db-data---mysql/</guid><description>&lt;h1 id="mysql数据库--"&gt;MySQL数据库 🖥 📊🖥&lt;a class="anchor" href="#mysql%e6%95%b0%e6%8d%ae%e5%ba%93--"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://webassets.mongodb.com/_com_assets/cms/kmxrodmee9int5s1v-HP_Highlight%202.svg" alt="db" /&gt;&lt;/p&gt;
+&lt;h1 id="安装"&gt;安装&lt;a class="anchor" href="#%e5%ae%89%e8%a3%85"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="docker"&gt;docker&lt;a class="anchor" href="#docker"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;podman run -d --name mysql-container -e MYSQL_ROOT_PASSWORD&lt;span style="color:#f92672"&gt;={&lt;/span&gt;my-secret-pw&lt;span style="color:#f92672"&gt;}&lt;/span&gt; -e MYSQL_TIME_ZONE&lt;span style="color:#f92672"&gt;=&lt;/span&gt;UTC -e MYSQL_CHARSET&lt;span style="color:#f92672"&gt;=&lt;/span&gt;utf8 -p 3306:3306 mysql:5.7&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="mysql-客户端"&gt;MySQL 客户端&lt;a class="anchor" href="#mysql-%e5%ae%a2%e6%88%b7%e7%ab%af"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="如果没有mysql-client可以安装-mariadb-客户端"&gt;如果没有&lt;code&gt;mysql-client&lt;/code&gt;可以安装 &lt;code&gt;MariaDB 客户端&lt;/code&gt;&lt;a class="anchor" href="#%e5%a6%82%e6%9e%9c%e6%b2%a1%e6%9c%89mysql-client%e5%8f%af%e4%bb%a5%e5%ae%89%e8%a3%85-mariadb-%e5%ae%a2%e6%88%b7%e7%ab%af"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install mariadb-client&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装完成后，命令也是 &lt;code&gt;mysql&lt;/code&gt;，用法完全相同&lt;/p&gt;
+&lt;h1 id="使用"&gt;使用&lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="常用命令"&gt;常用命令&lt;a class="anchor" href="#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;CREATE&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;DATABASE&lt;/span&gt; &lt;span style="color:#960050;background-color:#1e0010"&gt;{&lt;/span&gt;database_name&lt;span style="color:#960050;background-color:#1e0010"&gt;}&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;DEFAULT&lt;/span&gt; CHARACTER &lt;span style="color:#66d9ef"&gt;SET&lt;/span&gt; utf8mb4 &lt;span style="color:#66d9ef"&gt;DEFAULT&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;COLLATE&lt;/span&gt; utf8mb4_unicode_ci;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="按天统计"&gt;按天统计&lt;a class="anchor" href="#%e6%8c%89%e5%a4%a9%e7%bb%9f%e8%ae%a1"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; DATE(created_at) &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; date,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;COUNT&lt;/span&gt;(&lt;span style="color:#f92672"&gt;*&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;count&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;FROM&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;`&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;TABLE_NAME&lt;/span&gt;&lt;span style="color:#f92672"&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;WHERE&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; created_at &lt;span style="color:#f92672"&gt;&amp;gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;2025-01-01&amp;#34;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;AND&lt;/span&gt; created_at &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;2025-02-01&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;GROUP&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;BY&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; DATE(created_at)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;ORDER&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;BY&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; date &lt;span style="color:#66d9ef"&gt;LIMIT&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="连接"&gt;连接&lt;a class="anchor" href="#%e8%bf%9e%e6%8e%a5"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;使用MySQL命令行工具连接MySQL时，你可以使用以下命令来：&lt;/p&gt;
+&lt;h3 id="启用压缩传输"&gt;启用压缩传输&lt;a class="anchor" href="#%e5%90%af%e7%94%a8%e5%8e%8b%e7%bc%a9%e4%bc%a0%e8%be%93"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mysql --compress -u username -p&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;完整命令如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mysql --compress -u&lt;span style="color:#f92672"&gt;{&lt;/span&gt;username&lt;span style="color:#f92672"&gt;}&lt;/span&gt; -p&lt;span style="color:#f92672"&gt;{&lt;/span&gt;passwd&lt;span style="color:#f92672"&gt;}&lt;/span&gt; --host &lt;span style="color:#f92672"&gt;{&lt;/span&gt;host&lt;span style="color:#f92672"&gt;}&lt;/span&gt; &lt;span style="color:#f92672"&gt;{&lt;/span&gt;db name&lt;span style="color:#f92672"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;2024-05-27: 但是很可惜，很多第三方连接库都不支持这个参数。&lt;/p&gt;</description></item></channel></rss>

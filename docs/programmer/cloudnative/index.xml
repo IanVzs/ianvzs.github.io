@@ -1,38 +1,380 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>云原生 on Ian's Blog</title><link>http://example.org/docs/programmer/cloudnative/</link><description>Recent content in 云原生 on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 23 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/cloudnative/index.xml" rel="self" type="application/rss+xml"/><item><title>日志收集系统: loki+promtail+Grafana</title><link>http://example.org/docs/programmer/cloudnative/elk/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E7%B3%BB%E7%BB%9F/</link><pubDate>Wed, 23 Oct 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/elk/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E7%B3%BB%E7%BB%9F/</guid><description>todo</description></item><item><title>Podman</title><link>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/</link><pubDate>Thu, 27 Jun 2024 21:37:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/</guid><description>Podman # 常用命令 # 2. 启动容器并进入交互模式 # 你可以使用 docker run 命令启动容器并进入容器的交互式 shell。这样你就可以进入容器内部进行调试。
-复制代码
-docker run -it --entrypoint /bin/bash nova-crawler:latest 参数说明： # -it：-i 表示以交互模式运行容器，-t 给容器分配一个伪终端，这样你就可以在终端与容器交互。 --entrypoint /bin/bash：这将覆盖容器的默认入口点，直接启动一个 bash shell 以便你进入容器进行调试。 nova-crawler:latest：你要运行的镜像名称。 3. 启动容器并调试特定命令 # 如果你不想进入容器的 shell，而是想直接执行调试命令（比如启动应用并在调试模式下运行），可以使用以下命令：
-bash
-复制代码
-docker run -it --entrypoint /bin/bash nova-crawler:latest -c &amp;quot;your-debug-command&amp;quot;
-4. 查看容器日志 # 如果你希望在调试时查看容器的日志输出，可以使用以下命令：
-bash
-复制代码
-docker logs &amp;lt;container_id&amp;gt;
-你可以通过 docker ps 查找运行的容器 ID，然后查看日志输出。
-5. 调试时挂载本地目录（可选） # 如果你需要调试代码，并且希望挂载本地目录到容器中进行实时编辑，可以使用 -v 参数来挂载本地目录。例如，假设你的本地代码在 /path/to/your/code 目录下：
-bash
-复制代码</description></item><item><title>Nginx实用配置</title><link>http://example.org/docs/programmer/cloudnative/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/</link><pubDate>Sun, 24 Sep 2023 23:01:41 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/</guid><description>from: 这里
-location / { # First attempt to serve request as file, then # as directory, then fall back to displaying a 404. try_files $uri $uri/ =404; } location /test_vul_id_1000003 { alias /home/test_vul_id_1000003; autoindex on; } location /test_vul_id_1000003 { root /home; autoindex on; } 非以上配置访问404原因 # location /test_vul_id_1000003 { root /home/test_vul_id_1000003; autoindex on; } 如以上配置, nginx 配置文件会将 root 加上 以上的 localtion , 导致访问时实际定位是 /home/test_vul_id_1000003/test_vul_id_1000003 所以就 404 了
-生效命令 # nginx -t nginx -s reload service nginx restart</description></item><item><title>uwsgi 处理记录</title><link>http://example.org/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/</link><pubDate>Tue, 01 Aug 2023 10:30:41 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/</guid><description>日志输出到终端 # uwsgi.ini文件中配置
-log-master = true ; logto=/var/log/uwsgi.log 同时这行不能有 启动命令: uwsgi /opt/disk2/var/www/scancenter/3rd/conf/uwsgi-docker/uwsgi.ini --log-master
-隔一段时间卡死,重启不能 # 当作为纯后端API使用时, 使用 http-socket 不使用 http
-使用supervisor管理uwsgi # #daemonize=/var/log/uwsgi8011.log # 守护进程一定要注释掉(关键)
-查看性能数据 # 安装 uwsgitop 查看 uwsgi stats写入位置 查看 pip install uwsgitop cat /opt/trunk/textcheck/3rd/uwsgi/config.ini | grep stats # &amp;gt; stats=/var/run/uwsgi/uwsgi.status uwsgitop /var/run/uwsgi/uwsgi.status # &amp;gt; uwsgi-2.0.19.1 - Wed Oct 18 18:13:48 2023 - req: 113 - RPS: 0 - lq: 0 - tx: 75.1K node: app-58d8477f4-26fzb - cwd: /app - uid: 0 - gid: 0 - masterpid: 8 WID % PID REQ RPS EXC SIG STATUS AVG RSS VSZ TX ReSpwn HC RunT LastSpwn 1 28.</description></item><item><title>Docker</title><link>http://example.org/docs/programmer/cloudnative/note-of-docker/</link><pubDate>Thu, 16 Dec 2021 16:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/note-of-docker/</guid><description>Docker # 教程手册 # 好用的使用教程
-Install # 略过~ 😁
-打镜像和跑 # docker build -t server:v0 . -f server.dockerfile 跑 # docker run -p 9080:80 --name server server:v0 指定启动命令 # sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &amp;#34;echo hello&amp;#34; 加入自定义网络 # --network {{network name}} 详见：[[#Network]]
-跑出问题-进入容器排查 # sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &amp;#34;bash&amp;#34; 使用-it进入容器手动执行命令进行调试
-启动全部容器 # docker ps -a | grep &amp;#34;Exited&amp;#34; | awk &amp;#39;{print $1}&amp;#39; | xargs docker start Network # docker run时容器加入方法-redis为例 后期加入方式 创建一个新网 检测 init_redis: docker run -p 6379:6379 \\ --network websafe-network \\ --name redislatest redis:latest --requirepass 3b21d032a7fd8eb51fa7bd8a2e812b78b7b3a36f join_network: docker network connect websafe-network mysql56 docker network connect websafe-network daemon-xxx init_network: docker network create websafe-network check_network: docker network inspect websafe-network docker network inspect websafe-network | findStr IPv4Address 删除 # 可视化 # go install github.</description></item><item><title>Docker</title><link>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/</link><pubDate>Thu, 16 Dec 2021 16:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/</guid><description>Docker # 教程手册 # 好用的使用教程
-Install # 略过~ 😁
-基础命令 # 打镜像和跑 # 打 # docker build -t server:v0 . -f server.dockerfile dockerignore # 如果您想在 Dockerfile 中将当前目录中的所有文件都复制到 Docker 镜像中，可以使用 Dockerfile 中的 COPY 指令。具体的语法如下：
-COPY . /目标路径/ 其中. 表示当前目录，/目标路径/ 表示目标路径，这里可以是绝对路径或相对路径。 这将会将当前目录中的所有文件复制到镜像中的 /app/ 目录下。请注意，在这种情况下，所有文件和文件夹都会被复制到镜像中，包括隐藏文件和文件夹。如果您不想复制某些文件或文件夹，可以在运行 COPY 指令之前通过 .dockerignore 文件来指定忽略的文件和文件夹。
-跑 # docker run -p 9080:80 --name server server:v0 指定启动命令 # sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &amp;#34;echo hello&amp;#34; 加入自定义网络 # --network {{network name}} 详见：[[#Network]]</description></item><item><title>Django的建站的(｡･･)ﾉﾞ</title><link>http://example.org/docs/programmer/cloudnative/fastapi/</link><pubDate>Mon, 07 Jun 2021 16:30:18 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/fastapi/</guid><description> 多一层目录时 # # Dir Tree just like: # . # ├── app # │ ├── __init__.py # │ └── main.py # ├── Dockerfile # └── requirements.txt 如果在app同级目录，而非app下运行时：
-uvicorn app.main:app --reload</description></item><item><title>Nginx高可用</title><link>http://example.org/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/</link><pubDate>Sun, 09 May 2021 09:56:41 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/</guid><description>Keepalived+Nginx实现高可用 # Nginx 关键字 # IO多路复用epoll(IO复用) 轻量,插件: Nginx仅保留了HTTP CPU亲和: 每个worker进程固定在一个CPU Nginx配置 # 代理 # 动静分离 # 动态页面和静态页面交给不同的服务器来解析
-负载均衡 # upstream balanceServer { server 10.1.22.33:12345; server 10.1.22.34:12345; server 10.1.22.35:12345; } server { server_name fe.server.com; listen 80; location /api { proxy_pass http://balanceServer; } } 机制 # 默认: 轮询, 单机卡顿, 影响分配在这台服务器下的用户 默认: 权重轮询, 宕机Nginx会自动剔除出队列, ip_hash-来源IP分配分配给同个服务器 fair: 根据相应时间均衡分配, 默认不支持. 需安装upstream_fair, url_hash类ip_hash同样需要安装Nginx的hash软件包. Keepalived 配置 # 粘贴自: 这里
-概览 # VIP IP 主机名 Nginx端口 默认主从 192.</description></item><item><title>Django的建站的(｡･･)ﾉﾞ</title><link>http://example.org/docs/programmer/cloudnative/notesdjango/</link><pubDate>Thu, 07 Jun 2018 16:30:18 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/notesdjango/</guid><description>author: Ian
-Django 建站的一些东西 # 一些问题 # 使用字体 zh-cn时如果报错: # OSError: No translation files found for default language zh-cn.
-LANGUAGE_CODE = &amp;#39;zh-Hans&amp;#39; TIME_ZONE = &amp;#39;Asia/Shanghai&amp;#39; # zh-Hans是简体中文 zh-Hant是繁体中文 # 如果数据库有UTC的时间，那么可以设置： # USE_TZ = True 改为 USE_TZ = False 时区问题 # python3.8/site-packages/django/db/models/fields/init.py:1416: RuntimeWarning: DateTimeField {DATABASEMODEL}.update_time received a naive datetime (2023-09-14 21:55:56) while time zone support is active. warnings.warn(&amp;ldquo;DateTimeField %s received a naive datetime (%s)&amp;rdquo;
-这个警告是由于在使用带有时区支持的DateTimeField字段时，传入了一个没有时区信息的datetime对象。要修复这个警告，你可以将传入DateTimeField字段的datetime对象转换为带有时区信息的datetime对象。
-有两种方法可以解决这个问题：
-使用带有时区信息的datetime对象：确保在创建datetime对象时，使用正确的时区信息。你可以使用pytz库来设置时区信息，例如： from datetime import datetime import pytz # 创建带有时区信息的datetime对象 naive_datetime = datetime(2023, 9, 14, 21, 55, 56) timezone = pytz.</description></item><item><title/><link>http://example.org/docs/programmer/cloudnative/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/</guid><description>平台地址 需要自建
-在平台新建项目，新建token后可以自动生成扫描命令(拉代码, cd进去后在项目代码/路径下执行)：
-sonar-scanner \ -Dsonar.projectKey=scancenter \ -Dsonar.sources=. \ -Dsonar.host.url=https://sonar-xa.inone.nsfocus.com \ -Dsonar.login=3e569f7abcfd8a64067d790f038c57a6a6b73207 如果使用的是他人的token，需要给授权。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>云原生 on Ian's Blog</title><link>http://example.org/docs/programmer/cloudnative/</link><description>Recent content in 云原生 on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 03 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/cloudnative/index.xml" rel="self" type="application/rss+xml"/><item><title>📝 Windows + Docker + VS Code Remote-Containers 故障排查与恢复</title><link>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/vs-code-dev-container/</link><pubDate>Wed, 03 Dec 2025 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/vs-code-dev-container/</guid><description>&lt;h1 id="-windows--docker--vs-code-remote-containers-故障排查与恢复"&gt;📝 Windows + Docker + VS Code Remote-Containers 故障排查与恢复&lt;a class="anchor" href="#-windows--docker--vs-code-remote-containers-%e6%95%85%e9%9a%9c%e6%8e%92%e6%9f%a5%e4%b8%8e%e6%81%a2%e5%a4%8d"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="1-背景问题"&gt;1️⃣ 背景问题&lt;a class="anchor" href="#1-%e8%83%8c%e6%99%af%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;常见报错：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;remote-containers.explorerTargetsRefresh: stream is closed&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;An error occurred attaching to the container&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Unable to read file '…package.json'&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;原因一般为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Docker context 错误（VS Code 连接到错误 Docker 引擎）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Remote-Containers / Dev Containers 扩展损坏或缓存残留&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;VS Code 内部缓存或 workspaceStorage 被锁&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;容器本身缺 shell 或 ENTRYPOINT 阻塞（本次案例排除）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id="2-排查-docker-context"&gt;2️⃣ 排查 Docker Context&lt;a class="anchor" href="#2-%e6%8e%92%e6%9f%a5-docker-context"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-powershell" data-lang="powershell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker context ls&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;正确 context 应该指向 Windows Docker 引擎：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;default *&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;如果 context 是 &lt;code&gt;desktop-linux&lt;/code&gt;，切换回默认：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-powershell" data-lang="powershell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker context use &lt;span style="color:#66d9ef"&gt;default&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;验证容器可访问：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-powershell" data-lang="powershell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker ps
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker exec -it &amp;lt;container&amp;gt; sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker exec -it &amp;lt;container&amp;gt; bash&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;✅ 能进入容器说明容器正常。&lt;/p&gt;</description></item><item><title>日志收集系统: loki+promtail+Grafana</title><link>http://example.org/docs/programmer/cloudnative/elk/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E7%B3%BB%E7%BB%9F/</link><pubDate>Wed, 23 Oct 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/elk/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E7%B3%BB%E7%BB%9F/</guid><description>&lt;p&gt;todo&lt;/p&gt;</description></item><item><title>Podman</title><link>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/</link><pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/</guid><description>&lt;h1 id="podman"&gt;Podman&lt;a class="anchor" href="#podman"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://mma.prnewswire.com/media/776689/New_Docker_logo_Logo.jpg?p=facebook" alt="docker img" title="docker"/&gt;&lt;/p&gt;
+&lt;h1 id="常用命令"&gt;常用命令&lt;a class="anchor" href="#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h3 id="2-启动容器并进入交互模式"&gt;2. 启动容器并进入交互模式&lt;a class="anchor" href="#2-%e5%90%af%e5%8a%a8%e5%ae%b9%e5%99%a8%e5%b9%b6%e8%bf%9b%e5%85%a5%e4%ba%a4%e4%ba%92%e6%a8%a1%e5%bc%8f"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;你可以使用 &lt;code&gt;docker run&lt;/code&gt; 命令启动容器并进入容器的交互式 shell。这样你就可以进入容器内部进行调试。&lt;/p&gt;
+&lt;p&gt;复制代码&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run -it --entrypoint /bin/bash nova-crawler:latest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="参数说明"&gt;参数说明：&lt;a class="anchor" href="#%e5%8f%82%e6%95%b0%e8%af%b4%e6%98%8e"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-it&lt;/code&gt;：&lt;code&gt;-i&lt;/code&gt; 表示以交互模式运行容器，&lt;code&gt;-t&lt;/code&gt; 给容器分配一个伪终端，这样你就可以在终端与容器交互。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--entrypoint /bin/bash&lt;/code&gt;：这将覆盖容器的默认入口点，直接启动一个 bash shell 以便你进入容器进行调试。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nova-crawler:latest&lt;/code&gt;：你要运行的镜像名称。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="3-启动容器并调试特定命令"&gt;3. 启动容器并调试特定命令&lt;a class="anchor" href="#3-%e5%90%af%e5%8a%a8%e5%ae%b9%e5%99%a8%e5%b9%b6%e8%b0%83%e8%af%95%e7%89%b9%e5%ae%9a%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;如果你不想进入容器的 shell，而是想直接执行调试命令（比如启动应用并在调试模式下运行），可以使用以下命令：&lt;/p&gt;
+&lt;p&gt;bash&lt;/p&gt;
+&lt;p&gt;复制代码&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker run -it --entrypoint /bin/bash nova-crawler:latest -c &amp;quot;your-debug-command&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="4-查看容器日志"&gt;4. 查看容器日志&lt;a class="anchor" href="#4-%e6%9f%a5%e7%9c%8b%e5%ae%b9%e5%99%a8%e6%97%a5%e5%bf%97"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;如果你希望在调试时查看容器的日志输出，可以使用以下命令：&lt;/p&gt;
+&lt;p&gt;bash&lt;/p&gt;
+&lt;p&gt;复制代码&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker logs &amp;lt;container_id&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;你可以通过 &lt;code&gt;docker ps&lt;/code&gt; 查找运行的容器 ID，然后查看日志输出。&lt;/p&gt;
+&lt;h3 id="5-调试时挂载本地目录可选"&gt;5. 调试时挂载本地目录（可选）&lt;a class="anchor" href="#5-%e8%b0%83%e8%af%95%e6%97%b6%e6%8c%82%e8%bd%bd%e6%9c%ac%e5%9c%b0%e7%9b%ae%e5%bd%95%e5%8f%af%e9%80%89"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;如果你需要调试代码，并且希望挂载本地目录到容器中进行实时编辑，可以使用 &lt;code&gt;-v&lt;/code&gt; 参数来挂载本地目录。例如，假设你的本地代码在 &lt;code&gt;/path/to/your/code&lt;/code&gt; 目录下：&lt;/p&gt;
+&lt;p&gt;bash&lt;/p&gt;
+&lt;p&gt;复制代码&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker run -it -v /path/to/your/code:/app --entrypoint /bin/bash nova-crawler:latest&lt;/code&gt;&lt;/p&gt;</description></item><item><title>Nginx实用配置</title><link>http://example.org/docs/programmer/cloudnative/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/</link><pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/</guid><description>&lt;p&gt;from: &lt;a href="https://blog.csdn.net/weixin_44779019/article/details/102027039?ydreferer=aHR0cHM6Ly9jbi5iaW5nLmNvbS8%3D"&gt;这里&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;location&lt;/span&gt; &lt;span style="color:#e6db74"&gt;/&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#75715e"&gt;# First attempt to serve request as file, then
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#75715e"&gt;# as directory, then fall back to displaying a 404.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#f92672"&gt;try_files&lt;/span&gt; $uri $uri/ =&lt;span style="color:#ae81ff"&gt;404&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;location&lt;/span&gt; &lt;span style="color:#e6db74"&gt;/test_vul_id_1000003&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#f92672"&gt;alias&lt;/span&gt; &lt;span style="color:#e6db74"&gt;/home/test_vul_id_1000003&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#f92672"&gt;autoindex&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;on&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;location&lt;/span&gt; &lt;span style="color:#e6db74"&gt;/test_vul_id_1000003&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#f92672"&gt;root&lt;/span&gt; &lt;span style="color:#e6db74"&gt;/home&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#f92672"&gt;autoindex&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;on&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="非以上配置访问404原因"&gt;非以上配置访问404原因&lt;a class="anchor" href="#%e9%9d%9e%e4%bb%a5%e4%b8%8a%e9%85%8d%e7%bd%ae%e8%ae%bf%e9%97%ae404%e5%8e%9f%e5%9b%a0"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;location&lt;/span&gt; &lt;span style="color:#e6db74"&gt;/test_vul_id_1000003&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#f92672"&gt;root&lt;/span&gt; &lt;span style="color:#e6db74"&gt;/home/test_vul_id_1000003&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#f92672"&gt;autoindex&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;on&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如以上配置, &lt;code&gt;nginx&lt;/code&gt; 配置文件会将 &lt;code&gt;root&lt;/code&gt; 加上 以上的 &lt;code&gt;localtion&lt;/code&gt; , 导致访问时实际定位是 &lt;code&gt;/home/test_vul_id_1000003/test_vul_id_1000003&lt;/code&gt; 所以就 &lt;code&gt;404&lt;/code&gt; 了&lt;/p&gt;
+&lt;h2 id="生效命令"&gt;生效命令&lt;a class="anchor" href="#%e7%94%9f%e6%95%88%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -t
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -s reload
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;service nginx restart&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>uwsgi 处理记录</title><link>http://example.org/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/</link><pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/</guid><description>&lt;h1 id="日志输出到终端"&gt;日志输出到终端&lt;a class="anchor" href="#%e6%97%a5%e5%bf%97%e8%be%93%e5%87%ba%e5%88%b0%e7%bb%88%e7%ab%af"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;uwsgi.ini文件中配置&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;log-master = true
+; logto=/var/log/uwsgi.log 同时这行不能有&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;启动命令: &lt;code&gt;uwsgi /opt/disk2/var/www/scancenter/3rd/conf/uwsgi-docker/uwsgi.ini --log-master&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="隔一段时间卡死重启不能"&gt;隔一段时间卡死,重启不能&lt;a class="anchor" href="#%e9%9a%94%e4%b8%80%e6%ae%b5%e6%97%b6%e9%97%b4%e5%8d%a1%e6%ad%bb%e9%87%8d%e5%90%af%e4%b8%8d%e8%83%bd"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;当作为纯后端API使用时, 使用 &lt;code&gt;http-socket&lt;/code&gt; 不使用 &lt;code&gt;http&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="使用supervisor管理uwsgi"&gt;使用supervisor管理uwsgi&lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8supervisor%e7%ae%a1%e7%90%86uwsgi"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;#daemonize=/var/log/uwsgi8011.log # 守护进程一定要注释掉(关键)&lt;/p&gt;
+&lt;h2 id="查看性能数据"&gt;查看性能数据&lt;a class="anchor" href="#%e6%9f%a5%e7%9c%8b%e6%80%a7%e8%83%bd%e6%95%b0%e6%8d%ae"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;安装 &lt;code&gt;uwsgitop&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看 &lt;code&gt;uwsgi&lt;/code&gt; &lt;code&gt;stats&lt;/code&gt;写入位置&lt;/li&gt;
+&lt;li&gt;查看&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install uwsgitop
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /opt/trunk/textcheck/3rd/uwsgi/config.ini | grep stats
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# &amp;gt; stats=/var/run/uwsgi/uwsgi.status&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;uwsgitop /var/run/uwsgi/uwsgi.status
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# &amp;gt; uwsgi-2.0.19.1 - Wed Oct 18 18:13:48 2023 - req: 113 - RPS: 0 - lq: 0 - tx: 75.1K&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;node: app-58d8477f4-26fzb - cwd: /app - uid: 0 - gid: 0 - masterpid: 8
+WID % PID REQ RPS EXC SIG STATUS AVG RSS VSZ TX ReSpwn HC RunT LastSpwn
+1 28.3 132942 32 0 0 0 idle 19161ms 0 0 15.2K 1 0 155394.03 17:34:42
+2 28.3 132950 32 0 0 0 idle 1781ms 0 0 20.1K 1 0 126123.093 17:34:42
+3 22.1 132958 25 0 0 0 idle 5982ms 0 0 16.9K 1 0 127199.778 17:34:42
+4 21.2 132963 24 0 0 0 idle 15274ms 0 0 22.8K 1 0 144018.093 17:34:42&lt;/p&gt;</description></item><item><title>Docker</title><link>http://example.org/docs/programmer/cloudnative/note-of-docker/</link><pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/note-of-docker/</guid><description>&lt;h1 id="docker"&gt;Docker&lt;a class="anchor" href="#docker"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://mma.prnewswire.com/media/776689/New_Docker_logo_Logo.jpg?p=facebook" alt="docker img" title="docker"/&gt;&lt;/p&gt;
+&lt;h2 id="教程手册"&gt;教程手册&lt;a class="anchor" href="#%e6%95%99%e7%a8%8b%e6%89%8b%e5%86%8c"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://yeasy.gitbook.io/docker_practice/introduction/why"&gt;好用的使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="install"&gt;Install&lt;a class="anchor" href="#install"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;略过~ 😁&lt;/p&gt;
+&lt;h2 id="打镜像和跑"&gt;打镜像和跑&lt;a class="anchor" href="#%e6%89%93%e9%95%9c%e5%83%8f%e5%92%8c%e8%b7%91"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker build -t server:v0 . -f server.dockerfile&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="跑"&gt;跑&lt;a class="anchor" href="#%e8%b7%91"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run -p 9080:80 --name server server:v0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="指定启动命令"&gt;指定启动命令&lt;a class="anchor" href="#%e6%8c%87%e5%ae%9a%e5%90%af%e5%8a%a8%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &amp;#34;echo hello&amp;#34;&lt;/code&gt;&lt;/pre&gt;&lt;h4 id="加入自定义网络"&gt;加入自定义网络&lt;a class="anchor" href="#%e5%8a%a0%e5%85%a5%e8%87%aa%e5%ae%9a%e4%b9%89%e7%bd%91%e7%bb%9c"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;--network {{network name}}&lt;/code&gt;
+详见：[[#Network]]&lt;/p&gt;
+&lt;h4 id="跑出问题-进入容器排查"&gt;跑出问题-进入容器排查&lt;a class="anchor" href="#%e8%b7%91%e5%87%ba%e9%97%ae%e9%a2%98-%e8%bf%9b%e5%85%a5%e5%ae%b9%e5%99%a8%e6%8e%92%e6%9f%a5"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &lt;span style="color:#e6db74"&gt;&amp;#34;bash&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使用&lt;code&gt;-it&lt;/code&gt;进入容器手动执行命令进行调试&lt;/p&gt;
+&lt;h4 id="启动全部容器"&gt;启动全部容器&lt;a class="anchor" href="#%e5%90%af%e5%8a%a8%e5%85%a8%e9%83%a8%e5%ae%b9%e5%99%a8"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker ps -a | grep &lt;span style="color:#e6db74"&gt;&amp;#34;Exited&amp;#34;&lt;/span&gt; | awk &lt;span style="color:#e6db74"&gt;&amp;#39;{print $1}&amp;#39;&lt;/span&gt; | xargs docker start&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="network"&gt;Network&lt;a class="anchor" href="#network"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;docker run时容器加入方法-redis为例&lt;/li&gt;
+&lt;li&gt;后期加入方式&lt;/li&gt;
+&lt;li&gt;创建一个新网&lt;/li&gt;
+&lt;li&gt;检测&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-makefile" data-lang="makefile"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; init_redis:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker run -p 6379:6379 &lt;span style="color:#ae81ff"&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	--network websafe-network &lt;span style="color:#ae81ff"&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	--name redislatest redis:latest --requirepass 3b21d032a7fd8eb51fa7bd8a2e812b78b7b3a36f 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; join_network:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network connect websafe-network mysql56
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network connect websafe-network daemon-xxx
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; init_network:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network create websafe-network
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; check_network:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network inspect websafe-network
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network inspect websafe-network | findStr IPv4Address
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="删除"&gt;删除&lt;a class="anchor" href="#%e5%88%a0%e9%99%a4"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id="可视化"&gt;可视化&lt;a class="anchor" href="#%e5%8f%af%e8%a7%86%e5%8c%96"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;go install github.com/jesseduffield/lazydocker@latest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;如果需要&lt;code&gt;sudo&lt;/code&gt;权限的话无法直接执行命令，只能where获取原始路径后&lt;code&gt;sudo&lt;/code&gt;+原始路径执行
+如：&lt;/p&gt;</description></item><item><title>Docker</title><link>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/</link><pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/</guid><description>&lt;h1 id="docker"&gt;Docker&lt;a class="anchor" href="#docker"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://mma.prnewswire.com/media/776689/New_Docker_logo_Logo.jpg?p=facebook" alt="docker img" title="docker"/&gt;&lt;/p&gt;
+&lt;h2 id="教程手册"&gt;教程手册&lt;a class="anchor" href="#%e6%95%99%e7%a8%8b%e6%89%8b%e5%86%8c"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://yeasy.gitbook.io/docker_practice/introduction/why"&gt;好用的使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="install"&gt;Install&lt;a class="anchor" href="#install"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;略过~ 😁&lt;/p&gt;
+&lt;h2 id="基础命令"&gt;基础命令&lt;a class="anchor" href="#%e5%9f%ba%e7%a1%80%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="打镜像和跑"&gt;打镜像和跑&lt;a class="anchor" href="#%e6%89%93%e9%95%9c%e5%83%8f%e5%92%8c%e8%b7%91"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="打"&gt;打&lt;a class="anchor" href="#%e6%89%93"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker build -t server:v0 . -f server.dockerfile&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="dockerignore"&gt;dockerignore&lt;a class="anchor" href="#dockerignore"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;如果您想在 Dockerfile 中将当前目录中的所有文件都复制到 Docker 镜像中，可以使用 Dockerfile 中的 &lt;code&gt;COPY&lt;/code&gt; 指令。具体的语法如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-Dockerfile" data-lang="Dockerfile"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;COPY&lt;/span&gt; . /目标路径/&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中&lt;code&gt;.&lt;/code&gt; 表示当前目录，&lt;code&gt;/目标路径/&lt;/code&gt; 表示目标路径，这里可以是绝对路径或相对路径。
+这将会将当前目录中的所有文件复制到镜像中的 &lt;code&gt;/app/&lt;/code&gt; 目录下。请注意，在这种情况下，所有文件和文件夹都会被复制到镜像中，包括隐藏文件和文件夹。如果您不想复制某些文件或文件夹，可以在运行 &lt;code&gt;COPY&lt;/code&gt; 指令之前通过 &lt;code&gt;.dockerignore&lt;/code&gt; 文件来指定忽略的文件和文件夹。&lt;/p&gt;
+&lt;h3 id="跑"&gt;跑&lt;a class="anchor" href="#%e8%b7%91"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run -p 9080:80 --name server server:v0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="指定启动命令"&gt;指定启动命令&lt;a class="anchor" href="#%e6%8c%87%e5%ae%9a%e5%90%af%e5%8a%a8%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &amp;#34;echo hello&amp;#34;&lt;/code&gt;&lt;/pre&gt;&lt;h4 id="加入自定义网络"&gt;加入自定义网络&lt;a class="anchor" href="#%e5%8a%a0%e5%85%a5%e8%87%aa%e5%ae%9a%e4%b9%89%e7%bd%91%e7%bb%9c"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;--network {{network name}}&lt;/code&gt;
+详见：[[#Network]]&lt;/p&gt;
+&lt;h4 id="跑出问题-进入容器排查"&gt;跑出问题-进入容器排查&lt;a class="anchor" href="#%e8%b7%91%e5%87%ba%e9%97%ae%e9%a2%98-%e8%bf%9b%e5%85%a5%e5%ae%b9%e5%99%a8%e6%8e%92%e6%9f%a5"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &lt;span style="color:#e6db74"&gt;&amp;#34;bash&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使用&lt;code&gt;-it&lt;/code&gt;进入容器手动执行命令进行调试&lt;/p&gt;</description></item><item><title>Django的建站的(｡･･)ﾉﾞ</title><link>http://example.org/docs/programmer/cloudnative/fastapi/</link><pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/fastapi/</guid><description>&lt;h2 id="多一层目录时"&gt;多一层目录时&lt;a class="anchor" href="#%e5%a4%9a%e4%b8%80%e5%b1%82%e7%9b%ae%e5%bd%95%e6%97%b6"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Dir Tree just like:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# .&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# ├── app&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# │   ├── __init__.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# │ └── main.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# ├── Dockerfile&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# └── requirements.txt&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果在&lt;code&gt;app&lt;/code&gt;同级目录，而非&lt;code&gt;app&lt;/code&gt;下运行时：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;uvicorn app.main:app --reload&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Nginx高可用</title><link>http://example.org/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/</link><pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/</guid><description>&lt;h1 id="keepalivednginx实现高可用"&gt;Keepalived+Nginx实现高可用&lt;a class="anchor" href="#keepalivednginx%e5%ae%9e%e7%8e%b0%e9%ab%98%e5%8f%af%e7%94%a8"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://pic4.zhimg.com/80/v2-ec3208d1ea659d126fe2a008ec5ae927_1440w.jpg" alt="Keepalived&amp;#43;Nginx实现高可用示意图" title="zhuanlan.zhihu.com/p/34943332"/&gt;&lt;/p&gt;
+&lt;h2 id="nginx-关键字"&gt;Nginx 关键字&lt;a class="anchor" href="#nginx-%e5%85%b3%e9%94%ae%e5%ad%97"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;IO多路复用epoll(IO复用)&lt;/li&gt;
+&lt;li&gt;轻量,插件: Nginx仅保留了HTTP&lt;/li&gt;
+&lt;li&gt;CPU亲和: 每个worker进程固定在一个CPU&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="nginx配置"&gt;Nginx配置&lt;a class="anchor" href="#nginx%e9%85%8d%e7%bd%ae"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="代理"&gt;代理&lt;a class="anchor" href="#%e4%bb%a3%e7%90%86"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://pic2.zhimg.com/80/v2-f339964bbc01f2437f93acbac8158715_1440w.jpg" alt="正向代理示意图" title="https://zhuanlan.zhihu.com/p/69072041"/&gt;
+&lt;img src="https://pic4.zhimg.com/80/v2-21da2af85639573089e42bbf6074cc07_1440w.jpg" alt="正向代理意义?" title="https://zhuanlan.zhihu.com/p/69072041"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://pic4.zhimg.com/80/v2-102d945941e4c24ccc7c4712474cadd7_1440w.jpg" alt="反向代理示意图" title="https://zhuanlan.zhihu.com/p/69072041"/&gt;&lt;/p&gt;
+&lt;h3 id="动静分离"&gt;动静分离&lt;a class="anchor" href="#%e5%8a%a8%e9%9d%99%e5%88%86%e7%a6%bb"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;动态页面和静态页面交给不同的服务器来解析&lt;/p&gt;
+&lt;h3 id="负载均衡"&gt;负载均衡&lt;a class="anchor" href="#%e8%b4%9f%e8%bd%bd%e5%9d%87%e8%a1%a1"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-conf" data-lang="conf"&gt;upstream balanceServer {
+ server 10.1.22.33:12345;
+ server 10.1.22.34:12345;
+ server 10.1.22.35:12345;
+}
+
+server { 
+ server_name fe.server.com;
+ listen 80;
+ location /api {
+ proxy_pass http://balanceServer;
+ }
+}&lt;/code&gt;&lt;/pre&gt;&lt;h4 id="机制"&gt;机制&lt;a class="anchor" href="#%e6%9c%ba%e5%88%b6"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;默认: &lt;code&gt;轮询&lt;/code&gt;, 单机卡顿, 影响分配在这台服务器下的用户&lt;/li&gt;
+&lt;li&gt;默认: &lt;code&gt;权重轮询&lt;/code&gt;, 宕机Nginx会自动剔除出队列, &lt;code&gt;ip_hash&lt;/code&gt;-来源IP分配分配给同个服务器&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fair&lt;/code&gt;: 根据相应时间均衡分配, 默认不支持. 需安装&lt;code&gt;upstream_fair&lt;/code&gt;, &lt;code&gt;url_hash&lt;/code&gt;类&lt;code&gt;ip_hash&lt;/code&gt;同样需要安装Nginx的&lt;code&gt;hash软件包&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="keepalived-配置"&gt;Keepalived 配置&lt;a class="anchor" href="#keepalived-%e9%85%8d%e7%bd%ae"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;粘贴自: &lt;a href="https://blog.csdn.net/l1028386804/article/details/72801492"&gt;这里&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="概览"&gt;概览&lt;a class="anchor" href="#%e6%a6%82%e8%a7%88"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th style="text-align: right"&gt;VIP&lt;/th&gt;
+ &lt;th style="text-align: center"&gt;IP&lt;/th&gt;
+ &lt;th style="text-align: center"&gt;主机名&lt;/th&gt;
+ &lt;th style="text-align: center"&gt;Nginx端口&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;默认主从&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: right"&gt;192.168.50.130&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;192.168.50.133&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;liuyazhuang133&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;88&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;MASTER&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: right"&gt;192.168.50.130&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;192.168.50.134&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;liuyazhuang134&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;88&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;BACKUP&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="主机器配置"&gt;主机器配置&lt;a class="anchor" href="#%e4%b8%bb%e6%9c%ba%e5%99%a8%e9%85%8d%e7%bd%ae"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vi /etc/keepalived/keepalived.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex="0"&gt;&lt;code class="language-conf" data-lang="conf"&gt;# 主要
+global_defs {
+	## keepalived 自带的邮件提醒需要开启 sendmail 服务。 建议用独立的监控或第三方 SMTP
+	router_id liuyazhuang133 ## 标识本节点的字条串，通常为 hostname
+} 
+## keepalived 会定时执行脚本并对脚本执行的结果进行分析，动态调整 vrrp_instance 的优先级。如果脚本执行结果为 0，并且 weight 配置的值大于 0，则优先级相应的增加。如果脚本执行结果非 0，并且 weight配置的值小于 0，则优先级相应的减少。其他情况，维持原本配置的优先级，即配置文件中 priority 对应的值。
+vrrp_script chk_nginx {
+	script &amp;#34;/etc/keepalived/nginx_check.sh&amp;#34; ## 检测 nginx 状态的脚本路径
+	interval 2 ## 检测时间间隔
+	weight -20 ## 如果条件成立，权重-20
+}
+## 定义虚拟路由， VI_1 为虚拟路由的标示符，自己定义名称
+vrrp_instance VI_1 {
+	state MASTER ## 主节点为 MASTER， 对应的备份节点为 BACKUP
+	interface eth0 ## 绑定虚拟 IP 的网络接口，与本机 IP 地址所在的网络接口相同， 我的是 eth0
+	virtual_router_id 33 ## 虚拟路由的 ID 号， 两个节点设置必须一样， 可选 IP 最后一段使用, 相同的 VRID 为一个组，他将决定多播的 MAC 地址
+	mcast_src_ip 192.168.50.133 ## 本机 IP 地址
+	priority 100 ## 节点优先级， 值范围 0-254， MASTER 要比 BACKUP 高
+	nopreempt ## 优先级高的设置 nopreempt 解决异常恢复后再次抢占的问题
+	advert_int 1 ## 组播信息发送间隔，两个节点设置必须一样， 默认 1s
+	## 设置验证信息，两个节点必须一致
+	authentication {
+		auth_type PASS
+		auth_pass 1111 ## 真实生产，按需求对应该过来
+	}
+	## 将 track_script 块加入 instance 配置块
+	track_script {
+		chk_nginx ## 执行 Nginx 监控的服务
+	} #
+	# 虚拟 IP 池, 两个节点设置必须一样
+	virtual_ipaddress {
+		192.168.50.130 ## 虚拟 ip，可以定义多个
+	}
+}&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="备份机配置"&gt;备份机配置&lt;a class="anchor" href="#%e5%a4%87%e4%bb%bd%e6%9c%ba%e9%85%8d%e7%bd%ae"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vi /etc/keepalived/keepalived.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex="0"&gt;&lt;code class="language-conf" data-lang="conf"&gt;# 备份
+! Configuration File for keepalived
+global_defs {
+	router_id liuyazhuang134
+}
+vrrp_script chk_nginx {
+	script &amp;#34;/etc/keepalived/nginx_check.sh&amp;#34;
+	interval 2
+	weight -20
+}
+vrrp_instance VI_1 {
+	state BACKUP
+	interface eth1
+	virtual_router_id 33
+	mcast_src_ip 192.168.50.134
+	priority 90
+	advert_int 1
+	authentication {
+		auth_type PASS
+		auth_pass 1111
+	}
+	track_script {
+		chk_nginx
+	}
+	virtual_ipaddress {
+		192.168.50.130
+	}
+}&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id="nginx-运维命令"&gt;Nginx 运维命令&lt;a class="anchor" href="#nginx-%e8%bf%90%e7%bb%b4%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 快速关闭Nginx，可能不保存相关信息，并迅速终止web服务&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -s stop
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 平稳关闭Nginx，保存相关信息，有安排的结束web服务&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -s quit
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 因改变了Nginx相关配置，需要重新加载配置而重载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -s reload
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 重新打开日志文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -s reopen
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 为 Nginx 指定一个配置文件，来代替缺省的&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -c filename
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 不运行，而仅仅测试配置文件。nginx 将检查配置文件的语法的正确性，并尝试打开配置文件中所引用到的文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -t
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 显示 nginx 的版本&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -v
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 显示 nginx 的版本，编译器版本和配置参数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nginx -V
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 格式换显示 nginx 配置参数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;2&amp;gt;&amp;amp;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; nginx -V | xargs -n1
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;2&amp;gt;&amp;amp;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; nginx -V | xargs -n1 | grep lua&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Django的建站的(｡･･)ﾉﾞ</title><link>http://example.org/docs/programmer/cloudnative/notesdjango/</link><pubDate>Thu, 07 Jun 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/notesdjango/</guid><description>&lt;p&gt;author: Ian&lt;/p&gt;
+&lt;h1 id="django-建站的一些东西"&gt;Django 建站的一些东西&lt;a class="anchor" href="#django-%e5%bb%ba%e7%ab%99%e7%9a%84%e4%b8%80%e4%ba%9b%e4%b8%9c%e8%a5%bf"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="http://lofrev.net/wp-content/photos/2017/04/http_logo_dpwnload.png" alt="http server/client" /&gt;&lt;/p&gt;
+&lt;h2 id="一些问题"&gt;一些问题&lt;a class="anchor" href="#%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="使用字体-zh-cn时如果报错"&gt;使用字体 &lt;code&gt;zh-cn&lt;/code&gt;时如果报错:&lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8%e5%ad%97%e4%bd%93-zh-cn%e6%97%b6%e5%a6%82%e6%9e%9c%e6%8a%a5%e9%94%99"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;OSError: No translation files found for default language zh-cn.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;LANGUAGE_CODE &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;zh-Hans&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;TIME_ZONE &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;Asia/Shanghai&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# zh-Hans是简体中文 zh-Hant是繁体中文&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 如果数据库有UTC的时间，那么可以设置：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# USE_TZ = True 改为&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;USE_TZ &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;False&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="时区问题"&gt;时区问题&lt;a class="anchor" href="#%e6%97%b6%e5%8c%ba%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;python3.8/site-packages/django/db/models/fields/&lt;strong&gt;init&lt;/strong&gt;.py:1416: RuntimeWarning: DateTimeField {DATABASEMODEL}.update_time received a naive datetime (2023-09-14 21:55:56) while time zone support is active.
+warnings.warn(&amp;ldquo;DateTimeField %s received a naive datetime (%s)&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;这个警告是由于在使用带有时区支持的DateTimeField字段时，传入了一个没有时区信息的datetime对象。要修复这个警告，你可以将传入DateTimeField字段的datetime对象转换为带有时区信息的datetime对象。&lt;/p&gt;
+&lt;p&gt;有两种方法可以解决这个问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用带有时区信息的datetime对象：确保在创建datetime对象时，使用正确的时区信息。你可以使用&lt;code&gt;pytz&lt;/code&gt;库来设置时区信息，例如：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; datetime &lt;span style="color:#f92672"&gt;import&lt;/span&gt; datetime
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; pytz
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 创建带有时区信息的datetime对象&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;naive_datetime &lt;span style="color:#f92672"&gt;=&lt;/span&gt; datetime(&lt;span style="color:#ae81ff"&gt;2023&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;9&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;14&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;21&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;55&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;56&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;timezone &lt;span style="color:#f92672"&gt;=&lt;/span&gt; pytz&lt;span style="color:#f92672"&gt;.&lt;/span&gt;timezone(&lt;span style="color:#e6db74"&gt;&amp;#34;Asia/Shanghai&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;aware_datetime &lt;span style="color:#f92672"&gt;=&lt;/span&gt; timezone&lt;span style="color:#f92672"&gt;.&lt;/span&gt;localize(naive_datetime)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 将带有时区信息的datetime对象传递给DateTimeField字段&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ScannerDevice&lt;span style="color:#f92672"&gt;.&lt;/span&gt;update_time &lt;span style="color:#f92672"&gt;=&lt;/span&gt; aware_datetime&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
+&lt;li&gt;将DateTimeField字段的&lt;code&gt;auto_now&lt;/code&gt;或&lt;code&gt;auto_now_add&lt;/code&gt;属性设置为&lt;code&gt;True&lt;/code&gt;：这将自动将字段的值设置为当前的带有时区信息的datetime对象。例如：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; django.db &lt;span style="color:#f92672"&gt;import&lt;/span&gt; models
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;DATABASEMODEL&lt;/span&gt;(models&lt;span style="color:#f92672"&gt;.&lt;/span&gt;Model):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; update_time &lt;span style="color:#f92672"&gt;=&lt;/span&gt; models&lt;span style="color:#f92672"&gt;.&lt;/span&gt;DateTimeField(auto_now&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;通过以上两种方法之一，你可以修复这个警告并确保正确处理时区信息。&lt;/p&gt;</description></item><item><title/><link>http://example.org/docs/programmer/cloudnative/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/</guid><description>&lt;p&gt;&lt;a href="https://127.0.0.1/"&gt;平台地址&lt;/a&gt; 需要自建&lt;/p&gt;
+&lt;p&gt;在平台新建项目，新建token后可以自动生成扫描命令(拉代码, cd进去后在项目代码&lt;code&gt;/&lt;/code&gt;路径下执行)：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sonar-scanner &lt;span style="color:#ae81ff"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -Dsonar.projectKey&lt;span style="color:#f92672"&gt;=&lt;/span&gt;scancenter &lt;span style="color:#ae81ff"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -Dsonar.sources&lt;span style="color:#f92672"&gt;=&lt;/span&gt;. &lt;span style="color:#ae81ff"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -Dsonar.host.url&lt;span style="color:#f92672"&gt;=&lt;/span&gt;https://sonar-xa.inone.nsfocus.com &lt;span style="color:#ae81ff"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -Dsonar.login&lt;span style="color:#f92672"&gt;=&lt;/span&gt;3e569f7abcfd8a64067d790f038c57a6a6b73207&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果使用的是他人的token，需要给授权。&lt;/p&gt;</description></item></channel></rss>

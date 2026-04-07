@@ -1,2 +1,41 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>supervisor on Ian's Blog</title><link>http://example.org/tags/supervisor/</link><description>Recent content in supervisor on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="http://example.org/tags/supervisor/index.xml" rel="self" type="application/rss+xml"/><item><title>supervisor</title><link>http://example.org/docs/programmer/basetc/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid><description>supervisord # 安装 # pip install supervisor echo_supervisord_conf echo_supervisord_conf &amp;gt; /etc/supervisord.conf echo -e &amp;#34;[include]\nfiles = /etc/supervisor/conf.d/*.conf&amp;#34; &amp;gt;&amp;gt; /etc/supervisord.conf mkdir -p /var/log/test mkdir -p /etc/supervisor/conf.d/ echo -e &amp;#34;[program:test] command=/data/apps/test/.venv/bin/python test.py directory=/data/apps/test/src/ user=root minfds=65535 autostart=true autorestart=true stopasgroup=true stderr_logfile=/var/log/test/test.err.log stderr_logfile_maxbytes=1000MB stderr_logfile_backups=10 stdout_logfile=/var/log/test/test.out.log stdout_logfile_maxbytes=1000MB stdout_logfile_backups=10&amp;#34; &amp;gt; /etc/supervisor/conf.d/test.conf supervisord supervisorctl update 问题 # supervisorctl status http://localhost:9001 refused connection 问题 # 首次安装, 只pip install后直接使用很可能是没有配置文件&amp;hellip; 写入配置后启动supervisord就好了 多安装问题 # 使用pip安装和apt安装的 supervisor 使用的不同路径的配置文件, 然后系统里就会跑两个supervisor, 就容易产生迷惑行为
-使用supervisor启动的程序莫名其妙有了打开文件数限制 # 起了一个go程序结果http请求给限制到了4096, 根本不够用哈 设置如下参数可以设置新值(需要设置在supervisor配置中,而非supervisor守护的app中)</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Supervisor on Ian's Blog</title><link>http://example.org/tags/supervisor/</link><description>Recent content in Supervisor on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 10 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/supervisor/index.xml" rel="self" type="application/rss+xml"/><item><title>supervisor</title><link>http://example.org/docs/programmer/basetc/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link><pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid><description>&lt;h1 id="supervisord"&gt;supervisord&lt;a class="anchor" href="#supervisord"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="安装"&gt;安装&lt;a class="anchor" href="#%e5%ae%89%e8%a3%85"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install supervisor
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo_supervisord_conf
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo_supervisord_conf &amp;gt; /etc/supervisord.conf 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo -e &lt;span style="color:#e6db74"&gt;&amp;#34;[include]\nfiles = /etc/supervisor/conf.d/*.conf&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/supervisord.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir -p /var/log/test
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir -p /etc/supervisor/conf.d/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo -e &lt;span style="color:#e6db74"&gt;&amp;#34;[program:test]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;command=/data/apps/test/.venv/bin/python test.py
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;directory=/data/apps/test/src/
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;user=root
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;minfds=65535
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;autostart=true
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;autorestart=true
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;stopasgroup=true
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;stderr_logfile=/var/log/test/test.err.log
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;stderr_logfile_maxbytes=1000MB
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;stderr_logfile_backups=10
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;stdout_logfile=/var/log/test/test.out.log
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;stdout_logfile_maxbytes=1000MB
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;stdout_logfile_backups=10&amp;#34;&lt;/span&gt; &amp;gt; /etc/supervisor/conf.d/test.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;supervisord
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;supervisorctl update&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="问题"&gt;问题&lt;a class="anchor" href="#%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="supervisorctl-status-httplocalhost9001-refused-connection-问题"&gt;supervisorctl status http://localhost:9001 refused connection 问题&lt;a class="anchor" href="#supervisorctl-status-httplocalhost9001-refused-connection-%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;首次安装, 只&lt;code&gt;pip install&lt;/code&gt;后直接使用很可能是没有配置文件&amp;hellip; 写入配置后启动&lt;code&gt;supervisord&lt;/code&gt;就好了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="多安装问题"&gt;多安装问题&lt;a class="anchor" href="#%e5%a4%9a%e5%ae%89%e8%a3%85%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用&lt;code&gt;pip&lt;/code&gt;安装和&lt;code&gt;apt&lt;/code&gt;安装的 &lt;code&gt;supervisor&lt;/code&gt; 使用的不同路径的配置文件, 然后系统里就会跑两个supervisor, 就容易产生迷惑行为&lt;/p&gt;
+&lt;h3 id="使用supervisor启动的程序莫名其妙有了打开文件数限制"&gt;使用supervisor启动的程序莫名其妙有了打开文件数限制&lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8supervisor%e5%90%af%e5%8a%a8%e7%9a%84%e7%a8%8b%e5%ba%8f%e8%8e%ab%e5%90%8d%e5%85%b6%e5%a6%99%e6%9c%89%e4%ba%86%e6%89%93%e5%bc%80%e6%96%87%e4%bb%b6%e6%95%b0%e9%99%90%e5%88%b6"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;起了一个go程序结果http请求给限制到了4096, 根本不够用哈
+设置如下参数可以设置新值(需要设置在supervisor配置中,而非supervisor守护的app中)&lt;/p&gt;
+&lt;/blockquote&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-ini" data-lang="ini"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;[supervisord]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;minfds&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;8192&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;问题链接: &lt;a href="https://github.com/hashicorp/terraform-aws-nomad/issues/55"&gt;Github&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="systemd"&gt;systemd&lt;a class="anchor" href="#systemd"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;文件路径: /etc/systemd/system/{service_name}.service&lt;/p&gt;</description></item></channel></rss>

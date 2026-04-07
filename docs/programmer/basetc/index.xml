@@ -1,96 +1,439 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>基础工具和配置 on Ian's Blog</title><link>http://example.org/docs/programmer/basetc/</link><description>Recent content in 基础工具和配置 on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 19 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/basetc/index.xml" rel="self" type="application/rss+xml"/><item><title>Obsidian笔记软件</title><link>http://example.org/docs/programmer/basetc/obsidian/</link><pubDate>Wed, 19 Feb 2025 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/obsidian/</guid><description>使用obsidian进行笔记编写或许是个好主意.</description></item><item><title>终端浏览器</title><link>http://example.org/docs/programmer/basetc/%E7%BB%88%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8/</link><pubDate>Sat, 21 Sep 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/%E7%BB%88%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8/</guid><description>在终端中使用浏览器 # 一、lynx # 安装 # sudo apt install lynx 使用 # lynx https://github.com 二、carbonyl # 使用 # docker run --rm -ti docker.io/fathyb/carbonyl https://youtube.com 垃圾， 太模糊了，图片模糊就算了， 字也跟着模糊， 反正基本处于不能用的状态</description></item><item><title>curl</title><link>http://example.org/docs/programmer/basetc/curl/</link><pubDate>Thu, 18 Jul 2024 12:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/curl/</guid><description> 常用命令 # 文件上传 curl -F &amp;#34;file=@./1.jpg&amp;#34; -X POST &amp;#34;http://localhost:8080/upload&amp;#34; # 上传多个 curl -F &amp;#34;upload=@./1.jpg&amp;#34; -F &amp;#34;upload=@./2.jpg&amp;#34; -X POST &amp;#34;http://localhost:8080/uploadMul 代理IP curl -x {proxyserver}.com -U &amp;#34;{username}-zone-custom-region-ru-session-31fa4be5f7fa2389-sessTime-3:{passwd}&amp;#34; https://jsonip.com/ Post Json curl -X POST -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;key1&amp;#34;:&amp;#34;value1&amp;#34;,&amp;#34;key2&amp;#34;:&amp;#34;value2&amp;#34;}&amp;#39; http://example.com/api/resource 参数 # 参数 作用 示例 -k https时忽略证书验证 curl -k &amp;hellip;</description></item><item><title>文本三剑客</title><link>http://example.org/docs/programmer/basetc/%E6%96%87%E6%9C%AC%E4%B8%89%E5%89%91%E5%AE%A2/</link><pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/%E6%96%87%E6%9C%AC%E4%B8%89%E5%89%91%E5%AE%A2/</guid><description>grep # 一、或和过滤 # grep &amp;#34;abc\|123&amp;#34; test.log` | grep -v &amp;#34;xyz&amp;#34; 二、排除某(些)文件(夹) # 1. 排除文件: # --exclude=
-2. 排除文件类型: # grep &amp;#34;get_wx_mapping&amp;#34; . -r --exclude=*.{log,} {}中貌似必须有,， 也就是说必须传入为列表， 不然不生效， 倒和Python的tuple类型有些相像。
-3. 排除文件夹: # --exclude-dir=
-个: grep &amp;#34;get_wx_mapping&amp;#34; . -r --exclude-dir=log 些: grep &amp;#34;get_wx_mapping&amp;#34; . -r --exclude-dir={log,__pycache__} sed # awk # 只能使用 单引号 双引号不行的呦( &amp;quot;{print $1}&amp;quot; ✗ )
-awk &amp;#39;{print $1}&amp;#39; # 第一列 一、awk算数 # [[小命令#18. awk算数]]
-grep 400586 sched.log.2024-05-28 | grep 条 | awk &amp;#39;{print $8}&amp;#39; | awk -F&amp;#39;条,&amp;#39; &amp;#39;{sum += $1} END {print sum}&amp;#39; awk -F'条,' '{sum += $1} END {print sum}' 用条进行分割取$1第一个进行sum求和计算 awk '{print $8}' 这里注意使用单引号 250</description></item><item><title>Tmux使用笔记</title><link>http://example.org/docs/programmer/basetc/tmux/</link><pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/tmux/</guid><description>tmux # 从posts中迁移来
-丰富纯文字终端窗口，可以创建终端副本(反正也是我取得名字)—&amp;ndash;类似于win的多桌面。也可以分割终端(界面类似vim分割)l&amp;ndash;这便是类似于win的多窗口了。 (官方翻译: &amp;lsquo;窗格&amp;rsquo;？)
-进入: tmux 退出: exit 类似于vim命令模式： ctrl+b以下简写为CL_B。 创建多桌面: CL_B + c 查看全部窗口，类似win+Tab: CL_B + s 使用窗口号切换桌面: CL_B + NUM 关闭当前窗口: CL_B + &amp;amp;,emm直接exit&amp;hellip; 创建多窗口: CL_B + &amp;quot; (垂直上下)、CL_B + % (水平左右) 调整窗口位置、大小 CL_B + space (默认布局轮换) 显示窗口编号: CL_B + q 暂时最大化当前窗格: CL_B + z 切换到下一个窗格: CL_B + o 对换窗格位置: CL_B + CL_O(ctrl + o) 设置 # 启用鼠标触控板 # set -g mouse on 复制终端展示内容 # 复制 # set-window-option -g mode-keys vi #可以设置为vi或emacs set-window-option -g utf8 on #开启窗口的UTF-8支持 CL_B + [ Space空格开始选择(可使用?</description></item><item><title>Obsidian思维导图插件</title><link>http://example.org/docs/programmer/basetc/obsidian%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%8F%92%E4%BB%B6/</link><pubDate>Mon, 13 May 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/obsidian%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%8F%92%E4%BB%B6/</guid><description> Enhancing Mind map # Links # https://github.com/MarkMindLtd/obsidian-enhancing-mindmap GitHub Related # coc-markmap gatsby-remark-markmap Features # links inline text styles multiline text inline code Katex - $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$ 注意这里 # 该插件支持如上以及无序列表等有限的markdown格式，无法支持其他格式，一定要注意这点，否则可能会丢失数据，切记。
-Short cuts # 新建脑图 Ctrl/Cmd+P 新增子节点 Tab 新增兄弟节点 enter 删除节点 Delete 编辑节点 Space/dblclick node 后退 Ctrl/Cmd+Z 前进 Ctrl/Cmd+Y 取消编辑节点 Tab 展开节点 Ctrl/Cmd + / 收缩节点 Ctrl/Cmd + / 拖动节点 Drag and drop node 切换节点 Up/down/left/right 放大、缩小 Ctrl/Cmd + 滚轮 居中 Ctrl/Cmd + E 功能 # 编辑节点 拖动节点至某节点 前进/后退 在markdown和思维导图视图之间切换 数据同步</description></item><item><title>各个软件换源</title><link>http://example.org/docs/programmer/basetc/for_china/</link><pubDate>Thu, 22 Apr 2021 17:04:15 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/for_china/</guid><description>在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.
-Qt # 使用Maintain管理kit时，可以在Settings中设置Repositories，设置地址可从Qt Downloads页面查询.
-apt # 可解决版本升级时的问题,即使用了国内源,最后一个文件不知道为什么还是从国外拉取&amp;hellip;
-# sudo touch /etc/apt/apt.conf sudo vim /etc/apt/apt.conf -&amp;gt; Acquire::http::Proxy &amp;ldquo;http://127.0.0.1:8001&amp;rdquo;;
-FreeBSD # mkdir -p /usr/local/etc/pkg/repos vim /usr/local/etc/pkg/repos/bjtu.conf
-bjtu: { url: &amp;#34;pkg+http://mirror.bjtu.edu.cn/reverse/freebsd-pkg/${ABI}/quarterly&amp;#34;, mirror_type: &amp;#34;srv&amp;#34;, signature_type: &amp;#34;none&amp;#34;, fingerprints: &amp;#34;/usr/share/keys/pkg&amp;#34;, enabled: yes } FreeBSD: { enabled: no } pkg update
-Qt # 源 # 中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/ 清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/ 北京理工大学：http://mirror.bit.edu.cn/qtproject/ 中国互联网络信息中心：https://mirrors.cnnic.cn/qt/ Python Pip # pip install --index https://pypi.mirrors.ustc.edu.cn/simple/ dlib(numpy等包名) 源 # 阿里云 http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣(douban) http://pypi.</description></item><item><title>tip Of vim</title><link>http://example.org/docs/programmer/basetc/tipsofvim/</link><pubDate>Tue, 15 May 2018 09:56:41 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/tipsofvim/</guid><description>Vim 使用 # 除去“简便生活”里的几条配置，在纠结是否添加到别的地方，果然还是单独给vim一个使用手册比较好……
-注释 # # 注释 1， 12s/^/#/g --- # 取消注释 1， 12s/^#//g 其实 是vim中的 :s替换命令… 下方解释
-或者，使用列编辑的模式:
-v、选择区域、ctrl q置行首、I插入#、Esc应用到全列 ctrl v、I、#、Esc 因为有的ctrl q或者ctrl v 不能用…… 取消，即使用上述方法选中行首，删除第一个字节即可了 替换 # :s/oldWords/newWords/g g : 代表当前光标所在行。
-由此可知: # ^表行首标识符。 /^/表示行首的空字符。 而取消注释中的/^#/即表示行首的#，被//空字符所替换。
-删除:g/出现计算意外/d # :g/出现计算意外/d 查找高亮 # set hlsearch set nohlsearch 分屏 # 实现 # 在外部使用-o or -O参数 内部split or vsplit 操作 # 移动光标 Ctrl + w hjkl 移动分区Ctrl + w HJKL 统一高度Ctrl + w = 改变高度Ctrl + w +- more and less # 阅读器~~~ 因为经常读大文件发现了这两个的无敌好处——快。</description></item><item><title>编辑器使用</title><link>http://example.org/docs/programmer/basetc/editer/</link><pubDate>Sat, 29 Oct 2016 16:58:56 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/editer/</guid><description>Jupyter-Note # 局域网访问 # 方法1: 使用jupyter notebook --generate-config生成配置文件 修改配置文件中c.NotebookApp.allow_root(因为安卓用的Termux跑的,所以伪root),c.NotebookApp.ip这样就能通过局域网和Token访问了 如果想要使用密码(长期使用局域网的话),可以使用from notebook.auth import passwd;passwd()生成加密密码,配置到c.NotebookApp.password 方法2: 如果只是临时的,那传入运行命令肯定最好了,如下可以使用如下格式: jupyter-notebook --allow-root --ip=0.0.0.0 自动补全 # 安装插件: pip install jupyter_contrib_nbextensions -i https://pypi.tuna.tsinghua.edu.cn/simple(此命令包含代理) 到Nbextensions中将Disable改为Enable 开始 Vim # vim 查看日志中文乱码(2021) # .bash_profile # export LC_ALL=en_US.utf-8 .vimrc # set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 set termencoding=utf-8 set encoding=utf-8 双管齐下, 一个解决系统配置, 一个解决vim配置
-中文乱码问题(2018) # 在.bash_profile中增加
-export LANG=zh_CN.utf8 export LC_ALL=zh_CN.utf8 即可增加中文支持。 不过，还是
-export LANG=en_US.utf8 export LC_ALL=en_US.utf8 比较香，因为中文字体这里渲染出来很难看… ^_^: 2019年5月5日19点46分
-vscode vs code # venv # Python # Command Palette.</description></item><item><title/><link>http://example.org/docs/programmer/basetc/bash/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/bash/</guid><description>Bash # Auther: Ian
-自动补全 # linux中使用bash_completion工具进行自动不全，在某些发行版或者版本中make或者git没有Tab自动补全，这时在Github上找一个bash_completion文件放在相应位置就可以了。
-sudo cp bash_completion /usr/share/bash-completion/bash_completion source /usr/share/bash-completion/bash_completion Powershell # 命令历史存储在: C:\Users\{USERNAME}\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine下 ConsoleHost_history.txt文件</description></item><item><title/><link>http://example.org/docs/programmer/basetc/gitbook/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/gitbook/</guid><description>Gitbook # Author: Ian
-安装 # 官方文档 Github Gitbook 打造的 Gitbook 说明文档 使用npm进行安装, 安装npm (v4.0.0 and above is recommended) npm install gitbook-cli -g 需要sudo权限 实际在执行gitbook -V后才算是安装完成 问题 # TypeError: cb.apply is not a function # npm 安装软件不出点儿问题貌似都不是很合适, 该问题代码级问题是因为在适配某些可能本机上并没有安装的npm版本时写了bug，导致执行出错.
-所以注释掉相关代码即可，或者直接删除。删除的好处是不会因为编辑器的原因触发npm的某些缩进问题。
-62. // fs.stat = statFix(fs.stat) 63. // fs.fstat = statFix(fs.fstat) 64. // fs.lstat = statFix(fs.lstat) 固然可以通过安装相匹配版本进行适配，不过&amp;hellip;Ian怕导致本机上的hexo再出现版本不兼容的问题。 使用 # 功能 示例 个人使用习惯(Ian) 新建book gitbook init gitbook init gitbooks/Architecture 编译和运行服务 gitbook serve 编译 gitbook serve pdf # 参考自 码谱</description></item><item><title/><link>http://example.org/docs/programmer/basetc/vim/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/vim/</guid><description>&lt;h1 id="vim-使用">
- Vim 使用
- &lt;a class="anchor" href="#vim-%e4%bd%bf%e7%94%a8">#&lt;/a>
-&lt;/h1>
-&lt;p>Auther: Ian&lt;/p>
-&lt;p>&lt;img src="https://www.vim.org/images/vim_header.gif" alt="vim" />&lt;/p>
-&lt;h2 id="注释">
- 注释
- &lt;a class="anchor" href="#%e6%b3%a8%e9%87%8a">#&lt;/a>
-&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> # &lt;span style="color:#a6e22e">注释&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">1&lt;/span>， &lt;span style="color:#ae81ff">12&lt;/span>s&lt;span style="color:#e6db74">/^/&lt;/span>#/&lt;span style="color:#a6e22e">g&lt;/span> 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ---
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> # &lt;span style="color:#a6e22e">取消注释&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">1&lt;/span>， &lt;span style="color:#ae81ff">12&lt;/span>s&lt;span style="color:#e6db74">/^#/&lt;/span>/&lt;span style="color:#a6e22e">g&lt;/span> 
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>其实 是&lt;code>vim&lt;/code>中的 &lt;code>:s&lt;/code>替换命令… 下方解释&lt;/p>
-&lt;p>或者，使用列编辑的模式:&lt;/p>
-&lt;pre>&lt;code>v、选择区域、ctrl q置行首、I插入#、Esc应用到全列
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>基础工具和配置 on Ian's Blog</title><link>http://example.org/docs/programmer/basetc/</link><description>Recent content in 基础工具和配置 on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 19 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/docs/programmer/basetc/index.xml" rel="self" type="application/rss+xml"/><item><title>Obsidian笔记软件</title><link>http://example.org/docs/programmer/basetc/obsidian/</link><pubDate>Wed, 19 Feb 2025 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/obsidian/</guid><description>&lt;p&gt;使用obsidian进行笔记编写或许是个好主意.&lt;/p&gt;</description></item><item><title>终端浏览器</title><link>http://example.org/docs/programmer/basetc/%E7%BB%88%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8/</link><pubDate>Sat, 21 Sep 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/%E7%BB%88%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8/</guid><description>&lt;h1 id="在终端中使用浏览器"&gt;在终端中使用浏览器&lt;a class="anchor" href="#%e5%9c%a8%e7%bb%88%e7%ab%af%e4%b8%ad%e4%bd%bf%e7%94%a8%e6%b5%8f%e8%a7%88%e5%99%a8"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="一lynx"&gt;一、lynx&lt;a class="anchor" href="#%e4%b8%80lynx"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="安装"&gt;安装&lt;a class="anchor" href="#%e5%ae%89%e8%a3%85"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install lynx&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="使用"&gt;使用&lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;lynx https://github.com&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="二carbonyl"&gt;二、carbonyl&lt;a class="anchor" href="#%e4%ba%8ccarbonyl"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="使用-1"&gt;使用&lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8-1"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -ti docker.io/fathyb/carbonyl https://youtube.com&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;垃圾， 太模糊了，图片模糊就算了， 字也跟着模糊， 反正基本处于不能用的状态&lt;/p&gt;</description></item><item><title>curl</title><link>http://example.org/docs/programmer/basetc/curl/</link><pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/curl/</guid><description>&lt;h1 id="常用命令"&gt;常用命令&lt;a class="anchor" href="#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;文件上传&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; curl -F &lt;span style="color:#e6db74"&gt;&amp;#34;file=@./1.jpg&amp;#34;&lt;/span&gt; -X POST &lt;span style="color:#e6db74"&gt;&amp;#34;http://localhost:8080/upload&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 上传多个&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; curl -F &lt;span style="color:#e6db74"&gt;&amp;#34;upload=@./1.jpg&amp;#34;&lt;/span&gt; -F &lt;span style="color:#e6db74"&gt;&amp;#34;upload=@./2.jpg&amp;#34;&lt;/span&gt; -X POST &lt;span style="color:#e6db74"&gt;&amp;#34;http://localhost:8080/uploadMul&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
+&lt;li&gt;代理IP&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl -x &lt;span style="color:#f92672"&gt;{&lt;/span&gt;proxyserver&lt;span style="color:#f92672"&gt;}&lt;/span&gt;.com -U &lt;span style="color:#e6db74"&gt;&amp;#34;{username}-zone-custom-region-ru-session-31fa4be5f7fa2389-sessTime-3:{passwd}&amp;#34;&lt;/span&gt; https://jsonip.com/&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="3"&gt;
+&lt;li&gt;Post Json&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl -X POST -H &lt;span style="color:#e6db74"&gt;&amp;#34;Content-Type: application/json&amp;#34;&lt;/span&gt; -d &lt;span style="color:#e6db74"&gt;&amp;#39;{&amp;#34;key1&amp;#34;:&amp;#34;value1&amp;#34;,&amp;#34;key2&amp;#34;:&amp;#34;value2&amp;#34;}&amp;#39;&lt;/span&gt; http://example.com/api/resource&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="参数"&gt;参数&lt;a class="anchor" href="#%e5%8f%82%e6%95%b0"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;参数&lt;/th&gt;
+ &lt;th&gt;作用&lt;/th&gt;
+ &lt;th&gt;示例&lt;/th&gt;
+ &lt;th&gt;&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;-k&lt;/td&gt;
+ &lt;td&gt;https时忽略证书验证&lt;/td&gt;
+ &lt;td&gt;curl -k &amp;hellip;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;</description></item><item><title>文本三剑客</title><link>http://example.org/docs/programmer/basetc/%E6%96%87%E6%9C%AC%E4%B8%89%E5%89%91%E5%AE%A2/</link><pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/%E6%96%87%E6%9C%AC%E4%B8%89%E5%89%91%E5%AE%A2/</guid><description>&lt;h1 id="grep"&gt;grep&lt;a class="anchor" href="#grep"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="一或和过滤"&gt;一、或和过滤&lt;a class="anchor" href="#%e4%b8%80%e6%88%96%e5%92%8c%e8%bf%87%e6%bb%a4"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;grep &lt;span style="color:#e6db74"&gt;&amp;#34;abc\|123&amp;#34;&lt;/span&gt; test.log&lt;span style="color:#e6db74"&gt;`&lt;/span&gt; | grep -v &lt;span style="color:#e6db74"&gt;&amp;#34;xyz&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="二排除某些文件夹"&gt;二、排除某(些)文件(夹)&lt;a class="anchor" href="#%e4%ba%8c%e6%8e%92%e9%99%a4%e6%9f%90%e4%ba%9b%e6%96%87%e4%bb%b6%e5%a4%b9"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="1-排除文件"&gt;1. 排除文件:&lt;a class="anchor" href="#1-%e6%8e%92%e9%99%a4%e6%96%87%e4%bb%b6"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;--exclude=&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="2-排除文件类型"&gt;2. 排除文件类型:&lt;a class="anchor" href="#2-%e6%8e%92%e9%99%a4%e6%96%87%e4%bb%b6%e7%b1%bb%e5%9e%8b"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; grep &amp;#34;get_wx_mapping&amp;#34; . -r --exclude=*.{log,}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;{}&lt;/code&gt;中貌似必须有&lt;code&gt;,&lt;/code&gt;， 也就是说必须传入为列表， 不然不生效， 倒和&lt;code&gt;Python&lt;/code&gt;的&lt;code&gt;tuple&lt;/code&gt;类型有些相像。&lt;/p&gt;
+&lt;h3 id="3-排除文件夹"&gt;3. 排除文件夹:&lt;a class="anchor" href="#3-%e6%8e%92%e9%99%a4%e6%96%87%e4%bb%b6%e5%a4%b9"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;--exclude-dir=&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;个:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;grep &lt;span style="color:#e6db74"&gt;&amp;#34;get_wx_mapping&amp;#34;&lt;/span&gt; . -r --exclude-dir&lt;span style="color:#f92672"&gt;=&lt;/span&gt;log
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;些:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;grep &lt;span style="color:#e6db74"&gt;&amp;#34;get_wx_mapping&amp;#34;&lt;/span&gt; . -r --exclude-dir&lt;span style="color:#f92672"&gt;={&lt;/span&gt;log,__pycache__&lt;span style="color:#f92672"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="sed"&gt;sed&lt;a class="anchor" href="#sed"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="awk"&gt;awk&lt;a class="anchor" href="#awk"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;只能使用 &lt;code&gt;单引号&lt;/code&gt; 双引号不行的呦( &lt;code&gt;&amp;quot;{print $1}&amp;quot;&lt;/code&gt; ✗ )&lt;/p&gt;
+&lt;/blockquote&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;awk &lt;span style="color:#e6db74"&gt;&amp;#39;{print $1}&amp;#39;&lt;/span&gt; &lt;span style="color:#75715e"&gt;# 第一列&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="一awk算数"&gt;一、awk算数&lt;a class="anchor" href="#%e4%b8%80awk%e7%ae%97%e6%95%b0"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;[[小命令#18. awk算数]]&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;grep &lt;span style="color:#ae81ff"&gt;400586&lt;/span&gt; sched.log.2024-05-28 | grep 条 | awk &lt;span style="color:#e6db74"&gt;&amp;#39;{print $8}&amp;#39;&lt;/span&gt; | awk -F&lt;span style="color:#e6db74"&gt;&amp;#39;条,&amp;#39;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;{sum += $1} END {print sum}&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;awk -F'条,' '{sum += $1} END {print sum}'&lt;/code&gt; 用&lt;code&gt;条&lt;/code&gt;进行分割取&lt;code&gt;$1&lt;/code&gt;第一个进行&lt;code&gt;sum&lt;/code&gt;求和计算&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;awk '{print $8}'&lt;/code&gt; 这里注意使用&lt;code&gt;单引号&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;250&lt;/p&gt;</description></item><item><title>Tmux使用笔记</title><link>http://example.org/docs/programmer/basetc/tmux/</link><pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/tmux/</guid><description>&lt;h1 id="tmux"&gt;tmux&lt;a class="anchor" href="#tmux"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;从&lt;code&gt;posts&lt;/code&gt;中迁移来&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;丰富纯文字终端窗口，可以创建终端副本(反正也是我取得名字)—&amp;ndash;类似于&lt;code&gt;win&lt;/code&gt;的多桌面。也可以分割终端(界面类似vim分割)l&amp;ndash;这便是类似于&lt;code&gt;win&lt;/code&gt;的多窗口了。 (官方翻译: &amp;lsquo;窗格&amp;rsquo;？)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;进入: &lt;code&gt;tmux&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;退出: &lt;code&gt;exit&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;类似于&lt;code&gt;vim&lt;/code&gt;命令模式： &lt;code&gt;ctrl+b&lt;/code&gt;以下简写为&lt;code&gt;CL_B&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;创建多桌面: CL_B + c&lt;/li&gt;
+&lt;li&gt;查看全部窗口，类似&lt;code&gt;win+Tab&lt;/code&gt;: CL_B + s 使用窗口号切换桌面: CL_B + NUM&lt;/li&gt;
+&lt;li&gt;关闭当前窗口: CL_B + &amp;amp;,emm直接&lt;code&gt;exit&lt;/code&gt;&amp;hellip;&lt;/li&gt;
+&lt;li&gt;创建多窗口: CL_B + &amp;quot; (垂直上下)、CL_B + % (水平左右) 调整窗口位置、大小 CL_B + space (默认布局轮换)&lt;/li&gt;
+&lt;li&gt;显示窗口编号: CL_B + q 暂时最大化当前窗格: CL_B + z 切换到下一个窗格: CL_B + o&lt;/li&gt;
+&lt;li&gt;对换窗格位置: CL_B + CL_O(ctrl + o)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="设置"&gt;设置&lt;a class="anchor" href="#%e8%ae%be%e7%bd%ae"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="启用鼠标触控板"&gt;&lt;strong&gt;启用鼠标触控板&lt;/strong&gt;&lt;a class="anchor" href="#%e5%90%af%e7%94%a8%e9%bc%a0%e6%a0%87%e8%a7%a6%e6%8e%a7%e6%9d%bf"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-tmux" data-lang="tmux"&gt;set -g mouse on&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="复制终端展示内容"&gt;复制终端展示内容&lt;a class="anchor" href="#%e5%a4%8d%e5%88%b6%e7%bb%88%e7%ab%af%e5%b1%95%e7%a4%ba%e5%86%85%e5%ae%b9"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="复制"&gt;&lt;strong&gt;复制&lt;/strong&gt;&lt;a class="anchor" href="#%e5%a4%8d%e5%88%b6"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;set-window-option -g mode-keys vi #可以设置为vi或emacs
+set-window-option -g utf8 on #开启窗口的UTF-8支持&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
+&lt;li&gt;CL_B + [&lt;/li&gt;
+&lt;li&gt;Space空格开始选择(可使用&lt;code&gt;?&lt;/code&gt;,&lt;code&gt;/&lt;/code&gt;vi工具辅助定位, 在有些终端中不大好使)&lt;/li&gt;
+&lt;li&gt;Enter回车确认选择(在有些终端中不大好使)&lt;/li&gt;
+&lt;li&gt;CB_B + ] 可粘贴&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;必须保证以上全在Tmux中进行哈&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="再次记录"&gt;再次记录&lt;a class="anchor" href="#%e5%86%8d%e6%ac%a1%e8%ae%b0%e5%bd%95"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;按下三个按键进入文本复制模式: &lt;code&gt;CTRL + b + [&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;按下两个按键进入文本开始复制的起始位置: &lt;code&gt;CTRL + 空格&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;上下左右键&lt;/code&gt;或者&lt;code&gt;Page up/down&lt;/code&gt;选择要复制的文本, 选中了要复制的文本后，按&lt;code&gt;ALT + w&lt;/code&gt;，将文本保存到tmux的buffer中&lt;/li&gt;
+&lt;li&gt;按&lt;code&gt;CTRL + b + ]&lt;/code&gt;将文本粘贴到某处&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Obsidian思维导图插件</title><link>http://example.org/docs/programmer/basetc/obsidian%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%8F%92%E4%BB%B6/</link><pubDate>Mon, 13 May 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/obsidian%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%8F%92%E4%BB%B6/</guid><description>&lt;h1 id="enhancing-mind-map"&gt;Enhancing Mind map&lt;a class="anchor" href="#enhancing-mind-map"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="links"&gt;Links&lt;a class="anchor" href="#links"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/MarkMindLtd/obsidian-enhancing-mindmap"&gt;https://github.com/MarkMindLtd/obsidian-enhancing-mindmap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/MarkMindLtd/obsidian-enhancing-mindmap"&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="related"&gt;Related&lt;a class="anchor" href="#related"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/gera2ld/coc-markmap"&gt;coc-markmap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gera2ld/gatsby-remark-markmap"&gt;gatsby-remark-markmap&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="features"&gt;Features&lt;a class="anchor" href="#features"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;links&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;inline&lt;/strong&gt; &lt;del&gt;text&lt;/del&gt; &lt;em&gt;styles&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;multiline
+text&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;inline code&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Katex - $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="注意这里"&gt;注意&lt;a href="https://github.com/MarkMindCkm/obsidian-enhancing-mindmap/blob/main/Readme-zh.md#%e6%b3%a8%e6%84%8f"&gt;这里&lt;/a&gt;&lt;a class="anchor" href="#%e6%b3%a8%e6%84%8f%e8%bf%99%e9%87%8c"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;该插件支持如上以及无序列表等有限的markdown格式，无法支持其他格式，一定要注意这点，否则可能会丢失数据，切记。&lt;/p&gt;
+&lt;h2 id="short-cuts"&gt;Short cuts&lt;a class="anchor" href="#short-cuts"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;新建脑图&lt;/th&gt;
+ &lt;th&gt;Ctrl/Cmd+P&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;新增子节点&lt;/td&gt;
+ &lt;td&gt;Tab&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;新增兄弟节点&lt;/td&gt;
+ &lt;td&gt;enter&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;删除节点&lt;/td&gt;
+ &lt;td&gt;Delete&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;编辑节点&lt;/td&gt;
+ &lt;td&gt;Space/dblclick node&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;后退&lt;/td&gt;
+ &lt;td&gt;Ctrl/Cmd+Z&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;前进&lt;/td&gt;
+ &lt;td&gt;Ctrl/Cmd+Y&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;取消编辑节点&lt;/td&gt;
+ &lt;td&gt;Tab&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;展开节点&lt;/td&gt;
+ &lt;td&gt;Ctrl/Cmd + /&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;收缩节点&lt;/td&gt;
+ &lt;td&gt;Ctrl/Cmd + /&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;拖动节点&lt;/td&gt;
+ &lt;td&gt;Drag and drop node&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;切换节点&lt;/td&gt;
+ &lt;td&gt;Up/down/left/right&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;放大、缩小&lt;/td&gt;
+ &lt;td&gt;Ctrl/Cmd + 滚轮&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;居中&lt;/td&gt;
+ &lt;td&gt;Ctrl/Cmd + E&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="功能"&gt;功能&lt;a class="anchor" href="#%e5%8a%9f%e8%83%bd"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;编辑节点&lt;/li&gt;
+&lt;li&gt;拖动节点至某节点&lt;/li&gt;
+&lt;li&gt;前进/后退&lt;/li&gt;
+&lt;li&gt;在markdown和思维导图视图之间切换&lt;/li&gt;
+&lt;li&gt;数据同步&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>supervisor</title><link>http://example.org/docs/programmer/basetc/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link><pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid><description>&lt;h1 id="supervisord"&gt;supervisord&lt;a class="anchor" href="#supervisord"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="安装"&gt;安装&lt;a class="anchor" href="#%e5%ae%89%e8%a3%85"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install supervisor
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo_supervisord_conf
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo_supervisord_conf &amp;gt; /etc/supervisord.conf 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo -e &lt;span style="color:#e6db74"&gt;&amp;#34;[include]\nfiles = /etc/supervisor/conf.d/*.conf&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/supervisord.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir -p /var/log/test
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir -p /etc/supervisor/conf.d/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo -e &lt;span style="color:#e6db74"&gt;&amp;#34;[program:test]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;command=/data/apps/test/.venv/bin/python test.py
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;directory=/data/apps/test/src/
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;user=root
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;minfds=65535
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;autostart=true
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;autorestart=true
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;stopasgroup=true
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;stderr_logfile=/var/log/test/test.err.log
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;stderr_logfile_maxbytes=1000MB
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;stderr_logfile_backups=10
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;stdout_logfile=/var/log/test/test.out.log
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;stdout_logfile_maxbytes=1000MB
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;stdout_logfile_backups=10&amp;#34;&lt;/span&gt; &amp;gt; /etc/supervisor/conf.d/test.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;supervisord
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;supervisorctl update&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="问题"&gt;问题&lt;a class="anchor" href="#%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="supervisorctl-status-httplocalhost9001-refused-connection-问题"&gt;supervisorctl status http://localhost:9001 refused connection 问题&lt;a class="anchor" href="#supervisorctl-status-httplocalhost9001-refused-connection-%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;首次安装, 只&lt;code&gt;pip install&lt;/code&gt;后直接使用很可能是没有配置文件&amp;hellip; 写入配置后启动&lt;code&gt;supervisord&lt;/code&gt;就好了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="多安装问题"&gt;多安装问题&lt;a class="anchor" href="#%e5%a4%9a%e5%ae%89%e8%a3%85%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用&lt;code&gt;pip&lt;/code&gt;安装和&lt;code&gt;apt&lt;/code&gt;安装的 &lt;code&gt;supervisor&lt;/code&gt; 使用的不同路径的配置文件, 然后系统里就会跑两个supervisor, 就容易产生迷惑行为&lt;/p&gt;
+&lt;h3 id="使用supervisor启动的程序莫名其妙有了打开文件数限制"&gt;使用supervisor启动的程序莫名其妙有了打开文件数限制&lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8supervisor%e5%90%af%e5%8a%a8%e7%9a%84%e7%a8%8b%e5%ba%8f%e8%8e%ab%e5%90%8d%e5%85%b6%e5%a6%99%e6%9c%89%e4%ba%86%e6%89%93%e5%bc%80%e6%96%87%e4%bb%b6%e6%95%b0%e9%99%90%e5%88%b6"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;起了一个go程序结果http请求给限制到了4096, 根本不够用哈
+设置如下参数可以设置新值(需要设置在supervisor配置中,而非supervisor守护的app中)&lt;/p&gt;
+&lt;/blockquote&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-ini" data-lang="ini"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;[supervisord]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;minfds&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;8192&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;问题链接: &lt;a href="https://github.com/hashicorp/terraform-aws-nomad/issues/55"&gt;Github&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="systemd"&gt;systemd&lt;a class="anchor" href="#systemd"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;文件路径: /etc/systemd/system/{service_name}.service&lt;/p&gt;</description></item><item><title>各个软件换源</title><link>http://example.org/docs/programmer/basetc/for_china/</link><pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/for_china/</guid><description>&lt;p&gt;&lt;img src="http://img.hc360.com/broadcast/info/images/200909/200909101744424019.jpg" alt="mu ou" title="ma liang"/&gt;&lt;/p&gt;
+&lt;p&gt;在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.&lt;/p&gt;
+&lt;h2 id="qt"&gt;Qt&lt;a class="anchor" href="#qt"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;使用Maintain管理kit时，可以在Settings中设置Repositories，设置地址可从&lt;a href="https://download.qt.io/static/mirrorlist/"&gt;Qt Downloads&lt;/a&gt;页面查询.&lt;/p&gt;
+&lt;h2 id="apt"&gt;apt&lt;a class="anchor" href="#apt"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;可解决版本升级时的问题,即使用了国内源,最后一个文件不知道为什么还是从国外拉取&amp;hellip;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# sudo touch /etc/apt/apt.conf&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/apt/apt.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;-&amp;gt; Acquire::http::Proxy &amp;ldquo;http://127.0.0.1:8001&amp;rdquo;;&lt;/p&gt;
+&lt;h2 id="freebsd"&gt;FreeBSD&lt;a class="anchor" href="#freebsd"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;mkdir -p /usr/local/etc/pkg/repos
+vim /usr/local/etc/pkg/repos/bjtu.conf&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;bjtu: {
+	url: &amp;#34;pkg+http://mirror.bjtu.edu.cn/reverse/freebsd-pkg/${ABI}/quarterly&amp;#34;,
+	mirror_type: &amp;#34;srv&amp;#34;,
+	signature_type: &amp;#34;none&amp;#34;,
+	fingerprints: &amp;#34;/usr/share/keys/pkg&amp;#34;,
+	enabled: yes
+}
+FreeBSD: { enabled: no }&lt;/code&gt;&lt;/pre&gt;&lt;blockquote class='book-hint '&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;pkg update&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;h2 id="qt-1"&gt;Qt&lt;a class="anchor" href="#qt-1"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="源"&gt;源&lt;a class="anchor" href="#%e6%ba%90"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/&lt;/li&gt;
+&lt;li&gt;清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/&lt;/li&gt;
+&lt;li&gt;北京理工大学：http://mirror.bit.edu.cn/qtproject/&lt;/li&gt;
+&lt;li&gt;中国互联网络信息中心：https://mirrors.cnnic.cn/qt/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="python-pip"&gt;Python Pip&lt;a class="anchor" href="#python-pip"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install --index https://pypi.mirrors.ustc.edu.cn/simple/ dlib&lt;span style="color:#f92672"&gt;(&lt;/span&gt;numpy等包名&lt;span style="color:#f92672"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="源-1"&gt;源&lt;a class="anchor" href="#%e6%ba%90-1"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;阿里云 &lt;a href="http://mirrors.aliyun.com/pypi/simple/"&gt;http://mirrors.aliyun.com/pypi/simple/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;中国科技大学 &lt;a href="https://pypi.mirrors.ustc.edu.cn/simple/"&gt;https://pypi.mirrors.ustc.edu.cn/simple/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;豆瓣(douban) &lt;a href="http://pypi.douban.com/simple/"&gt;http://pypi.douban.com/simple/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;清华大学 &lt;a href="https://pypi.tuna.tsinghua.edu.cn/simple/"&gt;https://pypi.tuna.tsinghua.edu.cn/simple/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;中国科学技术大学 &lt;a href="http://pypi.mirrors.ustc.edu.cn/simple/"&gt;http://pypi.mirrors.ustc.edu.cn/simple/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="nodejs-npm"&gt;Nodejs Npm&lt;a class="anchor" href="#nodejs-npm"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;不过好像换了会有问题.Npm各个包依赖混乱不堪,不忍直视.&lt;/p&gt;</description></item><item><title>tip Of vim</title><link>http://example.org/docs/programmer/basetc/tipsofvim/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/tipsofvim/</guid><description>&lt;h1 id="vim-使用"&gt;Vim 使用&lt;a class="anchor" href="#vim-%e4%bd%bf%e7%94%a8"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://www.vim.org/images/vim_header.gif" alt="vim" /&gt;
+除去“简便生活”里的几条配置，在纠结是否添加到别的地方，果然还是单独给vim一个使用手册比较好……&lt;/p&gt;
+&lt;h2 id="注释"&gt;注释&lt;a class="anchor" href="#%e6%b3%a8%e9%87%8a"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; # &lt;span style="color:#a6e22e"&gt;注释&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;， &lt;span style="color:#ae81ff"&gt;12&lt;/span&gt;s&lt;span style="color:#e6db74"&gt;/^/&lt;/span&gt;#/&lt;span style="color:#a6e22e"&gt;g&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ---
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; # &lt;span style="color:#a6e22e"&gt;取消注释&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;， &lt;span style="color:#ae81ff"&gt;12&lt;/span&gt;s&lt;span style="color:#e6db74"&gt;/^#/&lt;/span&gt;/&lt;span style="color:#a6e22e"&gt;g&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其实 是&lt;code&gt;vim&lt;/code&gt;中的 &lt;code&gt;:s&lt;/code&gt;替换命令… 下方解释&lt;/p&gt;
+&lt;p&gt;或者，使用列编辑的模式:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;v、选择区域、ctrl q置行首、I插入#、Esc应用到全列
 ctrl v、I、#、Esc
 因为有的ctrl q或者ctrl v 不能用……
 
 取消，即使用上述方法选中行首，删除第一个字节即可了
-&lt;/code>&lt;/pre>
-&lt;h2 id="替换">
- 替换
- &lt;a class="anchor" href="#%e6%9b%bf%e6%8d%a2">#&lt;/a>
-&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> :&lt;span style="color:#a6e22e">s&lt;/span>&lt;span style="color:#e6db74">/oldWords/&lt;/span>&lt;span style="color:#a6e22e">newWords&lt;/span>/&lt;span style="color:#a6e22e">g&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>g : 代表当前光标所在行。&lt;/p>
-&lt;h3 id="由此可知">
- 由此可知:
- &lt;a class="anchor" href="#%e7%94%b1%e6%ad%a4%e5%8f%af%e7%9f%a5">#&lt;/a>
-&lt;/h3>
-&lt;p>&lt;code>^&lt;/code>表行首标识符。 &lt;code>/^/&lt;/code>表示行首的空字符。 而取消注释中的&lt;code>/^#/&lt;/code>即表示行首的&lt;code>#&lt;/code>，被&lt;code>//&lt;/code>空字符所替换。&lt;/p>
-&lt;hr>
-&lt;h2 id="查找高亮">
- 查找高亮
- &lt;a class="anchor" href="#%e6%9f%a5%e6%89%be%e9%ab%98%e4%ba%ae">#&lt;/a>
-&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">set&lt;/span> &lt;span style="color:#a6e22e">hlsearch&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">set&lt;/span> &lt;span style="color:#a6e22e">nohlsearch&lt;/span> 
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="分屏">
- 分屏
- &lt;a class="anchor" href="#%e5%88%86%e5%b1%8f">#&lt;/a>
-&lt;/h2>
-&lt;h3 id="实现">
- 实现
- &lt;a class="anchor" href="#%e5%ae%9e%e7%8e%b0">#&lt;/a>
-&lt;/h3>
-&lt;ul>
-&lt;li>在外部使用&lt;code>-o&lt;/code> or &lt;code>-O&lt;/code>参数&lt;/li>
-&lt;li>内部&lt;code>split&lt;/code> or &lt;code>vsplit&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;h3 id="操作">
- 操作
- &lt;a class="anchor" href="#%e6%93%8d%e4%bd%9c">#&lt;/a>
-&lt;/h3>
-&lt;ul>
-&lt;li>移动光标 &lt;code>Ctrl + w&lt;/code> hjkl&lt;/li>
-&lt;li>移动分区&lt;code>Ctrl + w&lt;/code> HJKL&lt;/li>
-&lt;li>统一高度&lt;code>Ctrl + w&lt;/code> =&lt;/li>
-&lt;li>改变高度&lt;code>Ctrl + w&lt;/code> +-&lt;/li>
-&lt;/ul>
-&lt;h1 id="heading">
- 
- &lt;a class="anchor" href="#heading">#&lt;/a>
-&lt;/h1></description></item><item><title>supervisor</title><link>http://example.org/docs/programmer/basetc/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid><description>supervisord # 安装 # pip install supervisor echo_supervisord_conf echo_supervisord_conf &amp;gt; /etc/supervisord.conf echo -e &amp;#34;[include]\nfiles = /etc/supervisor/conf.d/*.conf&amp;#34; &amp;gt;&amp;gt; /etc/supervisord.conf mkdir -p /var/log/test mkdir -p /etc/supervisor/conf.d/ echo -e &amp;#34;[program:test] command=/data/apps/test/.venv/bin/python test.py directory=/data/apps/test/src/ user=root minfds=65535 autostart=true autorestart=true stopasgroup=true stderr_logfile=/var/log/test/test.err.log stderr_logfile_maxbytes=1000MB stderr_logfile_backups=10 stdout_logfile=/var/log/test/test.out.log stdout_logfile_maxbytes=1000MB stdout_logfile_backups=10&amp;#34; &amp;gt; /etc/supervisor/conf.d/test.conf supervisord supervisorctl update 问题 # supervisorctl status http://localhost:9001 refused connection 问题 # 首次安装, 只pip install后直接使用很可能是没有配置文件&amp;hellip; 写入配置后启动supervisord就好了 多安装问题 # 使用pip安装和apt安装的 supervisor 使用的不同路径的配置文件, 然后系统里就会跑两个supervisor, 就容易产生迷惑行为
-使用supervisor启动的程序莫名其妙有了打开文件数限制 # 起了一个go程序结果http请求给限制到了4096, 根本不够用哈 设置如下参数可以设置新值(需要设置在supervisor配置中,而非supervisor守护的app中)</description></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="替换"&gt;替换&lt;a class="anchor" href="#%e6%9b%bf%e6%8d%a2"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;:&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;&lt;span style="color:#e6db74"&gt;/oldWords/&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;newWords&lt;/span&gt;/&lt;span style="color:#a6e22e"&gt;g&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;g : 代表当前光标所在行。&lt;/p&gt;
+&lt;h4 id="由此可知"&gt;由此可知:&lt;a class="anchor" href="#%e7%94%b1%e6%ad%a4%e5%8f%af%e7%9f%a5"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;^&lt;/code&gt;表行首标识符。 &lt;code&gt;/^/&lt;/code&gt;表示行首的空字符。 而取消注释中的&lt;code&gt;/^#/&lt;/code&gt;即表示行首的&lt;code&gt;#&lt;/code&gt;，被&lt;code&gt;//&lt;/code&gt;空字符所替换。&lt;/p&gt;
+&lt;h2 id="删除g出现计算意外d"&gt;删除:g/出现计算意外/d&lt;a class="anchor" href="#%e5%88%a0%e9%99%a4g%e5%87%ba%e7%8e%b0%e8%ae%a1%e7%ae%97%e6%84%8f%e5%a4%96d"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;:&lt;span style="color:#a6e22e"&gt;g&lt;/span&gt;&lt;span style="color:#e6db74"&gt;/出现计算意外/&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;d&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="查找高亮"&gt;查找高亮&lt;a class="anchor" href="#%e6%9f%a5%e6%89%be%e9%ab%98%e4%ba%ae"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;set&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;hlsearch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;set&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;nohlsearch&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="分屏"&gt;分屏&lt;a class="anchor" href="#%e5%88%86%e5%b1%8f"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h4 id="实现"&gt;实现&lt;a class="anchor" href="#%e5%ae%9e%e7%8e%b0"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;在外部使用&lt;code&gt;-o&lt;/code&gt; or &lt;code&gt;-O&lt;/code&gt;参数&lt;/li&gt;
+&lt;li&gt;内部&lt;code&gt;split&lt;/code&gt; or &lt;code&gt;vsplit&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="操作"&gt;操作&lt;a class="anchor" href="#%e6%93%8d%e4%bd%9c"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;移动光标 &lt;code&gt;Ctrl + w&lt;/code&gt; hjkl&lt;/li&gt;
+&lt;li&gt;移动分区&lt;code&gt;Ctrl + w&lt;/code&gt; HJKL&lt;/li&gt;
+&lt;li&gt;统一高度&lt;code&gt;Ctrl + w&lt;/code&gt; =&lt;/li&gt;
+&lt;li&gt;改变高度&lt;code&gt;Ctrl + w&lt;/code&gt; +-&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="more-and-less"&gt;more and less&lt;a class="anchor" href="#more-and-less"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;阅读器~~~ 因为经常读大文件发现了这两个的无敌好处——&lt;!-- raw HTML omitted --&gt;快&lt;!-- raw HTML omitted --&gt;。&lt;/p&gt;</description></item><item><title>编辑器使用</title><link>http://example.org/docs/programmer/basetc/editer---%E5%B8%B8%E7%94%A8%E7%BC%96%E8%BE%91%E5%99%A8/</link><pubDate>Sat, 29 Oct 2016 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/editer---%E5%B8%B8%E7%94%A8%E7%BC%96%E8%BE%91%E5%99%A8/</guid><description>&lt;h2 id="一jupyter-note"&gt;一、Jupyter-Note&lt;a class="anchor" href="#%e4%b8%80jupyter-note"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="局域网访问"&gt;局域网访问&lt;a class="anchor" href="#%e5%b1%80%e5%9f%9f%e7%bd%91%e8%ae%bf%e9%97%ae"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;方法1:
+&lt;ul&gt;
+&lt;li&gt;使用&lt;code&gt;jupyter notebook --generate-config&lt;/code&gt;生成配置文件&lt;/li&gt;
+&lt;li&gt;修改配置文件中&lt;code&gt;c.NotebookApp.allow_root&lt;/code&gt;(因为安卓用的Termux跑的,所以伪root),&lt;code&gt;c.NotebookApp.ip&lt;/code&gt;这样就能通过局域网和&lt;code&gt;Token&lt;/code&gt;访问了&lt;/li&gt;
+&lt;li&gt;如果想要使用密码(长期使用局域网的话),可以使用&lt;code&gt;from notebook.auth import passwd;passwd()&lt;/code&gt;生成加密密码,配置到&lt;code&gt;c.NotebookApp.password&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;方法2:
+&lt;ul&gt;
+&lt;li&gt;如果只是临时的,那传入运行命令肯定最好了,如下可以使用如下格式:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;jupyter-notebook --allow-root --ip&lt;span style="color:#f92672"&gt;=&lt;/span&gt;0.0.0.0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="自动补全"&gt;自动补全&lt;a class="anchor" href="#%e8%87%aa%e5%8a%a8%e8%a1%a5%e5%85%a8"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;安装插件: &lt;code&gt;pip install jupyter_contrib_nbextensions -i https://pypi.tuna.tsinghua.edu.cn/simple&lt;/code&gt;(此命令包含代理)&lt;/li&gt;
+&lt;li&gt;到&lt;code&gt;Nbextensions&lt;/code&gt;中将&lt;code&gt;Disable&lt;/code&gt;改为&lt;code&gt;Enable&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;开始&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="二vim"&gt;二、Vim&lt;a class="anchor" href="#%e4%ba%8cvim"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img src="https://tse4-mm.cn.bing.net/th/id/OIP.RsJpt9plNxxlrxA9yV-OVwHaHa?pid=ImgDet&amp;amp;rs=1" alt="vim" /&gt;&lt;/p&gt;
+&lt;h3 id="1-vim-查看日志中文乱码2021"&gt;1. vim 查看日志中文乱码(2021)&lt;a class="anchor" href="#1-vim-%e6%9f%a5%e7%9c%8b%e6%97%a5%e5%bf%97%e4%b8%ad%e6%96%87%e4%b9%b1%e7%a0%812021"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="bash_profile"&gt;.bash_profile&lt;a class="anchor" href="#bash_profile"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;export LC_ALL=en_US.utf-8&lt;/code&gt;&lt;/pre&gt;&lt;h4 id="vimrc"&gt;.vimrc&lt;a class="anchor" href="#vimrc"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+ set termencoding=utf-8
+ set encoding=utf-8&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;双管齐下, 一个解决&lt;code&gt;系统&lt;/code&gt;配置, 一个解决&lt;code&gt;vim&lt;/code&gt;配置&lt;/p&gt;
+&lt;h3 id="2-中文乱码问题2018"&gt;2. 中文乱码问题(2018)&lt;a class="anchor" href="#2-%e4%b8%ad%e6%96%87%e4%b9%b1%e7%a0%81%e9%97%ae%e9%a2%982018"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在&lt;code&gt;.bash_profile&lt;/code&gt;中增加&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;export LANG=zh_CN.utf8
+export LC_ALL=zh_CN.utf8&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;即可增加中文支持。 不过，还是&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;export LANG=en_US.utf8
+export LC_ALL=en_US.utf8&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;比较香，因为中文字体这里渲染出来很难看…
+^_^:
+2019年5月5日19点46分&lt;/p&gt;
+&lt;h3 id="3-ctrl--v被封印"&gt;3. Ctrl + v被封印&lt;a class="anchor" href="#3-ctrl--v%e8%a2%ab%e5%b0%81%e5%8d%b0"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在 Windows 中使用 Vim 时，&lt;code&gt;Ctrl+V&lt;/code&gt; 快捷键被系统或终端占用于粘贴操作，导致无法直接执行竖列（块）选择。以下是三种解决方案：&lt;/p&gt;
+&lt;h4 id="方法-1使用替代键-ctrlq"&gt;方法 1：使用替代键 &lt;code&gt;Ctrl+Q&lt;/code&gt;&lt;a class="anchor" href="#%e6%96%b9%e6%b3%95-1%e4%bd%bf%e7%94%a8%e6%9b%bf%e4%bb%a3%e9%94%ae-ctrlq"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;在 Vim 的 &lt;strong&gt;普通模式&lt;/strong&gt; 下，按下 &lt;code&gt;Ctrl+Q&lt;/code&gt; 即可触发竖列选择（替代 &lt;code&gt;Ctrl+V&lt;/code&gt; 的功能）：&lt;/p&gt;</description></item><item><title/><link>http://example.org/docs/programmer/basetc/bash/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/bash/</guid><description>&lt;h1 id="bash"&gt;Bash&lt;a class="anchor" href="#bash"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;Auther: Ian&lt;/p&gt;
+&lt;h2 id="自动补全"&gt;自动补全&lt;a class="anchor" href="#%e8%87%aa%e5%8a%a8%e8%a1%a5%e5%85%a8"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;linux中使用bash_completion工具进行自动不全，在某些发行版或者版本中make或者git没有Tab自动补全，这时在Github上找一个bash_completion文件放在相应位置就可以了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo cp bash_completion /usr/share/bash-completion/bash_completion
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;source /usr/share/bash-completion/bash_completion&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="powershell"&gt;Powershell&lt;a class="anchor" href="#powershell"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;命令历史存储在:
+&lt;code&gt;C:\Users\{USERNAME}\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine&lt;/code&gt;下 &lt;code&gt;ConsoleHost_history.txt&lt;/code&gt;文件&lt;/p&gt;</description></item><item><title/><link>http://example.org/docs/programmer/basetc/gitbook/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/gitbook/</guid><description>&lt;h1 id="gitbook"&gt;Gitbook&lt;a class="anchor" href="#gitbook"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;Author: Ian&lt;/p&gt;
+&lt;h2 id="安装"&gt;安装&lt;a class="anchor" href="#%e5%ae%89%e8%a3%85"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md#setup-and-installation-of-gitbook"&gt;官方文档 Github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.mapull.com/gitbook/comscore/"&gt;Gitbook 打造的 Gitbook 说明文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;npm&lt;/code&gt;进行安装, 安装npm (v4.0.0 and above is recommended)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;npm install gitbook-cli -g&lt;/code&gt; 需要&lt;code&gt;sudo&lt;/code&gt;权限&lt;/li&gt;
+&lt;li&gt;实际在执行&lt;code&gt;gitbook -V&lt;/code&gt;后才算是安装完成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="问题"&gt;问题&lt;a class="anchor" href="#%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="typeerror-cbapply-is-not-a-function"&gt;TypeError: cb.apply is not a function&lt;a class="anchor" href="#typeerror-cbapply-is-not-a-function"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;npm 安装软件不出点儿问题貌似都不是很合适, 该问题代码级问题是因为在适配某些可能本机上并没有安装的npm版本时写了bug，导致执行出错.&lt;/p&gt;
+&lt;p&gt;所以注释掉相关代码即可，或者直接删除。删除的好处是不会因为编辑器的原因触发npm的某些缩进问题。&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;62. // fs.stat = statFix(fs.stat)
+63. // fs.fstat = statFix(fs.fstat)
+64. // fs.lstat = statFix(fs.lstat)&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;固然可以通过安装相匹配版本进行适配，不过&amp;hellip;Ian怕导致本机上的hexo再出现版本不兼容的问题。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="使用"&gt;使用&lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th style="text-align: right"&gt;功能&lt;/th&gt;
+ &lt;th style="text-align: center"&gt;示例&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;个人使用习惯(Ian)&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: right"&gt;新建book&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;code&gt;gitbook init&lt;/code&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;&lt;code&gt;gitbook init gitbooks/Architecture&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: right"&gt;编译和运行服务&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;code&gt;gitbook serve&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: right"&gt;编译&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;code&gt;gitbook serve&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="pdf"&gt;pdf&lt;a class="anchor" href="#pdf"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;参考自 &lt;a href="https://www.mapull.com/gitbook/comscore/extend/pdf.html"&gt;码谱&lt;/a&gt;&lt;/p&gt;</description></item><item><title/><link>http://example.org/docs/programmer/basetc/vim/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/vim/</guid><description>&lt;h1 id="vim-使用"&gt;Vim 使用&lt;a class="anchor" href="#vim-%e4%bd%bf%e7%94%a8"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;Auther: Ian&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://www.vim.org/images/vim_header.gif" alt="vim" /&gt;&lt;/p&gt;
+&lt;h2 id="注释"&gt;注释&lt;a class="anchor" href="#%e6%b3%a8%e9%87%8a"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; # &lt;span style="color:#a6e22e"&gt;注释&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;， &lt;span style="color:#ae81ff"&gt;12&lt;/span&gt;s&lt;span style="color:#e6db74"&gt;/^/&lt;/span&gt;#/&lt;span style="color:#a6e22e"&gt;g&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ---
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; # &lt;span style="color:#a6e22e"&gt;取消注释&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;， &lt;span style="color:#ae81ff"&gt;12&lt;/span&gt;s&lt;span style="color:#e6db74"&gt;/^#/&lt;/span&gt;/&lt;span style="color:#a6e22e"&gt;g&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其实 是&lt;code&gt;vim&lt;/code&gt;中的 &lt;code&gt;:s&lt;/code&gt;替换命令… 下方解释&lt;/p&gt;
+&lt;p&gt;或者，使用列编辑的模式:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;v、选择区域、ctrl q置行首、I插入#、Esc应用到全列
+ctrl v、I、#、Esc
+因为有的ctrl q或者ctrl v 不能用……
+
+取消，即使用上述方法选中行首，删除第一个字节即可了
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="替换"&gt;替换&lt;a class="anchor" href="#%e6%9b%bf%e6%8d%a2"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; :&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;&lt;span style="color:#e6db74"&gt;/oldWords/&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;newWords&lt;/span&gt;/&lt;span style="color:#a6e22e"&gt;g&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;g : 代表当前光标所在行。&lt;/p&gt;
+&lt;h3 id="由此可知"&gt;由此可知:&lt;a class="anchor" href="#%e7%94%b1%e6%ad%a4%e5%8f%af%e7%9f%a5"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;^&lt;/code&gt;表行首标识符。 &lt;code&gt;/^/&lt;/code&gt;表示行首的空字符。 而取消注释中的&lt;code&gt;/^#/&lt;/code&gt;即表示行首的&lt;code&gt;#&lt;/code&gt;，被&lt;code&gt;//&lt;/code&gt;空字符所替换。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="查找高亮"&gt;查找高亮&lt;a class="anchor" href="#%e6%9f%a5%e6%89%be%e9%ab%98%e4%ba%ae"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;set&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;hlsearch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;set&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;nohlsearch&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="分屏"&gt;分屏&lt;a class="anchor" href="#%e5%88%86%e5%b1%8f"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="实现"&gt;实现&lt;a class="anchor" href="#%e5%ae%9e%e7%8e%b0"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;在外部使用&lt;code&gt;-o&lt;/code&gt; or &lt;code&gt;-O&lt;/code&gt;参数&lt;/li&gt;
+&lt;li&gt;内部&lt;code&gt;split&lt;/code&gt; or &lt;code&gt;vsplit&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="操作"&gt;操作&lt;a class="anchor" href="#%e6%93%8d%e4%bd%9c"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;移动光标 &lt;code&gt;Ctrl + w&lt;/code&gt; hjkl&lt;/li&gt;
+&lt;li&gt;移动分区&lt;code&gt;Ctrl + w&lt;/code&gt; HJKL&lt;/li&gt;
+&lt;li&gt;统一高度&lt;code&gt;Ctrl + w&lt;/code&gt; =&lt;/li&gt;
+&lt;li&gt;改变高度&lt;code&gt;Ctrl + w&lt;/code&gt; +-&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="more-and-less"&gt;more and less&lt;a class="anchor" href="#more-and-less"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;阅读器~~~ 因为经常读大文件发现了这两个的无敌好处——&lt;!-- raw HTML omitted --&gt;快&lt;!-- raw HTML omitted --&gt;。&lt;/p&gt;</description></item></channel></rss>

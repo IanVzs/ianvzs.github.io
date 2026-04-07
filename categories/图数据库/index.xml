@@ -1,6 +1,49 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>图数据库 on Ian's Blog</title><link>http://example.org/categories/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/</link><description>Recent content in 图数据库 on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 10 Jan 2022 17:00:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml"/><item><title>Dgraph使用小记</title><link>http://example.org/docs/programmer/database/dgraph-graph-db/</link><pubDate>Mon, 10 Jan 2022 17:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/database/dgraph-graph-db/</guid><description>概念 # 以下参考自: 这里 Console # Mutate: 突变, 结构/数据变化的时候用 Query: 查询, Emmmm查询的时候用 所以看来没有getset了???? Schema # 管理字段(Predicate, Type, list,lang,index等)
-问题 # 在新手村的时候使用dgraph/standalone 但此时(2021-12-8 18:30:23)文档使用的版本为dgraph/standalone:v21.03.2但是这个版本的Ratel UI不工作&amp;hellip;. 导致hello 不了 world很是难受
-结果换了dgraph/standalone:v20.11.3好了诶.
-sudo docker run --rm -it -p &amp;#34;8080:8080&amp;#34; -p &amp;#34;9080:9080&amp;#34; -p &amp;#34;8000:8000&amp;#34; -v ~/dgraph:/dgraph &amp;#34;dgraph/standalone:v20.11.3&amp;#34; http://127.0.0.1:8000 突变 # set # 内容较多, 下面单独罗列
-delete # 根据UID 删除指定predicate_name
-{ delete { &amp;lt;UID&amp;gt; &amp;lt;predicate_name&amp;gt; * . } } set # 创建 # 直接json给出结构和数据,即可完成创建.只不过如果有用到@lang时就需要去Schema里更新一下字段 - 类型 ?</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>图数据库 on Ian's Blog</title><link>http://example.org/categories/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/</link><description>Recent content in 图数据库 on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 10 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml"/><item><title>Dgraph使用小记</title><link>http://example.org/docs/programmer/database/dgraph---graph-db/</link><pubDate>Mon, 10 Jan 2022 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/database/dgraph---graph-db/</guid><description>&lt;p&gt;&lt;img src="https://dgraph.io/docs//images/dgraph.svg" alt="Dgraph" title="Dgraph"/&gt;&lt;/p&gt;
+&lt;h2 id="概念"&gt;概念&lt;a class="anchor" href="#%e6%a6%82%e5%bf%b5"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;以下参考自: &lt;a href="https://zhuanlan.zhihu.com/p/157636277"&gt;这里&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="console"&gt;Console&lt;a class="anchor" href="#console"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Mutate: 突变, 结构/数据变化的时候用&lt;/li&gt;
+&lt;li&gt;Query: 查询, Emmmm查询的时候用&lt;/li&gt;
+&lt;li&gt;所以看来没有&lt;code&gt;getset&lt;/code&gt;了????&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="schema"&gt;Schema&lt;a class="anchor" href="#schema"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;管理字段(Predicate, Type, &lt;code&gt;list,lang,index&lt;/code&gt;等)&lt;/p&gt;
+&lt;h2 id="问题"&gt;问题&lt;a class="anchor" href="#%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;在&lt;code&gt;新手村&lt;/code&gt;的时候使用&lt;code&gt;dgraph/standalone&lt;/code&gt; 但此时(2021-12-8 18:30:23)&lt;a href="https://dgraph.io/docs/get-started/"&gt;文档&lt;/a&gt;使用的版本为&lt;code&gt;dgraph/standalone:v21.03.2&lt;/code&gt;但是这个版本的&lt;a href="http://localhost:8000"&gt;Ratel UI&lt;/a&gt;不工作&amp;hellip;. 导致hello 不了 world很是难受&lt;/p&gt;
+&lt;p&gt;结果换了&lt;code&gt;dgraph/standalone:v20.11.3&lt;/code&gt;好了诶.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;sudo docker run --rm -it -p &amp;#34;8080:8080&amp;#34; -p &amp;#34;9080:9080&amp;#34; -p &amp;#34;8000:8000&amp;#34; -v ~/dgraph:/dgraph &amp;#34;dgraph/standalone:v20.11.3&amp;#34;
+http://127.0.0.1:8000&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="突变"&gt;突变&lt;a class="anchor" href="#%e7%aa%81%e5%8f%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="set"&gt;set&lt;a class="anchor" href="#set"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;内容较多, 下面单独罗列&lt;/p&gt;
+&lt;h3 id="delete"&gt;delete&lt;a class="anchor" href="#delete"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;根据&lt;code&gt;UID&lt;/code&gt; 删除指定&lt;code&gt;predicate_name&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;{
+ delete {
+ &amp;lt;UID&amp;gt; &amp;lt;predicate_name&amp;gt; * .
+ }
+}&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="set-1"&gt;set&lt;a class="anchor" href="#set-1"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="创建"&gt;创建&lt;a class="anchor" href="#%e5%88%9b%e5%bb%ba"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;直接json给出结构和数据,即可完成创建.只不过如果有用到&lt;code&gt;@lang&lt;/code&gt;时就需要去&lt;code&gt;Schema&lt;/code&gt;里更新一下&lt;code&gt;字段 - 类型 ???? (Schema-Type)&lt;/code&gt;的支持项&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;{
+ &amp;#34;set&amp;#34;: [
+ {
+ &amp;#34;food_name&amp;#34;: &amp;#34;Sushi&amp;#34;,
+ &amp;#34;review&amp;#34;: [
+ {
+ &amp;#34;comment&amp;#34;: &amp;#34;Tastes very good&amp;#34;,
+ &amp;#34;comment@jp&amp;#34;: &amp;#34;とても美味しい&amp;#34;,
+ &amp;#34;comment@ru&amp;#34;: &amp;#34;очень вкусно&amp;#34;
+ }
+ ],
+ &amp;#34;origin&amp;#34;: [
+ {
+ &amp;#34;country&amp;#34;: &amp;#34;Japan&amp;#34;
+ }
+ ]
+ }
+ ]
+}&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="更新"&gt;更新&lt;a class="anchor" href="#%e6%9b%b4%e6%96%b0"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用和创建差不多,不过目前我已知的更新只能用UID否则都会直接创建一个相同内容的新数据出来&lt;/p&gt;</description></item></channel></rss>

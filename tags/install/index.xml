@@ -1,2 +1,61 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>install on Ian's Blog</title><link>http://example.org/tags/install/</link><description>Recent content in install on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 15 Jan 2022 16:24:41 +0000</lastBuildDate><atom:link href="http://example.org/tags/install/index.xml" rel="self" type="application/rss+xml"/><item><title>安装问题</title><link>http://example.org/docs/programmer/platforms/install_some/</link><pubDate>Sat, 15 Jan 2022 16:24:41 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/install_some/</guid><description>记录一些安装问题 # Debian 使用 apt-add-repository(ppa) # sudo apt update sudo apt install software-properties-common FreeBSD桌面 # 换源 pkg install xorg xfce echo &amp;lsquo;dbus_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf echo &amp;ldquo;/usr/local/etc/xdg/xfce4/xinitrc&amp;rdquo; &amp;gt; ~/.xinitrc startx 登录界面 # pkg install slim slim-themes echo &amp;lsquo;slim_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf vbox(没测试) # pkg install virtualbox-ose-additions 向/etc/rc.conf写入 vboxguest_enable=&amp;#34;YES&amp;#34; vboxservice_enable=&amp;#34;YES&amp;#34; 仅供参考看这里 因为vbox显卡太弱安装了vmware后就一直没用回过vbox,我还没测试过
-vmware # pkg install open-vm-tools xf86-video-vmware xf86-input-vmmouse 继续向/etc/rc.conf中写入 hald_enable=&amp;#34;YES&amp;#34; moused_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmblock_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmhgfs_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmmemctl_enable=&amp;#34;YES&amp;#34; # vmware_guest_vmxnet_enable=&amp;#34;YES&amp;#34; # vmware_guest_enable=&amp;#34;YES&amp;#34; 下面注释掉的是因为在测试中如果打开的话会有各种问题&amp;hellip;.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Install on Ian's Blog</title><link>http://example.org/tags/install/</link><description>Recent content in Install on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 15 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/install/index.xml" rel="self" type="application/rss+xml"/><item><title>安装问题</title><link>http://example.org/docs/programmer/platforms/install_some/</link><pubDate>Sat, 15 Jan 2022 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/install_some/</guid><description>&lt;h1 id="记录一些安装问题"&gt;记录一些安装问题&lt;a class="anchor" href="#%e8%ae%b0%e5%bd%95%e4%b8%80%e4%ba%9b%e5%ae%89%e8%a3%85%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="debian-使用-apt-add-repositoryppa"&gt;Debian 使用 apt-add-repository(ppa)&lt;a class="anchor" href="#debian-%e4%bd%bf%e7%94%a8-apt-add-repositoryppa"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;sudo apt update
+sudo apt install software-properties-common&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="freebsd桌面"&gt;FreeBSD桌面&lt;a class="anchor" href="#freebsd%e6%a1%8c%e9%9d%a2"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;换源&lt;/li&gt;
+&lt;li&gt;pkg install xorg xfce&lt;/li&gt;
+&lt;li&gt;echo &amp;lsquo;dbus_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf&lt;/li&gt;
+&lt;li&gt;echo &amp;ldquo;/usr/local/etc/xdg/xfce4/xinitrc&amp;rdquo; &amp;gt; ~/.xinitrc&lt;/li&gt;
+&lt;li&gt;startx&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="登录界面"&gt;登录界面&lt;a class="anchor" href="#%e7%99%bb%e5%bd%95%e7%95%8c%e9%9d%a2"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;pkg install slim slim-themes&lt;/li&gt;
+&lt;li&gt;echo &amp;lsquo;slim_enable=&amp;ldquo;YES&amp;rdquo;&amp;rsquo; &amp;raquo; /etc/rc.conf&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="vbox没测试"&gt;vbox(没测试)&lt;a class="anchor" href="#vbox%e6%b2%a1%e6%b5%8b%e8%af%95"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;pkg install virtualbox-ose-additions&lt;/li&gt;
+&lt;li&gt;向&lt;code&gt;/etc/rc.conf&lt;/code&gt;写入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;vboxguest_enable=&amp;#34;YES&amp;#34;
+vboxservice_enable=&amp;#34;YES&amp;#34;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;仅供参考看&lt;a href="https://www.cnblogs.com/mocuishle/p/15582173.html"&gt;这里&lt;/a&gt; 因为vbox显卡太弱安装了vmware后就一直没用回过vbox,我还没测试过&lt;/p&gt;
+&lt;h3 id="vmware"&gt;vmware&lt;a class="anchor" href="#vmware"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;pkg install open-vm-tools xf86-video-vmware xf86-input-vmmouse&lt;/li&gt;
+&lt;li&gt;继续向&lt;code&gt;/etc/rc.conf&lt;/code&gt;中写入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;hald_enable=&amp;#34;YES&amp;#34;
+moused_enable=&amp;#34;YES&amp;#34;
+# vmware_guest_vmblock_enable=&amp;#34;YES&amp;#34;
+# vmware_guest_vmhgfs_enable=&amp;#34;YES&amp;#34;
+# vmware_guest_vmmemctl_enable=&amp;#34;YES&amp;#34;
+# vmware_guest_vmxnet_enable=&amp;#34;YES&amp;#34;
+# vmware_guest_enable=&amp;#34;YES&amp;#34;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下面注释掉的是因为在测试中如果打开的话会有各种问题&amp;hellip;.尤其鼠标
+其他可见&lt;a href="https://www.jianshu.com/p/d4e32dbfe1e6"&gt;这里参考&lt;/a&gt;
+仅供参考, 这里面的东西很多都是有问题的.&lt;/p&gt;
+&lt;h2 id="clash樹莓派4-cli版"&gt;Clash(樹莓派4 cli版)&lt;a class="anchor" href="#clash%e6%a8%b9%e8%8e%93%e6%b4%be4-cli%e7%89%88"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;下載對應版本&lt;a href="https://github.com/Dreamacro/clash/releases/tag/v1.8.0"&gt;地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;注意不要選擇1.9.0版本,我用的1.8.0,9多人反映(以及我)有問題&lt;/li&gt;
+&lt;li&gt;我是樹莓派4 用的&lt;code&gt;armv8&lt;/code&gt; 樹莓派3 據說用&lt;code&gt;armv7&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;解壓給運行權限&lt;/li&gt;
+&lt;li&gt;從無論某處拿到配置文件 大多給訂閱地址, 但這裏使用需要我們手動下載好&lt;/li&gt;
+&lt;li&gt;配置&lt;code&gt;systemd&lt;/code&gt;或其他(手動啓動的話注意需要root,或者給相應用戶配置端口權限)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-systemd" data-lang="systemd"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;[Unit]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;Description&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;clash daemon&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;[Service]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;Type&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;simple&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;User&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;root&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;ExecStart&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;/home/pi/apps/clash-linux-armv8-v1.8.0/clash-linux-armv8-v1.8.0 -f /home/pi/.config/clash/config.yaml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;Restart&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;on-failure&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;[Install]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;WantedBy&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;multi-user.target&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;啓用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl enable clash
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl start clash
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl status clash&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="windows下wsl2-安装-npm--nodejs"&gt;Windows下wsl2 安装 npm &amp;amp;&amp;amp; nodejs&lt;a class="anchor" href="#windows%e4%b8%8bwsl2-%e5%ae%89%e8%a3%85-npm--nodejs"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;摘抄自&lt;a href="https://docs.microsoft.com/zh-cn/windows/dev-environment/javascript/nodejs-on-wsl"&gt;微软说明文档&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

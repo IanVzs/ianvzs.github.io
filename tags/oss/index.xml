@@ -1,1 +1,113 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>oss on Ian's Blog</title><link>http://example.org/tags/oss/</link><description>Recent content in oss on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 13 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/oss/index.xml" rel="self" type="application/rss+xml"/><item><title>阿里云使用</title><link>http://example.org/docs/programmer/platforms/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8/</link><pubDate>Thu, 13 Jun 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8/</guid><description>oss 对象存储 # Python SDK # pip install oss2 export OSS_ACCESS_KEY_ID=SIHDoisdhuasuiUGDS export OSS_ACCESS_KEY_SECRET=asdih213asHSIDH2e1 一、Auth # import oss2 from oss2.credentials import EnvironmentVariableCredentialsProvider from itertools import islice auth = oss2.ProviderAuth(EnvironmentVariableCredentialsProvider()) 二、Bucket # bucket_info 字段说明 # 字段 type 注释 {bucket_info.name} Bucket的名称 {bucket_info.storage_class} Bucket的存储类型 {bucket_info.creation_date} Bucket的创建时间 {bucket_info.intranet_endpoint} Bucket的内网Endpoint {bucket_info.extranet_endpoint} Bucket的外网Endpoint {bucket_info.owner.id} Bucket的拥有者ID {bucket_info.acl.grant} Bucket的ACL授权 {bucket_info.data_redundancy_type} Bucket的数据冗余类型 {bucket_info.access_monitor} Bucket的访问跟踪状态 代码示例 # # 查看Bucket service = oss2.Service(auth, &amp;#39;oss-ap-xiaomengmai-1.aliyuncs.com&amp;#39;) for b in oss2.BucketIterator(service): print(b.name) # bucket信息 bucket = oss2.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Oss on Ian's Blog</title><link>http://example.org/tags/oss/</link><description>Recent content in Oss on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 13 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/oss/index.xml" rel="self" type="application/rss+xml"/><item><title>阿里云使用</title><link>http://example.org/docs/programmer/platforms/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8/</link><pubDate>Thu, 13 Jun 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8/</guid><description>&lt;h1 id="oss-对象存储"&gt;oss 对象存储&lt;a class="anchor" href="#oss-%e5%af%b9%e8%b1%a1%e5%ad%98%e5%82%a8"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="python-sdk"&gt;Python SDK&lt;a class="anchor" href="#python-sdk"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install oss2
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;export OSS_ACCESS_KEY_ID&lt;span style="color:#f92672"&gt;=&lt;/span&gt;SIHDoisdhuasuiUGDS
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;export OSS_ACCESS_KEY_SECRET&lt;span style="color:#f92672"&gt;=&lt;/span&gt;asdih213asHSIDH2e1&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="一auth"&gt;一、Auth&lt;a class="anchor" href="#%e4%b8%80auth"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; oss2
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; oss2.credentials &lt;span style="color:#f92672"&gt;import&lt;/span&gt; EnvironmentVariableCredentialsProvider
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; itertools &lt;span style="color:#f92672"&gt;import&lt;/span&gt; islice
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;auth &lt;span style="color:#f92672"&gt;=&lt;/span&gt; oss2&lt;span style="color:#f92672"&gt;.&lt;/span&gt;ProviderAuth(EnvironmentVariableCredentialsProvider())&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="二bucket"&gt;二、Bucket&lt;a class="anchor" href="#%e4%ba%8cbucket"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="bucket_info-字段说明"&gt;bucket_info 字段说明&lt;a class="anchor" href="#bucket_info-%e5%ad%97%e6%ae%b5%e8%af%b4%e6%98%8e"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;字段&lt;/th&gt;
+ &lt;th&gt;type&lt;/th&gt;
+ &lt;th&gt;注释&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;{bucket_info.name}&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;Bucket的名称&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;{bucket_info.storage_class}&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;Bucket的存储类型&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;{bucket_info.creation_date}&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;Bucket的创建时间&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;{bucket_info.intranet_endpoint}&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;Bucket的内网Endpoint&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;{bucket_info.extranet_endpoint}&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;Bucket的外网Endpoint&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;{bucket_info.owner.id}&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;Bucket的拥有者ID&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;{bucket_info.acl.grant}&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;Bucket的ACL授权&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;{bucket_info.data_redundancy_type}&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;Bucket的数据冗余类型&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;{bucket_info.access_monitor}&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;Bucket的访问跟踪状态&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id="代码示例"&gt;代码示例&lt;a class="anchor" href="#%e4%bb%a3%e7%a0%81%e7%a4%ba%e4%be%8b"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 查看Bucket&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;service &lt;span style="color:#f92672"&gt;=&lt;/span&gt; oss2&lt;span style="color:#f92672"&gt;.&lt;/span&gt;Service(auth, &lt;span style="color:#e6db74"&gt;&amp;#39;oss-ap-xiaomengmai-1.aliyuncs.com&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; b &lt;span style="color:#f92672"&gt;in&lt;/span&gt; oss2&lt;span style="color:#f92672"&gt;.&lt;/span&gt;BucketIterator(service):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	print(b&lt;span style="color:#f92672"&gt;.&lt;/span&gt;name)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# bucket信息&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;bucket &lt;span style="color:#f92672"&gt;=&lt;/span&gt; oss2&lt;span style="color:#f92672"&gt;.&lt;/span&gt;Bucket(auth, &lt;span style="color:#e6db74"&gt;&amp;#39;oss-ap-xiaomengmai-1.aliyuncs.com&amp;#39;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#39;&lt;/span&gt;&lt;span style="color:#e6db74"&gt;{bucket_name}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;bucket_info &lt;span style="color:#f92672"&gt;=&lt;/span&gt; bucket&lt;span style="color:#f92672"&gt;.&lt;/span&gt;get_bucket_info()&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="文件操作"&gt;文件操作&lt;a class="anchor" href="#%e6%96%87%e4%bb%b6%e6%93%8d%e4%bd%9c"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 写入字符串&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;result &lt;span style="color:#f92672"&gt;=&lt;/span&gt; bucket&lt;span style="color:#f92672"&gt;.&lt;/span&gt;put_object(&lt;span style="color:#e6db74"&gt;&amp;#39;exampleobject.txt&amp;#39;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#39;Hello OSS&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;bucket&lt;span style="color:#f92672"&gt;.&lt;/span&gt;object_exists(&lt;span style="color:#e6db74"&gt;&amp;#39;exampleobject.txt&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;##&amp;gt; True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 查看object列表&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[i&lt;span style="color:#f92672"&gt;.&lt;/span&gt;key &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; bucket&lt;span style="color:#f92672"&gt;.&lt;/span&gt;list_objects(&lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&lt;/span&gt;)&lt;span style="color:#f92672"&gt;.&lt;/span&gt;object_list]&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="递归查看---有无的区别"&gt;递归查看 - 有无&lt;code&gt;/&lt;/code&gt;的区别&lt;a class="anchor" href="#%e9%80%92%e5%bd%92%e6%9f%a5%e7%9c%8b---%e6%9c%89%e6%97%a0%e7%9a%84%e5%8c%ba%e5%88%ab"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; obj &lt;span style="color:#f92672"&gt;in&lt;/span&gt; oss2&lt;span style="color:#f92672"&gt;.&lt;/span&gt;ObjectIterator(bucket, prefix &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;ods/&amp;#39;&lt;/span&gt;, delimiter &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#75715e"&gt;# 通过is_prefix方法判断obj是否为文件夹。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; obj&lt;span style="color:#f92672"&gt;.&lt;/span&gt;is_prefix(): &lt;span style="color:#75715e"&gt;# 判断obj为文件夹。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		print(&lt;span style="color:#e6db74"&gt;&amp;#39;directory: &amp;#39;&lt;/span&gt; &lt;span style="color:#f92672"&gt;+&lt;/span&gt; obj&lt;span style="color:#f92672"&gt;.&lt;/span&gt;key)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;else&lt;/span&gt;: &lt;span style="color:#75715e"&gt;# 判断obj为文件。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		print(&lt;span style="color:#e6db74"&gt;&amp;#39;file: &amp;#39;&lt;/span&gt; &lt;span style="color:#f92672"&gt;+&lt;/span&gt; obj&lt;span style="color:#f92672"&gt;.&lt;/span&gt;key)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## &amp;gt; file: ods/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## &amp;gt; directory: ods/clicker/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## &amp;gt; directory: ods/snapshot/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; obj &lt;span style="color:#f92672"&gt;in&lt;/span&gt; oss2&lt;span style="color:#f92672"&gt;.&lt;/span&gt;ObjectIterator(bucket, prefix &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;.&amp;#39;&lt;/span&gt;, delimiter &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#75715e"&gt;# 通过is_prefix方法判断obj是否为文件夹。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; obj&lt;span style="color:#f92672"&gt;.&lt;/span&gt;is_prefix(): &lt;span style="color:#75715e"&gt;# 判断obj为文件夹。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		print(&lt;span style="color:#e6db74"&gt;&amp;#39;directory: &amp;#39;&lt;/span&gt; &lt;span style="color:#f92672"&gt;+&lt;/span&gt; obj&lt;span style="color:#f92672"&gt;.&lt;/span&gt;key)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;else&lt;/span&gt;: &lt;span style="color:#75715e"&gt;# 判断obj为文件。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		print(&lt;span style="color:#e6db74"&gt;&amp;#39;file: &amp;#39;&lt;/span&gt; &lt;span style="color:#f92672"&gt;+&lt;/span&gt; obj&lt;span style="color:#f92672"&gt;.&lt;/span&gt;key)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;##&amp;gt; directory: .dlsdata/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;aaa &lt;span style="color:#f92672"&gt;=&lt;/span&gt; bucket&lt;span style="color:#f92672"&gt;.&lt;/span&gt;put_object(&lt;span style="color:#e6db74"&gt;&amp;#39;ods/haha-emu/&amp;#39;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#39;&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; obj &lt;span style="color:#f92672"&gt;in&lt;/span&gt; oss2&lt;span style="color:#f92672"&gt;.&lt;/span&gt;ObjectIterator(bucket, prefix &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;ods/&amp;#39;&lt;/span&gt;, delimiter &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#75715e"&gt;# 通过is_prefix方法判断obj是否为文件夹。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; obj&lt;span style="color:#f92672"&gt;.&lt;/span&gt;is_prefix(): &lt;span style="color:#75715e"&gt;# 判断obj为文件夹。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		print(&lt;span style="color:#e6db74"&gt;&amp;#39;directory: &amp;#39;&lt;/span&gt; &lt;span style="color:#f92672"&gt;+&lt;/span&gt; obj&lt;span style="color:#f92672"&gt;.&lt;/span&gt;key)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;else&lt;/span&gt;: &lt;span style="color:#75715e"&gt;# 判断obj为文件。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		print(&lt;span style="color:#e6db74"&gt;&amp;#39;file: &amp;#39;&lt;/span&gt; &lt;span style="color:#f92672"&gt;+&lt;/span&gt; obj&lt;span style="color:#f92672"&gt;.&lt;/span&gt;key)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;##&amp;gt; file: ods/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;##&amp;gt; directory: ods/clicker/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;##&amp;gt; directory: ods/haha-emu/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;##&amp;gt; directory: ods/snapshot/&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>

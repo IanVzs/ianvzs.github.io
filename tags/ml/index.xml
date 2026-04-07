@@ -1,6 +1,170 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ml on Ian's Blog</title><link>http://example.org/tags/ml/</link><description>Recent content in ml on Ian's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="http://example.org/tags/ml/index.xml" rel="self" type="application/rss+xml"/><item><title>Python 图表</title><link>http://example.org/docs/programmer/ml/python-%E5%9B%BE%E8%A1%A8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/python-%E5%9B%BE%E8%A1%A8/</guid><description>Python 图表 # 主要用: matplotlib import matplotlib.pyplot as plt
-堆叠图 # summery_one_offer_dict_by_install_date, install_datas_by_install_date_dict = await rc.calculate_offer_do_status(offer_id=offer_id) # 计算需要的行数和列数（每行4个图表） num_offers = len(summery_one_offer_dict_by_install_date.keys()) num_cols = 3 num_rows = math.ceil(num_offers / num_cols) # 创建一个图形和子图数组 fig, axs = plt.subplots(num_rows, num_cols, figsize=(45, num_rows * 3)) if num_offers == 1: axs = [axs] # Flatten the axs array for easy iteration else: axs = axs.flatten() for ax, (install_date, data) in zip(axs, summery_one_offer_dict_by_install_date.items()): # 排序和处理数据 data = data.</description></item><item><title>机器学习库</title><link>http://example.org/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</guid><description>Python 机器学习库 👽 # Plotly # 与matplotlib 都是绘图工具，不过效果炫一些，我也没画过，所以只放链接，不放实例了 Plotly Python Library : https://plot.ly/python/
-matplotlib # import matplotlib.pyplot as plt 参数等太多，链接最可靠 # pyplot参数
-还是粘一些常用的： marker 属性（下面写在分号里呦） o . v ^ &amp;lt; &amp;gt; 1 2 3 4 8 s p * h H + x D d | _ 之类
-画出一些“花儿”
-绘图 # plt.plot(x, y) # 在y之后可添加参数，例如常用的label = ‘IamLabel’之类 # 线的样式、颜色 ：b: blue g: green r: red c: cyan m: magenta y: yellow k: black w: white '-' : solid , '--' : dashed, '-.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ml on Ian's Blog</title><link>http://example.org/tags/ml/</link><description>Recent content in Ml on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 09 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/ml/index.xml" rel="self" type="application/rss+xml"/><item><title>LangChain入门</title><link>http://example.org/docs/programmer/ml/langchain/</link><pubDate>Tue, 09 Dec 2025 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/langchain/</guid><description>&lt;h1 id="langchain工具系统深度剖析从设计哲学到工程实践"&gt;&lt;strong&gt;LangChain工具系统深度剖析：从设计哲学到工程实践&lt;/strong&gt;&lt;a class="anchor" href="#langchain%e5%b7%a5%e5%85%b7%e7%b3%bb%e7%bb%9f%e6%b7%b1%e5%ba%a6%e5%89%96%e6%9e%90%e4%bb%8e%e8%ae%be%e8%ae%a1%e5%93%b2%e5%ad%a6%e5%88%b0%e5%b7%a5%e7%a8%8b%e5%ae%9e%e8%b7%b5"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;本文旨在超越基础教程，从设计范式、架构实现、工具（Tool）系统核心机制及工程实践等多个维度，对现代LangChain进行一次“鞭辟入里”的解析。我们将摒弃对表面API的罗列，转而探究其背后的抽象哲学、实现决策、典型陷阱与效能优化之道。&lt;/p&gt;
+&lt;h3 id="一-设计哲学与范式转移"&gt;&lt;strong&gt;一、 设计哲学与范式转移&lt;/strong&gt;&lt;a class="anchor" href="#%e4%b8%80-%e8%ae%be%e8%ae%a1%e5%93%b2%e5%ad%a6%e4%b8%8e%e8%8c%83%e5%bc%8f%e8%bd%ac%e7%a7%bb"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;LangChain的本质，是一场针对大语言模型（LLM）应用开发的&lt;strong&gt;范式工程化&lt;/strong&gt;。其核心并非发明新算法，而是通过一套精密的抽象，将LLM从封闭的对话接口，改造为可预测、可组合、可嵌入复杂工作流的&lt;strong&gt;软件组件&lt;/strong&gt;。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;从“提示工程”到“软件工程”&lt;/strong&gt;：传统LLM应用依赖精巧但脆弱的提示词（Prompt），本质是“人适应模型”。LangChain引入&lt;code&gt;Runnable&lt;/code&gt;、&lt;code&gt;Chain&lt;/code&gt;等抽象，将交互逻辑固化在代码中，使应用流程可版本化、可测试、可调试，转向“模型适应架构”。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;统一接口（Runnable）的威力&lt;/strong&gt;：&lt;code&gt;Runnable&lt;/code&gt;是LangChain最深刻的抽象。它将所有组件（Prompt、Model、Tool、Parser、Lambda函数）标准化为具有&lt;code&gt;invoke&lt;/code&gt;、&lt;code&gt;batch&lt;/code&gt;、&lt;code&gt;stream&lt;/code&gt;方法的对象。这模仿了函数式编程中的“单子”（Monad）或Unix管道思想，使得任意组件的组合（&lt;code&gt;|&lt;/code&gt;操作符）成为可能。在源码层面，&lt;code&gt;Runnable&lt;/code&gt;是一个协议（Protocol），其实现类（如&lt;code&gt;RunnableSequence&lt;/code&gt;、&lt;code&gt;RunnableParallel&lt;/code&gt;）负责管理数据流和依赖。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;声明式工作流（LCEL）&lt;/strong&gt;：LangChain表达式语言（LCEL）不是一门新语言，而是一种基于Python运算符重载的领域特定（DSL）写法。&lt;code&gt;chain = prompt | model | output_parser&lt;/code&gt;这样的声明式代码，清晰地定义了数据流向，将“怎么做”（How）的控制逻辑交给框架，开发者专注于“做什么”（What）。源码中，&lt;code&gt;|&lt;/code&gt;运算符最终构建了一个&lt;code&gt;RunnableSequence&lt;/code&gt;对象，它按顺序执行各个步骤，并将上一步的输出作为下一步的输入。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;学术视角&lt;/strong&gt;：这可以看作是一种&lt;strong&gt;面向组件的编程&lt;/strong&gt;（Component-Oriented Programming）在AI领域的实践，旨在通过高内聚、低耦合的组件，构建复杂、可维护的智能系统。&lt;/p&gt;
+&lt;h3 id="二-核心架构与工具tool系统的深度解析"&gt;&lt;strong&gt;二、 核心架构与工具（Tool）系统的深度解析&lt;/strong&gt;&lt;a class="anchor" href="#%e4%ba%8c-%e6%a0%b8%e5%bf%83%e6%9e%b6%e6%9e%84%e4%b8%8e%e5%b7%a5%e5%85%b7tool%e7%b3%bb%e7%bb%9f%e7%9a%84%e6%b7%b1%e5%ba%a6%e8%a7%a3%e6%9e%90"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;工具系统是LangChain从“链”迈向“智能体”（Agent）的关键桥梁，也是其工程化思想的集中体现。&lt;/p&gt;
+&lt;h4 id="1-设计理念工具作为可编排的能力单元"&gt;&lt;strong&gt;1. 设计理念：工具作为可编排的能力单元&lt;/strong&gt;&lt;a class="anchor" href="#1-%e8%ae%be%e8%ae%a1%e7%90%86%e5%bf%b5%e5%b7%a5%e5%85%b7%e4%bd%9c%e4%b8%ba%e5%8f%af%e7%bc%96%e6%8e%92%e7%9a%84%e8%83%bd%e5%8a%9b%e5%8d%95%e5%85%83"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;封装与抽象&lt;/strong&gt;：一个&lt;code&gt;Tool&lt;/code&gt;对象封装了三要素：名称、描述、可执行函数（func）。其设计精妙之处在于，它将不确定的自然语言指令（如“查一下天气”）映射到一个确定性的函数调用。描述（description）是此映射的“对齐”关键，为LLM提供选择依据。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;统一接口&lt;/strong&gt;：&lt;code&gt;Tool&lt;/code&gt;本身也是&lt;code&gt;Runnable&lt;/code&gt;，这意味着它可以无缝接入LCEL管道，既能被Agent动态调用，也能被开发者静态编排。这种设计消除了“动态”和“静态”流程的鸿沟。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="2-源码实现探微"&gt;&lt;strong&gt;2. 源码实现探微&lt;/strong&gt;&lt;a class="anchor" href="#2-%e6%ba%90%e7%a0%81%e5%ae%9e%e7%8e%b0%e6%8e%a2%e5%be%ae"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;以&lt;code&gt;langchain_core.tools.BaseTool&lt;/code&gt;为例，其核心简化如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;BaseTool&lt;/span&gt;(Runnable[Dict[str, Any], Any]):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; name: str
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; description: str
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; args_schema: Optional[Type[BaseModel]] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;_run&lt;/span&gt;(self, &lt;span style="color:#f92672"&gt;*&lt;/span&gt;args, &lt;span style="color:#f92672"&gt;**&lt;/span&gt;kwargs) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Any:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 具体工具的执行逻辑&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;async&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;_arun&lt;/span&gt;(self, &lt;span style="color:#f92672"&gt;*&lt;/span&gt;args, &lt;span style="color:#f92672"&gt;**&lt;/span&gt;kwargs) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Any:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 异步执行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;invoke&lt;/span&gt;(self, input: Dict, config: Optional[RunnableConfig] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Any:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 实现Runnable接口，解析input并调用_run或_arun&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; validated_args &lt;span style="color:#f92672"&gt;=&lt;/span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;_validate_args(input)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;_run(&lt;span style="color:#f92672"&gt;**&lt;/span&gt;validated_args)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;输入标准化&lt;/strong&gt;：&lt;code&gt;invoke&lt;/code&gt;方法接受字典输入，通过&lt;code&gt;args_schema&lt;/code&gt;（Pydantic模型）进行验证和解析，确保类型安全。这解决了LLM输出不稳定、需要复杂后处理（如正则匹配）的核心痛点。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;与Agent的协作&lt;/strong&gt;：当Agent（如&lt;code&gt;create_react_agent&lt;/code&gt;）工作时，其核心循环是：1) 将当前状态（问题、历史、工具描述）格式化为Prompt；2) 调用LLM；3) 解析LLM输出，期望得到一个&lt;code&gt;Action&lt;/code&gt;（选择工具和输入）或&lt;code&gt;Final Answer&lt;/code&gt;；4) 若为&lt;code&gt;Action&lt;/code&gt;，则调用对应&lt;code&gt;Tool.invoke()&lt;/code&gt;，将结果作为新观察加入状态，进入下一轮循环。此过程在&lt;code&gt;AgentExecutor&lt;/code&gt;中实现。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="3-工程化的工具设计模式"&gt;&lt;strong&gt;3. 工程化的工具设计模式&lt;/strong&gt;&lt;a class="anchor" href="#3-%e5%b7%a5%e7%a8%8b%e5%8c%96%e7%9a%84%e5%b7%a5%e5%85%b7%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;函数即工具&lt;/strong&gt;：最简模式，使用&lt;code&gt;@tool&lt;/code&gt;装饰器将一个Python函数包装为工具。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;结构化工具&lt;/strong&gt;：定义&lt;code&gt;args_schema&lt;/code&gt;（Pydantic模型），强制LLM输出结构化参数，极大提升调用可靠性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;链即工具&lt;/strong&gt;：将一个复杂的LCEL链（如包含检索、总结的RAG链）作为工具的执行体。这实现了能力的层级封装。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工具集&lt;/strong&gt;：通过&lt;code&gt;Toolkit&lt;/code&gt;概念将相关工具分组管理，便于Agent在特定领域（如数据库操作、文件系统）内进行推理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="三-使用实践模式优化与坑点"&gt;&lt;strong&gt;三、 使用实践：模式、优化与坑点&lt;/strong&gt;&lt;a class="anchor" href="#%e4%b8%89-%e4%bd%bf%e7%94%a8%e5%ae%9e%e8%b7%b5%e6%a8%a1%e5%bc%8f%e4%bc%98%e5%8c%96%e4%b8%8e%e5%9d%91%e7%82%b9"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="1-核心使用模式"&gt;&lt;strong&gt;1. 核心使用模式&lt;/strong&gt;&lt;a class="anchor" href="#1-%e6%a0%b8%e5%bf%83%e4%bd%bf%e7%94%a8%e6%a8%a1%e5%bc%8f"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;静态编排（推荐优先）&lt;/strong&gt;：对于流程确定的任务，使用LCEL显式编排工具链。这更可靠、高效且易于调试。
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;data_process_chain &lt;span style="color:#f92672"&gt;=&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; load_document_tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;|&lt;/span&gt; split_text_tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;|&lt;/span&gt; RunnableParallel({
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;summary&amp;#34;&lt;/span&gt;: summarize_chain,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;keywords&amp;#34;&lt;/span&gt;: extract_keywords_chain
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; })
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;|&lt;/span&gt; format_report_tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动态代理（慎用）&lt;/strong&gt;：仅当任务路径无法预先确定时使用Agent。务必严格限制工具集，并设置最大迭代次数以防止无限循环和成本失控。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="2-关键性能优化点"&gt;&lt;strong&gt;2. 关键性能优化点&lt;/strong&gt;&lt;a class="anchor" href="#2-%e5%85%b3%e9%94%ae%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%82%b9"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;LangChain的便利性常以性能为代价，优化是生产部署的必修课。&lt;/p&gt;</description></item><item><title>Python 图表</title><link>http://example.org/docs/programmer/ml/python-%E5%9B%BE%E8%A1%A8/</link><pubDate>Tue, 03 Sep 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/python-%E5%9B%BE%E8%A1%A8/</guid><description>&lt;h1 id="python-图表"&gt;Python 图表&lt;a class="anchor" href="#python-%e5%9b%be%e8%a1%a8"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;主要用: matplotlib
+&lt;code&gt;import matplotlib.pyplot as plt&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;&lt;h2 id="堆叠图"&gt;堆叠图&lt;a class="anchor" href="#%e5%a0%86%e5%8f%a0%e5%9b%be"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; summery_one_offer_dict_by_install_date, install_datas_by_install_date_dict &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;await&lt;/span&gt; rc&lt;span style="color:#f92672"&gt;.&lt;/span&gt;calculate_offer_do_status(offer_id&lt;span style="color:#f92672"&gt;=&lt;/span&gt;offer_id)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 计算需要的行数和列数（每行4个图表）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; num_offers &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(summery_one_offer_dict_by_install_date&lt;span style="color:#f92672"&gt;.&lt;/span&gt;keys())
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; num_cols &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; num_rows &lt;span style="color:#f92672"&gt;=&lt;/span&gt; math&lt;span style="color:#f92672"&gt;.&lt;/span&gt;ceil(num_offers &lt;span style="color:#f92672"&gt;/&lt;/span&gt; num_cols)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 创建一个图形和子图数组&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; fig, axs &lt;span style="color:#f92672"&gt;=&lt;/span&gt; plt&lt;span style="color:#f92672"&gt;.&lt;/span&gt;subplots(num_rows, num_cols, figsize&lt;span style="color:#f92672"&gt;=&lt;/span&gt;(&lt;span style="color:#ae81ff"&gt;45&lt;/span&gt;, num_rows &lt;span style="color:#f92672"&gt;*&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; num_offers &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; axs &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [axs]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# Flatten the axs array for easy iteration&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; axs &lt;span style="color:#f92672"&gt;=&lt;/span&gt; axs&lt;span style="color:#f92672"&gt;.&lt;/span&gt;flatten()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; ax, (install_date, data) &lt;span style="color:#f92672"&gt;in&lt;/span&gt; zip(axs, summery_one_offer_dict_by_install_date&lt;span style="color:#f92672"&gt;.&lt;/span&gt;items()):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 排序和处理数据&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; data &lt;span style="color:#f92672"&gt;=&lt;/span&gt; data&lt;span style="color:#f92672"&gt;.&lt;/span&gt;list_reten_info
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; data&lt;span style="color:#f92672"&gt;.&lt;/span&gt;sort(key&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;lambda&lt;/span&gt; x: x&lt;span style="color:#f92672"&gt;.&lt;/span&gt;doreten_day)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; dates &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;entry&lt;span style="color:#f92672"&gt;.&lt;/span&gt;reten_day&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;/&lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;entry&lt;span style="color:#f92672"&gt;.&lt;/span&gt;expect_rate&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; entry &lt;span style="color:#f92672"&gt;in&lt;/span&gt; data]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; reten_counts &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [entry&lt;span style="color:#f92672"&gt;.&lt;/span&gt;count &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; entry &lt;span style="color:#f92672"&gt;in&lt;/span&gt; data]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; wait_counts &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [entry&lt;span style="color:#f92672"&gt;.&lt;/span&gt;waitcount &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; entry &lt;span style="color:#f92672"&gt;in&lt;/span&gt; data]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 绘制堆叠条形图&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ax&lt;span style="color:#f92672"&gt;.&lt;/span&gt;bar(dates, reten_counts, label&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#39;Done&amp;amp;Run&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ax&lt;span style="color:#f92672"&gt;.&lt;/span&gt;bar(dates, wait_counts, bottom&lt;span style="color:#f92672"&gt;=&lt;/span&gt;reten_counts, label&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#39;Wait&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 设置标题和标签&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ax&lt;span style="color:#f92672"&gt;.&lt;/span&gt;set_title(&lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#39;Reten for &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;install_date&lt;span style="color:#f92672"&gt;.&lt;/span&gt;strftime(&lt;span style="color:#e6db74"&gt;&amp;#34;%Y-%m-&lt;/span&gt;&lt;span style="color:#e6db74"&gt;%d&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;)&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ax&lt;span style="color:#f92672"&gt;.&lt;/span&gt;set_xlabel(&lt;span style="color:#e6db74"&gt;&amp;#39;Need Count&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ax&lt;span style="color:#f92672"&gt;.&lt;/span&gt;set_ylabel(&lt;span style="color:#e6db74"&gt;&amp;#39;Plan Count&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ax&lt;span style="color:#f92672"&gt;.&lt;/span&gt;legend()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 调整x轴标签间距&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ticks &lt;span style="color:#f92672"&gt;=&lt;/span&gt; range(len(dates)) &lt;span style="color:#75715e"&gt;# 根据实际的刻度位置生成刻度列表&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ax&lt;span style="color:#f92672"&gt;.&lt;/span&gt;set_xticks(ticks)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ax&lt;span style="color:#f92672"&gt;.&lt;/span&gt;set_xticklabels(dates, rotation&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;60&lt;/span&gt;, ha&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#39;right&amp;#39;&lt;/span&gt;) &lt;span style="color:#75715e"&gt;# 设置x轴标签并旋转&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# # 自动格式化x轴日期标签&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# fig.autofmt_xdate()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 隐藏多余的子图（如果有）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(num_offers, len(axs)):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; axs[i]&lt;span style="color:#f92672"&gt;.&lt;/span&gt;axis(&lt;span style="color:#e6db74"&gt;&amp;#39;off&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# 调整布局&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; plt&lt;span style="color:#f92672"&gt;.&lt;/span&gt;tight_layout()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; img_path &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;reten_status_&lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;offer_id&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;_plot.png&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; plt&lt;span style="color:#f92672"&gt;.&lt;/span&gt;savefig(img_path, dpi&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;300&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; plt&lt;span style="color:#f92672"&gt;.&lt;/span&gt;close()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; logger&lt;span style="color:#f92672"&gt;.&lt;/span&gt;info(&lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;img save to &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;img_path&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>机器学习库</title><link>http://example.org/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</link><pubDate>Mon, 24 Jul 2017 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</guid><description>&lt;h1 id="python-机器学习库-"&gt;Python 机器学习库 👽&lt;a class="anchor" href="#python-%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0%e5%ba%93-"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h3 id="plotly"&gt;Plotly&lt;a class="anchor" href="#plotly"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;与matplotlib 都是绘图工具，不过效果炫一些，我也没画过，所以只放链接，不放实例了
+&lt;a href="https://plot.ly/python/"&gt;Plotly Python Library&lt;/a&gt; : &lt;a href="https://plot.ly/python/"&gt;https://plot.ly/python/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="matplotlib"&gt;matplotlib&lt;a class="anchor" href="#matplotlib"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import matplotlib.pyplot as plt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="参数等太多链接最可靠"&gt;参数等太多，链接最可靠&lt;a class="anchor" href="#%e5%8f%82%e6%95%b0%e7%ad%89%e5%a4%aa%e5%a4%9a%e9%93%be%e6%8e%a5%e6%9c%80%e5%8f%af%e9%9d%a0"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://github.com/wizardforcel/matplotlib-user-guide-zh/blob/master/3.1.md"&gt;pyplot参数&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;还是粘一些常用的：
+marker 属性（下面写在分号里呦）
+o . v ^ &amp;lt; &amp;gt; 1 2 3 4 8 s p * h H + x D d | _ 之类&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://blog.csdn.net/pipisorry/article/details/40005163"&gt;画出一些“花儿”&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="绘图"&gt;绘图&lt;a class="anchor" href="#%e7%bb%98%e5%9b%be"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;plt.plot(x, y)
+# 在y之后可添加参数，例如常用的label = ‘IamLabel’之类
+# 线的样式、颜色 ：b: blue g: green r: red c: cyan m: magenta
+y: yellow k: black w: white
+'-' : solid , '--' : dashed, '-.' : dashdot ':' : dotted ' '', ' ' ': None
+# 粗细 lw=3 更改数字
+# 数值折点显示样式 marker = ‘o’ 
+
+plot.show()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="绘制图表"&gt;绘制图表&lt;a class="anchor" href="#%e7%bb%98%e5%88%b6%e5%9b%be%e8%a1%a8"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="1"&gt;1&lt;a class="anchor" href="#1"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;plt.figure(1)
+绘图
+plt.figure(2)
+绘图
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id="2未测试"&gt;2（未测试）&lt;a class="anchor" href="#2%e6%9c%aa%e6%b5%8b%e8%af%95"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;plt.figure(1) # 创建图表1
+plt.figure(2) # 创建图表2
+hi1 = plt.subplot(211) # 在图表2中创建子图1
+hi2 = plt.subplot(212) # 在图表2中创建子图2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="一表多图"&gt;一表多图&lt;a class="anchor" href="#%e4%b8%80%e8%a1%a8%e5%a4%9a%e5%9b%be"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;pCapital = plt.subplot(4, 1, 1)
+ pCapital.set_ylabel(&amp;quot;capital&amp;quot;)
+ pCapital.plot(d['capitalList'], color='r', lw=0.8)
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="标注点"&gt;标注点&lt;a class="anchor" href="#%e6%a0%87%e6%b3%a8%e7%82%b9"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="eg1"&gt;eg1&lt;a class="anchor" href="#eg1"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;for w, m in enumerate(self.lowestPrice):
+ if w % 120*10 == 0:
+ plt.plot([w, w], [m, self.highestPrice[w]], linestyle = '--')
+ #plt.scatter(self.dealPoints,color = 'c')
+for i in self.dealPoints: 
+ plt.scatter([i[0]], [i[1]], color = 'c') 
+ for ii in self.ydealPoints:
+ plt.scatter([ii[0]], [ii[1]], color = 'm')
+ 
+plt.title('Tick &amp;amp; TradePoint')
+plt.legend()
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;plt.legend()&lt;!-- raw HTML omitted --&gt;
+# show() 之前不加这句是不会显示出标注的呦&lt;/p&gt;</description></item></channel></rss>
