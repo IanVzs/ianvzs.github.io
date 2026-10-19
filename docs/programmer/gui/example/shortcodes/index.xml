@@ -20,7 +20,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Lorem markdownum insigne...
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{{&amp;lt; /&lt;span style="color:#f92672"&gt;columns&lt;/span&gt; &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="example"&gt;Example&lt;a class="anchor" href="#example"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="book-columns flex flex-wrap"id="book-columns-0"&gt;&lt;div class="flex-even markdown-inner" style="flex-grow: 1;"&gt;
+
 ## Left Content
+
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
@@ -29,12 +31,14 @@ Miseratus fonte Ditis conubia.
 &lt;/div&gt;&lt;div class="flex-even markdown-inner" style="flex-grow: 1;"&gt;
 
 ## Mid Content
+
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter!
 
 &lt;/div&gt;&lt;div class="flex-even markdown-inner" style="flex-grow: 1;"&gt;
 
 ## Right Content
+
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
@@ -50,7 +54,9 @@ Miseratus fonte Ditis conubia.
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Lorem markdownum insigne...
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;{{&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; &lt;span style="color:#f92672"&gt;/&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;details&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;details open="true"&gt;&lt;summary&gt;Title&lt;/summary&gt;&lt;div class="markdown-inner"&gt;
 
+
 ## Markdown content
+
 Lorem markdownum insigne...
 &lt;/div&gt;&lt;/details&gt;</description></item><item><title/><link>http://example.org/docs/programmer/gui/example/shortcodes/hints/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/gui/example/shortcodes/hints/</guid><description>&lt;h1 id="hints"&gt;Hints&lt;a class="anchor" href="#hints"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;Hint shortcode can be used as hint/alerts/notification block.&lt;br&gt;
@@ -86,6 +92,7 @@ stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;{{&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; &lt;span style="color:#f92672"&gt;/&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;tabs&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="example"&gt;Example&lt;a class="anchor" href="#example"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="book-tabs"&gt;
 &lt;input type="radio" class="toggle" name="tabs-0" id="tabs-0-0" checked="checked" /&gt;&lt;label for="tabs-0-0"&gt;MacOS&lt;/label&gt;&lt;div class="book-tabs-content markdown-inner"&gt;
+
 
 # MacOS
 

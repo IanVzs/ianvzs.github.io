@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Socket on Ian's Blog</title><link>http://example.org/tags/socket/</link><description>Recent content in Socket on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 15 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/socket/index.xml" rel="self" type="application/rss+xml"/><item><title>Vn.Py学习笔记（Python交易平台框架）</title><link>http://example.org/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/</guid><description>&lt;p&gt;author: Ian&lt;/p&gt;
 &lt;h1 id="vnpy笔记-"&gt;Vn.Py笔记 ✏📔&lt;a class="anchor" href="#vnpy%e7%ac%94%e8%ae%b0-"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;h2 id="vnpy"&gt;&lt;img src="https://static.vnpy.com/static/img/index/2019-5-27/mainwindow.PNG" alt="vn.py" /&gt;&lt;a class="anchor" href="#vnpy"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;一个开源Python交易软件，主使用CTP协议。当然，还有其他协议了其源项目在&lt;a href="http://www.vnpy.org/"&gt;http://www.vnpy.org/&lt;/a&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=green&gt;一个开源Python交易软件，主使用CTP协议。当然，还有其他协议了其源项目在&lt;a href="http://www.vnpy.org/"&gt;http://www.vnpy.org/&lt;/a&gt; &lt;/font&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;hr&gt;
 &lt;hr&gt;
@@ -21,11 +21,11 @@ OrderRef（OrderActionRef）值大于之前的最大值，开发多线程客户�
 注意。
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;CTP-API库：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;error.dtd\error.xml 错误定义文件 ---- ThostFrfcMdApi.h 
+&lt;pre&gt;&lt;code&gt;error.dtd\error.xml 错误定义文件 ---- ThostFrfcMdApi.h
 交易接口类定义文件 
 ——— ThostFtfcUserApiDataType.h 类型定义文件 ------ 
 thostmduserapi.lib,thostmduserpi.dll 行情接口库文件 ----- 
-thosttraderapi.lib,thosttraderapi.dll交易接口库文件 ----- 
+thosttraderapi.lib,thosttraderapi.dll交易接口库文件 -----
 
 交易和行情接口类定义文件都包含API 和 SPI类定义，客户端使用API向CTP后台
 发送请求，CTP后台则使用SPI向客户端回传响应及回报
@@ -48,4 +48,22 @@ OnRspSubMarketDAta
 用户
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-至此订阅完成&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;
-当用户的某次请求发生错误时，会通过OnRspError通知用户 MdApi也含有退订合约、登出功能。 而一般退出程序则直接杀进程（不太安全便是）&lt;/p&gt;</description></item></channel></rss>
+当用户的某次请求发生错误时，会通过OnRspError通知用户 MdApi也含有退订合约、登出功能。 而一般退出程序则直接杀进程（不太安全便是）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;TraderApi：（交易相关）
+ 不同于以上的有 注册TraderSpi对象的指针后需要调用TraderApi对象的
+SubscribePrivateTopic和SubscribePublicTopic方法去选择公开和私有数据流的重
+传方法
+ 对于期货柜台，每一日第一次登陆需要先查询前一日的结算单，等待查询
+结果返回，确认，才可进行后续操作（CTP、恒生UFT），证券（LTS）无此要求
+ 上一步完成后，用户可以调用ReqQryInstrument的方法查询柜台上所有可
+以交易的合约信息（包括代码、中文名、涨跌停、最小价位变动、合约乘数等大
+量细节），一般是在这里获得合约信息列表后，再去MdApi中订阅合约；经常有
+人问为什么在MdApi中找不到查询可供订阅的合约代码的函数，这里尤其要注
+意，必须通过TraderApi来获取
+ 当用户报单、成交状态发生变化时，TraderApi会自动通过OnRtnOrder、
+OnRtnTrade通知，无需额外订阅
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;/&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;封装API&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;****/
+封装后API的动作：
+主动函数： 调用封装API主动函数，传入Python变量作为参数—&amp;gt;封装API将Python变量转换成C++变量—&amp;gt;API调用原生API主动函数传入C++变量作为参数
+回掉函数： 交易柜台通过原生API传入参数为C++变量-&amp;gt;封装API将C++变量转换为Python变量-&amp;gt;封装API调用封装后的回调函数想Python程序中推送数&lt;/p&gt;</description></item></channel></rss>

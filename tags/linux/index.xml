@@ -1,4 +1,100 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Ian's Blog</title><link>http://example.org/tags/linux/</link><description>Recent content in Linux on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 06 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>Steam</title><link>http://example.org/docs/programmer/platforms/os/steam/</link><pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/steam/</guid><description>&lt;h1 id="双人成行"&gt;双人成行&lt;a class="anchor" href="#%e5%8f%8c%e4%ba%ba%e6%88%90%e8%a1%8c"&gt;#&lt;/a&gt;&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Ian's Blog</title><link>http://example.org/tags/linux/</link><description>Recent content in Linux on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 10 Jul 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>KDE Baloo 文件索引使用笔记</title><link>http://example.org/docs/programmer/platforms/os/kde-baloo-%E6%96%87%E4%BB%B6%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</link><pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/kde-baloo-%E6%96%87%E4%BB%B6%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</guid><description>&lt;h1 id="baloo-是什么"&gt;Baloo 是什么&lt;a class="anchor" href="#baloo-%e6%98%af%e4%bb%80%e4%b9%88"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Baloo&lt;/strong&gt; 是 KDE Plasma 自带的桌面文件搜索引擎（类似 Windows 索引服务 / macOS Spotlight）。&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;组件&lt;/th&gt;
+					&lt;th&gt;说明&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;baloo_file&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;后台索引进程，递归扫描文件并写入数据库&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;balooctl6&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;KDE 6 下的命令行管理工具（Fedora 44 / Plasma 6）&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;索引库&lt;/td&gt;
+					&lt;td&gt;默认在 &lt;code&gt;~/.local/share/baloo/index&lt;/code&gt;，可达数 GB&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;用途：KDE 启动器 / Dolphin 里按文件名、内容快速搜索。&lt;/p&gt;
+&lt;p&gt;开发场景下通常&lt;strong&gt;用不到&lt;/strong&gt;——搜代码靠 IDE / &lt;code&gt;rg&lt;/code&gt;，Baloo 反而可能拖慢系统。&lt;/p&gt;
+&lt;h1 id="典型问题开发机--双系统"&gt;典型问题（开发机 + 双系统）&lt;a class="anchor" href="#%e5%85%b8%e5%9e%8b%e9%97%ae%e9%a2%98%e5%bc%80%e5%8f%91%e6%9c%ba--%e5%8f%8c%e7%b3%bb%e7%bb%9f"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;在 HP Pavilion Aero（Fedora 44 / KDE Plasma 6）上遇到过：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;baloo_file&lt;/code&gt; 占 &lt;strong&gt;~1.7GB 内存&lt;/strong&gt;，进程状态 &lt;strong&gt;DN&lt;/strong&gt;（卡在磁盘 I/O）&lt;/li&gt;
+&lt;li&gt;索引库 &lt;strong&gt;~4GB&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;代码仓库放在 &lt;strong&gt;NTFS 分区&lt;/strong&gt; &lt;code&gt;/run/media/ian/Windows/...&lt;/code&gt;（fuseblk 挂载）&lt;/li&gt;
+&lt;li&gt;Baloo 扫 NTFS + Cursor / git 文件监听叠加 → 整机卡顿、swap 暴涨&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;balooctl6 status&lt;/code&gt; 在 I/O 阻塞时可能&lt;strong&gt;卡几十秒&lt;/strong&gt;才返回，本身也是症状。&lt;/p&gt;</description></item><item><title>HP Pavilion Aero Fedora 44 电池续航调优笔记</title><link>http://example.org/docs/programmer/platforms/os/hp-pavilion-aero-fedora-44-%E7%94%B5%E6%B1%A0%E7%BB%AD%E8%88%AA%E8%B0%83%E4%BC%98%E7%AC%94%E8%AE%B0/</link><pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/hp-pavilion-aero-fedora-44-%E7%94%B5%E6%B1%A0%E7%BB%AD%E8%88%AA%E8%B0%83%E4%BC%98%E7%AC%94%E8%AE%B0/</guid><description>&lt;h1 id="背景"&gt;背景&lt;a class="anchor" href="#%e8%83%8c%e6%99%af"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;机器：HP Pavilion Aero 13-be1xxx，AMD Ryzen 5 5625U (Zen 3, 6c12t)，36 Wh 小电池，2560×1600 IPS 屏，Fedora 44 / kernel 7.0 / KDE Plasma。&lt;/p&gt;
+&lt;p&gt;拔电跑 Cursor agent 编码时整机功率 9-12W，想压低 idle 基线并提升续航。&lt;/p&gt;
+&lt;h1 id="硬件画像先确认"&gt;硬件画像（先确认）&lt;a class="anchor" href="#%e7%a1%ac%e4%bb%b6%e7%94%bb%e5%83%8f%e5%85%88%e7%a1%ae%e8%ae%a4"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 电池容量与状态&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /sys/class/power_supply/BAT0/uevent
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# CPU / pstate / EPP / boost&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /sys/devices/system/cpu/amd_pstate/status &lt;span style="color:#75715e"&gt;# active&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /sys/devices/system/cpu/cpufreq/policy0/scaling_governor &lt;span style="color:#75715e"&gt;# powersave&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /sys/devices/system/cpu/cpufreq/policy0/energy_performance_preference
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 平台 profile（HP PMF / hp-wmi）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /sys/firmware/acpi/platform_profile_choices &lt;span style="color:#75715e"&gt;# cool quiet balanced performance&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Wi-Fi 省电&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;iw dev wlp1s0 get power_save
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 现有电源服务（不能同时跑 TLP 和 power-profiles-daemon）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;systemctl is-active tlp power-profiles-daemon tuned&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="三项立刻能拿到的优化实测有效"&gt;三项立刻能拿到的优化（实测有效）&lt;a class="anchor" href="#%e4%b8%89%e9%a1%b9%e7%ab%8b%e5%88%bb%e8%83%bd%e6%8b%bf%e5%88%b0%e7%9a%84%e4%bc%98%e5%8c%96%e5%ae%9e%e6%b5%8b%e6%9c%89%e6%95%88"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 1. Wi-Fi 省电（MT7922 默认 off，开启省 ~0.3-0.5W）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo iw dev wlp1s0 set power_save on
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 2. EPP 拉到 power（idle 降 ~0.5-1W）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo power | sudo tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 3. 键盘背光关掉（如果有）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; | sudo tee /sys/class/leds/*kbd_backlight*/brightness 2&amp;gt;/dev/null&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;不要再去试 &lt;code&gt;platform_profile=cool/quiet&lt;/code&gt;，本机 BIOS 拒收，见后文。&lt;/p&gt;</description></item><item><title>Dedora</title><link>http://example.org/docs/programmer/platforms/os/fedora/</link><pubDate>Mon, 20 Apr 2026 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/fedora/</guid><description>&lt;h1 id="内存不够用导致的卡顿"&gt;内存不够用导致的卡顿&lt;a class="anchor" href="#%e5%86%85%e5%ad%98%e4%b8%8d%e5%a4%9f%e7%94%a8%e5%af%bc%e8%87%b4%e7%9a%84%e5%8d%a1%e9%a1%bf"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="使用systemd-oomd去管理内存"&gt;使用systemd-oomd去管理内存&lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8systemd-oomd%e5%8e%bb%e7%ae%a1%e7%90%86%e5%86%85%e5%ad%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="-为什么浏览器可能还会偶尔卡顿"&gt;⚙️ 为什么浏览器可能还会偶尔卡顿？&lt;a class="anchor" href="#-%e4%b8%ba%e4%bb%80%e4%b9%88%e6%b5%8f%e8%a7%88%e5%99%a8%e5%8f%af%e8%83%bd%e8%bf%98%e4%bc%9a%e5%81%b6%e5%b0%94%e5%8d%a1%e9%a1%bf"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;systemd-oomd&lt;/code&gt; 的触发机制比较“宽容”：它会等待系统资源压力达到一定阈值（基于 PSI 指标）才行动。在它出手之前，你可能已经感受到了短暂的卡顿。这是为了&lt;strong&gt;避免误杀&lt;/strong&gt;而做的平衡设计——如果阈值设得太低，可能你正在编辑的文档还没来得及保存就被杀掉了。&lt;/p&gt;
+&lt;h3 id="-如果你想让它更积极一点"&gt;🛠️ 如果你想让它更“积极”一点&lt;a class="anchor" href="#-%e5%a6%82%e6%9e%9c%e4%bd%a0%e6%83%b3%e8%ae%a9%e5%ae%83%e6%9b%b4%e7%a7%af%e6%9e%81%e4%b8%80%e7%82%b9"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;可以调整 &lt;code&gt;systemd-oomd&lt;/code&gt; 的配置，让它响应更快。不过需要注意：&lt;strong&gt;修改系统默认配置有一定风险&lt;/strong&gt;，建议先在测试环境尝试。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;查看当前配置&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /etc/systemd/oomd.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;通常这个文件是空的或只有注释，所有默认值都编译在二进制中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;创建自定义配置&lt;/strong&gt;（需要 root 权限）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo mkdir -p /etc/systemd/system/systemd-oomd.service.d
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo tee /etc/systemd/system/systemd-oomd.service.d/override.conf &lt;span style="color:#e6db74"&gt;&amp;lt;&amp;lt;EOF
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;[Service]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;Environment=SYSTEMD_OOM_DEFAULT_MEM_PRESSURE_LIMIT=10%
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;Environment=SYSTEMD_OOM_DEFAULT_MEM_PRESSURE_DURATION_USEC=1s
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;EOF&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面的设置会把内存压力阈值从默认的 &lt;code&gt;50%&lt;/code&gt; 降低到 &lt;code&gt;10%&lt;/code&gt;，且持续时间从 &lt;code&gt;5s&lt;/code&gt; 缩短到 &lt;code&gt;1s&lt;/code&gt;。&lt;strong&gt;这意味着系统会更敏感、更早出手&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;重新加载并重启服务&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl daemon-reload
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl restart systemd-oomd&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="-总结"&gt;✅ 总结&lt;a class="anchor" href="#-%e6%80%bb%e7%bb%93"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;你的 &lt;code&gt;systemd-oomd&lt;/code&gt; 已经正常工作了，系统大概率不会因为浏览器内存泄露而彻底卡死。&lt;/li&gt;
+&lt;li&gt;如果你依然遇到明显卡顿，可以：
+&lt;ul&gt;
+&lt;li&gt;调整 &lt;code&gt;systemd-oomd&lt;/code&gt; 的灵敏度（如上所示）。&lt;/li&gt;
+&lt;li&gt;或者安装 &lt;code&gt;earlyoom&lt;/code&gt; 作为第二道防线：&lt;code&gt;sudo dnf install earlyoom &amp;amp;&amp;amp; sudo systemctl enable --now earlyoom&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Steam</title><link>http://example.org/docs/programmer/platforms/os/steam/</link><pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/steam/</guid><description>&lt;h1 id="双人成行"&gt;双人成行&lt;a class="anchor" href="#%e5%8f%8c%e4%ba%ba%e6%88%90%e8%a1%8c"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;Win上存档位置： &lt;code&gt;/Users/{user name}/AppData/Local/ItTakesTwo&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Linux Steam 存档位置: &lt;code&gt;~/.steam/steam/steamapps/compatdata/3097223920/pfx/drive_c/users/steamuser/AppData/Local/ItTakesTwo$ &lt;/code&gt;&lt;/li&gt;
@@ -30,10 +126,18 @@
 &lt;p&gt;如果以上步骤没有解决问题，尝试更新GNOME的缓存并重新启动GNOME Shell：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo update-desktop-database&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后注销并重新登录GNOME Shell，看看是否能够显示Firefox图标。&lt;/p&gt;
 &lt;h3 id="4-手动创建desktop文件将软件添加到软件列表"&gt;4. 手动创建.desktop文件(将软件添加到软件列表)&lt;a class="anchor" href="#4-%e6%89%8b%e5%8a%a8%e5%88%9b%e5%bb%badesktop%e6%96%87%e4%bb%b6%e5%b0%86%e8%bd%af%e4%bb%b6%e6%b7%bb%e5%8a%a0%e5%88%b0%e8%bd%af%e4%bb%b6%e5%88%97%e8%a1%a8"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;^bef1ba&lt;/p&gt;</description></item><item><title>WPS for Linux</title><link>http://example.org/docs/programmer/platforms/wps-for-linux/</link><pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/wps-for-linux/</guid><description>&lt;h2 id="wps-在linux上打开提示字体缺失"&gt;wps 在linux上打开提示字体缺失&lt;a class="anchor" href="#wps-%e5%9c%a8linux%e4%b8%8a%e6%89%93%e5%bc%80%e6%8f%90%e7%a4%ba%e5%ad%97%e4%bd%93%e7%bc%ba%e5%a4%b1"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;h2 id="wps-在linux上打开提示字体缺失-1"&gt;wps 在linux上打开提示字体缺失&lt;a class="anchor" href="#wps-%e5%9c%a8linux%e4%b8%8a%e6%89%93%e5%bc%80%e6%8f%90%e7%a4%ba%e5%ad%97%e4%bd%93%e7%bc%ba%e5%a4%b1-1"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;^bef1ba&lt;/p&gt;</description></item><item><title>Office软件在linux上</title><link>http://example.org/docs/programmer/platforms/office%E8%BD%AF%E4%BB%B6%E5%9C%A8linux%E4%B8%8A/</link><pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/office%E8%BD%AF%E4%BB%B6%E5%9C%A8linux%E4%B8%8A/</guid><description>&lt;h1 id="wps"&gt;WPS&lt;a class="anchor" href="#wps"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="wps-在linux上打开提示字体缺失"&gt;wps 在linux上打开提示字体缺失&lt;a class="anchor" href="#wps-%e5%9c%a8linux%e4%b8%8a%e6%89%93%e5%bc%80%e6%8f%90%e7%a4%ba%e5%ad%97%e4%bd%93%e7%bc%ba%e5%a4%b1"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git clone https://github.com/dv-anomaly/ttf-wps-fonts
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd ttf-wps-fonts &lt;span style="color:#f92672"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo ./install.sh &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>k8s 配套说明</title><link>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/</link><pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/</guid><description>&lt;h1 id="ctr"&gt;ctr&lt;a class="anchor" href="#ctr"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd ttf-wps-fonts &lt;span style="color:#f92672"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo ./install.sh&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="libreoffice"&gt;LibreOffice&lt;a class="anchor" href="#libreoffice"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;在KDE双屏环境下，LibreOffice缩放异常是因为它对Wayland下混用不同DPI或分数缩放的支持还不完善&lt;a href="https://bugs.kde.org/show_bug.cgi?format=multiple&amp;amp;id=504242"&gt;&lt;/a&gt;。你可以尝试以下几种解决方法，推荐从第一种开始。&lt;/p&gt;
+&lt;/blockquote&gt;&lt;h2 id="强制使用xwayland最通用推荐首选"&gt;🎯强制使用XWayland（最通用、推荐首选）&lt;a class="anchor" href="#%e5%bc%ba%e5%88%b6%e4%bd%bf%e7%94%a8xwayland%e6%9c%80%e9%80%9a%e7%94%a8%e6%8e%a8%e8%8d%90%e9%a6%96%e9%80%89"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;通过将LibreOffice切换到X11兼容层来规避问题&lt;a href="https://cubiclenate.com/2025/05/03/fix-libreoffice-scaling-issues-on-linux/"&gt;&lt;/a&gt;，使用体验可能比在原生Wayland下更流畅&lt;a href="https://cubiclenate.com/2025/05/03/fix-libreoffice-scaling-issues-on-linux/"&gt;&lt;/a&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;临时测试&lt;/strong&gt;：在终端输入 &lt;code&gt;QT_QPA_PLATFORM=xcb libreoffice&lt;/code&gt; 启动程序&lt;a href="https://cubiclenate.com/2025/05/03/fix-libreoffice-scaling-issues-on-linux/"&gt;&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;永久生效&lt;/strong&gt;：右键“应用程序启动器” → “编辑应用程序&amp;hellip;”&lt;a href="https://cubiclenate.com/2025/05/03/fix-libreoffice-scaling-issues-on-linux/"&gt;&lt;/a&gt;，为各组件添加环境变量 &lt;code&gt;QT_QPA_PLATFORM=xcb&lt;/code&gt; 并保存&lt;a href="https://cubiclenate.com/2025/05/03/fix-libreoffice-scaling-issues-on-linux/"&gt;&lt;/a&gt;。 顺手把&lt;code&gt;Math Draw Calc Writer Impress&lt;/code&gt;都设置上。&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>k8s 配套说明</title><link>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/</link><pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/</guid><description>&lt;h1 id="ctr"&gt;ctr&lt;a class="anchor" href="#ctr"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;如果定义了 -n 应该是namesplace 那么每个命令都得跟上&lt;/p&gt;
 &lt;h2 id="load镜像"&gt;load镜像&lt;a class="anchor" href="#load%e9%95%9c%e5%83%8f"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;sudo ctr -n=&lt;a href="http://k8s.io/"&gt;k8s.io&lt;/a&gt; images import ${imageTarFile}&lt;/p&gt;
@@ -107,44 +211,46 @@
 &lt;li&gt;&lt;code&gt;kubectl **delete** persistentvolume example-pv&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;从kubectl cp -n &amp;lt;命名空间&amp;gt; -c &lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;:xxx.json xxx.json&lt;/li&gt;
+&lt;li&gt;从kubectl cp -n &amp;lt;命名空间&amp;gt; -c &lt;NAMEC&gt; &lt;PODNAME&gt;:xxx.json xxx.json&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="configmap--secret-存储文件内容"&gt;configmap / secret 存储文件内容&lt;a class="anchor" href="#configmap--secret-%e5%ad%98%e5%82%a8%e6%96%87%e4%bb%b6%e5%86%85%e5%ae%b9"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;sftpkey&lt;/code&gt; 为名称&lt;/p&gt;
 &lt;h3 id="新建"&gt;新建&lt;a class="anchor" href="#%e6%96%b0%e5%bb%ba"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;kubectl create secret generic sftpkey --from-file&lt;span style="color:#f92672"&gt;=&lt;/span&gt;/etc/id_rsa
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# kubectl create -n {NAMESPACE} secret generic sftpkey --from-file=/etc/id_rsa&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="删除"&gt;删除&lt;a class="anchor" href="#%e5%88%a0%e9%99%a4"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;kubectl delete secret sftpkey&lt;/p&gt;</description></item><item><title>Linux 笔记</title><link>http://example.org/docs/programmer/platforms/os/note-of-linux/</link><pubDate>Fri, 08 Apr 2016 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/note-of-linux/</guid><description>&lt;p&gt;git fetch &amp;ndash;all
+&lt;p&gt;kubectl delete secret sftpkey&lt;/p&gt;
+&lt;h2 id="常用字段"&gt;常用字段&lt;a class="anchor" href="#%e5%b8%b8%e7%94%a8%e5%ad%97%e6%ae%b5"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;下面是一些 Kubernetes 中常用的配置字段：&lt;/p&gt;</description></item><item><title>Linux 笔记</title><link>http://example.org/docs/programmer/platforms/os/note-of-linux/</link><pubDate>Fri, 08 Apr 2016 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/note-of-linux/</guid><description>&lt;p&gt;git fetch &amp;ndash;all
 git reset &amp;ndash;hard origin/master
 git pull
 &lt;img src="https://static1.makeuseofimages.com/wp-content/uploads/2015/01/best-linux-distros.jpg" alt="linux" /&gt;&lt;/p&gt;
 &lt;h2 id="交换分区"&gt;交换分区&lt;a class="anchor" href="#%e4%ba%a4%e6%8d%a2%e5%88%86%e5%8c%ba"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="大小推荐"&gt;大小推荐&lt;a class="anchor" href="#%e5%a4%a7%e5%b0%8f%e6%8e%a8%e8%8d%90"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;table&gt;
- &lt;thead&gt;
- &lt;tr&gt;
- &lt;th&gt;物理内存&lt;/th&gt;
- &lt;th&gt;交换分区（SWAP）&lt;/th&gt;
- &lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
- &lt;tr&gt;
- &lt;td&gt;&amp;lt;= 4G&lt;/td&gt;
- &lt;td&gt;至少4G&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;4~16G&lt;/td&gt;
- &lt;td&gt;至少8G&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;16G~64G&lt;/td&gt;
- &lt;td&gt;至少16G&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;64G~256G&lt;/td&gt;
- &lt;td&gt;至少32G&lt;/td&gt;
- &lt;/tr&gt;
- &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;物理内存&lt;/th&gt;
+					&lt;th&gt;交换分区（SWAP）&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&amp;lt;= 4G&lt;/td&gt;
+					&lt;td&gt;至少4G&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;4~16G&lt;/td&gt;
+					&lt;td&gt;至少8G&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;16G~64G&lt;/td&gt;
+					&lt;td&gt;至少16G&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;64G~256G&lt;/td&gt;
+					&lt;td&gt;至少32G&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h3 id="调节操作"&gt;调节操作&lt;a class="anchor" href="#%e8%b0%83%e8%8a%82%e6%93%8d%e4%bd%9c"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 查看命令相关&lt;/span&gt;

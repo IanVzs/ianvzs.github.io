@@ -11,44 +11,46 @@ matplotlib# import matplotlib.pyplot as plt 参数等太多，链接最可靠# p
 matplotlib# import matplotlib.pyplot as plt 参数等太多，链接最可靠# pyplot参数
 还是粘一些常用的： marker 属性（下面写在分号里呦） o . v ^ < > 1 2 3 4 8 s p * h H + x D d | _ 之类
 画出一些“花儿”
-绘图# plt.plot(x, y) # 在y之后可添加参数，例如常用的label = ‘IamLabel’之类 # 线的样式、颜色 ：b: blue g: green r: red c: cyan m: magenta y: yellow k: black w: white '-' : solid , '--' : dashed, '-.' : dashdot ':' : dotted ' '', ' ' ': None # 粗细 lw=3 更改数字 # 数值折点显示样式 marker = ‘o’ plot.show() 绘制图表# 1# plt.figure(1) 绘图 plt.figure(2) 绘图 2（未测试）# plt.figure(1) # 创建图表1 plt.figure(2) # 创建图表2 hi1 = plt.subplot(211) # 在图表2中创建子图1 hi2 = plt.subplot(212) # 在图表2中创建子图2 一表多图# pCapital = plt.subplot(4, 1, 1) pCapital.set_ylabel(&#34;capital&#34;) pCapital.plot(d['capitalList'], color='r', lw=0.8) plt.show() 标注点# eg1# for w, m in enumerate(self.lowestPrice): if w % 120*10 == 0: plt.plot([w, w], [m, self.highestPrice[w]], linestyle = '--') #plt.scatter(self.dealPoints,color = 'c') for i in self.dealPoints: plt.scatter([i[0]], [i[1]], color = 'c') for ii in self.ydealPoints: plt.scatter([ii[0]], [ii[1]], color = 'm') plt.title('Tick & TradePoint') plt.legend() plt.show() plt.legend() # show() 之前不加这句是不会显示出标注的呦"><meta itemprop=datePublished content="2017-07-24T00:00:00+00:00"><meta itemprop=dateModified content="2017-08-07T00:00:00+00:00"><meta itemprop=wordCount content="2034"><meta itemprop=keywords content="Ml,Python,爬虫"><title>机器学习库 | Ian's Blog</title><link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://example.org/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/><link rel=stylesheet href=/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q+RjFGKeI5ztdZ5nSJg=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.efc6dc35cf4ad70f9ddb5b92020d13c3015ca8ef6229d0a2b4a0cf3a2cc21644.js integrity="sha256-78bcNc9K1w+d21uSAg0TwwFcqO9iKdCitKDPOizCFkQ=" crossorigin=anonymous></script></head><body dir=ltr class="book-kind-page book-type-docs"><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Ian's Blog</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li class=book-section-flat><a href=/docs/programmer/>程序员笔记</a><ul><li><input type=checkbox id=section-c2c95db2f79edee23bbb71965e55c1e2 class=toggle>
-<label for=section-c2c95db2f79edee23bbb71965e55c1e2 class=flex><a href=/docs/programmer/langs/>编程语言</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-9f06ecccad732c4eb9d00c2abb8d8a7d class=toggle>
-<label for=section-9f06ecccad732c4eb9d00c2abb8d8a7d class=flex><a role=button>Python</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/langs/python/%E5%A4%A7%E6%95%B0%E5%88%97%E9%9B%86%E5%90%88%E5%AD%98%E5%82%A8%E5%92%8C%E8%BF%98%E5%8E%9F/>大数列集合存储和还原</a></li><li><a href=/docs/programmer/langs/python/python%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/>Python包管理</a></li><li><a href=/docs/programmer/langs/python/%E8%A7%84%E8%8C%83/>Python编码规范</a></li><li><a href=/docs/programmer/langs/python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B/>Python 多线程多进程</a></li><li><a href=/docs/programmer/langs/python/sqlalchemy/>SqlAlchemy - 数据库Orm</a></li><li><a href=/docs/programmer/langs/python/notespython/>解决问题</a></li><li><a href=/docs/programmer/langs/python/py%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%92%8C%E5%8A%9F%E8%83%BD%E6%80%A7%E6%96%B9%E6%B3%95/>Py小工具和功能性方法</a></li><li><a href=/docs/programmer/langs/python/pypi/>PyPi使用说明</a></li><li><a href=/docs/programmer/langs/python/pytest/>PyTest</a></li><li><a href=/docs/programmer/langs/python/notespython/>Python 常用库</a></li><li><a href=/docs/programmer/langs/python/notespython/>Python 笔记</a></li><li><a href=/docs/programmer/langs/python/paramiko-%E4%BD%BF%E7%94%A8---sshsftp/>Paramiko 使用 Ssh&amp;sftp</a></li><li><a href=/docs/programmer/langs/python/fastapi/>FastAPI</a></li></ul></li><li><input type=checkbox id=section-bf0d1fcaeb2dbb985e2dbbcc7202e9ad class=toggle>
-<label for=section-bf0d1fcaeb2dbb985e2dbbcc7202e9ad class=flex><a role=button>Golang</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/langs/golang/%E6%8A%8Agolang%E5%BD%93%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%94%A8/>把Golang当脚本语言用</a></li><li><a href=/docs/programmer/langs/golang/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/>常用命令</a></li><li><a href=/docs/programmer/langs/golang/advanced-knowledge-of-golang/>Golang进阶笔记</a></li><li><a href=/docs/programmer/langs/golang/note-of-golang/>Golang笔记</a></li></ul></li><li><a href=/docs/programmer/langs/cmake/>CMake 使用Tips</a></li><li><a href=/docs/programmer/langs/note-for-algo/>算法</a></li><li><a href=/docs/programmer/langs/tips-of-debugers/>Tips of debuggers</a></li><li><a href=/docs/programmer/langs/java/notesjava/>愉快的Java(happy to learn the fuck java)</a></li><li><a href=/docs/programmer/langs/tips-of-markdown/>Tips of MarkDown</a></li></ul></li><li><input type=checkbox id=section-81ac9fee5838836cbeab3fef2e0cfd9a class=toggle checked>
-<label for=section-81ac9fee5838836cbeab3fef2e0cfd9a class=flex><a role=button>机器学习</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/ml/stable-diffusion/>AI画图</a></li><li><a href=/docs/programmer/ml/langchain/>LangChain入门</a></li><li><a href=/docs/programmer/ml/%E5%9B%BE%E7%89%87%E8%83%8C%E6%99%AF%E6%B6%88%E9%99%A4/>图片背景消除</a></li><li><a href=/docs/programmer/ml/python-%E5%9B%BE%E8%A1%A8/>Python 图表</a></li><li><a href=/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%A1%8C%E4%B8%BA%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%92%8C%E4%BB%BB%E5%8A%A1/>机器人行为自动编排和任务</a></li><li><a href=/docs/programmer/ml/%E7%88%AC%E8%99%AB/>爬虫</a></li><li><a href=/docs/programmer/ml/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/>大模型使用笔记</a></li><li><a href=/docs/programmer/ml/paddle/>Paddle</a></li><li><a href=/docs/programmer/ml/tensorflow/>Tensorflow</a></li><li><a href=/docs/programmer/ml/yolo/>Demo Test项目中的一些东西</a></li><li><a href=/docs/programmer/ml/opencv/>OpenCV</a></li><li><a href=/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/ class=active>机器学习库</a></li></ul></li><li><input type=checkbox id=section-c6a6fd31106ee5bfefce9ec29333f46a class=toggle>
-<label for=section-c6a6fd31106ee5bfefce9ec29333f46a class=flex><a href=/docs/programmer/cloudnative/>云原生</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-559dc1ffcd65f3dd0a90ee18d4307178 class=toggle>
-<label for=section-559dc1ffcd65f3dd0a90ee18d4307178 class=flex><a href=/docs/programmer/cloudnative/redis/>中间件</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/redis/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/>布隆过滤器</a></li><li><a href=/docs/programmer/cloudnative/redis/redis%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/>Redis集群部署</a></li><li><a href=/docs/programmer/cloudnative/redis/python-redis-%E5%AE%A2%E6%88%B7%E7%AB%AF/>Python Redis 客户端</a></li><li><a href=/docs/programmer/cloudnative/redis/bigkey-and-hotkey/>大key、热key问题</a></li><li><a href=/docs/programmer/cloudnative/redis/the-basics-of-redis/>Redis基础</a></li><li><a href=/docs/programmer/cloudnative/redis/advanced-knowledge-of-redis/>Redis进阶</a></li><li><a href=/docs/programmer/cloudnative/redis/%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4/>Redis常用命令</a></li></ul></li><li><input type=checkbox id=section-cd44077b962ee7a7e8356ce12d624a84 class=toggle>
-<label for=section-cd44077b962ee7a7e8356ce12d624a84 class=flex><a role=button>k8s</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/k8s/%E9%98%BF%E9%87%8C%E8%87%AA%E5%8A%A8%E4%BC%B8%E7%BC%A9/>阿里k8s自动伸缩</a></li><li><a href=/docs/programmer/cloudnative/k8s/elk%E5%9C%A8k8s%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B/>elk在k8s上的部署使用示例</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/>k8s 配套说明</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/>k8s技术分享</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/>k8s学习-常用命令和配置文件</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-workflow%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/>Argo Workflow性能测试和使用场景分析</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/>Argo 使用记录</a></li></ul></li><li><input type=checkbox id=section-d6f1ed2a1ee0ed192f3a26afc247f2ca class=toggle>
-<label for=section-d6f1ed2a1ee0ed192f3a26afc247f2ca class=flex><a role=button>中间件</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/middleware/kafka-%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/>Kafka 安装和使用</a></li></ul></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/vs-code-dev-container/>📝 Windows + Docker + VS Code Remote-Containers 故障排查与恢复</a></li><li><a href=/docs/programmer/cloudnative/elk/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E7%B3%BB%E7%BB%9F/>日志收集系统: loki+promtail+Grafana</a></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/>Podman</a></li><li><a href=/docs/programmer/cloudnative/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li><li><a href=/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/>uwsgi 处理记录</a></li><li><a href=/docs/programmer/cloudnative/note-of-docker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/fastapi/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/>Nginx高可用</a></li><li><a href=/docs/programmer/cloudnative/notesdjango/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/>Sonar 代码静态检查</a></li></ul></li><li><input type=checkbox id=section-54a7005495649a744640d7e57eb2922f class=toggle>
-<label for=section-54a7005495649a744640d7e57eb2922f class=flex><a role=button>Net</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/net/crawler/selenium-grid/>Selenium Grid</a></li><li><a href=/docs/programmer/net/tools/ngrok/>ngrok - 一个免费内网穿透api工具</a></li><li><a href=/docs/programmer/net/crawler/mitmproxy/>mitmproxy</a></li><li><a href=/docs/programmer/net/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/>网络编程</a></li><li><a href=/docs/programmer/net/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li><li><a href=/docs/programmer/net/tips-of-grpc/>gRpc使用小记</a></li><li><a href=/docs/programmer/net/epoll%E5%AE%9E%E7%8E%B0/>Epoll实现</a></li></ul></li><li><input type=checkbox id=section-7f016ed5a6649ca58d0a410cdf35a516 class=toggle>
-<label for=section-7f016ed5a6649ca58d0a410cdf35a516 class=flex><a role=button>基础工具和配置</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/basetc/obsidian/>Obsidian笔记软件</a></li><li><a href=/docs/programmer/basetc/%E7%BB%88%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8/>终端浏览器</a></li><li><a href=/docs/programmer/basetc/curl/>curl</a></li><li><a href=/docs/programmer/basetc/%E6%96%87%E6%9C%AC%E4%B8%89%E5%89%91%E5%AE%A2/>文本三剑客</a></li><li><a href=/docs/programmer/basetc/tmux/>Tmux使用笔记</a></li><li><a href=/docs/programmer/basetc/obsidian%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%8F%92%E4%BB%B6/>Obsidian思维导图插件</a></li><li><a href=/docs/programmer/basetc/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/>supervisor</a></li><li><a href=/docs/programmer/basetc/for_china/>各个软件换源</a></li><li><a href=/docs/programmer/basetc/tipsofvim/>tip Of vim</a></li><li><a href=/docs/programmer/basetc/editer---%E5%B8%B8%E7%94%A8%E7%BC%96%E8%BE%91%E5%99%A8/>编辑器使用</a></li><li><a href=/docs/programmer/basetc/bash/>Bash</a></li><li><a href=/docs/programmer/basetc/gitbook/>Gitbook</a></li><li><a href=/docs/programmer/basetc/vim/>Vim</a></li></ul></li><li><input type=checkbox id=section-fc5f118f9eeaadb8a197ae7afc492278 class=toggle>
-<label for=section-fc5f118f9eeaadb8a197ae7afc492278 class=flex><a href=/docs/programmer/gui/>图形用户界面-GUI</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-972e385681a4b005ea7bcc47b6e638df class=toggle>
-<label for=section-972e385681a4b005ea7bcc47b6e638df class=flex><a href=/docs/programmer/gui/example/>Blog 构建</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-430a598f940f78aec47cf3f247404e76 class=toggle>
-<label for=section-430a598f940f78aec47cf3f247404e76 class=flex><a href=/docs/programmer/gui/example/table-of-contents/>Table of Contents</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/table-of-contents/with-toc/>With ToC</a></li><li><a href=/docs/programmer/gui/example/table-of-contents/without-toc/>Without ToC</a></li></ul></li><li><input type=checkbox id=section-520d6bf1c7271c23fc73944ff214df89 class=toggle>
-<label for=section-520d6bf1c7271c23fc73944ff214df89 class=flex><a href=/docs/programmer/gui/example/shortcodes/>Shortcodes</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/shortcodes/buttons/>Buttons</a></li><li><a href=/docs/programmer/gui/example/shortcodes/columns/>Columns</a></li><li><a href=/docs/programmer/gui/example/shortcodes/details/>Details</a></li><li><a href=/docs/programmer/gui/example/shortcodes/hints/>Hints</a></li><li><input type=checkbox id=section-c3bd76891eda7866e899b6bb68cdba88 class=toggle>
-<label for=section-c3bd76891eda7866e899b6bb68cdba88 class=flex><a href=/docs/programmer/gui/example/shortcodes/section/>Section</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/shortcodes/section/first-page/>First Page</a></li><li><a href=/docs/programmer/gui/example/shortcodes/section/second-page/>Second Page</a></li></ul></li><li><a href=/docs/programmer/gui/example/shortcodes/tabs/>Tabs</a></li></ul></li></ul></li><li><a href=/docs/programmer/gui/ffmpeg/>ffmpeg 使用</a></li><li><a href=/docs/programmer/gui/pyinstaller-python%E6%89%93%E5%8C%85/>python打包</a></li><li><a href=/docs/programmer/gui/qt/>Qt/PySide</a></li><li><a href=/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/>Vn.Py学习笔记（Python交易平台框架）</a></li><li><a href=/docs/programmer/gui/notespython/>图形化界面 （Python Gui）</a></li></ul></li><li><input type=checkbox id=section-c2b6418070eb71b7734d9996a505c6f5 class=toggle>
-<label for=section-c2b6418070eb71b7734d9996a505c6f5 class=flex><a role=button>平台</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/platforms/%E9%80%86%E5%90%91/>逆向三板斧</a></li><li><a href=/docs/programmer/platforms/os/steam/>Steam</a></li><li><a href=/docs/programmer/platforms/android/waydroid/>Linux 跑安卓</a></li><li><a href=/docs/programmer/platforms/os/ubuntu/>Ubuntu</a></li><li><a href=/docs/programmer/platforms/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8/>阿里云使用</a></li><li><a href=/docs/programmer/platforms/wps-for-linux/>WPS for Linux</a></li><li><a href=/docs/programmer/platforms/appsflyer/>AppsFlyer-外网移动归因营销分析平台</a></li><li><a href=/docs/programmer/platforms/install_some/>安装问题</a></li><li><a href=/docs/programmer/platforms/git/>Git</a></li><li><a href=/docs/programmer/platforms/os/problem-of-windows/>Windows 爬坑记</a></li><li><a href=/docs/programmer/platforms/tips-of-problems/>解决问题记录笔记</a></li><li><a href=/docs/programmer/platforms/android/android/>安卓</a></li><li><a href=/docs/programmer/platforms/os/freebsd/>FreeBSD</a></li><li><a href=/docs/programmer/platforms/os/note-of-linux/>Linux 笔记</a></li><li><a href=/docs/programmer/platforms/android/adb/>adb</a></li><li><a href=/docs/programmer/platforms/os/ros/>ROS机器人操作系统</a></li></ul></li><li><input type=checkbox id=section-77065c9ce8e402792c5901181c3058d2 class=toggle>
-<label for=section-77065c9ce8e402792c5901181c3058d2 class=flex><a href=/docs/programmer/database/>Database</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/database/note-of-db-data---mariadb/>数据库-MariaDB篇</a></li><li><a href=/docs/programmer/database/dgraph---graph-db/>Dgraph使用小记</a></li><li><a href=/docs/programmer/database/note-of-db-data---mongodb/>数据库-MongoDB篇</a></li><li><a href=/docs/programmer/database/note-of-db-data---mysql/>数据库-MySQL篇</a></li></ul></li><li><input type=checkbox id=section-1f1c8bdadacc50268445bf8f4916bb94 class=toggle>
-<label for=section-1f1c8bdadacc50268445bf8f4916bb94 class=flex><a href=/docs/programmer/hardware/>硬件</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/hardware/raspberrypi/>Raspberry Pi</a></li><li><a href=/docs/programmer/hardware/screen/>Screen</a></li></ul></li></ul></li><li class=book-section-flat><a>建模和游戏</a><ul><li><a href=/docs/3dgame/blender/>Blender</a></li><li><a href=/docs/3dgame/noteofue4/>UE4 笔记</a></li></ul></li></ul><ul><li><a href=/posts/ title=Blog>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/icons/menu.svg class=book-icon alt=Menu></label><h3>机器学习库</h3><label for=toc-control><img src=/icons/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class=hidden><nav id=TableOfContents><ul><li><ul><li><a href=#plotly>Plotly</a></li></ul></li><li><a href=#matplotlib>matplotlib</a><ul><li><a href=#参数等太多链接最可靠>参数等太多，链接最可靠</a></li><li><a href=#绘图>绘图</a></li><li><a href=#绘制图表>绘制图表</a></li><li><a href=#一表多图>一表多图</a></li><li><a href=#标注点>标注点</a></li><li><a href=#坐标标签显示方案>坐标标签显示方案</a></li><li><a href=#来画一个动态图吧感觉没啥作用所以就小标题了>来画一个动态图吧（感觉没啥作用所以就小标题了）</a></li></ul></li><li><a href=#pandas>pandas</a><ul><li><a href=#dataframe>DataFrame</a></li></ul></li><li><a href=#numpy>numpy</a><ul><li><a href=#random>random</a></li></ul></li><li><a href=#scikit-learn>scikit-learn</a></li><li><a href=#opencv>OpenCV</a><ul><li><a href=#insatll>Insatll</a></li><li><a href=#缺少-libglso1>缺少 libGL.so.1</a></li></ul></li><li><a href=#pil>PIL</a></li></ul><ul><li><a href=#问题>问题</a><ul><li><a href=#sslerror-https>SSLError HTTPS</a></li></ul></li><li><a href=#selenium>Selenium</a><ul><li></li></ul></li></ul><ul><li><ul><li><a href=#variable>Variable</a></li></ul></li><li><a href=#tensorflow-笔记>Tensorflow 笔记</a><ul><li><a href=#1-1>1</a></li></ul></li><li><a href=#tensorflow-笔记-1>Tensorflow 笔记</a><ul><li><a href=#1-2>1</a></li></ul></li></ul></nav></aside></header><article class="markdown book-article"><h1 id=python-机器学习库->Python 机器学习库 👽<a class=anchor href=#python-%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0%e5%ba%93->#</a></h1><h3 id=plotly>Plotly<a class=anchor href=#plotly>#</a></h3><p>与matplotlib 都是绘图工具，不过效果炫一些，我也没画过，所以只放链接，不放实例了
+绘图# plt.plot(x, y) # 在y之后可添加参数，例如常用的label = ‘IamLabel’之类 # 线的样式、颜色 ：b: blue g: green r: red c: cyan m: magenta y: yellow k: black w: white '-' : solid , '--' : dashed, '-.' : dashdot ':' : dotted ' '', ' ' ': None # 粗细 lw=3 更改数字 # 数值折点显示样式 marker = ‘o’ plot.show() 绘制图表# 1# plt.figure(1) 绘图 plt.figure(2) 绘图 2（未测试）# plt.figure(1) # 创建图表1 plt.figure(2) # 创建图表2 hi1 = plt.subplot(211) # 在图表2中创建子图1 hi2 = plt.subplot(212) # 在图表2中创建子图2 一表多图# pCapital = plt.subplot(4, 1, 1) pCapital.set_ylabel(&#34;capital&#34;) pCapital.plot(d['capitalList'], color='r', lw=0.8) plt.show() 标注点# eg1# for w, m in enumerate(self.lowestPrice): if w % 120*10 == 0: plt.plot([w, w], [m, self.highestPrice[w]], linestyle = '--') #plt.scatter(self.dealPoints,color = 'c') for i in self.dealPoints: plt.scatter([i[0]], [i[1]], color = 'c') for ii in self.ydealPoints: plt.scatter([ii[0]], [ii[1]], color = 'm') plt.title('Tick & TradePoint') plt.legend() plt.show() plt.legend() # show() 之前不加这句是不会显示出标注的呦"><meta itemprop=datePublished content="2017-07-24T00:00:00+00:00"><meta itemprop=dateModified content="2017-08-07T00:00:00+00:00"><meta itemprop=wordCount content="2048"><meta itemprop=keywords content="Ml,Python,爬虫"><title>机器学习库 | Ian's Blog</title><link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://example.org/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/><link rel=stylesheet href=/book.min.b267f830fdf65302ecc1702a1178d4f25aa783409b3a25098f3404dd24f37a4d.css integrity="sha256-smf4MP32UwLswXAqEXjU8lqng0CbOiUJjzQE3STzek0=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.dfa51542a9ac04acc3717d555fd4ad907d47f8bdea909c11d36405a78c042252.js integrity="sha256-36UVQqmsBKzDcX1VX9StkH1H+L3qkJwR02QFp4wEIlI=" crossorigin=anonymous></script></head><body dir=ltr class="book-kind-page book-type-docs"><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Ian's Blog</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li class=book-section-flat><a href=/docs/programmer/>程序员笔记</a><ul><li><input type=checkbox id=section-5cc2b7813188c35ab69cf39aa7976742 class=toggle>
+<label for=section-5cc2b7813188c35ab69cf39aa7976742 class=flex><a role=button>基础工具和配置</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-d9f6f78f099bc586e3d00fac11368afd class=toggle>
+<label for=section-d9f6f78f099bc586e3d00fac11368afd class=flex><a role=button>QA</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/basetc/qa/golang-qa2/>Golang QA2</a></li><li><a href=/docs/programmer/basetc/qa/golang-qa1/>Golang QA1</a></li><li><a href=/docs/programmer/basetc/qa/mysql-qa/>MySQL QA</a></li><li><a href=/docs/programmer/basetc/qa/python-qa/>Python QA</a></li><li><a href=/docs/programmer/basetc/qa/%E5%85%A5%E8%81%8C%E9%9D%A2%E8%AF%95---%E5%8F%8D%E9%97%AE/>入职面试-反问</a></li><li><a href=/docs/programmer/basetc/qa/agent-qa/>Agent QA</a></li></ul></li><li><a href=/docs/programmer/basetc/obsidian/>Obsidian笔记软件</a></li><li><a href=/docs/programmer/basetc/%E7%BB%88%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8/>终端浏览器</a></li><li><a href=/docs/programmer/basetc/curl/>curl</a></li><li><a href=/docs/programmer/basetc/%E6%96%87%E6%9C%AC%E4%B8%89%E5%89%91%E5%AE%A2/>文本三剑客</a></li><li><a href=/docs/programmer/basetc/tmux/>Tmux使用笔记</a></li><li><a href=/docs/programmer/basetc/obsidian%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%8F%92%E4%BB%B6/>Obsidian思维导图插件</a></li><li><a href=/docs/programmer/basetc/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/>supervisor</a></li><li><a href=/docs/programmer/basetc/for_china/>各个软件换源</a></li><li><a href=/docs/programmer/basetc/tipsofvim/>tip Of vim</a></li><li><a href=/docs/programmer/basetc/editer---%E5%B8%B8%E7%94%A8%E7%BC%96%E8%BE%91%E5%99%A8/>编辑器使用</a></li><li><a href=/docs/programmer/basetc/bash/>Bash</a></li><li><a href=/docs/programmer/basetc/gitbook/>Gitbook</a></li></ul></li><li><input type=checkbox id=section-36e4866306eb6852906b8f9bc6d5ebe7 class=toggle>
+<label for=section-36e4866306eb6852906b8f9bc6d5ebe7 class=flex><a role=button>平台</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/platforms/os/kde-baloo-%E6%96%87%E4%BB%B6%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/>KDE Baloo 文件索引使用笔记</a></li><li><a href=/docs/programmer/platforms/os/hp-pavilion-aero-fedora-44-%E7%94%B5%E6%B1%A0%E7%BB%AD%E8%88%AA%E8%B0%83%E4%BC%98%E7%AC%94%E8%AE%B0/>HP Pavilion Aero Fedora 44 电池续航调优笔记</a></li><li><a href=/docs/programmer/platforms/os/%E5%B0%86%E9%92%89%E9%92%89deb%E8%BD%ACrpm/>将钉钉deb转rpm</a></li><li><a href=/docs/programmer/platforms/os/fedora/>Dedora</a></li><li><a href=/docs/programmer/platforms/os/distrobox%E4%BD%BF%E7%94%A8/>Distrobox使用</a></li><li><a href=/docs/programmer/platforms/os/debian-%E4%B8%8B-webauthn-%E9%80%9A%E8%A1%8C%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/>Debian 下 WebAuthn 通行密钥登录失败问题处理笔记</a></li><li><a href=/docs/programmer/platforms/%E9%80%86%E5%90%91/>逆向三板斧</a></li><li><a href=/docs/programmer/platforms/os/steam/>Steam</a></li><li><a href=/docs/programmer/platforms/android/waydroid/>Linux 跑安卓</a></li><li><a href=/docs/programmer/platforms/os/ubuntu/>Ubuntu</a></li><li><a href=/docs/programmer/platforms/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8/>阿里云使用</a></li><li><a href=/docs/programmer/platforms/office%E8%BD%AF%E4%BB%B6%E5%9C%A8linux%E4%B8%8A/>Office软件在linux上</a></li><li><a href=/docs/programmer/platforms/appsflyer/>AppsFlyer-外网移动归因营销分析平台</a></li><li><a href=/docs/programmer/platforms/install_some/>安装问题</a></li><li><a href=/docs/programmer/platforms/git/>Git</a></li><li><a href=/docs/programmer/platforms/os/problem-of-windows/>Windows 爬坑记</a></li><li><a href=/docs/programmer/platforms/tips-of-problems/>解决问题记录笔记</a></li><li><a href=/docs/programmer/platforms/android/android/>安卓</a></li><li><a href=/docs/programmer/platforms/os/freebsd/>FreeBSD</a></li><li><a href=/docs/programmer/platforms/os/note-of-linux/>Linux 笔记</a></li><li><a href=/docs/programmer/platforms/android/adb/>adb</a></li><li><a href=/docs/programmer/platforms/os/ros/>ROS机器人操作系统</a></li></ul></li><li><input type=checkbox id=section-bf0ffe4febaf8968f12c1b0f4b3146bf class=toggle>
+<label for=section-bf0ffe4febaf8968f12c1b0f4b3146bf class=flex><a href=/docs/programmer/gui/>图形用户界面-GUI</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-c0bcbb62d4e5579e2649709617c0132c class=toggle>
+<label for=section-c0bcbb62d4e5579e2649709617c0132c class=flex><a href=/docs/programmer/gui/example/>Blog 构建</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-bfb940639d2ba52e02db0447b68826a2 class=toggle>
+<label for=section-bfb940639d2ba52e02db0447b68826a2 class=flex><a href=/docs/programmer/gui/example/table-of-contents/>Table of Contents</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/table-of-contents/with-toc/>With ToC</a></li><li><a href=/docs/programmer/gui/example/table-of-contents/without-toc/>Without ToC</a></li></ul></li><li><input type=checkbox id=section-d145590b204144c49419a1701c375f85 class=toggle>
+<label for=section-d145590b204144c49419a1701c375f85 class=flex><a href=/docs/programmer/gui/example/shortcodes/>Shortcodes</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/shortcodes/buttons/>Buttons</a></li><li><a href=/docs/programmer/gui/example/shortcodes/columns/>Columns</a></li><li><a href=/docs/programmer/gui/example/shortcodes/details/>Details</a></li><li><a href=/docs/programmer/gui/example/shortcodes/hints/>Hints</a></li><li><input type=checkbox id=section-4527692d3fb7be07bb765661e56c1067 class=toggle>
+<label for=section-4527692d3fb7be07bb765661e56c1067 class=flex><a href=/docs/programmer/gui/example/shortcodes/section/>Section</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/shortcodes/section/first-page/>First Page</a></li><li><a href=/docs/programmer/gui/example/shortcodes/section/second-page/>Second Page</a></li></ul></li><li><a href=/docs/programmer/gui/example/shortcodes/tabs/>Tabs</a></li></ul></li></ul></li><li><a href=/docs/programmer/gui/tauri/>Tauri</a></li><li><a href=/docs/programmer/gui/ffmpeg/>ffmpeg 使用</a></li><li><a href=/docs/programmer/gui/pyinstaller-python%E6%89%93%E5%8C%85/>python打包</a></li><li><a href=/docs/programmer/gui/qt/>Qt/PySide</a></li><li><a href=/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/>Vn.Py学习笔记（Python交易平台框架）</a></li><li><a href=/docs/programmer/gui/notespython/>图形化界面 （Python Gui）</a></li></ul></li><li><input type=checkbox id=section-9285a8550516aab58323614daec477d8 class=toggle>
+<label for=section-9285a8550516aab58323614daec477d8 class=flex><a href=/docs/programmer/langs/>编程语言</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-30dc7ea4b5d04e7034b07abe60f7b23b class=toggle>
+<label for=section-30dc7ea4b5d04e7034b07abe60f7b23b class=flex><a role=button>Python</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/langs/python/%E5%A4%A7%E6%95%B0%E5%88%97%E9%9B%86%E5%90%88%E5%AD%98%E5%82%A8%E5%92%8C%E8%BF%98%E5%8E%9F/>大数列集合存储和还原</a></li><li><a href=/docs/programmer/langs/python/python%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/>Python包管理</a></li><li><a href=/docs/programmer/langs/python/%E8%A7%84%E8%8C%83/>Python编码规范</a></li><li><a href=/docs/programmer/langs/python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B/>Python 多线程多进程</a></li><li><a href=/docs/programmer/langs/python/sqlalchemy/>SqlAlchemy - 数据库Orm</a></li><li><a href=/docs/programmer/langs/python/notespython/>解决问题</a></li><li><a href=/docs/programmer/langs/python/py%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%92%8C%E5%8A%9F%E8%83%BD%E6%80%A7%E6%96%B9%E6%B3%95/>Py小工具和功能性方法</a></li><li><a href=/docs/programmer/langs/python/pypi/>PyPi使用说明</a></li><li><a href=/docs/programmer/langs/python/pytest/>PyTest</a></li><li><a href=/docs/programmer/langs/python/notespython/>Python 常用库</a></li><li><a href=/docs/programmer/langs/python/notespython/>Python 笔记</a></li><li><a href=/docs/programmer/langs/python/paramiko-%E4%BD%BF%E7%94%A8---sshsftp/>Paramiko 使用 Ssh&amp;sftp</a></li><li><a href=/docs/programmer/langs/python/fastapi/>FastAPI</a></li></ul></li><li><input type=checkbox id=section-da14e11bac53ad47b616b30345c440a1 class=toggle>
+<label for=section-da14e11bac53ad47b616b30345c440a1 class=flex><a role=button>Golang</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/langs/golang/%E6%8A%8Agolang%E5%BD%93%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%94%A8/>把Golang当脚本语言用</a></li><li><a href=/docs/programmer/langs/golang/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/>常用命令</a></li><li><a href=/docs/programmer/langs/golang/advanced-knowledge-of-golang/>Golang进阶笔记</a></li><li><a href=/docs/programmer/langs/golang/note-of-golang/>Golang笔记</a></li></ul></li><li><a href=/docs/programmer/langs/cmake/>CMake 使用Tips</a></li><li><a href=/docs/programmer/langs/note-for-algo/>算法</a></li><li><a href=/docs/programmer/langs/tips-of-debugers/>Tips of debuggers</a></li><li><a href=/docs/programmer/langs/java/notesjava/>愉快的Java(happy to learn the fuck java)</a></li><li><a href=/docs/programmer/langs/tips-of-markdown/>Tips of MarkDown</a></li><li><a href=/docs/programmer/langs/ai%E7%BC%96%E7%A8%8B/%E9%85%8D%E7%BD%AE%E9%A3%9E%E4%B9%A6mcp/>配置飞书 MC P</a></li></ul></li><li><input type=checkbox id=section-d0ebd62f5791c0098a7655ccf2b83c7f class=toggle checked>
+<label for=section-d0ebd62f5791c0098a7655ccf2b83c7f class=flex><a role=button>机器学习</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/ml/stable-diffusion/>AI画图</a></li><li><a href=/docs/programmer/ml/langchain/>LangChain入门</a></li><li><a href=/docs/programmer/ml/%E5%9B%BE%E7%89%87%E8%83%8C%E6%99%AF%E6%B6%88%E9%99%A4/>图片背景消除</a></li><li><a href=/docs/programmer/ml/python-%E5%9B%BE%E8%A1%A8/>Python 图表</a></li><li><a href=/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%A1%8C%E4%B8%BA%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%92%8C%E4%BB%BB%E5%8A%A1/>机器人行为自动编排和任务</a></li><li><a href=/docs/programmer/ml/%E7%88%AC%E8%99%AB/>爬虫</a></li><li><a href=/docs/programmer/ml/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/>大模型使用笔记</a></li><li><a href=/docs/programmer/ml/paddle/>Paddle</a></li><li><a href=/docs/programmer/ml/tensorflow/>Tensorflow</a></li><li><a href=/docs/programmer/ml/yolo/>Demo Test项目中的一些东西</a></li><li><a href=/docs/programmer/ml/opencv/>OpenCV</a></li><li><a href=/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/ class=active>机器学习库</a></li></ul></li><li><input type=checkbox id=section-f1f22e98cd4f2e76c815b7c987853934 class=toggle>
+<label for=section-f1f22e98cd4f2e76c815b7c987853934 class=flex><a href=/docs/programmer/cloudnative/>云原生</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-32b04cad9c1fdc541ff1de5b2e020b85 class=toggle>
+<label for=section-32b04cad9c1fdc541ff1de5b2e020b85 class=flex><a href=/docs/programmer/cloudnative/redis/>中间件</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/redis/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/>布隆过滤器</a></li><li><a href=/docs/programmer/cloudnative/redis/redis%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/>Redis集群部署</a></li><li><a href=/docs/programmer/cloudnative/redis/python-redis-%E5%AE%A2%E6%88%B7%E7%AB%AF/>Python Redis 客户端</a></li><li><a href=/docs/programmer/cloudnative/redis/bigkey-and-hotkey/>大key、热key问题</a></li><li><a href=/docs/programmer/cloudnative/redis/the-basics-of-redis/>Redis基础</a></li><li><a href=/docs/programmer/cloudnative/redis/advanced-knowledge-of-redis/>Redis进阶</a></li><li><a href=/docs/programmer/cloudnative/redis/%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4/>Redis常用命令</a></li></ul></li><li><input type=checkbox id=section-e4266bbc0c25921b3a42b83539222bf9 class=toggle>
+<label for=section-e4266bbc0c25921b3a42b83539222bf9 class=flex><a role=button>k8s</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/k8s/%E9%98%BF%E9%87%8C%E8%87%AA%E5%8A%A8%E4%BC%B8%E7%BC%A9/>阿里k8s自动伸缩</a></li><li><a href=/docs/programmer/cloudnative/k8s/elk%E5%9C%A8k8s%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B/>elk在k8s上的部署使用示例</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/>k8s 配套说明</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/>k8s技术分享</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/>k8s学习-常用命令和配置文件</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-workflow%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/>Argo Workflow性能测试和使用场景分析</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/>Argo 使用记录</a></li></ul></li><li><input type=checkbox id=section-b346214f86968bbf1177b80c648fd733 class=toggle>
+<label for=section-b346214f86968bbf1177b80c648fd733 class=flex><a role=button>中间件</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/middleware/kafka-%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/>Kafka 安装和使用</a></li></ul></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/vs-code-dev-container/>📝 Windows + Docker + VS Code Remote-Containers 故障排查与恢复</a></li><li><a href=/docs/programmer/cloudnative/elk/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E7%B3%BB%E7%BB%9F/>日志收集系统: loki+promtail+Grafana</a></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/>Podman</a></li><li><a href=/docs/programmer/cloudnative/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li><li><a href=/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/>uwsgi 处理记录</a></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/fastapi/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/>Nginx高可用</a></li><li><a href=/docs/programmer/cloudnative/notesdjango/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/>Sonar 代码静态检查</a></li></ul></li><li><input type=checkbox id=section-f184e8770cfdece710650b22a0bcdee5 class=toggle>
+<label for=section-f184e8770cfdece710650b22a0bcdee5 class=flex><a role=button>Net</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/net/crawler/selenium-grid/>Selenium Grid</a></li><li><a href=/docs/programmer/net/tools/ngrok/>ngrok - 一个免费内网穿透api工具</a></li><li><a href=/docs/programmer/net/crawler/mitmproxy/>mitmproxy</a></li><li><a href=/docs/programmer/net/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/>网络编程</a></li><li><a href=/docs/programmer/net/tips-of-grpc/>gRpc使用小记</a></li><li><a href=/docs/programmer/net/epoll%E5%AE%9E%E7%8E%B0/>Epoll实现</a></li></ul></li><li><input type=checkbox id=section-995399cc0c6150665e3a798789f959d7 class=toggle>
+<label for=section-995399cc0c6150665e3a798789f959d7 class=flex><a href=/docs/programmer/database/>Database</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/database/note-of-db-data---mariadb/>数据库-MariaDB篇</a></li><li><a href=/docs/programmer/database/dgraph---graph-db/>Dgraph使用小记</a></li><li><a href=/docs/programmer/database/note-of-db-data---mongodb/>数据库-MongoDB篇</a></li><li><a href=/docs/programmer/database/note-of-db-data---mysql/>数据库-MySQL篇</a></li></ul></li><li><input type=checkbox id=section-d8d623113557f9782af91eb6ff518c56 class=toggle>
+<label for=section-d8d623113557f9782af91eb6ff518c56 class=flex><a href=/docs/programmer/hardware/>硬件</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/hardware/raspberrypi/>Raspberry Pi</a></li><li><a href=/docs/programmer/hardware/screen/>Screen</a></li></ul></li></ul></li><li class=book-section-flat><a>建模和游戏</a><ul><li><a href=/docs/3dgame/blender/>Blender</a></li><li><a href=/docs/3dgame/noteofue4/>UE4 笔记</a></li></ul></li></ul><ul><li><a href=/posts/ title=Blog>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/icons/menu.svg class=book-icon alt=Menu></label><h3>机器学习库</h3><label for=toc-control><img src=/icons/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class=hidden><nav id=TableOfContents><ul><li><ul><li><a href=#plotly>Plotly</a></li></ul></li><li><a href=#matplotlib>matplotlib</a><ul><li><a href=#参数等太多链接最可靠>参数等太多，链接最可靠</a></li><li><a href=#绘图>绘图</a></li><li><a href=#绘制图表>绘制图表</a></li><li><a href=#一表多图>一表多图</a></li><li><a href=#标注点>标注点</a></li><li><a href=#坐标标签显示方案>坐标标签显示方案</a></li><li><a href=#来画一个动态图吧感觉没啥作用所以就小标题了>来画一个动态图吧（感觉没啥作用所以就小标题了）</a></li></ul></li><li><a href=#pandas>pandas</a><ul><li><a href=#dataframe>DataFrame</a></li></ul></li><li><a href=#numpy>numpy</a><ul><li><a href=#random>random</a></li></ul></li><li><a href=#scikit-learn>scikit-learn</a></li><li><a href=#opencv>OpenCV</a><ul><li><a href=#insatll>Insatll</a></li><li><a href=#缺少-libglso1>缺少 libGL.so.1</a></li></ul></li><li><a href=#pil>PIL</a></li></ul><ul><li><a href=#问题>问题</a><ul><li><a href=#sslerror-https>SSLError HTTPS</a></li></ul></li><li><a href=#selenium>Selenium</a><ul><li></li></ul></li><li><a href=#4元素交互操作>4、元素交互操作</a><ul><li></li></ul></li></ul><ul><li><ul><li><a href=#variable>Variable</a></li></ul></li><li><a href=#tensorflow-笔记>Tensorflow 笔记</a><ul><li><a href=#1-1>1</a></li></ul></li><li><a href=#tensorflow-笔记-1>Tensorflow 笔记</a><ul><li><a href=#1-2>1</a></li></ul></li></ul></nav></aside></header><article class="markdown book-article"><h1 id=python-机器学习库->Python 机器学习库 👽<a class=anchor href=#python-%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0%e5%ba%93->#</a></h1><h3 id=plotly>Plotly<a class=anchor href=#plotly>#</a></h3><p>与matplotlib 都是绘图工具，不过效果炫一些，我也没画过，所以只放链接，不放实例了
 <a href=https://plot.ly/python/>Plotly Python Library</a> : <a href=https://plot.ly/python/>https://plot.ly/python/</a></p><h2 id=matplotlib>matplotlib<a class=anchor href=#matplotlib>#</a></h2><pre><code>import matplotlib.pyplot as plt
 </code></pre><h3 id=参数等太多链接最可靠>参数等太多，链接最可靠<a class=anchor href=#%e5%8f%82%e6%95%b0%e7%ad%89%e5%a4%aa%e5%a4%9a%e9%93%be%e6%8e%a5%e6%9c%80%e5%8f%af%e9%9d%a0>#</a></h3><p><a href=https://github.com/wizardforcel/matplotlib-user-guide-zh/blob/master/3.1.md>pyplot参数</a></p><p>还是粘一些常用的：
 marker 属性（下面写在分号里呦）
@@ -58,7 +60,7 @@ o . v ^ &lt; > 1 2 3 4 8 s p * h H + x D d | _ 之类</p><p><a href=http://blog.
 y: yellow   k: black    w: white
 '-' : solid , '--' : dashed, '-.' : dashdot ':' : dotted    '   '', ' '   ': None
 # 粗细 lw=3 更改数字
-# 数值折点显示样式 marker = ‘o’   
+# 数值折点显示样式 marker = ‘o’  
 
 plot.show()
 </code></pre><h3 id=绘制图表>绘制图表<a class=anchor href=#%e7%bb%98%e5%88%b6%e5%9b%be%e8%a1%a8>#</a></h3><h4 id=1>1<a class=anchor href=#1>#</a></h4><pre><code>plt.figure(1)
@@ -77,15 +79,15 @@ plt.show()
         if w % 120*10 == 0:
             plt.plot([w, w], [m, self.highestPrice[w]], linestyle = '--')
         #plt.scatter(self.dealPoints,color = 'c')
-for i in self.dealPoints:           
-    plt.scatter([i[0]], [i[1]], color = 'c')    
+for i in self.dealPoints:  
+    plt.scatter([i[0]], [i[1]], color = 'c')  
     for ii in self.ydealPoints:
     plt.scatter([ii[0]], [ii[1]], color = 'm')
-    
+
 plt.title('Tick &amp; TradePoint')
 plt.legend()
 plt.show()
-</code></pre><p>plt.legend()
+</code></pre><p><b>plt.legend()</b>
 # show() 之前不加这句是不会显示出标注的呦</p><h4 id=eg2还不晓得咋回事儿>eg2(还不晓得咋回事儿)<a class=anchor href=#eg2%e8%bf%98%e4%b8%8d%e6%99%93%e5%be%97%e5%92%8b%e5%9b%9e%e4%ba%8b%e5%84%bf>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> numpy <span style=color:#66d9ef>as</span> np
 </span></span><span style=display:flex><span>t <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>*</span> np<span style=color:#f92672>.</span>pi <span style=color:#f92672>/</span> <span style=color:#ae81ff>3</span>
 </span></span><span style=display:flex><span>plt<span style=color:#f92672>.</span>plot([t, t], [<span style=color:#ae81ff>0</span>, np<span style=color:#f92672>.</span>cos(t)], color<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;blue&#39;</span>, linewidth<span style=color:#f92672>=</span><span style=color:#ae81ff>2.5</span>, linestyle<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;--&#34;</span>)
@@ -161,10 +163,10 @@ plt.show()
 </span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> dfValue<span style=color:#f92672>.</span>loc[indexKey][colKey]
 </span></span><span style=display:flex><span>        <span style=color:#66d9ef>except</span>:
 </span></span><span style=display:flex><span>            print <span style=color:#e6db74>u</span><span style=color:#e6db74>&#39;【error:】信息不全&#39;</span>
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>None</span></span></span></code></pre></div><p>Emm,有点儿… 嗯… 嗯…</p><h2 id=numpy>numpy<a class=anchor href=#numpy>#</a></h2><h3 id=random>random<a class=anchor href=#random>#</a></h3><pre><code>random.seed(int类型) 
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>None</span></span></span></code></pre></div><p>Emm,有点儿… 嗯… 嗯…</p><h2 id=numpy>numpy<a class=anchor href=#numpy>#</a></h2><h3 id=random>random<a class=anchor href=#random>#</a></h3><pre><code>random.seed(int类型)
 # 理解可以为设定开始随机的开始，也就是说每次设定之后再开始取值就会得到相同的随机数()
 </code></pre><p>即
-np.random.seed(1)<br>np.random.random(1)</p><pre><code>np.random.seed(1)   
+np.random.seed(1)<br>np.random.random(1)</p><pre><code>np.random.seed(1)  
 np.random.random(1)
 </code></pre><blockquote class=book-hint><p>array([ 0.417022])</p></blockquote><blockquote class=book-hint><p>array([ 0.417022])</p></blockquote><h4 id=标准差>标准差<a class=anchor href=#%e6%a0%87%e5%87%86%e5%b7%ae>#</a></h4><pre><code>a = np.arange(10)
 np.std(a)
@@ -187,158 +189,206 @@ ImportError: libGL.so.1: cannot open shared object file: No such file or directo
 </code></pre><p>values = {}</p><p>for i in range(256):
 values[i] = his[i]</p><p>for j,k in sorted(values.items(),key=lambda x:x[1],reverse = True)[:10]:
 print j,k</p><h1 id=爬虫>爬虫<a class=anchor href=#%e7%88%ac%e8%99%ab>#</a></h1><p>先<a href=https://edu.hellobi.com/course/156/reviews>链接</a> 为实例视频教程，貌似不错，还没看。</p><h2 id=问题>问题<a class=anchor href=#%e9%97%ae%e9%a2%98>#</a></h2><p>虽然, 以前已经积累了一些东西, 知道</p><ul><li>headers</li><li>cookie
-啥的, 但今天突然碰到了这个报错:</li></ul><blockquote class=book-hint><p>Caused by SSLError(SSLError(&ldquo;bad handshake: Error([(&lsquo;SSL routines&rsquo;, &rsquo;tls_process_server_certificate&rsquo;, &lsquo;certificate verify failed&rsquo;)])</p></blockquote><p>没见过, 之后碰到其余, 统一汇总在此.</p><h3 id=sslerror-https>SSLError HTTPS<a class=anchor href=#sslerror-https>#</a></h3><p>有人指点到: 因用<code>https</code>的缘故, 其中报 <code>verify failed</code> 所以可以通过</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-py data-lang=py><span style=display:flex><span>requests<span style=color:#f92672>.</span>get(url, verify<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>)</span></span></code></pre></div><p>将<code>verify</code>关闭可通过.</p><h2 id=selenium>Selenium<a class=anchor href=#selenium>#</a></h2><h4 id=从网页粘来的下方有作者以及来源链接格式就保留原有不改了>从网页粘来的，下方有作者以及来源链接，格式就保留原有不改了…<a class=anchor href=#%e4%bb%8e%e7%bd%91%e9%a1%b5%e7%b2%98%e6%9d%a5%e7%9a%84%e4%b8%8b%e6%96%b9%e6%9c%89%e4%bd%9c%e8%80%85%e4%bb%a5%e5%8f%8a%e6%9d%a5%e6%ba%90%e9%93%be%e6%8e%a5%e6%a0%bc%e5%bc%8f%e5%b0%b1%e4%bf%9d%e7%95%99%e5%8e%9f%e6%9c%89%e4%b8%8d%e6%94%b9%e4%ba%86>#</a></h4><p>browser = webdriver.Chrome()
-browser.get(&lsquo;<a href=https://www.taobao.com/%27>https://www.taobao.com/'</a>)</p><h4 id=显示等待10s>显示等待10s<a class=anchor href=#%e6%98%be%e7%a4%ba%e7%ad%89%e5%be%8510s>#</a></h4><p>wait = WebDriverWait(browser, 10)</p><h4 id=等待直到元素加载出>等待直到元素加载出<a class=anchor href=#%e7%ad%89%e5%be%85%e7%9b%b4%e5%88%b0%e5%85%83%e7%b4%a0%e5%8a%a0%e8%bd%bd%e5%87%ba>#</a></h4><p>input = wait.until(EC.presence_of_element_located((By.ID, &lsquo;q&rsquo;)))</p><h4 id=等待直到元素可点击>等待直到元素可点击<a class=anchor href=#%e7%ad%89%e5%be%85%e7%9b%b4%e5%88%b0%e5%85%83%e7%b4%a0%e5%8f%af%e7%82%b9%e5%87%bb>#</a></h4><p>button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, &lsquo;.btn-search&rsquo;)))
-print(input, button)
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait</p><h4 id=创建一个浏览器对象>创建一个浏览器对象<a class=anchor href=#%e5%88%9b%e5%bb%ba%e4%b8%80%e4%b8%aa%e6%b5%8f%e8%a7%88%e5%99%a8%e5%af%b9%e8%b1%a1>#</a></h4><p>browser = webdriver.Chrome()
-try:
-# 开启一个浏览器并访问https://www.baidu.com
-browser.get(&lsquo;<a href=https://www.baidu.com>https://www.baidu.com</a>&rsquo;)
-# 在打开的网页响应中根据id查找元素 获取到查询框
-input = browser.find_element_by_id(&lsquo;kw&rsquo;)
-# 向查询框中输入Python
-input.send_keys(&lsquo;Python&rsquo;)
-# 模拟回车
-input.send_keys(Keys.ENTER)
-# 显示等待， 等待10秒
-wait = WebDriverWait(browser, 10)
-# 显式等待指定某个条件，然后设置最长等待时间。如果在这个时间还没有找到元素，那么便会抛出异常
-wait.until(EC.presence_of_element_located((By.ID,&lsquo;content_left&rsquo;)))
-# 输出当前的url
-print(browser.current_url)
-# 输出Cookies
-print(browser.get_cookies())
-# 输出页面响应内容
-print(browser.page_source)
-finally:
-pass
-# 关闭浏览器
-browser.close()</p><pre tabindex=0><code>&lt;h2&gt;2、Selenium声明浏览器对象&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span&gt;&lt;/span&gt;from selenium import webdriver
-
-browser = webdriver.Chrome()
+啥的, 但今天突然碰到了这个报错:</li></ul><blockquote class=book-hint><p>Caused by SSLError(SSLError(&ldquo;bad handshake: Error([(&lsquo;SSL routines&rsquo;, &rsquo;tls_process_server_certificate&rsquo;, &lsquo;certificate verify failed&rsquo;)])</p></blockquote><p>没见过, 之后碰到其余, 统一汇总在此.</p><h3 id=sslerror-https>SSLError HTTPS<a class=anchor href=#sslerror-https>#</a></h3><p>有人指点到: 因用<code>https</code>的缘故, 其中报 <code>verify failed</code> 所以可以通过</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-py data-lang=py><span style=display:flex><span>requests<span style=color:#f92672>.</span>get(url, verify<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>)</span></span></code></pre></div><p>将<code>verify</code>关闭可通过.</p><h2 id=selenium>Selenium<a class=anchor href=#selenium>#</a></h2><h4 id=从网页粘来的下方有作者以及来源链接格式就保留原有不改了>从网页粘来的，下方有作者以及来源链接，格式就保留原有不改了…<a class=anchor href=#%e4%bb%8e%e7%bd%91%e9%a1%b5%e7%b2%98%e6%9d%a5%e7%9a%84%e4%b8%8b%e6%96%b9%e6%9c%89%e4%bd%9c%e8%80%85%e4%bb%a5%e5%8f%8a%e6%9d%a5%e6%ba%90%e9%93%be%e6%8e%a5%e6%a0%bc%e5%bc%8f%e5%b0%b1%e4%bf%9d%e7%95%99%e5%8e%9f%e6%9c%89%e4%b8%8d%e6%94%b9%e4%ba%86>#</a></h4><h2>1、基本使用</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> selenium <span style=color:#f92672>import</span> webdriver
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> selenium.webdriver.common.by <span style=color:#f92672>import</span> By
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> selenium.webdriver.support <span style=color:#f92672>import</span> expected_conditions <span style=color:#66d9ef>as</span> EC
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> selenium.webdriver.support.wait <span style=color:#f92672>import</span> WebDriverWait
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>browser <span style=color:#f92672>=</span> webdriver<span style=color:#f92672>.</span>Chrome()
+</span></span><span style=display:flex><span>browser<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#39;https://www.taobao.com/&#39;</span>)
+</span></span><span style=display:flex><span><span style=color:#75715e>#### 显示等待10s</span>
+</span></span><span style=display:flex><span>wait <span style=color:#f92672>=</span> WebDriverWait(browser, <span style=color:#ae81ff>10</span>)
+</span></span><span style=display:flex><span><span style=color:#75715e>#### 等待直到元素加载出</span>
+</span></span><span style=display:flex><span>input <span style=color:#f92672>=</span> wait<span style=color:#f92672>.</span>until(EC<span style=color:#f92672>.</span>presence_of_element_located((By<span style=color:#f92672>.</span>ID, <span style=color:#e6db74>&#39;q&#39;</span>)))
+</span></span><span style=display:flex><span><span style=color:#75715e>#### 等待直到元素可点击</span>
+</span></span><span style=display:flex><span>button <span style=color:#f92672>=</span> wait<span style=color:#f92672>.</span>until(EC<span style=color:#f92672>.</span>element_to_be_clickable((By<span style=color:#f92672>.</span>CSS_SELECTOR, <span style=color:#e6db74>&#39;.btn-search&#39;</span>)))
+</span></span><span style=display:flex><span>print(input, button)
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> selenium <span style=color:#f92672>import</span> webdriver
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> selenium.webdriver.common.by <span style=color:#f92672>import</span> By
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> selenium.webdriver.common.keys <span style=color:#f92672>import</span> Keys
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> selenium.webdriver.support <span style=color:#f92672>import</span> expected_conditions <span style=color:#66d9ef>as</span> EC
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> selenium.webdriver.support.wait <span style=color:#f92672>import</span> WebDriverWait
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#### 创建一个浏览器对象</span>
+</span></span><span style=display:flex><span>browser <span style=color:#f92672>=</span> webdriver<span style=color:#f92672>.</span>Chrome()
+</span></span><span style=display:flex><span><span style=color:#66d9ef>try</span>:
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 开启一个浏览器并访问https://www.baidu.com</span>
+</span></span><span style=display:flex><span>    browser<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#39;https://www.baidu.com&#39;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 在打开的网页响应中根据id查找元素   获取到查询框</span>
+</span></span><span style=display:flex><span>    input <span style=color:#f92672>=</span> browser<span style=color:#f92672>.</span>find_element_by_id(<span style=color:#e6db74>&#39;kw&#39;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 向查询框中输入Python</span>
+</span></span><span style=display:flex><span>    input<span style=color:#f92672>.</span>send_keys(<span style=color:#e6db74>&#39;Python&#39;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 模拟回车</span>
+</span></span><span style=display:flex><span>    input<span style=color:#f92672>.</span>send_keys(Keys<span style=color:#f92672>.</span>ENTER)
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 显示等待， 等待10秒</span>
+</span></span><span style=display:flex><span>    wait <span style=color:#f92672>=</span> WebDriverWait(browser, <span style=color:#ae81ff>10</span>)
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 显式等待指定某个条件，然后设置最长等待时间。如果在这个时间还没有找到元素，那么便会抛出异常</span>
+</span></span><span style=display:flex><span>    wait<span style=color:#f92672>.</span>until(EC<span style=color:#f92672>.</span>presence_of_element_located((By<span style=color:#f92672>.</span>ID,<span style=color:#e6db74>&#39;content_left&#39;</span>)))
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 输出当前的url</span>
+</span></span><span style=display:flex><span>    print(browser<span style=color:#f92672>.</span>current_url)
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 输出Cookies</span>
+</span></span><span style=display:flex><span>    print(browser<span style=color:#f92672>.</span>get_cookies())
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 输出页面响应内容</span>
+</span></span><span style=display:flex><span>    print(browser<span style=color:#f92672>.</span>page_source)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>finally</span>:
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>pass</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 关闭浏览器</span>
+</span></span><span style=display:flex><span>    browser<span style=color:#f92672>.</span>close()</span></span></code></pre></div><h2>2、Selenium声明浏览器对象</h2><div class=highlight><pre><code class=language-text><span></span>from selenium import webdriver
+<p>browser = webdriver.Chrome()
 browser = webdriver.Firefox()
 browser = webdriver.Edge()
 browser = webdriver.PhantomJS()
 browser = webdriver.Safari()
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;3、查找元素&lt;/h2&gt;&lt;h2&gt;3.1、查找单个元素&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span&gt;&lt;/span&gt;from selenium import webdriver
-
-#### 申明一个浏览器对象
-browser = webdriver.Chrome()
-#### 使用浏览器访问淘宝
-browser.get(&#39;https://www.taobao.com&#39;)
-#### 在响应结果中通过id查找元素
-input_first = browser.find_element_by_id(&#39;q&#39;)
-#### 在响应结果中通过css选择器查找元素
-input_second = browser.find_element_by_css_selector(&#39;#q&#39;)
-#### 在响应结果中通过xpath查找元素
-input_third = browser.find_element_by_xpath(&#39;//*[@id=&#34;q&#34;]&#39;)
+</code></pre></div><p><br></p><h2>3、查找元素</h2><h2>3.1、查找单个元素</h2><div class=highlight><pre><code class=language-text><span></span>from selenium import webdriver</p>
+<h4 id=申明一个浏览器对象>申明一个浏览器对象<a class=anchor href=#%e7%94%b3%e6%98%8e%e4%b8%80%e4%b8%aa%e6%b5%8f%e8%a7%88%e5%99%a8%e5%af%b9%e8%b1%a1>#</a></h4>
+<p>browser = webdriver.Chrome()</p>
+<h4 id=使用浏览器访问淘宝>使用浏览器访问淘宝<a class=anchor href=#%e4%bd%bf%e7%94%a8%e6%b5%8f%e8%a7%88%e5%99%a8%e8%ae%bf%e9%97%ae%e6%b7%98%e5%ae%9d>#</a></h4>
+<p>browser.get(&lsquo;<a href=https://www.taobao.com>https://www.taobao.com</a>&rsquo;)</p>
+<h4 id=在响应结果中通过id查找元素>在响应结果中通过id查找元素<a class=anchor href=#%e5%9c%a8%e5%93%8d%e5%ba%94%e7%bb%93%e6%9e%9c%e4%b8%ad%e9%80%9a%e8%bf%87id%e6%9f%a5%e6%89%be%e5%85%83%e7%b4%a0>#</a></h4>
+<p>input_first = browser.find_element_by_id(&lsquo;q&rsquo;)</p>
+<h4 id=在响应结果中通过css选择器查找元素>在响应结果中通过css选择器查找元素<a class=anchor href=#%e5%9c%a8%e5%93%8d%e5%ba%94%e7%bb%93%e6%9e%9c%e4%b8%ad%e9%80%9a%e8%bf%87css%e9%80%89%e6%8b%a9%e5%99%a8%e6%9f%a5%e6%89%be%e5%85%83%e7%b4%a0>#</a></h4>
+<p>input_second = browser.find_element_by_css_selector(&rsquo;#q&rsquo;)</p>
+<h4 id=在响应结果中通过xpath查找元素>在响应结果中通过xpath查找元素<a class=anchor href=#%e5%9c%a8%e5%93%8d%e5%ba%94%e7%bb%93%e6%9e%9c%e4%b8%ad%e9%80%9a%e8%bf%87xpath%e6%9f%a5%e6%89%be%e5%85%83%e7%b4%a0>#</a></h4>
+<p>input_third = browser.find_element_by_xpath(&rsquo;//*[@id=&ldquo;q&rdquo;]&rsquo;)
 print(input_first)
 print(input_second)
 print(input_third)
 browser.close()
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;&lt;li&gt;find_element_by_name   通过name查找&lt;/li&gt;&lt;li&gt;find_element_by_xpath  通过xpath查找&lt;/li&gt;&lt;li&gt;find_element_by_link_text   通过链接查找&lt;/li&gt;&lt;li&gt;find_element_by_partial_link_text    通过部分链接查找&lt;/li&gt;&lt;li&gt;find_element_by_tag_name   通过标签名称查找&lt;/li&gt;&lt;li&gt;find_element_by_class_name   通过类名查找&lt;/li&gt;&lt;li&gt;find_element_by_css_selector  通过css选择武器查找&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span&gt;&lt;/span&gt;from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-#### 申明一个浏览器对象
-browser = webdriver.Chrome()
-#### 使用浏览器访问淘宝
-browser.get(&#39;https://www.taobao.com&#39;)
-#### 第二种方式，通过使用By.xxx指定查找方式
-input = browser.find_element(By.ID,&#39;q&#39;)
+</code></pre></div><ul><li>find_element_by_name 通过name查找</li><li>find_element_by_xpath 通过xpath查找</li><li>find_element_by_link_text 通过链接查找</li><li>find_element_by_partial_link_text 通过部分链接查找</li><li>find_element_by_tag_name 通过标签名称查找</li><li>find_element_by_class_name 通过类名查找</li><li>find_element_by_css_selector 通过css选择武器查找</li></ul><p><br></p><div class=highlight><pre><code class=language-text><span></span>from selenium import webdriver
+from selenium.webdriver.common.by import By</p>
+<h4 id=申明一个浏览器对象-1>申明一个浏览器对象<a class=anchor href=#%e7%94%b3%e6%98%8e%e4%b8%80%e4%b8%aa%e6%b5%8f%e8%a7%88%e5%99%a8%e5%af%b9%e8%b1%a1-1>#</a></h4>
+<p>browser = webdriver.Chrome()</p>
+<h4 id=使用浏览器访问淘宝-1>使用浏览器访问淘宝<a class=anchor href=#%e4%bd%bf%e7%94%a8%e6%b5%8f%e8%a7%88%e5%99%a8%e8%ae%bf%e9%97%ae%e6%b7%98%e5%ae%9d-1>#</a></h4>
+<p>browser.get(&lsquo;<a href=https://www.taobao.com>https://www.taobao.com</a>&rsquo;)</p>
+<h4 id=第二种方式通过使用byxxx指定查找方式>第二种方式，通过使用By.xxx指定查找方式<a class=anchor href=#%e7%ac%ac%e4%ba%8c%e7%a7%8d%e6%96%b9%e5%bc%8f%e9%80%9a%e8%bf%87%e4%bd%bf%e7%94%a8byxxx%e6%8c%87%e5%ae%9a%e6%9f%a5%e6%89%be%e6%96%b9%e5%bc%8f>#</a></h4>
+<p>input = browser.find_element(By.ID,&lsquo;q&rsquo;)
 print(input)
 browser.close()
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2&gt;3.2、多个元素&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span&gt;&lt;/span&gt;from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-#### 申明一个浏览器对象
-browser = webdriver.Chrome()
-#### 使用浏览器访问淘宝
-browser.get(&#39;https://www.taobao.com&#39;)
-#### 根据选择查找多个元素
-input_first = browser.find_elements_by_css_selector(&#39;.service-bd li&#39;)
-input_second = browser.find_elements(By.CSS_SELECTOR,&#39;.service-bd li&#39;)
+</code></pre></div><h2>3.2、多个元素</h2><div class=highlight><pre><code class=language-text><span></span>from selenium import webdriver
+from selenium.webdriver.common.by import By</p>
+<h4 id=申明一个浏览器对象-2>申明一个浏览器对象<a class=anchor href=#%e7%94%b3%e6%98%8e%e4%b8%80%e4%b8%aa%e6%b5%8f%e8%a7%88%e5%99%a8%e5%af%b9%e8%b1%a1-2>#</a></h4>
+<p>browser = webdriver.Chrome()</p>
+<h4 id=使用浏览器访问淘宝-2>使用浏览器访问淘宝<a class=anchor href=#%e4%bd%bf%e7%94%a8%e6%b5%8f%e8%a7%88%e5%99%a8%e8%ae%bf%e9%97%ae%e6%b7%98%e5%ae%9d-2>#</a></h4>
+<p>browser.get(&lsquo;<a href=https://www.taobao.com>https://www.taobao.com</a>&rsquo;)</p>
+<h4 id=根据选择查找多个元素>根据选择查找多个元素<a class=anchor href=#%e6%a0%b9%e6%8d%ae%e9%80%89%e6%8b%a9%e6%9f%a5%e6%89%be%e5%a4%9a%e4%b8%aa%e5%85%83%e7%b4%a0>#</a></h4>
+<p>input_first = browser.find_elements_by_css_selector(&rsquo;.service-bd li&rsquo;)
+input_second = browser.find_elements(By.CSS_SELECTOR,&rsquo;.service-bd li&rsquo;)
 print(input_first)
 print(input_second)
 browser.close()
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;&lt;li&gt;find_elements_by_name&lt;/li&gt;&lt;li&gt;find_elements_by_xpath&lt;/li&gt;&lt;li&gt;find_elements_by_link_text&lt;/li&gt;&lt;li&gt;find_elements_by_partial_link_text&lt;/li&gt;&lt;li&gt;find_elements_by_tag_name&lt;/li&gt;&lt;li&gt;find_elements_by_class_name&lt;/li&gt;&lt;li&gt;find_elements_by_css_selector&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-## 4、元素交互操作
-&lt;blockquote&gt;对获取的元素调用交互方法 &lt;/blockquote&gt;
-```python
-import time
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-#### 申明一个浏览器对象
-browser = webdriver.Chrome()
-#### 使用浏览器访问淘宝
-browser.get(&#39;https://www.taobao.com&#39;)
-#### 根据ID查找元素
-input_search = browser.find_element(By.ID,&#39;q&#39;)
-#### 模拟输入PSV到输入框
-input_search.send_keys(&#39;PSV&#39;)
-time.sleep(2)
-#### 清空输入
-input_search.clear()
-input_search.send_keys(&#39;3DS&#39;)
-button = browser.find_element(By.CLASS_NAME,&#39;btn-search&#39;)
-#### 模拟点击
-button.click()</code></pre><p>browser = webdriver.Chrome()
+</code></pre></div><ul><li>find_elements_by_name</li><li>find_elements_by_xpath</li><li>find_elements_by_link_text</li><li>find_elements_by_partial_link_text</li><li>find_elements_by_tag_name</li><li>find_elements_by_class_name</li><li>find_elements_by_css_selector</li></ul><p><br></p><p><br></p></p><h2 id=4元素交互操作>4、元素交互操作<a class=anchor href=#4%e5%85%83%e7%b4%a0%e4%ba%a4%e4%ba%92%e6%93%8d%e4%bd%9c>#</a></h2><blockquote>对获取的元素调用交互方法</blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> time
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> selenium <span style=color:#f92672>import</span> webdriver
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> selenium.webdriver.common.by <span style=color:#f92672>import</span> By
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#### 申明一个浏览器对象</span>
+</span></span><span style=display:flex><span>browser <span style=color:#f92672>=</span> webdriver<span style=color:#f92672>.</span>Chrome()
+</span></span><span style=display:flex><span><span style=color:#75715e>#### 使用浏览器访问淘宝</span>
+</span></span><span style=display:flex><span>browser<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#39;https://www.taobao.com&#39;</span>)
+</span></span><span style=display:flex><span><span style=color:#75715e>#### 根据ID查找元素</span>
+</span></span><span style=display:flex><span>input_search <span style=color:#f92672>=</span> browser<span style=color:#f92672>.</span>find_element(By<span style=color:#f92672>.</span>ID,<span style=color:#e6db74>&#39;q&#39;</span>)
+</span></span><span style=display:flex><span><span style=color:#75715e>#### 模拟输入PSV到输入框</span>
+</span></span><span style=display:flex><span>input_search<span style=color:#f92672>.</span>send_keys(<span style=color:#e6db74>&#39;PSV&#39;</span>)
+</span></span><span style=display:flex><span>time<span style=color:#f92672>.</span>sleep(<span style=color:#ae81ff>2</span>)
+</span></span><span style=display:flex><span><span style=color:#75715e>#### 清空输入</span>
+</span></span><span style=display:flex><span>input_search<span style=color:#f92672>.</span>clear()
+</span></span><span style=display:flex><span>input_search<span style=color:#f92672>.</span>send_keys(<span style=color:#e6db74>&#39;3DS&#39;</span>)
+</span></span><span style=display:flex><span>button <span style=color:#f92672>=</span> browser<span style=color:#f92672>.</span>find_element(By<span style=color:#f92672>.</span>CLASS_NAME,<span style=color:#e6db74>&#39;btn-search&#39;</span>)
+</span></span><span style=display:flex><span><span style=color:#75715e>#### 模拟点击</span>
+</span></span><span style=display:flex><span>button<span style=color:#f92672>.</span>click()</span></span></code></pre></div><blockquote>更多的操作<br><a href="http://link.zhihu.com/?target=http%3A//selenium-python.readthedocs.io/api.html%23module-selenium.webdriver.remote.webelement" class=external target=_blank rel="nofollow noreferrer"><span class=invisible>http://</span><span class=visible>selenium-python.readthedocs.io</span><span class=invisible>/api.html#module-selenium.webdriver.remote.webelement</span><span class=ellipsis></span><i class=icon-external></i></a></blockquote><p><br></p><h2>5、交互动作</h2><div class=highlight><pre><code class=language-text><span></span>from selenium import webdriver
+from selenium.webdriver import ActionChains
+<p>browser = webdriver.Chrome()
 url = &lsquo;<a href="http://www.runoob.com/try/try.php?filename=jqueryui-api-droppable%27">http://www.runoob.com/try/try.php?filename=jqueryui-api-droppable'</a>
-browser.get(url)</p><h4 id=切换id为iframeresult的frame>切换id为iframeResult的frame<a class=anchor href=#%e5%88%87%e6%8d%a2id%e4%b8%baiframeresult%e7%9a%84frame>#</a></h4><p>browser.switch_to.frame(&lsquo;iframeResult&rsquo;)
+browser.get(url)</p>
+<h4 id=切换id为iframeresult的frame>切换id为iframeResult的frame<a class=anchor href=#%e5%88%87%e6%8d%a2id%e4%b8%baiframeresult%e7%9a%84frame>#</a></h4>
+<p>browser.switch_to.frame(&lsquo;iframeResult&rsquo;)
 source = browser.find_element_by_css_selector(&rsquo;#draggable&rsquo;)
 target = browser.find_element_by_css_selector(&rsquo;#droppable&rsquo;)
 actions = ActionChains(browser)
 actions.drag_and_drop(source, target)
 actions.perform()
-更多操作http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.common.action_chains6、执行JavaScriptfrom selenium import webdriver</p><h4 id=申明一个浏览器对象>申明一个浏览器对象<a class=anchor href=#%e7%94%b3%e6%98%8e%e4%b8%80%e4%b8%aa%e6%b5%8f%e8%a7%88%e5%99%a8%e5%af%b9%e8%b1%a1>#</a></h4><p>browser = webdriver.Chrome()
-browser.get(&lsquo;<a href=https://www.zhihu.com/explore%27>https://www.zhihu.com/explore'</a>)</p><h4 id=执行javascript脚本>执行JavaScript脚本<a class=anchor href=#%e6%89%a7%e8%a1%8cjavascript%e8%84%9a%e6%9c%ac>#</a></h4><p>browser.execute_script(&lsquo;window.scrollTo(0, document.body.scrollHeight)&rsquo;)
+</code></pre></div><blockquote>更多操作<br><br><a href="http://link.zhihu.com/?target=http%3A//selenium-python.readthedocs.io/api.html%23module-selenium.webdriver.common.action_chains" class=external target=_blank rel="nofollow noreferrer"><span class=invisible>http://</span><span class=visible>selenium-python.readthedocs.io</span><span class=invisible>/api.html#module-selenium.webdriver.common.action_chains</span><span class=ellipsis></span><i class=icon-external></i></a></blockquote><p><br></p><h2>6、执行JavaScript</h2><div class=highlight><pre><code class=language-text><span></span>from selenium import webdriver</p>
+<h4 id=申明一个浏览器对象-3>申明一个浏览器对象<a class=anchor href=#%e7%94%b3%e6%98%8e%e4%b8%80%e4%b8%aa%e6%b5%8f%e8%a7%88%e5%99%a8%e5%af%b9%e8%b1%a1-3>#</a></h4>
+<p>browser = webdriver.Chrome()
+browser.get(&lsquo;<a href=https://www.zhihu.com/explore%27>https://www.zhihu.com/explore'</a>)</p>
+<h4 id=执行javascript脚本>执行JavaScript脚本<a class=anchor href=#%e6%89%a7%e8%a1%8cjavascript%e8%84%9a%e6%9c%ac>#</a></h4>
+<p>browser.execute_script(&lsquo;window.scrollTo(0, document.body.scrollHeight)&rsquo;)
 browser.execute_script(&lsquo;alert(&ldquo;To Bottom&rdquo;)&rsquo;)
-7、获取元素信息7.1、获取属性from selenium import webdriver
-from selenium.webdriver.common.by import By</p><h4 id=申明一个浏览器对象-1>申明一个浏览器对象<a class=anchor href=#%e7%94%b3%e6%98%8e%e4%b8%80%e4%b8%aa%e6%b5%8f%e8%a7%88%e5%99%a8%e5%af%b9%e8%b1%a1-1>#</a></h4><p>browser = webdriver.Chrome()
+</code></pre></div><h2>7、获取元素信息</h2><h2>7.1、获取属性</h2><div class=highlight><pre><code class=language-text><span></span>from selenium import webdriver
+from selenium.webdriver.common.by import By</p>
+<h4 id=申明一个浏览器对象-4>申明一个浏览器对象<a class=anchor href=#%e7%94%b3%e6%98%8e%e4%b8%80%e4%b8%aa%e6%b5%8f%e8%a7%88%e5%99%a8%e5%af%b9%e8%b1%a1-4>#</a></h4>
+<p>browser = webdriver.Chrome()
 browser.get(&lsquo;<a href=https://www.zhihu.com/explore%27>https://www.zhihu.com/explore'</a>)
-logo = browser.find_element(By.ID,&lsquo;zh-top-link-logo&rsquo;)</p><h4 id=获取属性>获取属性<a class=anchor href=#%e8%8e%b7%e5%8f%96%e5%b1%9e%e6%80%a7>#</a></h4><p>print(logo.get_attribute(&lsquo;class&rsquo;))
+logo = browser.find_element(By.ID,&lsquo;zh-top-link-logo&rsquo;)</p>
+<h4 id=获取属性>获取属性<a class=anchor href=#%e8%8e%b7%e5%8f%96%e5%b1%9e%e6%80%a7>#</a></h4>
+<p>print(logo.get_attribute(&lsquo;class&rsquo;))
 print(logo)
 browser.close()
-7.2、获取文本值from selenium import webdriver
-from selenium.webdriver.common.by import By</p><h4 id=申明一个浏览器对象-2>申明一个浏览器对象<a class=anchor href=#%e7%94%b3%e6%98%8e%e4%b8%80%e4%b8%aa%e6%b5%8f%e8%a7%88%e5%99%a8%e5%af%b9%e8%b1%a1-2>#</a></h4><p>browser = webdriver.Chrome()
+</code></pre></div><h2>7.2、获取文本值</h2><div class=highlight><pre><code class=language-text><span></span>from selenium import webdriver
+from selenium.webdriver.common.by import By</p>
+<h4 id=申明一个浏览器对象-5>申明一个浏览器对象<a class=anchor href=#%e7%94%b3%e6%98%8e%e4%b8%80%e4%b8%aa%e6%b5%8f%e8%a7%88%e5%99%a8%e5%af%b9%e8%b1%a1-5>#</a></h4>
+<p>browser = webdriver.Chrome()
 browser.get(&lsquo;<a href=https://www.zhihu.com/explore%27>https://www.zhihu.com/explore'</a>)
-submit = browser.find_element(By.ID,&lsquo;zu-top-add-question&rsquo;)</p><h4 id=获取文本值>获取文本值<a class=anchor href=#%e8%8e%b7%e5%8f%96%e6%96%87%e6%9c%ac%e5%80%bc>#</a></h4><p>print(submit.text)
+submit = browser.find_element(By.ID,&lsquo;zu-top-add-question&rsquo;)</p>
+<h4 id=获取文本值>获取文本值<a class=anchor href=#%e8%8e%b7%e5%8f%96%e6%96%87%e6%9c%ac%e5%80%bc>#</a></h4>
+<p>print(submit.text)
 print(submit)
 browser.close()
-7.3、获取ID、位置、标签名、大小from selenium import webdriver
-from selenium.webdriver.common.by import By</p><h4 id=申明一个浏览器对象-3>申明一个浏览器对象<a class=anchor href=#%e7%94%b3%e6%98%8e%e4%b8%80%e4%b8%aa%e6%b5%8f%e8%a7%88%e5%99%a8%e5%af%b9%e8%b1%a1-3>#</a></h4><p>browser = webdriver.Chrome()
+</code></pre></div><h2>7.3、获取ID、位置、标签名、大小</h2><div class=highlight><pre><code class=language-text><span></span>from selenium import webdriver
+from selenium.webdriver.common.by import By</p>
+<h4 id=申明一个浏览器对象-6>申明一个浏览器对象<a class=anchor href=#%e7%94%b3%e6%98%8e%e4%b8%80%e4%b8%aa%e6%b5%8f%e8%a7%88%e5%99%a8%e5%af%b9%e8%b1%a1-6>#</a></h4>
+<p>browser = webdriver.Chrome()
 browser.get(&lsquo;<a href=https://www.zhihu.com/explore%27>https://www.zhihu.com/explore'</a>)
-submit = browser.find_element(By.ID,&lsquo;zu-top-add-question&rsquo;)</p><h4 id=获取id---004584255991652042-1>获取id 0.04584255991652042-1<a class=anchor href=#%e8%8e%b7%e5%8f%96id---004584255991652042-1>#</a></h4><p>print(submit.id)</p><h4 id=获取位置--y-7-x-675>获取位置 {&lsquo;y&rsquo;: 7, &lsquo;x&rsquo;: 675}<a class=anchor href=#%e8%8e%b7%e5%8f%96%e4%bd%8d%e7%bd%ae--y-7-x-675>#</a></h4><p>print(submit.location)</p><h4 id=获取标签名称----button>获取标签名称 button<a class=anchor href=#%e8%8e%b7%e5%8f%96%e6%a0%87%e7%ad%be%e5%90%8d%e7%a7%b0----button>#</a></h4><p>print(submit.tag_name)</p><h4 id=获取大小--width-66-height-32>获取大小 {&lsquo;width&rsquo;: 66, &lsquo;height&rsquo;: 32}<a class=anchor href=#%e8%8e%b7%e5%8f%96%e5%a4%a7%e5%b0%8f--width-66-height-32>#</a></h4><p>print(submit.size)
+submit = browser.find_element(By.ID,&lsquo;zu-top-add-question&rsquo;)</p>
+<h4 id=获取id---004584255991652042-1>获取id   0.04584255991652042-1<a class=anchor href=#%e8%8e%b7%e5%8f%96id---004584255991652042-1>#</a></h4>
+<p>print(submit.id)</p>
+<h4 id=获取位置--y-7-x-675>获取位置  {&lsquo;y&rsquo;: 7, &lsquo;x&rsquo;: 675}<a class=anchor href=#%e8%8e%b7%e5%8f%96%e4%bd%8d%e7%bd%ae--y-7-x-675>#</a></h4>
+<p>print(submit.location)</p>
+<h4 id=获取标签名称----button>获取标签名称    button<a class=anchor href=#%e8%8e%b7%e5%8f%96%e6%a0%87%e7%ad%be%e5%90%8d%e7%a7%b0----button>#</a></h4>
+<p>print(submit.tag_name)</p>
+<h4 id=获取大小--width-66-height-32>获取大小  {&lsquo;width&rsquo;: 66, &lsquo;height&rsquo;: 32}<a class=anchor href=#%e8%8e%b7%e5%8f%96%e5%a4%a7%e5%b0%8f--width-66-height-32>#</a></h4>
+<p>print(submit.size)
 browser.close()
-8、Framefrom selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException</p><p>browser = webdriver.Chrome()
+</code></pre></div><h2>8、Frame</h2><div class=highlight><pre><code class=language-text><span></span>from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException</p>
+<p>browser = webdriver.Chrome()
 url = &lsquo;<a href="http://www.runoob.com/try/try.php?filename=jqueryui-api-droppable%27">http://www.runoob.com/try/try.php?filename=jqueryui-api-droppable'</a>
-browser.get(url)</p><h4 id=将操作的响应数据换成iframeresult>将操作的响应数据换成iframeResult<a class=anchor href=#%e5%b0%86%e6%93%8d%e4%bd%9c%e7%9a%84%e5%93%8d%e5%ba%94%e6%95%b0%e6%8d%ae%e6%8d%a2%e6%88%90iframeresult>#</a></h4><p>browser.switch_to.frame(&lsquo;iframeResult&rsquo;)
+browser.get(url)</p>
+<h4 id=将操作的响应数据换成iframeresult>将操作的响应数据换成iframeResult<a class=anchor href=#%e5%b0%86%e6%93%8d%e4%bd%9c%e7%9a%84%e5%93%8d%e5%ba%94%e6%95%b0%e6%8d%ae%e6%8d%a2%e6%88%90iframeresult>#</a></h4>
+<p>browser.switch_to.frame(&lsquo;iframeResult&rsquo;)
 source = browser.find_element_by_css_selector(&rsquo;#draggable&rsquo;)
 print(source)
 try:
 logo = browser.find_element_by_class_name(&rsquo;logo&rsquo;)
 except NoSuchElementException:
-print(&lsquo;NO LOGO&rsquo;)</p><h4 id=切换成父元素>切换成父元素<a class=anchor href=#%e5%88%87%e6%8d%a2%e6%88%90%e7%88%b6%e5%85%83%e7%b4%a0>#</a></h4><p>browser.switch_to.parent_frame()
+print(&lsquo;NO LOGO&rsquo;)</p>
+<h4 id=切换成父元素>切换成父元素<a class=anchor href=#%e5%88%87%e6%8d%a2%e6%88%90%e7%88%b6%e5%85%83%e7%b4%a0>#</a></h4>
+<p>browser.switch_to.parent_frame()
 logo = browser.find_element_by_class_name(&rsquo;logo&rsquo;)
 print(logo)
 print(logo.text)
-9、等待9.1、隐式等待当使用了隐式等待执行测试的时候，如果 WebDriver没有在 DOM中找到元素，将继续等待，超出设定时间后则抛出找不到元素的异常, 换句话说，当查找元素或元素并没有立即出现的时候，隐式等待将等待一段时间再查找 DOM，默认的时间是0from selenium import webdriver</p><p>browser = webdriver.Chrome()</p><h4 id=等待10秒>等待10秒<a class=anchor href=#%e7%ad%89%e5%be%8510%e7%a7%92>#</a></h4><p>browser.implicitly_wait(10)
+</code></pre></div><p><br></p><h2>9、等待</h2><h2>9.1、隐式等待</h2><blockquote>当使用了隐式等待执行测试的时候，如果 WebDriver没有在 DOM中找到元素，将继续等待，超出设定时间后则抛出找不到元素的异常, 换句话说，当查找元素或元素并没有立即出现的时候，隐式等待将等待一段时间再查找 DOM，默认的时间是0</blockquote><div class=highlight><pre><code class=language-text><span></span>from selenium import webdriver</p>
+<p>browser = webdriver.Chrome()</p>
+<h4 id=等待10秒>等待10秒<a class=anchor href=#%e7%ad%89%e5%be%8510%e7%a7%92>#</a></h4>
+<p>browser.implicitly_wait(10)
 browser.get(&lsquo;<a href=https://www.zhihu.com/explore%27>https://www.zhihu.com/explore'</a>)
 input = browser.find_element_by_class_name(&lsquo;zu-top-add-question&rsquo;)
 print(input)
-9.2、显示等待显式等待指定某个条件，然后设置最长等待时间。如果在这个时间还没有找到元素，那么便会抛出异常了。 from selenium import webdriver
+</code></pre></div><h2>9.2、显示等待</h2><blockquote>显式等待指定某个条件，然后设置最长等待时间。如果在这个时间还没有找到元素，那么便会抛出异常了。</blockquote><div class=highlight><pre><code class=language-text><span></span>from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait</p><p>browser = webdriver.Chrome()
-browser.get(&lsquo;<a href=https://www.taobao.com/%27>https://www.taobao.com/'</a>)</p><h4 id=显示等待10s-1>显示等待10s<a class=anchor href=#%e6%98%be%e7%a4%ba%e7%ad%89%e5%be%8510s-1>#</a></h4><p>wait = WebDriverWait(browser, 10)</p><h4 id=等待直到元素加载出-1>等待直到元素加载出<a class=anchor href=#%e7%ad%89%e5%be%85%e7%9b%b4%e5%88%b0%e5%85%83%e7%b4%a0%e5%8a%a0%e8%bd%bd%e5%87%ba-1>#</a></h4><p>input = wait.until(EC.presence_of_element_located((By.ID, &lsquo;q&rsquo;)))</p><h4 id=等待直到元素可点击-1>等待直到元素可点击<a class=anchor href=#%e7%ad%89%e5%be%85%e7%9b%b4%e5%88%b0%e5%85%83%e7%b4%a0%e5%8f%af%e7%82%b9%e5%87%bb-1>#</a></h4><p>button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, &lsquo;.btn-search&rsquo;)))
+from selenium.webdriver.support.wait import WebDriverWait</p>
+<p>browser = webdriver.Chrome()
+browser.get(&lsquo;<a href=https://www.taobao.com/%27>https://www.taobao.com/'</a>)</p>
+<h4 id=显示等待10s>显示等待10s<a class=anchor href=#%e6%98%be%e7%a4%ba%e7%ad%89%e5%be%8510s>#</a></h4>
+<p>wait = WebDriverWait(browser, 10)</p>
+<h4 id=等待直到元素加载出>等待直到元素加载出<a class=anchor href=#%e7%ad%89%e5%be%85%e7%9b%b4%e5%88%b0%e5%85%83%e7%b4%a0%e5%8a%a0%e8%bd%bd%e5%87%ba>#</a></h4>
+<p>input = wait.until(EC.presence_of_element_located((By.ID, &lsquo;q&rsquo;)))</p>
+<h4 id=等待直到元素可点击>等待直到元素可点击<a class=anchor href=#%e7%ad%89%e5%be%85%e7%9b%b4%e5%88%b0%e5%85%83%e7%b4%a0%e5%8f%af%e7%82%b9%e5%87%bb>#</a></h4>
+<p>button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, &lsquo;.btn-search&rsquo;)))
 print(input, button)
-title_is 标题是某内容title_contains 标题包含某内容presence_of_element_located 元素加载出，传入定位元组，如(By.ID, &lsquo;p&rsquo;)visibility_of_element_located 元素可见，传入定位元组visibility_of 可见，传入元素对象presence_of_all_elements_located 所有元素加载出text_to_be_present_in_element 某个元素文本包含某文字text_to_be_present_in_element_value 某个元素值包含某文字frame_to_be_available_and_switch_to_it frame加载并切换invisibility_of_element_located 元素不可见element_to_be_clickable 元素可点击staleness_of 判断一个元素是否仍在DOM，可判断页面是否已经刷新element_to_be_selected 元素可选择，传元素对象element_located_to_be_selected 元素可选择，传入定位元组element_selection_state_to_be 传入元素对象以及状态，相等返回True，否则返回Falseelement_located_selection_state_to_be 传入定位元组以及状态，相等返回True，否则返回Falsealert_is_present 是否出现Alert更多操作http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.support.expected_conditions10、前进后退import time
-from selenium import webdriver</p><p>browser = webdriver.Chrome()
+</code></pre></div><ul><li>title_is 标题是某内容</li><li>title_contains 标题包含某内容</li><li>presence_of_element_located 元素加载出，传入定位元组，如(By.ID, &lsquo;p&rsquo;)</li><li>visibility_of_element_located 元素可见，传入定位元组</li><li>visibility_of 可见，传入元素对象</li><li>presence_of_all_elements_located 所有元素加载出</li><li>text_to_be_present_in_element 某个元素文本包含某文字</li><li>text_to_be_present_in_element_value 某个元素值包含某文字</li><li>frame_to_be_available_and_switch_to_it frame加载并切换</li><li>invisibility_of_element_located 元素不可见</li><li>element_to_be_clickable 元素可点击</li><li>staleness_of 判断一个元素是否仍在DOM，可判断页面是否已经刷新</li><li>element_to_be_selected 元素可选择，传元素对象</li><li>element_located_to_be_selected 元素可选择，传入定位元组</li><li>element_selection_state_to_be 传入元素对象以及状态，相等返回True，否则返回False</li><li>element_located_selection_state_to_be 传入定位元组以及状态，相等返回True，否则返回False</li><li>alert_is_present 是否出现Alert</li></ul><p>更多操作</p><blockquote><a href="http://link.zhihu.com/?target=http%3A//selenium-python.readthedocs.io/api.html%23module-selenium.webdriver.support.expected_conditions" class=external target=_blank rel="nofollow noreferrer"><span class=invisible>http://</span><span class=visible>selenium-python.readthedocs.io</span><span class=invisible>/api.html#module-selenium.webdriver.support.expected_conditions</span><span class=ellipsis></span><i class=icon-external></i></a></blockquote><p><br></p><h2>10、前进后退</h2><div class=highlight><pre><code class=language-text><span></span>import time
+from selenium import webdriver</p>
+<p>browser = webdriver.Chrome()
 browser.get(&lsquo;<a href=https://www.baidu.com/%27>https://www.baidu.com/'</a>)
 browser.get(&lsquo;<a href=https://www.taobao.com/%27>https://www.taobao.com/'</a>)
 browser.get(&lsquo;<a href=https://www.python.org/%27>https://www.python.org/'</a>)
@@ -346,19 +396,31 @@ browser.back()
 time.sleep(1)
 browser.forward()
 browser.close()
-11、Cookiesfrom selenium import webdriver</p><p>browser = webdriver.Chrome()
-browser.get(&lsquo;<a href=https://www.zhihu.com/explore%27>https://www.zhihu.com/explore'</a>)</p><h4 id=获得cookies>获得cookies<a class=anchor href=#%e8%8e%b7%e5%be%97cookies>#</a></h4><p>print(browser.get_cookies())</p><h4 id=添加cookie>添加cookie<a class=anchor href=#%e6%b7%bb%e5%8a%a0cookie>#</a></h4><p>browser.add_cookie({&rsquo;name&rsquo;: &rsquo;name&rsquo;, &lsquo;domain&rsquo;: &lsquo;<a href=https://www.zhihu.com>www.zhihu.com</a>&rsquo;, &lsquo;value&rsquo;: &lsquo;germey&rsquo;})
-print(browser.get_cookies())</p><h4 id=删除所有cookies>删除所有cookies<a class=anchor href=#%e5%88%a0%e9%99%a4%e6%89%80%e6%9c%89cookies>#</a></h4><p>browser.delete_all_cookies()
+</code></pre></div><p><br></p><h2>11、Cookies</h2><div class=highlight><pre><code class=language-text><span></span>from selenium import webdriver</p>
+<p>browser = webdriver.Chrome()
+browser.get(&lsquo;<a href=https://www.zhihu.com/explore%27>https://www.zhihu.com/explore'</a>)</p>
+<h4 id=获得cookies>获得cookies<a class=anchor href=#%e8%8e%b7%e5%be%97cookies>#</a></h4>
+<p>print(browser.get_cookies())</p>
+<h4 id=添加cookie>添加cookie<a class=anchor href=#%e6%b7%bb%e5%8a%a0cookie>#</a></h4>
+<p>browser.add_cookie({&rsquo;name&rsquo;: &rsquo;name&rsquo;, &lsquo;domain&rsquo;: &lsquo;<a href=https://www.zhihu.com>www.zhihu.com</a>&rsquo;, &lsquo;value&rsquo;: &lsquo;germey&rsquo;})
+print(browser.get_cookies())</p>
+<h4 id=删除所有cookies>删除所有cookies<a class=anchor href=#%e5%88%a0%e9%99%a4%e6%89%80%e6%9c%89cookies>#</a></h4>
+<p>browser.delete_all_cookies()
 print(browser.get_cookies())
-12、选项卡管理import time
-from selenium import webdriver</p><p>browser = webdriver.Chrome()
-browser.get(&lsquo;<a href=https://www.baidu.com>https://www.baidu.com</a>&rsquo;)</p><h4 id=打开一个选项卡>打开一个选项卡<a class=anchor href=#%e6%89%93%e5%bc%80%e4%b8%80%e4%b8%aa%e9%80%89%e9%a1%b9%e5%8d%a1>#</a></h4><p>browser.execute_script(&lsquo;window.open()&rsquo;)
-print(browser.window_handles)</p><h4 id=选择第二个选项卡>选择第二个选项卡<a class=anchor href=#%e9%80%89%e6%8b%a9%e7%ac%ac%e4%ba%8c%e4%b8%aa%e9%80%89%e9%a1%b9%e5%8d%a1>#</a></h4><p>browser.switch_to_window(browser.window_handles[1])
+</code></pre></div><p><br></p><h2>12、选项卡管理</h2><div class=highlight><pre><code class=language-text><span></span>import time
+from selenium import webdriver</p>
+<p>browser = webdriver.Chrome()
+browser.get(&lsquo;<a href=https://www.baidu.com>https://www.baidu.com</a>&rsquo;)</p>
+<h4 id=打开一个选项卡>打开一个选项卡<a class=anchor href=#%e6%89%93%e5%bc%80%e4%b8%80%e4%b8%aa%e9%80%89%e9%a1%b9%e5%8d%a1>#</a></h4>
+<p>browser.execute_script(&lsquo;window.open()&rsquo;)
+print(browser.window_handles)</p>
+<h4 id=选择第二个选项卡>选择第二个选项卡<a class=anchor href=#%e9%80%89%e6%8b%a9%e7%ac%ac%e4%ba%8c%e4%b8%aa%e9%80%89%e9%a1%b9%e5%8d%a1>#</a></h4>
+<p>browser.switch_to_window(browser.window_handles[1])
 browser.get(&lsquo;<a href=https://www.taobao.com>https://www.taobao.com</a>&rsquo;)
 time.sleep(1)
 browser.switch_to_window(browser.window_handles[0])
 browser.get(&lsquo;<a href=https://python.org>https://python.org</a>&rsquo;)
-13、异常处理</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> selenium <span style=color:#f92672>import</span> webdriver
+</code></pre></div><p><br></p><h2>13、异常处理</h2></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> selenium <span style=color:#f92672>import</span> webdriver
 </span></span><span style=display:flex><span><span style=color:#f92672>from</span> selenium.common.exceptions <span style=color:#f92672>import</span> TimeoutException, NoSuchElementException
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>browser <span style=color:#f92672>=</span> webdriver<span style=color:#f92672>.</span>Chrome()
@@ -371,8 +433,8 @@ browser.get(&lsquo;<a href=https://python.org>https://python.org</a>&rsquo;)
 </span></span><span style=display:flex><span><span style=color:#66d9ef>except</span> NoSuchElementException:
 </span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#39;No Element&#39;</span>)
 </span></span><span style=display:flex><span><span style=color:#66d9ef>finally</span>:
-</span></span><span style=display:flex><span>    browser<span style=color:#f92672>.</span>close()</span></span></code></pre></div><h1 id=tensorflow>TensorFlow<a class=anchor href=#tensorflow>#</a></h1><h3 id=variable>Variable<a class=anchor href=#variable>#</a></h3><p>必须用到:
-```init = tf.initialize_all_variables() # 初始化全部变量</p><p>随后即可:
+</span></span><span style=display:flex><span>    browser<span style=color:#f92672>.</span>close()</span></span></code></pre></div><h1 id=tensorflow>TensorFlow<a class=anchor href=#tensorflow>#</a></h1><h3 id=variable>Variable<a class=anchor href=#variable>#</a></h3><p>必须用到:</p><pre><code>```init = tf.initialize_all_variables() # 初始化全部变量
+</code></pre><p>随后即可:
 ```sess.run(init)</p><h2 id=tensorflow-笔记>Tensorflow 笔记<a class=anchor href=#tensorflow-%e7%ac%94%e8%ae%b0>#</a></h2><p>這是在對照官網學習時的前期入門筆記，其實和官網基本沒有區別，好吧，真的沒有區別。因爲官網真的寫的太好了。
 至於我爲什麼要寫出來，是因爲我之前寫在了紙上，對於邏輯的把握很給力，所以在寫一邊。</p><p>不過TensorFlow 變動真的很大，版本更迭也很快，所以，下方只是理清邏輯，具體的東西還是去官網比較好。只不過我這兒網謎之很難等上去…</p><p>總而言之一句話，先搭好架子再選擇填充材料。就是它的核心邏輯了。而改進也是在架子基礎上去優化優化器。嗯…現在理解就是這樣。</p><h3 id=1-1>1<a class=anchor href=#1-1>#</a></h3><h4 id=导入>导入<a class=anchor href=#%e5%af%bc%e5%85%a5>#</a></h4><pre><code>import tensorflow as tf
 </code></pre><p>步骤：①构建计算图 ②运行计算图</p><hr><h4 id=2>2<a class=anchor href=#2>#</a></h4><h5 id=build-a-simple-computational-graph>Build a simple computational Graph<a class=anchor href=#build-a-simple-computational-graph>#</a></h5><pre><code>node1 = tf.contant(3.0, dtype = tf.float32)
@@ -491,4 +553,4 @@ saver.restore(sess, &quot;save_path/file_name&quot;)	#会将已经保存的变�
 </code></pre><p>这篇写的还不错，等之后用过之后再写。</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div></div><div></div></div><div class="flex flex-wrap justify-between"><span><a href=/docs/programmer/ml/opencv/ class="flex align-center"><img src=/icons/backward.svg class=book-icon alt=Backward>
 <span>OpenCV</span>
 </a></span><span><a href=/docs/programmer/cloudnative/ class="flex align-center"><span>云原生</span>
-<img src=/icons/forward.svg class=book-icon alt=Forward></a></span></div><div class=book-comments></div><script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><ul><li><a href=#plotly>Plotly</a></li></ul></li><li><a href=#matplotlib>matplotlib</a><ul><li><a href=#参数等太多链接最可靠>参数等太多，链接最可靠</a></li><li><a href=#绘图>绘图</a></li><li><a href=#绘制图表>绘制图表</a></li><li><a href=#一表多图>一表多图</a></li><li><a href=#标注点>标注点</a></li><li><a href=#坐标标签显示方案>坐标标签显示方案</a></li><li><a href=#来画一个动态图吧感觉没啥作用所以就小标题了>来画一个动态图吧（感觉没啥作用所以就小标题了）</a></li></ul></li><li><a href=#pandas>pandas</a><ul><li><a href=#dataframe>DataFrame</a></li></ul></li><li><a href=#numpy>numpy</a><ul><li><a href=#random>random</a></li></ul></li><li><a href=#scikit-learn>scikit-learn</a></li><li><a href=#opencv>OpenCV</a><ul><li><a href=#insatll>Insatll</a></li><li><a href=#缺少-libglso1>缺少 libGL.so.1</a></li></ul></li><li><a href=#pil>PIL</a></li></ul><ul><li><a href=#问题>问题</a><ul><li><a href=#sslerror-https>SSLError HTTPS</a></li></ul></li><li><a href=#selenium>Selenium</a><ul><li></li></ul></li></ul><ul><li><ul><li><a href=#variable>Variable</a></li></ul></li><li><a href=#tensorflow-笔记>Tensorflow 笔记</a><ul><li><a href=#1-1>1</a></li></ul></li><li><a href=#tensorflow-笔记-1>Tensorflow 笔记</a><ul><li><a href=#1-2>1</a></li></ul></li></ul></nav></div></aside></main></body></html>
+<img src=/icons/forward.svg class=book-icon alt=Forward></a></span></div><div class=book-comments></div><script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><ul><li><a href=#plotly>Plotly</a></li></ul></li><li><a href=#matplotlib>matplotlib</a><ul><li><a href=#参数等太多链接最可靠>参数等太多，链接最可靠</a></li><li><a href=#绘图>绘图</a></li><li><a href=#绘制图表>绘制图表</a></li><li><a href=#一表多图>一表多图</a></li><li><a href=#标注点>标注点</a></li><li><a href=#坐标标签显示方案>坐标标签显示方案</a></li><li><a href=#来画一个动态图吧感觉没啥作用所以就小标题了>来画一个动态图吧（感觉没啥作用所以就小标题了）</a></li></ul></li><li><a href=#pandas>pandas</a><ul><li><a href=#dataframe>DataFrame</a></li></ul></li><li><a href=#numpy>numpy</a><ul><li><a href=#random>random</a></li></ul></li><li><a href=#scikit-learn>scikit-learn</a></li><li><a href=#opencv>OpenCV</a><ul><li><a href=#insatll>Insatll</a></li><li><a href=#缺少-libglso1>缺少 libGL.so.1</a></li></ul></li><li><a href=#pil>PIL</a></li></ul><ul><li><a href=#问题>问题</a><ul><li><a href=#sslerror-https>SSLError HTTPS</a></li></ul></li><li><a href=#selenium>Selenium</a><ul><li></li></ul></li><li><a href=#4元素交互操作>4、元素交互操作</a><ul><li></li></ul></li></ul><ul><li><ul><li><a href=#variable>Variable</a></li></ul></li><li><a href=#tensorflow-笔记>Tensorflow 笔记</a><ul><li><a href=#1-1>1</a></li></ul></li><li><a href=#tensorflow-笔记-1>Tensorflow 笔记</a><ul><li><a href=#1-2>1</a></li></ul></li></ul></nav></div></aside></main></body></html>

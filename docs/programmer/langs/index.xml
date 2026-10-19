@@ -142,7 +142,7 @@ p str&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;还有颜色 😂 可视效果确实提�
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; authorities;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;//&lt;/span&gt; 表泛型中可以是的&lt;span style="color:#960050;background-color:#1e0010"&gt;`&lt;/span&gt;GrantedAuthority&lt;span style="color:#960050;background-color:#1e0010"&gt;`&lt;/span&gt;所有子类&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="爪哇抽象方法即python父类中直接pass的函数"&gt;爪哇抽象方法(即Python父类中直接&lt;code&gt;pass&lt;/code&gt;的函数…)&lt;a class="anchor" href="#%e7%88%aa%e5%93%87%e6%8a%bd%e8%b1%a1%e6%96%b9%e6%b3%95%e5%8d%b3python%e7%88%b6%e7%b1%bb%e4%b8%ad%e7%9b%b4%e6%8e%a5pass%e7%9a%84%e5%87%bd%e6%95%b0"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;code&gt;abstract&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=#ff0000&gt;&lt;code&gt;abstract&lt;/code&gt;&lt;/font&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;包含抽象方法必须得是抽象类&lt;/li&gt;
 &lt;li&gt;任何子类必须重写父类抽象方法，或者声明自身为抽象类&lt;/li&gt;
@@ -156,7 +156,7 @@ p str&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;还有颜色 😂 可视效果确实提�
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;//其余&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="爪哇接口"&gt;爪哇接口&lt;a class="anchor" href="#%e7%88%aa%e5%93%87%e6%8e%a5%e5%8f%a3"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;code&gt;interface&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;, &lt;!-- raw HTML omitted --&gt;&lt;code&gt;implements&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>Tips of MarkDown</title><link>http://example.org/docs/programmer/langs/tips-of-markdown/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tips-of-markdown/</guid><description>&lt;h1 id="markdown-notes-"&gt;Markdown Notes 📪&lt;a class="anchor" href="#markdown-notes-"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;font color=#ff0000&gt;&lt;code&gt;interface&lt;/code&gt;&lt;/font&gt;, &lt;font color=#0000ff&gt;&lt;code&gt;implements&lt;/code&gt;&lt;/font&gt;&lt;/p&gt;</description></item><item><title>Tips of MarkDown</title><link>http://example.org/docs/programmer/langs/tips-of-markdown/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/tips-of-markdown/</guid><description>&lt;h1 id="markdown-notes-"&gt;Markdown Notes 📪&lt;a class="anchor" href="#markdown-notes-"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;&lt;img src="https://justyy.com/wp-content/uploads/2016/01/markdown-syntax-language.png" alt="markdown" /&gt;&lt;/p&gt;
 &lt;h2 id="对勾和叉叉叉号"&gt;对勾和叉叉(叉号)&lt;a class="anchor" href="#%e5%af%b9%e5%8b%be%e5%92%8c%e5%8f%89%e5%8f%89%e5%8f%89%e5%8f%b7"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;#对勾 #叉号&lt;/p&gt;
@@ -186,4 +186,45 @@ p str&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;还有颜色 😂 可视效果确实提�
 ···print “hello Markdown”···
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;欸？ 怎么回事？上面的文字
-莫非是用Tab能将其放到一个容器里？&lt;/p&gt;</description></item></channel></rss>
+莫非是用Tab能将其放到一个容器里？&lt;/p&gt;</description></item><item><title/><link>http://example.org/docs/programmer/langs/ai%E7%BC%96%E7%A8%8B/%E9%85%8D%E7%BD%AE%E9%A3%9E%E4%B9%A6mcp/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/ai%E7%BC%96%E7%A8%8B/%E9%85%8D%E7%BD%AE%E9%A3%9E%E4%B9%A6mcp/</guid><description>&lt;h1 id="飞书-mcp-接入--ai-托管飞书任务-实战记录"&gt;飞书 MCP 接入 + AI 托管飞书任务 实战记录&lt;a class="anchor" href="#%e9%a3%9e%e4%b9%a6-mcp-%e6%8e%a5%e5%85%a5--ai-%e6%89%98%e7%ae%a1%e9%a3%9e%e4%b9%a6%e4%bb%bb%e5%8a%a1-%e5%ae%9e%e6%88%98%e8%ae%b0%e5%bd%95"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="一目标"&gt;一、目标&lt;a class="anchor" href="#%e4%b8%80%e7%9b%ae%e6%a0%87"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;让 Cursor 里的 AI 直接&amp;quot;统领飞书&amp;quot;：读任务、读写文档/多维表格/日历、发消息，并把&amp;quot;飞书待办 → 调本地 skill 分析/执行 → 结果写回任务 → 回复来源消息@人&amp;quot;整条链路自动化。&lt;/p&gt;
+&lt;h2 id="二接入-lark-mcp官方-larksuiteoapilark-mcp"&gt;二、接入 lark-mcp（官方 &lt;code&gt;@larksuiteoapi/lark-mcp&lt;/code&gt;）&lt;a class="anchor" href="#%e4%ba%8c%e6%8e%a5%e5%85%a5-lark-mcp%e5%ae%98%e6%96%b9-larksuiteoapilark-mcp"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;环境：Node ≥ 20（实测 v22 OK），最新版 0.5.x。&lt;/li&gt;
+&lt;li&gt;配置写在全局 &lt;code&gt;~/.cursor/mcp.json&lt;/code&gt; 的 &lt;code&gt;mcpServers.lark-mcp&lt;/code&gt;：
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;command&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;npx&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;args&amp;#34;&lt;/span&gt;: [&lt;span style="color:#e6db74"&gt;&amp;#34;-y&amp;#34;&lt;/span&gt;,&lt;span style="color:#e6db74"&gt;&amp;#34;@larksuiteoapi/lark-mcp&amp;#34;&lt;/span&gt;,&lt;span style="color:#e6db74"&gt;&amp;#34;mcp&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;-a&amp;#34;&lt;/span&gt;,&lt;span style="color:#e6db74"&gt;&amp;#34;&amp;lt;App ID&amp;gt;&amp;#34;&lt;/span&gt;,&lt;span style="color:#e6db74"&gt;&amp;#34;-s&amp;#34;&lt;/span&gt;,&lt;span style="color:#e6db74"&gt;&amp;#34;&amp;lt;App Secret&amp;gt;&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;-d&amp;#34;&lt;/span&gt;,&lt;span style="color:#e6db74"&gt;&amp;#34;https://open.feishu.cn&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;--token-mode&amp;#34;&lt;/span&gt;,&lt;span style="color:#e6db74"&gt;&amp;#34;auto&amp;#34;&lt;/span&gt;,&lt;span style="color:#e6db74"&gt;&amp;#34;--oauth&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;-t&amp;#34;&lt;/span&gt;,&lt;span style="color:#e6db74"&gt;&amp;#34;preset.default,preset.im.default,preset.calendar.default,preset.task.default,task.v2.task.list,task.v2.task.get,im.v1.message.reply,im.v1.message.get,im.v1.chat.get,contact.v3.user.batchGetId&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;App ID/Secret：开放平台 → 自建应用 → 凭证与基础信息。&lt;/li&gt;
+&lt;li&gt;用户身份：终端 &lt;code&gt;npx -y @larksuiteoapi/lark-mcp login -a &amp;lt;id&amp;gt; -s &amp;lt;secret&amp;gt;&lt;/code&gt;，60s 内点授权 URL。&lt;/li&gt;
+&lt;li&gt;国际版 Lark 把 &lt;code&gt;-d&lt;/code&gt; 换 &lt;code&gt;https://open.larksuite.com&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="三token-mode-选型关键"&gt;三、token-mode 选型（关键）&lt;a class="anchor" href="#%e4%b8%89token-mode-%e9%80%89%e5%9e%8b%e5%85%b3%e9%94%ae"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;user_access_token&lt;/code&gt; 模式会&lt;strong&gt;按 token 类型过滤工具&lt;/strong&gt;，把&amp;quot;机器人发消息(send_as_bot)&amp;ldquo;等 tenant 工具滤掉 → 发消息工具不出现。&lt;/li&gt;
+&lt;li&gt;解法：用 &lt;code&gt;--token-mode auto&lt;/code&gt;，&lt;strong&gt;不按 token 过滤&lt;/strong&gt;，每次调用用 &lt;code&gt;useUAT&lt;/code&gt; 控制身份。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="四踩坑清单最值钱的部分"&gt;四、踩坑清单（最值钱的部分）&lt;a class="anchor" href="#%e5%9b%9b%e8%b8%a9%e5%9d%91%e6%b8%85%e5%8d%95%e6%9c%80%e5%80%bc%e9%92%b1%e7%9a%84%e9%83%a8%e5%88%86"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;权限是逐步暴露的&lt;/strong&gt;：工具&amp;quot;注册了&amp;rdquo;≠ scope &amp;ldquo;授权了&amp;rdquo;，真调用才报 &lt;code&gt;99991672 缺 scope&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;加 scope 必须发版本 + 重登&lt;/strong&gt;：新 scope 要&amp;quot;发布生效版本&amp;quot;才进授权页；&lt;code&gt;login&lt;/code&gt; 重登才进 token。&lt;strong&gt;重启 MCP ≠ 重新登录&lt;/strong&gt;（进程复用磁盘 token；且内存里可能还留着旧 token 造成假象）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;机器人名字/头像&lt;/strong&gt; = 已发布版本信息，改完要发版本，老消息不回刷。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IM 消息发送方永远是「应用」&lt;/strong&gt;：OpenAPI 发/回消息即使带用户令牌也显示 bot，无法以真人名义发；&lt;code&gt;useUAT&lt;/code&gt; 只决定&amp;quot;能往哪些会话发 / 资源归属&amp;quot;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;回复原消息要 message_id&lt;/strong&gt;：任务来源链接给的是 &lt;code&gt;position&lt;/code&gt;（消息序号），不是 message_id；要 &lt;code&gt;im.v1.message.list&lt;/code&gt; 读群历史定位，&lt;strong&gt;需 &lt;code&gt;im:message.group_msg&lt;/code&gt;&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;机器人必须在群里&lt;/strong&gt;才能在该群发/回消息。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;lindorm&lt;/strong&gt;：&lt;code&gt;rows&lt;/code&gt; 是保留字；GROUP BY SELECT 不能放字符串常量别名；查询带 offer_id/event_date 等高选择性键。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="五实战产出"&gt;五、实战产出&lt;a class="anchor" href="#%e4%ba%94%e5%ae%9e%e6%88%98%e4%ba%a7%e5%87%ba"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;事件配置&lt;/strong&gt;：com.paymaya offer 8037811/8037812 &lt;code&gt;REGV2_SUCCESS&lt;/code&gt; 配 40%（offer 级 type=3，source 79/PH，event_value 沿用现有，已核验 id 23418/23419）；source 19 sappoc &lt;code&gt;af_complete_registration&lt;/code&gt; 查库已 50% → no-op。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;行为异常分析&lt;/strong&gt;：6462846884 / 1658697924 / 561524792 事件执行正常（被拒属 MMP 端）；&lt;strong&gt;1500217666 无任何 active 事件配置 → 真·&amp;ldquo;未出事件&amp;rdquo;，需补配&lt;/strong&gt;；1615506534 仅启动事件；6739185971 停量。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;任务回写规约&lt;/strong&gt;：一次 &lt;code&gt;task.patch&lt;/code&gt; 改 summary+description；&lt;strong&gt;来源 URL 原样保留&lt;/strong&gt;；执行类标 &lt;code&gt;【AI已完成】&lt;/code&gt;、分析类标 &lt;code&gt;【AI已分析】&lt;/code&gt;、缺信息标 &lt;code&gt;【AI已分析·待补充】&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="六对账口径行为异常"&gt;六、对账口径（行为异常）&lt;a class="anchor" href="#%e5%85%ad%e5%af%b9%e8%b4%a6%e5%8f%a3%e5%be%84%e8%a1%8c%e4%b8%ba%e5%bc%82%e5%b8%b8"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;expected = install_total × e_rate/100&lt;/code&gt;，&lt;code&gt;实际 = offer_retention_event_log.raw_event_count&lt;/code&gt;。无 active 配置或执行=0 才是真漏；事件在跑但被拒，多为 MMP 行为质量判定。&lt;/p&gt;</description></item></channel></rss>

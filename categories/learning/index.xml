@@ -1,46 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Learning on Ian's Blog</title><link>http://example.org/categories/learning/</link><description>Recent content in Learning on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 16 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/learning/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker</title><link>http://example.org/docs/programmer/cloudnative/note-of-docker/</link><pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/note-of-docker/</guid><description>&lt;h1 id="docker"&gt;Docker&lt;a class="anchor" href="#docker"&gt;#&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;&lt;img src="https://mma.prnewswire.com/media/776689/New_Docker_logo_Logo.jpg?p=facebook" alt="docker img" title="docker"/&gt;&lt;/p&gt;
-&lt;h2 id="教程手册"&gt;教程手册&lt;a class="anchor" href="#%e6%95%99%e7%a8%8b%e6%89%8b%e5%86%8c"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://yeasy.gitbook.io/docker_practice/introduction/why"&gt;好用的使用教程&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="install"&gt;Install&lt;a class="anchor" href="#install"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;略过~ 😁&lt;/p&gt;
-&lt;h2 id="打镜像和跑"&gt;打镜像和跑&lt;a class="anchor" href="#%e6%89%93%e9%95%9c%e5%83%8f%e5%92%8c%e8%b7%91"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker build -t server:v0 . -f server.dockerfile&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="跑"&gt;跑&lt;a class="anchor" href="#%e8%b7%91"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run -p 9080:80 --name server server:v0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="指定启动命令"&gt;指定启动命令&lt;a class="anchor" href="#%e6%8c%87%e5%ae%9a%e5%90%af%e5%8a%a8%e5%91%bd%e4%bb%a4"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &amp;#34;echo hello&amp;#34;&lt;/code&gt;&lt;/pre&gt;&lt;h4 id="加入自定义网络"&gt;加入自定义网络&lt;a class="anchor" href="#%e5%8a%a0%e5%85%a5%e8%87%aa%e5%ae%9a%e4%b9%89%e7%bd%91%e7%bb%9c"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;--network {{network name}}&lt;/code&gt;
-详见：[[#Network]]&lt;/p&gt;
-&lt;h4 id="跑出问题-进入容器排查"&gt;跑出问题-进入容器排查&lt;a class="anchor" href="#%e8%b7%91%e5%87%ba%e9%97%ae%e9%a2%98-%e8%bf%9b%e5%85%a5%e5%ae%b9%e5%99%a8%e6%8e%92%e6%9f%a5"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo docker run -it -p 9080:80 --name nova_server nova_server:v0 sh -c &lt;span style="color:#e6db74"&gt;&amp;#34;bash&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使用&lt;code&gt;-it&lt;/code&gt;进入容器手动执行命令进行调试&lt;/p&gt;
-&lt;h4 id="启动全部容器"&gt;启动全部容器&lt;a class="anchor" href="#%e5%90%af%e5%8a%a8%e5%85%a8%e9%83%a8%e5%ae%b9%e5%99%a8"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker ps -a | grep &lt;span style="color:#e6db74"&gt;&amp;#34;Exited&amp;#34;&lt;/span&gt; | awk &lt;span style="color:#e6db74"&gt;&amp;#39;{print $1}&amp;#39;&lt;/span&gt; | xargs docker start&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="network"&gt;Network&lt;a class="anchor" href="#network"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;docker run时容器加入方法-redis为例&lt;/li&gt;
-&lt;li&gt;后期加入方式&lt;/li&gt;
-&lt;li&gt;创建一个新网&lt;/li&gt;
-&lt;li&gt;检测&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-makefile" data-lang="makefile"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; init_redis:
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker run -p 6379:6379 &lt;span style="color:#ae81ff"&gt;\\&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	--network websafe-network &lt;span style="color:#ae81ff"&gt;\\&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	--name redislatest redis:latest --requirepass 3b21d032a7fd8eb51fa7bd8a2e812b78b7b3a36f 
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; join_network:
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network connect websafe-network mysql56
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network connect websafe-network daemon-xxx
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; init_network:
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network create websafe-network
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; check_network:
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network inspect websafe-network
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 	docker network inspect websafe-network | findStr IPv4Address
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="删除"&gt;删除&lt;a class="anchor" href="#%e5%88%a0%e9%99%a4"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;h2 id="可视化"&gt;可视化&lt;a class="anchor" href="#%e5%8f%af%e8%a7%86%e5%8c%96"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;go install github.com/jesseduffield/lazydocker@latest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote class='book-hint '&gt;
-&lt;p&gt;如果需要&lt;code&gt;sudo&lt;/code&gt;权限的话无法直接执行命令，只能where获取原始路径后&lt;code&gt;sudo&lt;/code&gt;+原始路径执行
-如：&lt;/p&gt;</description></item><item><title>Docker</title><link>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/</link><pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/</guid><description>&lt;h1 id="docker"&gt;Docker&lt;a class="anchor" href="#docker"&gt;#&lt;/a&gt;&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Learning on Ian's Blog</title><link>http://example.org/categories/learning/</link><description>Recent content in Learning on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 16 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/learning/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker</title><link>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/</link><pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/</guid><description>&lt;h1 id="docker"&gt;Docker&lt;a class="anchor" href="#docker"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;&lt;img src="https://mma.prnewswire.com/media/776689/New_Docker_logo_Logo.jpg?p=facebook" alt="docker img" title="docker"/&gt;&lt;/p&gt;
 &lt;h2 id="教程手册"&gt;教程手册&lt;a class="anchor" href="#%e6%95%99%e7%a8%8b%e6%89%8b%e5%86%8c"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://yeasy.gitbook.io/docker_practice/introduction/why"&gt;好用的使用教程&lt;/a&gt;&lt;/p&gt;
@@ -180,31 +138,31 @@ server {
 &lt;p&gt;粘贴自: &lt;a href="https://blog.csdn.net/l1028386804/article/details/72801492"&gt;这里&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="概览"&gt;概览&lt;a class="anchor" href="#%e6%a6%82%e8%a7%88"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;table&gt;
- &lt;thead&gt;
- &lt;tr&gt;
- &lt;th style="text-align: right"&gt;VIP&lt;/th&gt;
- &lt;th style="text-align: center"&gt;IP&lt;/th&gt;
- &lt;th style="text-align: center"&gt;主机名&lt;/th&gt;
- &lt;th style="text-align: center"&gt;Nginx端口&lt;/th&gt;
- &lt;th style="text-align: left"&gt;默认主从&lt;/th&gt;
- &lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
- &lt;tr&gt;
- &lt;td style="text-align: right"&gt;192.168.50.130&lt;/td&gt;
- &lt;td style="text-align: center"&gt;192.168.50.133&lt;/td&gt;
- &lt;td style="text-align: center"&gt;liuyazhuang133&lt;/td&gt;
- &lt;td style="text-align: center"&gt;88&lt;/td&gt;
- &lt;td style="text-align: left"&gt;MASTER&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td style="text-align: right"&gt;192.168.50.130&lt;/td&gt;
- &lt;td style="text-align: center"&gt;192.168.50.134&lt;/td&gt;
- &lt;td style="text-align: center"&gt;liuyazhuang134&lt;/td&gt;
- &lt;td style="text-align: center"&gt;88&lt;/td&gt;
- &lt;td style="text-align: left"&gt;BACKUP&lt;/td&gt;
- &lt;/tr&gt;
- &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style="text-align: right"&gt;VIP&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;IP&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;主机名&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;Nginx端口&lt;/th&gt;
+					&lt;th style="text-align: left"&gt;默认主从&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: right"&gt;192.168.50.130&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;192.168.50.133&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;liuyazhuang133&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;88&lt;/td&gt;
+					&lt;td style="text-align: left"&gt;MASTER&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: right"&gt;192.168.50.130&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;192.168.50.134&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;liuyazhuang134&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;88&lt;/td&gt;
+					&lt;td style="text-align: left"&gt;BACKUP&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h3 id="主机器配置"&gt;主机器配置&lt;a class="anchor" href="#%e4%b8%bb%e6%9c%ba%e5%99%a8%e9%85%8d%e7%bd%ae"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vi /etc/keepalived/keepalived.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex="0"&gt;&lt;code class="language-conf" data-lang="conf"&gt;# 主要
@@ -340,7 +298,7 @@ p str&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;还有颜色 😂 可视效果确实提�
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; authorities;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;//&lt;/span&gt; 表泛型中可以是的&lt;span style="color:#960050;background-color:#1e0010"&gt;`&lt;/span&gt;GrantedAuthority&lt;span style="color:#960050;background-color:#1e0010"&gt;`&lt;/span&gt;所有子类&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="爪哇抽象方法即python父类中直接pass的函数"&gt;爪哇抽象方法(即Python父类中直接&lt;code&gt;pass&lt;/code&gt;的函数…)&lt;a class="anchor" href="#%e7%88%aa%e5%93%87%e6%8a%bd%e8%b1%a1%e6%96%b9%e6%b3%95%e5%8d%b3python%e7%88%b6%e7%b1%bb%e4%b8%ad%e7%9b%b4%e6%8e%a5pass%e7%9a%84%e5%87%bd%e6%95%b0"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;code&gt;abstract&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=#ff0000&gt;&lt;code&gt;abstract&lt;/code&gt;&lt;/font&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;包含抽象方法必须得是抽象类&lt;/li&gt;
 &lt;li&gt;任何子类必须重写父类抽象方法，或者声明自身为抽象类&lt;/li&gt;
@@ -354,7 +312,7 @@ p str&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;还有颜色 😂 可视效果确实提�
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;//其余&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="爪哇接口"&gt;爪哇接口&lt;a class="anchor" href="#%e7%88%aa%e5%93%87%e6%8e%a5%e5%8f%a3"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;code&gt;interface&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;, &lt;!-- raw HTML omitted --&gt;&lt;code&gt;implements&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>Golang笔记</title><link>http://example.org/docs/programmer/langs/golang/note-of-golang/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/golang/note-of-golang/</guid><description>&lt;h1 id="golang笔记"&gt;Golang笔记&lt;a class="anchor" href="#golang%e7%ac%94%e8%ae%b0"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;font color=#ff0000&gt;&lt;code&gt;interface&lt;/code&gt;&lt;/font&gt;, &lt;font color=#0000ff&gt;&lt;code&gt;implements&lt;/code&gt;&lt;/font&gt;&lt;/p&gt;</description></item><item><title>Golang笔记</title><link>http://example.org/docs/programmer/langs/golang/note-of-golang/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/golang/note-of-golang/</guid><description>&lt;h1 id="golang笔记"&gt;Golang笔记&lt;a class="anchor" href="#golang%e7%ac%94%e8%ae%b0"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;&lt;img src="https://wallpapercave.com/wp/wp7041189.jpg" alt="golang" title="tmp"/&gt;
 先贴一个客观的教程文档网站&lt;a href="http://www.runoob.com/go/go-slice.html"&gt;http://www.runoob.com/go/go-slice.html&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="垃圾回收"&gt;垃圾回收&lt;a class="anchor" href="#%e5%9e%83%e5%9c%be%e5%9b%9e%e6%94%b6"&gt;#&lt;/a&gt;&lt;/h2&gt;
@@ -489,10 +447,10 @@ ctrl v、I、#、Esc
 &lt;li&gt;改变高度&lt;code&gt;Ctrl + w&lt;/code&gt; +-&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id="more-and-less"&gt;more and less&lt;a class="anchor" href="#more-and-less"&gt;#&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;阅读器~~~ 因为经常读大文件发现了这两个的无敌好处——&lt;!-- raw HTML omitted --&gt;快&lt;!-- raw HTML omitted --&gt;。&lt;/p&gt;</description></item><item><title>Vn.Py学习笔记（Python交易平台框架）</title><link>http://example.org/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/</guid><description>&lt;p&gt;author: Ian&lt;/p&gt;
+&lt;p&gt;阅读器~~~ 因为经常读大文件发现了这两个的无敌好处——&lt;font color=#12eeee&gt;快&lt;/font&gt;。&lt;/p&gt;</description></item><item><title>Vn.Py学习笔记（Python交易平台框架）</title><link>http://example.org/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/</guid><description>&lt;p&gt;author: Ian&lt;/p&gt;
 &lt;h1 id="vnpy笔记-"&gt;Vn.Py笔记 ✏📔&lt;a class="anchor" href="#vnpy%e7%ac%94%e8%ae%b0-"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;h2 id="vnpy"&gt;&lt;img src="https://static.vnpy.com/static/img/index/2019-5-27/mainwindow.PNG" alt="vn.py" /&gt;&lt;a class="anchor" href="#vnpy"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;一个开源Python交易软件，主使用CTP协议。当然，还有其他协议了其源项目在&lt;a href="http://www.vnpy.org/"&gt;http://www.vnpy.org/&lt;/a&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=green&gt;一个开源Python交易软件，主使用CTP协议。当然，还有其他协议了其源项目在&lt;a href="http://www.vnpy.org/"&gt;http://www.vnpy.org/&lt;/a&gt; &lt;/font&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;hr&gt;
 &lt;hr&gt;
@@ -512,11 +470,11 @@ OrderRef（OrderActionRef）值大于之前的最大值，开发多线程客户�
 注意。
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;CTP-API库：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;error.dtd\error.xml 错误定义文件 ---- ThostFrfcMdApi.h 
+&lt;pre&gt;&lt;code&gt;error.dtd\error.xml 错误定义文件 ---- ThostFrfcMdApi.h
 交易接口类定义文件 
 ——— ThostFtfcUserApiDataType.h 类型定义文件 ------ 
 thostmduserapi.lib,thostmduserpi.dll 行情接口库文件 ----- 
-thosttraderapi.lib,thosttraderapi.dll交易接口库文件 ----- 
+thosttraderapi.lib,thosttraderapi.dll交易接口库文件 -----
 
 交易和行情接口类定义文件都包含API 和 SPI类定义，客户端使用API向CTP后台
 发送请求，CTP后台则使用SPI向客户端回传响应及回报
@@ -539,7 +497,25 @@ OnRspSubMarketDAta
 用户
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-至此订阅完成&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;
-当用户的某次请求发生错误时，会通过OnRspError通知用户 MdApi也含有退订合约、登出功能。 而一般退出程序则直接杀进程（不太安全便是）&lt;/p&gt;</description></item><item><title>数据库-MySQL篇</title><link>http://example.org/docs/programmer/database/note-of-db-data---mysql/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/database/note-of-db-data---mysql/</guid><description>&lt;h1 id="mysql数据库--"&gt;MySQL数据库 🖥 📊🖥&lt;a class="anchor" href="#mysql%e6%95%b0%e6%8d%ae%e5%ba%93--"&gt;#&lt;/a&gt;&lt;/h1&gt;
+当用户的某次请求发生错误时，会通过OnRspError通知用户 MdApi也含有退订合约、登出功能。 而一般退出程序则直接杀进程（不太安全便是）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;TraderApi：（交易相关）
+ 不同于以上的有 注册TraderSpi对象的指针后需要调用TraderApi对象的
+SubscribePrivateTopic和SubscribePublicTopic方法去选择公开和私有数据流的重
+传方法
+ 对于期货柜台，每一日第一次登陆需要先查询前一日的结算单，等待查询
+结果返回，确认，才可进行后续操作（CTP、恒生UFT），证券（LTS）无此要求
+ 上一步完成后，用户可以调用ReqQryInstrument的方法查询柜台上所有可
+以交易的合约信息（包括代码、中文名、涨跌停、最小价位变动、合约乘数等大
+量细节），一般是在这里获得合约信息列表后，再去MdApi中订阅合约；经常有
+人问为什么在MdApi中找不到查询可供订阅的合约代码的函数，这里尤其要注
+意，必须通过TraderApi来获取
+ 当用户报单、成交状态发生变化时，TraderApi会自动通过OnRtnOrder、
+OnRtnTrade通知，无需额外订阅
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;/&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;封装API&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;****/
+封装后API的动作：
+主动函数： 调用封装API主动函数，传入Python变量作为参数—&amp;gt;封装API将Python变量转换成C++变量—&amp;gt;API调用原生API主动函数传入C++变量作为参数
+回掉函数： 交易柜台通过原生API传入参数为C++变量-&amp;gt;封装API将C++变量转换为Python变量-&amp;gt;封装API调用封装后的回调函数想Python程序中推送数&lt;/p&gt;</description></item><item><title>数据库-MySQL篇</title><link>http://example.org/docs/programmer/database/note-of-db-data---mysql/</link><pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/database/note-of-db-data---mysql/</guid><description>&lt;h1 id="mysql数据库--"&gt;MySQL数据库 🖥 📊🖥&lt;a class="anchor" href="#mysql%e6%95%b0%e6%8d%ae%e5%ba%93--"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;&lt;img src="https://webassets.mongodb.com/_com_assets/cms/kmxrodmee9int5s1v-HP_Highlight%202.svg" alt="db" /&gt;&lt;/p&gt;
 &lt;h1 id="安装"&gt;安装&lt;a class="anchor" href="#%e5%ae%89%e8%a3%85"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;h2 id="docker"&gt;docker&lt;a class="anchor" href="#docker"&gt;#&lt;/a&gt;&lt;/h2&gt;

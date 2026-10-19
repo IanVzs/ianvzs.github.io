@@ -1,0 +1,191 @@
+/* ===== 基础重置 ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body.gh-profile-page {
+  margin: 0;
+  padding: 0;
+  background: #0d1117;
+  color: #c9d1d9;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 容器 ===== */
+.gh-container {
+  max-width: 1012px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+
+/* ===== 通用居中 ===== */
+.gh-center {
+  text-align: center;
+  margin: 16px 0;
+}
+
+.gh-center img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* ===== Header Banner ===== */
+.gh-banner {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0 0 8px 8px;
+}
+
+/* ===== 分节标题 ===== */
+.gh-section-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #58a6ff;
+  margin: 32px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #30363d;
+  letter-spacing: 0.02em;
+}
+
+/* ===== 分隔线 ===== */
+.gh-hr {
+  border: 0;
+  border-top: 1px solid #30363d;
+  margin: 32px 0;
+}
+
+/* ===== ASCII 卡片 ===== */
+.gh-ascii {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #c9d1d9;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 24px 0;
+  overflow-x: auto;
+  white-space: pre;
+  tab-size: 4;
+}
+
+/* ===== 双列网格 ===== */
+.gh-grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.gh-grid2 img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== 底部导航 ===== */
+.gh-nav {
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+.gh-nav a {
+  color: #58a6ff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.gh-nav a:hover {
+  color: #79c0ff;
+  text-decoration: underline;
+}
+
+.gh-sep {
+  color: #484f58;
+  margin: 0 10px;
+}
+
+/* ===== Footer 波浪 ===== */
+.gh-footer {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 24px;
+}
+
+/* ===== 滚动条（深色） ===== */
+.gh-ascii::-webkit-scrollbar {
+  height: 8px;
+}
+
+.gh-ascii::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+
+.gh-ascii::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 4px;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+  .gh-container {
+    padding: 0 10px 32px;
+  }
+
+  .gh-grid2 {
+    grid-template-columns: 1fr;
+  }
+
+  .gh-ascii {
+    font-size: 11px;
+    padding: 14px 16px;
+  }
+
+  .gh-section-title {
+    font-size: 1.15rem;
+  }
+
+  .gh-center img {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .gh-ascii {
+    font-size: 9px;
+  }
+}
+/* 解除 Hugo Book 主题对内容区的宽度限制 */
+.book-page {
+  max-width: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* 首页内容居中容器 */
+.gh-profile {
+  max-width: 1012px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+
+/* 隐藏首页侧边栏，获得全宽 GitHub 风格（如需保留侧边栏，删除下面这条） */
+.book-menu {
+  display: none !important;
+}
+
+/* 保留主题 header 背景与文字颜色 */
+.book-header {
+  background: #0d1117;
+  border-bottom: 1px solid #30363d;
+}

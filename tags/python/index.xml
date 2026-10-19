@@ -1,4 +1,42 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on Ian's Blog</title><link>http://example.org/tags/python/</link><description>Recent content in Python on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 24 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Python包管理</title><link>http://example.org/docs/programmer/langs/python/python%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link><pubDate>Mon, 24 Mar 2025 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/python/python%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</guid><description>&lt;h2 id="rye-简单使用指南"&gt;[[Rye 简单使用指南]]&lt;a class="anchor" href="#rye-%e7%ae%80%e5%8d%95%e4%bd%bf%e7%94%a8%e6%8c%87%e5%8d%97"&gt;#&lt;/a&gt;&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on Ian's Blog</title><link>http://example.org/tags/python/</link><description>Recent content in Python on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 20 Sep 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Python QA</title><link>http://example.org/docs/programmer/basetc/qa/python-qa/</link><pubDate>Sun, 20 Sep 2026 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/qa/python-qa/</guid><description>&lt;p&gt;下面是一份修复后的版本。主要改动：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;删除所有失效链接和纯外链引用；&lt;/li&gt;
+&lt;li&gt;将 Python 2 相关内容更新为 Python 3；&lt;/li&gt;
+&lt;li&gt;修正原文中容易误导或错误的表述；&lt;/li&gt;
+&lt;li&gt;代码统一为 Python 3 可运行；&lt;/li&gt;
+&lt;li&gt;保留原文档结构，但做了精简和勘误。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id="python-语言特性python-3-修复版"&gt;Python 语言特性（Python 3 修复版）&lt;a class="anchor" href="#python-%e8%af%ad%e8%a8%80%e7%89%b9%e6%80%a7python-3-%e4%bf%ae%e5%a4%8d%e7%89%88"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="1-python-的函数参数传递"&gt;1. Python 的函数参数传递&lt;a class="anchor" href="#1-python-%e7%9a%84%e5%87%bd%e6%95%b0%e5%8f%82%e6%95%b0%e4%bc%a0%e9%80%92"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Python 的参数传递既不是“值传递”，也不是“引用传递”，而是 &lt;strong&gt;对象引用传递&lt;/strong&gt;（call by object reference）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;变量名只是对象的引用；&lt;/li&gt;
+&lt;li&gt;函数收到的是引用的副本；&lt;/li&gt;
+&lt;li&gt;如果对象不可变（int、str、tuple、frozenset），函数内重新赋值不会影响外部；&lt;/li&gt;
+&lt;li&gt;如果对象可变（list、dict、set），函数内原地修改会影响外部。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;a &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;fun&lt;/span&gt;(a):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; a &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;fun(a)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(a) &lt;span style="color:#75715e"&gt;# 1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;a &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;fun&lt;/span&gt;(a):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; a&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;fun(a)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(a) &lt;span style="color:#75715e"&gt;# [1]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;用 &lt;code&gt;id&lt;/code&gt; 观察：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;a &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;fun&lt;/span&gt;(a):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(&lt;span style="color:#e6db74"&gt;&amp;#34;func_in&amp;#34;&lt;/span&gt;, id(a))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; a &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(&lt;span style="color:#e6db74"&gt;&amp;#34;re-point&amp;#34;&lt;/span&gt;, id(a), id(&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(&lt;span style="color:#e6db74"&gt;&amp;#34;func_out&amp;#34;&lt;/span&gt;, id(a), id(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;fun(a)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(a) &lt;span style="color:#75715e"&gt;# 1&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;不可变对象重新赋值后，引用指向新对象；可变对象原地修改时，引用不变。&lt;/p&gt;
+&lt;h2 id="2-python-中的元类metaclass"&gt;2. Python 中的元类（metaclass）&lt;a class="anchor" href="#2-python-%e4%b8%ad%e7%9a%84%e5%85%83%e7%b1%bbmetaclass"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;元类是“创建类的类”。默认情况下，&lt;code&gt;type&lt;/code&gt; 就是所有类的元类。元类常用于 ORM、框架等需要控制类创建过程的场景。日常业务开发很少直接使用。&lt;/p&gt;</description></item><item><title>Python包管理</title><link>http://example.org/docs/programmer/langs/python/python%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link><pubDate>Mon, 24 Mar 2025 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/python/python%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</guid><description>&lt;h2 id="rye-简单使用指南"&gt;[[Rye 简单使用指南]]&lt;a class="anchor" href="#rye-%e7%ae%80%e5%8d%95%e4%bd%bf%e7%94%a8%e6%8c%87%e5%8d%97"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Rye 是一个由 Flask 作者 Armin Ronacher 开发的 Python 版本和依赖管理工具，类似于 Pyenv + Poetry 的组合。&lt;/p&gt;
 &lt;h2 id="安装-rye"&gt;安装 Rye&lt;a class="anchor" href="#%e5%ae%89%e8%a3%85-rye"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl --proto &lt;span style="color:#e6db74"&gt;&amp;#39;=https&amp;#39;&lt;/span&gt; --tlsv1.2 -sSf https://sh.rustup.rs | sh &lt;span style="color:#75715e"&gt;# 安装cargo&lt;/span&gt;
@@ -445,12 +483,12 @@ for i in self.dealPoints:
  plt.scatter([i[0]], [i[1]], color = 'c') 
  for ii in self.ydealPoints:
  plt.scatter([ii[0]], [ii[1]], color = 'm')
- 
+
 plt.title('Tick &amp;amp; TradePoint')
 plt.legend()
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;plt.legend()&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;b&gt;plt.legend()&lt;/b&gt;
 # show() 之前不加这句是不会显示出标注的呦&lt;/p&gt;</description></item><item><title>Python 常用库</title><link>http://example.org/docs/programmer/langs/python/notespython/</link><pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/langs/python/notespython/</guid><description>&lt;p&gt;&lt;img src="https://www.python.org/static/img/python-logo@2x.png" alt="python" /&gt;&lt;/p&gt;
 &lt;h1 id="pydantic"&gt;pydantic&lt;a class="anchor" href="#pydantic"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;h2 id="来自类"&gt;来自类&lt;a class="anchor" href="#%e6%9d%a5%e8%87%aa%e7%b1%bb"&gt;#&lt;/a&gt;&lt;/h2&gt;

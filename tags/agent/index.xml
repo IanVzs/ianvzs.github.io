@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Agent on Ian's Blog</title><link>http://example.org/tags/agent/</link><description>Recent content in Agent on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 01 Sep 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/agent/index.xml" rel="self" type="application/rss+xml"/><item><title>Agent QA</title><link>http://example.org/docs/programmer/basetc/qa/agent-qa/</link><pubDate>Tue, 01 Sep 2026 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/basetc/qa/agent-qa/</guid><description>&lt;h3 id="q1你简历中提到感知-决策-执行多智能体系统请详细描述一下它的架构设计以及agent之间是怎么协同工作的"&gt;Q1：你简历中提到“感知-决策-执行”多智能体系统，请详细描述一下它的架构设计，以及Agent之间是怎么协同工作的？&lt;a class="anchor" href="#q1%e4%bd%a0%e7%ae%80%e5%8e%86%e4%b8%ad%e6%8f%90%e5%88%b0%e6%84%9f%e7%9f%a5-%e5%86%b3%e7%ad%96-%e6%89%a7%e8%a1%8c%e5%a4%9a%e6%99%ba%e8%83%bd%e4%bd%93%e7%b3%bb%e7%bb%9f%e8%af%b7%e8%af%a6%e7%bb%86%e6%8f%8f%e8%bf%b0%e4%b8%80%e4%b8%8b%e5%ae%83%e7%9a%84%e6%9e%b6%e6%9e%84%e8%ae%be%e8%ae%a1%e4%bb%a5%e5%8f%8aagent%e4%b9%8b%e9%97%b4%e6%98%af%e6%80%8e%e4%b9%88%e5%8d%8f%e5%90%8c%e5%b7%a5%e4%bd%9c%e7%9a%84"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;【面试官潜台词】&lt;/strong&gt;：考察你到底是只会背名词，还是真的懂复杂系统编排。
+&lt;strong&gt;【参考答案】&lt;/strong&gt;：
+我的系统分为三层：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;感知层（Sensor）&lt;/strong&gt;：通过协议逆向和爬虫抓取运营反馈数据，结合NLP和大模型进行意图识别与清洗，转成标准化的结构化指令。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;决策层（Decision）&lt;/strong&gt;：利用LangChain编排了一个**“调度Agent”**。它利用RAG检索历史业务代码库和SOP规则，通过Tool Calling决定当前任务应该交给哪个子Agent（比如是“代码生成Agent”还是“安全校验Agent”）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;执行层（Execution）&lt;/strong&gt;：包含了“业务代码生成Agent”、“测试Agent”和“执行Agent”。
+&lt;strong&gt;协同机制&lt;/strong&gt;：它们之间通过共享的全局状态库（如Redis）和任务队列（如Kafka）进行信息传递。决策Agent下发任务，执行Agent反馈结果，如果测试Agent发现代码报错，会将错误日志反馈给决策Agent，决策Agent再重新调度生成Agent进行修复（重试机制），从而形成一个闭环。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="q2你提到动态业务代码自动生成自动测试与自愈执行这个过程具体是怎么做的遇到代码跑不通或报错怎么办"&gt;Q2：你提到“动态业务代码自动生成、自动测试与自愈执行”，这个过程具体是怎么做的？遇到代码跑不通或报错怎么办？&lt;a class="anchor" href="#q2%e4%bd%a0%e6%8f%90%e5%88%b0%e5%8a%a8%e6%80%81%e4%b8%9a%e5%8a%a1%e4%bb%a3%e7%a0%81%e8%87%aa%e5%8a%a8%e7%94%9f%e6%88%90%e8%87%aa%e5%8a%a8%e6%b5%8b%e8%af%95%e4%b8%8e%e8%87%aa%e6%84%88%e6%89%a7%e8%a1%8c%e8%bf%99%e4%b8%aa%e8%bf%87%e7%a8%8b%e5%85%b7%e4%bd%93%e6%98%af%e6%80%8e%e4%b9%88%e5%81%9a%e7%9a%84%e9%81%87%e5%88%b0%e4%bb%a3%e7%a0%81%e8%b7%91%e4%b8%8d%e9%80%9a%e6%88%96%e6%8a%a5%e9%94%99%e6%80%8e%e4%b9%88%e5%8a%9e"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;【面试官潜台词】&lt;/strong&gt;：考察系统落地的稳健性、安全性和容错能力，这最容易暴露出“纸上谈兵”。
+&lt;strong&gt;【参考答案】&lt;/strong&gt;：
+整个流程分为“生成-验证-兜底”三步：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;生成&lt;/strong&gt;：LLM根据意图解析结果和RAG检索到的代码模板，生成初步的业务代码。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;验证&lt;/strong&gt;：生成的代码&lt;strong&gt;不会直接上生产&lt;/strong&gt;，而是先进入一个&lt;strong&gt;沙箱环境（Docker容器）&lt;/strong&gt;，由自动化测试脚本调用真实API进行验证。同时，我会叠加一层规则引擎（静态代码检查），确保LLM没有生成越权的危险代码。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自愈&lt;/strong&gt;：一旦测试Agent返回报错信息（如TypeError或接口超时），系统会将报错日志作为新的上下文反馈给“修复Agent”，让其分析原因并重新生成代码，最多重试3次。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;兜底&lt;/strong&gt;：如果3次尝试后仍失败，系统会自动降级，将任务标记为“异常”并转人工处理，同时记录详细的错误推理链，后续用于继续LoRA微调。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="q3你精通lora和p-tuning微调也懂prompt工程请问在什么场景下你更倾向于用微调什么场景用promptrag"&gt;Q3：你精通LoRA和P-Tuning微调，也懂Prompt工程。请问在什么场景下你更倾向于用微调？什么场景用Prompt+RAG？&lt;a class="anchor" href="#q3%e4%bd%a0%e7%b2%be%e9%80%9alora%e5%92%8cp-tuning%e5%be%ae%e8%b0%83%e4%b9%9f%e6%87%82prompt%e5%b7%a5%e7%a8%8b%e8%af%b7%e9%97%ae%e5%9c%a8%e4%bb%80%e4%b9%88%e5%9c%ba%e6%99%af%e4%b8%8b%e4%bd%a0%e6%9b%b4%e5%80%be%e5%90%91%e4%ba%8e%e7%94%a8%e5%be%ae%e8%b0%83%e4%bb%80%e4%b9%88%e5%9c%ba%e6%99%af%e7%94%a8promptrag"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;【面试官潜台词】&lt;/strong&gt;：考察你对成本、时效性和模型底层原理的权衡能力。
+&lt;strong&gt;【参考答案】&lt;/strong&gt;：
+&lt;strong&gt;Prompt+RAG（动态知识）&lt;/strong&gt;：适合高频变化、时效性强的数据（比如抓取回来的最新运营反馈、新上线的接口文档）。因为可以直接更新向量数据库，成本低，迭代快，不产生幻觉，但需要精心设计Prompt模板。
+&lt;strong&gt;LoRA/P-Tuning微调（特定风格/格式）&lt;/strong&gt;：适合&lt;strong&gt;风格极其固定、输出格式要求极为严格&lt;/strong&gt;的场景。比如我们要求输出的代码必须符合团队特定的编程规范和JSON结构，或者需要对特定领域的业务词汇进行降维打击。微调过一次后，就可以大大减少Prompt的长度，降低推理成本，但需要一定的高质量数据集和算力。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="q4简历上写了熟悉langchain和dify这两个框架在你的项目里是如何做技术选型的为什么不只用其中一个"&gt;Q4：简历上写了熟悉LangChain和Dify，这两个框架在你的项目里是如何做技术选型的？为什么不只用其中一个？&lt;a class="anchor" href="#q4%e7%ae%80%e5%8e%86%e4%b8%8a%e5%86%99%e4%ba%86%e7%86%9f%e6%82%89langchain%e5%92%8cdify%e8%bf%99%e4%b8%a4%e4%b8%aa%e6%a1%86%e6%9e%b6%e5%9c%a8%e4%bd%a0%e7%9a%84%e9%a1%b9%e7%9b%ae%e9%87%8c%e6%98%af%e5%a6%82%e4%bd%95%e5%81%9a%e6%8a%80%e6%9c%af%e9%80%89%e5%9e%8b%e7%9a%84%e4%b8%ba%e4%bb%80%e4%b9%88%e4%b8%8d%e5%8f%aa%e7%94%a8%e5%85%b6%e4%b8%ad%e4%b8%80%e4%b8%aa"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;【面试官潜台词】&lt;/strong&gt;：考察工具的实际使用深度和架构认知。
+&lt;strong&gt;【参考答案】&lt;/strong&gt;：
+&lt;strong&gt;LangChain&lt;/strong&gt;是底层开发框架，&lt;strong&gt;Dify&lt;/strong&gt;是可视化低代码平台。
+在我的“业务代码自动生成”项目中，核心工作流非常复杂，涉及多Agent的复杂跳转、自定义的逆向接口调用以及和K8s集群的交互，&lt;strong&gt;Dify不能满足这种深度的定制化需求&lt;/strong&gt;，所以我底层核心用的是&lt;strong&gt;LangChain&lt;/strong&gt;。
+但我用&lt;strong&gt;Dify&lt;/strong&gt;作为&lt;strong&gt;快速验证和运营人员的反馈测试工具&lt;/strong&gt;。运营同事可以在Dify里调Prompt，看哪些数据能跑通，然后我再将验证好的Prompt工程固化到LangChain的后端代码里。这是一种“前端快速验证 + 后端深度定制”的组合策略。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="q5大模型在写代码时容易产生幻觉你如何保证生成的业务代码100可用如何避免它乱调用系统底层权限"&gt;Q5：大模型在写代码时容易产生幻觉，你如何保证生成的业务代码100%可用？如何避免它乱调用系统底层权限？&lt;a class="anchor" href="#q5%e5%a4%a7%e6%a8%a1%e5%9e%8b%e5%9c%a8%e5%86%99%e4%bb%a3%e7%a0%81%e6%97%b6%e5%ae%b9%e6%98%93%e4%ba%a7%e7%94%9f%e5%b9%bb%e8%a7%89%e4%bd%a0%e5%a6%82%e4%bd%95%e4%bf%9d%e8%af%81%e7%94%9f%e6%88%90%e7%9a%84%e4%b8%9a%e5%8a%a1%e4%bb%a3%e7%a0%81100%e5%8f%af%e7%94%a8%e5%a6%82%e4%bd%95%e9%81%bf%e5%85%8d%e5%ae%83%e4%b9%b1%e8%b0%83%e7%94%a8%e7%b3%bb%e7%bb%9f%e5%ba%95%e5%b1%82%e6%9d%83%e9%99%90"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;【面试官潜台词】&lt;/strong&gt;：这是最核心的安全与稳定性问题，考察你的工程素养。
+&lt;strong&gt;【参考答案】&lt;/strong&gt;：
+LLM确实会有幻觉，我们不可能指望大模型“零失误”，而是通过&lt;strong&gt;系统工程&lt;/strong&gt;来拦截幻觉：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;权限隔离&lt;/strong&gt;：给Agent创建了一个受限的Docker容器，给它最小权限（只开放特定端口和API），禁止访问数据库主库，只能访问副本。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RAG约束&lt;/strong&gt;：生成代码前，强制检索数据库中已有的真实代码片段作为Few-shot示例，让模型“抄”已有模式，而不是凭空瞎编。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;双向交叉验证&lt;/strong&gt;：不是让一个Agent写，而是**“生成Agent”和“验证Agent”双引擎**互相博弈。生成Agent写完，验证Agent用Mock数据跑一遍，验证通过才允许发布。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;兜底机制&lt;/strong&gt;：在Agent层的上方加了一道&lt;strong&gt;硬编码的防火墙（规则引擎）&lt;/strong&gt;，如果代码中出现了危险函数（如删除数据库命令、绕过鉴权的命令），直接由防火墙拦截并打回，不允许执行。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;既然你想在面试中拉满“逼格”，仅仅回答“会用”是不够的，一定要体现出&lt;strong&gt;工程化深度&lt;/strong&gt;和你**“逆向+大数据+Agent”的独特交叉优势**。&lt;/p&gt;
+&lt;p&gt;继续为你补充下一波（Q6-Q10）高频进阶面试题及高逼格回答，建议重点掌握前两题，这是拉开差距的关键。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="q6你每天处理大量的llm调用成本token消耗和响应延迟是怎么控制的性能优化"&gt;Q6：你每天处理大量的LLM调用，成本（Token消耗）和响应延迟是怎么控制的？（性能优化）&lt;a class="anchor" href="#q6%e4%bd%a0%e6%af%8f%e5%a4%a9%e5%a4%84%e7%90%86%e5%a4%a7%e9%87%8f%e7%9a%84llm%e8%b0%83%e7%94%a8%e6%88%90%e6%9c%actoken%e6%b6%88%e8%80%97%e5%92%8c%e5%93%8d%e5%ba%94%e5%bb%b6%e8%bf%9f%e6%98%af%e6%80%8e%e4%b9%88%e6%8e%a7%e5%88%b6%e7%9a%84%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;【面试官潜台词】&lt;/strong&gt;：大模型很贵，你的系统落地了吗？还是只停留在Demo阶段？
+&lt;strong&gt;【高逼格回答】&lt;/strong&gt;：
+控制成本和延迟主要靠“模型分层”和“缓存”：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;语义缓存（Semantic Cache）&lt;/strong&gt;：针对高频重复的运营反馈，我会利用&lt;strong&gt;Redis&lt;/strong&gt;结合向量检索，实现语义级缓存。如果用户反馈和之前处理过的案例相似度达到95%以上，直接走缓存结果，不调用LLM。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;模型路由（Model Routing）&lt;/strong&gt;：我用贪心策略设计了模型路由。简单的意图分类、实体抽取交给&lt;strong&gt;小参数模型&lt;/strong&gt;（如Qwen-7B甚至更小）处理；只有复杂的代码生成、多步推理才调用&lt;strong&gt;大参数模型&lt;/strong&gt;（如GPT-4o或DeepSeek-V3）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;流式传输与并发控制&lt;/strong&gt;：使用gRPC流式传输，提升用户端感知速度，同时利用原生Go语言的高并发特性，配合Kafka做削峰填谷，将任务批量打包给LLM，降低单位请求的硬件开销。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="q7你怎么评估你的agent系统好不好有没有一套量化指标"&gt;Q7：你怎么评估你的Agent系统好不好？有没有一套量化指标？&lt;a class="anchor" href="#q7%e4%bd%a0%e6%80%8e%e4%b9%88%e8%af%84%e4%bc%b0%e4%bd%a0%e7%9a%84agent%e7%b3%bb%e7%bb%9f%e5%a5%bd%e4%b8%8d%e5%a5%bd%e6%9c%89%e6%b2%a1%e6%9c%89%e4%b8%80%e5%a5%97%e9%87%8f%e5%8c%96%e6%8c%87%e6%a0%87"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;【面试官潜台词】&lt;/strong&gt;：你天天说闭环，我怎么信你？你的KPI是什么？
+&lt;strong&gt;【高逼格回答】&lt;/strong&gt;：
+我构建了一套**“LLM-as-a-Judge”&lt;strong&gt;（大模型当评委）结合&lt;/strong&gt;硬指标**的双轨评估体系：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;硬指标（工程侧）&lt;/strong&gt;：业务代码&lt;strong&gt;执行通过率&lt;/strong&gt;（生成代码的编译成功率）、&lt;strong&gt;人工干预率&lt;/strong&gt;（自动执行失败被迫转人工的比例）、&lt;strong&gt;端到端响应耗时&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;软指标（模型侧）&lt;/strong&gt;：利用&lt;strong&gt;逆向抓包&lt;/strong&gt;获得真实的业务异常日志，构建了一个精准的私有评测集（Golden Set）。我会通过一个“评委Agent”，按照生成代码的逻辑严谨度、代码规范度、安全合规度三个维度进行打分。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据驱动迭代&lt;/strong&gt;：每周把失败的Case拿出来做分析，如果发现失败原因集中在特定格式上，我就用LoRA微调；如果是业务知识缺失，我就扩充RAG知识库。通过这个闭环，我的代码生成准确率三个月内从75%提升到了92%以上。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="q8你的逆向和爬虫背景在ai-agent开发中有什么不可替代的作用核心竞争力"&gt;Q8：你的逆向和爬虫背景，在AI Agent开发中有什么不可替代的作用？（核心竞争力）&lt;a class="anchor" href="#q8%e4%bd%a0%e7%9a%84%e9%80%86%e5%90%91%e5%92%8c%e7%88%ac%e8%99%ab%e8%83%8c%e6%99%af%e5%9c%a8ai-agent%e5%bc%80%e5%8f%91%e4%b8%ad%e6%9c%89%e4%bb%80%e4%b9%88%e4%b8%8d%e5%8f%af%e6%9b%bf%e4%bb%a3%e7%9a%84%e4%bd%9c%e7%94%a8%e6%a0%b8%e5%bf%83%e7%ab%9e%e4%ba%89%e5%8a%9b"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;【面试官潜台词】&lt;/strong&gt;：我想知道你的技术护城河在哪里。
+&lt;strong&gt;【高逼格回答】&lt;/strong&gt;：
+逆向和爬虫其实是我的“护城河”。大部分只做LLM的工程师，只能拿到公开的二手数据或模拟数据；而我可以&lt;strong&gt;直接从底层协议层穿透，拿到最原始、最真实的业务流水和报错日志&lt;/strong&gt;。
+这赋予了我两个优势：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;最完美的训练数据源&lt;/strong&gt;：我能拿到运营反馈背后的真实交互数据，直接构建比其他团队质量高几个量级的私有微调数据集。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;赋予Agent真正的“手脚”&lt;/strong&gt;：Agent不仅需要大脑（LLM），还需要手脚去执行。通过逆向解析接口协议，我让Agent能够直接绕过普通前端UI，利用底层的API进行真实的系统操作和验证，这大大提升了“自动执行Agent”的实操效率。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="q9agent在处理复杂的多步任务时上下文context会非常长甚至超出token限制你怎么处理记忆和上下文管理"&gt;Q9：Agent在处理复杂的多步任务时，上下文（Context）会非常长，甚至超出Token限制，你怎么处理记忆和上下文管理？&lt;a class="anchor" href="#q9agent%e5%9c%a8%e5%a4%84%e7%90%86%e5%a4%8d%e6%9d%82%e7%9a%84%e5%a4%9a%e6%ad%a5%e4%bb%bb%e5%8a%a1%e6%97%b6%e4%b8%8a%e4%b8%8b%e6%96%87context%e4%bc%9a%e9%9d%9e%e5%b8%b8%e9%95%bf%e7%94%9a%e8%87%b3%e8%b6%85%e5%87%batoken%e9%99%90%e5%88%b6%e4%bd%a0%e6%80%8e%e4%b9%88%e5%a4%84%e7%90%86%e8%ae%b0%e5%bf%86%e5%92%8c%e4%b8%8a%e4%b8%8b%e6%96%87%e7%ae%a1%e7%90%86"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;【面试官潜台词】&lt;/strong&gt;：考察你对RAG、长文本处理和多态记忆的理解。
+&lt;strong&gt;【高逼格回答】&lt;/strong&gt;：
+我把记忆分为三类：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;短期记忆（当前任务滑动窗口）&lt;/strong&gt;：利用向量数据库（如Milvus或FAISS）记录当前任务的实时状态，并限制历史对话长度，确保Prompt不溢出。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;长期记忆（RAG知识库）&lt;/strong&gt;：将历史运维操作手册、已生成的优质代码片段、业务常见问题等，切片后进行向量化存储，当新任务进来时，用检索增强（RAG）精准召回相关模板。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;压缩摘要记忆&lt;/strong&gt;：当一个子任务执行完毕后，我会让“总结Agent”把冗长的中间执行过程“压缩”成精简的结构化JSON状态（状态机），仅将关键结论传递给下一个Agent，从而大幅节省Token，也避免了长上下文带来的幻觉。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="q10多agent协同工作时如果出现死锁或互相等待比如a等bb等cc挂了你如何解决"&gt;Q10：多Agent协同工作时，如果出现死锁或互相等待（比如A等B，B等C，C挂了），你如何解决？&lt;a class="anchor" href="#q10%e5%a4%9aagent%e5%8d%8f%e5%90%8c%e5%b7%a5%e4%bd%9c%e6%97%b6%e5%a6%82%e6%9e%9c%e5%87%ba%e7%8e%b0%e6%ad%bb%e9%94%81%e6%88%96%e4%ba%92%e7%9b%b8%e7%ad%89%e5%be%85%e6%af%94%e5%a6%82a%e7%ad%89bb%e7%ad%89cc%e6%8c%82%e4%ba%86%e4%bd%a0%e5%a6%82%e4%bd%95%e8%a7%a3%e5%86%b3"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;【面试官潜台词】&lt;/strong&gt;：这就是典型的分布式系统问题，看你懂不懂底层调度。
+&lt;strong&gt;【高逼格回答】&lt;/strong&gt;：
+因为我本身是做高并发后端（Golang/分布式）出身的，我会把多Agent协同当成&lt;strong&gt;分布式微服务调度&lt;/strong&gt;来处理：&lt;/p&gt;</description></item></channel></rss>

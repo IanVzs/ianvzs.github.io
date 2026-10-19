@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Fedora on Ian's Blog</title><link>http://example.org/tags/fedora/</link><description>Recent content in Fedora on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 10 Jul 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/fedora/index.xml" rel="self" type="application/rss+xml"/><item><title>KDE Baloo 文件索引使用笔记</title><link>http://example.org/docs/programmer/platforms/os/kde-baloo-%E6%96%87%E4%BB%B6%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</link><pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/kde-baloo-%E6%96%87%E4%BB%B6%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</guid><description>&lt;h1 id="baloo-是什么"&gt;Baloo 是什么&lt;a class="anchor" href="#baloo-%e6%98%af%e4%bb%80%e4%b9%88"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Baloo&lt;/strong&gt; 是 KDE Plasma 自带的桌面文件搜索引擎（类似 Windows 索引服务 / macOS Spotlight）。&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;组件&lt;/th&gt;
+					&lt;th&gt;说明&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;baloo_file&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;后台索引进程，递归扫描文件并写入数据库&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;balooctl6&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;KDE 6 下的命令行管理工具（Fedora 44 / Plasma 6）&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;索引库&lt;/td&gt;
+					&lt;td&gt;默认在 &lt;code&gt;~/.local/share/baloo/index&lt;/code&gt;，可达数 GB&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;用途：KDE 启动器 / Dolphin 里按文件名、内容快速搜索。&lt;/p&gt;
+&lt;p&gt;开发场景下通常&lt;strong&gt;用不到&lt;/strong&gt;——搜代码靠 IDE / &lt;code&gt;rg&lt;/code&gt;，Baloo 反而可能拖慢系统。&lt;/p&gt;
+&lt;h1 id="典型问题开发机--双系统"&gt;典型问题（开发机 + 双系统）&lt;a class="anchor" href="#%e5%85%b8%e5%9e%8b%e9%97%ae%e9%a2%98%e5%bc%80%e5%8f%91%e6%9c%ba--%e5%8f%8c%e7%b3%bb%e7%bb%9f"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;在 HP Pavilion Aero（Fedora 44 / KDE Plasma 6）上遇到过：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;baloo_file&lt;/code&gt; 占 &lt;strong&gt;~1.7GB 内存&lt;/strong&gt;，进程状态 &lt;strong&gt;DN&lt;/strong&gt;（卡在磁盘 I/O）&lt;/li&gt;
+&lt;li&gt;索引库 &lt;strong&gt;~4GB&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;代码仓库放在 &lt;strong&gt;NTFS 分区&lt;/strong&gt; &lt;code&gt;/run/media/ian/Windows/...&lt;/code&gt;（fuseblk 挂载）&lt;/li&gt;
+&lt;li&gt;Baloo 扫 NTFS + Cursor / git 文件监听叠加 → 整机卡顿、swap 暴涨&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;balooctl6 status&lt;/code&gt; 在 I/O 阻塞时可能&lt;strong&gt;卡几十秒&lt;/strong&gt;才返回，本身也是症状。&lt;/p&gt;</description></item><item><title>HP Pavilion Aero Fedora 44 电池续航调优笔记</title><link>http://example.org/docs/programmer/platforms/os/hp-pavilion-aero-fedora-44-%E7%94%B5%E6%B1%A0%E7%BB%AD%E8%88%AA%E8%B0%83%E4%BC%98%E7%AC%94%E8%AE%B0/</link><pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/hp-pavilion-aero-fedora-44-%E7%94%B5%E6%B1%A0%E7%BB%AD%E8%88%AA%E8%B0%83%E4%BC%98%E7%AC%94%E8%AE%B0/</guid><description>&lt;h1 id="背景"&gt;背景&lt;a class="anchor" href="#%e8%83%8c%e6%99%af"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;机器：HP Pavilion Aero 13-be1xxx，AMD Ryzen 5 5625U (Zen 3, 6c12t)，36 Wh 小电池，2560×1600 IPS 屏，Fedora 44 / kernel 7.0 / KDE Plasma。&lt;/p&gt;
+&lt;p&gt;拔电跑 Cursor agent 编码时整机功率 9-12W，想压低 idle 基线并提升续航。&lt;/p&gt;
+&lt;h1 id="硬件画像先确认"&gt;硬件画像（先确认）&lt;a class="anchor" href="#%e7%a1%ac%e4%bb%b6%e7%94%bb%e5%83%8f%e5%85%88%e7%a1%ae%e8%ae%a4"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 电池容量与状态&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /sys/class/power_supply/BAT0/uevent
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# CPU / pstate / EPP / boost&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /sys/devices/system/cpu/amd_pstate/status &lt;span style="color:#75715e"&gt;# active&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /sys/devices/system/cpu/cpufreq/policy0/scaling_governor &lt;span style="color:#75715e"&gt;# powersave&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /sys/devices/system/cpu/cpufreq/policy0/energy_performance_preference
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 平台 profile（HP PMF / hp-wmi）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /sys/firmware/acpi/platform_profile_choices &lt;span style="color:#75715e"&gt;# cool quiet balanced performance&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Wi-Fi 省电&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;iw dev wlp1s0 get power_save
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 现有电源服务（不能同时跑 TLP 和 power-profiles-daemon）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;systemctl is-active tlp power-profiles-daemon tuned&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="三项立刻能拿到的优化实测有效"&gt;三项立刻能拿到的优化（实测有效）&lt;a class="anchor" href="#%e4%b8%89%e9%a1%b9%e7%ab%8b%e5%88%bb%e8%83%bd%e6%8b%bf%e5%88%b0%e7%9a%84%e4%bc%98%e5%8c%96%e5%ae%9e%e6%b5%8b%e6%9c%89%e6%95%88"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 1. Wi-Fi 省电（MT7922 默认 off，开启省 ~0.3-0.5W）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo iw dev wlp1s0 set power_save on
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 2. EPP 拉到 power（idle 降 ~0.5-1W）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo power | sudo tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 3. 键盘背光关掉（如果有）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; | sudo tee /sys/class/leds/*kbd_backlight*/brightness 2&amp;gt;/dev/null&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;不要再去试 &lt;code&gt;platform_profile=cool/quiet&lt;/code&gt;，本机 BIOS 拒收，见后文。&lt;/p&gt;</description></item><item><title>将钉钉deb转rpm</title><link>http://example.org/docs/programmer/platforms/os/%E5%B0%86%E9%92%89%E9%92%89deb%E8%BD%ACrpm/</link><pubDate>Tue, 16 Jun 2026 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/%E5%B0%86%E9%92%89%E9%92%89deb%E8%BD%ACrpm/</guid><description>&lt;h1 id="dingtalk-fedora-packager"&gt;DingTalk Fedora Packager&lt;a class="anchor" href="#dingtalk-fedora-packager"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;把官方钉钉 Linux &lt;code&gt;.deb&lt;/code&gt; 包重新打成 Fedora 可安装的 &lt;code&gt;.rpm&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;这个项目不是通用 &lt;code&gt;deb -&amp;gt; rpm&lt;/code&gt; 转换器，只处理钉钉包，并固化了 Fedora 上实际踩到的兼容问题。&lt;/p&gt;
+&lt;h2 id="处理代码"&gt;处理代码&lt;a class="anchor" href="#%e5%a4%84%e7%90%86%e4%bb%a3%e7%a0%81"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;![[build_dingtalk_rpm.py]]&lt;/p&gt;
+&lt;h2 id="背景"&gt;背景&lt;a class="anchor" href="#%e8%83%8c%e6%99%af"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;官方钉钉 Linux 包主要面向 Debian/Ubuntu 系发行版。直接原样转换成 RPM 后，在 Fedora 上会遇到几个典型问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;菜单入口执行 &lt;code&gt;/opt/apps/com.alibabainc.dingtalk/files/Elevator.sh&lt;/code&gt;，它会走钉钉自带的预加载逻辑。&lt;/li&gt;
+&lt;li&gt;包内旧版 &lt;code&gt;libm.so.6&lt;/code&gt; 会遮住 Fedora 系统库，导致 &lt;code&gt;GLIBC_2.38&lt;/code&gt;、&lt;code&gt;GLIBC_2.43&lt;/code&gt; 等符号找不到。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dingtalk_dll.so&lt;/code&gt;、&lt;code&gt;libconference_new.so&lt;/code&gt; 带有 executable stack 标记，Fedora 会拒绝加载。&lt;/li&gt;
+&lt;li&gt;RPM 如果声明拥有 &lt;code&gt;/usr/bin&lt;/code&gt;、&lt;code&gt;/usr/share/applications&lt;/code&gt; 这类系统目录，会和 &lt;code&gt;filesystem&lt;/code&gt; 包冲突。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里的处理思路参考了 &lt;a href="https://github.com/zhullyb/dingtalk-for-fedora/tree/master"&gt;&lt;code&gt;zhullyb/dingtalk-for-fedora&lt;/code&gt;&lt;/a&gt;，并整理成一个可以直接处理本地 &lt;code&gt;.deb&lt;/code&gt; 的脚本。&lt;/p&gt;
+&lt;h2 id="已验证版本"&gt;已验证版本&lt;a class="anchor" href="#%e5%b7%b2%e9%aa%8c%e8%af%81%e7%89%88%e6%9c%ac"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;本次实际处理并验证通过的钉钉版本：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;com.alibabainc.dingtalk_8.1.0.6021101_amd64.deb&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;生成并验证通过的 Fedora RPM：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;com.alibabainc.dingtalk-8.1.0.6021101-4.x86_64.rpm&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;验证环境为 Fedora 44 x86_64，glibc 2.43。其他钉钉版本可以用脚本尝试处理，但需要重新验证启动和会议等核心功能。&lt;/p&gt;
+&lt;h2 id="环境依赖"&gt;环境依赖&lt;a class="anchor" href="#%e7%8e%af%e5%a2%83%e4%be%9d%e8%b5%96"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;构建依赖：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo dnf install python3-rpm rpm cpio xz patchelf binutils tar&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行依赖会写进生成的 RPM，安装时由 &lt;code&gt;dnf&lt;/code&gt; 自动处理：&lt;/p&gt;</description></item><item><title>Dedora</title><link>http://example.org/docs/programmer/platforms/os/fedora/</link><pubDate>Mon, 20 Apr 2026 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/fedora/</guid><description>&lt;h1 id="内存不够用导致的卡顿"&gt;内存不够用导致的卡顿&lt;a class="anchor" href="#%e5%86%85%e5%ad%98%e4%b8%8d%e5%a4%9f%e7%94%a8%e5%af%bc%e8%87%b4%e7%9a%84%e5%8d%a1%e9%a1%bf"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="使用systemd-oomd去管理内存"&gt;使用systemd-oomd去管理内存&lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8systemd-oomd%e5%8e%bb%e7%ae%a1%e7%90%86%e5%86%85%e5%ad%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="-为什么浏览器可能还会偶尔卡顿"&gt;⚙️ 为什么浏览器可能还会偶尔卡顿？&lt;a class="anchor" href="#-%e4%b8%ba%e4%bb%80%e4%b9%88%e6%b5%8f%e8%a7%88%e5%99%a8%e5%8f%af%e8%83%bd%e8%bf%98%e4%bc%9a%e5%81%b6%e5%b0%94%e5%8d%a1%e9%a1%bf"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;systemd-oomd&lt;/code&gt; 的触发机制比较“宽容”：它会等待系统资源压力达到一定阈值（基于 PSI 指标）才行动。在它出手之前，你可能已经感受到了短暂的卡顿。这是为了&lt;strong&gt;避免误杀&lt;/strong&gt;而做的平衡设计——如果阈值设得太低，可能你正在编辑的文档还没来得及保存就被杀掉了。&lt;/p&gt;
+&lt;h3 id="-如果你想让它更积极一点"&gt;🛠️ 如果你想让它更“积极”一点&lt;a class="anchor" href="#-%e5%a6%82%e6%9e%9c%e4%bd%a0%e6%83%b3%e8%ae%a9%e5%ae%83%e6%9b%b4%e7%a7%af%e6%9e%81%e4%b8%80%e7%82%b9"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;可以调整 &lt;code&gt;systemd-oomd&lt;/code&gt; 的配置，让它响应更快。不过需要注意：&lt;strong&gt;修改系统默认配置有一定风险&lt;/strong&gt;，建议先在测试环境尝试。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;查看当前配置&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /etc/systemd/oomd.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;通常这个文件是空的或只有注释，所有默认值都编译在二进制中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;创建自定义配置&lt;/strong&gt;（需要 root 权限）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo mkdir -p /etc/systemd/system/systemd-oomd.service.d
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo tee /etc/systemd/system/systemd-oomd.service.d/override.conf &lt;span style="color:#e6db74"&gt;&amp;lt;&amp;lt;EOF
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;[Service]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;Environment=SYSTEMD_OOM_DEFAULT_MEM_PRESSURE_LIMIT=10%
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;Environment=SYSTEMD_OOM_DEFAULT_MEM_PRESSURE_DURATION_USEC=1s
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;EOF&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面的设置会把内存压力阈值从默认的 &lt;code&gt;50%&lt;/code&gt; 降低到 &lt;code&gt;10%&lt;/code&gt;，且持续时间从 &lt;code&gt;5s&lt;/code&gt; 缩短到 &lt;code&gt;1s&lt;/code&gt;。&lt;strong&gt;这意味着系统会更敏感、更早出手&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;重新加载并重启服务&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl daemon-reload
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl restart systemd-oomd&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="-总结"&gt;✅ 总结&lt;a class="anchor" href="#-%e6%80%bb%e7%bb%93"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;你的 &lt;code&gt;systemd-oomd&lt;/code&gt; 已经正常工作了，系统大概率不会因为浏览器内存泄露而彻底卡死。&lt;/li&gt;
+&lt;li&gt;如果你依然遇到明显卡顿，可以：
+&lt;ul&gt;
+&lt;li&gt;调整 &lt;code&gt;systemd-oomd&lt;/code&gt; 的灵敏度（如上所示）。&lt;/li&gt;
+&lt;li&gt;或者安装 &lt;code&gt;earlyoom&lt;/code&gt; 作为第二道防线：&lt;code&gt;sudo dnf install earlyoom &amp;amp;&amp;amp; sudo systemctl enable --now earlyoom&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

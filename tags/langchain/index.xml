@@ -47,17 +47,5 @@
 &lt;h3 id="三-使用实践模式优化与坑点"&gt;&lt;strong&gt;三、 使用实践：模式、优化与坑点&lt;/strong&gt;&lt;a class="anchor" href="#%e4%b8%89-%e4%bd%bf%e7%94%a8%e5%ae%9e%e8%b7%b5%e6%a8%a1%e5%bc%8f%e4%bc%98%e5%8c%96%e4%b8%8e%e5%9d%91%e7%82%b9"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id="1-核心使用模式"&gt;&lt;strong&gt;1. 核心使用模式&lt;/strong&gt;&lt;a class="anchor" href="#1-%e6%a0%b8%e5%bf%83%e4%bd%bf%e7%94%a8%e6%a8%a1%e5%bc%8f"&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;静态编排（推荐优先）&lt;/strong&gt;：对于流程确定的任务，使用LCEL显式编排工具链。这更可靠、高效且易于调试。
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;data_process_chain &lt;span style="color:#f92672"&gt;=&lt;/span&gt; (
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; load_document_tool
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;|&lt;/span&gt; split_text_tool
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;|&lt;/span&gt; RunnableParallel({
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;summary&amp;#34;&lt;/span&gt;: summarize_chain,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;keywords&amp;#34;&lt;/span&gt;: extract_keywords_chain
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; })
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;|&lt;/span&gt; format_report_tool
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;动态代理（慎用）&lt;/strong&gt;：仅当任务路径无法预先确定时使用Agent。务必严格限制工具集，并设置最大迭代次数以防止无限循环和成本失控。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id="2-关键性能优化点"&gt;&lt;strong&gt;2. 关键性能优化点&lt;/strong&gt;&lt;a class="anchor" href="#2-%e5%85%b3%e9%94%ae%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%82%b9"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;LangChain的便利性常以性能为代价，优化是生产部署的必修课。&lt;/p&gt;</description></item></channel></rss>
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;静态编排（推荐优先）&lt;/strong&gt;：对于流程确定的任务，使用LCEL显式编排工具链。这更可靠、高效且易于调试。&lt;/p&gt;</description></item></channel></rss>

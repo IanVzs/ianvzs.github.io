@@ -121,7 +121,23 @@ export LC_ALL=en_US.utf8&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;比较香，因为中�
 &lt;li&gt;删除.gitmodules中记录的模块信息（&amp;ndash;cached选项清除.git/modules中的缓存）&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git rm --cached &lt;span style="color:#f92672"&gt;{&lt;/span&gt;MOD_NAME&lt;span style="color:#f92672"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="apt-安装前查看库里版本"&gt;apt 安装前查看库里版本&lt;a class="anchor" href="#apt-%e5%ae%89%e8%a3%85%e5%89%8d%e6%9f%a5%e7%9c%8b%e5%ba%93%e9%87%8c%e7%89%88%e6%9c%ac"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;sudo apt-cache madison kdenlive&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="4k显示器软件不适配导致的字太小问题"&gt;4K显示器软件不适配导致的字太小问题&lt;a class="anchor" href="#4k%e6%98%be%e7%a4%ba%e5%99%a8%e8%bd%af%e4%bb%b6%e4%b8%8d%e9%80%82%e9%85%8d%e5%af%bc%e8%87%b4%e7%9a%84%e5%ad%97%e5%a4%aa%e5%b0%8f%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;sudo apt-cache madison kdenlive&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="给linux增加桌面注册文件"&gt;给linux增加桌面注册文件&lt;a class="anchor" href="#%e7%bb%99linux%e5%a2%9e%e5%8a%a0%e6%a1%8c%e9%9d%a2%e6%b3%a8%e5%86%8c%e6%96%87%e4%bb%b6"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat &amp;gt; ~/.local/share/applications/bytedance-feishu.desktop &lt;span style="color:#e6db74"&gt;&amp;lt;&amp;lt; &amp;#39;EOF&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;[Desktop Entry]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;Type=Application
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;Name=飞书
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;Name[zh_CN]=飞书
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;Comment=飞书 - 高效协作平台
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;Exec=/usr/bin/bytedance-feishu-stable
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;Icon=bytedance-feishu
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;Terminal=false
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;Categories=Office;Network;InstantMessaging;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;Keywords=feishu;bytedance;chat;work;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;StartupWMClass=bytedance-feishu
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;EOF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;chmod +x ~/.local/share/applications/bytedance-feishu.desktop
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;update-desktop-database ~/.local/share/applications/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo &lt;span style="color:#e6db74"&gt;&amp;#34;✅ 飞书菜单入口已创建完成，按Super键搜索&amp;#39;飞书&amp;#39;即可&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="4k显示器软件不适配导致的字太小问题"&gt;4K显示器软件不适配导致的字太小问题&lt;a class="anchor" href="#4k%e6%98%be%e7%a4%ba%e5%99%a8%e8%bd%af%e4%bb%b6%e4%b8%8d%e9%80%82%e9%85%8d%e5%af%bc%e8%87%b4%e7%9a%84%e5%ad%97%e5%a4%aa%e5%b0%8f%e9%97%ae%e9%a2%98"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;在路径: &lt;code&gt;/usr/share/applications&lt;/code&gt;下
 将对应的&lt;code&gt;.desktop&lt;/code&gt;文件使用文本编辑器打开,将&lt;code&gt;Exec&lt;/code&gt;修改为:&lt;/p&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;Exec=env QT_DEVICE_PIXEL_RATIO=2 /opt/resolve/bin/resolve&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;主要是增加&lt;code&gt;env QT_DEVICE_PIXEL_RATIO=2&lt;/code&gt;, 上述例中所示为达芬奇的配置. (不过很可惜它并不能和我的&lt;code&gt;AMD 5700g&lt;/code&gt;+&lt;code&gt;Ubuntu22.04&lt;/code&gt;+&lt;code&gt;不知哪儿来的驱动&lt;/code&gt;一起工作. 虽然确实变好了.)&lt;/p&gt;
@@ -134,37 +150,50 @@ export LC_ALL=en_US.utf8&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;比较香，因为中�
 &lt;h2 id="github-personal-access-tokens"&gt;Github Personal access tokens&lt;a class="anchor" href="#github-personal-access-tokens"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;github 干掉了https账号密码pull push 之后
 https pull push 专用
-&lt;a href="https://github.com/settings/tokens"&gt;url&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="4k码字"&gt;4k码字&lt;a class="anchor" href="#4k%e7%a0%81%e5%ad%97"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;h3 id="更改语言"&gt;更改语言&lt;a class="anchor" href="#%e6%9b%b4%e6%94%b9%e8%af%ad%e8%a8%80"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;export LC_ALL&lt;span style="color:#f92672"&gt;=&lt;/span&gt;C
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 改了确实大多数成英文了，不过树莓派汉化太狠了，console-setup里还有若干是中文就很蠢...&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;unset LC_ALL
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 改回原始&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="更改tty1字体大小"&gt;更改tty1字体大小&lt;a class="anchor" href="#%e6%9b%b4%e6%94%b9tty1%e5%ad%97%e4%bd%93%e5%a4%a7%e5%b0%8f"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;sudo dpkg-reconfigure console-setup&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="操作粘贴板剪贴板剪切板"&gt;操作粘贴板/剪贴板/剪切板&lt;a class="anchor" href="#%e6%93%8d%e4%bd%9c%e7%b2%98%e8%b4%b4%e6%9d%bf%e5%89%aa%e8%b4%b4%e6%9d%bf%e5%89%aa%e5%88%87%e6%9d%bf"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;xsel&lt;/code&gt;&lt;/p&gt;</description></item><item><title>Daily Notes</title><link>http://example.org/posts/daily-notes/</link><pubDate>Thu, 14 Jul 2016 00:00:00 +0000</pubDate><guid>http://example.org/posts/daily-notes/</guid><description>&lt;p&gt;&lt;!-- raw HTML omitted --&gt; 2021年09月26日 &lt;!-- raw HTML omitted --&gt;
+&lt;a href="https://github.com/settings/tokens"&gt;url&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Daily Notes</title><link>http://example.org/posts/daily-notes/</link><pubDate>Thu, 14 Jul 2016 00:00:00 +0000</pubDate><guid>http://example.org/posts/daily-notes/</guid><description>&lt;p&gt;&lt;font size=4&gt; 2021年09月26日 &lt;/font&gt;
 测试一下是不是能挂视频呢：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; 2021年09月09日 &lt;!-- raw HTML omitted --&gt;
+&lt;iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=15820979&amp;bvid=BV1Dx41177EZ&amp;cid=25798792&amp;p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"&gt;&lt;/iframe&gt;
+&lt;iframe src="//player.bilibili.com/player.html?aid=463216041&amp;bvid=BV1QL411W7yq&amp;cid=413515253&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"&gt; &lt;/iframe&gt;
+&lt;p&gt;&lt;font size=4&gt; 2021年09月09日 &lt;/font&gt;
 今天重新弄了&lt;code&gt;blog&lt;/code&gt;,增加了&lt;code&gt;Makefile&lt;/code&gt;可以更加无闹化的操作了
 真是个好东西
 不过&lt;code&gt;hexo deploy&lt;/code&gt;放在里面一直出问题，重新执行一遍又好了不清楚啥原因。。。分不同的&lt;code&gt;make&lt;/code&gt;子项试试&lt;/p&gt;
 &lt;p&gt;同时也换了背景，一会儿打个&lt;code&gt;release&lt;/code&gt;去.&lt;/p&gt;
 &lt;p&gt;缅怀&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; 2018年12月12日 &lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;font size=4&gt; 2018年12月12日 &lt;/font&gt;
 今儿开始，以后信笔记就写在上面了——本来笔记就没顺序，而考虑翻看的时候总是翻页太麻烦，emm 虽说越来越习惯&lt;code&gt;grep&lt;/code&gt;但 …有时候还是要看网页的嘛。而新笔记的翻看率总是高过旧笔记，所以就用这个顺序~😄&lt;/p&gt;
-&lt;p&gt;Eeont size=4&amp;gt;原因：&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;Eeont size=4&amp;gt;原因：&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;今天决定每天都写每日的学习总结，以此来激励。否则每天下来总觉得毫无收获，颇有空虚寂寞冷的感觉，也有当天学习的不真实感。此文章做做总概，目录的作用，详细的学习笔记就写在详细的文章下面。&lt;/p&gt;
 &lt;p&gt;因为，暑假要学习日语，所以日常生活中能用日记就尽量用了。对于培养日语语感和结构的记忆及习惯，很有作用。
 日语&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;16-07-14&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;font size=4&gt;16-07-14&lt;/font&gt;
 用于比较的句型：より　ほど
 变化、使变化的句式。
-&lt;!-- raw HTML omitted --&gt;16-07-16&lt;!-- raw HTML omitted --&gt;
+&lt;font size=4&gt;16-07-16&lt;/font&gt;
 昨天用的Winodos所以没发写了。
 重新记了初上的18课内容。
-&lt;!-- raw HTML omitted --&gt;16-07-18&lt;!-- raw HTML omitted --&gt;
+&lt;font size=4&gt;16-07-18&lt;/font&gt;
 B站上的每晚一句感觉不错。因为是长句嘛，能够更加详细了解句子逻辑和词语使用规律
-&lt;!-- raw HTML omitted --&gt;16-07-19&lt;!-- raw HTML omitted --&gt;
+&lt;font size=4&gt;16-07-19&lt;/font&gt;
 復習
-Pelican&lt;/p&gt;</description></item></channel></rss>
+Pelican&lt;/p&gt;
+&lt;p&gt;&lt;font size=4&gt;16-07-14&lt;/font&gt;
+换了一个更加清明的主题，能够能好的搜索，并且显示格式也很顺眼。而且能够自动形成Tags等的文章链接。基本上满足我的写作还有以后用来搜索的需求了。而且也很简约漂亮。
+明天再学习一些嵌入式以及Linux的内容～ 16-07-19 插入图片：图床 评论系统：Disqus 数学公式：latex&lt;/p&gt;
+&lt;p&gt;Linux&lt;/p&gt;
+&lt;p&gt;&lt;font size=4&gt;16-07-16&lt;/font&gt;
+SSH rsync VNC 等命令的学习和使用。为此，倒是专门安装了一个Ubuntu的Servery版本的虚拟机。
+&lt;font size=4&gt;16-07-17&lt;/font&gt;
+disk LVM
+&lt;font size=4&gt;16-07-18&lt;/font&gt;
+复习了一些网络部分。
+&lt;font size=4&gt;16-07-18&lt;/font&gt;
+Vi &amp;amp;&amp;amp; Vim
+果然在了解了一些按鍵的作用之後感覺無愧‘於編輯器之神’的稱號。輸入法不小心點成繁體了，懶得改回簡體————或許有‘懶’的比賽我能進三甲。
+&lt;font size=4&gt;16-07-26&lt;/font&gt;
+這兩三天看了看 嵌入式的ARM系列板開發，當然主要看了看Linux 移植一類。只不過說是教程也不過是流程吧。通篇下來基本上用的最多的語句即使 把這個這樣，那個這樣一下。具體爲什麼全然わかりませんね！ 不過也沒關係，留下來自己回頭再看看就行了。後面再看一下Qt程序的移植就可以完美收官了，在嵌入式的領域。
+&lt;font size=4&gt;16-08-03&lt;/font&gt;
+看完了——只不過很可惜沒有實驗板，所以不能進行實驗。開學之後在學校吧。當然，學習斷線了一些時候，嗯嗯……
+&lt;font size=4&gt;16-08-11&lt;/font&gt;
+musicbox
+Nethack ————A Game&lt;/p&gt;</description></item></channel></rss>

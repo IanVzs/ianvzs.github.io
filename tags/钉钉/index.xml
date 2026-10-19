@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>钉钉 on Ian's Blog</title><link>http://example.org/tags/%E9%92%89%E9%92%89/</link><description>Recent content in 钉钉 on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 16 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/%E9%92%89%E9%92%89/index.xml" rel="self" type="application/rss+xml"/><item><title>将钉钉deb转rpm</title><link>http://example.org/docs/programmer/platforms/os/%E5%B0%86%E9%92%89%E9%92%89deb%E8%BD%ACrpm/</link><pubDate>Tue, 16 Jun 2026 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/%E5%B0%86%E9%92%89%E9%92%89deb%E8%BD%ACrpm/</guid><description>&lt;h1 id="dingtalk-fedora-packager"&gt;DingTalk Fedora Packager&lt;a class="anchor" href="#dingtalk-fedora-packager"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;把官方钉钉 Linux &lt;code&gt;.deb&lt;/code&gt; 包重新打成 Fedora 可安装的 &lt;code&gt;.rpm&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;这个项目不是通用 &lt;code&gt;deb -&amp;gt; rpm&lt;/code&gt; 转换器，只处理钉钉包，并固化了 Fedora 上实际踩到的兼容问题。&lt;/p&gt;
+&lt;h2 id="处理代码"&gt;处理代码&lt;a class="anchor" href="#%e5%a4%84%e7%90%86%e4%bb%a3%e7%a0%81"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;![[build_dingtalk_rpm.py]]&lt;/p&gt;
+&lt;h2 id="背景"&gt;背景&lt;a class="anchor" href="#%e8%83%8c%e6%99%af"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;官方钉钉 Linux 包主要面向 Debian/Ubuntu 系发行版。直接原样转换成 RPM 后，在 Fedora 上会遇到几个典型问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;菜单入口执行 &lt;code&gt;/opt/apps/com.alibabainc.dingtalk/files/Elevator.sh&lt;/code&gt;，它会走钉钉自带的预加载逻辑。&lt;/li&gt;
+&lt;li&gt;包内旧版 &lt;code&gt;libm.so.6&lt;/code&gt; 会遮住 Fedora 系统库，导致 &lt;code&gt;GLIBC_2.38&lt;/code&gt;、&lt;code&gt;GLIBC_2.43&lt;/code&gt; 等符号找不到。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dingtalk_dll.so&lt;/code&gt;、&lt;code&gt;libconference_new.so&lt;/code&gt; 带有 executable stack 标记，Fedora 会拒绝加载。&lt;/li&gt;
+&lt;li&gt;RPM 如果声明拥有 &lt;code&gt;/usr/bin&lt;/code&gt;、&lt;code&gt;/usr/share/applications&lt;/code&gt; 这类系统目录，会和 &lt;code&gt;filesystem&lt;/code&gt; 包冲突。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里的处理思路参考了 &lt;a href="https://github.com/zhullyb/dingtalk-for-fedora/tree/master"&gt;&lt;code&gt;zhullyb/dingtalk-for-fedora&lt;/code&gt;&lt;/a&gt;，并整理成一个可以直接处理本地 &lt;code&gt;.deb&lt;/code&gt; 的脚本。&lt;/p&gt;
+&lt;h2 id="已验证版本"&gt;已验证版本&lt;a class="anchor" href="#%e5%b7%b2%e9%aa%8c%e8%af%81%e7%89%88%e6%9c%ac"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;本次实际处理并验证通过的钉钉版本：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;com.alibabainc.dingtalk_8.1.0.6021101_amd64.deb&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;生成并验证通过的 Fedora RPM：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;com.alibabainc.dingtalk-8.1.0.6021101-4.x86_64.rpm&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;验证环境为 Fedora 44 x86_64，glibc 2.43。其他钉钉版本可以用脚本尝试处理，但需要重新验证启动和会议等核心功能。&lt;/p&gt;
+&lt;h2 id="环境依赖"&gt;环境依赖&lt;a class="anchor" href="#%e7%8e%af%e5%a2%83%e4%be%9d%e8%b5%96"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;构建依赖：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo dnf install python3-rpm rpm cpio xz patchelf binutils tar&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行依赖会写进生成的 RPM，安装时由 &lt;code&gt;dnf&lt;/code&gt; 自动处理：&lt;/p&gt;</description></item></channel></rss>

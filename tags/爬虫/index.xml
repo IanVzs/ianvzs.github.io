@@ -112,10 +112,10 @@ for i in self.dealPoints:
  plt.scatter([i[0]], [i[1]], color = 'c') 
  for ii in self.ydealPoints:
  plt.scatter([ii[0]], [ii[1]], color = 'm')
- 
+
 plt.title('Tick &amp;amp; TradePoint')
 plt.legend()
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;plt.legend()&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;b&gt;plt.legend()&lt;/b&gt;
 # show() 之前不加这句是不会显示出标注的呦&lt;/p&gt;</description></item></channel></rss>

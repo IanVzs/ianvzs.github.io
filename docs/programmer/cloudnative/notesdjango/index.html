@@ -14,43 +14,45 @@ Django 建站的一些东西# 一些问题# 使用字体 zh-cn时如果报错:# 
 LANGUAGE_CODE = 'zh-Hans' TIME_ZONE = 'Asia/Shanghai' # zh-Hans是简体中文 zh-Hant是繁体中文 # 如果数据库有UTC的时间，那么可以设置： # USE_TZ = True 改为 USE_TZ = False时区问题# python3.8/site-packages/django/db/models/fields/init.py:1416: RuntimeWarning: DateTimeField {DATABASEMODEL}.update_time received a naive datetime (2023-09-14 21:55:56) while time zone support is active. warnings.warn(“DateTimeField %s received a naive datetime (%s)”
 这个警告是由于在使用带有时区支持的DateTimeField字段时，传入了一个没有时区信息的datetime对象。要修复这个警告，你可以将传入DateTimeField字段的datetime对象转换为带有时区信息的datetime对象。
 有两种方法可以解决这个问题：
-使用带有时区信息的datetime对象：确保在创建datetime对象时，使用正确的时区信息。你可以使用pytz库来设置时区信息，例如： from datetime import datetime import pytz # 创建带有时区信息的datetime对象 naive_datetime = datetime(2023, 9, 14, 21, 55, 56) timezone = pytz.timezone(&#34;Asia/Shanghai&#34;) aware_datetime = timezone.localize(naive_datetime) # 将带有时区信息的datetime对象传递给DateTimeField字段 ScannerDevice.update_time = aware_datetime 将DateTimeField字段的auto_now或auto_now_add属性设置为True：这将自动将字段的值设置为当前的带有时区信息的datetime对象。例如： from django.db import models class DATABASEMODEL(models.Model): update_time = models.DateTimeField(auto_now=True)通过以上两种方法之一，你可以修复这个警告并确保正确处理时区信息。"><meta itemprop=datePublished content="2018-06-07T00:00:00+00:00"><meta itemprop=dateModified content="2018-05-28T00:00:00+00:00"><meta itemprop=wordCount content="3633"><meta itemprop=keywords content="Django,Missjava,Vue,Apache,Ajax"><title>Django的建站的(｡･･)ﾉﾞ | Ian's Blog</title><link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://example.org/docs/programmer/cloudnative/notesdjango/><link rel=stylesheet href=/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q+RjFGKeI5ztdZ5nSJg=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.efc6dc35cf4ad70f9ddb5b92020d13c3015ca8ef6229d0a2b4a0cf3a2cc21644.js integrity="sha256-78bcNc9K1w+d21uSAg0TwwFcqO9iKdCitKDPOizCFkQ=" crossorigin=anonymous></script></head><body dir=ltr class="book-kind-page book-type-docs"><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Ian's Blog</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li class=book-section-flat><a href=/docs/programmer/>程序员笔记</a><ul><li><input type=checkbox id=section-c2c95db2f79edee23bbb71965e55c1e2 class=toggle>
-<label for=section-c2c95db2f79edee23bbb71965e55c1e2 class=flex><a href=/docs/programmer/langs/>编程语言</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-9f06ecccad732c4eb9d00c2abb8d8a7d class=toggle>
-<label for=section-9f06ecccad732c4eb9d00c2abb8d8a7d class=flex><a role=button>Python</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/langs/python/%E5%A4%A7%E6%95%B0%E5%88%97%E9%9B%86%E5%90%88%E5%AD%98%E5%82%A8%E5%92%8C%E8%BF%98%E5%8E%9F/>大数列集合存储和还原</a></li><li><a href=/docs/programmer/langs/python/python%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/>Python包管理</a></li><li><a href=/docs/programmer/langs/python/%E8%A7%84%E8%8C%83/>Python编码规范</a></li><li><a href=/docs/programmer/langs/python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B/>Python 多线程多进程</a></li><li><a href=/docs/programmer/langs/python/sqlalchemy/>SqlAlchemy - 数据库Orm</a></li><li><a href=/docs/programmer/langs/python/notespython/>解决问题</a></li><li><a href=/docs/programmer/langs/python/py%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%92%8C%E5%8A%9F%E8%83%BD%E6%80%A7%E6%96%B9%E6%B3%95/>Py小工具和功能性方法</a></li><li><a href=/docs/programmer/langs/python/pypi/>PyPi使用说明</a></li><li><a href=/docs/programmer/langs/python/pytest/>PyTest</a></li><li><a href=/docs/programmer/langs/python/notespython/>Python 常用库</a></li><li><a href=/docs/programmer/langs/python/notespython/>Python 笔记</a></li><li><a href=/docs/programmer/langs/python/paramiko-%E4%BD%BF%E7%94%A8---sshsftp/>Paramiko 使用 Ssh&amp;sftp</a></li><li><a href=/docs/programmer/langs/python/fastapi/>FastAPI</a></li></ul></li><li><input type=checkbox id=section-bf0d1fcaeb2dbb985e2dbbcc7202e9ad class=toggle>
-<label for=section-bf0d1fcaeb2dbb985e2dbbcc7202e9ad class=flex><a role=button>Golang</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/langs/golang/%E6%8A%8Agolang%E5%BD%93%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%94%A8/>把Golang当脚本语言用</a></li><li><a href=/docs/programmer/langs/golang/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/>常用命令</a></li><li><a href=/docs/programmer/langs/golang/advanced-knowledge-of-golang/>Golang进阶笔记</a></li><li><a href=/docs/programmer/langs/golang/note-of-golang/>Golang笔记</a></li></ul></li><li><a href=/docs/programmer/langs/cmake/>CMake 使用Tips</a></li><li><a href=/docs/programmer/langs/note-for-algo/>算法</a></li><li><a href=/docs/programmer/langs/tips-of-debugers/>Tips of debuggers</a></li><li><a href=/docs/programmer/langs/java/notesjava/>愉快的Java(happy to learn the fuck java)</a></li><li><a href=/docs/programmer/langs/tips-of-markdown/>Tips of MarkDown</a></li></ul></li><li><input type=checkbox id=section-81ac9fee5838836cbeab3fef2e0cfd9a class=toggle>
-<label for=section-81ac9fee5838836cbeab3fef2e0cfd9a class=flex><a role=button>机器学习</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/ml/stable-diffusion/>AI画图</a></li><li><a href=/docs/programmer/ml/langchain/>LangChain入门</a></li><li><a href=/docs/programmer/ml/%E5%9B%BE%E7%89%87%E8%83%8C%E6%99%AF%E6%B6%88%E9%99%A4/>图片背景消除</a></li><li><a href=/docs/programmer/ml/python-%E5%9B%BE%E8%A1%A8/>Python 图表</a></li><li><a href=/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%A1%8C%E4%B8%BA%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%92%8C%E4%BB%BB%E5%8A%A1/>机器人行为自动编排和任务</a></li><li><a href=/docs/programmer/ml/%E7%88%AC%E8%99%AB/>爬虫</a></li><li><a href=/docs/programmer/ml/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/>大模型使用笔记</a></li><li><a href=/docs/programmer/ml/paddle/>Paddle</a></li><li><a href=/docs/programmer/ml/tensorflow/>Tensorflow</a></li><li><a href=/docs/programmer/ml/yolo/>Demo Test项目中的一些东西</a></li><li><a href=/docs/programmer/ml/opencv/>OpenCV</a></li><li><a href=/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/>机器学习库</a></li></ul></li><li><input type=checkbox id=section-c6a6fd31106ee5bfefce9ec29333f46a class=toggle checked>
-<label for=section-c6a6fd31106ee5bfefce9ec29333f46a class=flex><a href=/docs/programmer/cloudnative/>云原生</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-559dc1ffcd65f3dd0a90ee18d4307178 class=toggle>
-<label for=section-559dc1ffcd65f3dd0a90ee18d4307178 class=flex><a href=/docs/programmer/cloudnative/redis/>中间件</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/redis/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/>布隆过滤器</a></li><li><a href=/docs/programmer/cloudnative/redis/redis%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/>Redis集群部署</a></li><li><a href=/docs/programmer/cloudnative/redis/python-redis-%E5%AE%A2%E6%88%B7%E7%AB%AF/>Python Redis 客户端</a></li><li><a href=/docs/programmer/cloudnative/redis/bigkey-and-hotkey/>大key、热key问题</a></li><li><a href=/docs/programmer/cloudnative/redis/the-basics-of-redis/>Redis基础</a></li><li><a href=/docs/programmer/cloudnative/redis/advanced-knowledge-of-redis/>Redis进阶</a></li><li><a href=/docs/programmer/cloudnative/redis/%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4/>Redis常用命令</a></li></ul></li><li><input type=checkbox id=section-cd44077b962ee7a7e8356ce12d624a84 class=toggle>
-<label for=section-cd44077b962ee7a7e8356ce12d624a84 class=flex><a role=button>k8s</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/k8s/%E9%98%BF%E9%87%8C%E8%87%AA%E5%8A%A8%E4%BC%B8%E7%BC%A9/>阿里k8s自动伸缩</a></li><li><a href=/docs/programmer/cloudnative/k8s/elk%E5%9C%A8k8s%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B/>elk在k8s上的部署使用示例</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/>k8s 配套说明</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/>k8s技术分享</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/>k8s学习-常用命令和配置文件</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-workflow%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/>Argo Workflow性能测试和使用场景分析</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/>Argo 使用记录</a></li></ul></li><li><input type=checkbox id=section-d6f1ed2a1ee0ed192f3a26afc247f2ca class=toggle>
-<label for=section-d6f1ed2a1ee0ed192f3a26afc247f2ca class=flex><a role=button>中间件</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/middleware/kafka-%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/>Kafka 安装和使用</a></li></ul></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/vs-code-dev-container/>📝 Windows + Docker + VS Code Remote-Containers 故障排查与恢复</a></li><li><a href=/docs/programmer/cloudnative/elk/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E7%B3%BB%E7%BB%9F/>日志收集系统: loki+promtail+Grafana</a></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/>Podman</a></li><li><a href=/docs/programmer/cloudnative/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li><li><a href=/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/>uwsgi 处理记录</a></li><li><a href=/docs/programmer/cloudnative/note-of-docker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/fastapi/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/>Nginx高可用</a></li><li><a href=/docs/programmer/cloudnative/notesdjango/ class=active>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/>Sonar 代码静态检查</a></li></ul></li><li><input type=checkbox id=section-54a7005495649a744640d7e57eb2922f class=toggle>
-<label for=section-54a7005495649a744640d7e57eb2922f class=flex><a role=button>Net</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/net/crawler/selenium-grid/>Selenium Grid</a></li><li><a href=/docs/programmer/net/tools/ngrok/>ngrok - 一个免费内网穿透api工具</a></li><li><a href=/docs/programmer/net/crawler/mitmproxy/>mitmproxy</a></li><li><a href=/docs/programmer/net/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/>网络编程</a></li><li><a href=/docs/programmer/net/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li><li><a href=/docs/programmer/net/tips-of-grpc/>gRpc使用小记</a></li><li><a href=/docs/programmer/net/epoll%E5%AE%9E%E7%8E%B0/>Epoll实现</a></li></ul></li><li><input type=checkbox id=section-7f016ed5a6649ca58d0a410cdf35a516 class=toggle>
-<label for=section-7f016ed5a6649ca58d0a410cdf35a516 class=flex><a role=button>基础工具和配置</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/basetc/obsidian/>Obsidian笔记软件</a></li><li><a href=/docs/programmer/basetc/%E7%BB%88%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8/>终端浏览器</a></li><li><a href=/docs/programmer/basetc/curl/>curl</a></li><li><a href=/docs/programmer/basetc/%E6%96%87%E6%9C%AC%E4%B8%89%E5%89%91%E5%AE%A2/>文本三剑客</a></li><li><a href=/docs/programmer/basetc/tmux/>Tmux使用笔记</a></li><li><a href=/docs/programmer/basetc/obsidian%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%8F%92%E4%BB%B6/>Obsidian思维导图插件</a></li><li><a href=/docs/programmer/basetc/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/>supervisor</a></li><li><a href=/docs/programmer/basetc/for_china/>各个软件换源</a></li><li><a href=/docs/programmer/basetc/tipsofvim/>tip Of vim</a></li><li><a href=/docs/programmer/basetc/editer---%E5%B8%B8%E7%94%A8%E7%BC%96%E8%BE%91%E5%99%A8/>编辑器使用</a></li><li><a href=/docs/programmer/basetc/bash/>Bash</a></li><li><a href=/docs/programmer/basetc/gitbook/>Gitbook</a></li><li><a href=/docs/programmer/basetc/vim/>Vim</a></li></ul></li><li><input type=checkbox id=section-fc5f118f9eeaadb8a197ae7afc492278 class=toggle>
-<label for=section-fc5f118f9eeaadb8a197ae7afc492278 class=flex><a href=/docs/programmer/gui/>图形用户界面-GUI</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-972e385681a4b005ea7bcc47b6e638df class=toggle>
-<label for=section-972e385681a4b005ea7bcc47b6e638df class=flex><a href=/docs/programmer/gui/example/>Blog 构建</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-430a598f940f78aec47cf3f247404e76 class=toggle>
-<label for=section-430a598f940f78aec47cf3f247404e76 class=flex><a href=/docs/programmer/gui/example/table-of-contents/>Table of Contents</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/table-of-contents/with-toc/>With ToC</a></li><li><a href=/docs/programmer/gui/example/table-of-contents/without-toc/>Without ToC</a></li></ul></li><li><input type=checkbox id=section-520d6bf1c7271c23fc73944ff214df89 class=toggle>
-<label for=section-520d6bf1c7271c23fc73944ff214df89 class=flex><a href=/docs/programmer/gui/example/shortcodes/>Shortcodes</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/shortcodes/buttons/>Buttons</a></li><li><a href=/docs/programmer/gui/example/shortcodes/columns/>Columns</a></li><li><a href=/docs/programmer/gui/example/shortcodes/details/>Details</a></li><li><a href=/docs/programmer/gui/example/shortcodes/hints/>Hints</a></li><li><input type=checkbox id=section-c3bd76891eda7866e899b6bb68cdba88 class=toggle>
-<label for=section-c3bd76891eda7866e899b6bb68cdba88 class=flex><a href=/docs/programmer/gui/example/shortcodes/section/>Section</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/shortcodes/section/first-page/>First Page</a></li><li><a href=/docs/programmer/gui/example/shortcodes/section/second-page/>Second Page</a></li></ul></li><li><a href=/docs/programmer/gui/example/shortcodes/tabs/>Tabs</a></li></ul></li></ul></li><li><a href=/docs/programmer/gui/ffmpeg/>ffmpeg 使用</a></li><li><a href=/docs/programmer/gui/pyinstaller-python%E6%89%93%E5%8C%85/>python打包</a></li><li><a href=/docs/programmer/gui/qt/>Qt/PySide</a></li><li><a href=/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/>Vn.Py学习笔记（Python交易平台框架）</a></li><li><a href=/docs/programmer/gui/notespython/>图形化界面 （Python Gui）</a></li></ul></li><li><input type=checkbox id=section-c2b6418070eb71b7734d9996a505c6f5 class=toggle>
-<label for=section-c2b6418070eb71b7734d9996a505c6f5 class=flex><a role=button>平台</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/platforms/%E9%80%86%E5%90%91/>逆向三板斧</a></li><li><a href=/docs/programmer/platforms/os/steam/>Steam</a></li><li><a href=/docs/programmer/platforms/android/waydroid/>Linux 跑安卓</a></li><li><a href=/docs/programmer/platforms/os/ubuntu/>Ubuntu</a></li><li><a href=/docs/programmer/platforms/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8/>阿里云使用</a></li><li><a href=/docs/programmer/platforms/wps-for-linux/>WPS for Linux</a></li><li><a href=/docs/programmer/platforms/appsflyer/>AppsFlyer-外网移动归因营销分析平台</a></li><li><a href=/docs/programmer/platforms/install_some/>安装问题</a></li><li><a href=/docs/programmer/platforms/git/>Git</a></li><li><a href=/docs/programmer/platforms/os/problem-of-windows/>Windows 爬坑记</a></li><li><a href=/docs/programmer/platforms/tips-of-problems/>解决问题记录笔记</a></li><li><a href=/docs/programmer/platforms/android/android/>安卓</a></li><li><a href=/docs/programmer/platforms/os/freebsd/>FreeBSD</a></li><li><a href=/docs/programmer/platforms/os/note-of-linux/>Linux 笔记</a></li><li><a href=/docs/programmer/platforms/android/adb/>adb</a></li><li><a href=/docs/programmer/platforms/os/ros/>ROS机器人操作系统</a></li></ul></li><li><input type=checkbox id=section-77065c9ce8e402792c5901181c3058d2 class=toggle>
-<label for=section-77065c9ce8e402792c5901181c3058d2 class=flex><a href=/docs/programmer/database/>Database</a>
-<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/database/note-of-db-data---mariadb/>数据库-MariaDB篇</a></li><li><a href=/docs/programmer/database/dgraph---graph-db/>Dgraph使用小记</a></li><li><a href=/docs/programmer/database/note-of-db-data---mongodb/>数据库-MongoDB篇</a></li><li><a href=/docs/programmer/database/note-of-db-data---mysql/>数据库-MySQL篇</a></li></ul></li><li><input type=checkbox id=section-1f1c8bdadacc50268445bf8f4916bb94 class=toggle>
-<label for=section-1f1c8bdadacc50268445bf8f4916bb94 class=flex><a href=/docs/programmer/hardware/>硬件</a>
+使用带有时区信息的datetime对象：确保在创建datetime对象时，使用正确的时区信息。你可以使用pytz库来设置时区信息，例如： from datetime import datetime import pytz # 创建带有时区信息的datetime对象 naive_datetime = datetime(2023, 9, 14, 21, 55, 56) timezone = pytz.timezone(&#34;Asia/Shanghai&#34;) aware_datetime = timezone.localize(naive_datetime) # 将带有时区信息的datetime对象传递给DateTimeField字段 ScannerDevice.update_time = aware_datetime 将DateTimeField字段的auto_now或auto_now_add属性设置为True：这将自动将字段的值设置为当前的带有时区信息的datetime对象。例如： from django.db import models class DATABASEMODEL(models.Model): update_time = models.DateTimeField(auto_now=True)通过以上两种方法之一，你可以修复这个警告并确保正确处理时区信息。"><meta itemprop=datePublished content="2018-06-07T00:00:00+00:00"><meta itemprop=dateModified content="2018-05-28T00:00:00+00:00"><meta itemprop=wordCount content="3632"><meta itemprop=keywords content="Django,Missjava,Vue,Apache,Ajax"><title>Django的建站的(｡･･)ﾉﾞ | Ian's Blog</title><link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://example.org/docs/programmer/cloudnative/notesdjango/><link rel=stylesheet href=/book.min.b267f830fdf65302ecc1702a1178d4f25aa783409b3a25098f3404dd24f37a4d.css integrity="sha256-smf4MP32UwLswXAqEXjU8lqng0CbOiUJjzQE3STzek0=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.dfa51542a9ac04acc3717d555fd4ad907d47f8bdea909c11d36405a78c042252.js integrity="sha256-36UVQqmsBKzDcX1VX9StkH1H+L3qkJwR02QFp4wEIlI=" crossorigin=anonymous></script></head><body dir=ltr class="book-kind-page book-type-docs"><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Ian's Blog</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li class=book-section-flat><a href=/docs/programmer/>程序员笔记</a><ul><li><input type=checkbox id=section-5cc2b7813188c35ab69cf39aa7976742 class=toggle>
+<label for=section-5cc2b7813188c35ab69cf39aa7976742 class=flex><a role=button>基础工具和配置</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-d9f6f78f099bc586e3d00fac11368afd class=toggle>
+<label for=section-d9f6f78f099bc586e3d00fac11368afd class=flex><a role=button>QA</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/basetc/qa/golang-qa2/>Golang QA2</a></li><li><a href=/docs/programmer/basetc/qa/golang-qa1/>Golang QA1</a></li><li><a href=/docs/programmer/basetc/qa/mysql-qa/>MySQL QA</a></li><li><a href=/docs/programmer/basetc/qa/python-qa/>Python QA</a></li><li><a href=/docs/programmer/basetc/qa/%E5%85%A5%E8%81%8C%E9%9D%A2%E8%AF%95---%E5%8F%8D%E9%97%AE/>入职面试-反问</a></li><li><a href=/docs/programmer/basetc/qa/agent-qa/>Agent QA</a></li></ul></li><li><a href=/docs/programmer/basetc/obsidian/>Obsidian笔记软件</a></li><li><a href=/docs/programmer/basetc/%E7%BB%88%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8/>终端浏览器</a></li><li><a href=/docs/programmer/basetc/curl/>curl</a></li><li><a href=/docs/programmer/basetc/%E6%96%87%E6%9C%AC%E4%B8%89%E5%89%91%E5%AE%A2/>文本三剑客</a></li><li><a href=/docs/programmer/basetc/tmux/>Tmux使用笔记</a></li><li><a href=/docs/programmer/basetc/obsidian%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%8F%92%E4%BB%B6/>Obsidian思维导图插件</a></li><li><a href=/docs/programmer/basetc/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/>supervisor</a></li><li><a href=/docs/programmer/basetc/for_china/>各个软件换源</a></li><li><a href=/docs/programmer/basetc/tipsofvim/>tip Of vim</a></li><li><a href=/docs/programmer/basetc/editer---%E5%B8%B8%E7%94%A8%E7%BC%96%E8%BE%91%E5%99%A8/>编辑器使用</a></li><li><a href=/docs/programmer/basetc/bash/>Bash</a></li><li><a href=/docs/programmer/basetc/gitbook/>Gitbook</a></li></ul></li><li><input type=checkbox id=section-36e4866306eb6852906b8f9bc6d5ebe7 class=toggle>
+<label for=section-36e4866306eb6852906b8f9bc6d5ebe7 class=flex><a role=button>平台</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/platforms/os/kde-baloo-%E6%96%87%E4%BB%B6%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/>KDE Baloo 文件索引使用笔记</a></li><li><a href=/docs/programmer/platforms/os/hp-pavilion-aero-fedora-44-%E7%94%B5%E6%B1%A0%E7%BB%AD%E8%88%AA%E8%B0%83%E4%BC%98%E7%AC%94%E8%AE%B0/>HP Pavilion Aero Fedora 44 电池续航调优笔记</a></li><li><a href=/docs/programmer/platforms/os/%E5%B0%86%E9%92%89%E9%92%89deb%E8%BD%ACrpm/>将钉钉deb转rpm</a></li><li><a href=/docs/programmer/platforms/os/fedora/>Dedora</a></li><li><a href=/docs/programmer/platforms/os/distrobox%E4%BD%BF%E7%94%A8/>Distrobox使用</a></li><li><a href=/docs/programmer/platforms/os/debian-%E4%B8%8B-webauthn-%E9%80%9A%E8%A1%8C%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/>Debian 下 WebAuthn 通行密钥登录失败问题处理笔记</a></li><li><a href=/docs/programmer/platforms/%E9%80%86%E5%90%91/>逆向三板斧</a></li><li><a href=/docs/programmer/platforms/os/steam/>Steam</a></li><li><a href=/docs/programmer/platforms/android/waydroid/>Linux 跑安卓</a></li><li><a href=/docs/programmer/platforms/os/ubuntu/>Ubuntu</a></li><li><a href=/docs/programmer/platforms/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8/>阿里云使用</a></li><li><a href=/docs/programmer/platforms/office%E8%BD%AF%E4%BB%B6%E5%9C%A8linux%E4%B8%8A/>Office软件在linux上</a></li><li><a href=/docs/programmer/platforms/appsflyer/>AppsFlyer-外网移动归因营销分析平台</a></li><li><a href=/docs/programmer/platforms/install_some/>安装问题</a></li><li><a href=/docs/programmer/platforms/git/>Git</a></li><li><a href=/docs/programmer/platforms/os/problem-of-windows/>Windows 爬坑记</a></li><li><a href=/docs/programmer/platforms/tips-of-problems/>解决问题记录笔记</a></li><li><a href=/docs/programmer/platforms/android/android/>安卓</a></li><li><a href=/docs/programmer/platforms/os/freebsd/>FreeBSD</a></li><li><a href=/docs/programmer/platforms/os/note-of-linux/>Linux 笔记</a></li><li><a href=/docs/programmer/platforms/android/adb/>adb</a></li><li><a href=/docs/programmer/platforms/os/ros/>ROS机器人操作系统</a></li></ul></li><li><input type=checkbox id=section-bf0ffe4febaf8968f12c1b0f4b3146bf class=toggle>
+<label for=section-bf0ffe4febaf8968f12c1b0f4b3146bf class=flex><a href=/docs/programmer/gui/>图形用户界面-GUI</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-c0bcbb62d4e5579e2649709617c0132c class=toggle>
+<label for=section-c0bcbb62d4e5579e2649709617c0132c class=flex><a href=/docs/programmer/gui/example/>Blog 构建</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-bfb940639d2ba52e02db0447b68826a2 class=toggle>
+<label for=section-bfb940639d2ba52e02db0447b68826a2 class=flex><a href=/docs/programmer/gui/example/table-of-contents/>Table of Contents</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/table-of-contents/with-toc/>With ToC</a></li><li><a href=/docs/programmer/gui/example/table-of-contents/without-toc/>Without ToC</a></li></ul></li><li><input type=checkbox id=section-d145590b204144c49419a1701c375f85 class=toggle>
+<label for=section-d145590b204144c49419a1701c375f85 class=flex><a href=/docs/programmer/gui/example/shortcodes/>Shortcodes</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/shortcodes/buttons/>Buttons</a></li><li><a href=/docs/programmer/gui/example/shortcodes/columns/>Columns</a></li><li><a href=/docs/programmer/gui/example/shortcodes/details/>Details</a></li><li><a href=/docs/programmer/gui/example/shortcodes/hints/>Hints</a></li><li><input type=checkbox id=section-4527692d3fb7be07bb765661e56c1067 class=toggle>
+<label for=section-4527692d3fb7be07bb765661e56c1067 class=flex><a href=/docs/programmer/gui/example/shortcodes/section/>Section</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/gui/example/shortcodes/section/first-page/>First Page</a></li><li><a href=/docs/programmer/gui/example/shortcodes/section/second-page/>Second Page</a></li></ul></li><li><a href=/docs/programmer/gui/example/shortcodes/tabs/>Tabs</a></li></ul></li></ul></li><li><a href=/docs/programmer/gui/tauri/>Tauri</a></li><li><a href=/docs/programmer/gui/ffmpeg/>ffmpeg 使用</a></li><li><a href=/docs/programmer/gui/pyinstaller-python%E6%89%93%E5%8C%85/>python打包</a></li><li><a href=/docs/programmer/gui/qt/>Qt/PySide</a></li><li><a href=/docs/programmer/gui/vn.py%E7%AC%94%E8%AE%B0-%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E5%AE%A2%E6%88%B7%E7%AB%AF/>Vn.Py学习笔记（Python交易平台框架）</a></li><li><a href=/docs/programmer/gui/notespython/>图形化界面 （Python Gui）</a></li></ul></li><li><input type=checkbox id=section-9285a8550516aab58323614daec477d8 class=toggle>
+<label for=section-9285a8550516aab58323614daec477d8 class=flex><a href=/docs/programmer/langs/>编程语言</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-30dc7ea4b5d04e7034b07abe60f7b23b class=toggle>
+<label for=section-30dc7ea4b5d04e7034b07abe60f7b23b class=flex><a role=button>Python</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/langs/python/%E5%A4%A7%E6%95%B0%E5%88%97%E9%9B%86%E5%90%88%E5%AD%98%E5%82%A8%E5%92%8C%E8%BF%98%E5%8E%9F/>大数列集合存储和还原</a></li><li><a href=/docs/programmer/langs/python/python%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/>Python包管理</a></li><li><a href=/docs/programmer/langs/python/%E8%A7%84%E8%8C%83/>Python编码规范</a></li><li><a href=/docs/programmer/langs/python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B/>Python 多线程多进程</a></li><li><a href=/docs/programmer/langs/python/sqlalchemy/>SqlAlchemy - 数据库Orm</a></li><li><a href=/docs/programmer/langs/python/notespython/>解决问题</a></li><li><a href=/docs/programmer/langs/python/py%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%92%8C%E5%8A%9F%E8%83%BD%E6%80%A7%E6%96%B9%E6%B3%95/>Py小工具和功能性方法</a></li><li><a href=/docs/programmer/langs/python/pypi/>PyPi使用说明</a></li><li><a href=/docs/programmer/langs/python/pytest/>PyTest</a></li><li><a href=/docs/programmer/langs/python/notespython/>Python 常用库</a></li><li><a href=/docs/programmer/langs/python/notespython/>Python 笔记</a></li><li><a href=/docs/programmer/langs/python/paramiko-%E4%BD%BF%E7%94%A8---sshsftp/>Paramiko 使用 Ssh&amp;sftp</a></li><li><a href=/docs/programmer/langs/python/fastapi/>FastAPI</a></li></ul></li><li><input type=checkbox id=section-da14e11bac53ad47b616b30345c440a1 class=toggle>
+<label for=section-da14e11bac53ad47b616b30345c440a1 class=flex><a role=button>Golang</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/langs/golang/%E6%8A%8Agolang%E5%BD%93%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%94%A8/>把Golang当脚本语言用</a></li><li><a href=/docs/programmer/langs/golang/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/>常用命令</a></li><li><a href=/docs/programmer/langs/golang/advanced-knowledge-of-golang/>Golang进阶笔记</a></li><li><a href=/docs/programmer/langs/golang/note-of-golang/>Golang笔记</a></li></ul></li><li><a href=/docs/programmer/langs/cmake/>CMake 使用Tips</a></li><li><a href=/docs/programmer/langs/note-for-algo/>算法</a></li><li><a href=/docs/programmer/langs/tips-of-debugers/>Tips of debuggers</a></li><li><a href=/docs/programmer/langs/java/notesjava/>愉快的Java(happy to learn the fuck java)</a></li><li><a href=/docs/programmer/langs/tips-of-markdown/>Tips of MarkDown</a></li><li><a href=/docs/programmer/langs/ai%E7%BC%96%E7%A8%8B/%E9%85%8D%E7%BD%AE%E9%A3%9E%E4%B9%A6mcp/>配置飞书 MC P</a></li></ul></li><li><input type=checkbox id=section-d0ebd62f5791c0098a7655ccf2b83c7f class=toggle>
+<label for=section-d0ebd62f5791c0098a7655ccf2b83c7f class=flex><a role=button>机器学习</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/ml/stable-diffusion/>AI画图</a></li><li><a href=/docs/programmer/ml/langchain/>LangChain入门</a></li><li><a href=/docs/programmer/ml/%E5%9B%BE%E7%89%87%E8%83%8C%E6%99%AF%E6%B6%88%E9%99%A4/>图片背景消除</a></li><li><a href=/docs/programmer/ml/python-%E5%9B%BE%E8%A1%A8/>Python 图表</a></li><li><a href=/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%A1%8C%E4%B8%BA%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%92%8C%E4%BB%BB%E5%8A%A1/>机器人行为自动编排和任务</a></li><li><a href=/docs/programmer/ml/%E7%88%AC%E8%99%AB/>爬虫</a></li><li><a href=/docs/programmer/ml/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/>大模型使用笔记</a></li><li><a href=/docs/programmer/ml/paddle/>Paddle</a></li><li><a href=/docs/programmer/ml/tensorflow/>Tensorflow</a></li><li><a href=/docs/programmer/ml/yolo/>Demo Test项目中的一些东西</a></li><li><a href=/docs/programmer/ml/opencv/>OpenCV</a></li><li><a href=/docs/programmer/ml/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/>机器学习库</a></li></ul></li><li><input type=checkbox id=section-f1f22e98cd4f2e76c815b7c987853934 class=toggle checked>
+<label for=section-f1f22e98cd4f2e76c815b7c987853934 class=flex><a href=/docs/programmer/cloudnative/>云原生</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-32b04cad9c1fdc541ff1de5b2e020b85 class=toggle>
+<label for=section-32b04cad9c1fdc541ff1de5b2e020b85 class=flex><a href=/docs/programmer/cloudnative/redis/>中间件</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/redis/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/>布隆过滤器</a></li><li><a href=/docs/programmer/cloudnative/redis/redis%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/>Redis集群部署</a></li><li><a href=/docs/programmer/cloudnative/redis/python-redis-%E5%AE%A2%E6%88%B7%E7%AB%AF/>Python Redis 客户端</a></li><li><a href=/docs/programmer/cloudnative/redis/bigkey-and-hotkey/>大key、热key问题</a></li><li><a href=/docs/programmer/cloudnative/redis/the-basics-of-redis/>Redis基础</a></li><li><a href=/docs/programmer/cloudnative/redis/advanced-knowledge-of-redis/>Redis进阶</a></li><li><a href=/docs/programmer/cloudnative/redis/%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4/>Redis常用命令</a></li></ul></li><li><input type=checkbox id=section-e4266bbc0c25921b3a42b83539222bf9 class=toggle>
+<label for=section-e4266bbc0c25921b3a42b83539222bf9 class=flex><a role=button>k8s</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/k8s/%E9%98%BF%E9%87%8C%E8%87%AA%E5%8A%A8%E4%BC%B8%E7%BC%A9/>阿里k8s自动伸缩</a></li><li><a href=/docs/programmer/cloudnative/k8s/elk%E5%9C%A8k8s%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B/>elk在k8s上的部署使用示例</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E9%85%8D%E5%A5%97%E8%AF%B4%E6%98%8E/>k8s 配套说明</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s-%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/>k8s技术分享</a></li><li><a href=/docs/programmer/cloudnative/k8s/k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/>k8s学习-常用命令和配置文件</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-workflow%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/>Argo Workflow性能测试和使用场景分析</a></li><li><a href=/docs/programmer/cloudnative/k8s/argo-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/>Argo 使用记录</a></li></ul></li><li><input type=checkbox id=section-b346214f86968bbf1177b80c648fd733 class=toggle>
+<label for=section-b346214f86968bbf1177b80c648fd733 class=flex><a role=button>中间件</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/cloudnative/middleware/kafka-%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/>Kafka 安装和使用</a></li></ul></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/vs-code-dev-container/>📝 Windows + Docker + VS Code Remote-Containers 故障排查与恢复</a></li><li><a href=/docs/programmer/cloudnative/elk/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E7%B3%BB%E7%BB%9F/>日志收集系统: loki+promtail+Grafana</a></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-podman/>Podman</a></li><li><a href=/docs/programmer/cloudnative/nginx%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE/>Nginx实用配置</a></li><li><a href=/docs/programmer/cloudnative/uwsgi-%E5%A4%84%E7%90%86%E8%AE%B0%E5%BD%95/>uwsgi 处理记录</a></li><li><a href=/docs/programmer/cloudnative/%E5%AE%B9%E5%99%A8/note-of-docker/>Docker</a></li><li><a href=/docs/programmer/cloudnative/fastapi/>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/nginx-%E9%AB%98%E5%8F%AF%E7%94%A8/>Nginx高可用</a></li><li><a href=/docs/programmer/cloudnative/notesdjango/ class=active>Django的建站的(｡･･)ﾉﾞ</a></li><li><a href=/docs/programmer/cloudnative/sonar-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/>Sonar 代码静态检查</a></li></ul></li><li><input type=checkbox id=section-f184e8770cfdece710650b22a0bcdee5 class=toggle>
+<label for=section-f184e8770cfdece710650b22a0bcdee5 class=flex><a role=button>Net</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/net/crawler/selenium-grid/>Selenium Grid</a></li><li><a href=/docs/programmer/net/tools/ngrok/>ngrok - 一个免费内网穿透api工具</a></li><li><a href=/docs/programmer/net/crawler/mitmproxy/>mitmproxy</a></li><li><a href=/docs/programmer/net/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/>网络编程</a></li><li><a href=/docs/programmer/net/tips-of-grpc/>gRpc使用小记</a></li><li><a href=/docs/programmer/net/epoll%E5%AE%9E%E7%8E%B0/>Epoll实现</a></li></ul></li><li><input type=checkbox id=section-995399cc0c6150665e3a798789f959d7 class=toggle>
+<label for=section-995399cc0c6150665e3a798789f959d7 class=flex><a href=/docs/programmer/database/>Database</a>
+<img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/database/note-of-db-data---mariadb/>数据库-MariaDB篇</a></li><li><a href=/docs/programmer/database/dgraph---graph-db/>Dgraph使用小记</a></li><li><a href=/docs/programmer/database/note-of-db-data---mongodb/>数据库-MongoDB篇</a></li><li><a href=/docs/programmer/database/note-of-db-data---mysql/>数据库-MySQL篇</a></li></ul></li><li><input type=checkbox id=section-d8d623113557f9782af91eb6ff518c56 class=toggle>
+<label for=section-d8d623113557f9782af91eb6ff518c56 class=flex><a href=/docs/programmer/hardware/>硬件</a>
 <img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/docs/programmer/hardware/raspberrypi/>Raspberry Pi</a></li><li><a href=/docs/programmer/hardware/screen/>Screen</a></li></ul></li></ul></li><li class=book-section-flat><a>建模和游戏</a><ul><li><a href=/docs/3dgame/blender/>Blender</a></li><li><a href=/docs/3dgame/noteofue4/>UE4 笔记</a></li></ul></li></ul><ul><li><a href=/posts/ title=Blog>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/icons/menu.svg class=book-icon alt=Menu></label><h3>Django的建站的(｡･･)ﾉﾞ</h3><label for=toc-control><img src=/icons/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class=hidden><nav id=TableOfContents><ul><li><a href=#一些问题>一些问题</a><ul><li><a href=#使用字体-zh-cn时如果报错>使用字体 <code>zh-cn</code>时如果报错:</a></li><li><a href=#时区问题>时区问题</a></li></ul></li><li><a href=#daemon-命令>daemon 命令</a><ul><li><a href=#示例如下>示例如下:</a></li></ul></li><li><a href=#利用nginxfd反向代理解决跨域问题>利用nginxfd反向代理解决跨域问题</a><ul><li></li></ul></li><li><a href=#django-的前端相关>Django 的前端相关</a><ul><li></li><li><a href=#版本>版本</a></li><li><a href=#mvc>MVC</a></li></ul></li><li><a href=#简介>简介</a><ul><li><a href=#试一下>试一下?</a></li><li><a href=#结构>结构</a></li><li><a href=#得知结构之后>得知结构之后</a></li><li><a href=#这下可以很厉害了>这下可以很厉害了</a></li></ul></li><li><a href=#我爱java-2018年6月24日16点40分的我由衷的写到>我爱Java 2018年6月24日16点40分的我由衷的写到</a><ul><li></li><li><a href=#注意>注意</a></li></ul></li><li><a href=#ssl加密https配置>SSl加密，https配置</a><ul><li><a href=#之前写的文档>之前写的文档</a></li><li><a href=#附>附</a></li></ul></li></ul><ul><li><ul><li><a href=#路由配置登陆访问>路由配置登陆访问</a></li></ul></li></ul></nav></aside></header><article class="markdown book-article"><p>author: Ian</p><h1 id=django-建站的一些东西>Django 建站的一些东西<a class=anchor href=#django-%e5%bb%ba%e7%ab%99%e7%9a%84%e4%b8%80%e4%ba%9b%e4%b8%9c%e8%a5%bf>#</a></h1><p><img src=http://lofrev.net/wp-content/photos/2017/04/http_logo_dpwnload.png alt="http server/client"></p><h2 id=一些问题>一些问题<a class=anchor href=#%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98>#</a></h2><h3 id=使用字体-zh-cn时如果报错>使用字体 <code>zh-cn</code>时如果报错:<a class=anchor href=#%e4%bd%bf%e7%94%a8%e5%ad%97%e4%bd%93-zh-cn%e6%97%b6%e5%a6%82%e6%9e%9c%e6%8a%a5%e9%94%99>#</a></h3><blockquote class=book-hint><p>OSError: No translation files found for default language zh-cn.</p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>LANGUAGE_CODE <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;zh-Hans&#39;</span>
 </span></span><span style=display:flex><span>TIME_ZONE <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;Asia/Shanghai&#39;</span>
 </span></span><span style=display:flex><span><span style=color:#75715e># zh-Hans是简体中文 zh-Hant是繁体中文</span>
@@ -156,14 +158,14 @@ polls/templates/polls/index.html¶</p><div class=highlight><pre tabindex=0 style
 polls/templates/polls/index.html¶</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-html data-lang=html><span style=display:flex><span>    &lt;<span style=color:#f92672>li</span>&gt;&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{% url &#39;polls:detail&#39; question.id %}&#34;</span>&gt;{{ question.question_text }}&lt;/<span style=color:#f92672>a</span>&gt;&lt;/<span style=color:#f92672>li</span>&gt;</span></span></code></pre></div><h3 id=版本>版本<a class=anchor href=#%e7%89%88%e6%9c%ac>#</a></h3><p>其中，很令人头疼的便是版本。 如果遇到什么莫名其妙的错，请查看是否是版本的原因。
 这里的版本原因并不☞一些人说的库依赖严重，好像开发者版本更迭不考虑兼容——或者说居然勤奋的接口重换那般严重。
 此处仅仅☞在运行新版本时否个方法时，或许会莫名其妙引发一个早已摒弃的函数错误。这时候就可能是在折腾版本是导致有的不同版本有文件残留。在运行时莫名其妙的被<code>import</code>了然后它有调取其他东西，但是找不到的…</p><p>这时候轻则<code>pip uninstall</code> 重则环境重建。所以可见虚拟环境还是挺有用的嘛——</p><h3 id=mvc>MVC<a class=anchor href=#mvc>#</a></h3><p>全名： <code>Model</code> 、<code>View</code>、<code>Controller</code>。模型，视图，控制器这种功能分离的软件设计规范。所以它是通用的…不要和爪哇捆绑，搞得和某个神奇技术一般… (⊙﹏⊙)</p><hr><h2 id=简介>简介<a class=anchor href=#%e7%ae%80%e4%bb%8b>#</a></h2><p>在安装之后，使用<code>django-admin startproject </code>+名字来初始化一个工程。 对比到<code>python</code>中就是创建好了文档目录，还在文件中写入相关框架代码，以此支持运行。</p><h3 id=试一下>试一下?<a class=anchor href=#%e8%af%95%e4%b8%80%e4%b8%8b>#</a></h3><p><code>python manage.py runserver</code>
-便可开启服务器，这时候访问相应端口，就一个欢迎界面，提示嗯~ o(<em>￣▽￣</em>)o，你能开跑了。</p><h4 id=再试一下>再试一下？<a class=anchor href=#%e5%86%8d%e8%af%95%e4%b8%80%e4%b8%8b>#</a></h4><p>在11版本中有<code>\admin</code>地址可以访问，访问之后便是一个登陆界面.但,并不知道用户名和密码啊~ emm… 不过好处是能看到这个页面至少保证了<code>django</code>在<code>render</code>一个<code>.html</code>页面时是正常的。而之前说的老版本残留就会导致<code>render</code>时出错。</p><h3 id=结构>结构<a class=anchor href=#%e7%bb%93%e6%9e%84>#</a></h3><p>根目录下，&lsquo;项目名文件&rsquo;是项目容器😰
+便可开启服务器，这时候访问相应端口，就一个欢迎界面，提示嗯~ o(<em>￣▽￣</em>)o，你能开跑了。</p><h4 id=再试一下>再试一下？<a class=anchor href=#%e5%86%8d%e8%af%95%e4%b8%80%e4%b8%8b>#</a></h4><p>在11版本中有<code>\admin</code>地址可以访问，访问之后便是一个登陆界面.<font color=#ef0000>但</font>,并不知道用户名和密码啊~ emm… 不过好处是能看到这个页面至少保证了<code>django</code>在<code>render</code>一个<code>.html</code>页面时是正常的。而之前说的<font color=#9e0000>老版本残留</font>就会导致<code>render</code>时出错。</p><h3 id=结构>结构<a class=anchor href=#%e7%bb%93%e6%9e%84>#</a></h3><p>根目录下，&lsquo;项目名文件&rsquo;是项目容器😰
 <code>manage.py</code> 命令行工具，emm 类似于<code>python click库</code>的命令行程序，使用参数干不同的事情。
 进入到项目容器中，其中<code>settings.py</code>顾名思义
 <code>urls.py</code>同上，管理各个<code>url</code>通往哪里
 <code>wsgl.py</code>某个兼容啥，现在不用管…</p><h3 id=得知结构之后>得知结构之后<a class=anchor href=#%e5%be%97%e7%9f%a5%e7%bb%93%e6%9e%84%e4%b9%8b%e5%90%8e>#</a></h3><p>然后就能</p><ol><li><p>在<code>urls.py</code>里愉快的添加各个功能url。这里面就一个urlpatterns列表，使用<code>djangol.conf.urls.url</code>方法来配置。
 不过其对应的执行函数都需要一个<code>request</code>来接受请求数据。 <code>return</code>回一个页面~ 现在用到的有<code>django,shortcuts.render 及 render_to_response</code>出来的，以及<code>django.http.HttpResponse</code>出来的东西。</p></li><li><p>嗯…… <code>ulr</code> 链接的执行方法详情就放在新创建的<code>view.py</code>中管理。</p></li><li><p>而在<code>view</code>中需要渲染的html文件则放置在根目录新创建的<code>templates</code>文件夹中。通过在<code>setting.py</code>中的&rsquo;TEMPLATES&rsquo;列表中的不知名字典(因为它确实没取名啊😔)de<code>DIRS</code>元素来指路。</p></li></ol><h3 id=这下可以很厉害了>这下可以很厉害了<a class=anchor href=#%e8%bf%99%e4%b8%8b%e5%8f%af%e4%bb%a5%e5%be%88%e5%8e%89%e5%ae%b3%e4%ba%86>#</a></h3><p>进而进行数据库配置—— 还在<code>setting.py</code>中的&rsquo;DATABASES&rsquo;来指路。
 但Django规定要使用模型，就要创建一个爱怕怕<code>app</code>：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-shell data-lang=shell><span style=display:flex><span>django-admin startapp TestModel 🦑</span></span></code></pre></div><p>再将此爱怕怕领到<code>setting.py</code>中<code>NSTALLED_APPS</code>中签一下到。
-随后在<code>TestModel</code>下的<code>models</code>中创建继承于<code>django.db.models.Model</code>的数据类，然后使用隶属于<code>models</code>下的方法来制定数据类型eg:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>name <span style=color:#f92672>=</span> models<span style=color:#f92672>.</span>CharField(max_length<span style=color:#f92672>=</span><span style=color:#ae81ff>20</span>)</span></span></code></pre></div><blockquote class=book-hint><p>毕竟不能直接通过Python的自由类嘛… 然后也肯定不能通过python的制定类型… 毕竟python数据类型和MySQL天差地别。</p></blockquote><p>最后
+随后在<code>TestModel</code>下的<code>models</code>中创建继承于<code>django.db.models.Model</code>的数据类，然后使用隶属于<code>models</code>下的方法来制定数据类型eg:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>name <span style=color:#f92672>=</span> models<span style=color:#f92672>.</span>CharField(max_length<span style=color:#f92672>=</span><span style=color:#ae81ff>20</span>)</span></span></code></pre></div><blockquote class=book-hint><p>毕竟不能直接通过Python的自由类嘛… 然后也肯定不能通过python的制定类型… 毕竟python数据类型和MySQL天差地别。</p></blockquote><p><font color=a00070>最后</font>
 再回到命令行中使用</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-shell data-lang=shell><span style=display:flex><span>python manage.py migrate        //创建表结构
 </span></span><span style=display:flex><span>python manage.py makemigrations //通知更改
 </span></span><span style=display:flex><span>python manage.py testModel      // 创建表结构 😲❓
@@ -184,11 +186,13 @@ polls/templates/polls/index.html¶</p><div class=highlight><pre tabindex=0 style
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e>### 那么数据库表多了怎么一键生成对应类呢？</span>
 </span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>```</span>shell
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>python manage<span style=color:#f92672>.</span>py inspectdb  <span style=color:#f92672>//</span>自动生成models模型文件
 </span></span><span style=display:flex><span>python manage<span style=color:#f92672>.</span>py inspectdb <span style=color:#f92672>&gt;</span> app<span style=color:#f92672>/</span>models<span style=color:#f92672>.</span>py      <span style=color:#f92672>//</span>假设有了名为<span style=color:#e6db74>&#39;app&#39;</span>的爱怕怕
 </span></span><span style=display:flex><span><span style=color:#f92672>//</span> 老一套
 </span></span><span style=display:flex><span>python manage<span style=color:#f92672>.</span>py makemigrations
-</span></span><span style=display:flex><span>python manage<span style=color:#f92672>.</span>py migrate</span></span></code></pre></div><p>但是会将之前<code>models.py</code>中的东西删掉… 还会把数据库中的表名重命名… 按它的规矩来生成，嗯…其实也🆗的。</p><h2 id=我爱java-2018年6月24日16点40分的我由衷的写到>我爱Java 2018年6月24日16点40分的我由衷的写到<a class=anchor href=#%e6%88%91%e7%88%b1java-2018%e5%b9%b46%e6%9c%8824%e6%97%a516%e7%82%b940%e5%88%86%e7%9a%84%e6%88%91%e7%94%b1%e8%a1%b7%e7%9a%84%e5%86%99%e5%88%b0>#</a></h2><p>在<code>MySQL</code>中读取<code>blob</code>存储的字段时，使用<code>BinaryField</code>不可使用其逆向生成的模型读取方式。当然，对照表如下</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-md data-lang=md><span style=display:flex><span>            &#39;AutoField&#39;: &#39;integer AUTO_INCREMENT&#39;,
+</span></span><span style=display:flex><span>python manage<span style=color:#f92672>.</span>py migrate</span></span></code></pre></div><p>但是会将之前<code>models.py</code>中的东西删掉… 还会把数据库中的表名重命名… 按它的规矩来生成，嗯…其实也🆗的。</p><h2 id=我爱java-2018年6月24日16点40分的我由衷的写到>我爱Java 2018年6月24日16点40分的我由衷的写到<a class=anchor href=#%e6%88%91%e7%88%b1java-2018%e5%b9%b46%e6%9c%8824%e6%97%a516%e7%82%b940%e5%88%86%e7%9a%84%e6%88%91%e7%94%b1%e8%a1%b7%e7%9a%84%e5%86%99%e5%88%b0>#</a></h2><p>在<code>MySQL</code>中读取<code>blob</code>存储的字段时，使用<code>BinaryField</code>不可使用其逆向生成的模型读取方式。当然，对照表如下</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-md data-lang=md><span style=display:flex><span>
+</span></span><span style=display:flex><span>            &#39;AutoField&#39;: &#39;integer AUTO_INCREMENT&#39;,
 </span></span><span style=display:flex><span>            &#39;BigAutoField&#39;: &#39;bigint AUTO_INCREMENT&#39;,
 </span></span><span style=display:flex><span>            &#39;BinaryField&#39;: &#39;longblob&#39;,
 </span></span><span style=display:flex><span>            &#39;BooleanField&#39;: &#39;bool&#39;,
@@ -213,7 +217,8 @@ polls/templates/polls/index.html¶</p><div class=highlight><pre tabindex=0 style
 </span></span><span style=display:flex><span>            &#39;SmallIntegerField&#39;: &#39;smallint&#39;,
 </span></span><span style=display:flex><span>            &#39;TextField&#39;: &#39;longtext&#39;,
 </span></span><span style=display:flex><span>            &#39;TimeField&#39;: &#39;time&#39;,
-</span></span><span style=display:flex><span>            &#39;UUIDField&#39;: &#39;char(32)&#39;,</span></span></code></pre></div><p>以上是一部分，具体点<a href=https://www.cnblogs.com/sun1994/p/8566988.html>这里</a></p><h5 id=模型字段名称>模型字段名称<a class=anchor href=#%e6%a8%a1%e5%9e%8b%e5%ad%97%e6%ae%b5%e5%90%8d%e7%a7%b0>#</a></h5><p>在逆向生成时，我遇到过一次将数据库名修改的先例，不过后来似乎没有修改过。 然后就是驼峰命名法的字段可能emm也是因为此我才开始写这些信息，就是，驼峰命名法的字段可能在模型字段中为全小写。 还有就是<code>Django</code>莫名其妙的的编码错误，真的是一分钟编程，一小时修改编码…而且调试起来真的…我目前的调试方式极为原始，所以感觉真的<code>不想编程</code>嗯…</p><h4 id=django-返回文件下载>Django 返回文件下载<a class=anchor href=#django-%e8%bf%94%e5%9b%9e%e6%96%87%e4%bb%b6%e4%b8%8b%e8%bd%bd>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-py data-lang=py><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>readFile</span>(fn, buf_size<span style=color:#f92672>=</span><span style=color:#ae81ff>262144</span>):  <span style=color:#75715e># 大文件下载，设定缓存大小</span>
+</span></span><span style=display:flex><span>            &#39;UUIDField&#39;: &#39;char(32)&#39;,</span></span></code></pre></div><p>以上是一部分，具体点<a href=https://www.cnblogs.com/sun1994/p/8566988.html>这里</a></p><h5 id=模型字段名称>模型字段名称<a class=anchor href=#%e6%a8%a1%e5%9e%8b%e5%ad%97%e6%ae%b5%e5%90%8d%e7%a7%b0>#</a></h5><p>在逆向生成时，我遇到过一次将数据库名修改的先例，不过后来似乎没有修改过。 然后就是驼峰命名法的字段可能emm也是因为此我才开始写这些信息，就是，驼峰命名法的字段可能在模型字段中为全小写。 还有就是<code>Django</code>莫名其妙的的编码错误，真的是一分钟编程，一小时修改编码…而且调试起来真的…我目前的调试方式极为原始，所以感觉真的<code>不想编程</code>嗯…</p><h4 id=django-返回文件下载>Django 返回文件下载<a class=anchor href=#django-%e8%bf%94%e5%9b%9e%e6%96%87%e4%bb%b6%e4%b8%8b%e8%bd%bd>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-py data-lang=py><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>readFile</span>(fn, buf_size<span style=color:#f92672>=</span><span style=color:#ae81ff>262144</span>):  <span style=color:#75715e># 大文件下载，设定缓存大小</span>
 </span></span><span style=display:flex><span>        f <span style=color:#f92672>=</span> open(fn, <span style=color:#e6db74>&#34;rb&#34;</span>)
 </span></span><span style=display:flex><span>        <span style=color:#66d9ef>while</span> <span style=color:#66d9ef>True</span>:  <span style=color:#75715e># 循环读取</span>
 </span></span><span style=display:flex><span>            c <span style=color:#f92672>=</span> f<span style=color:#f92672>.</span>read(buf_size)
@@ -227,11 +232,15 @@ polls/templates/polls/index.html¶</p><div class=highlight><pre tabindex=0 style
 </span></span><span style=display:flex><span>    fileType <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;.docx&#39;</span>
 </span></span><span style=display:flex><span>    response[<span style=color:#e6db74>&#39;Content-Disposition&#39;</span>] <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;attachment; filename=&#39;</span> <span style=color:#f92672>+</span> fileName<span style=color:#f92672>.</span>encode(<span style=color:#e6db74>&#39;utf-8&#39;</span>) <span style=color:#f92672>+</span> fileType<span style=color:#f92672>.</span>encode(<span style=color:#e6db74>&#39;utf-8&#39;</span>)  <span style=color:#75715e># 设定传输给客户端的文件名称</span>
 </span></span><span style=display:flex><span>    response[<span style=color:#e6db74>&#39;Content-Length&#39;</span>] <span style=color:#f92672>=</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>getsize(filePath)  <span style=color:#75715e># 传输给客户端的文件大小</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> response </span></span></code></pre></div><h4 id=python-docx编辑>Python Docx编辑<a class=anchor href=#python-docx%e7%bc%96%e8%be%91>#</a></h4><h5 id=替换>替换<a class=anchor href=#%e6%9b%bf%e6%8d%a2>#</a></h5><pre tabindex=0><code class=language-docx data-lang=docx>    在`.docx`文件中将需要替换的位置 使用变量站位，写法{{ placheholdParaName }}</code></pre><p>使用文件时，只能写做<code>{{placheholdParaName}}</code>不能有空格…另外<code>docx</code>使用<code>docx</code>中的<code>Document</code>读入即可</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-py data-lang=py><span style=display:flex><span>    tpl <span style=color:#f92672>=</span> DocxTemplate(self<span style=color:#f92672>.</span>prjRootPath <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;/word_template/&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;word_template.docx&#34;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> response</span></span></code></pre></div><h4 id=python-docx编辑>Python Docx编辑<a class=anchor href=#python-docx%e7%bc%96%e8%be%91>#</a></h4><h5 id=替换>替换<a class=anchor href=#%e6%9b%bf%e6%8d%a2>#</a></h5><pre tabindex=0><code class=language-docx data-lang=docx>
+    在`.docx`文件中将需要替换的位置 使用变量站位，写法{{ placheholdParaName }}</code></pre><p><font color=red>使用文件时，只能写做<code>{{placheholdParaName}}</code>不能有空格…另外<code>docx</code>使用<code>docx</code>中的<code>Document</code>读入即可</font></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-py data-lang=py><span style=display:flex><span>
+</span></span><span style=display:flex><span>    tpl <span style=color:#f92672>=</span> DocxTemplate(self<span style=color:#f92672>.</span>prjRootPath <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;/word_template/&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;word_template.docx&#34;</span>)
 </span></span><span style=display:flex><span>    sub1 <span style=color:#f92672>=</span> tpl<span style=color:#f92672>.</span>new_subdoc()
 </span></span><span style=display:flex><span>    sub1<span style=color:#f92672>.</span>subdocx <span style=color:#f92672>=</span> Document(temPath <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;sub1_bond.docx&#39;</span>)
-</span></span><span style=display:flex><span>    subContext[<span style=color:#e6db74>&#39;sub1&#39;</span>] <span style=color:#f92672>=</span> sub1</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-md data-lang=md><span style=display:flex><span>    上述中，只能写作……难道是因为使用{{someThing}}这种写法而隐藏了？！！
-</span></span><span style=display:flex><span>    那么，今后写彩带注释岂不是不需要使用^_^而直接使用双花括号的写法就能直接隐藏了么(⊙o⊙ ) 　凄い</span></span></code></pre></div><p><strong>Py中</strong>：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-py data-lang=py><span style=display:flex><span>    <span style=color:#f92672>from</span> docxtpl <span style=color:#f92672>import</span> DocxTemplate, InlineImage
+</span></span><span style=display:flex><span>    subContext[<span style=color:#e6db74>&#39;sub1&#39;</span>] <span style=color:#f92672>=</span> sub1</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-md data-lang=md><span style=display:flex><span>
+</span></span><span style=display:flex><span>    上述中，只能写作……难道是因为使用{{someThing}}这种写法而隐藏了？！！
+</span></span><span style=display:flex><span>    那么，今后写彩带注释岂不是不需要使用^_^而直接使用双花括号的写法就能直接隐藏了么(⊙o⊙ ) 　凄い</span></span></code></pre></div><p><strong>Py中</strong>：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-py data-lang=py><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>from</span> docxtpl <span style=color:#f92672>import</span> DocxTemplate, InlineImage
 </span></span><span style=display:flex><span>    <span style=color:#f92672>from</span> docx.shared <span style=color:#f92672>import</span> Mm, Inches, Pt
 </span></span><span style=display:flex><span>    doc <span style=color:#f92672>=</span> DocxTemplate(<span style=color:#e6db74>&#34;my_word_template.docx&#34;</span>)
 </span></span><span style=display:flex><span>    myimage <span style=color:#f92672>=</span> InlineImage(doc,
@@ -239,21 +248,35 @@ polls/templates/polls/index.html¶</p><div class=highlight><pre tabindex=0 style
 </span></span><span style=display:flex><span>    context <span style=color:#f92672>=</span> { <span style=color:#e6db74>&#39;fundName&#39;</span> : <span style=color:#e6db74>u</span><span style=color:#e6db74>&#39;这里是基金名称&#39;</span>, <span style=color:#e6db74>&#39;stars&#39;</span>:<span style=color:#e6db74>u</span><span style=color:#e6db74>&#39;五星级琉璃六&#39;</span>, <span style=color:#e6db74>&#39;</span>
 </span></span><span style=display:flex><span>    bench<span style=color:#e6db74>&#39;: u&#39;</span>对比基金<span style=color:#e6db74>&#39;, &#39;</span>income<span style=color:#e6db74>&#39;: u&#39;</span><span style=color:#ae81ff>12</span><span style=color:#e6db74>&#39;, &#39;</span>bb<span style=color:#e6db74>&#39;: u&#39;</span><span style=color:#ae81ff>0.1</span><span style=color:#f92672>%</span><span style=color:#e6db74>&#39;, &#39;</span>image0<span style=color:#e6db74>&#39; : myimage}</span>
 </span></span><span style=display:flex><span>    doc<span style=color:#f92672>.</span>render(context)
-</span></span><span style=display:flex><span>    doc<span style=color:#f92672>.</span>save(<span style=color:#e6db74>&#34;generated_doc.docx&#34;</span>)</span></span></code></pre></div><h4 id=生成echarts图表图片>生成echarts图表图片<a class=anchor href=#%e7%94%9f%e6%88%90echarts%e5%9b%be%e8%a1%a8%e5%9b%be%e7%89%87>#</a></h4><h5 id=环境>环境<a class=anchor href=#%e7%8e%af%e5%a2%83>#</a></h5><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># 更新软件列表 &amp; 更新软件</span>
-</span></span><span style=display:flex><span>sudo apt-get update    
+</span></span><span style=display:flex><span>    doc<span style=color:#f92672>.</span>save(<span style=color:#e6db74>&#34;generated_doc.docx&#34;</span>)</span></span></code></pre></div><h4 id=生成echarts图表图片>生成echarts图表图片<a class=anchor href=#%e7%94%9f%e6%88%90echarts%e5%9b%be%e8%a1%a8%e5%9b%be%e7%89%87>#</a></h4><h5 id=环境>环境<a class=anchor href=#%e7%8e%af%e5%a2%83>#</a></h5><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 更新软件列表 &amp; 更新软件</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>sudo apt-get update  
 </span></span><span style=display:flex><span>sudo apt-get upgrade
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e># 下载包</span>
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>pip install pyecharts-snapshot
 </span></span><span style=display:flex><span>wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.5.0-beta-linux-ubuntu-xenial-x86_64.tar.gz
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e># 解压</span>
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>tar -xzvf phantomjs-2.5.0-beta-linux-ubuntu-xenial-x86_64.tar.gz
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e># 进入路径</span>
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>cd phantomjs-2.5.0-beta-ubuntu-xenial/bin
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e># 赋予权限</span>
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>chmod +x phantomjs
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e># 查看版本号</span>
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>phantomjs -v  
-</span></span><span style=display:flex><span><span style=color:#75715e># 若显示版本号，如 2.1.1 则生效</span></span></span></code></pre></div><h5 id=生成图片>生成图片<a class=anchor href=#%e7%94%9f%e6%88%90%e5%9b%be%e7%89%87>#</a></h5><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#f92672>from</span> pyecharts <span style=color:#f92672>import</span> Line, Pie, Grid
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 若显示版本号，如 2.1.1 则生效</span></span></span></code></pre></div><h5 id=生成图片>生成图片<a class=anchor href=#%e7%94%9f%e6%88%90%e5%9b%be%e7%89%87>#</a></h5><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-py data-lang=py><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> pyecharts <span style=color:#f92672>import</span> Line, Pie, Grid
 </span></span><span style=display:flex><span><span style=color:#f92672>from</span> pyecharts_snapshot.main <span style=color:#f92672>import</span> make_a_snapshot
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>attr <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#34;衬衫&#34;</span>, <span style=color:#e6db74>&#34;羊毛衫&#34;</span>, <span style=color:#e6db74>&#34;雪纺衫&#34;</span>, <span style=color:#e6db74>&#34;裤子&#34;</span>, <span style=color:#e6db74>&#34;高跟鞋&#34;</span>, <span style=color:#e6db74>&#34;袜子&#34;</span>]
@@ -265,21 +288,24 @@ polls/templates/polls/index.html¶</p><div class=highlight><pre tabindex=0 style
 </span></span><span style=display:flex><span>line<span style=color:#f92672>.</span>render(<span style=color:#e6db74>&#39;test.html&#39;</span>)
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>make_a_snapshot(<span style=color:#e6db74>&#39;test.html&#39;</span>, <span style=color:#e6db74>&#39;test.pdf&#39;</span>)
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e># 或者直接生成</span>
-</span></span><span style=display:flex><span>line<span style=color:#f92672>.</span>render(<span style=color:#e6db74>&#39;test.png&#39;</span>)</span></span></code></pre></div><p>在生成图片时，插件包文件源码中有Log，但却是print出来的，而在部署环境中不允许出现print，所以…… 得在包源码中将之屏蔽</p><h5 id=连续生成图片>连续生成图片<a class=anchor href=#%e8%bf%9e%e7%bb%ad%e7%94%9f%e6%88%90%e5%9b%be%e7%89%87>#</a></h5><p>用以上方法来生成图片是…很慢的🐢⬅这个速度。但可以通过使用为渲染创建一个默认配置环境来避免多次生成环境配置。所以—— 具体来看<code>pyecharts</code>中的<a href=http://pyecharts.org/#/zh-cn/prepare>高级说明</a>🕶</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-py data-lang=py><span style=display:flex><span>    <span style=color:#f92672>from</span> pyecharts <span style=color:#f92672>import</span> Bar, Line
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>line<span style=color:#f92672>.</span>render(<span style=color:#e6db74>&#39;test.png&#39;</span>)</span></span></code></pre></div><p><font color=#f0aabb>在生成图片时，插件包文件源码中有Log，但却是print出来的，而在部署环境中不允许出现print，所以…… 得在包源码中将之屏蔽</font></p><h5 id=连续生成图片>连续生成图片<a class=anchor href=#%e8%bf%9e%e7%bb%ad%e7%94%9f%e6%88%90%e5%9b%be%e7%89%87>#</a></h5><p>用以上方法来生成图片是…很慢的🐢⬅这个速度。但可以通过使用为渲染创建一个默认配置环境来避免多次生成环境配置。所以—— 具体来看<code>pyecharts</code>中的<a href=http://pyecharts.org/#/zh-cn/prepare>高级说明</a>🕶</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-py data-lang=py><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>from</span> pyecharts <span style=color:#f92672>import</span> Bar, Line
 </span></span><span style=display:flex><span>    <span style=color:#f92672>from</span> pyecharts.engine <span style=color:#f92672>import</span> create_default_environment
-</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    bar <span style=color:#f92672>=</span> Bar(<span style=color:#e6db74>&#34;我的第一个图表&#34;</span>, <span style=color:#e6db74>&#34;这里是副标题&#34;</span>)
 </span></span><span style=display:flex><span>    bar<span style=color:#f92672>.</span>add(<span style=color:#e6db74>&#34;服装&#34;</span>, [<span style=color:#e6db74>&#34;衬衫&#34;</span>, <span style=color:#e6db74>&#34;羊毛衫&#34;</span>, <span style=color:#e6db74>&#34;雪纺衫&#34;</span>, <span style=color:#e6db74>&#34;裤子&#34;</span>, <span style=color:#e6db74>&#34;高跟鞋&#34;</span>, <span style=color:#e6db74>&#34;袜子&#34;</span>], [<span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>20</span>, <span style=color:#ae81ff>36</span>, <span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>75</span>, <span style=color:#ae81ff>90</span>])
-</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    line <span style=color:#f92672>=</span> Line(<span style=color:#e6db74>&#34;我的第一个图表&#34;</span>, <span style=color:#e6db74>&#34;这里是副标题&#34;</span>)
 </span></span><span style=display:flex><span>    line<span style=color:#f92672>.</span>add(<span style=color:#e6db74>&#34;服装&#34;</span>, [<span style=color:#e6db74>&#34;衬衫&#34;</span>, <span style=color:#e6db74>&#34;羊毛衫&#34;</span>, <span style=color:#e6db74>&#34;雪纺衫&#34;</span>, <span style=color:#e6db74>&#34;裤子&#34;</span>, <span style=color:#e6db74>&#34;高跟鞋&#34;</span>, <span style=color:#e6db74>&#34;袜子&#34;</span>], [<span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>20</span>, <span style=color:#ae81ff>36</span>, <span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>75</span>, <span style=color:#ae81ff>90</span>])
-</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    env <span style=color:#f92672>=</span> create_default_environment(<span style=color:#e6db74>&#34;html&#34;</span>)
 </span></span><span style=display:flex><span>    <span style=color:#75715e># 为渲染创建一个默认配置环境</span>
 </span></span><span style=display:flex><span>    <span style=color:#75715e># create_default_environment(filet_ype)</span>
 </span></span><span style=display:flex><span>    <span style=color:#75715e># file_type: &#39;html&#39;, &#39;svg&#39;, &#39;png&#39;, &#39;jpeg&#39;, &#39;gif&#39; or &#39;pdf&#39;</span>
-</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    env<span style=color:#f92672>.</span>render_chart_to_file(bar, path<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;bar.html&#39;</span>)
 </span></span><span style=display:flex><span>    env<span style=color:#f92672>.</span>render_chart_to_file(line, path<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;line.html&#39;</span>)</span></span></code></pre></div><p>(<em>￣▽￣</em>)o 如上</p><h3 id=注意>注意<a class=anchor href=#%e6%b3%a8%e6%84%8f>#</a></h3><pre><code>在生成报表时， 由于采用的是浏览器截图的方式，在使用`phantomjs`时会自动判断图片是否加载完成（echarts在显示图表之前是有一段动画的……）然后再`pyecharts`中并没有关闭动画的接口，而echarts是有的。 但毕竟`echarts`是在做翻译，所以只要在&quot;Chart&quot;基类中，将`animation=False`就可以了。 我改的时候在`chart.py`文件的29行，def __init__中。
 </code></pre><h2 id=ssl加密https配置>SSl加密，https配置<a class=anchor href=#ssl%e5%8a%a0%e5%af%86https%e9%85%8d%e7%bd%ae>#</a></h2><p>虽然就配置过之后显得操作很简单，而且也很明显，但就配置之初着实还是费了一些功夫的。或许是因为大而全的东西懒得看，而网上搜索到的粘贴复制之词又太过片面，或许大家写的时候也就当作日记来写的，本就没准备让别人去参考。所以再加上搜索的时候俺表述词不达意，所以总是很曲折（呵，用谷歌搜外文网就不存在这问题，前面就谦虚一下🙃）</p><h3 id=之前写的文档>之前写的文档<a class=anchor href=#%e4%b9%8b%e5%89%8d%e5%86%99%e7%9a%84%e6%96%87%e6%a1%a3>#</a></h3><p>1 ssl加密部署步骤说明文档
@@ -358,28 +384,47 @@ SSLCertificateKeyFile &ldquo;C:/apache2.4.9/conf/ssl/server.key&rdquo;
 随后在本机中安装<code>server.crt</code>至<code>收信人的根证书颁发机构</code>即可不再提示证书无效
 注意：在重启Apache时，若Apache服务启动不起来，则在Apache安装目录的bin目录下，输入httpd –t，可以根据提示来修改你的配置文件</p><h3 id=附>附<a class=anchor href=#%e9%99%84>#</a></h3><p>现在是2018年8月25日16点01分 所以上面其实是一个月前写给别人看的文档。
 在我搜的时候由于先在本地配置，尔后再网上找CA发证书，自我感觉这个步骤没有什么问题。就今天在</p><h4 id=apache配置双网站https>Apache配置双网站/https<a class=anchor href=#apache%e9%85%8d%e7%bd%ae%e5%8f%8c%e7%bd%91%e7%ab%99https>#</a></h4><p>的时候，也是这样，先在本地通过不同端口测试，确定方案之后再在服务器上通过<code>ServerName</code>进行区分。
-也就是启用<code>httpd-vhosts.conf</code>之后，再</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-md data-lang=md><span style=display:flex><span># Virtual Hosts
+也就是启用<code>httpd-vhosts.conf</code>之后，再</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-md data-lang=md><span style=display:flex><span>
+</span></span><span style=display:flex><span># Virtual Hosts
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># Required modules: mod_log_config
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># If you want to maintain multiple domains/hostnames on your
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># machine you can setup VirtualHost containers for them. Most configurations
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># use only name-based virtual hosts so the server doesn&#39;t need to worry about
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># IP addresses. This is indicated by the asterisks in the directives below.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#
-</span></span><span style=display:flex><span># Please see the documentation at 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># Please see the documentation at
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># &lt;URL:http://httpd.apache.org/docs/2.4/vhosts/&gt;
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># for further details before you try to setup virtual hosts.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># You may use the command line option &#39;-S&#39; to verify your virtual host
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># configuration.
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># VirtualHost example:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># Almost any Apache directive may go into a VirtualHost container.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># The first VirtualHost section is used for all requests that do not
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># match a ServerName or ServerAlias in any &lt;VirtualHost&gt; block.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>&lt;VirtualHost 192.168.1.81:80&gt;
 </span></span><span style=display:flex><span>    ServerName www.lejinrong.cn
 </span></span><span style=display:flex><span>    ServerAlias www.lejinrong.cn
@@ -424,31 +469,55 @@ SSLCertificateKeyFile &ldquo;C:/apache2.4.9/conf/ssl/server.key&rdquo;
 </span></span><span style=display:flex><span>    RewriteEngine on
 </span></span><span style=display:flex><span>    RewriteCond %{SERVER_PORT} !^443$
 </span></span><span style=display:flex><span>    RewriteRule ^/?(.*)$ https://%{SERVER_NAME}/$1 [L,R]
-</span></span><span style=display:flex><span>&lt;/VirtualHost&gt;</span></span></code></pre></div><p>同理，在<code>httpd-ssl.conf</code>中也是通过配置不同<code>VirtualHost</code>进行区分</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-md data-lang=md><span style=display:flex><span>#
-</span></span><span style=display:flex><span># This is the Apache server configuration file providing SSL support.
-</span></span><span style=display:flex><span># It contains the configuration directives to instruct the server how to
-</span></span><span style=display:flex><span># serve pages over an https connection. For detailed information about these 
-</span></span><span style=display:flex><span># directives see &lt;URL:http://httpd.apache.org/docs/2.4/mod/mod_ssl.html&gt;
-</span></span><span style=display:flex><span># 
-</span></span><span style=display:flex><span># Do NOT simply read the instructions in here without understanding
-</span></span><span style=display:flex><span># what they do.  They&#39;re here only as hints or reminders.  If you are unsure
-</span></span><span style=display:flex><span># consult the online docs. You have been warned.  
+</span></span><span style=display:flex><span>&lt;/VirtualHost&gt;</span></span></code></pre></div><p>同理，在<code>httpd-ssl.conf</code>中也是通过配置不同<code>VirtualHost</code>进行区分</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-md data-lang=md><span style=display:flex><span>
 </span></span><span style=display:flex><span>#
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># This is the Apache server configuration file providing SSL support.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># It contains the configuration directives to instruct the server how to
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># serve pages over an https connection. For detailed information about these
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># directives see &lt;URL:http://httpd.apache.org/docs/2.4/mod/mod_ssl.html&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>#
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># Do NOT simply read the instructions in here without understanding
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># what they do.  They&#39;re here only as hints or reminders.  If you are unsure
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># consult the online docs. You have been warned.  
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>#
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># Required modules: mod_log_config, mod_setenvif, mod_ssl,
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#          socache_shmcb_module (for default value of SSLSessionCache)
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># Pseudo Random Number Generator (PRNG):
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># Configure one or more sources to seed the PRNG of the SSL library.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># The seed data should be of good random quality.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># WARNING! On some platforms /dev/random blocks if not enough entropy
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># is available. This means you then cannot use the /dev/random device
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># because it would lead to very long connection times (as long as
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># it requires to make more entropy available). But usually those
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># platforms additionally provide a /dev/urandom device which doesn&#39;t
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># block. So, if available, use this one instead. Read the mod_ssl User
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># Manual for more details.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#SSLRandomSeed startup file:/dev/random  512
 </span></span><span style=display:flex><span>#SSLRandomSeed startup file:/dev/urandom 512
 </span></span><span style=display:flex><span>#SSLRandomSeed connect file:/dev/random  512
@@ -456,98 +525,159 @@ SSLCertificateKeyFile &ldquo;C:/apache2.4.9/conf/ssl/server.key&rdquo;
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#
-</span></span><span style=display:flex><span># When we also provide SSL we have to listen to the 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># When we also provide SSL we have to listen to the
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># standard HTTP port (see above) and to the HTTPS port
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>Listen 443
 </span></span><span style=display:flex><span>Listen 400
 </span></span><span style=display:flex><span>#ServerName www.lejinrong.cn
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>##
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e>##  SSL Global Context
-</span></span></span><span style=display:flex><span>##
+</span></span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>##
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e>##  All SSL configuration in this context applies both to
-</span></span></span><span style=display:flex><span><span style=color:#75715e>##  the main server and all SSL-enabled virtual hosts.
-</span></span></span><span style=display:flex><span>##
+</span></span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>##  the main server and all SSL-enabled virtual hosts.
+</span></span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>##
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   SSL Cipher Suite:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   List the ciphers that the client is permitted to negotiate,
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   and that httpd will negotiate as the client of a proxied server.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   See the OpenSSL documentation for a complete list of ciphers, and
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   ensure these follow appropriate best practices for this deployment.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   httpd 2.2.30, 2.4.13 and later force-disable aNULL, eNULL and EXP ciphers,
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   while OpenSSL disabled these by default in 0.9.8zf/1.0.0r/1.0.1m/1.0.2a.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>SSLCipherSuite HIGH:MEDIUM:!MD5:!RC4:!3DES
 </span></span><span style=display:flex><span>SSLProxyCipherSuite HIGH:MEDIUM:!MD5:!RC4:!3DES
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#  By the end of 2016, only TLSv1.2 ciphers should remain in use.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#  Older ciphers should be disallowed as soon as possible, while the
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#  kRSA ciphers do not offer forward secrecy.  These changes inhibit
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#  older clients (such as IE6 SP2 or IE8 on Windows XP, or other legacy
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#  non-browser tooling) from successfully connecting.  
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#  To restrict mod_ssl to use only TLSv1.2 ciphers, and disable
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#  those protocols which do not support forward secrecy, replace
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#  the SSLCipherSuite and SSLProxyCipherSuite directives above with
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#  the following two directives, as soon as practical.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># SSLCipherSuite HIGH:MEDIUM:!SSLv3:!kRSA
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span># SSLProxyCipherSuite HIGH:MEDIUM:!SSLv3:!kRSA
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   User agents such as web browsers are not configured for the user&#39;s
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   own preference of either security or performance, therefore this
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   must be the prerogative of the web server administrator who manages
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   cpu load versus confidentiality, so enforce the server&#39;s cipher order.
-</span></span><span style=display:flex><span>SSLHonorCipherOrder on 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>SSLHonorCipherOrder on
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   SSL Protocol support:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   List the protocol versions which clients are allowed to connect with.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Disable SSLv3 by default (cf. RFC 7525 3.1.1).  TLSv1 (1.0) should be
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   disabled as quickly as practical.  By the end of 2016, only the TLSv1.2
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   protocol or later should remain in use.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>SSLProtocol all -SSLv3
 </span></span><span style=display:flex><span>SSLProxyProtocol all -SSLv3
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Pass Phrase Dialog:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Configure the pass phrase gathering process.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   The filtering dialog program (`builtin&#39; is an internal
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   terminal dialog) has to provide the pass phrase on stdout.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>SSLPassPhraseDialog  builtin
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Inter-Process Session Cache:
-</span></span><span style=display:flex><span>#   Configure the SSL Session Cache: First the mechanism 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>#   Configure the SSL Session Cache: First the mechanism
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   to use and second the expiring timeout (in seconds).
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#SSLSessionCache         &#34;dbm:c:/Apache24/logs/ssl_scache&#34;
 </span></span><span style=display:flex><span>SSLSessionCache        &#34;shmcb:c:/Apache24/logs/ssl_scache(512000)&#34;
 </span></span><span style=display:flex><span>SSLSessionCacheTimeout  300
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   OCSP Stapling (requires OpenSSL 0.9.8h or later)
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   This feature is disabled by default and requires at least
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   the two directives SSLUseStapling and SSLStaplingCache.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Refer to the documentation on OCSP Stapling in the SSL/TLS
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   How-To for more information.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Enable stapling for all SSL-enabled servers:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#SSLUseStapling On
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Define a relatively small cache for OCSP Stapling using
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   the same mechanism that is used for the SSL session cache
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   above.  If stapling is used with more than a few certificates,
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   the size may need to be increased.  (AH01929 will be logged.)
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#SSLStaplingCache &#34;shmcb:c:/Apache24/logs/ssl_stapling(32768)&#34;
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Seconds before valid OCSP responses are expired from the cache
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#SSLStaplingStandardCacheTimeout 3600
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Seconds before invalid OCSP responses are expired from the cache
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#SSLStaplingErrorCacheTimeout 600
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>##
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e>## SSL Virtual Host Context
-</span></span></span><span style=display:flex><span>##
+</span></span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>##
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>&lt;VirtualHost 192.168.1.81:400&gt;
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   General setup for the virtual host
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>DocumentRoot &#34;c:/Apache24/htdocs&#34;
 </span></span><span style=display:flex><span>ServerName www.lejinrong.cn
 </span></span><span style=display:flex><span>ServerAdmin admin@lejinrong.cn
@@ -555,123 +685,214 @@ SSLCertificateKeyFile &ldquo;C:/apache2.4.9/conf/ssl/server.key&rdquo;
 </span></span><span style=display:flex><span>TransferLog &#34;c:/Apache24/logs/access.log&#34;
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   SSL Engine Switch:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Enable/Disable SSL for this virtual host.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>SSLEngine on
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Server Certificate:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Point SSLCertificateFile at a PEM encoded certificate.  If
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   the certificate is encrypted, then you will be prompted for a
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   pass phrase.  Note that a kill -HUP will prompt again.  Keep
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   in mind that if you have both an RSA and a DSA certificate you
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   can configure both in parallel (to also allow the use of DSA
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   ciphers, etc.)
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Some ECC cipher suites (http://www.ietf.org/rfc/rfc4492.txt)
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   require an ECC certificate which can also be configured in
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   parallel.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>SSLCertificateFile &#34;c:/Apache24/conf/ssl/server.crt&#34;
 </span></span><span style=display:flex><span>#SSLCertificateFile &#34;c:/Apache24/conf/server-dsa.crt&#34;
 </span></span><span style=display:flex><span>#SSLCertificateFile &#34;c:/Apache24/conf/server-ecc.crt&#34;
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Server Private Key:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   If the key is not combined with the certificate, use this
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   directive to point at the key file.  Keep in mind that if
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   you&#39;ve both a RSA and a DSA private key you can configure
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   both in parallel (to also allow the use of DSA ciphers, etc.)
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   ECC keys, when in use, can also be configured in parallel
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>SSLCertificateKeyFile &#34;c:/Apache24/conf/ssl/server.key&#34;
 </span></span><span style=display:flex><span>#SSLCertificateKeyFile &#34;c:/Apache24/conf/server-dsa.key&#34;
 </span></span><span style=display:flex><span>#SSLCertificateKeyFile &#34;c:/Apache24/conf/server-ecc.key&#34;
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Server Certificate Chain:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Point SSLCertificateChainFile at a file containing the
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   concatenation of PEM encoded CA certificates which form the
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   certificate chain for the server certificate. Alternatively
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   the referenced file can be the same as SSLCertificateFile
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   when the CA certificates are directly appended to the server
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   certificate for convenience.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#SSLCertificateChainFile &#34;c:/Apache24/conf/server-ca.crt&#34;
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Certificate Authority (CA):
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Set the CA certificate verification path where to find CA
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   certificates for client authentication or alternatively one
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   huge file containing all of them (file must be PEM encoded)
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Note: Inside SSLCACertificatePath you need hash symlinks
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#         to point to the certificate files. Use the provided
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#         Makefile to update the hash symlinks after changes.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#SSLCACertificatePath &#34;c:/Apache24/conf/ssl.crt&#34;
 </span></span><span style=display:flex><span>#SSLCACertificateFile &#34;c:/Apache24/conf/ssl.crt/ca-bundle.crt&#34;
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Certificate Revocation Lists (CRL):
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Set the CA revocation path where to find CA CRLs for client
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   authentication or alternatively one huge file containing all
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   of them (file must be PEM encoded).
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   The CRL checking mode needs to be configured explicitly
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   through SSLCARevocationCheck (defaults to &#34;none&#34; otherwise).
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Note: Inside SSLCARevocationPath you need hash symlinks
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#         to point to the certificate files. Use the provided
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#         Makefile to update the hash symlinks after changes.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#SSLCARevocationPath &#34;c:/Apache24/conf/ssl.crl&#34;
 </span></span><span style=display:flex><span>#SSLCARevocationFile &#34;c:/Apache24/conf/ssl.crl/ca-bundle.crl&#34;
 </span></span><span style=display:flex><span>#SSLCARevocationCheck chain
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Client Authentication (Type):
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Client certificate verification type and depth.  Types are
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   none, optional, require and optional_no_ca.  Depth is a
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   number which specifies how deeply to verify the certificate
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   issuer chain before deciding the certificate is not valid.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#SSLVerifyClient require
 </span></span><span style=display:flex><span>#SSLVerifyDepth  10
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   TLS-SRP mutual authentication:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Enable TLS-SRP and set the path to the OpenSSL SRP verifier
-</span></span><span style=display:flex><span>#   file (containing login information for SRP user accounts). 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>#   file (containing login information for SRP user accounts).
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Requires OpenSSL 1.0.1 or newer. See the mod_ssl FAQ for
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   detailed instructions on creating this file. Example:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   &#34;openssl srp -srpvfile c:/Apache24/conf/passwd.srpv -add username&#34;
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#SSLSRPVerifierFile &#34;c:/Apache24/conf/passwd.srpv&#34;
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Access Control:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   With SSLRequire you can do per-directory access control based
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   on arbitrary complex boolean expressions containing server
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   variable checks and other lookup directives.  The syntax is a
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   mixture between C and Perl.  See the mod_ssl documentation
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   for more details.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#&lt;Location /&gt;
 </span></span><span style=display:flex><span>#SSLRequire (    %{SSL_CIPHER} !~ m/^(EXP|NULL)/ \
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#            and %{SSL_CLIENT_S_DN_O} eq &#34;Snake Oil, Ltd.&#34; \
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#            and %{SSL_CLIENT_S_DN_OU} in {&#34;Staff&#34;, &#34;CA&#34;, &#34;Dev&#34;} \
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#            and %{TIME_WDAY} &gt;= 1 and %{TIME_WDAY} &lt;= 5 \
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#            and %{TIME_HOUR} &gt;= 8 and %{TIME_HOUR} &lt;= 20       ) \
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#           or %{REMOTE_ADDR} =~ m/^192\.76\.162\.[0-9]+$/
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#&lt;/Location&gt;
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   SSL Engine Options:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Set various options for the SSL engine.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   o FakeBasicAuth:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     Translate the client X.509 into a Basic Authorisation.  This means that
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     the standard Auth/DBMAuth methods can be used for access control.  The
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     user name is the `one line&#39; version of the client&#39;s X.509 certificate.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     Note that no password is obtained from the user. Every entry in the user
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     file needs this password: `xxj31ZMTZzkVA&#39;.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   o ExportCertData:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     This exports two additional environment variables: SSL_CLIENT_CERT and
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     SSL_SERVER_CERT. These contain the PEM-encoded certificates of the
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     server (always existing) and the client (only existing when client
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     authentication is used). This can be used to import the certificates
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     into CGI scripts.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   o StdEnvVars:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     This exports the standard SSL/TLS related `SSL_*&#39; environment variables.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     Per default this exportation is switched off for performance reasons,
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     because the extraction step is an expensive operation and is usually
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     useless for serving static content. So one usually enables the
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     exportation for CGI and SSI requests only.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   o StrictRequire:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     This denies access when &#34;SSLRequireSSL&#34; or &#34;SSLRequire&#34; applied even
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     under a &#34;Satisfy any&#34; situation, i.e. when it applies access is denied
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     and no other module can change it.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   o OptRenegotiate:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     This enables optimized SSL connection renegotiation handling when SSL
-</span></span><span style=display:flex><span>#     directives are used in per-directory context. 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>#     directives are used in per-directory context.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#SSLOptions +FakeBasicAuth +ExportCertData +StrictRequire
 </span></span><span style=display:flex><span>&lt;FilesMatch &#34;\.(cgi|shtml|phtml|php)$&#34;&gt;
 </span></span><span style=display:flex><span>    SSLOptions +StdEnvVars
@@ -681,36 +902,63 @@ SSLCertificateKeyFile &ldquo;C:/apache2.4.9/conf/ssl/server.key&rdquo;
 </span></span><span style=display:flex><span>&lt;/Directory&gt;
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   SSL Protocol Adjustments:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   The safe and default but still SSL/TLS standard compliant shutdown
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   approach is that mod_ssl sends the close notify alert but doesn&#39;t wait for
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   the close notify alert from client. When you need a different shutdown
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   approach you can use one of the following variables:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   o ssl-unclean-shutdown:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     This forces an unclean shutdown when the connection is closed, i.e. no
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     SSL close notify alert is sent or allowed to be received.  This violates
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     the SSL/TLS standard but is needed for some brain-dead browsers. Use
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     this when you receive I/O errors because of the standard approach where
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     mod_ssl sends the close notify alert.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   o ssl-accurate-shutdown:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     This forces an accurate shutdown when the connection is closed, i.e. a
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     SSL close notify alert is send and mod_ssl waits for the close notify
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     alert of the client. This is 100% SSL/TLS standard compliant, but in
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     practice often causes hanging connections with brain-dead browsers. Use
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#     this only for browsers where you know that their SSL implementation
-</span></span><span style=display:flex><span>#     works correctly. 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>#     works correctly.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Notice: Most problems of broken clients are also related to the HTTP
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   keep-alive facility, so you usually additionally want to disable
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   keep-alive for those clients, too. Use variable &#34;nokeepalive&#34; for this.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Similarly, one has to force some clients to use HTTP/1.0 to workaround
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   their broken HTTP/1.1 implementation. Use variables &#34;downgrade-1.0&#34; and
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   &#34;force-response-1.0&#34; for this.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>BrowserMatch &#34;MSIE [2-5]&#34; \
 </span></span><span style=display:flex><span>         nokeepalive ssl-unclean-shutdown \
 </span></span><span style=display:flex><span>         downgrade-1.0 force-response-1.0
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   Per-Server Logging:
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   The home of a custom SSL log file. Use this when you want a
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>#   compact non-error SSL logfile on a virtual host basis.
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>CustomLog &#34;c:/Apache24/logs/ssl_request.log&#34; \
 </span></span><span style=display:flex><span>          &#34;%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \&#34;%r\&#34; %b&#34;
 </span></span><span style=display:flex><span>#指定myweb项目的wsgi.py配置文件路径  
@@ -759,11 +1007,13 @@ SSLCertificateKeyFile &ldquo;C:/apache2.4.9/conf/ssl/server.key&rdquo;
 </span></span><span style=display:flex><span>    AllowOverride None
 </span></span><span style=display:flex><span>&lt;/Directory&gt;
 </span></span><span style=display:flex><span>&lt;/VirtualHost&gt;</span></span></code></pre></div><p>但其实 都写了跳转，所以在<code>httpd-vhosts.conf</code>文件中的项目以及静态资源路径指定就不用指定了，只不过我懒得删…
-还有一个坑点就是 原本有一个指定项目路径以及python环境的语句：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-md data-lang=md><span style=display:flex><span>#WSGIPythonPath &#34;C:/Python27/Lib;C:/Python27/Lib/site-packages;C:/Python27/DLLs&#34;
+还有一个坑点就是 原本有一个指定项目路径以及python环境的语句：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-md data-lang=md><span style=display:flex><span>
+</span></span><span style=display:flex><span>#WSGIPythonPath &#34;C:/Python27/Lib;C:/Python27/Lib/site-packages;C:/Python27/DLLs&#34;
 </span></span><span style=display:flex><span>#WSGIPythonPath D:/FundEvaluationSystem_svn1
 </span></span><span style=display:flex><span>#WSGIPythonHome &#34;C:/Python27&#34;</span></span></code></pre></div><p>我不知道按照上下这两种为什么会出问题，但网上那些人不会。但中间那个是用来指向项目路径的一个取巧的办法。哦因为wsgi或许我已经在别处制订过了。所以只要在<code>wsgi.py</code>中声明<code>sys.path.append('D:/FundEvaluationSystem_svn1/Fund_Evaluation_System_V2')</code>就可以将项目包括进来，而不需要通过 第二句那个制定<code>python</code>路径的东西。而用那个，会导致资源只有声明的项目1会被加载，而项目2的资源就不会声明，而将那三句话注释，只要分别在&rsquo;wsgi.py&rsquo;中声明项目资源，而在<code>.conf</code>文件中指向&rsquo;wsgi.py&rsquo;文件就可以如数加载了。</p><p>(⊙﹏⊙)语序 逻辑混乱之后不加班了再整理吧~~😭</p><h1 id=前端-vue>前端 Vue<a class=anchor href=#%e5%89%8d%e7%ab%af-vue>#</a></h1><p><code>vue</code>的使用方式可以通过<code>html</code>页面直接引用，也能直接用<code>vue-cil</code>创建项目。 网上人称<code>vue</code>脚手架？晓不大得
-而我这里自然说的就是 <code>vue-cil</code>即 通过<code>vue init webpack &lt;prjName></code>来生成的项目喽</p><p>系统的创建以及介绍之后使用再熟一些再写，现在先记一些零散的东西。 [^_^]2018年9月18日 21点36分</p><h3 id=路由配置登陆访问>路由配置登陆访问<a class=anchor href=#%e8%b7%af%e7%94%b1%e9%85%8d%e7%bd%ae%e7%99%bb%e9%99%86%e8%ae%bf%e9%97%ae>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-vue data-lang=vue><span style=display:flex><span>    <span style=color:#a6e22e>在</span><span style=color:#e6db74>`router/index.js`</span><span style=color:#a6e22e>中</span><span style=color:#960050;background-color:#1e0010>：</span>
-</span></span><span style=display:flex><span>    
+而我这里自然说的就是 <code>vue-cil</code>即 通过<code>vue init webpack &lt;prjName></code>来生成的项目喽</p><p>系统的创建以及介绍之后使用再熟一些再写，现在先记一些零散的东西。 [^_^]2018年9月18日 21点36分</p><h3 id=路由配置登陆访问>路由配置登陆访问<a class=anchor href=#%e8%b7%af%e7%94%b1%e9%85%8d%e7%bd%ae%e7%99%bb%e9%99%86%e8%ae%bf%e9%97%ae>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-vue data-lang=vue><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>在</span><span style=color:#e6db74>`router/index.js`</span><span style=color:#a6e22e>中</span><span style=color:#960050;background-color:#1e0010>：</span>
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    {
 </span></span><span style=display:flex><span>      <span style=color:#a6e22e>path</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;/&#39;</span>,
 </span></span><span style=display:flex><span>      <span style=color:#75715e>// 首页

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>TLP on Ian's Blog</title><link>http://example.org/tags/tlp/</link><description>Recent content in TLP on Ian's Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 29 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/tlp/index.xml" rel="self" type="application/rss+xml"/><item><title>HP Pavilion Aero Fedora 44 电池续航调优笔记</title><link>http://example.org/docs/programmer/platforms/os/hp-pavilion-aero-fedora-44-%E7%94%B5%E6%B1%A0%E7%BB%AD%E8%88%AA%E8%B0%83%E4%BC%98%E7%AC%94%E8%AE%B0/</link><pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate><guid>http://example.org/docs/programmer/platforms/os/hp-pavilion-aero-fedora-44-%E7%94%B5%E6%B1%A0%E7%BB%AD%E8%88%AA%E8%B0%83%E4%BC%98%E7%AC%94%E8%AE%B0/</guid><description>&lt;h1 id="背景"&gt;背景&lt;a class="anchor" href="#%e8%83%8c%e6%99%af"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;机器：HP Pavilion Aero 13-be1xxx，AMD Ryzen 5 5625U (Zen 3, 6c12t)，36 Wh 小电池，2560×1600 IPS 屏，Fedora 44 / kernel 7.0 / KDE Plasma。&lt;/p&gt;
+&lt;p&gt;拔电跑 Cursor agent 编码时整机功率 9-12W，想压低 idle 基线并提升续航。&lt;/p&gt;
+&lt;h1 id="硬件画像先确认"&gt;硬件画像（先确认）&lt;a class="anchor" href="#%e7%a1%ac%e4%bb%b6%e7%94%bb%e5%83%8f%e5%85%88%e7%a1%ae%e8%ae%a4"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 电池容量与状态&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /sys/class/power_supply/BAT0/uevent
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# CPU / pstate / EPP / boost&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /sys/devices/system/cpu/amd_pstate/status &lt;span style="color:#75715e"&gt;# active&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /sys/devices/system/cpu/cpufreq/policy0/scaling_governor &lt;span style="color:#75715e"&gt;# powersave&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /sys/devices/system/cpu/cpufreq/policy0/energy_performance_preference
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 平台 profile（HP PMF / hp-wmi）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /sys/firmware/acpi/platform_profile_choices &lt;span style="color:#75715e"&gt;# cool quiet balanced performance&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Wi-Fi 省电&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;iw dev wlp1s0 get power_save
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 现有电源服务（不能同时跑 TLP 和 power-profiles-daemon）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;systemctl is-active tlp power-profiles-daemon tuned&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="三项立刻能拿到的优化实测有效"&gt;三项立刻能拿到的优化（实测有效）&lt;a class="anchor" href="#%e4%b8%89%e9%a1%b9%e7%ab%8b%e5%88%bb%e8%83%bd%e6%8b%bf%e5%88%b0%e7%9a%84%e4%bc%98%e5%8c%96%e5%ae%9e%e6%b5%8b%e6%9c%89%e6%95%88"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 1. Wi-Fi 省电（MT7922 默认 off，开启省 ~0.3-0.5W）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo iw dev wlp1s0 set power_save on
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 2. EPP 拉到 power（idle 降 ~0.5-1W）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo power | sudo tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 3. 键盘背光关掉（如果有）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; | sudo tee /sys/class/leds/*kbd_backlight*/brightness 2&amp;gt;/dev/null&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote class='book-hint '&gt;
+&lt;p&gt;不要再去试 &lt;code&gt;platform_profile=cool/quiet&lt;/code&gt;，本机 BIOS 拒收，见后文。&lt;/p&gt;</description></item></channel></rss>
